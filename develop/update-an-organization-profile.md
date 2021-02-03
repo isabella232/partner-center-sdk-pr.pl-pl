@@ -1,0 +1,156 @@
+---
+title: Aktualizowanie profilu organizacji
+description: Aktualizuje profil rozliczeń w organizacji.
+ms.date: 12/15/2017
+ms.service: partner-dashboard
+ms.subservice: partnercenter-sdk
+ms.openlocfilehash: ccf938fff285704f54d4717b2678e1419d857d8d
+ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "97767870"
+---
+# <a name="update-an-organization-profile"></a>Aktualizowanie profilu organizacji
+
+**Dotyczy**
+
+- Centrum partnerskie
+- Centrum partnerskie obsługiwane przez firmę 21Vianet
+- Centrum partnerskie dla Microsoft Cloud Niemcy
+- Centrum partnerskie Microsoft Cloud for US Government
+
+Aktualizuje profil rozliczeń partnera.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+
+## <a name="c"></a>C\#
+
+Aby zaktualizować profil organizacji, należy pobrać profil i wprowadzić wymagane zmiany. Następnie użyj kolekcji **IAggregatePartner. profile** i Wywołaj Właściwość **OrganizationProfile** . Na koniec Wywołaj metodę **Update ()** .
+
+``` csharp
+// IAggregatePartner partnerOperations;
+
+OrganizationProfile organizationProfile = partnerOperations.Profiles.OrganizationProfile.Get();
+
+// Generating a random phone number to update in the organization profile
+organizationProfile.DefaultAddress.PhoneNumber = ((long)(new Random().NextDouble() * 9000000000) + 1000000000).ToString(CultureInfo.InvariantCulture);
+
+OrganizationProfile updatedOrganizationProfile = partnerOperations.Profiles.OrganizationProfile.Update(organizationProfile);
+```
+
+**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerCenterSDK. FeaturesSamples **Klasa**: UpdateOrganizationProfile.cs
+
+## <a name="rest-request"></a>Żądanie REST
+
+### <a name="request-syntax"></a>Składnia żądania
+
+| Metoda  | Identyfikator URI żądania                                                                   |
+|---------|-------------------------------------------------------------------------------|
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/Organization http/1.1 |
+
+### <a name="request-headers"></a>Nagłówki żądań
+
+Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+
+### <a name="request-body"></a>Treść żądania
+
+Brak.
+
+### <a name="request-example"></a>Przykład żądania
+
+```http
+PUT https://api.partnercenter.microsoft.com/v1/profiles/organization HTTP/1.1
+Authorization: Bearer <token>
+Accept: application/json
+MS-RequestId: fe76387b-9658-47d7-939d-0c70032ef589
+MS-CorrelationId: cb9f3209-d020-4bf9-871c-e1f1c75348f8
+Content-Length: 624
+Expect: 100-continue
+
+{
+    "id":<id>,
+    "companyName":"TEST_TEST_BugBash1",
+    "defaultAddress":{
+        "country":"US",
+        "city":"Redmond",
+        "state":"WA",
+        "addressLine1":"Two Microsoft Way",
+        "addressLine2":"",
+        "postalCode":"98052",
+        "firstName":"Test",
+        "lastName":"Account",
+        "phoneNumber":""
+    },
+    "tenantId":<tenantID>,
+    "domain":"testtestbugbash1.onmicrosoft.com",
+    "email":"test-partner@microsoft.com",
+    "language":"es",
+    "culture":"es-US",
+    "links":{
+        "self":{
+            "uri":"/profiles/organization",
+            "method":"GET",
+            "headers":[]
+        }
+    },
+    "attributes":{
+        "etag":<etag>,
+        "objectType":"OrganizationProfile"
+    }
+}
+```
+
+## <a name="rest-response"></a>Odpowiedź REST
+
+Jeśli to się powiedzie, metoda zwraca obiekt **OrganizationProfile** w treści odpowiedzi.
+
+### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+
+### <a name="response-example"></a>Przykład odpowiedzi
+
+```http
+HTTP/1.1 200 OK
+Content-Length: 648
+Content-Type: application/json; charset=utf-8
+MS-CorrelationId: cb9f3209-d020-4bf9-871c-e1f1c75348f8
+MS-RequestId: fe76387b-9658-47d7-939d-0c70032ef589
+Date: Mon, 21 Mar 2016 05:48:41 GMT
+
+{
+    "id":<id>,
+    "companyName":"TEST_TEST_BugBash1",
+    "defaultAddress":{
+        "country":"US",
+        "city":"Redmond",
+        "state":"WA",
+        "addressLine1":"Two Microsoft Way",
+        "addressLine2":"",
+        "postalCode":"98052",
+        "firstName":"Test",
+        "lastName":"Account",
+        "phoneNumber":""
+    },
+    "tenantId":<tenantID>,
+    "domain":"testtestbugbash1.onmicrosoft.com",
+    "email":"test-partner@microsoft.com",
+    "language":"es",
+    "culture":"es-US",
+    "profileType":"OrganizationProfile",
+    "links":{
+        "self":{
+            "uri":"/profiles/organization",
+            "method":"GET",
+            "headers":[]
+        }
+    },
+    "attributes":{
+        "etag":<etag>,
+        "objectType":"OrganizationProfile"
+    }
+}
+```

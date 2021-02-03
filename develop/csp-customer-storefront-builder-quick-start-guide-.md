@@ -4,12 +4,12 @@ description: Utwórz witrynę online Marketplace, aby sprzedawać oferty dostawc
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d64deff9b002b861c9f48d076feb5841af727e3d
-ms.sourcegitcommit: 57620e249e218edc4af7c83c2ce8a3008a4adf4e
+ms.openlocfilehash: 83ae0c789f95485ec3eb272434e57421a8f93fb6
+ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "97768013"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99505326"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Konstruktor witryn sklepu internetowego klienta CSP — podręcznik Szybki start
 
@@ -25,10 +25,10 @@ Konstruktor sklepu w sklepie dostawcy usług kryptograficznych pomaga partnerom 
 
 Ta witryna sieci Web jest w pełni własnością, obsługiwana i utrzymywana przez partnerów, a firma Microsoft nie zbiera żadnych danych ani telemetrii z witryny sieci Web. Konstruktor sklepu z klientami programu CSP tworzy witrynę sieci Web dla partnera, który jest w pełni zgodny z [standardem Payment Card Industry Data Security](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-Kod konstruktora witryny dostawcy usług kryptograficznych klienta jest objęty licencją dostępną w [umowie EULA centrum partnera SDK](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+Kod konstruktora witryny dostawcy usług kryptograficznych klienta jest objęty licencją dostępną w [umowie EULA centrum partnera SDK](/legal/partner-center/eula-partner-center-sdk).
 
 >[!NOTE]
->Użytkownik jest odpowiedzialny za zarządzanie witryną sieci Web, konserwację i wszelkie problemy, które mogą wynikać z tworzenia witryny sieci Web. Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+>Użytkownik jest odpowiedzialny za zarządzanie witryną sieci Web, konserwację i wszelkie problemy, które mogą wynikać z tworzenia witryny sieci Web. Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](/legal/partner-center/eula-partner-center-sdk).
 
 Aby uzyskać dodatkowe informacje, zobacz również następujące artykuły: [dostawca usług w sieci Web klienta CSP](csp-customer-web-storefront.md) i [aplikacja testowa konsoli](console-test-app.md).
 
@@ -52,7 +52,7 @@ Konstruktor sklepu w sklepie dostawcy usług kryptograficznych jest przeznaczony
 
 - Konfiguracja płatności PayU będzie działała tylko w Indiach. PayU dostępność i pomoc techniczna są kontrolowane wyłącznie przez PayU i mogą być wycofane w dowolnym momencie przez PayU.
 
-- Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+- Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](/legal/partner-center/eula-partner-center-sdk).
 
 ## <a name="using-the-csp-customer-storefront-builder"></a>Korzystanie z konstruktora witryny Customer w sklepie dostawcy CSP
 

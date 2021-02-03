@@ -1,25 +1,25 @@
 ---
 title: Pobierz kwalifikacje klienta
 description: Dowiedz się, jak używać walidacji asynchronicznej w celu uzyskania kwalifikacji klienta za pośrednictwem interfejsu API Centrum partnerskiego. Partnerzy mogą używać tego do weryfikowania klientów edukacyjnych.
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 9f9b9aaddde0d66caf9c7ef32e8fba6d5e3aba36
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: 130ee276461e3390ac78ac7abd8baeefe6a70d7c
+ms.sourcegitcommit: 97f93caa57df6c64fe19868e6b2a0f7937226b51
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770188"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98636387"
 ---
-# <a name="get-a-customers-qualifications-via-asynchronous-validation"></a>Pobierz kwalifikacje klienta za pośrednictwem walidacji asynchronicznej
+# <a name="get-a-customers-qualification-asynchronously"></a>Zapoznaj się z kwalifikacją klienta asynchronicznie
 
 **Dotyczy**
 
 - Centrum partnerskie
 
-Dowiedz się, jak uzyskać kwalifikacje klienta asynchronicznie za pośrednictwem interfejsów API Centrum partnerskiego. Aby dowiedzieć się, jak to zrobić synchronicznie, zobacz [pobieranie kwalifikacji klienta za pośrednictwem walidacji synchronicznej](get-customer-qualification-synchronous.md).
+Jak przeprowadzić asynchroniczne pobieranie kwalifikacji klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -71,13 +71,7 @@ Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowo
 
 ### <a name="response-examples"></a>Przykłady odpowiedzi
 
-W tej sekcji przedstawiono odpowiedzi, które mogą zostać wyświetlone, gdy klient `vettingStatus` jest:
-
-- Approved (Zatwierdzono)
-- Przegląd
-- Odmowa
-
-**Zatwierdzono** przykład:
+#### <a name="approved"></a>Approved (Zatwierdzono)
 
 ```http
 HTTP/1.1 200 OK
@@ -85,16 +79,18 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-[
-    {
-        "qualification": "Education",
-        "vettingStatus": "Approved",
-    }
-]
+{
+    "qualifications": [
+        {
+            "qualification": "Education",
+            "vettingStatus": "Approved",
+        }
+    ]
+}
 
 ```
 
-Przykład **w przeglądzie** :
+#### <a name="in-review"></a>Przegląd
 
 ```http
 HTTP/1.1 200 OK
@@ -102,17 +98,19 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-[
-    {
-        "qualification": "Education",
-        "vettingStatus": "InReview",
-        "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
-    }
-]
+{
+    "qualifications": [
+        {
+            "qualification": "Education",
+            "vettingStatus": "InReview",
+            "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+        }
+    ]
+}
 
 ```
 
-Przykład **odmowy** :
+#### <a name="denied"></a>Odmowa
 
 ```http
 HTTP/1.1 200 OK
@@ -120,14 +118,16 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-[
-    {
-        "qualification": "Education",
-        "vettingStatus": "Denied",
-        "vettingReason": "Not an Education Customer", // example Vetting Reason
-        "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
-    }
-]
+{
+    "qualifications": [
+        {
+            "qualification": "Education",
+            "vettingStatus": "Denied",
+            "vettingReason": "Not an Education Customer", // example Vetting Reason
+            "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+        }
+    ]
+}
 
 ```
 

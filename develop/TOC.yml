@@ -1,0 +1,559 @@
+- name: Zasoby dla deweloperów Centrum partnerskiego
+  href: index.yml
+- name: Rozpoczęcie pracy
+  href: get-started.md
+  items:
+    - name: Tworzenie aplikacji dla Centrum partnerskiego dla chmury krajowej firmy Microsoft
+      href: developing-for-partner-center-for-microsoft-national-cloud.md
+      items:
+        - name: Rejestrowanie szczegółów aplikacji dla Centrum partnerskiego
+          href: create-apps-for-partner-center-for-microsoft-national-clouds.md
+    - name: Centrum partnerskie — przykłady
+      href: partner-center-samples.md
+      items:
+        - name: Witryna sklepu internetowego klienta CSP
+          href: csp-customer-web-storefront.md
+        - name: Konstruktor witryn sklepu internetowego klienta CSP — podręcznik Szybki start
+          href: csp-customer-storefront-builder-quick-start-guide-.md
+        - name: Aplikacja testowa konsoli
+          href: console-test-app.md
+    - name: Konfigurowanie dostępu do interfejsu API w Centrum partnerskim
+      href: set-up-api-access-in-partner-center.md
+    - name: Wskazówki dotyczące ograniczania przepustowości interfejsu API
+      href: api-throttling-guidance.md
+    - name: Uwierzytelnianie w Centrum partnerskim
+      href: partner-center-authentication.md
+    - name: Włączanie modelu aplikacji zabezpieczonych
+      href: enable-secure-app-model.md
+    - name: Program dla wczesnych użytkowników
+      href: early-adopter-program.md
+- name: Scenariusze
+  href: scenarios.md
+  items:
+    - name: Analiza
+      href: usage-analytics.md
+      items:
+        - name: Analiza Centrum partnerskiego — zasoby
+          href: partner-center-analytics-resources.md
+    - name: Pobieranie wszystkich informacji analitycznych dotyczących użycia platformy Azure
+      href: get-all-azure-usage-analytics.md
+      items:
+        - name: Pobieranie wszystkich informacji analitycznych dotyczących odsprzedawców pośrednich
+          href: get-all-indirect-resellers-analytics.md
+        - name: Pobieranie wszystkich informacji analitycznych dotyczących poleceń
+          href: get-all-referrals-analytics.md
+        - name: Pobieranie wszystkich informacji analitycznych dotyczących wyszukiwania
+          href: get-all-search-analytics.md
+        - name: Pobieranie wszystkich informacji analitycznych dotyczących subskrypcji
+          href: get-all-subscription-analytics.md
+        - name: Pobieranie informacji analitycznych dotyczących subskrypcji filtrowanych wg zapytania wyszukiwania
+          href: get-subscription-analytics-by-search-query.md
+        - name: Pobieranie informacji analitycznych dotyczących subskrypcji pogrupowanych według dat lub warunków
+          href: get-subscription-analytics-grouped-by-dates-or-terms.md
+        - name: Pobieranie informacji dotyczących wdrażania licencji
+          href: get-licenses-deployment-information.md
+        - name: Pobieranie informacji dotyczących użycia licencji
+          href: get-licenses-usage-information.md
+        - name: Pobieranie informacji dotyczących wdrażania licencji klienta
+          href: get-customer-licenses-deployment-information.md
+        - name: Pobieranie informacji dotyczących użycia licencji klienta
+          href: get-customer-licenses-usage-information.md
+        - name: Pobieranie informacji dotyczących wdrażania licencji partnera
+          href: get-partner-licenses-deployment-information.md
+        - name: Pobieranie informacji dotyczących użycia licencji partnera
+          href: get-partner-licenses-usage-information.md
+    - name: Operacje inspekcji
+      href: audit.md
+      items:
+        - name: Pobieranie rejestru aktywności w Centrum partnerskim
+          href: get-a-record-of-partner-center-activity-by-user.md
+    - name: Wdrażanie urządzeń
+      href: device-deployment.md
+      items:
+        - name: Tworzenie nowych zasad konfiguracji dla określonego klienta
+          href: create-a-new-configuration-policy-for-the-specified-customer.md
+        - name: Usuwanie zasad konfiguracji dla określonego klienta
+          href: delete-a-configuration-policy-for-the-specified-customer.md
+        - name: Pobieranie listy zasad klienta
+          href: get-a-list-of-a-customer-s-policies.md
+        - name: Pobieranie zasad konfiguracji klienta
+          href: retrieve-a-customer-s-configuration-policy.md
+        - name: Aktualizowanie zasad konfiguracji dla określonego klienta
+          href: update-a-configuration-policy-for-the-specified-customer.md
+        - name: Pobieranie stanu przekazywania wsadowego urządzeń
+          href: get-the-status-of-a-device-batch-upload.md
+        - name: Pobieranie listy partii urządzeń dla określonego klienta
+          href: get-the-list-of-device-batches-for-the-specified-customer.md
+        - name: Pobieranie listy urządzeń dla określonej partii i klienta
+          href: get-a-list-of-devices-for-the-specified-batch-and-customer.md
+        - name: Przekazywanie listy urządzeń w celu utworzenia nowej partii dla określonego klienta
+          href: upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer.md
+        - name: Przekazywanie listy urządzeń do istniejącej partii dla określonego klienta
+          href: upload-a-list-of-devices-for-the-specified-customer.md
+        - name: Aktualizowanie listy urządzeń za pomocą zasad
+          href: update-a-list-of-devices-with-a-policy.md
+        - name: Usuwanie urządzenia dla określonego klienta
+          href: delete-a-device-for-the-specified-customer.md
+    - name: Zarządzanie kontami i profilami
+      href: manage-profiles-and-information.md
+      items:
+        - name: Pobieranie subskrypcji klienta według identyfikatora MPN partnera
+          href: get-all-subscriptions-by-partner.md
+        - name: Pobieranie profilu organizacji
+          href: get-an-organization-profile.md
+        - name: Pobieranie klientów odsprzedawcy pośredniego
+          href: get-customers-of-an-indirect-reseller.md
+        - name: Pobieranie odsprzedawców pośrednich klienta
+          href: get-indirect-resellers-of-a-customer.md
+        - name: Pobieranie profilu Microsoft Partner Network
+          href: get-partner-network-profile.md
+        - name: Pobieranie profilu rozliczeniowego partnera
+          href: get-partner-billing-profile.md
+        - name: Weryfikowanie identyfikatora MPN partnera
+          href: get-partner-by-mpn-id.md
+        - name: Weryfikowanie stanu podpisania umowy Microsoft Partner Agreement odsprzedawcy pośredniego
+          href: verify-indirect-reseller-mpa-status.md
+        - name: Pobieranie profilu pomocy technicznej
+          href: get-support-profile.md
+        - name: Pobieranie profilu biznesowego partnera
+          href: get-legal-business-profile.md
+        - name: Pobieranie listy odsprzedawców pośrednich
+          href: retrieve-a-list-of-indirect-resellers.md
+        - name: Aktualizowanie profilu organizacji
+          href: update-an-organization-profile.md
+        - name: Aktualizowanie profilu rozliczeniowego partnera
+          href: update-partner-billing-profile.md
+        - name: Aktualizowanie profilu pomocy technicznej
+          href: update-support-profile.md
+        - name: Aktualizowanie profilu biznesowego partnera
+          href: update-legal-business-profile.md
+    - name: Zarządzanie rozliczeniami
+      href: manage-billing.md
+      items:
+        - name: Zmiana cyklu rozliczeniowego
+          href: change-the-billing-cycle.md
+        - name: Pobieranie podsumowania kosztów usług klienta
+          href: get-a-customer-s-service-costs-summary.md
+        - name: Pobieranie elementów wiersza kosztów usług klienta
+          href: get-a-customer-s-service-costs-line-items.md
+        - name: Pobieranie kolekcji faktur
+          href: get-a-collection-of-invoices.md
+        - name: Pobieranie rekordów dotyczących wykorzystania platformy Azure przez klienta
+          href: get-a-customer-s-utilization-record-for-azure.md
+        - name: Pobieranie faktury według identyfikatora
+          href: get-invoice-by-id.md
+        - name: Pobieranie zafakturowanych elementów wiersza dotyczących zużycia
+          href: get-invoice-billed-consumption-lineitems.md
+        - name: Pobieranie linków do szacunkowych faktur
+          href: get-invoice-estimate-links.md
+        - name: Pobieranie elementów wiersza faktury
+          href: get-invoiceline-items.md
+        - name: Pobieranie potwierdzenia otrzymania faktury
+          href: get-invoice-receipt-statement.md
+        - name: Pobieranie zestawienia faktur
+          href: get-invoice-statement.md
+        - name: Pobieranie podsumowania faktur
+          href: get-invoice-summaries.md
+        - name: Pobieranie niezafakturowanych elementów wiersza dotyczących zużycia
+          href: get-invoice-unbilled-consumption-lineitems.md
+        - name: Pobieranie niezafakturowanych elementów wiersza uzgodnienia
+          href: get-invoice-unbilled-recon-lineitems.md
+        - name: Pobieranie cen platformy Microsoft Azure
+          href: get-prices-for-microsoft-azure.md
+        - name: Pobieranie cen usług Microsoft Azure Partner Shared Services
+          href: get-prices-for-microsoft-azure-partner-shared-services.md
+        - name: Pobieranie bieżącego salda konta partnera
+          href: get-the-reseller-s-current-account-balance.md
+    - name: Wydatki na platformie Azure
+      href: azure-spending.md
+      items:
+        - name: Pobieranie podsumowania użycia przez partnera
+          href: get-a-partner-usage-summary.md
+        - name: Pobieranie wszystkich rekordów dotyczących użycia przez klientów dla partnera
+          href: get-a-customer-s-usage-records.md
+        - name: Pobieranie podsumowania użycia przez klienta
+          href: get-a-customer-usage-summary.md
+        - name: Pobieranie wszystkich rekordów dotyczących użycia subskrypcji dla klienta
+          href: get-a-customer-subscription-s-usage-records.md
+        - name: Pobieranie podsumowania użycia subskrypcji
+          href: get-a-customer-subscription-usage-summary.md
+        - name: Pobieranie wszystkich rekordów dotyczących miesięcznego użycia dla subskrypcji
+          href: get-all-monthly-usage-records-for-a-subscription.md
+        - name: Pobieranie danych dotyczących użycia dla subskrypcji według zasobu
+          href: get-a-customer-subscription-resource-usage-records.md
+        - name: Pobieranie danych dotyczących użycia dla subskrypcji według miernika
+          href: get-a-customer-subscription-meter-usage-records.md
+        - name: Pobieranie zasobów rekordu użycia miernika
+          href: meter-usage-resources.md
+        - name: Pobieranie zasobów rekordu użycia zasobu
+          href: resource-usage-resources.md
+        - name: Pobieranie budżetu użycia klienta
+          href: get-a-customer-s-usage-spending-budget.md
+        - name: Aktualizowanie budżetu użycia klienta
+          href: update-a-customer-s-usage-spending-budget.md
+        - name: Zasoby uaktualniania produktu
+          href: product-upgrade-resources.md
+          items:
+            - name: Pobieranie stanu uaktualniania produktu
+              href: get-product-upgrade-status.md
+            - name: Pobieranie uprawnienia do uaktualnienia produktu
+              href: get-eligibility-for-product-upgrade.md
+            - name: Tworzenie jednostki uaktualnienia produktu dla klienta
+              href: create-product-upgrade-entity.md
+        - name: Pobieranie listy uprawnień platformy Azure dla subskrypcji
+          href: get-a-list-of-azure-entitlements-for-subscription.md
+    - name: Zarządzanie kontami klientów
+      href: manage-customers.md
+      items:
+        - name: Dodawanie zweryfikowanej domeny dla klienta
+          href: add-a-verified-domain-for-a-customer.md
+        - name: Przypisywanie licencji do użytkownika
+          href: assign-licenses-to-a-user.md
+        - name: Pobieranie metadanych umowy dla umowy dotyczącej platformy Microsoft Cloud
+          href: get-agreement-metadata.md
+        - name: Pobieranie metadanych umowy dla umowy klienta firmy Microsoft
+          href: get-customer-agreement-metadata.md
+        - name: Pobieranie potwierdzenia akceptacji przez klienta umowy dotyczącej platformy Microsoft Cloud
+          href: get-confirmation-of-customer-consent.md
+        - name: Pobieranie szablonu umowy klienta firmy Microsoft
+          href: download-customer-agreement-template.md
+        - name: Pobieranie potwierdzenia akceptacji przez klienta umowy klienta firmy Microsoft
+          href: get-confirmation-of-customer-agreement.md
+        - name: Pobieranie stanu bezpośredniego podpisu (bezpośredniej akceptacji) umowy klienta firmy Microsoft
+          href: get-direct-sign-status-of-customer-agreement.md
+        - name: Potwierdzenie akceptacji przez klienta umowy klienta firmy Microsoft
+          href: confirm-customer-consent-customer-agreement.md
+        - name: Pobieranie licencji przypisanych do użytkownika
+          href: check-which-licenses-are-assigned-to-a-user.md
+        - name: Pobieranie licencji przypisanych do użytkownika według grupy licencji
+          href: get-licenses-assigned-to-a-user-by-license-group.md
+        - name: Tworzenie klienta
+          href: create-a-customer.md
+        - name: Tworzenie klienta dla odsprzedawcy pośredniego
+          href: create-a-customer-for-an-indirect-reseller.md
+        - name: Tworzenie kont użytkowników dla klienta
+          href: create-user-accounts-for-a-customer.md
+        - name: Usuwanie konta użytkownika dla klienta
+          href: delete-user-accounts-for-a-customer.md
+        - name: Pobieranie kolekcji uprawnień
+          href: get-a-collection-of-entitlements.md
+        - name: Pobieranie klienta według identyfikatora
+          href: get-a-customer-by-id.md
+        - name: Pobieranie profilu rozliczeniowego klienta
+          href: get-all-of-a-customer-s-billing-profiles.md
+        - name: Pobieranie profilu firmy klienta
+          href: get-a-customer-s-company-profile.md
+        - name: Pobieranie kwalifikacji klienta
+          items:
+            - name: Korzystanie z asynchronicznych interfejsów API
+              href: get-customer-qualification-asynchronous.md
+            - name: Korzystanie z synchronicznych interfejsów API
+              href: get-customer-qualification-synchronous.md
+        - name: Pobieranie wszystkich zamówień klienta
+          href: get-all-of-a-customer-s-orders.md
+        - name: Pobieranie subskrypcji klienta
+          href: get-all-of-a-customer-s-subscriptions.md
+        - name: Pobieranie uprawnień klienta do przeniesienia subskrypcji
+          href: get-customer-s-subscriptions-transfer-eligibility.md
+        - name: Pobieranie transferów klienta
+          href: get-all-of-a-customer-s-transfers.md
+        - name: Pobieranie szczegółów transferu klienta
+          href: get-transfer-by-id.md
+        - name: Pobieranie listy wszystkich kont użytkowników dla klienta
+          href: get-a-list-of-all-user-accounts-for-a-customer.md
+        - name: Pobieranie listy dostępnych licencji
+          href: get-a-list-of-available-licenses.md
+        - name: Pobieranie listy dostępnych licencji według grupy licencji
+          href: get-a-list-of-available-licenses-by-license-group.md
+        - name: Pobieranie listy klientów
+          href: get-a-list-of-customers.md
+        - name: Pobieranie listy klientów filtrowanych według pola wyszukiwania
+          href: get-a-customer-by-name.md
+        - name: Pobieranie listy zamówień według klienta i typu cyklu rozliczeń
+          href: get-a-list-of-orders-by-customer-and-billing-cycle-type.md
+        - name: Pobieranie kodów weryfikacyjnych partnera
+          href: get-a-partner-s-validation-codes.md
+        - name: Pobieranie konta użytkownika według identyfikatora
+          href: get-a-user-account-by-id.md
+        - name: Pobieranie ról użytkowników dla klienta
+          href: get-user-roles-for-a-customer.md
+        - name: Usuwanie użytkownika klienta z roli
+          href: remove-customer-user-from-a-role.md
+        - name: Usuwanie relacji odsprzedaży z klientem
+          href: remove-a-reseller-relationship-with-a-customer.md
+        - name: Pobieranie adresu URL żądania relacji
+          href: request-reseller-relationship.md
+        - name: Resetowanie hasła użytkownika dla klienta
+          href: reset-user-password-for-a-customer.md
+        - name: Przywracanie usuniętego użytkownika dla klienta
+          href: restore-a-user-for-a-customer.md
+        - name: Ustawianie ról użytkownika dla klienta
+          href: set-user-roles-for-a-customer.md
+        - name: Aktualizowanie profilu rozliczeniowego klienta
+          href: update-a-customer-s-billing-profile.md
+        - name: Aktualizowanie kwalifikacji klienta
+          items:
+            - name: Korzystanie z asynchronicznych interfejsów API
+              href: update-customer-qualification-asynchronous.md
+            - name: Korzystanie z synchronicznych interfejsów API
+              href: update-customer-qualification-synchronous.md
+        - name: Aktualizowanie nicku dla subskrypcji
+          href: update-the-nickname-for-a-subscription.md
+        - name: Wycofywanie transferu klienta
+          href: withdraw-a-transfer.md
+        - name: Tworzenie transferu klienta
+          href: create-a-transfer.md
+        - name: Akceptowanie transferu klienta
+          href: accept-a-transfer.md
+        - name: Odrzucanie transferu klienta
+          href: reject-a-transfer.md
+        - name: Aktualizowanie kont użytkowników dla klienta
+          href: update-user-accounts-for-a-customer.md
+        - name: Wyświetlanie użytkowników usuniętych dla klienta
+          href: view-a-deleted-user.md
+        - name: Tworzenie zasad samoobsługi
+          href: create-a-self-serve-policy.md
+        - name: Usuwanie zasad samoobsługi
+          href: delete-a-self-serve-policy.md
+        - name: Pobieranie listy zasad samoobsługi
+          href: get-a-list-of-self-serve-policies.md
+        - name: Pobieranie zasad samoobsługi według identyfikatora
+          href: get-a-self-serve-policy-by-id.md
+        - name: Aktualizowanie zasad samoobsługi
+          href: update-a-self-serve-policy.md
+    - name: Zarządzanie zamówieniami
+      href: manage-orders.md
+      items:
+        - name: Zakup planu platformy Azure
+          href: create-azure-plan.md
+        - name: Zakup rezerwacji platformy Azure
+          href: purchase-azure-reservations.md
+        - name: Zakup subskrypcji produktów platformy handlowej
+          href: create-subscription-azure-marketplace-products.md
+        - name: Anulowanie subskrypcji platformy handlowej
+          href: cancel-an-azure-marketplace-subscription.md
+        - name: Anulowanie zakupów oprogramowania
+          href: cancel-software-purchases.md
+        - name: Zmiana ilości subskrypcji
+          href: change-the-quantity-of-a-subscription.md
+        - name: Konwertowanie wersji próbnej subskrypcji na płatną
+          href: convert-a-trial-subscription-to-paid.md
+        - name: Sprawdzenie spisu
+          href: check-inventory.md
+        - name: Finalizacja zakupu koszyka
+          href: checkout-a-cart.md
+        - name: Tworzenie koszyka
+          href: create-a-cart.md
+        - name: Tworzenie koszyka z dodatkami
+          href: create-a-cart-with-add-ons.md
+        - name: Tworzenie zamówienia
+          href: create-an-order.md
+        - name: Utwórz zamówienie dla klienta odsprzedawcy pośredniego
+          href: create-an-order-for-a-customer-of-an-indirect-reseller.md
+        - name: Pobieranie listy dodatków dla subskrypcji
+          href: get-a-list-of-add-ons-for-a-subscription.md
+        - name: Pobieranie listy dostępności dla jednostki SKU (według kraju)
+          href: get-a-list-of-availabilities-for-a-sku.md
+        - name: Pobieranie listy dostępności dla jednostki SKU (według klientów)
+          href: get-a-list-of-availabilities-for-a-sku-by-customer.md
+        - name: Pobieranie listy kategorii oferty według rynku
+          href: get-a-list-of-offer-categories-by-country-and-locale.md
+        - name: Pobieranie listy ofert dla rynku
+          href: get-a-list-of-offers-for-a-market.md
+        - name: Pobieranie listy produktów (według kraju)
+          href: get-a-list-of-products.md
+        - name: Pobieranie listy produktów (według klientów)
+          href: get-a-list-of-products-by-customer.md
+        - name: Pobieranie listy jednostek SKU dla produktu (według kraju)
+          href: get-a-list-of-skus-for-a-product.md
+        - name: Pobieranie listy jednostek SKU dla produktu (według klientów)
+          href: get-a-list-of-skus-for-a-product-by-customer.md
+        - name: Pobieranie listy subskrypcji według zamówienia
+          href: get-a-list-of-subscriptions-by-order.md
+        - name: Pobieranie listy ofert konwersji wersji próbnej
+          href: get-a-list-of-trial-conversion-offers.md
+        - name: Pobieranie produktu według identyfikatora
+          href: get-a-product-by-id.md
+        - name: Pobieranie jednostki SKU według identyfikatora
+          href: get-a-sku-by-id.md
+        - name: Pobieranie subskrypcji według identyfikatora
+          href: get-a-subscription-by-id.md
+        - name: Pobieranie linku aktywacji według elementu wiersza zamówienia
+          href: get-activation-link-by-order-line-item.md
+        - name: Pobieranie dodatków dla identyfikatora oferty
+          href: get-addon-offers-by-offer-id.md
+        - name: Pobieranie dostępności według identyfikatora
+          href: get-an-availability-by-id.md
+        - name: Pobieranie oferty według identyfikatora
+          href: get-an-offer-by-id.md
+        - name: Pobieranie zamówienia według identyfikatora
+          href: get-an-order-by-id.md
+        - name: Pobieranie stanu aprowizacji subskrypcji
+          href: get-subscription-provisioning-status.md
+        - name: Pobieranie stanu rejestracji subskrypcji
+          href: get-subscription-registration-status.md
+        - name: Dokonanie jednorazowego zakupu
+          href: make-a-one-time-purchase.md
+        - name: Zakup dodatku do subskrypcji
+          href: purchase-an-add-on-to-a-subscription.md
+        - name: Zakup elementów z katalogu
+          href: purchase-catalog-items.md
+        - name: Ponowne uaktywnianie zawieszonej subskrypcji
+          href: reactivate-a-suspended-a-subscription.md
+        - name: Rejestrowanie subskrypcji
+          href: register-a-subscription.md
+        - name: Zawieszenie subskrypcji
+          href: suspend-a-subscription.md
+        - name: Przejście do subskrypcji
+          href: transition-a-subscription.md
+        - name: Aktualizowanie koszyka
+          href: update-a-cart.md
+        - name: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
+          href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Zapewnienie pomocy technicznej
+      href: provide-support.md
+      items:
+        - name: Pobieranie informacji kontaktowych pomocy technicznej subskrypcji
+          href: get-a-subscription-s-support-contact.md
+        - name: Pobieranie wszystkich żądań obsługi dla klienta
+          href: get-all-service-requests-for-a-customer.md
+        - name: Pobieranie szczegółów żądania obsługi według identyfikatora
+          href: get-service-request-details-by-id.md
+        - name: Pobieranie usług zarządzanych dla klienta według identyfikatora
+          href: get-the-managed-services-for-a-customer-by-id.md
+        - name: Aktualizowanie żądania obsługi
+          href: update-a-service-request.md
+        - name: Aktualizowanie informacji kontaktowych pomocy technicznej subskrypcji
+          href: update-a-subscription-s-support-contact.md
+- name: Piaskownica integracji
+  items:
+    - name: Możliwości piaskownicy partnera obsługujące relację odsprzedawcy
+      href: sandbox-scenario.md
+    - name: Piaskownica do testowania i debugowania
+      href: test-and-debug.md
+    - name: Anulowanie zamówienia z piaskownicy integracji
+      href: cancel-an-order-from-the-integration-sandbox.md
+    - name: Aktywowanie subskrypcji piaskownicy
+      href: activate-sandbox-subscription-azure-marketplace-products.md
+    - name: Usuwanie konta klienta z piaskownicy integracji
+      href: delete-a-customer-account-from-the-integration-sandbox.md
+- name: Polecenia
+  href: /partner/develop/referrals
+  items:
+    - name: Utworzenie polecenia
+      href: /partner/develop/create-a-referral
+    - name: Pobieranie listy poleceń
+      href: /partner/develop/get-a-list-of-referrals
+    - name: Pobieranie poleceń według identyfikatora
+      href: /partner/develop/get-a-referral-by-id
+    - name: Aktualizowanie polecenia
+      href: /partner/develop/update-a-referral
+- name: Narzędzia
+  href: utilities.md
+  items:
+    - name: Weryfikowanie adresu
+      href: validate-an-address.md
+    - name: Pobieranie reguł formatowania adresów według rynku
+      href: get-market-specific-validation-data.md
+    - name: Sprawdzanie dostępności domeny
+      href: verify-domain-availability.md
+- name: Zabezpieczenia
+  href: partner-security-requirements.md
+  items:
+    - name: Pobieranie żądań portalu bez uwierzytelniania wieloskładnikowego
+      href: get-portal-requests-without-mfa.md
+    - name: Pobieranie podsumowania żądań interfejsu API
+      href: get-api-request-summary.md
+    - name: Pobieranie szczegółów żądania interfejsu API
+      href: get-api-request-details.md
+- name: Dokumentacja interfejsu API REST Centrum partnerskiego
+  href: partner-center-rest-api-reference.md
+  items:
+    - name: Dziennik zmian interfejsu API REST Centrum partnerskiego
+      href: api-change-log.md
+    - name: Adresy URL REST Centrum partnerskiego
+      href: partner-center-rest-urls.md
+    - name: Nagłówki REST Centrum partnerskiego
+      href: headers.md
+    - name: Zasoby REST Centrum partnerskiego
+      href: partner-center-rest-resources.md
+      items:
+        - name: Umowa
+          href: agreement-resources.md
+        - name: Metadane umowy
+          href: agreement-metadata-resources.md
+        - name: Zasoby dokumentu umowy (wersja zapoznawcza)
+          href: agreement-document-resources.md
+        - name: Stan bezpośredniego podpisywania (bezpośredniej akceptacji) umowy klienta
+          href: customer-agreement-direct-sign-status-resource.md
+        - name: Analiza
+          href: analytics-resources.md
+        - name: Inspekcja
+          href: auditing-resources.md
+        - name: Karta stawek platformy Azure
+          href: azure-rate-card-resources.md
+        - name: Rekord użycia platformy Azure
+          href: azure-utilization-record-resources.md
+        - name: Koszyk
+          href: cart-resources.md
+        - name: Konwersje
+          href: conversions-resources.md
+        - name: Informacje o kraju
+          href: country-information-resources.md
+        - name: Klient
+          href: customer-resources.md
+        - name: Użycie przez klienta
+          href: customer-usage-resources.md
+        - name: Wdrażanie urządzeń
+          href: device-deployment-resources.md
+        - name: Uprawnienie
+          href: entitlement-resources.md
+        - name: Faktura
+          href: invoice-resources.md
+        - name: Licencja
+          href: license-resources.md
+        - name: Usługa zarządzana
+          href: managed-service-resources.md
+        - name: Oferta
+          href: offer-resources.md
+        - name: Zamówienie
+          href: order-resources.md
+        - name: Profil
+          href: profile-resources.md
+        - name: Produkty
+          href: product-resources.md
+        - name: Relacje
+          href: relationships-resources.md
+        - name: Zasady samoobsługi
+          href: self-serve-policy-resources.md
+        - name: Koszty usług
+          href: service-costs-resources.md
+        - name: Żądanie obsługi
+          href: service-request-resources.md
+        - name: Subskrypcja
+          href: subscription-resources.md
+        - name: Użycie subskrypcji
+          href: subscription-usage-resources.md
+        - name: Uaktualnienie
+          href: upgrade-resources.md
+        - name: Użytkownik
+          href: user-resources.md
+        - name: Zasoby narzędziowe
+          href: utility-resources.md
+    - name: Kody błędów REST Centrum partnerskiego
+      href: error-codes.md
+    - name: Zdarzenia REST Centrum partnerskiego
+      href: partner-center-webhook-events.md
+    - name: Języki obsługiwane przez Centrum partnerskie i ustawienia regionalne
+      href: partner-center-supported-languages-and-locales.md
+    - name: Elementy webhook Centrum partnerskiego
+      href: partner-center-webhooks.md
+- name: Dokumentacja zarządzanego interfejsu API platformy .NET Centrum partnerskiego
+  href: /dotnet/api/
+  items:
+    - name: Informacje o wersji interfejsu API platformy .NET Centrum partnerskiego
+      href: dotnet-release-notes.md
+- name: Dokumentacja interfejsu API języka Java Centrum partnerskiego
+  href: /java/partnercenter
+- name: Polecenia programu PowerShell Centrum partnerskiego
+  href: /powershell/partnercenter

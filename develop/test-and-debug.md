@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać konta piaskownicy integracji Centrum par
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 95e80000a199ae00a31bddc5ecae8c19ab77c64e
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: e5b8f6cc2eb239b7a8b8a8722b231f290e768004
+ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768514"
+ms.lasthandoff: 02/13/2021
+ms.locfileid: "100335799"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Przetestuj i Debuguj w piaskownicy integracji Centrum partnerskiego, aby uniknąć płacenia nieoczekiwanych opłat
 
@@ -27,10 +27,6 @@ Aby przetestować kod, należy użyć konta piaskownicy integracji w centrum par
 W przypadku uruchamiania zautomatyzowanych testów weryfikacyjnych kompilacji, testowania w środowisku produkcyjnym lub przeprowadzenia testów ręcznych w piaskownicy integracji można osiągnąć maksymalne limity dla piaskownicy integracji. Te limity to 75 klientów, 5 subskrypcji na klienta i 25 licencji na subskrypcję.
 
 - Limit 25 licencji oznacza, że nie można uzyskać oferty w piaskownicy, która ma minimalne wymaganie dotyczące licencji przekraczającej 25 licencji. To ograniczenie obejmuje wersje próbne.
-
-- Nie można uzyskać podsumowania użycia na kontach piaskownicy, ponieważ te konta są przeznaczone do celów testowych.
-
-- Interfejsy API związane z rozliczeniami i fakturą nie będą działały w piaskownicy, ponieważ dla konta testowego nie są generowane żadne faktury.
 
 
 ### <a name="azure-plan"></a>Plan platformy Azure

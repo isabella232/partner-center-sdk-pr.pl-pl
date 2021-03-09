@@ -4,12 +4,12 @@ description: Za pomocą interfejsów API Centrum partnerskiego można uzyskać k
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 594946db712c28983dd390207fb06c8d9f62f18b
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8d3bbe7921029dc6c40c65fb8d82baaa944089b6
+ms.sourcegitcommit: 160296667833366fb3f4021d042094606e1032ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768326"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102472686"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Pobieranie faktur — elementy linii zużycia komercyjnego
 
@@ -132,7 +132,7 @@ Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.
 | dostawcy               | ciąg | Tak      | Dostawca: "**jednorazowej**".                                                |
 | Typ faktury-wiersz-element | ciąg | Tak      | Typ faktury szczegóły: "**UsageLineItems**", "**UsageLineItems**".               |
 | currencyCode           | ciąg | Tak      | Kod waluty dla nieobciążanych elementów wiersza.                                  |
-| period                 | ciąg | Tak      | Okres nienaliczanych Rekonesans (na przykład: **Current**, **Previous**).<br/><br/>**Poprzedni** — Jeśli cykl rozliczeniowy jest 01/01/2020 – 01/31/2020, najprawdopodobniej jest generowana faktura między 02/06/2020 i 02/08/2020 czasu UTC. Jeśli musisz wykonać zapytanie dotyczące nienaliczanych danych użycia cyklu rozliczeniowego (01/01/2020 – 01/31/2020) w dowolnym momencie od 02/01/2020 i daty wygenerowanej przez fakturę (która jest między 02/06/2020 i 02/08/2020 czasu UTC), należy wybrać okres jako "poprzedni".<br/><br/>**Current** — Jeśli cykl rozliczeniowy ma wartość 01/01/2020 – 01/31/2020, najprawdopodobniej jest generowana faktura między 02/06/2020 i 02/08/2020 czasu UTC. Jeśli musisz wykonać zapytanie dotyczące nienaliczanych danych użycia cyklu rozliczeniowego (01/01/2020 – 01/31/2020) w dowolnym momencie od 01/01/2020 do 01/31/2020, który znajduje się w danym cyklu rozliczeniowym, należy wybrać okres jako "bieżący". |
+| period                 | ciąg | Tak      | Okres nienaliczanych Rekonesans (na przykład: **Current**, **Previous**). Załóżmy, że musisz wykonać zapytanie dotyczące nienaliczanych danych użycia cyklu rozliczeniowego (01/01/2020 – 01/31/2020) w styczniu, wybierz okres jako **"Current", "** else **".** |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000.                    |
 | seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby uzyskać następną stronę elementów linii uzgadniania.                |
 

@@ -4,12 +4,12 @@ description: Możesz użyć interfejsu API AgreementStatus, aby sprawdzić, czy 
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9501f245a6c98fa90e77de7bc0caed8ca51fa4f2
-ms.sourcegitcommit: 40baf4d825ce0ca6a254b5f368c308f025be7034
+ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100537580"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711906"
 ---
 # <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Weryfikowanie statusu podpisywania umowy partnerskiej firmy Microsoft pośredniego odsprzedawcy
 
@@ -44,7 +44,7 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 
 - Przykład: **[aplikacja testowa konsoli](console-test-app.md)**
 - Projekt: **PartnerCenterSDK. FeaturesSamples**
-- Klasa: **GetAgreementSignatureStatus.cs**
+- Klasa: **GetAgreementSignatureStatus. cs**
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -240,7 +240,7 @@ Connection: close
 
 #### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>Region pośredni dostawcy usług kryptograficznych i region niebezpośredniego odsprzedawcy dostawcy CSP nie są zgodne
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy region pośredniego odsprzedawcy MPN (PGA/PLA) nie jest zgodny z regionem dostawcy pośredniego. [Dowiedz się więcej](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq) o regionach dostawcy usług kryptograficznych.
+Poniższy Przykładowa odpowiedź jest zwracana, gdy region pośredniego odsprzedawcy MPN (PGA/PLA) nie jest zgodny z regionem dostawcy pośredniego. [Dowiedz się więcej](/partner-center/mpa-indirect-provider-faq) o regionach dostawcy usług kryptograficznych.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -264,7 +264,7 @@ Connection: close
 
 #### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>Pośredniego konta odsprzedawcy CSP istnieje w centrum partnerskim, ale nie podpisałem MPA
 
-Poniższy przykład odpowiedzi jest zwracany, gdy konto odsprzedawcy pośredniego dostawcy CSP w centrum partnerskim nie podpisał MPA. [Więcej informacji](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Poniższy przykład odpowiedzi jest zwracany, gdy konto odsprzedawcy pośredniego dostawcy CSP w centrum partnerskim nie podpisał MPA. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -288,7 +288,7 @@ Connection: close
 
 #### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Brak pośredniego konta odsprzedawcy dostawcy CSP powiązanego z danym IDENTYFIKATORem MPN
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie może rozpoznać identyfikator MPN (PGA/PLA) przekazany w żądaniu, ale nie istnieje Rejestracja dostawcy CSP skojarzona z danym IDENTYFIKATORem MPN (PGA/PLA). [Więcej informacji](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie może rozpoznać identyfikator MPN (PGA/PLA) przekazany w żądaniu, ale nie istnieje Rejestracja dostawcy CSP skojarzona z danym IDENTYFIKATORem MPN (PGA/PLA). [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -334,7 +334,7 @@ Connection: close
 
 #### <a name="no-mpa-found-with-the-given-tenant-id"></a>Nie znaleziono platformy MPA o podanym IDENTYFIKATORze dzierżawy
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie nie może znaleźć żadnego z nich podpisania MPA z danym IDENTYFIKATORem dzierżawy. [Więcej informacji](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie nie może znaleźć żadnego z nich podpisania MPA z danym IDENTYFIKATORem dzierżawy. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request

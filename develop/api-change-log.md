@@ -5,12 +5,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: 79359414276a1259117a8f506bbfae4441cdcbed
-ms.sourcegitcommit: f8ca3a14a763013fefafd3262d0a740881d1d7b1
+ms.openlocfilehash: b2c2cac36a8bd1bec7aa5bf6e5d1aa73b4779535
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97770283"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711852"
 ---
 # <a name="december-2020-changes-to-partner-center-rest-apis"></a>Grudzień 2020 zmiany w interfejsie API REST Centrum partnerskiego
 
@@ -24,8 +24,8 @@ Tutaj znajdziesz zmiany w interfejsie API REST Centrum partnerskiego.
 
 Obecnie interfejs API Centrum partnerskiego ma uprawnienia do uzyskiwania kwalifikacji w celu zweryfikowania kwalifikacji klientów edukacyjnych. Nie zostaną wprowadzone żadne zmiany w interfejsie API pobierania kwalifikacji. Jednak dodaliśmy przypadek powrotu do interfejsu API UMIESZCZAnia kwalifikacji.
 
-- GET-nie zmienia. [Bieżący artykuł interfejsu API](get-a-customer-s-qualification.md)
-- Przypadek do zwrócenia zostanie dodany. [Bieżący artykuł interfejsu API](update-a-customer-s-qualification.md)
+- GET-nie zmienia. [Bieżący artykuł interfejsu API](./get-customer-qualification-synchronous.md)
+- Przypadek do zwrócenia zostanie dodany. [Bieżący artykuł interfejsu API](./update-customer-qualification-synchronous.md)
 
 Te interfejsy API zostaną wycofane na koniec lutego 2021, aby zostały zastąpione przez nowe interfejsy API, zgodnie z poniższym opisem.
 

@@ -4,12 +4,12 @@ description: W tej sekcji opisano sposób, w jaki partnerzy dostawcy rozwiązań
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b76829bf8bfae51c135ea815e3360376a5ff294d
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: fa1a032735037b1b3a543d21bf4c868b52c13017
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97768209"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711954"
 ---
 # <a name="manage-customers"></a>Zarządzanie klientami
 
@@ -53,8 +53,8 @@ W tej sekcji opisano sposób, w jaki partnerzy dostawcy rozwiązań w chmurze mo
 - [Pobieranie stanu bezpośredniego podpisu (bezpośredniej akceptacji) umowy klienta firmy Microsoft](get-direct-sign-status-of-customer-agreement.md)
 - [Potwierdzenie akceptacji przez klienta umowy klienta firmy Microsoft](confirm-customer-consent-customer-agreement.md)
 - [Pobieranie kodów weryfikacyjnych partnera](get-a-partner-s-validation-codes.md)
-- [Pobieranie kwalifikacji klienta](get-a-customer-s-qualification.md)
-- [Aktualizowanie kwalifikacji klienta](update-a-customer-s-qualification.md)
+- [Pobieranie kwalifikacji klienta](./get-customer-qualification-synchronous.md)
+- [Aktualizowanie kwalifikacji klienta](./update-customer-qualification-synchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Zarządzanie kontami użytkowników i przypisywanie licencji
 

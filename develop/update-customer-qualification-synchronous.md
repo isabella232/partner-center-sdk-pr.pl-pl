@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 7faab68d20c698f5b040a76f4776dbdf14180640
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: c202d95beab771241a9665243be5f08ab6f82fd5
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770204"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711971"
 ---
 # <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizowanie kwalifikacji klienta poprzez weryfikację synchroniczną
 
@@ -39,7 +39,7 @@ Aby zaktualizować kwalifikację klienta do "edukacji", wywołaj polecenie **[Up
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: CustomerQualificationOperations.cs
+**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: CustomerQualificationOperations. cs
 
 Aby zaktualizować kwalifikację klienta do **GovernmentCommunityCloud** na istniejącym kliencie bez kwalifikacji.  Partner jest również zobowiązany do uwzględnienia [**ValidationCode**](utility-resources.md#validationcode)klienta.
 
@@ -107,5 +107,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Pobieranie kwalifikacji klienta](get-a-customer-s-qualification.md)
+- [Pobieranie kwalifikacji klienta](./get-customer-qualification-synchronous.md)
 - [Pobieranie kodów weryfikacyjnych partnera](get-a-partner-s-validation-codes.md)

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: e0390e8a9c2a277dcb9e18b026f12625400ae176
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: 703585eeaba93b6d7a510a3174a78a28f22e1510
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770203"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711937"
 ---
 # <a name="update-a-customers-qualifications-asynchronously"></a>Aktualizowanie kwalifikacji klienta asynchronicznie
 
@@ -90,5 +90,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Pobierz kwalifikacje klienta](get-a-customer-s-qualifications.md)
+- [Pobierz kwalifikacje klienta](./get-customer-qualification-asynchronous.md)
 - [Pobieranie kodów weryfikacyjnych partnera](get-a-partner-s-validation-codes.md)

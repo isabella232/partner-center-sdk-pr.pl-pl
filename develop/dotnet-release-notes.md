@@ -4,16 +4,45 @@ description: Informacje o wersji dla najnowszej wersji zestawu SDK platformy .NE
 ms.date: 09/18/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6be8f62e0c202a00b194f5af1dc8904006f8d637
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 2fe309500cc80e962c101ad97f0712bef7e11eb3
+ms.sourcegitcommit: f7fce0b35ab1579e59136abc357b71cf768b81b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770236"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104895537"
 ---
 # <a name="net-sdk-release-notes"></a>Informacje o wersji zestawu SDK platformy .NET
 
 Poniższe informacje o wersji są dostępne dla nowych wersji [zestawu .NET SDK programu Microsoft Partner Center](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter). [Przykłady zestawu SDK dla platformy .NET](https://github.com/Microsoft/Partner-Center-DotNet-Samples) można znaleźć w witrynie GitHub. [Informacje o interfejsie API platformy .NET Centrum partnerskiego](/dotnet/api/?view=partnercenter-dotnet-latest&preserve-view=true) można znaleźć w przeglądarce interfejsu API platformy .NET.
+
+## <a name="version-1170"></a>1.17.0 wersja
+
+[Zestaw Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.17.0) v 1.17.0 jest teraz ogólnie dostępny. Zaktualizowane [przykłady serwisu GitHub](https://github.com/Microsoft/Partner-Center-DotNet-Samples) są również dostępne. W tej wersji uwzględniono następujące zmiany:
+
+* Inspekcja została zaktualizowana — dodano nowe typy operacji w celu znajomości sytuacji, w których klient zatwierdził i zakończył DAP
+  * [DapAdminRelationshipApproved](auditing-resources.md)
+  * [DapAdminRelationshipTerminated](auditing-resources.md)
+
+* Inspekcja została zaktualizowana — dodano nowe typy zasobów i operacji na potrzeby obsługi scenariusza roli katalogu klienta
+  * Typ zasobu "[CustomerDirectoryRole](auditing-resources.md)"
+  * Typy operacji "[AddUserMember](auditing-resources.md)" i "[RemoveUserMember](auditing-resources.md)"
+
+* Aktualizacje zestawu SDK na koncie klientów — Obsługa następujących interfejsów API
+  * Pobierz/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus
+  * Pobierz/Customers/{Customer-tenant-ID}/Qualifications 
+  * Ogłoś/Customers/{customer_id}/Qualifications? Code = {validationCode}
+
+* **Następujące zmiany wprowadzono w ramach nowych rodzajów handlu, które są obecnie dostępne na podstawie zaproszenia dla partnerów, którzy są częścią M365/D365 New Commerce Experience Technical Preview.** Partnerzy, którzy nie są częścią nowej prywatnej wersji zapoznawczej commerce, nie powinni mieć wpływu i powinny być zgodni z poprzednimi wersjami.
+  * Zmiany w katalogu:
+    * Pobierz/Products/{Product-ID}/SKUs/{SKU-ID}
+  * Kup i Zarządzaj:
+    * Pobierz/customers/{customerId}/subscriptions
+    * Pobierz/customers/{customerId}/subscriptions/{subscriptionId}
+    * /Customers/{customerId}/subscriptions/{subscriptionId} poprawek
+    * Pobierz/customers/{customerId}/subscriptions/{subscriptionId}/transitioneligibilities
+    * Pobierz/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+    * Opublikuj/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+
 
 ## <a name="version-1163"></a>1.16.3 wersja
 

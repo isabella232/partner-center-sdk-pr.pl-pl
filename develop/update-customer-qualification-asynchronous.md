@@ -1,25 +1,20 @@
 ---
 title: Aktualizowanie kwalifikacji klienta
-description: Dowiedz się, jak zaktualizować kwalifikacje klienta za pośrednictwem funkcji osłaniania asynchronicznego lub przed sprawdzeniem, w tym adres skojarzony z profilem.
-ms.date: 12/07/2020
+description: Program aktualizuje kwalifikacje klienta asynchronicznie, w tym adres skojarzony z profilem.
+ms.date: 03/23/2021
 ms.service: partner-dashboard
-ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 703585eeaba93b6d7a510a3174a78a28f22e1510
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 7606eeaac4df158ec0fad6ffd4e565bb250f448e
+ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711937"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105030610"
 ---
 # <a name="update-a-customers-qualifications-asynchronously"></a>Aktualizowanie kwalifikacji klienta asynchronicznie
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Dowiedz się, jak aktualizować kwalifikacje klienta asynchronicznie za pośrednictwem interfejsów API Centrum partnerskiego. Aby dowiedzieć się, jak to zrobić synchronicznie, zobacz [Aktualizowanie kwalifikacji klienta za pośrednictwem walidacji synchronicznej](update-customer-qualification-synchronous.md).
+Aktualizuje kwalifikacje klienta asynchronicznie.
 
 Partner może zaktualizować kwalifikacje klienta asynchronicznie do "Education" lub "GovernmentCommunityCloud". Nie można ustawić innych wartości, "none" i "non profit".
 
@@ -28,6 +23,27 @@ Partner może zaktualizować kwalifikacje klienta asynchronicznie do "Education"
 - Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
 
 - Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+
+## <a name="c"></a>C\#
+
+Aby utworzyć kwalifikację klienta dla "edukacji", najpierw Utwórz obiekt reprezentujący typ kwalifikacji. Następnie Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**kwalifikacji**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) do pobrania interfejsu [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Na koniec Wywołaj `CreateQualifications()` lub `CreateQualificationsAsync()` z obiektem typu kwalifikacji jako parametr wejściowy.
+
+``` csharp
+var qualificationType = { Qualification = "education" };
+var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType);
+```
+
+**Przykład**: [Przykładowa aplikacja konsolowa](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples **Class**: CreateCustomerQualification. cs
+
+Aby zaktualizować kwalifikację klienta do **GovernmentCommunityCloud** na istniejącym kliencie bez kwalifikacji, partner jest również zobowiązany do uwzględnienia [**ValidationCode**](utility-resources.md#validationcode)klienta. Najpierw Utwórz obiekt reprezentujący typ kwalifikacji. Następnie Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**kwalifikacji**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) do pobrania interfejsu [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Na koniec Wywołaj `CreateQualifications()` lub `CreateQualificationsAsync()` z obiektem typu kwalifikacji i kodem sprawdzania poprawności jako parametry wejściowe.
+
+``` csharp
+// GCC validation is type ValidationCode
+var qualificationType = { Qualification = "GovernmentCommunityCloud" };
+var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType, gccValidation);
+```
+
+**Przykład**: [Przykładowa aplikacja konsolowa](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples **Class**: CreateCustomerQualificationWithGCC. cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -52,7 +68,11 @@ Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](
 
 ### <a name="request-body"></a>Treść żądania
 
-Wartość całkowita z wyliczenia [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) .
+W tej tabeli opisano obiekt kwalifikacji w treści żądania.
+
+Właściwość | Typ | Wymagane | Opis
+-------- | ---- | -------- | -----------
+Kwalifikacja | ciąg | Tak | Wartość ciągu z wyliczenia [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) .
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -62,6 +82,10 @@ Accept: application/json
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
+
+{
+    "Qualification": "Education"
+}
 
 ```
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 3f1deb20a18bc6e7133cac91db528f2d1ad694e2
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 267e3aa63a94c5045977ad566eb5061df3b59882
+ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767701"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105030566"
 ---
 # <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Uzyskaj status bezpośredniego podpisywania klienta (bezpośrednie zatwierdzenie) umowy klienta firmy Microsoft
 
@@ -28,6 +28,24 @@ Ten zasób *nie ma zastosowania* do:
 - Centrum partnerskie Microsoft Cloud for US Government
 
 W tym artykule wyjaśniono, jak można pobrać stan bezpośredniej akceptacji umowy klienta firmy Microsoft przez klienta.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+
+## <a name="c"></a>C\#
+
+Aby pobrać stan bezpośredniego akceptacji umowy klienta firmy Microsoft przez klienta, wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) , aby pobrać Interfejs [**ICustomerAgreementCollection**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) . Na koniec Wywołaj `GetDirectSignedCustomerAgreementStatus()` lub, `GetDirectSignedCustomerAgreementStatusAsync()` Aby pobrać stan.
+
+``` csharp
+// IAggregatePartner partnerOperations;
+// string customerId;
+var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
+```
+
+**Przykład**: [Przykładowa aplikacja konsolowa](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples **Class**: GetDirectSignedCustomerAgreementStatus. cs
 
 ## <a name="rest-request"></a>Żądanie REST
 

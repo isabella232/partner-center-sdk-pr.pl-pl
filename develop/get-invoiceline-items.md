@@ -4,12 +4,12 @@ description: Możesz uzyskać informacje o kolekcji pozycji wiersza faktury (zam
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e797f549e1344268c8167259a231122e7c669a2e
-ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
+ms.openlocfilehash: ddc49e4d83518b809402a65f990f3e9c2658e64b
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100499902"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730233"
 ---
 # <a name="get-invoice-line-items"></a>Pobieranie elementów wiersza faktury
 
@@ -103,7 +103,7 @@ Podobny przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
 - Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
-- Klasa: **GetInvoiceLineItems.cs**
+- Klasa: **GetInvoiceLineItems. cs**
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -633,6 +633,7 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
             "termAndBillingCycle": "1 Month Subscription",
             "alternateId": "1234278124b8",
             "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
+            "creditReasonCode": "Azure Consumption Credit",
             "pricingCurrency": "USD",
             "pcToBCExchangeRate": 1,
             "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",

@@ -4,12 +4,12 @@ description: Wiele zasobów związanych z fakturą jest dostępnych za pomocą i
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bd2caefe4ae18c81a31083d084f1e87da1288dd9
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8977b3b649cd930bb517965572d0efe51d6985a0
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767810"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730216"
 ---
 # <a name="invoice-resources"></a>Zasoby faktury
 
@@ -216,7 +216,7 @@ Przedstawia element wiersza rozliczenia faktury dla subskrypcji opartych na lice
 | UnitPrice | decimal | Pobiera lub ustawia cenę jednostkową. |
 | EffectiveUnitPrice | decimal | Pobiera lub ustawia obowiązującą cenę jednostkową. |
 | UnitType | ciąg | Pobiera lub ustawia typ jednostki. |
-| Ilość | int | Pobiera lub ustawia liczbę jednostek skojarzonych z tym elementem wiersza. |
+| Liczba | int | Pobiera lub ustawia liczbę jednostek skojarzonych z tym elementem wiersza. |
 | Suma częściowa | decimal | Pobiera lub ustawia kwotę po rabacie. |
 | TaxTotal | decimal | Pobiera lub ustawia opłaty za podatki. |
 | TotalForCustomer | decimal | Pobiera lub ustawia łączną kwotę po rabacie i podatku. |
@@ -230,6 +230,7 @@ Przedstawia element wiersza rozliczenia faktury dla subskrypcji opartych na lice
 | TermAndBillingCycle | ciąg | Pobiera lub ustawia cykl rozliczeniowy związany z tym zakupem. |
 | AlternateId | ciąg | Pobiera lub ustawia alternatywny identyfikator (identyfikator cudzysłowu). |
 | PriceAdjustmentDescription | ciąg | Pobiera lub ustawia opis korekty ceny. |
+| CreditReasonCode | ciąg | Pobiera lub ustawia kod przyczyny kredytu. |
 | DiscountDetails | ciąg |  **Przestarzałe**. Pobiera lub ustawia szczegóły rabatu skojarzone z tym zakupem. |
 | PricingCurrency | ciąg | Pobiera lub ustawia kod waluty cenowej. |
 | PCToBCExchangeRate | decimal | Pobiera lub ustawia walutę cenową dla kursu wymiany waluty rozliczeniowej. |
@@ -285,7 +286,7 @@ Reprezentuje pozycje rozliczane, rozliczane z rozliczeniami za codzienne użycie
 | ResellerMpnId | ciąg | Pobiera lub ustawia identyfikator MPN odsprzedawcy w ramach partnera warstwy 2 skojarzonego z tym elementem wiersza. |
 | ChargeType | ciąg | Pobiera lub ustawia typ opłaty. |
 | UnitPrice | decimal | Pobiera lub ustawia cenę jednostki. |
-| Ilość | decimal | Pobiera lub ustawia ilość użycia. |
+| Liczba | decimal | Pobiera lub ustawia ilość użycia. |
 | UnitType | ciąg | Pobiera lub ustawia typ jednostki (na przykład 1 godzina). |
 | BillingPreTaxTotal | decimal | Pobiera lub ustawia koszt rozszerzony lub łączny koszt przed opodatkowaniem w walucie lokalnej klienta lub waluty rozliczeniowej. |
 | BillingCurrency | ciąg | Pobiera lub ustawia walutę ISO, w której licznik jest naliczany w walucie lokalnej klienta lub waluty rozliczeniowej. |
@@ -297,6 +298,8 @@ Reprezentuje pozycje rozliczane, rozliczane z rozliczeniami za codzienne użycie
 | PCToBCExchangeRateDate | DateTime | Pobiera lub ustawia walutę cenową dla daty kursu wymiany waluty rozliczeniowej. |
 | EffectiveUnitPrice | decimal | Pobiera lub ustawia obowiązującą cenę jednostkową. |
 | RateOfPartnerEarnedCredit | decimal | Pobiera lub ustawia stawkę odsetek uzyskanych przez partnera. |
-| hasPartnerEarnedCredit | bool | Pobiera lub ustawia środki dla partnerów. |
+| HasPartnerEarnedCredit | bool | Pobiera lub ustawia środki dla partnerów. |
+| RateOfCredit | decimal | Pobiera lub ustawia stawkę kredytu dla danego typu kredytu. |
+| Kredyttype | ciąg | Pobiera lub ustawia typ kredytu. |
 | InvoiceLineItemType | InvoiceLineItemType | Zwraca typ elementu wiersza faktury. |
 | BillingProvider | BillingProvider | Zwraca dostawcę rozliczeń. |

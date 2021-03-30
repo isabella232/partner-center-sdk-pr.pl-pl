@@ -6,47 +6,47 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: a13b62903e44165ef9811ea7798fcea666d483dc
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1e19792da6a7510bf02dd11b3e77f40a8365be2b
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768337"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730199"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a><span data-ttu-id="3e71f-103">Pobierz fakturowanie elementów linii rozliczeniowej</span><span class="sxs-lookup"><span data-stu-id="3e71f-103">Get invoice billed commercial consumption line items</span></span>
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a><span data-ttu-id="1aca2-103">Pobierz fakturowanie elementów linii rozliczeniowej</span><span class="sxs-lookup"><span data-stu-id="1aca2-103">Get invoice billed commercial consumption line items</span></span>
 
-<span data-ttu-id="3e71f-104">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="3e71f-104">**Applies to:**</span></span>
+<span data-ttu-id="1aca2-104">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="1aca2-104">**Applies to:**</span></span>
 
-- <span data-ttu-id="3e71f-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="3e71f-105">Partner Center</span></span>
+- <span data-ttu-id="1aca2-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="1aca2-105">Partner Center</span></span>
 
-<span data-ttu-id="3e71f-106">Korzystając z poniższych metod, można uzyskać kolekcję szczegółów dla handlowych elementów wiersza faktury (nazywanych również zamkniętymi codziennymi elementami wiersza użycia) dla określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-106">You can use the following methods to get a collection of details for commercial consumption invoice line items (also known as closed daily rated usage line items) for a specified invoice.</span></span>
+<span data-ttu-id="1aca2-106">Korzystając z poniższych metod, można uzyskać kolekcję szczegółów dla handlowych elementów wiersza faktury (nazywanych również zamkniętymi codziennymi elementami wiersza użycia) dla określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-106">You can use the following methods to get a collection of details for commercial consumption invoice line items (also known as closed daily rated usage line items) for a specified invoice.</span></span>
 
-<span data-ttu-id="3e71f-107">Ten interfejs API obsługuje również typy dostawców **platformy Azure** dla subskrypcji Microsoft Azure (MS-AZR-0145P).</span><span class="sxs-lookup"><span data-stu-id="3e71f-107">This API also supports **azure** provider types for Microsoft Azure (MS-AZR-0145P) subscriptions.</span></span> <span data-ttu-id="3e71f-108">Oznacza to, że ten interfejs API jest funkcją zgodną z poprzednimi wersjami.</span><span class="sxs-lookup"><span data-stu-id="3e71f-108">This means this API is a backward-compatible feature.</span></span>
+<span data-ttu-id="1aca2-107">Ten interfejs API obsługuje również typy dostawców **platformy Azure** dla subskrypcji Microsoft Azure (MS-AZR-0145P).</span><span class="sxs-lookup"><span data-stu-id="1aca2-107">This API also supports **azure** provider types for Microsoft Azure (MS-AZR-0145P) subscriptions.</span></span> <span data-ttu-id="1aca2-108">Oznacza to, że ten interfejs API jest funkcją zgodną z poprzednimi wersjami.</span><span class="sxs-lookup"><span data-stu-id="1aca2-108">This means this API is a backward-compatible feature.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="3e71f-109">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="3e71f-109">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="1aca2-109">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="1aca2-109">Prerequisites</span></span>
 
-- <span data-ttu-id="3e71f-110">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="3e71f-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="3e71f-111">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="3e71f-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="1aca2-110">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="1aca2-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="1aca2-111">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="1aca2-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="3e71f-112">Identyfikator faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-112">An invoice identifier.</span></span> <span data-ttu-id="3e71f-113">Identyfikuje fakturę, dla której mają zostać pobrane elementy wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-113">This identifies the invoice for which to retrieve the line items.</span></span>
+- <span data-ttu-id="1aca2-112">Identyfikator faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-112">An invoice identifier.</span></span> <span data-ttu-id="1aca2-113">Identyfikuje fakturę, dla której mają zostać pobrane elementy wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-113">This identifies the invoice for which to retrieve the line items.</span></span>
 
-## <a name="c"></a><span data-ttu-id="3e71f-114">C\#</span><span class="sxs-lookup"><span data-stu-id="3e71f-114">C\#</span></span>
+## <a name="c"></a><span data-ttu-id="1aca2-114">C\#</span><span class="sxs-lookup"><span data-stu-id="1aca2-114">C\#</span></span>
 
-<span data-ttu-id="3e71f-115">Aby uzyskać elementy linii komercyjnej dla określonej faktury, należy pobrać obiekt Invoice:</span><span class="sxs-lookup"><span data-stu-id="3e71f-115">To get the commercial line items for the specified invoice, you must retrieve the invoice object:</span></span>
+<span data-ttu-id="1aca2-115">Aby uzyskać elementy linii komercyjnej dla określonej faktury, należy pobrać obiekt Invoice:</span><span class="sxs-lookup"><span data-stu-id="1aca2-115">To get the commercial line items for the specified invoice, you must retrieve the invoice object:</span></span>
 
-1. <span data-ttu-id="3e71f-116">Wywołaj metodę [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , aby uzyskać interfejs do fakturowania operacji dla określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-116">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
+1. <span data-ttu-id="1aca2-116">Wywołaj metodę [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , aby uzyskać interfejs do fakturowania operacji dla określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-116">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
 
-2. <span data-ttu-id="3e71f-117">Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać obiekt faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-117">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="3e71f-118">Obiekt Invoice zawiera wszystkie informacje dotyczące określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-118">The invoice object contains all of the information for the specified invoice.</span></span>
+2. <span data-ttu-id="1aca2-117">Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać obiekt faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-117">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="1aca2-118">Obiekt Invoice zawiera wszystkie informacje dotyczące określonej faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-118">The invoice object contains all of the information for the specified invoice.</span></span>
 
-<span data-ttu-id="3e71f-119">**Dostawca** identyfikuje źródło informacji o rozliczanych szczegółach (na przykład **jednorazowej**).</span><span class="sxs-lookup"><span data-stu-id="3e71f-119">The **Provider** identifies the source of the billed detail information (for example, **onetime**).</span></span> <span data-ttu-id="3e71f-120">**InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).</span><span class="sxs-lookup"><span data-stu-id="3e71f-120">The **InvoiceLineItemType** specifies the type (for example, **UsageLineItem**).</span></span>
+<span data-ttu-id="1aca2-119">**Dostawca** identyfikuje źródło informacji o rozliczanych szczegółach (na przykład **jednorazowej**).</span><span class="sxs-lookup"><span data-stu-id="1aca2-119">The **Provider** identifies the source of the billed detail information (for example, **onetime**).</span></span> <span data-ttu-id="1aca2-120">**InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).</span><span class="sxs-lookup"><span data-stu-id="1aca2-120">The **InvoiceLineItemType** specifies the type (for example, **UsageLineItem**).</span></span>
 
-<span data-ttu-id="3e71f-121">Poniższy przykładowy kod używa pętli **foreach** do przetworzenia kolekcji elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-121">The following example code uses a **foreach** loop to process the line items collection.</span></span> <span data-ttu-id="3e71f-122">Dla każdego **InvoiceLineItemType** pobierana jest oddzielna Kolekcja elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-122">A separate collection of line items is retrieved for each **InvoiceLineItemType**.</span></span>
+<span data-ttu-id="1aca2-121">Poniższy przykładowy kod używa pętli **foreach** do przetworzenia kolekcji elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-121">The following example code uses a **foreach** loop to process the line items collection.</span></span> <span data-ttu-id="1aca2-122">Dla każdego **InvoiceLineItemType** pobierana jest oddzielna Kolekcja elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-122">A separate collection of line items is retrieved for each **InvoiceLineItemType**.</span></span>
 
-<span data-ttu-id="3e71f-123">Aby uzyskać kolekcję elementów wierszy, które odpowiadają wystąpieniu **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="3e71f-123">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
+<span data-ttu-id="1aca2-123">Aby uzyskać kolekcję elementów wierszy, które odpowiadają wystąpieniu **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="1aca2-123">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
 
-1. <span data-ttu-id="3e71f-124">Przekaż **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**by**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="3e71f-124">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
+1. <span data-ttu-id="1aca2-124">Przekaż **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**by**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="1aca2-124">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
 
-2. <span data-ttu-id="3e71f-125">Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać skojarzone elementy wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-125">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the associated line items.</span></span>
-3. <span data-ttu-id="3e71f-126">Utwórz moduł wyliczający, który przejdzie do kolekcji, jak pokazano w poniższym przykładzie.</span><span class="sxs-lookup"><span data-stu-id="3e71f-126">Create an enumerator to traverse the collection as shown in the following example.</span></span>
+2. <span data-ttu-id="1aca2-125">Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać skojarzone elementy wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-125">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the associated line items.</span></span>
+3. <span data-ttu-id="1aca2-126">Utwórz moduł wyliczający, który przejdzie do kolekcji, jak pokazano w poniższym przykładzie.</span><span class="sxs-lookup"><span data-stu-id="1aca2-126">Create an enumerator to traverse the collection as shown in the following example.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -105,67 +105,67 @@ while (fetchNext)
 }
 ```
 
-<span data-ttu-id="3e71f-127">Podobny przykład można znaleźć w następujących tematach:</span><span class="sxs-lookup"><span data-stu-id="3e71f-127">For a similar example, see the following:</span></span>
+<span data-ttu-id="1aca2-127">Podobny przykład można znaleźć w następujących tematach:</span><span class="sxs-lookup"><span data-stu-id="1aca2-127">For a similar example, see the following:</span></span>
 
-- <span data-ttu-id="3e71f-128">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="3e71f-128">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="3e71f-129">Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**</span><span class="sxs-lookup"><span data-stu-id="3e71f-129">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="3e71f-130">Klasa: **GetBilledConsumptionReconLineItemsPaging.cs**</span><span class="sxs-lookup"><span data-stu-id="3e71f-130">Class: **GetBilledConsumptionReconLineItemsPaging.cs**</span></span>
+- <span data-ttu-id="1aca2-128">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="1aca2-128">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="1aca2-129">Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**</span><span class="sxs-lookup"><span data-stu-id="1aca2-129">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="1aca2-130">Klasa: **GetBilledConsumptionReconLineItemsPaging. cs**</span><span class="sxs-lookup"><span data-stu-id="1aca2-130">Class: **GetBilledConsumptionReconLineItemsPaging.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="3e71f-131">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="3e71f-131">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="1aca2-131">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="1aca2-131">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="3e71f-132">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="3e71f-132">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="1aca2-132">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="1aca2-132">Request syntax</span></span>
 
-<span data-ttu-id="3e71f-133">Użyj pierwszej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury.</span><span class="sxs-lookup"><span data-stu-id="3e71f-133">Use the first syntax to return a full list of every line item for the given invoice.</span></span> <span data-ttu-id="3e71f-134">W przypadku dużych faktur należy użyć drugiej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-134">For large invoices, use the second syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> <span data-ttu-id="3e71f-135">Użyj trzeciej składni, aby uzyskać następną stronę elementów Rekonesans line przy użyciu `seekOperation = "Next"` .</span><span class="sxs-lookup"><span data-stu-id="3e71f-135">Use the third syntax to get the next page of recon line items using `seekOperation = "Next"`.</span></span>
+<span data-ttu-id="1aca2-133">Użyj pierwszej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury.</span><span class="sxs-lookup"><span data-stu-id="1aca2-133">Use the first syntax to return a full list of every line item for the given invoice.</span></span> <span data-ttu-id="1aca2-134">W przypadku dużych faktur należy użyć drugiej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-134">For large invoices, use the second syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> <span data-ttu-id="1aca2-135">Użyj trzeciej składni, aby uzyskać następną stronę elementów Rekonesans line przy użyciu `seekOperation = "Next"` .</span><span class="sxs-lookup"><span data-stu-id="1aca2-135">Use the third syntax to get the next page of recon line items using `seekOperation = "Next"`.</span></span>
 
-| <span data-ttu-id="3e71f-136">Metoda</span><span class="sxs-lookup"><span data-stu-id="3e71f-136">Method</span></span>  | <span data-ttu-id="3e71f-137">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="3e71f-137">Request URI</span></span>                                                                                                                                                     |
+| <span data-ttu-id="1aca2-136">Metoda</span><span class="sxs-lookup"><span data-stu-id="1aca2-136">Method</span></span>  | <span data-ttu-id="1aca2-137">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="1aca2-137">Request URI</span></span>                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="3e71f-138">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="3e71f-138">**GET**</span></span> | <span data-ttu-id="3e71f-139">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {CURRENCYCODE} http/1.1</span><span class="sxs-lookup"><span data-stu-id="3e71f-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode} HTTP/1.1</span></span>                              |
-| <span data-ttu-id="3e71f-140">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="3e71f-140">**GET**</span></span> | <span data-ttu-id="3e71f-141">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} http/1.1</span><span class="sxs-lookup"><span data-stu-id="3e71f-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size} HTTP/1.1</span></span>  |
-| <span data-ttu-id="3e71f-142">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="3e71f-142">**GET**</span></span> | <span data-ttu-id="3e71f-143">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} &SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="3e71f-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size}&seekOperation=Next</span></span>                               |
+| <span data-ttu-id="1aca2-138">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="1aca2-138">**GET**</span></span> | <span data-ttu-id="1aca2-139">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {CURRENCYCODE} http/1.1</span><span class="sxs-lookup"><span data-stu-id="1aca2-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode} HTTP/1.1</span></span>                              |
+| <span data-ttu-id="1aca2-140">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="1aca2-140">**GET**</span></span> | <span data-ttu-id="1aca2-141">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} http/1.1</span><span class="sxs-lookup"><span data-stu-id="1aca2-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size} HTTP/1.1</span></span>  |
+| <span data-ttu-id="1aca2-142">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="1aca2-142">**GET**</span></span> | <span data-ttu-id="1aca2-143">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} &SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="1aca2-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size}&seekOperation=Next</span></span>                               |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="3e71f-144">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="3e71f-144">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="1aca2-144">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="1aca2-144">URI parameters</span></span>
 
-<span data-ttu-id="3e71f-145">Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.</span><span class="sxs-lookup"><span data-stu-id="3e71f-145">Use the following URI and query parameters when creating the request.</span></span>
+<span data-ttu-id="1aca2-145">Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.</span><span class="sxs-lookup"><span data-stu-id="1aca2-145">Use the following URI and query parameters when creating the request.</span></span>
 
-| <span data-ttu-id="3e71f-146">Nazwa</span><span class="sxs-lookup"><span data-stu-id="3e71f-146">Name</span></span>                   | <span data-ttu-id="3e71f-147">Typ</span><span class="sxs-lookup"><span data-stu-id="3e71f-147">Type</span></span>   | <span data-ttu-id="3e71f-148">Wymagane</span><span class="sxs-lookup"><span data-stu-id="3e71f-148">Required</span></span> | <span data-ttu-id="3e71f-149">Opis</span><span class="sxs-lookup"><span data-stu-id="3e71f-149">Description</span></span>                                                       |
+| <span data-ttu-id="1aca2-146">Nazwa</span><span class="sxs-lookup"><span data-stu-id="1aca2-146">Name</span></span>                   | <span data-ttu-id="1aca2-147">Typ</span><span class="sxs-lookup"><span data-stu-id="1aca2-147">Type</span></span>   | <span data-ttu-id="1aca2-148">Wymagane</span><span class="sxs-lookup"><span data-stu-id="1aca2-148">Required</span></span> | <span data-ttu-id="1aca2-149">Opis</span><span class="sxs-lookup"><span data-stu-id="1aca2-149">Description</span></span>                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| <span data-ttu-id="3e71f-150">Identyfikator faktury</span><span class="sxs-lookup"><span data-stu-id="3e71f-150">invoice-id</span></span>             | <span data-ttu-id="3e71f-151">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-151">string</span></span> | <span data-ttu-id="3e71f-152">Tak</span><span class="sxs-lookup"><span data-stu-id="3e71f-152">Yes</span></span>      | <span data-ttu-id="3e71f-153">Ciąg, który identyfikuje fakturę.</span><span class="sxs-lookup"><span data-stu-id="3e71f-153">A string that identifies the invoice.</span></span>                             |
-| <span data-ttu-id="3e71f-154">dostawcy</span><span class="sxs-lookup"><span data-stu-id="3e71f-154">provider</span></span>               | <span data-ttu-id="3e71f-155">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-155">string</span></span> | <span data-ttu-id="3e71f-156">Tak</span><span class="sxs-lookup"><span data-stu-id="3e71f-156">Yes</span></span>      | <span data-ttu-id="3e71f-157">Dostawca: "jednorazowej".</span><span class="sxs-lookup"><span data-stu-id="3e71f-157">The provider: "OneTime".</span></span>                                  |
-| <span data-ttu-id="3e71f-158">Typ faktury-wiersz-element</span><span class="sxs-lookup"><span data-stu-id="3e71f-158">invoice-line-item-type</span></span> | <span data-ttu-id="3e71f-159">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-159">string</span></span> | <span data-ttu-id="3e71f-160">Tak</span><span class="sxs-lookup"><span data-stu-id="3e71f-160">Yes</span></span>      | <span data-ttu-id="3e71f-161">Typ szczegółów faktury: "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="3e71f-161">The type of invoice detail: "UsageLineItems".</span></span> |
-| <span data-ttu-id="3e71f-162">currencyCode</span><span class="sxs-lookup"><span data-stu-id="3e71f-162">currencyCode</span></span>           | <span data-ttu-id="3e71f-163">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-163">string</span></span> | <span data-ttu-id="3e71f-164">Tak</span><span class="sxs-lookup"><span data-stu-id="3e71f-164">Yes</span></span>      | <span data-ttu-id="3e71f-165">Kod waluty dla elementów rozliczanej linii.</span><span class="sxs-lookup"><span data-stu-id="3e71f-165">The currency code for the billed line items.</span></span>                    |
-| <span data-ttu-id="3e71f-166">period</span><span class="sxs-lookup"><span data-stu-id="3e71f-166">period</span></span>                 | <span data-ttu-id="3e71f-167">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-167">string</span></span> | <span data-ttu-id="3e71f-168">Tak</span><span class="sxs-lookup"><span data-stu-id="3e71f-168">Yes</span></span>      | <span data-ttu-id="3e71f-169">Okres dla rozliczeń rekonesans.</span><span class="sxs-lookup"><span data-stu-id="3e71f-169">The period for billed recon.</span></span> <span data-ttu-id="3e71f-170">przykład: Current, Previous.</span><span class="sxs-lookup"><span data-stu-id="3e71f-170">example: current, previous.</span></span>        |
-| <span data-ttu-id="3e71f-171">size</span><span class="sxs-lookup"><span data-stu-id="3e71f-171">size</span></span>                   | <span data-ttu-id="3e71f-172">liczba</span><span class="sxs-lookup"><span data-stu-id="3e71f-172">number</span></span> | <span data-ttu-id="3e71f-173">Nie</span><span class="sxs-lookup"><span data-stu-id="3e71f-173">No</span></span>       | <span data-ttu-id="3e71f-174">Maksymalna liczba elementów do zwrócenia.</span><span class="sxs-lookup"><span data-stu-id="3e71f-174">The maximum number of items to return.</span></span> <span data-ttu-id="3e71f-175">Rozmiar domyślny to 2000</span><span class="sxs-lookup"><span data-stu-id="3e71f-175">Default size is 2000</span></span>       |
-| <span data-ttu-id="3e71f-176">seekOperation</span><span class="sxs-lookup"><span data-stu-id="3e71f-176">seekOperation</span></span>          | <span data-ttu-id="3e71f-177">ciąg</span><span class="sxs-lookup"><span data-stu-id="3e71f-177">string</span></span> | <span data-ttu-id="3e71f-178">Nie</span><span class="sxs-lookup"><span data-stu-id="3e71f-178">No</span></span>       | <span data-ttu-id="3e71f-179">Ustaw seekOperation = dalej, aby uzyskać następną stronę elementów wiersza rekonesans.</span><span class="sxs-lookup"><span data-stu-id="3e71f-179">Set seekOperation=Next to get the next page of recon line items.</span></span> |
+| <span data-ttu-id="1aca2-150">Identyfikator faktury</span><span class="sxs-lookup"><span data-stu-id="1aca2-150">invoice-id</span></span>             | <span data-ttu-id="1aca2-151">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-151">string</span></span> | <span data-ttu-id="1aca2-152">Tak</span><span class="sxs-lookup"><span data-stu-id="1aca2-152">Yes</span></span>      | <span data-ttu-id="1aca2-153">Ciąg, który identyfikuje fakturę.</span><span class="sxs-lookup"><span data-stu-id="1aca2-153">A string that identifies the invoice.</span></span>                             |
+| <span data-ttu-id="1aca2-154">dostawcy</span><span class="sxs-lookup"><span data-stu-id="1aca2-154">provider</span></span>               | <span data-ttu-id="1aca2-155">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-155">string</span></span> | <span data-ttu-id="1aca2-156">Tak</span><span class="sxs-lookup"><span data-stu-id="1aca2-156">Yes</span></span>      | <span data-ttu-id="1aca2-157">Dostawca: "jednorazowej".</span><span class="sxs-lookup"><span data-stu-id="1aca2-157">The provider: "OneTime".</span></span>                                  |
+| <span data-ttu-id="1aca2-158">Typ faktury-wiersz-element</span><span class="sxs-lookup"><span data-stu-id="1aca2-158">invoice-line-item-type</span></span> | <span data-ttu-id="1aca2-159">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-159">string</span></span> | <span data-ttu-id="1aca2-160">Tak</span><span class="sxs-lookup"><span data-stu-id="1aca2-160">Yes</span></span>      | <span data-ttu-id="1aca2-161">Typ szczegółów faktury: "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="1aca2-161">The type of invoice detail: "UsageLineItems".</span></span> |
+| <span data-ttu-id="1aca2-162">currencyCode</span><span class="sxs-lookup"><span data-stu-id="1aca2-162">currencyCode</span></span>           | <span data-ttu-id="1aca2-163">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-163">string</span></span> | <span data-ttu-id="1aca2-164">Tak</span><span class="sxs-lookup"><span data-stu-id="1aca2-164">Yes</span></span>      | <span data-ttu-id="1aca2-165">Kod waluty dla elementów rozliczanej linii.</span><span class="sxs-lookup"><span data-stu-id="1aca2-165">The currency code for the billed line items.</span></span>                    |
+| <span data-ttu-id="1aca2-166">period</span><span class="sxs-lookup"><span data-stu-id="1aca2-166">period</span></span>                 | <span data-ttu-id="1aca2-167">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-167">string</span></span> | <span data-ttu-id="1aca2-168">Tak</span><span class="sxs-lookup"><span data-stu-id="1aca2-168">Yes</span></span>      | <span data-ttu-id="1aca2-169">Okres dla rozliczeń rekonesans.</span><span class="sxs-lookup"><span data-stu-id="1aca2-169">The period for billed recon.</span></span> <span data-ttu-id="1aca2-170">przykład: Current, Previous.</span><span class="sxs-lookup"><span data-stu-id="1aca2-170">example: current, previous.</span></span>        |
+| <span data-ttu-id="1aca2-171">size</span><span class="sxs-lookup"><span data-stu-id="1aca2-171">size</span></span>                   | <span data-ttu-id="1aca2-172">liczba</span><span class="sxs-lookup"><span data-stu-id="1aca2-172">number</span></span> | <span data-ttu-id="1aca2-173">Nie</span><span class="sxs-lookup"><span data-stu-id="1aca2-173">No</span></span>       | <span data-ttu-id="1aca2-174">Maksymalna liczba elementów do zwrócenia.</span><span class="sxs-lookup"><span data-stu-id="1aca2-174">The maximum number of items to return.</span></span> <span data-ttu-id="1aca2-175">Rozmiar domyślny to 2000</span><span class="sxs-lookup"><span data-stu-id="1aca2-175">Default size is 2000</span></span>       |
+| <span data-ttu-id="1aca2-176">seekOperation</span><span class="sxs-lookup"><span data-stu-id="1aca2-176">seekOperation</span></span>          | <span data-ttu-id="1aca2-177">ciąg</span><span class="sxs-lookup"><span data-stu-id="1aca2-177">string</span></span> | <span data-ttu-id="1aca2-178">Nie</span><span class="sxs-lookup"><span data-stu-id="1aca2-178">No</span></span>       | <span data-ttu-id="1aca2-179">Ustaw seekOperation = dalej, aby uzyskać następną stronę elementów wiersza rekonesans.</span><span class="sxs-lookup"><span data-stu-id="1aca2-179">Set seekOperation=Next to get the next page of recon line items.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="3e71f-180">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="3e71f-180">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="1aca2-180">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="1aca2-180">Request headers</span></span>
 
-<span data-ttu-id="3e71f-181">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="3e71f-181">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="1aca2-181">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="1aca2-181">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="3e71f-182">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="3e71f-182">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="1aca2-182">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="1aca2-182">Request body</span></span>
 
-<span data-ttu-id="3e71f-183">Brak.</span><span class="sxs-lookup"><span data-stu-id="3e71f-183">None.</span></span>
+<span data-ttu-id="1aca2-183">Brak.</span><span class="sxs-lookup"><span data-stu-id="1aca2-183">None.</span></span>
 
-## <a name="rest-response"></a><span data-ttu-id="3e71f-184">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="3e71f-184">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="1aca2-184">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="1aca2-184">REST response</span></span>
 
-<span data-ttu-id="3e71f-185">Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.</span><span class="sxs-lookup"><span data-stu-id="3e71f-185">If successful, the response contains the collection of line item details.</span></span>
+<span data-ttu-id="1aca2-185">Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.</span><span class="sxs-lookup"><span data-stu-id="1aca2-185">If successful, the response contains the collection of line item details.</span></span>
 
-<span data-ttu-id="3e71f-186">Dla pozycji **line ItemType** wartość **Purchase** jest mapowana na **nową**.</span><span class="sxs-lookup"><span data-stu-id="3e71f-186">For the line item **ChargeType**, the value **Purchase** is mapped to **New**.</span></span> <span data-ttu-id="3e71f-187">**Zwrot** wartości jest mapowany na **Anuluj**.</span><span class="sxs-lookup"><span data-stu-id="3e71f-187">The value **Refund** is mapped to **Cancel**.</span></span>
+<span data-ttu-id="1aca2-186">Dla pozycji **line ItemType** wartość **Purchase** jest mapowana na **nową**.</span><span class="sxs-lookup"><span data-stu-id="1aca2-186">For the line item **ChargeType**, the value **Purchase** is mapped to **New**.</span></span> <span data-ttu-id="1aca2-187">**Zwrot** wartości jest mapowany na **Anuluj**.</span><span class="sxs-lookup"><span data-stu-id="1aca2-187">The value **Refund** is mapped to **Cancel**.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="3e71f-188">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="3e71f-188">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="1aca2-188">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="1aca2-188">Response success and error codes</span></span>
 
-<span data-ttu-id="3e71f-189">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="3e71f-189">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="3e71f-190">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="3e71f-190">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="3e71f-191">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="3e71f-191">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="1aca2-189">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="1aca2-189">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="1aca2-190">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="1aca2-190">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="1aca2-191">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="1aca2-191">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-## <a name="rest-examples"></a><span data-ttu-id="3e71f-192">Przykłady REST</span><span class="sxs-lookup"><span data-stu-id="3e71f-192">REST examples</span></span>
+## <a name="rest-examples"></a><span data-ttu-id="1aca2-192">Przykłady REST</span><span class="sxs-lookup"><span data-stu-id="1aca2-192">REST examples</span></span>
 
-### <a name="request-response-example-1"></a><span data-ttu-id="3e71f-193">Przykład żądania — odpowiedź 1</span><span class="sxs-lookup"><span data-stu-id="3e71f-193">Request-response example 1</span></span>
+### <a name="request-response-example-1"></a><span data-ttu-id="1aca2-193">Przykład żądania — odpowiedź 1</span><span class="sxs-lookup"><span data-stu-id="1aca2-193">Request-response example 1</span></span>
 
-<span data-ttu-id="3e71f-194">Szczegóły dotyczące tego przykładowego żądania REST i odpowiedzi są następujące:</span><span class="sxs-lookup"><span data-stu-id="3e71f-194">The details for this example REST request and response are as follows:</span></span>
+<span data-ttu-id="1aca2-194">Szczegóły dotyczące tego przykładowego żądania REST i odpowiedzi są następujące:</span><span class="sxs-lookup"><span data-stu-id="1aca2-194">The details for this example REST request and response are as follows:</span></span>
 
-- <span data-ttu-id="3e71f-195">**Dostawca**: **jednorazowej**</span><span class="sxs-lookup"><span data-stu-id="3e71f-195">**Provider**: **OneTime**</span></span>
-- <span data-ttu-id="3e71f-196">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="3e71f-196">**InvoiceLineItemType**: **UsageLineItems**</span></span>
-- <span data-ttu-id="3e71f-197">**Okres**: **poprzedni**</span><span class="sxs-lookup"><span data-stu-id="3e71f-197">**Period**: **Previous**</span></span>
+- <span data-ttu-id="1aca2-195">**Dostawca**: **jednorazowej**</span><span class="sxs-lookup"><span data-stu-id="1aca2-195">**Provider**: **OneTime**</span></span>
+- <span data-ttu-id="1aca2-196">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="1aca2-196">**InvoiceLineItemType**: **UsageLineItems**</span></span>
+- <span data-ttu-id="1aca2-197">**Okres**: **poprzedni**</span><span class="sxs-lookup"><span data-stu-id="1aca2-197">**Period**: **Previous**</span></span>
 
-#### <a name="request-example-1"></a><span data-ttu-id="3e71f-198">Przykład żądania 1</span><span class="sxs-lookup"><span data-stu-id="3e71f-198">Request example 1</span></span>
+#### <a name="request-example-1"></a><span data-ttu-id="1aca2-198">Przykład żądania 1</span><span class="sxs-lookup"><span data-stu-id="1aca2-198">Request example 1</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/T000001234/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode=usd&period=previous&size=2000 HTTP/1.1
@@ -178,7 +178,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-1"></a><span data-ttu-id="3e71f-199">Przykład odpowiedzi 1</span><span class="sxs-lookup"><span data-stu-id="3e71f-199">Response example 1</span></span>
+#### <a name="response-example-1"></a><span data-ttu-id="1aca2-199">Przykład odpowiedzi 1</span><span class="sxs-lookup"><span data-stu-id="1aca2-199">Response example 1</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -238,6 +238,7 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "billingCurrency": "USD",
             "pricingPreTaxTotal": 0.486031696515249,
             "pricingCurrency": "USD",
+            "creditType": "Credit Not Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -295,6 +296,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1999968000511991808131,
             "rateOfPartnerEarnedCredit": 0,
+            "rateOfCredit": 1,
+            "creditType": "Azure Credit Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -325,16 +328,16 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a><span data-ttu-id="3e71f-200">Przykład żądania — odpowiedź 2</span><span class="sxs-lookup"><span data-stu-id="3e71f-200">Request-response example 2</span></span>
+### <a name="request-response-example-2"></a><span data-ttu-id="1aca2-200">Przykład żądania — odpowiedź 2</span><span class="sxs-lookup"><span data-stu-id="1aca2-200">Request-response example 2</span></span>
 
-<span data-ttu-id="3e71f-201">Szczegóły dotyczące tego przykładowego żądania REST i odpowiedzi są następujące:</span><span class="sxs-lookup"><span data-stu-id="3e71f-201">The details for this example REST request and response are as follows:</span></span>
+<span data-ttu-id="1aca2-201">Szczegóły dotyczące tego przykładowego żądania REST i odpowiedzi są następujące:</span><span class="sxs-lookup"><span data-stu-id="1aca2-201">The details for this example REST request and response are as follows:</span></span>
 
-- <span data-ttu-id="3e71f-202">**Dostawca**: **jednorazowej**</span><span class="sxs-lookup"><span data-stu-id="3e71f-202">**Provider**: **OneTime**</span></span>
-- <span data-ttu-id="3e71f-203">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="3e71f-203">**InvoiceLineItemType**: **UsageLineItems**</span></span>
-- <span data-ttu-id="3e71f-204">**Okres**: **poprzedni**</span><span class="sxs-lookup"><span data-stu-id="3e71f-204">**Period**: **Previous**</span></span>
-- <span data-ttu-id="3e71f-205">**SeekOperation**: **dalej**</span><span class="sxs-lookup"><span data-stu-id="3e71f-205">**SeekOperation**: **Next**</span></span>
+- <span data-ttu-id="1aca2-202">**Dostawca**: **jednorazowej**</span><span class="sxs-lookup"><span data-stu-id="1aca2-202">**Provider**: **OneTime**</span></span>
+- <span data-ttu-id="1aca2-203">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="1aca2-203">**InvoiceLineItemType**: **UsageLineItems**</span></span>
+- <span data-ttu-id="1aca2-204">**Okres**: **poprzedni**</span><span class="sxs-lookup"><span data-stu-id="1aca2-204">**Period**: **Previous**</span></span>
+- <span data-ttu-id="1aca2-205">**SeekOperation**: **dalej**</span><span class="sxs-lookup"><span data-stu-id="1aca2-205">**SeekOperation**: **Next**</span></span>
 
-#### <a name="request-example-2"></a><span data-ttu-id="3e71f-206">Przykład żądania 2</span><span class="sxs-lookup"><span data-stu-id="3e71f-206">Request example 2</span></span>
+#### <a name="request-example-2"></a><span data-ttu-id="1aca2-206">Przykład żądania 2</span><span class="sxs-lookup"><span data-stu-id="1aca2-206">Request example 2</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/T000001234/lineitems?provider=onetime&invoiceLineItemType=usagelineitems&currencyCode=usd&period=previous&size=2000&seekoperation=next HTTP/1.1
@@ -348,7 +351,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="response-example-2"></a><span data-ttu-id="3e71f-207">Przykład odpowiedzi 2</span><span class="sxs-lookup"><span data-stu-id="3e71f-207">Response example 2</span></span>
+## <a name="response-example-2"></a><span data-ttu-id="1aca2-207">Przykład odpowiedzi 2</span><span class="sxs-lookup"><span data-stu-id="1aca2-207">Response example 2</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -414,7 +417,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1835431430074643112595,
             "rateOfPartnerEarnedCredit": 0.15,
-
+            "rateOfCredit": 0.15,
+            "creditType": "Partner Earned Credit Applied",
             "attributes": {
                 "objectType": "DailyRatedUsageLineItem"
             }

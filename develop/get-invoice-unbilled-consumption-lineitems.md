@@ -4,12 +4,12 @@ description: Za pomocą interfejsów API Centrum partnerskiego można uzyskać k
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b0ce9d4c8d310243d8b799445e5a64975f2d05d
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 8b6ca8d6ff7af53dd2a258ea20e6eaeb26421440
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730250"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274669"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Pobieranie faktur — elementy linii zużycia komercyjnego
 
@@ -117,24 +117,24 @@ Aby poznać podobny przykład, zobacz:
 
 W zależności od przypadku użycia można użyć następujących składni dla żądania REST. Aby uzyskać więcej informacji, zobacz opisy poszczególnych składni.
 
- | Metoda  | Identyfikator URI żądania         | Opis przypadku użycia składni |                                                                                                                                            |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &okres = {period} http/1.1                              | Użyj tej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury. |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} http/1.1  | Ta składnia jest używana w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza. |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next                               | Użyj tej składni, aby uzyskać następną stronę elementów wiersza uzgodnienia przy użyciu `seekOperation = "Next"` . |
+| Metoda  | Identyfikator URI żądania                                                                                                                                                                                              | Opis przypadku użycia składni                                                                                                     |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &okres = {period} http/1.1                       | Użyj tej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury.                                                    |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} http/1.1           | Ta składnia jest używana w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza. |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next | Użyj tej składni, aby uzyskać następną stronę elementów wiersza uzgodnienia przy użyciu `seekOperation = "Next"` .                                  |
 
 #### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
 Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.
 
-| Nazwa                   | Typ   | Wymagane | Opis                                                                     |
-|------------------------|--------|----------|---------------------------------------------------------------------------------|
-| dostawcy               | ciąg | Tak      | Dostawca: "**jednorazowej**".                                                |
-| Typ faktury-wiersz-element | ciąg | Tak      | Typ faktury szczegóły: "**UsageLineItems**", "**UsageLineItems**".               |
-| currencyCode           | ciąg | Tak      | Kod waluty dla nieobciążanych elementów wiersza.                                  |
+| Nazwa                   | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
+|------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| dostawcy               | ciąg | Tak      | Dostawca: "**jednorazowej**".                                                                                                                                                                                                               |
+| Typ faktury-wiersz-element | ciąg | Tak      | Typ faktury szczegóły: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| currencyCode           | ciąg | Tak      | Kod waluty dla nieobciążanych elementów wiersza.                                                                                                                                                                                             |
 | period                 | ciąg | Tak      | Okres nienaliczanych Rekonesans (na przykład: **Current**, **Previous**). Załóżmy, że musisz wykonać zapytanie dotyczące nienaliczanych danych użycia cyklu rozliczeniowego (01/01/2020 – 01/31/2020) w styczniu, wybierz okres jako **"Current", "** else **".** |
-| size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000.                    |
-| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby uzyskać następną stronę elementów linii uzgadniania.                |
+| size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000.                                                                                                                                                                           |
+| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby uzyskać następną stronę elementów linii uzgadniania.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

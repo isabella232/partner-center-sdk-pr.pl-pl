@@ -1,17 +1,17 @@
 ---
 title: Tworzenie klienta
 description: Dowiedz się, w jaki sposób partner dostawcy rozwiązań w chmurze (CSP) może używać interfejsów API Centrum partnerskiego do tworzenia nowego klienta. Artykuł zawiera opis wymagań wstępnych i innych sytuacji.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 3bc8081c682bdf522bcb0ca218f16cafab7b3a99
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: bc8e9d38353511e747ba4da99b11be40d08781e3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770228"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274601"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Tworzenie klienta przy użyciu interfejsów API Centrum partnerskiego
 
@@ -92,7 +92,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CreateCustomer.cs
+**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK Centrum partnerskiego: iscustomer. cs
 
 ## <a name="java"></a>Java
 
@@ -194,8 +194,7 @@ Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [CustomerCompanyPr
 | Nazwa   | Typ   | Opis                                                  |
 |--------|--------|--------------------------------------------------------------|
 | domena | ciąg | Nazwa domeny klienta, na przykład contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Ciąg|Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko dla firmy lub organizacji klienta w następujących krajach. Armenia (AM), Azerbejdżan (AZ), Białoruś (przez), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA). W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy określać tego elementu.|
-
+|organizationRegistrationNumber|Ciąg|Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Jest to wymagane tylko w przypadku firmy/organizacji klienta w następujących krajach: Armenii (AM), Azerbejdżan (AZ), Białoruś (przez), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (, REP), Brazylia (BR), Indie, Afryka Południowa, Polskę, Zjednoczone Emiraty Arabskie, Arabia Saudyjska, Turcja, Tajlandia, Wietnam, Myanmar i Wenezuela. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
 
 ### <a name="request-example"></a>Przykład żądania
 

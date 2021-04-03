@@ -1,15 +1,15 @@
 ---
 title: Zasoby narzędziowe
 description: Interfejs API REST Centrum partnerskiego zawiera wiele zasobów, które opisują modele danych ogólnego przeznaczenia używane w całym zestawie SDK.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 53d39e4f76684128d48eacdce75706d853c7ce74
-ms.sourcegitcommit: f5178dca1d9a51059738972810235d8858e6a67a
+ms.openlocfilehash: 115b0508f956c4b60e4db53193ef2585fa0c9a34
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "97768581"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103984"
 ---
 # <a name="utility-resources"></a>Zasoby narzędziowe
 
@@ -39,7 +39,7 @@ Adres używany przez profile klienta lub partnera. Aby uzyskać więcej informac
 | MiddleName   | ciąg | (1, 50)           | Drugie imię kontaktu w firmie/organizacji klienta. Ta właściwość jest opcjonalna.  |
 | LastName (Nazwisko)     | ciąg | (1, 50)           | Nazwisko osoby kontaktowej w firmie/organizacji klienta.                               |
 | PhoneNumber  | ciąg | n/d               | Numer telefonu kontaktu w firmie/organizacji klienta. Ta właściwość jest opcjonalna.|
-|PhoneNumber|ciąg|n/d|Numer telefonu kontaktu w firmie/organizacji klienta. W profilu klienta ta właściwość jest wymagana przez firmę/organizację klienta znajdującą się w następujących krajach. Armenia (AM), Azerbejdżan (AZ), Białoruś (przez), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA). W przeciwnym razie jest to opcjonalne.|
+|PhoneNumber|ciąg|n/d|Numer telefonu kontaktu w firmie/organizacji klienta. W profilu klienta ta właściwość jest wymagana przez firmę/organizację klienta znajdującą się w następujących krajach: Armenia (AM), Azerbejdżan (AZ), Białoruś (w przypadku), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA)), Indie, Brazylia, Afryka Południowa, Południowe i Wenezuela. W przeciwnym razie jest to opcjonalne..|
 
 
 ## <a name="contact"></a>Kontakt
@@ -73,7 +73,7 @@ Reprezentuje plik zewnętrzny przekazany do Centrum partnerskiego.
 | Rozmiar pliku                 | długi   | Rozmiar pliku.                         |
 | Id                       | ciąg | Unikatowy identyfikator przekazywania pliku.            |
 
-## <a name="link"></a>Łącze
+## <a name="link"></a>Link
 
 Zawiera łącze identyfikatora URI i powiązane z nim informacje.
 
@@ -101,9 +101,9 @@ Zawiera listę linków dla zasobu.
 
 | Właściwość   | Typ                                      | Opis                                        |
 |------------|-------------------------------------------|----------------------------------------------------|
-| Self       | [Łącze](#link)                             | Własny identyfikator URI.                                      |
-| Następne       | [Łącze](#link)                             | Następna strona elementów.                            |
-| Poprzednie   | [Łącze](#link)                             | Poprzednia strona elementów.                        |
+| Self       | [Link](#link)                             | Własny identyfikator URI.                                      |
+| Następne       | [Link](#link)                             | Następna strona elementów.                            |
+| Poprzednie   | [Link](#link)                             | Poprzednia strona elementów.                        |
 | Atrybuty | [ResourceAttributes](#resourceattributes) | Atrybuty metadanych odpowiadające użytkownikowi. |
 
 ## <a name="resourceattributes"></a>ResourceAttributes

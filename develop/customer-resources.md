@@ -1,17 +1,17 @@
 ---
 title: Zasoby klienta
 description: Zasoby klienta reprezentujące klienta lub odsprzedawcy.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: fbd72ab5710876ba303fd1e30e6e552ecf89c5cd
-ms.sourcegitcommit: 741cfa8585901de207c2e5da5eeebe26db0b0ad1
+ms.openlocfilehash: 78622258880ab77ca99eae98082cc66acb3b66a7
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "97768573"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103967"
 ---
 # <a name="customer-resources"></a>Zasoby klienta
 
@@ -22,7 +22,7 @@ ms.locfileid: "97768573"
 - Centrum partnerskie dla Microsoft Cloud Niemcy
 - Centrum partnerskie Microsoft Cloud for US Government
 
-## <a name="customer"></a>Klient
+## <a name="customer"></a>Customer
 
 Zasób **klienta** reprezentuje klienta lub odsprzedawcy. W większości przypadków zasób klienta może być dowolną osobą, pracownikiem lub organizacją, która chce przeprowadzić działalność z odsprzedawcami firmy Microsoft i Microsoft. Klienci mają również profil firmy i profil rozliczeń.
 
@@ -54,8 +54,7 @@ Zasób **CustomerCompanyProfile** to dodatkowe informacje o firmie lub organizac
 | companyName | ciąg                                                         | Nazwa firmy lub organizacji.                                          |
 | linki       | [ResourceLinks](utility-resources.md#resourcelinks)           | Linki do zasobów zawarte w profilu.                                  |
 | atrybuty  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające profilowi.                             |
-
-| organizationRegistrationNumber | Ciąg | Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko dla firmy lub organizacji klienta w następujących krajach. Armenia (AM), Azerbejdżan (AZ), Białoruś (przez), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA). W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy określać jej. |
+|organizationRegistrationNumber|Ciąg|Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko w przypadku firmowego/organizacji klienta znajdującego się w następujących krajach: Armenia (AM), Azerbejdżan (AZ), Białoruś (w przypadku), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indie, Brazylia, Afryka Południowa, Polskę, Zjednoczone Emiraty Arabskie, Arabia Saudyjska, Turcja, Tajlandia, Wietnam, Myanmar, Irak, Sudan Południowy i Wenezuela. W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy określać tego elementu.|
 
 
 ## <a name="customerbillingprofile"></a>CustomerBillingProfile

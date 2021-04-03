@@ -1,17 +1,17 @@
 ---
 title: Tworzenie klienta dla odsprzedawcy pośredniego
 description: Dowiedz się, w jaki sposób Dostawca pośredni może użyć interfejsów API Centrum partnerskiego, aby utworzyć klienta dla pośredniego odsprzedawcy.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e2386f1963a5bb3ea4269bcbf4327c75987f3b91
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770179"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103950"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Tworzenie klienta dla pośredniego odsprzedawcy przy użyciu interfejsów API usługi Partner Center
 
@@ -77,7 +77,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CreateCustomerforIndirectReseller.cs
+**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK Centrum partnerskiego: CreateCustomerforIndirectReseller. cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -101,7 +101,7 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 | [CompanyProfile](#company-profile)             | object | Tak      | Informacje o profilu firmy klienta.                                                               
 | [AssociatedPartnerId](customer-resources.md#customer) | ciąg | Tak      | Identyfikator pośredniego odsprzedawcy. Pośredni odsprzedawca określony przez podany tutaj identyfikator musi mieć powiązanie z dostawcą pośrednim lub żądanie zakończy się niepowodzeniem. Należy również pamiętać, że jeśli wartość AssociatedPartnerId nie zostanie podana, klient zostanie utworzony jako bezpośredni klient dostawcy pośredniego, a nie pośredni odsprzedawca. |
 |Domena| Ciąg| Tak|Nazwa domeny klienta, na przykład contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    ciąg|Tak|     Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko dla firmy lub organizacji klienta w następujących krajach. Armenia (AM), Azerbejdżan (AZ), Białoruś (przez), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA). W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy określać tego elementu.|
+|organizationRegistrationNumber|    ciąg|Tak|     Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko w przypadku firmowego/organizacji klienta znajdującego się w następujących krajach: Armenia (AM), Azerbejdżan (AZ), Białoruś (w przypadku), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indie, Brazylia, Afryka Południowa, Polskę, Zjednoczone Emiraty Arabskie, Arabia Saudyjska, Turcja, Tajlandia, Wietnam, Myanmar, Irak, Sudan Południowy i Wenezuela. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
 
 
 

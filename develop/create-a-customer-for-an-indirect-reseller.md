@@ -1,17 +1,17 @@
 ---
 title: Tworzenie klienta dla odsprzedawcy pośredniego
 description: Dowiedz się, w jaki sposób Dostawca pośredni może użyć interfejsów API Centrum partnerskiego, aby utworzyć klienta dla pośredniego odsprzedawcy.
-ms.date: 03/30/2021
+ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103950"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274584"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Tworzenie klienta dla pośredniego odsprzedawcy przy użyciu interfejsów API usługi Partner Center
 
@@ -124,7 +124,7 @@ Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [CustomerCompanyPr
 | Nazwa   | Typ   | Wymagane | Opis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | domena | ciąg | Tak     | Nazwa domeny klienta, na przykład contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | ciąg | Zależy od warunku | Numer rejestracji organizacji klienta (określany również jako numer INN w niektórych krajach). <br/><br/>Wypełnienie tego pola jest wymagane tylko wtedy, gdy firma lub organizacja klienta znajduje się w następujących krajach: <br/><br/>-Armenia (AM) <br/>-Azerbejdżan (AZ)<br/>-Białoruś (przez)<br/>-Węgry (HU)<br/>-Kazachstan (KZ)<br/>-Kirgistan (KG)<br/>— Mołdawia (MD)<br/>— Rosja (RU)<br/>-Tadżykistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/><br/>To pole nie jest wymagane, jeśli firma/organizacja klienta znajduje się w innych krajach poza tymi przedstawionymi tutaj.  |
+| organizationRegistrationNumber | ciąg | Zależy od warunku | Numer rejestracji organizacji klienta (określany również jako numer INN w niektórych krajach). <br/><br/>Wypełnienie tego pola jest wymagane tylko wtedy, gdy firma lub organizacja klienta znajduje się w następujących krajach: <br/><br/>-Armenia (AM) <br/>-Azerbejdżan (AZ)<br/>-Białoruś (przez)<br/>-Węgry (HU)<br/>-Kazachstan (KZ)<br/>-Kirgistan (KG)<br/>— Mołdawia (MD)<br/>— Rosja (RU)<br/>-Tadżykistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/>-Indie <br/>— Brazylia <br/>— Republika Południowej Afryki <br/>-Polska <br/>-Zjednoczone Emiraty Arabskie <br/>— Arabia Saudyjska <br/>— Turcja <br/>— Tajlandia <br/>— Wietnam <br/>-Myanmar <br/>-Irak <br/>— Sudan południowy <br/>-Wenezuela<br/> <br/>W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.  |
 
 ### <a name="request-example"></a>Przykład żądania
 

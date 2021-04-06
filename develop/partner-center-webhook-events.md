@@ -1,17 +1,17 @@
 ---
 title: Zdarzenia elementu webhook Centrum partnerskiego
-description: Dokumentacja wszystkich zdarzeń elementu webhook obsługiwanych przez centrum partnerskie.
+description: Dowiedz się, jak testować i używać zdarzeń elementu webhook, aby zauważyć, gdy subskrypcje i inne zdarzenia zmieniają się w centrum partnerskim.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 5358aab8efdd68ad52c583936304f99ffae12708
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 03ee1d4e74408b8cf69e2971054bf9060650cb77
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768041"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500043"
 ---
 # <a name="partner-center-webhook-events"></a>Zdarzenia elementu webhook Centrum partnerskiego
 

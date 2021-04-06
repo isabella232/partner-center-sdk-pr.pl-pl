@@ -1,17 +1,17 @@
 ---
 title: Pobieranie listy kategorii oferty według rynku
-description: Jak uzyskać kolekcję zawierającą wszystkie kategorie oferty w danym kraju/regionie i ustawieniach regionalnych.
+description: Dowiedz się, jak uzyskać kolekcję zawierającą wszystkie kategorie oferty w danym kraju/regionie i ustawieniach regionalnych dla wszystkich chmur firmy Microsoft.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 22c46ed03a8579c53ee18c14cbca9a1e19ddb82a
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 05aad095c6cb8eaee4cbf7ce976ca1b4b7a408c4
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768237"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500060"
 ---
 # <a name="get-a-list-of-offer-categories-by-market"></a>Pobieranie listy kategorii oferty według rynku
 
@@ -62,7 +62,7 @@ Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania kateg
 
 | Nazwa           | Typ       | Wymagane | Opis            |
 |----------------|------------|----------|------------------------|
-| **Identyfikator kraju** | **parametry** | Y        | Identyfikator kraju/regionu. |
+| **Identyfikator kraju** | **ciąg** | Y        | Identyfikator kraju/regionu. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

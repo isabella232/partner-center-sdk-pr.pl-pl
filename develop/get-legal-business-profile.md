@@ -1,15 +1,15 @@
 ---
 title: Pobieranie profilu biznesowego partnera
-description: Jak uzyskać legalny profil biznesowy partnera.
+description: Dowiedz się, jak używać interfejsów API do uzyskiwania służbowego profilu biznesowego.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5d7055dd0a6586e16b078109db4252250561eb29
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1d488c8deb9f01110e92327035ce0c3c023fcb46
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768438"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500026"
 ---
 # <a name="get-the-partner-legal-business-profile"></a>Pobieranie profilu biznesowego partnera
 
@@ -36,7 +36,7 @@ Aby uzyskać legalny profil biznesowy partnera, najpierw Uzyskaj interfejs do ko
 var billingProfile = partnerOperations.Profiles.LegalBusinessProfile.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetLegalBusinessProfile.cs
+**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK Centrum partnerskiego: GetLegalBusinessProfile. cs
 
 ## <a name="rest-request"></a>Żądanie REST
 

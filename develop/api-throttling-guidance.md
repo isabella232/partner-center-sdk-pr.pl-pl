@@ -1,6 +1,6 @@
 ---
 title: Wskazówki dotyczące ograniczania przepustowości interfejsu API
-description: W przypadku partnerów wywołujących Partner Center API dowiedz się, na które interfejsy API ma wpływ ograniczanie przepustowości interfejsów API firmy Microsoft, oraz poznaj najlepsze rozwiązania, aby uniknąć ograniczania przepustowości lub lepiej je obsłużyć.
+description: W przypadku partnerów wywołujących Partner Center API dowiedz się, na które interfejsy API ma wpływ ograniczanie przepustowości interfejsów API firmy Microsoft, oraz poznaj najlepsze rozwiązania w celu uniknięcia lub lepszego obsłużania ograniczania.
 ms.date: 04/14/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
@@ -19,25 +19,25 @@ ms.locfileid: "107496148"
 
 - Centrum partnerskie
 
-Firma Microsoft implementuje ograniczanie przepustowości interfejsu API, aby zapewnić bardziej spójną wydajność w zakresie czasu dla partnerów wywołujących interfejsy API Partner Center API. Ograniczanie ogranicza liczbę żądań do usługi w czasie, aby zapobiec wywłaszceniu zasobów. Chociaż Partner Center jest przeznaczona do obsługi dużej liczby żądań, w przypadku przytłaczającej liczby żądań przez kilku partnerów ograniczanie przepływności pomaga zachować optymalną wydajność i niezawodność dla wszystkich partnerów.  
+Firma Microsoft implementuje ograniczanie interfejsów API, aby zapewnić bardziej spójną wydajność w okresie dla partnerów wywołujących interfejsy API Partner Center. Ograniczanie ogranicza liczbę żądań do usługi w okresie, aby zapobiec wywłaszceniu zasobów. Chociaż Partner Center jest przeznaczona do obsługi dużej liczby żądań, jeśli przytłaczającą liczbę żądań jest wielu partnerów, ograniczanie przepływności pomaga zachować optymalną wydajność i niezawodność dla wszystkich partnerów.  
 
-Limity ograniczania różnią się w zależności od scenariusza. Jeśli na przykład wykonujesz dużą liczbę operacji zapisu, możliwość ograniczenia przepustowości jest większa niż w przypadku wykonywania tylko operacji odczytu.
+Limity ograniczania różnią się w zależności od scenariusza. Jeśli na przykład wykonujesz dużą liczbę operacji zapisu, możliwość ograniczenia jest większa niż w przypadku wykonywania tylko operacji odczytu.
 
-## <a name="what-happens-when-throttling-occurs"></a>Co się dzieje w przypadku wystąpienia ograniczania? 
+## <a name="what-happens-when-throttling-occurs"></a>Co się stanie, gdy nastąpi ograniczanie przepustowości? 
 
-Po przekroczeniu progu ograniczania Partner Center ogranicza wszelkie dalsze żądania od tego klienta przez określony czas. Zachowanie ograniczania zależy od typu i liczby żądań.   
+Po przekroczeniu progu ograniczania Partner Center ogranicza wszelkie dalsze żądania od tego klienta na określony czas. Zachowanie ograniczania zależy od typu i liczby żądań.   
 
 ### <a name="common-throttling-scenarios"></a>Typowe scenariusze ograniczania przepustowości 
 
-Najczęstsze przyczyny ograniczania przepustowości klientów to: 
+Najbardziej typowe przyczyny ograniczania klientów to: 
 
-- Duża liczba żądań dla interfejsu API na identyfikator dzierżawy partnera: w przypadku niektórych interfejsów API programu Partner Center ograniczanie jest określane przez identyfikator dzierżawy partnera. Zbyt wiele wywołań tych interfejsów **API** w tym samym identyfikatorze dzierżawy partnera spowoduje przekroczenie progu ograniczenia.  
+- **Duża** liczba żądań dla interfejsu API na identyfikator dzierżawy partnera: w przypadku niektórych interfejsów API programu Partner Center ograniczanie jest określane przez identyfikator dzierżawy partnera, a zbyt wiele wywołań tych interfejsów API w tym samym identyfikatorze dzierżawy partnera spowoduje przekroczenie progu ograniczania.  
 
-- **Duża liczba żądań interfejsu API** na identyfikator dzierżawy partnera na identyfikator dzierżawy klienta: w przypadku innych interfejsów API ograniczanie jest określane przez kombinację identyfikatora dzierżawy partnera/identyfikatora dzierżawy klienta; W takich przypadkach wykonanie zbyt wielu wywołań względem tego samego identyfikatora dzierżawy klienta spowoduje ograniczenie przepustowości, podczas gdy wywołania względem innych klientów mogą zakończyć się powodzeniem.
+- **Duża liczba żądań interfejsu API** na identyfikator dzierżawy partnera na identyfikator dzierżawy klienta: w przypadku innych interfejsów API ograniczanie jest określane przez kombinację identyfikatora dzierżawy partnera/identyfikatora dzierżawy klienta. W takich przypadkach wykonanie zbyt wielu wywołań względem tego samego identyfikatora dzierżawy klienta spowoduje ograniczenie przepustowości , podczas gdy wywołania względem innych klientów mogą zakończyć się powodzeniem.
 
 ## <a name="best-practices-to-avoid-throttling"></a>Najlepsze rozwiązania w celu uniknięcia ograniczania przepustowości 
  
-Praktyki programowania, takie jak ciągłe sondowanie zasobu w celu sprawdzenia, czy są dostępne aktualizacje, oraz regularne skanowanie kolekcji zasobów w celu sprawdzenia nowych lub usuniętych zasobów, mogą prowadzić do ograniczenia wydajności i obniżyć ogólną wydajność. Współbieżne wywołania interfejsu API mogą prowadzić do dużej liczby żądań na jednostkę czasu, co spowoduje również ograniczenie żądań. Zamiast tego należy korzystać ze śledzenia zmian i powiadomień o zmianach. Ponadto powinno być możliwe wykorzystanie dzienników aktywności do wykrywania zmian. Aby uzyskać więcej informacji, zobacz [Partner Center dzienników](get-a-record-of-partner-center-activity-by-user.md) aktywności.  Zdecydowanie zalecamy partnerom rozważenie użycia interfejsu API dziennika aktywności w celu zwiększenia wydajności i uniknięcia ograniczania. Zobacz również przykład użycia dzienników aktywności poniżej.
+Rozwiązania programistyczne, takie jak ciągłe sondowanie zasobu w celu sprawdzenia aktualizacji i regularne skanowanie kolekcji zasobów w celu sprawdzenia nowych lub usuniętych zasobów, mogą prowadzić do ograniczenia przepustowości i obniżyć ogólną wydajność. Współbieżne wywołania interfejsu API mogą prowadzić do dużej liczby żądań na jednostkę czasu, co spowoduje również ograniczenie żądań. Zamiast tego należy korzystać ze śledzenia zmian i powiadomień o zmianach. Ponadto powinno być możliwe wykorzystanie dzienników aktywności do wykrywania zmian. Aby uzyskać więcej informacji, zobacz [Partner Center dzienników](get-a-record-of-partner-center-activity-by-user.md) aktywności.  Zdecydowanie zalecamy partnerom rozważenie użycia interfejsu API dziennika aktywności w celu zwiększenia wydajności i uniknięcia ograniczania. Zobacz również przykład użycia dzienników aktywności poniżej.
 
 ## <a name="best-practices-to-handle-throttling"></a>Najlepsze rozwiązania dotyczące obsługi ograniczania przepustowości
 
@@ -47,7 +47,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące obsługi ograniczania p
 - Zmniejsz częstotliwość wywołań. 
 - Unikaj natychmiastowych ponownych prób, ponieważ wszystkie żądania są naliczane względem limitów użycia. 
 
-Podczas wdrażania obsługi błędów użyj kodu błędu HTTP 429, aby wykryć ograniczenia przepustowości. Odpowiedź, która zakończyła się niepowodzeniem, zawiera Retry-After odpowiedzi. Backing off requests using the Retry-after delay (Ponawianie żądań po opóźnieniu jest najszybszym sposobem odzyskiwania po ograniczaniu wydajności). 
+Podczas wdrażania obsługi błędów użyj kodu błędu HTTP 429, aby wykryć ograniczenia przepustowości. Odpowiedź, która zakończyła się niepowodzeniem, zawiera Retry-After odpowiedzi. Backing off requests using the Retry-after delay is the fastest way to recover from throttling (Cofanie żądań przy użyciu opóźnienia Ponów po jest najszybszym sposobem odzyskania po ograniczaniu przepustowości). 
 
 Aby użyć opóźnienia Ponów po, wykonaj następujące czynności: 
 
@@ -55,7 +55,7 @@ Aby użyć opóźnienia Ponów po, wykonaj następujące czynności:
 
 2. Ponów próbę żądania.  
 
-3. Jeśli żądanie ponownie zakończy się niepowodzeniem z kodem błędu 429, nadal trwa ograniczanie. Ponów próbę przy użyciu wykładniczego odroczania, użyj zalecanego Retry-After i ponów próbę żądania, aż zakończy się pomyślnie.
+3. Jeśli żądanie ponownie zakończy się niepowodzeniem z kodem błędu 429, nadal trwa ograniczanie. Ponów próbę przy użyciu wykładniczego odroczania, użyj zalecanego Retry-After i ponów próbę żądania, dopóki nie zakończy się pomyślnie.
 
 4. Jeśli używasz zestawu SDK, otrzymasz wyjątek z kodem stanu 429, gdy żądanie jest ograniczane. Użyj właściwości RetryAfter w wyjątku i ponów próbę żądania po upływie czasu.
 
@@ -76,7 +76,7 @@ W dłuższej perspektywie każdy interfejs API Partner Center, który wywołuje 
 |{baseURL}/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/registrations|[rejestrowanie subskrypcji](register-a-subscription.md)|
 |{baseURL}/v1/productupgrades|[tworzenie jednostki uaktualnienia produktu](create-product-upgrade-entity.md)|
 |{baseURL}/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/conversions |[konwertowanie subskrypcji wersji próbnej na płatną](convert-a-trial-subscription-to-paid.md)|
-|{baseURL}/v1/customers/{customer-tenant-id}|[uzyskiwanie klienta według identyfikatora](get-a-customer-by-id.md)|
+|{baseURL}/v1/customers/{identyfikator-dzierżawy-klienta}|[uzyskiwanie klienta według identyfikatora](get-a-customer-by-id.md)|
 |{baseURL}/v1/productUpgrades/eligibility|[uzyskiwanie uprawnień do uaktualnienia produktu](get-eligibility-for-product-upgrade.md)|
 |{baseURL}/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription} |[zarządzanie subskrypcją](manage-orders.md#manage-a-subscription)|
 |{baseURL}/v1/customers/{customer_id}/subscriptions |[get-all-of-a-customer-s-subscriptions](get-all-of-a-customer-s-subscriptions.md)|

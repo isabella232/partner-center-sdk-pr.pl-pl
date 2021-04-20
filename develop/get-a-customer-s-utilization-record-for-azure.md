@@ -1,15 +1,15 @@
 ---
 title: Pobieranie rekordów dotyczących wykorzystania platformy Azure przez klienta
-description: Korzystając z interfejsu API wykorzystania platformy Azure, można uzyskać rekordy wykorzystania subskrypcji platformy Azure klienta przez określony czas.
-ms.date: 11/01/2019
+description: Za pomocą interfejsu API wykorzystania platformy Azure można pobrać rekordy wykorzystania subskrypcji platformy Azure klienta w określonym przedziale czasu.
+ms.date: 04/19/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bcdeb51b04039fd05b923150c85119385c0537e0
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 23c8d18462081c6d6c95c1d969f269cbb3f8754b
+ms.sourcegitcommit: abefe11421edc421491f14b257b2408b4f29b669
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768102"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107745596"
 ---
 # <a name="get-a-customers-utilization-records-for-azure"></a>Pobieranie rekordów dotyczących wykorzystania platformy Azure przez klienta
 
@@ -19,38 +19,44 @@ ms.locfileid: "97768102"
 - Centrum partnerskie dla Microsoft Cloud Niemcy
 - Centrum partnerskie Microsoft Cloud for US Government
 
-Możesz uzyskać rekordy wykorzystania subskrypcji platformy Azure klienta przez określony czas przy użyciu interfejsu API użycia platformy Azure.
+Rekordy wykorzystania subskrypcji platformy Azure klienta w określonym przedziale czasu można uzyskać przy użyciu interfejsu API użycia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie zarówno za pomocą aplikacji autonomicznej, jak i poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
-Ten interfejs API zwraca codziennie i co godzinę użycie nieklasyfikowane dla dowolnego przedziału czasu. Jednak *ten interfejs API nie jest obsługiwany w przypadku planów platformy Azure*. Jeśli masz plan platformy Azure, zapoznaj się z artykułem [Pobierz fakturę za rozliczane opłaty za wiersze](get-invoice-unbilled-consumption-lineitems.md) i [Pobierz faktury za użycie](get-invoice-billed-consumption-lineitems.md) . W tych artykułach opisano, jak uzyskać zużycie znamionowe na poziomie dziennym dla każdego z zasobów. To użycie stawki jest równoznaczne z codziennymi danymi ziarna, które są udostępniane przez interfejs API użycia platformy Azure. Aby pobrać dane użycia, należy użyć identyfikatora faktury. Można też użyć bieżących i poprzednich okresów, aby uzyskać szacowane oszacowania użycia. *Dane o godzinowych ziarnach i dowolnych filtrach zakresów dat nie są obecnie obsługiwane w przypadku zasobów subskrypcji planu platformy Azure*.
+Ten interfejs API zwraca dzienne i godzinowe zużycie bez użycia dla dowolnego zakresu czasu. Ten interfejs *API nie jest jednak obsługiwany w przypadku planów platformy Azure.* Jeśli masz plan platformy Azure, zapoznaj się z artykułami Get [invoice un-billed consumption line items](get-invoice-unbilled-consumption-lineitems.md) (Uzyskiwanie niezafakturowanych elementów zużycia za faktury) i Get invoice billed consumption line items (Uzyskiwanie pozycji zużycia rozliczanych na podstawie [faktury).](get-invoice-billed-consumption-lineitems.md) W tych artykułach opisano sposób oceny zużycia na poziomie dziennym na miernik na zasób. To użycie jest równoważne z dziennymi danymi ziarna dostarczanymi przez interfejs API użycia platformy Azure. Aby pobrać rozliczane dane użycia, należy użyć identyfikatora faktury. Możesz też użyć bieżących i poprzednich okresów, aby uzyskać niezapłaszone oszacowania użycia. *Dane ziarna godzinowego i dowolne filtry zakresu dat nie są* obecnie obsługiwane w przypadku zasobów subskrypcji planu platformy Azure.
 
-## <a name="azure-utilization-api"></a>Interfejs API użycia platformy Azure
+## <a name="azure-utilization-api"></a>Interfejs API wykorzystania platformy Azure
 
-Ten interfejs API wykorzystania platformy Azure zapewnia dostęp do rekordów użycia w okresie, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeniowym. Zapewnia dostęp do tych samych danych użycia, które są używane do tworzenia i obliczania pliku uzgadniania. Nie ma jednak informacji o logice pliku uzgodnienia systemu rozliczeń. Nie należy oczekiwać, że wyniki podsumowania plików są zgodne z wynikami pobranymi z tego interfejsu API dokładnie dla tego samego okresu.
+Ten interfejs API wykorzystania platformy Azure zapewnia dostęp do rekordów wykorzystania w okresie, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeniowym. Zapewnia dostęp do tych samych danych użycia, które są używane do tworzenia i obliczania pliku uzgodnień. Nie ma jednak wiedzy na temat logiki pliku uzgodnień systemu rozliczeniowego. Nie należy oczekiwać, że wyniki podsumowania pliku uzgodnień będą zgodne z wynikiem pobranym z tego interfejsu API dokładnie w tym samym okresie.
 
-Na przykład system rozliczeń pobiera te same dane dotyczące użycia i stosuje reguły opóźnienia, aby określić, co jest uwzględnione w pliku uzgadniania. Gdy okres rozliczeniowy zostanie zamknięty, wszystkie użycie do końca dnia, w którym kończy się okres rozliczeniowy, zostanie uwzględniony w pliku uzgodnienia. Każde późniejsze użycie w okresie rozliczeniowym, które jest zgłaszane w ciągu 24 godzin po zakończeniu okresu rozliczeniowego, jest uwzględniane w następnym pliku uzgodnienia. Aby uzyskać reguły dotyczące opóźnień związanych z naliczaniem partnera, zobacz [pobieranie danych dotyczących zużycia dla subskrypcji platformy Azure](/previous-versions/azure/reference/mt219001(v=azure.100)).
+Na przykład system rozliczeń pobiera te same dane użycia i stosuje reguły opóźnień w celu określenia, co jest uwzględnione w pliku uzgodnień. Po zamknięciu okresu rozliczeniowego całe użycie do końca dnia zakończenia okresu rozliczeniowego jest uwzględniane w pliku uzgodnień. Każde późne użycie w okresie rozliczeniowym, które jest zgłaszane w ciągu 24 godzin po zakończeniu okresu rozliczeniowego, jest uwzględniane w następnym pliku uzgodnień. Aby uzyskać informacje na temat reguł opóźniań dotyczących sposobu rozlinia partnera, zobacz Get consumption data for an Azure subscription (Uzyskiwanie danych użycia [dla subskrypcji platformy Azure).](/previous-versions/azure/reference/mt219001(v=azure.100))
 
-Ten interfejs API REST jest stronicowany. Jeśli ładunek odpowiedzi jest większy niż jedna strona, należy wykonać kolejne łącze, aby uzyskać następną stronę rekordów użycia.
+Ten interfejs API REST jest stronicowany. Jeśli ładunek odpowiedzi jest większy niż jedna strona, musisz użyć następnego linku, aby uzyskać następną stronę rekordów wykorzystania.
+
+### <a name="scenario--partner-a-has-transferred-billing-ownership-of-azure-legacy-subscription-145p-to-partner-b"></a>Scenariusz: Partner A przeniesiono własność rozliczeń starszej subskrypcji platformy Azure (145P) do partnera B
+
+Jeśli partner przenosi własność rozliczeń starszej subskrypcji platformy Azure na innego partnera, gdy nowy partner wywołuje interfejs API wykorzystania dla przeniesionej subskrypcji, musi użyć identyfikatora subskrypcji handlowej (który pojawia się na koncie usługi Partner Center), a nie identyfikatora uprawnień platformy Azure. Identyfikator uprawnień platformy Azure jest wyświetlany dla partnera B tylko wtedy, gdy jest administratorem w imieniu klienta (AOBO) w imieniu klienta Azure Portal. 
+
+Aby pomyślnie wywołać interfejs API wykorzystania przeniesionej subskrypcji, nowy partner musi użyć identyfikatora subskrypcji handlowej.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać rekordy użycia platformy Azure:
+Aby uzyskać rekordy wykorzystania platformy Azure:
 
-1. Pobierz identyfikator klienta i Identyfikator subskrypcji.
+1. Pobierz identyfikator klienta i identyfikator subskrypcji.
 
-2. Wywołaj metodę [**IAzureUtilizationCollection. Query**](/dotnet/api/microsoft.store.partnercenter.utilization.iazureutilizationcollection.query) , aby zwrócić element [**resourcecollection**](/dotnet/api/microsoft.store.partnercenter.models.resourcecollection-1) , który zawiera rekordy użycia.
+2. Wywołaj [**metodę IAzureUtilizationCollection.Query,**](/dotnet/api/microsoft.store.partnercenter.utilization.iazureutilizationcollection.query) aby zwrócić metodę [**ResourceCollection**](/dotnet/api/microsoft.store.partnercenter.models.resourcecollection-1) zawierającą rekordy wykorzystania.
 
-3. Uzyskaj moduł wyliczający rekordu wykorzystania platformy Azure, aby przechodzenie przez strony użycia. Ten krok jest wymagany, ponieważ jest stronicowana kolekcja zasobów.
+3. Uzyskaj moduł wyliczający rekord wykorzystania platformy Azure w celu przechodzenia między stronami wykorzystania. Ten krok jest wymagany, ponieważ kolekcja zasobów jest stronicowana.
 
-- **Przykład**: [aplikacja testowa konsoli](console-test-app.md)
-- **Projekt**: przykłady dla zestawu SDK Centrum partnerskiego
+- **Przykład:** [aplikacja testowa konsoli](console-test-app.md)
+- **Projekt**: zestaw SDK Centrum partnerskiego przykłady
 - **Klasa**: GetAzureSubscriptionUtilization.cs
 
 ```csharp
@@ -84,7 +90,7 @@ while (utilizationRecordEnumerator.HasValue)
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać rekordy użycia platformy Azure, musisz najpierw mieć identyfikator klienta i Identyfikator subskrypcji. Następnie należy wywołać funkcję **IAzureUtilizationCollection. Query** w celu zwrócenia elementu **resourcecollection** , który zawiera rekordy użycia. Ponieważ kolekcja zasobów jest stronicowana, należy uzyskać moduł wyliczający rekordy wykorzystania platformy Azure, aby przechodzenie przez strony użycia.
+Aby uzyskać rekordy wykorzystania platformy Azure, musisz najpierw uzyskać identyfikator klienta i identyfikator subskrypcji. Następnie wywołaj funkcję **IAzureUtilizationCollection.query,** aby zwrócić funkcję **ResourceCollection** zawierającą rekordy wykorzystania. Ponieważ kolekcja zasobów jest stronicowana, należy uzyskać moduł wyliczający rekord wykorzystania platformy Azure, aby przechodzić między stronami wykorzystania.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -119,7 +125,7 @@ while (utilizationRecordEnumerator.hasValue())
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać rekordy użycia platformy Azure, musisz najpierw mieć identyfikator klienta i Identyfikator subskrypcji. Następnie Wywołaj polecenie [**Get-PartnerCustomerSubscriptionUtilization**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscriptionUtilization.md). To polecenie zwróci wszystkie rekordy dostępne w określonym przedziale czasu.
+Aby uzyskać rekordy wykorzystania platformy Azure, musisz najpierw uzyskać identyfikator klienta i identyfikator subskrypcji. Następnie wywołaj pozycję [**Get-PartnerCustomerSubscriptionUtilization**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscriptionUtilization.md). To polecenie zwróci wszystkie rekordy dostępne w określonym przedziale czasu.
 
 ```powershell
 # $customerId
@@ -134,25 +140,25 @@ Get-PartnerCustomerSubscriptionUtilization -CustomerId $customerId -Subscription
 
 | Metoda | Identyfikator URI żądania |
 |------- | ----------- |
-| **Pobierz** | *{baseURL}*/V1/Customers/{Customer-tenant-ID}/subscriptions/{Subscription-ID}/utilizations/Azure? \_ czas rozpoczęcia = {Start-Time} &\_ czas zakończenia = {czas zakończenia} &stopnia szczegółowości = {stopień szczegółowości} &pokazać \_ szczegóły = {true} |
+| **Pobierz** | *{baseURL}*/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/utilizations/azure?start \_ time={godzina rozpoczęcia}&\_ zakończenia={czas zakończenia}&stopień szczegółowości={stopień szczegółowości}&pokaż \_ szczegóły={True} |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Użyj następującej ścieżki i parametrów zapytania, aby pobrać rekordy użycia.
+Użyj następującej ścieżki i parametrów zapytania, aby pobrać rekordy wykorzystania.
 
 | Nazwa | Typ | Wymagane | Opis |
 | ---- | ---- | -------- | ----------- |
-| Identyfikator dzierżawy klienta | ciąg | Tak | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
-| Identyfikator subskrypcji | ciąg | Tak | Ciąg w formacie GUID, który identyfikuje subskrypcję. |
-| start_time | ciąg w formacie UTC Data-godzina przesunięcia | Tak | Początek zakresu czasu, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeń. |
-| end_time | ciąg w formacie UTC Data-godzina przesunięcia | Tak | Koniec zakresu czasu, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeń. |
-| stopnia szczegółowości | ciąg | Nie | Definiuje stopień szczegółowości agregacji użycia. Dostępne opcje to: `daily` (ustawienie domyślne) i `hourly` .
-| show_details | boolean | Nie | Określa, czy mają zostać pobrane szczegóły użycia na poziomie wystąpienia. Wartość domyślna to `true`. |
-| size | liczba | Nie | Określa liczbę agregacji zwracanych przez pojedyncze wywołanie interfejsu API. Wartość domyślna to 1000. Wartość maksymalna to 1000. |
+| identyfikator dzierżawy klienta | ciąg | Tak | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
+| subscription-id | ciąg | Tak | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje subskrypcję. |
+| start_time | ciąg w formacie przesunięcia daty i godzin UTC | Tak | Początek zakresu czasu, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeniowym. |
+| End_time | ciąg w formacie przesunięcia daty i godzin UTC | Tak | Koniec zakresu czasu, który reprezentuje, kiedy wykorzystanie zostało zgłoszone w systemie rozliczeniowym. |
+| Ziarnistość | ciąg | Nie | Definiuje poziom szczegółowości agregacji użycia. Dostępne opcje to: `daily` (ustawienie domyślne) i `hourly` .
+| show_details | boolean | Nie | Określa, czy uzyskać szczegóły użycia na poziomie wystąpienia. Wartość domyślna to `true`. |
+| size | liczba | Nie | Określa liczbę agregacji zwróconych przez pojedyncze wywołanie interfejsu API. Wartość domyślna to 1000. Wartość maksymalna to 1000. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -160,9 +166,9 @@ Brak
 
 ### <a name="request-example"></a>Przykład żądania
 
-Poniższe przykładowe żądanie generuje wyniki podobne do tego, jaki plik uzgadniania będzie wyświetlany przez okres 7/2-8/1. Te wyniki mogą nie być dokładnie zgodne (szczegółowe informacje znajdują się w sekcji [interfejsu API wykorzystania platformy Azure](#azure-utilization-api) ).
+Poniższe przykładowe żądanie generuje wyniki podobne do tego, co plik uzgodnień będzie pokazywać w okresie 7/2–8/1. Te wyniki mogą nie być dokładnie zgodne (zobacz sekcję Interfejs [API użycia platformy Azure,](#azure-utilization-api) aby uzyskać szczegółowe informacje).
 
-To przykładowe żądanie zwraca dane użycia zgłoszone w systemie rozliczeniowym między 7/2 o 12 AM (UTC) i 8/2 o godzinie 00:00 (UTC).
+To przykładowe żądanie zwraca dane dotyczące wykorzystania zgłoszone w systemie rozliczeniowym między godziną 7/2 o godzinie 12:00 (UTC) a 8/2 o godzinie 12:00 (UTC).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/E499C962-9218-4DBA-8B83-8ADC94F47B9F/subscriptions/FC8F8908-F918-4406-AF13-D5BC0FE41865/utilizations/azure?start_time=2017-07-02T00:00:00-08:00&end_time=2017-08-02T00:00:00-08:00 HTTP/1.1
@@ -176,11 +182,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [rekordu użycia platformy Azure](azure-utilization-record-resources.md) w treści odpowiedzi. Jeśli dane użycia platformy Azure nie są jeszcze gotowe w systemie zależnym, Metoda ta zwraca kod stanu HTTP 204 z nagłówkiem Retry-After.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [rekordu użycia platformy Azure](azure-utilization-record-resources.md) w treści odpowiedzi. Jeśli dane użycia platformy Azure nie są jeszcze gotowe w systemie zależnym, ta metoda zwraca kod stanu HTTP 204 z nagłówkiem Retry-After danych.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać kod stanu HTTP, [typ kodu błędu](error-codes.md)i dodatkowe parametry.
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać kod stanu HTTP, typ [kodu błędu](error-codes.md)i dodatkowe parametry.
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

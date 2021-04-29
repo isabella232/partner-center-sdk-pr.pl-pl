@@ -1,17 +1,17 @@
 ---
 title: Anulowanie zamówienia z piaskownicy integracji
-description: Dowiedz się, jak za pomocą interfejsów API usługi Partner Center anulować różne typy zamówień subskrypcji z kont piaskownicy integracji.
-ms.date: 08/16/2019
+description: Dowiedz się, jak za pomocą Partner Center API anulować różne typy zamówień subskrypcji z kont piaskownicy integracji.
+ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 363bf209e27d5223259c8c533710a3b35bbef1e6
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
+ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768597"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108210023"
 ---
-# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Anulowanie zamówienia z piaskownicy integracji przy użyciu interfejsów API usługi Partner Center
+# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Anulowanie zamówienia z piaskownicy integracji przy użyciu Partner Center API
 
 **Dotyczy:**
 
@@ -20,27 +20,27 @@ ms.locfileid: "97768597"
 - Centrum partnerskie dla Microsoft Cloud Niemcy
 - Centrum partnerskie Microsoft Cloud for US Government
 
-W tym artykule opisano sposób używania interfejsów API usługi Partner Center do anulowania różnych typów zamówień subskrypcji z kont piaskownicy integracji. Takie zamówienia mogą obejmować wystąpienia zarezerwowane, oprogramowanie i komercyjne zamówienie na oprogramowanie Marketplace jako usługa (SaaS).
+W tym artykule opisano, jak za pomocą Partner Center API anulować różne typy zamówień subskrypcji z kont piaskownicy integracji. Takie zamówienia mogą obejmować wystąpienia zarezerwowane, oprogramowanie i zamówienia subskrypcji oprogramowania jako usługi (SaaS) na platformie handlowej.
 
->[!NOTE]
->Należy pamiętać, że anulowane subskrypcje wystąpień zarezerwowanych lub komercyjnych zakupów rynkowych SaaS są możliwe tylko z kont piaskownicy integracji.  
+>[!NOTE] 
+>Należy pamiętać, że anulowanie zamówień subskrypcji SaaS wystąpienia zarezerwowanego lub komercyjnej platformy handlowej jest możliwe tylko z kont piaskownicy integracji. Zamówień piaskownicy starszych niż 60 dni nie można anulować z Partner Center. Jeśli potrzebujesz pomocy, słać do pomocy Partner Center pomocy technicznej. 
 
-Aby anulować zlecenia produkcyjne oprogramowania za pomocą interfejsu API, należy użyć polecenia [Anuluj zakup oprogramowania](cancel-software-purchases.md).
-Możesz również anulować zlecenia produkcyjne oprogramowania za pośrednictwem pulpitu nawigacyjnego, używając [przycisku Anuluj zakup](/partner-center/csp-software-subscriptions).
+Aby anulować produkcyjne zamówienia oprogramowania za pośrednictwem interfejsu API, [użyj polecenia cancel-software-purchases.](cancel-software-purchases.md)
+Możesz również anulować produkcyjne zamówienia oprogramowania za pośrednictwem pulpitu [nawigacyjnego, anulując zakup.](/partner-center/csp-software-subscriptions)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Konto partnera piaskownicy integracji z klientem z aktywną alternatywnym wystąpieniem/oprogramowaniem/SaaSą subskrypcją innych firm.
+- Konto partnera piaskownicy integracji z klientem z aktywnym wystąpieniem zarezerwowanym/ oprogramowaniem /zamówieniami subskrypcji SaaS innych firm.
 
 ## <a name="c"></a>C\#
 
-Aby anulować zamówienie z piaskownicy integracji, Przekaż poświadczenia konta do [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) metody w celu uzyskania [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) interfejsu umożliwiającego uzyskanie operacji partnerskich.
+Aby anulować zamówienie z piaskownicy integracji, przekaż poświadczenia konta do metody , aby uzyskać [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) interfejs do uzyskania operacji [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) partnera.
 
-Aby wybrać określoną [kolejność](order-resources.md#order), użyj operacji partnera i [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) metody Call z identyfikatorem klienta, aby określić klienta, a następnie pozycję **`Orders.ById()`** z identyfikatorem zamówienia, aby określić kolejność, a wreszcie **`Get`** lub metodę, **`GetAsync`** Aby ją pobrać.
+Aby wybrać konkretne [zamówienie,](order-resources.md#order)użyj operacji partnera i wywołaj metodę z identyfikatorem klienta, aby określić klienta, a następnie z identyfikatorem zamówienia, aby określić zamówienie, oraz metodę lub , [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) aby je **`Orders.ById()`** **`Get`** **`GetAsync`** pobrać.
 
-Ustaw [**`Order.Status`**](order-resources.md#order) Właściwość na `cancelled` i użyj metody, **`Patch()`** Aby zaktualizować kolejność.
+Ustaw właściwość [**`Order.Status`**](order-resources.md#order) na i użyj metody , aby `cancelled` **`Patch()`** zaktualizować zamówienie.
 
 ``` csharp
 // IPartnerCredentials tipAccountCredentials;
@@ -62,7 +62,7 @@ order = tipAccountPartnerOperations.Customers.ById(customerTenantId).Orders.ById
 
 | Metoda     | Identyfikator URI żądania                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -70,12 +70,12 @@ Użyj następującego parametru zapytania, aby usunąć klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **Identyfikator zamówienia** | **parametry** | Y        | Wartość jest ciągiem wskazującym identyfikatory kolejności, które muszą być anulowane. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **order-id** | **ciąg** | Y        | Wartość jest ciągiem oznaczający identyfikatory zamówień, które muszą zostać anulowane. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -102,11 +102,11 @@ MS-CorrelationId: 1438ea3d-b515-45c7-9ec1-27ee0cc8e6bd
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca anulowaną kolejność.
+W przypadku powodzenia ta metoda zwraca anulowane zamówienie.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

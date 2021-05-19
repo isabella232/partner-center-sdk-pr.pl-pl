@@ -1,35 +1,35 @@
 ---
-title: Pobierz kwalifikacje klienta
-description: Dowiedz się, jak używać walidacji asynchronicznej w celu uzyskania kwalifikacji klienta za pośrednictwem interfejsu API Centrum partnerskiego. Partnerzy mogą używać tego do weryfikowania klientów edukacyjnych.
-ms.date: 01/21/2021
+title: Uzyskiwanie kwalifikacji klienta
+description: Dowiedz się, jak za pomocą walidacji asynchronicznej uzyskać kwalifikację klienta za pośrednictwem Partner Center API. Partnerzy mogą używać tego do weryfikowania klientów edukacyjnych.
+ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 09801792c059873b9f6b842e99286eda09d38b1a
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
+ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030573"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110027932"
 ---
-# <a name="get-a-customers-qualification-asynchronously"></a>Zapoznaj się z kwalifikacją klienta asynchronicznie
+# <a name="get-a-customers-qualification-asynchronously"></a>Asynchroniczne uzyskiwanie kwalifikacji klienta
 
 **Dotyczy**
 
 - Centrum partnerskie
 
-Jak przeprowadzić asynchroniczne pobieranie kwalifikacji klienta.
+Jak asynchronicznie uzyskać kwalifikacje klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**kwalifikacji**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) do pobrania interfejsu [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Na koniec Wywołaj `GetQualifications()` lub, `GetQualificationsAsync()` Aby pobrać kwalifikacje klienta.
+Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Kwalifikacja,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) aby pobrać [**interfejs ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Na koniec zadzwoń `GetQualifications()` do działu lub , aby pobrać `GetQualificationsAsync()` kwalifikacje klienta.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +37,7 @@ Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner. Custom
 var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
 ```
 
-**Przykład**: [Przykładowa aplikacja konsolowa](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples **Class**: GetCustomerQualifications. cs
+**Przykład:** [Przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples, **klasa**: GetCustomerQualifications.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -45,19 +45,19 @@ var customerQualifications = partnerOperations.Customers.ById(customerId).Qualif
 
 | Metoda  | Identyfikator URI żądania                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Qualifications http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/qualifications HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby uzyskać wszystkie kwalifikacje.
+W tej tabeli wymieniono wymagany parametr zapytania w celu uzyskania wszystkich kwalifikacji.
 
 | Nazwa               | Typ   | Wymagane | Opis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
+| **identyfikator dzierżawy klienta** | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -75,11 +75,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję kwalifikacji w treści odpowiedzi.  Poniżej przedstawiono przykłady wywołania **Get** na kliencie z kwalifikacją **edukacyjną** .
+W przypadku powodzenia ta metoda zwraca kolekcję kwalifikacji w treści odpowiedzi.  Poniżej przedstawiono przykłady rozmowy **GET** dotyczącej klienta z kwalifikacją **do edukacji.**
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-examples"></a>Przykłady odpowiedzi
 
@@ -132,6 +132,71 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
         "vettingStatus": "Denied",
         "vettingReason": "Not an Education Customer", // example Vetting Reason
         "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+    }
+]
+
+```
+
+#### <a name="state-owned-entity-samples"></a>Przykłady jednostek należących do stanu
+
+**Przykład jednostki należącej do stanu za pośrednictwem posta**
+
+```csharp
+
+//SOE
+POST {customer_id}/qualifications
+{
+“qualification”: “StateOwnedEntity”
+}
+
+//
+
+```
+
+**Jednostka należąca do stanu za pośrednictwem przykładu Pobierz kwalifikacje**
+
+```csharp
+
+//SOE:
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Jednostka należąca do stanu za pośrednictwem get qualifications with Education**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “Education”,
+        “vettingStatus”: “Approved”
+    },
+{
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Jednostka należąca do stanu za pośrednictwem get qualifications with GCC**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “GovernmentCommunityCloud”,
+        “vettingStatus”: “Approved”,
+        “vettingCreateDate”: “2021-05-06T19:59:56.6832021+00:00”
+    },
+{
+        “qualification”: “StateOwnedEntity”
     }
 ]
 

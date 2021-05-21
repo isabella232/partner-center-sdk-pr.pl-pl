@@ -1,17 +1,17 @@
 ---
-title: Możliwości piaskownicy partnera obsługujące relację odsprzedawcy
-description: Piaskownica partnerów ma możliwość obsługi relacji między partnerem a klientem
-ms.date: 11/10/2020
+title: Możliwości piaskownicy dla relacji odsprzedawcy
+description: Piaskownica partnera ma możliwość obsługi relacji między partnerem a klientem
+ms.date: 05/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: af46811b3615e1f904a9619de85b0aca7622490b
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 9bef4a15685ebbdc2212988f5ac5724b946cfd54
+ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711869"
+ms.lasthandoff: 05/21/2021
+ms.locfileid: "110243388"
 ---
-# <a name="partner-sandbox-capabilities-that-support-reseller-relationship"></a>Możliwości piaskownicy partnera obsługujące relację odsprzedawcy
+# <a name="sandbox-capabilities-for-reseller-relationship"></a>Możliwości piaskownicy dla relacji odsprzedawcy
 
 **Dotyczy:**
 
@@ -20,70 +20,70 @@ ms.locfileid: "104711869"
 - Centrum partnerskie dla Microsoft Cloud Niemcy
 - Centrum partnerskie Microsoft Cloud for US Government
 
-W tym artykule wyjaśniono, co jest obsługiwane w piaskownicy dla relacji odsprzedawcy między partnerem a klientem. 
+W tym artykule wyjaśniono, co jest obsługiwane w piaskownicy w przypadku relacji odsprzedawcy między partnerem a klientem. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia konta Centrum partnerskiego. Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznej, jak i aplikacji oraz poświadczeń użytkownika.
-- Identyfikator klienta (identyfikator dzierżawy klienta). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard/home)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta (identyfikator dzierżawy klienta).
-- Wszystkie Azure Reserved Virtual Machine Instances i zamówienia zakupu oprogramowania muszą zostać anulowane przed usunięciem klienta z piaskownicy integracji z poradami.
+- Partner Center poświadczeń konta. Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika.
+- Identyfikator klienta (customer-tenant-id). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard/home). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta (customer-tenant-id).
+- Wszystkie Azure Reserved Virtual Machine Instances i zamówienia zakupu oprogramowania muszą zostać anulowane przed usunięciem klienta z piaskownicy integracji porad.
 
-## <a name="scenarios-supporting-reseller-relationship"></a>Scenariusze obsługujące relację odsprzedawcy
+## <a name="scenarios-supporting-reseller-relationship"></a>Scenariusze obsługi relacji odsprzedawcy
 
-1.  Bezpośredni partnerzy rozliczeń i dostawcy pośredniego w piaskownicy mogą tworzyć relacje z klientem piaskownicy. 
-2.  Bezpośredni partnerzy rachunków w piaskownicy i dostawcy pośrednii nie mogą zapraszać klientów w piaskownicy.
+1.  Partnerzy rozliczani bezpośrednio w piaskownicy i dostawcy pośredni mogą tworzyć relacje z klientem piaskownicy. 
+2.  Partnerzy rozliczani bezpośrednio w piaskownicy i dostawcy pośredni nie mogą zapraszać klientów piaskownicy.
+
+3. Dostawcy pośredni i partner rozliczani bezpośrednio w piaskownicy mogą usunąć relację odsprzedawcy z Partner Center interfejsu użytkownika i interfejsu API.
+
+4. W przypadku relacji odsprzedawcy usunięcia piaskownicy zostanie wywołana nazwa Usuń klienta AP. Spowoduje to usunięcie relacji oraz dzierżawy klienta. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 
+    ### <a name="in-the-sandbox"></a>W piaskownicy
 
-### <a name="in-the-sandbox"></a>W piaskownicy
+    **Partnerzy rozliczani bezpośrednio:**
 
-**Bezpośredni partnerzy Bill**:
+    - Może dodawać istniejących klientów
 
-• Może dodawać istniejących klientów
+    - Nie można zażądać relacji z nowymi klientami
 
-• Nie można zażądać relacji z nowymi klientami
+    **Dostawcy pośredni:**
 
-**Dostawcy Pośrednii**:
+    - Może dodawać istniejących klientów
 
-• Może dodawać istniejących klientów
+    - Nie można zażądać relacji z nowymi klientami
 
-• Nie można zażądać relacji z nowymi klientami
+    - Nie można mieć relacji z odsprzedawcą pośrednim
 
-• Nie może mieć relacji z odsprzedawcą pośrednią
+    **Odsprzedawca pośredni:** 
 
-**Pośredni odsprzedawca**: (wkrótce)
+    -   Może mieć relacje z istniejącymi klientami
 
-• Mogą mieć relacje z istniejącymi klientami
+    -   Nie można zażądać nowych relacji lub dodać nowych klientów
 
-• Nie można zażądać nowych relacji lub dodać nowych klientów
+    ### <a name="in-partner-center"></a>W Partner Center
 
-### <a name="in-partner-center"></a>W centrum partnerskim
+    **Partnerzy rozliczani bezpośrednio:**
 
-**Bezpośredni partnerzy Bill**:
+    -   Może dodawać nowych klientów
 
-• Może dodawać nowych klientów
+    -   Może żądać relacji z nowymi klientami
 
-• Może zażądać relacji z nowymi klientami
+    **Dostawcy pośredni:**
 
-**Dostawcy Pośrednii**:
+    -   Może dodawać nowych klientów
 
-• Może dodawać nowych klientów
+    -   Może żądać relacji z nowymi klientami
 
-• Może zażądać relacji z nowymi klientami
+    -   Może mieć relacje z odsprzedawcami pośrednimi
 
-• Mogą mieć relacje z pośrednimi odsprzedawcami
+    **Odsprzedawcy pośredni:**
 
-**Odsprzedawcy Pośrednii**:
+    -   Nie można dodać nowych klientów
 
-• Nie można dodać nowych klientów
+    -   Może żądać relacji z nowymi klientami
 
-• Może zażądać relacji z nowymi klientami
 
-3. Bezpośredni partner rozliczeń i dostawcy pośredniego w piaskownicy mogą usunąć relację odsprzedawcy z interfejsu użytkownika i interfejsu API Centrum partnerskiego.
-
-4. Relacja usuwania odsprzedawcy z piaskownicy spowoduje wywołanie usuwania AP klienta. Spowoduje to usunięcie relacji, a także usunięcie dzierżawy klienta. {baseURL}/v1/Customers/{customer-Tenant-id}
-
-Aby uzyskać szczegółowe informacje, Skorzystaj z [relacji usuwanie odsprzedawcy](remove-a-reseller-relationship-with-a-customer.md) dla klienta. Istnieją jednak pewne różnice między możliwościami produktu i piaskownicy.
+Postępuj zgodnie [z działem usuwania relacji](remove-a-reseller-relationship-with-a-customer.md) odsprzedawcy dla klienta, aby uzyskać szczegółowe informacje. Istnieją jednak pewne różnice między możliwościami produktów i piaskownicy.
 
 ### <a name="request-syntax"></a>SKŁADNIA ŻĄDANIA
 
@@ -91,15 +91,15 @@ Aby uzyskać szczegółowe informacje, Skorzystaj z [relacji usuwanie odsprzedaw
 |-------------|------------|
 |Usuń|{baseURL}/v1/Customers/{customer-Tenant-id} |
 
-Treść żądania nie
+Brak treści żądania
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](./error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](./error-codes.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Aktywuj subskrypcje piaskownicy dla produktów portalu Azure Marketplace](activate-sandbox-subscription-azure-marketplace-products.md)
+- [Aktywowanie subskrypcji piaskownicy dla Azure Marketplace produktów](activate-sandbox-subscription-azure-marketplace-products.md)
 
 - [Anulowanie zamówienia z piaskownicy](cancel-an-order-from-the-integration-sandbox.md)
 

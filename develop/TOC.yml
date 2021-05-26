@@ -437,8 +437,10 @@
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktywowanie subskrypcji piaskownicy
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Usuwanie konta klienta z piaskownicy integracji
-      href: delete-a-customer-account-from-the-integration-sandbox.md
+    - name: Tworzenie odsprzedawcy pośredniego w piaskownicy
+      href: create-indirect-reseller-in-sandbox.md
+    - name: Usuwanie odsprzedawcy pośredniego w piaskownicy
+      href: delete-indirect-reseller-in-sandbox.md
 - name: Polecenia
   href: /partner/develop/referrals
   items:

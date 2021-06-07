@@ -471,14 +471,17 @@
     - name: Pobieranie szczegółów żądania interfejsu API
       href: get-api-request-details.md
 - name: Dokumentacja interfejsu API REST Centrum partnerskiego
-  href: partner-center-rest-api-reference.md
   items:
+    - name: Partner Center wprowadzenie do interfejsu API REST
+      href: partner-center-rest-api-reference.md
     - name: Dziennik zmian interfejsu API REST Centrum partnerskiego
       href: api-change-log.md
     - name: Adresy URL REST Centrum partnerskiego
       href: partner-center-rest-urls.md
     - name: Nagłówki REST Centrum partnerskiego
       href: headers.md
+    - name: Dokumentacja interfejsu API REST Centrum partnerskiego
+      href: /rest/api/partner-center-rest/
     - name: Zasoby REST Centrum partnerskiego
       href: partner-center-rest-resources.md
       items:
@@ -553,7 +556,7 @@
     - name: Elementy webhook Centrum partnerskiego
       href: partner-center-webhooks.md
 - name: Dokumentacja zarządzanego interfejsu API platformy .NET Centrum partnerskiego
-  href: /dotnet/api/
+  href: /dotnet/api/microsoft.store.partnercenter
   items:
     - name: Informacje o wersji interfejsu API platformy .NET Centrum partnerskiego
       href: dotnet-release-notes.md

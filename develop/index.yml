@@ -11,12 +11,12 @@ metadata:
   author: jasonwhowell
   ms.author: jasonh
   ms.date: 06/10/2021
-  ms.openlocfilehash: 580e1c32bbfdf4cc725f00a98d720e59be36c2e8
-  ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+  ms.openlocfilehash: 1d65b1a5192d1ad541d1e4c62e93560d8f58074f
+  ms.sourcegitcommit: 4843bbdcf33a628749892330041ceb3892e450c1
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111972996"
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112075657"
 landingContent:
 - title: Tworzenie aplikacji z pomocą Centrum partnerskiego
   linkLists:
@@ -85,4 +85,4 @@ landingContent:
   - linkListType: reference
     links:
     - text: Dokumentacja interfejsu API struktury Swagger dla usług Centrum partnerskiego (dla partnerów CSP)
-      url: https://apidocs.microsoft.com/services/partnercenter
+      url: /rest/api/partner-center-rest

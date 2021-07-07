@@ -6,26 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 9131a1c4c37d07b1994b67379ec8361fda13a371
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d086d7ba72c9d9e42dc88684ddeafc9a597bfd7c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767746"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973387"
 ---
 # <a name="create-user-accounts-for-a-customer"></a>Tworzenie kont użytkowników dla klienta
-
-**Dotyczy:**
-
-- Centrum partnerskie
 
 Utwórz nowe konto użytkownika dla klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -33,9 +29,9 @@ Aby uzyskać nowe konto użytkownika dla klienta:
 
 1. Utwórz nowy obiekt **CustomerUser** z odpowiednimi informacjami o użytkowniku.
 
-2. Użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** .
+2. Użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().**
 
-3. Wywołaj Właściwość **users** , a następnie metodę **Create** .
+3. Wywołaj **właściwość Users,** a następnie metodę **Create.**
 
 ``` csharp
 // string selectedCustomerId;
@@ -55,7 +51,7 @@ var userToCreate = new CustomerUser()
 User createdUser = partnerOperations.Customers.ById(selectedCustomerId).Users.Create(userToCreate);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: CustomerUserCreate.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa:** CustomerUserCreate.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -63,20 +59,20 @@ User createdUser = partnerOperations.Customers.ById(selectedCustomerId).Users.Cr
 
 | Metoda   | Identyfikator URI żądania                                                                                  |
 |----------|----------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Użyj następujących parametrów zapytania, aby zidentyfikować odpowiedniego klienta.
+Użyj następujących parametrów zapytania, aby zidentyfikować właściwego klienta.
 
 | Nazwa | Typ | Wymagane | Opis |
 |----- |----- | -------- |------------ |
-| **Identyfikator dzierżawy klienta** | **guid** | Y | Wartość jest identyfikatorem GUID z sformatowanym **identyfikatorem dzierżawy**. Umożliwia odsprzedawcy odfiltrować wyniki dla danego klienta, który należy do odsprzedawcy. |
-| **Identyfikator użytkownika** | **guid** | N | Wartość jest **identyfikatorem użytkownika** w formacie GUID, który należy do jednego konta użytkownika. |
+| **identyfikator dzierżawy klienta** | **guid** | Y | Wartość to identyfikator GUID w **formacie customer-tenant-id.** Dzięki temu odsprzedawca może filtrować wyniki dla danego klienta, który należy do odsprzedawcy. |
+| **identyfikator użytkownika** | **guid** | N | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który należy do jednego konta użytkownika. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -109,11 +105,11 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca konto użytkownika, w tym identyfikator GUID.
+W przypadku powodzenia ta metoda zwraca konto użytkownika, w tym identyfikator GUID.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

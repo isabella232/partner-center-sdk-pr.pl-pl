@@ -1,52 +1,49 @@
 ---
 title: Przekazywanie listy urządzeń do istniejącej partii dla określonego klienta
-description: Jak przekazać listę informacji o urządzeniach do istniejącej partii dla określonego klienta. Spowoduje to skojarzenie urządzeń z już utworzoną grupą urządzeń.
+description: Jak przekazać listę informacji o urządzeniach do istniejącej partii dla określonego klienta. To skojarzy urządzenia z już utworzoną partią urządzeń.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d01ac1a42c50416487167070be9d104562300baf
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 3fa9cff39113130c54cecfaef1f8ca28e0ac5adf
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768370"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530314"
 ---
 # <a name="upload-a-list-of-devices-to-an-existing-batch-for-the-specified-customer"></a>Przekazywanie listy urządzeń do istniejącej partii dla określonego klienta
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-
-Jak przekazać listę informacji o urządzeniach do istniejącej partii dla określonego klienta. Spowoduje to skojarzenie urządzeń z już utworzoną grupą urządzeń.
+Jak przekazać listę informacji o urządzeniach do istniejącej partii dla określonego klienta. To skojarzy urządzenia z już utworzoną partią urządzeń.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator partii urządzeń.
+- Identyfikator wsadu urządzenia.
 
 - Lista zasobów urządzeń, które zawierają informacje o poszczególnych urządzeniach.
 
 ## <a name="c"></a>C\#
 
-Aby przekazać listę urządzeń do istniejącej partii urządzeń, najpierw Utwórz wystąpienie nowego pliku [list/dotnet/API/System. Collections. Generic. list -1) typu [**urządzenie**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) i wypełnij listę urządzeniami. Następujące kombinacje wypełnionych właściwości są wymagane co najmniej do identyfikowania poszczególnych urządzeń:
+Aby przekazać listę urządzeń do istniejącej partii urządzeń, najpierw należy utworzyć nowe wystąpienia typu [List/dotnet/api/system.collections.generic.list-1) typu [**Urządzenie**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) i wypełnić listę urządzeniami. Następujące kombinacje wypełnionych właściwości są wymagane co najmniej do identyfikowania poszczególnych urządzeń:
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey).
+- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)( Klucz produktu).
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  Numer [**seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
+- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**Numer seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)  +  Numer [**seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
+- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey (Klucz produktu)**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)  +  [**Numer seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
 
-- Tylko [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash) .
+- [**Tylko sprzętHash.**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)
 
-- Tylko [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey) .
+- [**Tylko ProductKey.**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)
 
-- Numer [**seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber)  +  [**OemManufacturerName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.oemmanufacturername)  +  [**ModelName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.modelname).
+- [**Numer seryjny**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber)  +  [**OemManufacturerName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.oemmanufacturername)  +  [**Nazwa modelu**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.modelname).
 
-Następnie Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie Wywołaj metodę [**DeviceBatches. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) z identyfikatorem partii urządzeń, aby uzyskać interfejs do operacji dla określonej partii. Na koniec Wywołaj metodę [**Devices. Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) z listą urządzeń, aby dodać urządzenia do partii urządzeń.
+Następnie wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie wywołaj [**metodę DeviceBatches.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) z identyfikatorem wsadowym urządzenia, aby uzyskać interfejs do operacji dla określonej partii. Na koniec wywołaj [**metodę Devices.Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) z listą urządzeń, aby dodać urządzenia do partii urządzeń.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -74,7 +71,7 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.Create(devicesToBeUploaded);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CreateDevices.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: CreateDevices.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -82,31 +79,31 @@ var trackingLocation =
 
 | Metoda   | Identyfikator URI żądania                                                                                                            |
 |----------|------------------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/deviceBatches/{devicebatch-ID}/Devices http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/deviceBatches/{devicebatch-id}/devices HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Podczas tworzenia żądania Użyj następującej ścieżki i parametrów zapytania.
+Podczas tworzenia żądania użyj następującej ścieżki i parametrów zapytania.
 
 | Nazwa           | Typ   | Wymagane | Opis                                           |
 |----------------|--------|----------|-------------------------------------------------------|
-| Identyfikator klienta    | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
-| devicebatch — identyfikator | ciąg | Tak      | Identyfikator ciągu, który identyfikuje partię urządzenia. |
+| identyfikator klienta    | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
+| devicebatch-id | ciąg | Tak      | Identyfikator ciągu identyfikujący partię urządzenia. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Treść żądania musi zawierać tablicę obiektów [urządzeń](device-deployment-resources.md#device) . Następujące kombinacje pól do identyfikacji urządzenia są akceptowane:
+Treść żądania musi zawierać tablicę [obiektów](device-deployment-resources.md#device) Device. Akceptowane są następujące kombinacje pól w celu zidentyfikowania urządzenia:
 
 - hardwareHash + productKey.
-- hardwareHash + numer seryjny.
-- hardwareHash + productKey + numer seryjny.
-- tylko hardwareHash.
-- tylko productKey.
-- Numer seryjny i oemManufacturerName + ModelName.
+- hardwareHash + serialNumber.
+- hardwareHash + productKey + serialNumber.
+- hardwareHash tylko.
+- Tylko klucz productKey.
+- serialNumber + oemManufacturerName + modelName.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -153,11 +150,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera nagłówek **lokalizacji** z identyfikatorem URI, którego można użyć do pobrania stanu przekazywania urządzenia. Zapisz ten identyfikator URI do użycia z innymi powiązanymi interfejsami API REST.
+Jeśli to się powiedzie, odpowiedź zawiera nagłówek **Location** (Lokalizacja) z polem URI, który może służyć do pobierania stanu przekazywania urządzenia. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

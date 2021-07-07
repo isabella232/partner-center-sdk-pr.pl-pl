@@ -1,102 +1,98 @@
 ---
 title: Konstruktor witryn sklepu internetowego klienta CSP — podręcznik Szybki start
-description: Utwórz witrynę online Marketplace, aby sprzedawać oferty dostawcy rozwiązań w chmurze (CSP) za pomocą konstruktora aplikacji dostawcy usług kryptograficznych.
+description: Utwórz witrynę Marketplace online w celu sprzedaży ofert dostawców rozwiązań w chmurze (CSP) przy użyciu narzędzia CSP Customer Storefront Builder.
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 83ae0c789f95485ec3eb272434e57421a8f93fb6
-ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
+ms.openlocfilehash: 8550492c7a4201a955c7b051b453103628612f3e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99505326"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973353"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Konstruktor witryn sklepu internetowego klienta CSP — podręcznik Szybki start
 
-**Dotyczy:**
+Utwórz witrynę Marketplace online w celu sprzedaży ofert dostawców rozwiązań w chmurze (CSP) przy użyciu narzędzia CSP Customer Storefront Builder.
 
-- Centrum partnerskie
+## <a name="introduction-to-the-csp-customer-storefront-builder"></a>Wprowadzenie do programu CSP Customer Storefront Builder
 
-Utwórz witrynę online Marketplace, aby sprzedawać oferty dostawcy rozwiązań w chmurze (CSP), korzystając z konstruktora w sklepie dla klientów programu CSP.
+Aplikacja CSP Customer Storefront Builder ułatwia partnerom tworzenie platformy handlowej online w celu sprzedaży ofert CSP swoim klientom. Większość partnerów i małych organizacji sprzedażowych chce skupić się na sprzedaży, a nie na tworzeniu platformy handlowej online. Przykładowa zestaw SDK Centrum partnerskiego wymaga umiejętności tworzenia oprogramowania w celu utworzenia i wdrożenia witryny internetowej. Za pomocą aplikacji CSP Customer Storefront Builder można szybko i łatwo utworzyć własną witrynę internetową. Możesz również pobrać witrynę internetową jako przykładowy kod lub wdrożyć ją bezpośrednio w subskrypcji platformy Azure za pomocą witryny internetowej Gotowe do użycia w usłudze Transact.
 
-## <a name="introduction-to-the-csp-customer-storefront-builder"></a>Wprowadzenie do konstruktora w sklepie dla klientów programu CSP
+Ta witryna internetowa jest w pełni własnością, obsługiwana i obsługiwana przez partnerów, a firma Microsoft nie zbiera żadnych danych ani danych telemetrycznych z witryny internetowej. Program CSP Customer Storefront Builder tworzy witrynę internetową dla partnera, która jest w pełni zgodna ze standardem [Payment Card Industry Data Security Standard](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-Konstruktor sklepu w sklepie dostawcy usług kryptograficznych pomaga partnerom w łatwym tworzeniu rynku online do sprzedaży ofert dostawcy usług kryptograficznych dla klientów. Większość partnerów i małe organizacje sprzedaży chcą skupić się na sprzedawaniu, a nie na projektowaniu portalu online. Przykładowa aplikacja zestawu SDK Centrum partnerskiego wymaga umiejętności programowania oprogramowania do tworzenia i wdrażania witryny sieci Web. Korzystając z konstruktora witryny dostawcy usług kryptograficznych, można szybko i łatwo tworzyć własną witrynę sieci Web. Możesz również pobrać witrynę internetową jako przykładowy kod lub wdrożyć ją bezpośrednio w ramach subskrypcji platformy Azure za pomocą gotowej do transakcyjnej witryny sieci Web.
-
-Ta witryna sieci Web jest w pełni własnością, obsługiwana i utrzymywana przez partnerów, a firma Microsoft nie zbiera żadnych danych ani telemetrii z witryny sieci Web. Konstruktor sklepu z klientami programu CSP tworzy witrynę sieci Web dla partnera, który jest w pełni zgodny z [standardem Payment Card Industry Data Security](https://www.pcisecuritystandards.org/) (PCI DSS).
-
-Kod konstruktora witryny dostawcy usług kryptograficznych klienta jest objęty licencją dostępną w [umowie EULA centrum partnera SDK](/legal/partner-center/eula-partner-center-sdk).
+Kod CSP Customer Storefront Builder podlega licencji dostępnej w zestaw SDK Centrum partnerskiego [EULA.](/legal/partner-center/eula-partner-center-sdk)
 
 >[!NOTE]
->Użytkownik jest odpowiedzialny za zarządzanie witryną sieci Web, konserwację i wszelkie problemy, które mogą wynikać z tworzenia witryny sieci Web. Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](/legal/partner-center/eula-partner-center-sdk).
+>Użytkownik jest odpowiedzialny za zarządzanie witryną sklepu, konserwację i wszelkie problemy, które mogą wynikać z tworzenia witryny internetowej. Przeczytaj i zapoznaj się z terminami w [zestaw SDK Centrum partnerskiego EULA.](/legal/partner-center/eula-partner-center-sdk)
 
-Aby uzyskać dodatkowe informacje, zobacz również następujące artykuły: [dostawca usług w sieci Web klienta CSP](csp-customer-web-storefront.md) i [aplikacja testowa konsoli](console-test-app.md).
+Aby uzyskać dodatkowe informacje, zobacz również następujące artykuły: [Witryna sklepu](csp-customer-web-storefront.md) internetowego klienta CSP i [testowa aplikacja konsolowa](console-test-app.md).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Konstruktor sklepu w sklepie dostawcy usług kryptograficznych jest przeznaczony do szybkiego tworzenia witryny sieci Web. Podczas planowania należy pamiętać o następujących kwestiach:
+Program CSP Customer Storefront Builder jest przeznaczony jako szybki sposób tworzenia witryny internetowej. Podczas planowania należy wziąć pod uwagę następujące kwestie:
 
-- Po wdrożeniu firma Microsoft i centrum partnerskie nie przechowują kopii witryny sieci Web partnera ani dowolnych informacji dodanych do programu CSP Customer w sklepie w sklepie.
+- Po wdrożeniu firma Microsoft i Partner Center nie utrzymują kopii witryny internetowej partnera ani żadnych informacji dodanych do aplikacji CSP Customer Storefront Builder.
 
-- W centrum partnerskim można wdrożyć tylko witrynę sieci Web w sklepie dostawcy usług kryptograficznych w ramach subskrypcji platformy Azure partnera.
+- Partner Center wdrożyć witrynę internetową CSP Customer Storefront tylko w subskrypcjach platformy Azure partnera.
 
-- Ta witryna internetowa, po wdrożeniu, jest w pełni własnością i zarządzana przez partnera. Firma Microsoft nie ma dostępu do tej witryny sieci Web ani żadnych danych związanych z witryną sieci Web. Partnerzy są odpowiedzialni za konserwację i zarządzanie witryną sieci Web. Firma Microsoft nie będzie udostępniać żadnej aktywnej witryny sieci Web ani innej pomocy technicznej związanej z konstruktorem aplikacji dostawcy usług kryptograficznych lub dowolnej witryny sieci Web utworzonej przy użyciu konstruktora usług w sklepie dla klientów.
+- Po wdrożeniu ta witryna internetowa jest w pełni własnością partnera i jest przez nie zarządzana. Firma Microsoft nie ma dostępu do tej witryny ani żadnych danych związanych z witryną internetową. Partnerzy są odpowiedzialni za konserwację witryny internetowej i zarządzanie jej witryną. Firma Microsoft nie będzie zapewniać żadnej live witryny internetowej ani innej pomocy technicznej związanej z programem CSP Customer Storefront Builder ani żadnej witryny internetowej utworzonej za pomocą narzędzia CSP Customer Storefront Builder.
 
-- Centrum partnerskie nie może bezpośrednio uzyskać dostępu do tej witryny sieci Web ani jej uaktualnić przy użyciu nowych lub zmienionych funkcji zestawu SDK lub interfejsu API Wszystkie nowe funkcje i ulepszenia muszą być własnością, opracowana i zarządzana przez partnerów, w tym dodanie nowego zestawu SDK lub funkcji interfejsu API Centrum partnerskiego.
+- Partner Center uzyskać bezpośredniego dostępu do tej witryny internetowej ani uaktualnić jej za pomocą nowych lub zmienionych funkcji zestawu SDK lub interfejsu API. Wszelkie nowe funkcje lub ulepszenia muszą być własnością partnerów, być przez nie opracowywane i zarządzane, w tym dodawać nowe funkcje interfejsów zestaw SDK Centrum partnerskiego api.
 
-- Ten konstruktor sklepu w sklepie dla klientów CSP umożliwia obecnie Konfigurowanie płatności na koncie PayPal Pro/PayU Money (dla Indii). Jeśli partnerzy muszą zmienić procesor płatniczy, muszą zmienić kod w celu zapewnienia obsługi preferowanej metody płatności.
+- Ten program CSP Customer Storefront Builder umożliwia obecnie konfigurowanie płatności na koncie usługi PayPal Pro/Płatności w przypadku Indiach. Jeśli partnerzy będą musieli zmienić procesor płatności, będą musieli zmienić kod w celu obsługi preferowanej formy płatności.
 
-- Wszelkie informacje dotyczące płatności dodane w konstruktorze sklepu w sklepie dostawcy CSP nie są przechowywane ani utrzymywane w centrum partnerskim.
+- Wszelkie informacje związane z płatnościami dodane w programie CSP Customer Storefront Builder nie są przechowywane ani przechowywane w Partner Center.
 
-- Konfiguracja płatności w systemie PayPal będzie działała w dowolnym lokalizacje geograficzne, w którym jest dostępna system PayPal. Dostępność i pomoc techniczna w systemie PayPal są wyłącznie kontrolowane przez system PayPal i mogą być w dowolnym momencie wycofane w systemie PayPal.
+- PayPal konfiguracji płatności będą działać w dowolnych lokalizacjach geograficznych, PayPal są dostępne. PayPal dostępność i pomoc techniczna jest kontrolowana wyłącznie przez PayPal i może zostać wycofana w dowolnym momencie przez PayPal.
 
-- Konfiguracja płatności PayU będzie działała tylko w Indiach. PayU dostępność i pomoc techniczna są kontrolowane wyłącznie przez PayU i mogą być wycofane w dowolnym momencie przez PayU.
+- Konfiguracja płatności w przypadku płatności za 12000 r. będzie obecnie działać tylko w Indiach. Dostępność i pomoc techniczna w przypadku płatności zgodnie z rzeczywistym płatnością jest kontrolowana wyłącznie przez payu i może zostać wycofana w dowolnym momencie przez usługę PayU.
 
-- Przeczytaj i zapoznaj się z warunkami w [umowie licencyjnej dotyczącej zestawu SDK Centrum partnerskiego](/legal/partner-center/eula-partner-center-sdk).
+- Przeczytaj i zapoznaj się z terminami w [zestaw SDK Centrum partnerskiego EULA.](/legal/partner-center/eula-partner-center-sdk)
 
-## <a name="using-the-csp-customer-storefront-builder"></a>Korzystanie z konstruktora witryny Customer w sklepie dostawcy CSP
+## <a name="using-the-csp-customer-storefront-builder"></a>Korzystanie z narzędzia Customer Storefront Builder dla programu CSP
 
-Administratorzy partnerów programu CSP w centrum partnerskim mogą wdrożyć sklep dostawcy usług kryptograficznych bezpośrednio w centrum partnerskim. Przy minimalnym wysiłku można wdrożyć nową witrynę sieci Web w dzierżawie partnera. Po wdrożeniu partnerzy mogą skorzystać z witryny sieci Web, aby skonfigurować znakowanie, oferty i informacje związane z płatnością, a następnie udostępnić adres URL witryny sieci Web klientom.
+Administratorzy partnerów programu CSP w Partner Center mogą wdrożyć sklep klienta CSP bezpośrednio z Partner Center. Przy minimalnym nakładzie pracy można wdrożyć nową witrynę internetową w dzierżawie partnera. Po wdrożeniu partnerzy mogą za pomocą witryny internetowej skonfigurować znakowanie, oferty i informacje dotyczące płatności, a następnie udostępnić adres URL witryny internetowej klientom.
 
-Proces tworzenia witryny sieci Web w witrynie sklepu:
+Proces tworzenia witryny internetowej sklepu ma na celu:
 
 1. [Wdrażanie witryny internetowej](#deploy)
 
-2. [Konfigurowanie witryny sklepu](#configure)
+2. [Konfigurowanie sklepu](#configure)
 
-3. [Usługa Transact w witrynie sklepu](#transact)
+3. [Transakcje w sklepie](#transact)
 
 ### <a name="deploy"></a>Wdróż
 
-Opcje wdrożenia:
+Opcje wdrażania:
 
-- Pobierz [przykładowy kod sklepu Centrum partnerskiego](https://github.com/Microsoft/Partner-Center-Storefront) z usługi GitHub
-- Integracja z platformą Azure w celu wdrożenia skonfigurowanej witryny sieci Web
-- Wdróż w istniejącej subskrypcji lub Przenieś własną subskrypcję
+- Pobierz [przykładowy kod Partner Center storefront z](https://github.com/Microsoft/Partner-Center-Storefront) GitHub
+- Integracja z platformą Azure w celu wdrożenia skonfigurowanej witryny internetowej
+- Wdrażanie w ramach istniejącej subskrypcji lub bring your own subscription
 
 ### <a name="configure"></a>Konfigurowanie
 
-W celu dostosowania witryny sklepu nie są wymagane żadne umiejętności programistyczne.
+Do dostosowania sklepu nie są wymagane żadne umiejętności deweloperskie.
 
-Zaloguj się przy użyciu poświadczeń administratora Centrum partnerskiego, aby skonfigurować:
+Zaloguj się przy użyciu Partner Center administratora, aby skonfigurować:
 
-- **Znakowanie**: Nazwa firmy, logo, kontakty i inne.
+- **Znakowanie:** nazwa firmy, logo, kontakty i inne.
 
-- **Oferty**: Wyświetl wszystkie oferty dostawcy usług kryptograficznych. Możesz wybrać, które oferty mogą wyświetlać i kupować klienci. Możesz również spersonalizować informacje o ofercie i dodać swoją cenę.
+- **Oferty:** wyświetl wszystkie oferty CSP. Możesz wybrać oferty, które klienci mogą wyświetlać i kupować. Możesz również spersonalizować informacje o ofercie i dodać swoją cenę.
 
-- **Konfiguracja płatności PayPal**: Dodaj informacje o koncie płatności w systemie PayPal. Jeśli nie masz konta w systemie PayPal, możesz odwiedzać [https://www.paypal.com](https://www.paypal.com) i utworzyć nowe konto. To konto będzie używane w systemie PayPal do kredytowania płatności dokonywanych przez klientów. *Firma Microsoft nie ponosi odpowiedzialności za relacje między partnerami a firmą PayPal. Korzystanie z systemu PayPal może wymagać od klientów partnerskich lub partnerskich zgody na dodatkowe warunki.*
+- **PayPal konfiguracji płatności:** dodaj swoje PayPal informacje o koncie płatności. Jeśli nie masz konta PayPal, możesz odwiedzić [https://www.paypal.com](https://www.paypal.com) i utworzyć nowe konto. To konto będzie używane do PayPal środków na płatności dokonane przez klientów. *Firma Microsoft nie jest odpowiedzialna za relację między partnerami i PayPal. Korzystanie z PayPal może wymagać od klientów partnera lub partnera zgody na dodatkowe warunki.*
 
-- (*Dla Indii*) **PayU**: Dodaj informacje o koncie płatności pieniężnych PayU. Jeśli nie masz konta w usłudze PayU Money, możesz odwiedzać [https://www.payumoney.com/](https://www.payumoney.com/) i utworzyć nowe konto. To konto będzie używane na potrzeby PayU do kredytowania płatności dokonywanych przez klientów. *Firma Microsoft nie ponosi odpowiedzialności za relacje między partnerami i PayU. Użycie PayU może wymagać od klientów partnerskich lub partnerskich zgody na dodatkowe warunki.*
+- *(Indie*) **Konfiguracja płatności za usługi PayU:** dodaj informacje o koncie płatności z płatnością w przypadku płatności w u użytkownikach. Jeśli nie masz konta payu money, możesz odwiedzić i [https://www.payumoney.com/](https://www.payumoney.com/) utworzyć nowe konto. To konto będzie używane na potrzeby płatności w ramach umowy PayU w celu nakłoniania do płatności wykonanych przez klientów. *Firma Microsoft nie jest odpowiedzialna za relację między partnerami i płatnościami. Korzystanie z płatności zgodnie z płatnościami może wymagać od klientów partnera lub partnera zgody na dodatkowe warunki.*
 
 ### <a name="transact"></a>Transakcja
 
-- Po wdrożeniu klienci mogą od razu zakupić i Transact.
+- Po wdrożeniu klienci mogą natychmiast kupować i kupować transakcje.
 
-- Klienci mogą kupować bezpośrednio z portalu partnerskiego zintegrowanego z zestawem SDK Centrum partnerskiego.
+- Klienci mogą kupować bezpośrednio z portalu dla partnerów zintegrowanego z zestaw SDK Centrum partnerskiego.
 
-#### <a name="customer-countries"></a>Kraje klienta
+#### <a name="customer-countries"></a>Kraje klientów
 
-Klienci mogą należeć do następujących krajów:
+Klienci mogą należeć do tych krajów:
 
 | Kod kraju | Nazwa kraju   |
 |--------------|----------------|
@@ -129,7 +125,7 @@ Klienci mogą należeć do następujących krajów:
 | NL           | Holandia    |
 | NZ           | Nowa Zelandia    |
 | NO           | Norwegia         |
-| Nagłówek           | Polska         |
+| Po           | Polska         |
 | PT           | Portugalia       |
 | RO           | Rumunia        |
 | SK           | Słowacja       |
@@ -140,126 +136,126 @@ Klienci mogą należeć do następujących krajów:
 | GB           | Zjednoczone Królestwo |
 | USA           | Stany Zjednoczone  |
 
-## <a name="partner-experience-scenarios"></a>Scenariusze środowiska partnerskiego
+## <a name="partner-experience-scenarios"></a>Scenariusze obsługi partnerów
 
 ### <a name="deployment-scenario"></a>Scenariusz wdrożenia
 
-Aby wdrożyć ulepszony lub dostosowany sklep dostawcy usług kryptograficznych:
+Aby wdrożyć rozszerzoną lub dostosowaną usługę CSP Customer Storefront:
 
-- Pobierz [przykładowy kod sklepu Centrum partnerskiego](https://github.com/Microsoft/Partner-Center-Storefront) , aby wprowadzić dodatkowe dostosowania.
+- Pobierz [przykładowy kod Partner Center storefront,](https://github.com/Microsoft/Partner-Center-Storefront) aby wprowadzić dodatkowe dostosowania.
 
-- Użyj Microsoft Visual Studio 2015 (lub nowszego) do opracowania.
+- Użyj Microsoft Visual Studio 2015 (lub nowszego).
 
-- Kompiluj dodatkowe zmiany i udoskonalenia (w tym autoryzacje, certyfikaty, zmiany manifestu i inne elementy).
+- Twórz dodatkowe zmiany i ulepszenia (w tym autoryzacje, certyfikaty, zmiany manifestu i inne elementy).
 
 ### <a name="configuration-scenario"></a>Scenariusz konfiguracji
 
-- Nowo utworzona witryna sieci Web jest połączona z dzierżawcą partnera i ma dostęp do wszystkich kont administratorów tej dzierżawy partnerskiej.
+- Nowo utworzona witryna internetowa jest połączona z dzierżawą partnera i ma dostęp do wszystkich kont administratorów tej dzierżawy partnera.
 
-  - Partnerzy mogą zalogować się do tej nowej witryny sieci Web przy użyciu poświadczeń administratora Centrum partnerskiego.
+  - Partnerzy mogą logować się do tej nowej witryny internetowej przy użyciu Partner Center poświadczeń administratora.
 
-- Aplikacja dla sklepu obsługuje obecnie język francuski, hiszpański, holenderski, niemiecki, japoński i angielski. (Angielski służy jako język rezerwowy).
+- Aplikacja ze sklepu obsługuje obecnie język francuski, hiszpański, holenderski, niemiecki, japoński i angielski. (Angielski służy jako język rezerwowy).
 
-  - Witryna sklepu konfiguruje ustawienia regionalne przy użyciu domyślnych ustawień regionalnych partnera z poziomu profilu partnera w centrum partnerskim. Te ustawienia regionalne służą do konfigurowania walut, formatów dat i zlokalizowanych ofert w repozytorium.
+  - Sklep konfiguruje ustawienia lokalne przy użyciu domyślnych ustawień regionalnych partnera z profilu partnera w Partner Center. Te ustawienia lokalne są używane do konfigurowania walut, formatów dat i zlokalizowanych ofert w repozytorium.
 
-- Partnerzy mogą konfigurować informacje o płatnościach znakowania, oferty oraz PayPal lub PayU (na potrzeby Indii).
+- Partnerzy mogą konfigurować znakowanie, oferty i PayPal lub płatność w przypadku Indie.
 
-- Partnerzy mogą zaktualizować nazwę firmy, logo firmy, obraz nagłówka, kontakty sprzedaży i pomocy technicznej itd.
+- Partnerzy mogą aktualizować nazwę firmy, logo firmy, obraz nagłówka, kontakty sprzedażowe i pomocy technicznej i nie tylko.
 
-- Partnerzy mogą zobaczyć wszystkie oferty CSP dostępne na ich terytorium.
+- Partnerzy mogą zobaczyć wszystkie dostępne oferty CSP w zależności od ich terytorium.
 
-  - Partnerzy mogą wybrać, które oferty mają być widoczne dla wszystkich klientów.
+  - Partnerzy mogą wybrać oferty, które mają być wyświetlane wszystkim klientom.
 
-  - Partner CSP może wybrać jedną lub więcej ofert i zaktualizować nazwę, ilość, opis funkcji i cenę.
-  - Cena to cena roczna. Klienci subskrybują corocznie.
+  - Partner CSP może wybrać co najmniej jedną ofertę i zaktualizować nazwę, ilość, opis funkcji i cenę.
+  - Cena jest ceną roczną. Klienci subskrybują subskrypcję rocznie.
 
-- Partnerzy mogą w dowolnym momencie skonfigurować wstępnie zatwierdzone transakcje dla (a) wszystkich bieżących i przyszłych klientów lub (b) określonych klientów.
+- Partnerzy mogą w dowolnym momencie skonfigurować wstępnie zatwierdzone transakcje dla (a) wszystkich bieżących i przyszłych klientów LUB (b) określonych klientów.
 
-  - Wstępnie zatwierdzeni klienci nie muszą kupować w portalu, gdy dodają nowe subskrypcje, kupią dodatkowe licencje do istniejących subskrypcji lub odnówą subskrypcję.
+  - Wstępnie zatwierdzeni klienci nie muszą płacić za portal podczas dodawania nowych subskrypcji, kupowania dodatkowych licencji do istniejących subskrypcji ani odnawiania subskrypcji.
 
-  - Wstępnie zatwierdzeni klienci nie zostaną przekierowani do systemu PayPal lub PayU (dla Indii) w celu dokonania płatności w ramach tych transakcji.
+  - Wstępnie zatwierdzeni klienci nie będą przekierowywani do PayPal płatności (dla Indiach) w celu płatności podczas tych transakcji.
 
-  - Wstępnie zatwierdzone transakcje klienta umożliwiają partnerowi przeprowadzenie rozliczania i fakturowania w trybie offline dla wstępnie zatwierdzonych klientów.
+  - Wstępnie zatwierdzone transakcje klientów umożliwiają partnerowi wykonywanie rozliczeń i fakturowania w trybie offline dla wstępnie zatwierdzonych klientów.
 
-- Partner programu CSP może wprowadzać swoje informacje o koncie w systemie PayPal, takie jak identyfikator klienta i wpis tajny systemu PayPal. Partner CSP może również wybrać, czy chcą testować przy użyciu piaskownicy czy konta na żywo.
+- Partner CSP może wprowadzić swoje konto PayPal, takie jak PayPal klienta i klucz tajny. Partner programu CSP może również wybrać, czy chce testować przy użyciu piaskownicy, czy konta na żywo.
 
-  - Partnerzy mogą znaleźć te informacje [https://developer.paypal.com/](https://developer.paypal.com/) w obszarze **moje aplikacje & poświadczeniami**. Możesz również uzyskać te informacje z bieżącej aplikacji lub tworząc nową aplikację w systemie PayPal.
-  - Utwórz nowe konto w systemie PayPal, jeśli jeszcze go nie masz. To konto będzie używane w systemie PayPal do kredytowania płatności dokonywanych przez klientów.
+  - Partnerzy mogą znaleźć te informacje w [https://developer.paypal.com/](https://developer.paypal.com/) chmurze w **moich & poświadczenia.** Te informacje można również uzyskać z bieżącej aplikacji lub przez utworzenie nowej aplikacji w PayPal.
+  - Utwórz nowe konto PayPal, jeśli jeszcze go nie masz. To konto będzie używane do PayPal środków na płatności dokonane przez klientów.
 
-    - Aby otworzyć konto biznesowe w systemie PayPal, zobacz [https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register](https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register) .
+    - Aby otworzyć konto PayPal biznesowego, zobacz [https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register](https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register) .
 
-    - Aby utworzyć konto piaskownicy w systemie PayPal, zobacz [https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/](https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/) .
+    - Aby utworzyć konto PayPal piaskownicy, zobacz [https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/](https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/) .
 
-- (W przypadku Indii) partner CSP może wprowadzić swoje informacje o koncie pieniężnym PayU, takie jak identyfikator klienta PayU i hasło. Partnerzy mogą znaleźć więcej informacji na temat [https://developer.payumoney.com/](https://developer.payumoney.com/) .
+- (Indie) Partner programu CSP może wprowadzić swoje informacje o koncie płatności zgodnie z płatnością(PayU), takie jak identyfikator klienta i hasło payu. Partnerzy mogą znaleźć więcej informacji na temat [https://developer.payumoney.com/](https://developer.payumoney.com/) .
 
-  - Utwórz nowe konto w usłudze PayU Money, jeśli jeszcze go nie masz. Aby otworzyć konto PayU Money, odwiedź stronę [https://www.payumoney.com/merchant-account/#/](https://www.payumoney.com/merchant-account/#/) . To konto będzie używane na potrzeby PayU do kredytowania płatności dokonywanych przez klientów.
+  - Utwórz nowe konto płatności za platformę PayU, jeśli jeszcze go nie masz. Aby otworzyć konto payu money, odwiedź stronę [https://www.payumoney.com/merchant-account/#/](https://www.payumoney.com/merchant-account/#/) . To konto będzie używane na potrzeby płatności w ramach umowy PayU w celu nakłoniania do płatności wykonanych przez klientów.
 
 ## <a name="customer-experience-scenarios"></a>Scenariusze obsługi klienta
 
-### <a name="new-customer-sign-up-scenario"></a>Nowy scenariusz rejestracji klienta
+### <a name="new-customer-sign-up-scenario"></a>Scenariusz rejestracji nowego klienta
 
-- Domyślnie witryna sieci Web jest publicznie dostępna i pokazuje katalog partnera na stronie głównej.
+- Domyślnie witryna internetowa jest publicznie dostępna i zawiera katalog partnera na stronie głównej.
 
-- Klienci mogą teraz należeć do dużej liczby [krajów klientów](#customer-countries).
+- Klienci mogą teraz należeć do dużej liczby [krajów klientów.](#customer-countries)
 
-- Fokus znajduje się w regionach Europejskie Stowarzyszenie wolnego handlu (EFTA), Ameryka Północna, Japonia, Indie, Australia i Nowa Zelandia.
-  - Ta funkcja używa obsługi autoryzacji regionalnej w zestawie SDK Centrum partnerskiego.
+- Skupiono się na krajach European Free Trade Association (ASSOCIATION), Ameryka Północna, Japonii, Indiach, Australii i Nowej Zelandii.
+  - Ta funkcja korzysta z obsługi autoryzacji regionalnej w zestaw SDK Centrum partnerskiego.
 
 - Klienci mogą wybrać ofertę z katalogu do zakupu.
-  - Mogą oni dodawać nazwy klientów, adresy i informacje dotyczące domeny.
+  - Mogą oni dodać nazwę klienta, adres i informacje związane z domeną.
 
-- Klienci będą kierowani do środowiska wyewidencjonowywania w systemie PayPal lub PayU (dla Indii). Klienci mogą podawać płatność przy użyciu:
-  - Istniejące konto PayPal lub PayU (dla Indii)
-  - Instrumenty finansowania obsługiwane w ich krajach przez system PayPal lub PayU (dla Indii). Mogą to być karty kredytowe, karty debetowe i konta bankowe.
+- Klienci będą kierowani do procesu finalizacji zakupu PayPal płatności (w przypadku Indiach). Klienci mogą zapewniać płatność przy użyciu jednego z tych usług:
+  - Istniejące konto PayPal lub payu (indie)
+  - Instrument finansowych obsługiwanych w ich kraju przez PayPal lub PayU (indie). Mogą to być karty kredytowe, debetowe i konta bankowe, jeśli ma to zastosowanie.
 
-- Dla tego klienta zostanie utworzona dzierżawa klienta. Po pomyślnym utworzeniu zamówienia dzierżawy klienci otrzymają szczegółowe informacje o nazwie użytkownika, haśle i subskrypcji konta.
-  - Klienci mogą zapisać nazwę użytkownika i hasło, aby zalogować się do dalszych zakupów.
-  - Każda subskrypcja została zakupiona przez rok, a klienci mogą odnowić w ciągu 30 dni przed datą zakończenia subskrypcji.
+- Dla tego klienta jest tworzona dzierżawa klienta. Po pomyślnym utworzeniu zamówienia dzierżawy klienci mają dostęp do nazwy użytkownika konta, hasła i szczegółów subskrypcji.
+  - Klienci mogą zapisywać nazwę użytkownika i hasło, aby być zalogowanym w celu dalszego zakupu.
+  - Każda subskrypcja jest kupowana przez rok, a klienci mogą odnawiać subskrypcję w ciągu 30 dni przed datą zakończenia subskrypcji.
 
-### <a name="view-prior-purchases-scenario"></a>Wyświetl scenariusz wcześniejszych zakupów
+### <a name="view-prior-purchases-scenario"></a>Wyświetlanie scenariusza wcześniejszych zakupów
 
-- Klient loguje się przy użyciu nazwy użytkownika i hasła dzierżawy klienta i przechodzi do sekcji **My Orders (moje zamówienia** ).
+- Klient logowania się przy użyciu nazwy użytkownika i hasła dzierżawy klienta przechodzi do **sekcji Moje** zamówienia.
 
-- Klienci mogą przejść do strony **moje zamówienia** , gdzie mogą wyświetlać zakupione subskrypcje i wprowadzać aktualizacje w razie potrzeby.
+- Klienci mogą przejść do strony **Moje zamówienia,** na której mogą wyświetlić zakupione subskrypcje i w razie potrzeby wprowadzić aktualizacje.
 
-- Klienci mogą przejść do strony **Moje subskrypcje** , na której mogą wyświetlać wszystkie subskrypcje (oparte na licencjach i oparte na użyciu), w tym te utrzymywane w centrum partnerskim.
+- Klienci mogą przejść do strony Moje **subskrypcje,** na której mogą wyświetlić wszystkie subskrypcje (oparte na licencjach, a także na podstawie użycia), w tym subskrypcje Partner Center.
 
-### <a name="add-licenses-to-existing-subscriptions-scenario"></a>Scenariusz dodawania licencji do istniejących subskrypcji
+### <a name="add-licenses-to-existing-subscriptions-scenario"></a>Dodawanie licencji do istniejącego scenariusza subskrypcji
 
-- W sekcji **My Orders** klienci mogą dodawać więcej licencji do istniejących subskrypcji. Klienci mogą dodawać więcej licencji w dowolnym momencie w roku subskrypcji.
+- W sekcji **Moje zamówienia** klienci mogą dodać więcej licencji do istniejących subskrypcji. Klienci mogą dodawać więcej licencji w dowolnym momencie w ciągu roku subskrypcji.
 
-- Każda dodana licencja nie zmienia daty zakończenia subskrypcji. Jednak cena subskrypcji zmienia się w zależności od daty dodania licencji i miejsca, w którym ta data przypada w roku. Cena jest naliczana proporcjonalnie do liczby dni, które są naliczane proporcjonalnie do pozostałego dnia roku.
+- Każda dodana licencja nie zmienia daty zakończenia subskrypcji. Jednak cena subskrypcji zmienia się w zależności od daty dodania licencji i daty w roku. Ceny są naliczane proporcjonalnie do opłaty tylko za pozostałe dni roku.
 
-### <a name="add-more-subscriptions-scenario"></a>Scenariusz dodawania kolejnych subskrypcji
+### <a name="add-more-subscriptions-scenario"></a>Dodawanie scenariusza dodawania kolejnych subskrypcji
 
-- Klienci mogą w dowolnym momencie zakupić dowolną liczbę subskrypcji w sekcji **Dodawanie subskrypcji** w obszarze **moje zamówienia**.
+- Klienci mogą w dowolnym momencie kupić dowolną liczbę subskrypcji w sekcji Dodawanie **subskrypcji** w obszarze **Moje zamówienia.**
 
-- Klient może wybrać subskrypcję, dodać ilość i uregulować, aby zakończyć transakcję i od razu zacząć korzystać z subskrypcji. Jeśli klient jest wstępnie zatwierdzonym klientem, subskrypcja będzie dostępna do użytku natychmiast, a faktura zostanie wysłana do klienta w celu dokonania płatności.
+- Klient może wybrać subskrypcję, dodać ilość i zapłacić, aby ukończyć transakcję i natychmiast rozpocząć korzystanie z subskrypcji. Jeśli klient jest wstępnie zatwierdzonym klientem, subskrypcja jest dostępna do natychmiastowego użycia, a faktura zostanie wysłana do klienta w celu płatności.
 
 ### <a name="renew-subscription-scenario"></a>Scenariusz odnawiania subskrypcji
 
 - Klient może odnowić subskrypcję w ciągu ostatnich 30 dni przed datą zakończenia subskrypcji.
 
-- Ta wartość jest dostępna tylko w ciągu ostatnich 30 dni.
+- Jest ona dostępna tylko w ciągu ostatnich 30 dni.
 
-- Jeśli nie zostanie odnowiony w ciągu ostatnich 30 dni, subskrypcja zostanie usunięta z listy subskrypcji dla tej dzierżawy klienta.
+- Jeśli subskrypcja nie została odnowiona w ciągu ostatnich 30 dni, zostanie usunięta z listy subskrypcji dla tej dzierżawy klienta.
 
 - Nie można zaktualizować ilości podczas odnawiania.
 
 ### <a name="payments-scenario"></a>Scenariusz płatności
 
-- Jeśli klient jest wstępnie zatwierdzony dla transakcji przez administratora, w powyższych scenariuszach nie jest prezentowane środowisko płatnicze. Zamiast tego partner może wysłać fakturę za płatność do wstępnie zatwierdzonego klienta.
+- Jeśli klient jest wstępnie zatwierdzony dla transakcji przez administratora, środowisko płatności nie jest prezentowane dla powyższych scenariuszy. Zamiast tego partner może wysłać fakturę do płatności do wstępnie zatwierdzonego klienta.
 
-- W przypadku wszystkich nowych zakupów możesz dodać więcej licencji, dodać subskrypcje i odnowić. Klient może uiścić partnera przy użyciu tej witryny sieci Web za pośrednictwem systemu PayPal lub PayU (dla Indii).
+- W przypadku wszystkich nowych zakupów możesz dodać więcej licencji, dodać subskrypcje i odnowić. Klient może zapłacić partnerowi za pomocą tej witryny internetowej za pośrednictwem PayPal lub PayU (indie).
 
-- Ta witryna sieci Web jest zintegrowana z systemem PayPal lub PayU (dla Indii) i umożliwia partnerom akceptowanie płatności od klientów. W przypadku systemu PayPal lub PayU (dla Indii) kredyt ma tę kwotę na koncie partnera. Zarządzanie kontami w systemie PayPal lub PayU (dla Indii) jest poza tą witryną sieci Web i jest zarządzane odpowiednio na PayPal.com lub PayUmoney.com.
+- Ta witryna internetowa jest zintegrowana z PayPal płatnościami (indie) i umożliwia partnerom akceptowanie płatności od klientów. PayPal lub płatność (dla Indie) ta kwota jest na koncie partnera. PayPal lub PayU (dla Indie) Zarządzanie kontami bankowymi znajduje się poza tą witryną internetową i jest zarządzane odpowiednio w witrynie PayPal.com lub PayUmoney.com.
 
-- Jest to zależne od partnerów konfigurujących konfigurację płatności w systemie PayPal orPayU (dla Indii) w PayPal.com lub PayUmoney.com. Firma Microsoft nie zapisuje tych informacji ani faktycznych transakcji płatniczych wynikających z użycia tej opcji.
+- Jest to zależne od tego, czy partnerzy konfigurują konfigurację płatności PayPal payU (dla Indie) na stronie PayPal.com lub PayUmoney.com. Firma Microsoft nie zapisuje tych informacji ani rzeczywistych transakcji płatności wynikających z użycia tej opcji.
 
-### <a name="prorated-pricing-scenario"></a>Scenariusz cen ze proporcjonalną opłatą
+### <a name="prorated-pricing-scenario"></a>Scenariusz cen proporcjonalnych
 
-- Ta witryna internetowa obsługuje ceny ze proporcjonalną opłatą w przypadku, gdy klienci dodają więcej licencji do istniejącej subskrypcji.
+- Ta witryna internetowa obsługuje ceny proporcjonalnie w przypadkach, gdy klienci dodają więcej licencji do istniejącej subskrypcji.
 
-- Każda subskrypcja wygasa po upływie roku i nie można jej zmienić po zakupie subskrypcji.
+- Każda subskrypcja wygasa po upływie jednego roku i nie można jej zmienić po zakupie subskrypcji.
 
-- Data zakończenia subskrypcji nie ulegnie zmianie przez dodanie dodatkowych licencji. Klienci będą obciążani za pozostałą liczbę dni do daty zakończenia. Jeśli na przykład na dzień jest naliczana opłata za subskrypcję $365 i zostanie dodana co najmniej jedna licencja na dwa dni, Cena nowej licencji wynosi $364. W przypadku dodania kolejnej licencji 10 dni później cena będzie $354.
+- Data zakończenia subskrypcji nie zmieni się przez dodanie dodatkowych licencji. Klienci zostaną obciążani opłatami za pozostałą liczbę dni do daty zakończenia. Jeśli na przykład w pierwszym dniu koszt subskrypcji wynosi 365 USD, a dodasz jeszcze jedną licencję w dniu 2, cena nowej licencji będzie 364 USD. Jeśli dodasz jeszcze jedną licencję 10 dni później, cena będzie 354 USD.

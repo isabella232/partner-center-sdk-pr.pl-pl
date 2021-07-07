@@ -1,71 +1,66 @@
 ---
-title: Zasoby dotyczące uprawnień
+title: Zasoby uprawnień
 description: Opisuje zasoby związane z uprawnieniem.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 428ac6f8b4d67894092119a6246279045a04dac0
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a5ddf5dcd1189f686c5d41c05d7c66abc46605cc
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768074"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906349"
 ---
-# <a name="entitlement-resources"></a>Zasoby dotyczące uprawnień
+# <a name="entitlement-resources"></a>Zasoby uprawnień
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 ## <a name="entitlement"></a>Uprawnienie
 
-Ten zasób reprezentuje produkty, do których klient ma prawo do użycia z powodu zakupu przez partnera elementów z wykazu.
+Ten zasób reprezentuje produkty, do których klient ma prawo używać z powodu zakupu przez partnera produktów z katalogu.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| referenceOrder | [ReferenceOrder](#referenceorder) | Odwołanie do zamówienia, które spowodowało odpowiednie uprawnienia. |
+| referenceOrder | [ReferenceOrder](#referenceorder) | Odwołanie do zamówienia, które wywłaszło uprawnienie. |
 | productId | ciąg | Identyfikator produktu. |
-| Identyfikatora skuId | ciąg | Identyfikator jednostki SKU. |
-| quantity | int | Liczba uprawnień (bez niezrealizowanych/przeniesionych uprawnień). |
-| quantityDetails | Interfejs IEnumerable<[QuantityDetail](#quantitydetail)> | Lista szczegółów dotyczących liczby uprawnień (liczba elementów i stan każdej z nich). |
-| uprawnienietype | ciąg | Typ uprawnienia. (Zaktualizowano do ciągu z poziomu [uprawnień](#entitlementtype) w zestawie SDK 1,8). |
-| entitledArtifacts | [Artefakt](#artifact)<IEnumerable> | Lista artefaktów skojarzonych z uprawnieniem. |
-| IncludedEntitlements | [Uprawnienia](#artifact)<interfejsu IEnumerable> | Lista uprawnień, które są niejawnie uwzględniane w wyniku zakupu ProductId/identyfikatora skuId z katalogu. |
-| ExpiryDate | ciąg w formacie daty i godziny UTC  | Data wygaśnięcia uprawnień (jeśli dotyczy). |
+| skuID | ciąg | Identyfikator sku. |
+| quantity | int | Liczba uprawnień (z wyłączeniem niespełnienia/przeniesienia uprawnień). |
+| quantityDetails | IEnumerable<[QuantityDetail](#quantitydetail)> | Lista szczegółów ilości uprawnień (liczba elementów i stan każdej ilości). |
+| typ uprawnień | ciąg | Typ uprawnienia. (Zaktualizowano do ciągu z [wartości EntitlementType](#entitlementtype) w zestawie SDK 1.8). |
+| entitledArtifacts | Artefakt<[IEnumerable](#artifact)> | Lista artefaktów skojarzonych z uprawnieniem. |
+| IncludedEntitlements | Uprawnienie IEnumerable<[](#artifact)> | Lista uprawnień, które są niejawnie uwzględniane w wyniku zakupu productid/SkuId z katalogu. |
+| Data wygaśnięcia | ciąg w formacie daty i czasu UTC  | Data wygaśnięcia uprawnienia (jeśli ma zastosowanie). |
 
 ## <a name="referenceorder"></a>ReferenceOrder
 
-Odwołanie do zamówienia.
+Odwołanie do zamówienia uprawnienia.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| identyfikator | ciąg | Identyfikator zamówienia, do którego istnieje odwołanie. |
-| lineItemId | ciąg | Identyfikator elementu wiersza zamówienia, do którego się odwoływano. |
-| alternateId | ciąg | Alternatywny identyfikator elementu wiersza zamówienia, do którego się odwoływano. |
+| identyfikator | ciąg | Identyfikator kolejności, do których się odwoływuje. |
+| lineItemId | ciąg | Identyfikator przywoływego elementu wiersza zamówienia. |
+| alternateId | ciąg | Alternatywny identyfikator elementu wiersza zamówienia, do których się odwołujesz. |
 
 ## <a name="quantitydetail"></a>QuantityDetail
 
-Przedstawia szczegóły ilości uprawnień.
+Reprezentuje szczegóły ilości uprawnień.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
 | quantity | int | Liczba elementów. |
-| status | ciąg | Stan liczby. |
+| status | ciąg | Stan ilości. |
 
-## <a name="entitlementtype"></a>Uprawnienietype
+## <a name="entitlementtype"></a>Typ uprawnień
 
 > [!IMPORTANT]
-> Przestarzałe w zestawie SDK v 1.9
+> Przestarzałe w zestawie SDK w wersji 1.9
 
-[Wyliczenie](/dotnet/api/system.enum) z wartościami, które wskazują typ uprawnienia.
+[Wyli element](/dotnet/api/system.enum) z wartościami wskazującymi typ uprawnienia.
 
 | Wartość | Opis |
 |-------|-------------|
-| Oprogramowanie | Wskazuje typ uprawnień związany z oprogramowaniem. |
-| VirtualMachineReservedInstance | Wskazuje typ uprawnień związany z Azure Reserved Virtual Machine Instances. |
+| Oprogramowanie | Wskazuje typ uprawnień powiązany z oprogramowaniem. |
+| VirtualMachineReservedInstance | Wskazuje typ uprawnień powiązany z Azure Reserved Virtual Machine Instances. |
 
 ## <a name="artifact"></a>Artefakt
 
@@ -73,37 +68,37 @@ Artefakt skojarzony z uprawnieniem.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| artefakttype | ciąg | Typ artefaktu. (Zaktualizowano do ciągu z [artefakttype](#artifacttype) w zestawie SDK v 1.8) |
-| dynamicAttributes | &lt;Ciąg słownika, obiekt&gt; | Atrybuty dynamiczne zawierające określone wartości artefaktu. Na przykład jeśli artefakttype = "reservedinstance", ta właściwość będzie zawierać "reservationtype" = "virtualmachines" lub "reservationtype" = "sqldatabases", co oznacza wystąpienie zarezerwowane maszyny wirtualnej lub wystąpienie zarezerwowane SQL platformy Azure. (Dostępne począwszy od zestawu SDK v 1.9) |
+| artifactType | ciąg | Typ artefaktu. (Zaktualizowano do ciągu z [artifactType](#artifacttype) w zestawie SDK w wersji 1.8) |
+| dynamicAttributes | Ciąg &lt; słownika, obiekt&gt; | Atrybuty dynamiczne zawierające artifacttype określonych wartości. Na przykład gdy artifactType = "reservedinstance" ta właściwość będzie zawierać wartość "reservationType" = "virtualmachines" lub "reservationType" = "sqldatabases" oznaczające wystąpienie zarezerwowane maszyny wirtualnej lub wystąpienie zarezerwowane usługi Azure SQL wystąpienia zarezerwowanego. (Dostępne od wersji 1.9 zestawu SDK) |
 
-## <a name="artifacttype"></a>Artefakttype
+## <a name="artifacttype"></a>ArtifactType
 
 > [!IMPORTANT]
-> Przestarzałe w zestawie SDK v 1.9
+> Przestarzałe w zestawie SDK w wersji 1.9
 
-[Wyliczenie](/dotnet/api/system.enum) z wartościami wskazującymi typ artefaktu uprawnienia.
+[Wyli element](/dotnet/api/system.enum) z wartościami wskazującymi typ artefaktu uprawnień.
 
 | Wartość                          | Opis                                                                             |
 |--------------------------------| ----------------------------------------------------------------------------------------|
-| VirtualMachineReservedInstance | Wskazuje pomoc artefaktów z pobieraniem Azure Reserved Virtual Machine Instances. |
+| VirtualMachineReservedInstance | Wskazuje artefakt pomaga w pobierania Azure Reserved Virtual Machine Instances. |
 
 ## <a name="reservedinstanceartifact"></a>ReservedInstanceArtifact
 
-Artefakt skojarzony z uprawnieniem do wystąpienia zarezerwowanego platformy Azure. Dziedziczy z klasy [artefaktu](#artifact) .
+Artefakt skojarzony z uprawnieniem wystąpienia zarezerwowanego platformy Azure. Dziedziczy on z klasy [Artifact.](#artifact)
 
 | Właściwość   | Typ                           | Opis                                        |
 |------------|--------------------------------|----------------------------------------------------|
-| połącz       | [Łącze](./utility-resources.md#link) | Link, aby pobrać wszystkie szczegóły skojarzonego artefaktu.   |
-| Identyfikator | ciąg                         | Identyfikator zamówienia lub zasobu rezerwacji platformy Azure. |
+| połącz       | [Link](./utility-resources.md#link) | Link do pobrania wszystkich szczegółów skojarzonego artefaktu.   |
+| Resourceid | ciąg                         | Identyfikator zamówienia lub zasobu rezerwacji platformy Azure. |
 
 ## <a name="reservedinstanceartifactdetails"></a>ReservedInstanceArtifactDetails
 
-Reprezentuje jednostkę zwracaną podczas wywołania artefaktu wystąpienia zastrzeżonego platformy Azure.
+Reprezentuje jednostkę zwróconą po wywołania linku artefaktu wystąpienia zarezerwowanego platformy Azure.
 
 |   Właściwość   |           Typ           |                          Opis                          |
 |--------------|--------------------------|---------------------------------------------------------------|
 |     typ     |          ciąg          |                     Typ artefaktu.                     |
-| dokonując | IEnumerable<Reservation> | Wskazuje identyfikator zamówienia zasobu platformy Azure lub rezerwacji. |
+| Rezerwacje | Ienumerable<Reservation> | Wskazuje identyfikator zamówienia rezerwacji lub zasobu platformy Azure. |
 
 ## <a name="reservation"></a>Rezerwacja
 
@@ -112,52 +107,52 @@ Reprezentuje pojedynczą rezerwację.
 | Właściwość          | Typ                           | Opis                                                        |
 |-------------------|--------------------------------|--------------------------------------------------------------------|
 | reservationId     | ciąg                         | Identyfikator rezerwacji.                                         |
-| zakrestype         | ciąg                         | Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej. |
+| scopeType         | ciąg                         | Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej. |
 | displayName       | ciąg                         | Nazwa wyświetlana rezerwacji.                               |
-| appliedScopes     | IEnumerable                    | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy zakres ScopeType nie jest udostępniony). |
+| appliedScopes     | Ienumerable                    | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy typ scopeType nie jest udostępniony). |
 | quantity          | int                            | Liczba maszyn wirtualnych w rezerwacji.                 |
-| expiryDateTime    | ciąg w formacie daty i godziny UTC | Data wygaśnięcia rezerwacji.                                |
-| effectiveDateTime | ciąg w formacie daty i godziny UTC | Data wprowadzenia rezerwacji.                             |
-| provisioningState | ciąg                         | Stan aprowizacji rezerwacji.                         |
+| expiryDateTime    | ciąg w formacie daty i godzin UTC | Data wygaśnięcia rezerwacji.                                |
+| effectiveDateTime | ciąg w formacie daty i godzin UTC | Data wejścia w życie rezerwacji.                             |
+| provisioningState | ciąg                         | Stan aprowizowania rezerwacji.                         |
 
 ## <a name="virtualmachinereservedinstanceartifact"></a>VirtualMachineReservedInstanceArtifact
 
 > [!IMPORTANT]
-> Przestarzałe w zestawie SDK v 1.9
+> Przestarzałe w zestawie SDK w wersji 1.9
 
-Artefakt skojarzony z uprawnieniem wystąpienia zarezerwowanej maszyny wirtualnej platformy Azure. Dziedziczy z klasy [artefaktu](#artifact) .
+Artefakt skojarzony z uprawnieniem wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure. Dziedziczy on z klasy [Artifact.](#artifact)
 
 | Właściwość   | Typ                              | Opis                                        |
 |------------|-----------------------------------|----------------------------------------------------|
-| połącz       | [Łącze](utility-resources.md#link) | Link, aby pobrać wszystkie szczegóły skojarzonego artefaktu.   |
-| Identyfikator | ciąg                            | Identyfikator zamówienia lub zasobu rezerwacji platformy Azure. |
+| połącz       | [Link](utility-resources.md#link) | Link do pobrania wszystkich szczegółów skojarzonego artefaktu.   |
+| Resourceid | ciąg                            | Identyfikator zamówienia lub zasobu rezerwacji platformy Azure. |
 
 ## <a name="virtualmachinereservedinstanceartifactdetails"></a>VirtualMachineReservedInstanceArtifactDetails
 
 > [!IMPORTANT]
-> Przestarzałe w zestawie SDK v 1.9
+> Przestarzałe w zestawie SDK w wersji 1.9
 
-Reprezentuje jednostkę zwracaną podczas wywołania artefaktu wystąpienia zarezerwowanej maszyny wirtualnej platformy Azure.
+Reprezentuje jednostkę zwróconą po wywołania linku artefaktu wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure.
 
 | Właściwość                    | Typ                                                                 | Opis           |
 |-----------------------------|----------------------------------------------------------------------|-----------------------|
-| typ                        | [Artefakttype](#artifacttype)                                        | Typ artefaktu. |
-| virtualMachineReservations  | Interfejs IEnumerable<[VirtualMachineReservation](#virtualmachinereservation)> | Wskazuje identyfikator zamówienia zasobu platformy Azure lub rezerwacji. |
+| typ                        | [ArtifactType](#artifacttype)                                        | Typ artefaktu. |
+| virtualMachineReservations  | IEnumerable<[VirtualMachineReservation](#virtualmachinereservation)> | Wskazuje identyfikator zamówienia rezerwacji lub zasobu platformy Azure. |
 
 ## <a name="virtualmachinereservation"></a>VirtualMachineReservation
 
 > [!IMPORTANT]
-> Przestarzałe w zestawie SDK v 1.9
+> Przestarzałe w zestawie SDK w wersji 1.9
 
-Reprezentuje pojedynczą rezerwację maszyny wirtualnej.
+Reprezentuje rezerwację poszczególnych maszyn wirtualnych.
 
 |     Właściwość      |              Typ              |                                                Opis                                                 |
 |-------------------|--------------------------------|------------------------------------------------------------------------------------------------------------|
 |   reservationId   |             ciąg             |                                         Identyfikator rezerwacji.                                         |
-|     zakrestype     |             ciąg             |                     Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej.                     |
+|     scopeType     |             ciąg             |                     Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej.                     |
 |    displayName    |             ciąg             |                                    Nazwa wyświetlana rezerwacji.                                    |
-|   appliedScopes   |      IEnumerable<string>       | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy zakres ScopeType nie jest udostępniony). |
+|   appliedScopes   |      Ienumerable<string>       | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy typ scopeType nie jest udostępniony). |
 |     quantity      |              int               |                             Liczba maszyn wirtualnych w rezerwacji.                             |
-|  expiryDateTime   | ciąg w formacie daty i godziny UTC |                                    Data wygaśnięcia rezerwacji.                                     |
-| effectiveDateTime | ciąg w formacie daty i godziny UTC |                                   Data wprowadzenia rezerwacji.                                   |
-| provisioningState |             ciąg             |                                 Stan aprowizacji rezerwacji.                                 |
+|  expiryDateTime   | ciąg w formacie daty i godzin UTC |                                    Data wygaśnięcia rezerwacji.                                     |
+| effectiveDateTime | ciąg w formacie daty i godzin UTC |                                   Data wejścia w życie rezerwacji.                                   |
+| provisioningState |             ciąg             |                                 Stan aprowizowania rezerwacji.                                 |

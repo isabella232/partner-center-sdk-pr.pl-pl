@@ -1,21 +1,17 @@
 ---
-title: Zasoby kosztów usługi
+title: Zasoby kosztów usług
 description: Opisuje zasoby związane z usługami zakupionymi przez klienta.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c0236329d93d8ddc9019a15fb67a81a3af3e7620
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dbddc1973dd9a904cedd549c1772cd4c74c69a60
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768006"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547414"
 ---
-# <a name="service-costs-resources"></a>Zasoby kosztów usługi
-
-**Dotyczy:**
-
-- Centrum partnerskie
+# <a name="service-costs-resources"></a>Zasoby kosztów usług
 
 Opisuje zasoby związane z usługami zakupionymi przez klienta.
 
@@ -25,66 +21,66 @@ Opisuje zasoby związane z usługami zakupionymi przez klienta.
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| uzyskać | Tablica obiektów [ServiceCostsSummaryDetail](#servicecostssummarydetail) | Lista szczegółów podsumowania kosztu usługi, wyodrębniona według typu faktury.|
-| linki | [ResourceLinks](utility-resources.md#resourcelinks) | Linki do zasobów. |
+| Szczegóły | tablica [obiektów ServiceCostsSummaryDetail](#servicecostssummarydetail) | Lista szczegółów podsumowania kosztów usługi z rozróżnieniem według typu faktury.|
+| Linki | [ResourceLinks](utility-resources.md#resourcelinks) | Link do zasobu. |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych. |
 
 > [!IMPORTANT]
-> **Pola w poniższej tabeli są przestarzałe.** Aby pobrać podsumowanie kosztów usługi cyklicznej i jednorazowej, użyj pola **szczegóły** . Pole **szczegóły** jest opisane w poprzedniej tabeli. Zapoznaj się z odpowiednimi wartościami danych pola **szczegóły** , ale nie pól na poziomie głównym.
+> **Pola w poniższej tabeli są przestarzałe.** Aby pobrać cykliczne i jednorazowych podsumowań kosztów usługi, zamiast tego użyj **pola** szczegółów. Pole **szczegółów** jest opisane w poprzedniej tabeli. Zapoznaj się z **odpowiednimi** wartościami danych pola szczegółów, ale nie polami na poziomie głównym.
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| billingStartDate | date | Początek okresu rozliczeniowego. |
-| billingEndDate | date | Koniec okresu rozliczeniowego. |
-| pretaxTotal | double | Suma przed opodatkowaniem wszystkich kosztów dla klienta. |
-| podatkowych  | double | Łączny podatek związany ze wszystkimi elementami zakupionymi przez klienta. |
+| billingStartDate | data | Początek okresu rozliczeniowego. |
+| billingEndDate | data | Koniec okresu rozliczeniowego. |
+| pretaxTotal | double | Suma wszystkich kosztów dla klienta przed opodatkowaniem. |
+| Podatku  | double | Łączny podatek od wszystkich elementów zakupionych przez klienta. |
 | afterTaxTotal | double | Łączny koszt netto wszystkich elementów zakupionych przez klienta. |
-| currencyCode | ciąg | Reprezentuje walutę używaną w kosztach. |
-| currencySymbol | ciąg | Symbol waluty używany do kosztów. |
+| currencyCode | ciąg | Reprezentuje walutę używaną dla kosztów. |
+| currencySymbol | ciąg | Symbol waluty używany na kosztach. |
 | customerId | ciąg | Identyfikator klienta dokonującego zakupu. |
 
 ## <a name="servicecostssummarydetail"></a>ServiceCostsSummaryDetail
 
-**ServiceCostsSummaryDetail** opisuje podsumowanie kosztu usługi, które agreguje wszystkie usługi zakupione przez określonego klienta w okresie rozliczeniowym (od cyklicznych lub jednorazowych faktur).
+**Temat ServiceCostsSummaryDetail** zawiera podsumowanie kosztów usługi, które agreguje wszystkie usługi zakupione przez określonego klienta w okresie rozliczeniowym (na podstawie faktur cyklicznych lub jednorazowych).
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| invoicetype | ciąg | Wartość invoicetype, która wygenerowała podsumowanie kosztów usług. |
-| Podsumowanie | [ServiceCostsSummary](#servicecostssummary) | Podsumowanie kosztów usługi agregowane przez klienta w ramach jednego typu faktury. |
+| invoiceType | ciąg | InvoiceType, że zostało wygenerowane podsumowanie kosztów usługi. |
+| Podsumowanie | [ServiceCostsSummary](#servicecostssummary) | Podsumowanie kosztów usług zagregowane według klienta w ramach jednego typu faktury. |
 
 ## <a name="servicecostlineitem"></a>ServiceCostLineItem
 
-**ServiceCostLineItem** opisuje pojedynczy element zakupiony przez klienta.
+**Temat ServiceCostLineItem opisuje** pojedynczy element zakupiony przez klienta.
 
 > [!IMPORTANT]
-> Następujące właściwości *dotyczą tylko* elementów wiersza kosztu usługi, w których produkt jest *jednorazowym zakupem*: **ProductID**, **ProductName**, **identyfikatora skuId**, **skuName**, **availabilityId**, **publisherId**, **PublisherName**, **termAndBillingCycle**, **discountDetails**. Te właściwości *nie dotyczą* elementów wiersza usługi, w przypadku których produkt jest *cyklicznym zakupem*. Na przykład te właściwości *nie mają zastosowania* do pakietu Office 365 i platformy Azure opartego na subskrypcjach.
+> Następujące właściwości  dotyczą tylko elementów wiersza kosztu usługi, w przypadku których produkt jest zakupem tylko *raz:* **productId,** **productName,** **skuId,** **skuName,** **availabilityId,** **publisherId,** **publisherName,** **termAndBillingCycle,** **discountDetails.** Te właściwości *nie dotyczą pozycji* usług, w przypadku których produkt jest *cyklicznym zakupem.* Na przykład te właściwości *nie dotyczą subskrypcji* opartych Office 365 platformie Azure.
 
 | Właściwość                 | Typ                           | Opis                                                          |
 |--------------------------|--------------------------------|----------------------------------------------------------------------|
-| startDate                | ciąg w formacie daty i godziny UTC | Data rozpoczęcia opłaty.                                       |
-| endDate                  | ciąg w formacie daty i godziny UTC | Data końcowa opłaty.                                         |
+| Startdate                | ciąg w formacie daty i godzin UTC | Data rozpoczęcia opłaty.                                       |
+| Enddate                  | ciąg w formacie daty i godzin UTC | Data zakończenia opłaty.                                         |
 | subscriptionFriendlyName | ciąg                         | Przyjazna nazwa subskrypcji.                              |
 | subscriptionId           | ciąg                         | Identyfikator subskrypcji.                                         |
-| Wartooć                  | ciąg                         | Identyfikator zamówienia.                                                |
+| Idzamówienia                  | ciąg                         | Identyfikator zamówienia.                                                |
 | offerId                  | ciąg                         | Identyfikator oferty.                                                |
-| offerName                | ciąg                         | Nazwa oferty.                                                      |
-| resellerMPNId            | ciąg                         | Używane tylko w scenariuszach partnerskich dwóch warstw. Odwołuje się do identyfikatora MPN. |
-| chargeType               | ciąg                         | Typ opłaty skojarzonej.                                          |
-| quantity                 | liczba                         | Ilość używanych lub zakupionych jednostek.                             |
+| nazwa_oferty                | ciąg                         | Nazwa oferty.                                                      |
+| resellerMPNId            | ciąg                         | Używany tylko w scenariuszach z partnerami dwuwarstwowych. Odwołuje się do identyfikatora MPN. |
+| chargeType               | ciąg                         | Skojarzony typ opłaty.                                          |
+| quantity                 | liczba                         | Ilość jednostek używanych lub zakupionych.                             |
 | unitPrice                | liczba                         | Cena za jednostkę.                                                  |
-| pretaxTotal              | liczba                         | Łączna opłata za ten element przed opodatkowaniem.                         |
-| podatkowych                      | liczba                         | Łączna opłata za podatek dla tego elementu.                         |
-| afterTaxTotal            | liczba                         | Łączny koszt dla tego elementu netto.                                    |
-| currencyCode             | ciąg                         | Reprezentuje walutę używaną w kosztach.                          |
-| currencySymbol           | ciąg                         | Symbol waluty używany do kosztów.                              |
+| pretaxTotal              | liczba                         | Łączna opłata za tę pozycję przed podatkami.                         |
+| Podatku                      | liczba                         | Łączna opłata podatku naliczana dla tego elementu.                         |
+| afterTaxTotal            | liczba                         | Łączny koszt netto dla tego elementu.                                    |
+| currencyCode             | ciąg                         | Reprezentuje walutę używaną dla kosztów.                          |
+| currencySymbol           | ciąg                         | Symbol waluty używany na kosztach.                              |
 | customerId               | ciąg                         | Identyfikator klienta dokonującego zakupu.                          |
-| customerName             | ciąg                         | Nazwa klienta dokonującego zakupu.                        |
+| Customername             | ciąg                         | Nazwa klienta dokonującego zakupu.                        |
 | invoiceNumber            | ciąg                         | Numer faktury, do której należy ten element wiersza.                   |
 | productId                | ciąg                         | Identyfikator produktu.                                              |
-| Identyfikatora skuId                    | ciąg                         | Identyfikator jednostki SKU.                                                  |
+| skuId                    | ciąg                         | Identyfikator jednostki SKU.                                                  |
 | availabilityId           | ciąg                         | Identyfikator dostępności.                                         |
-| productName              | ciąg                         | Nazwa produktu.                                                    |
-| skuName                  | ciąg                         | Nazwa jednostki SKU.                                                        |
+| Productname              | ciąg                         | Nazwa produktu.                                                    |
+| skuName                  | ciąg                         | Nazwa sku.                                                        |
 | publisherName            | ciąg                         | Nazwa wydawcy.                                                  |
 | publisherId              | ciąg                         | Identyfikator wydawcy.                                            |
 | termAndBillingCycle      | ciąg                         | Okres i cykl rozliczeniowy.                                          |
@@ -94,5 +90,5 @@ Opisuje zasoby związane z usługami zakupionymi przez klienta.
 
 | Właściwość             | Typ                               | Opis                         |
 |----------------------|------------------------------------|-------------------------------------|
-| serviceCostLineItems | [Łącze](utility-resources.md#link) | Identyfikator URI do pobrania elementów wiersza. |
-| automatycznej                 | [Łącze](utility-resources.md#link) | Własny identyfikator URI.                       |
+| serviceCostLineItems | [Link](utility-resources.md#link) | URI do pobierania elementów wiersza. |
+| Własny                 | [Link](utility-resources.md#link) | Samodzielnego URI.                       |

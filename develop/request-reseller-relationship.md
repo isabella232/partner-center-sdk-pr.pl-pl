@@ -4,30 +4,26 @@ description: Jak pobrać adres URL żądania relacji do wysłania do klienta.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5f899734b774ff460e005e20df8658275b2ce9d5
-ms.sourcegitcommit: d4e652e3b73c6137704d43d4a472cc5aa5549f11
+ms.openlocfilehash: 07804b36dfe0892cf8b531e0731188260c014f49
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "97770275"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547458"
 ---
 # <a name="retrieve-a-relationship-request-url"></a>Pobieranie adresu URL żądania relacji
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany
 
 Jak pobrać adres URL żądania relacji do wysłania do klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać adres URL żądania relacji, najpierw Użyj [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby uzyskać interfejs do operacji klienta partnera. Następnie użyj właściwości [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) , aby uzyskać interfejs do operacji żądania relacji klienta. Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) w celu pobrania adresu URL.
+Aby pobrać adres URL żądania relacji, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs do operacji klienta partnera. Następnie użyj właściwości [**RelationshipRequest,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) aby uzyskać interfejs do operacji żądania relacji z klientem. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) aby pobrać adres URL.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -35,7 +31,7 @@ Aby pobrać adres URL żądania relacji, najpierw Użyj [**IAggregatePartner. Cu
 var customerRelationshipRequest = partnerOperations.Customers.RelationshipRequest.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetCustomerRelationshipRequest.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomerRelationshipRequest.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -43,11 +39,11 @@ var customerRelationshipRequest = partnerOperations.Customers.RelationshipReques
 
 | Metoda  | Identyfikator URI żądania                                                                            |
 |---------|----------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/relationshiprequests http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -68,11 +64,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera obiekt [RelationshipRequest](relationships-resources.md#relationshiprequest) .
+Jeśli to się powiedzie, odpowiedź zawiera [obiekt RelationshipRequest.](relationships-resources.md#relationshiprequest)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

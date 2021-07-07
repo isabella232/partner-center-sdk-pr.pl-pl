@@ -4,38 +4,33 @@ description: Piaskownica partnera ma możliwość obsługi relacji między partn
 ms.date: 05/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9bef4a15685ebbdc2212988f5ac5724b946cfd54
-ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
+ms.openlocfilehash: aa6c4fb9ef71bacfad7e0f1510fec15f6af60a05
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2021
-ms.locfileid: "110243388"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547397"
 ---
 # <a name="sandbox-capabilities-for-reseller-relationship"></a>Możliwości piaskownicy dla relacji odsprzedawcy
 
-**Dotyczy:**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 W tym artykule wyjaśniono, co jest obsługiwane w piaskownicy w przypadku relacji odsprzedawcy między partnerem a klientem. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Partner Center poświadczeń konta. Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika.
-- Identyfikator klienta (customer-tenant-id). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard/home). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta (customer-tenant-id).
-- Wszystkie Azure Reserved Virtual Machine Instances i zamówienia zakupu oprogramowania muszą zostać anulowane przed usunięciem klienta z piaskownicy integracji porad.
+- Partner Center poświadczenia konta. Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika.
+- Identyfikator klienta (customer-tenant-id). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard/home). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta (customer-tenant-id).
+- Wszystkie Azure Reserved Virtual Machine Instances i zamówienia zakupu oprogramowania muszą zostać anulowane przed usunięciem klienta z piaskownicy integracji Porada.
 
 ## <a name="scenarios-supporting-reseller-relationship"></a>Scenariusze obsługi relacji odsprzedawcy
 
 1.  Partnerzy rozliczani bezpośrednio w piaskownicy i dostawcy pośredni mogą tworzyć relacje z klientem piaskownicy. 
-2.  Partnerzy rozliczani bezpośrednio w piaskownicy i dostawcy pośredni nie mogą zapraszać klientów piaskownicy.
+2.  Partnerzy rozliczani bezpośrednio i dostawcy pośredni piaskownicy nie mogą zapraszać klientów piaskownicy.
 
-3. Dostawcy pośredni i partner rozliczani bezpośrednio w piaskownicy mogą usunąć relację odsprzedawcy z Partner Center interfejsu użytkownika i interfejsu API.
+3. Dostawcy pośredni i partner rozliczani bezpośrednio w piaskownicy mogą usunąć relację odsprzedawcy z interfejsu Partner Center i interfejsu API.
 
-4. W przypadku relacji odsprzedawcy usunięcia piaskownicy zostanie wywołana nazwa Usuń klienta AP. Spowoduje to usunięcie relacji oraz dzierżawy klienta. {baseURL}/v1/Customers/{customer-Tenant-id}
+4. W przypadku relacji odsprzedawcy usunięcia piaskownicy zostanie wywołana nazwa Usuń klienta AP. Spowoduje to usunięcie relacji i dzierżawy klienta. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 
     ### <a name="in-the-sandbox"></a>W piaskownicy
@@ -83,7 +78,7 @@ W tym artykule wyjaśniono, co jest obsługiwane w piaskownicy w przypadku relac
     -   Może żądać relacji z nowymi klientami
 
 
-Postępuj zgodnie [z działem usuwania relacji](remove-a-reseller-relationship-with-a-customer.md) odsprzedawcy dla klienta, aby uzyskać szczegółowe informacje. Istnieją jednak pewne różnice między możliwościami produktów i piaskownicy.
+Aby uzyskać [szczegółowe informacje,](remove-a-reseller-relationship-with-a-customer.md) postępuj zgodnie z działem usuwania relacji odsprzedawcy dla klienta. Istnieją jednak pewne różnice między możliwościami produktów i piaskownicy.
 
 ### <a name="request-syntax"></a>SKŁADNIA ŻĄDANIA
 
@@ -95,7 +90,7 @@ Brak treści żądania
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](./error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](./error-codes.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,30 +4,26 @@ description: Jak uzyskać kolekcję uprawnień.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d2cc485429941dd2080bd285553333a01fc0ffd1
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 7bb8d3aefb11fae0af4bce790b41598d935de57c
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768069"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906415"
 ---
 # <a name="get-a-collection-of-entitlements"></a>Pobieranie kolekcji uprawnień
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Jak uzyskać kolekcję uprawnień.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję uprawnień dla klienta, uzyskaj [**interfejs do operacji związanych z**](entitlement-resources.md#entitlement) operacjami, wywołując metodę  [**IAggregatePartner. Customers. ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie Pobierz interfejs z właściwości **uprawnienia** i Wywołaj metodę **Get ()** lub **GetAsync ()** w celu pobrania kolekcji uprawnień.
+Aby uzyskać kolekcję uprawnień dla klienta, uzyskaj interfejs operacji [**uprawnień,**](entitlement-resources.md#entitlement) wywołując metodę  [**IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs z właściwości **Entitlements** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać kolekcję uprawnień.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -37,10 +33,10 @@ string customerId;
 var entitlements = partnerOperations.Customers.ById(customerId).Entitlements.Get();
 ```
 
-Aby wypełnić daty wygaśnięcia uprawnień do pobrania, wywołaj te same metody, a następnie ustaw opcjonalny parametr logiczny **showExpiry** na true **Get (true)** lub **GetAsync (true)**. Wskazuje to, że daty wygaśnięcia uprawnień są wymagane (jeśli ma to zastosowanie).
+Aby wypełnić daty wygaśnięcia dla uprawnień do pobrania, wywołaj te same metody powyżej i ustaw opcjonalny parametr **logiczny showExpiry** na wartość true **Get(true)** lub **GetAsync(true)**. Oznacza to, że daty wygaśnięcia uprawnień są wymagane (jeśli mają zastosowanie).
 
 > [!IMPORTANT]
-> Typy uprawnień lokalnych nie mają dat wygaśnięcia.
+> Lokalne typy uprawnień nie mają dat wygaśnięcia.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -48,21 +44,21 @@ Aby wypełnić daty wygaśnięcia uprawnień do pobrania, wywołaj te same metod
 
 | Metoda | Identyfikator URI żądania |
 |--------|-------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{customerId}/entitlements http/1.1                            |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/entitlements HTTP/1.1                            |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj następującej ścieżki i parametrów zapytania.
+Podczas tworzenia żądania użyj następującej ścieżki i parametrów zapytania.
 
 | Nazwa | Typ | Wymagane | Opis |
 |------|------|----------|-------------|
-| customerId | ciąg | Tak | Identyfikator GUID, który identyfikuje klienta. |
-| uprawnienietype | ciąg | Nie | Można go użyć do określenia typu uprawnień do pobrania (**oprogramowanie** lub **reservedInstance** ). Jeśli nie zostanie ustawiona, zostaną pobrane wszystkie typy |
-| showExpiry | boolean | Nie | Opcjonalna Flaga wskazująca, czy daty wygaśnięcia uprawnień są wymagane. |
+| customerId | ciąg | Tak | Identyfikator GUID sformatowany jako customerId, który identyfikuje klienta. |
+| typ uprawnień | ciąg | Nie | Może służyć do określania typu uprawnień do pobrania **(oprogramowanie** lub **reservedInstance).** Jeśli nie zostanie ustawiona, zostaną pobrane wszystkie typy |
+| showExpiry | boolean | Nie | Opcjonalna flaga wskazująca, czy daty wygaśnięcia uprawnień są wymagane. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -82,11 +78,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [uprawnień](entitlement-resources.md#entitlement) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów uprawnień.](entitlement-resources.md#entitlement)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 
@@ -175,11 +171,11 @@ Date: Mon, 19 Mar 2018 07:42:51 GMT
 
 ## <a name="additional-examples"></a>Dodatkowe przykłady
 
-Poniższy przykład pokazuje, jak pobrać określony typ uprawnień wraz z datami wygaśnięcia (jeśli ma to zastosowanie)
+W poniższym przykładzie pokazano, jak pobrać określony typ uprawnień wraz z datami wygaśnięcia (jeśli ma to zastosowanie)
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
-Aby uzyskać określony typ uprawnień, należy uzyskać Interfejs **ByEntitlementType** z interfejsu **uprawnień** i użyć metod **Get ()** lub **GetAsync ()** .
+Aby pobrać określony typ uprawnień, uzyskaj interfejs **ByEntitlementType** z **interfejsu Entitlements** i użyj metod **Get()** lub **GetAsync().**
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("software").Get(true);
@@ -301,13 +297,13 @@ Date: Mon, 28 Jan 2019 18:31:43 GMT
 }
 ```
 
-W poniższych przykładach pokazano, jak pobrać informacje o produktach i rezerwacjach ze względu na uprawnienia.
+Poniższe przykłady pokazują, jak pobrać informacje o produktach i rezerwacjach z uprawnienia.
 
-### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Pobieranie szczegółów rezerwacji maszyn wirtualnych z uprawnień przy użyciu zestawu SDK V 1.8
+### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Pobieranie szczegółów rezerwacji maszyny wirtualnej z uprawnienia przy użyciu zestawu SDK w wersji 1.8
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
-Aby uzyskać więcej szczegółów dotyczących rezerwacji maszyn wirtualnych z uprawnienia, wywołaj identyfikator URI uwidoczniony w obszarze entitledArtifacts. link with artefakttype = virtual_machine_reserved_instance.
+Aby pobrać więcej szczegółów związanych z rezerwacjami maszyny wirtualnej z uprawnienia, wywołaj wartość URI ujawnioną w obszarze entitledArtifacts.link z wartością artifactType = virtual_machine_reserved_instance.
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("VirtualMachineReservedInstance").Get();
@@ -355,11 +351,11 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 }
 ```
 
-### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Pobieranie szczegółów rezerwacji z uprawnień przy użyciu zestawu SDK V 1.9
+### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Pobieranie szczegółów rezerwacji z uprawnienia przy użyciu zestawu SDK w wersji 1.9
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
-Aby uzyskać więcej szczegółów dotyczących rezerwacji z uprawnienia do wystąpienia zarezerwowanego, wywołaj identyfikator URI uwidoczniony w obszarze ```entitledArtifacts.link``` with ```artifactType = reservedinstance``` .
+Aby pobrać więcej szczegółów związanych z rezerwacjami z uprawnienia wystąpienia zarezerwowanego, wywołaj URI ujawniony w ```entitledArtifacts.link``` obszarze za pomocą . ```artifactType = reservedinstance```
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("ReservedInstance").Get();
@@ -409,4 +405,4 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 
 ### <a name="api-consumers"></a>Konsumenci interfejsu API
 
-Partnerzy korzystający z interfejsu API do wykonywania zapytań dotyczących wystąpień zarezerwowanych maszyn wirtualnych — zaktualizuj identyfikator URI żądania z **/Customers/{customerId}/entitlements na/Customers/{customerId}/entitlements? wartość = virtualmachinereservedinstance** , aby zachować zgodność z poprzednimi wersjami. Aby można było korzystać z maszyny wirtualnej lub usługi Azure SQL z rozszerzonym kontraktem, zaktualizuj identyfikator URI żądania do **/Customers/{customerId}/entitlements? reservedinstance**.
+Partnerzy używający interfejsu API do wykonywania zapytań dotyczących uprawnień wystąpienia zarezerwowanego maszyny wirtualnej — zaktualizuj identyfikator URI żądania z elementu **/customers/{customerId}/entitlements do elementu /customers/{customerId}/entitlements?entitlementType=virtualmachinereservedinstance,** aby zachować zgodność z poprzednimi wersjami. Aby korzystać z maszyny wirtualnej lub usługi Azure SQL z rozszerzonym kontraktem, zaktualizuj identyfikator URI żądania do **wartości /customers/{customerId}/entitlements?entitlementType=reservedinstance.**

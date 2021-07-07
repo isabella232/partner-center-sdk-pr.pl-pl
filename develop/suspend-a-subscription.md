@@ -1,40 +1,35 @@
 ---
 title: Zawieszenie subskrypcji
-description: Wstrzymuje zasób subskrypcji, który jest zgodny z IDENTYFIKATORem klienta i subskrypcji z powodu oszustwa lub niepłaty. Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, wybierając najpierw klienta.
+description: Wstrzymuje zasób subskrypcji, który pasuje do klienta i identyfikatora subskrypcji z powodu oszustwa lub braku płatności. Na Partner Center nawigacyjnym tę operację można wykonać, wybierając najpierw klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f351c87efe2bdc810a66c64a9d01b7d376f8a6e3
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 7dae7c3422a403c48a2b10424c4ae5dbdbc498ea
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768273"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547346"
 ---
 # <a name="suspend-a-subscription"></a>Zawieszenie subskrypcji
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Wstrzymuje [zasób](subscription-resources.md) subskrypcji, który pasuje do klienta i identyfikatora subskrypcji z powodu oszustwa lub braku płatności.
 
-Wstrzymuje zasób [subskrypcji](subscription-resources.md) , który jest zgodny z identyfikatorem klienta i subskrypcji z powodu oszustwa lub niepłaty.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, [wybierając najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, której nazwę chcesz zmienić. Aby zakończyć, wybierz przycisk **zawieszone** , a następnie wybierz pozycję **Prześlij.**
+Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, którą chcesz zmienić. Aby zakończyć, wybierz przycisk **Wstrzymano,** a następnie wybierz pozycję **Prześlij.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby wstrzymać subskrypcję klienta, najpierw [Uzyskaj subskrypcję](get-a-subscription-by-id.md), a następnie zmień wartość właściwości [**stan**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) subskrypcji. Aby uzyskać informacje na temat kodów **stanu** , zapoznaj się z tematem [SubscriptionStatus Enumeration/dotnet/API/Microsoft. Store. partnercenter. models. Subscriptions. SubscriptionStatus). Po wprowadzeniu zmiany Użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** . Następnie Wywołaj Właściwość [**subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) , a następnie metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Następnie Zakończ, wywołując metodę **patch ()** .
+Aby wstrzymać subskrypcję klienta, najpierw [pobierz subskrypcję,](get-a-subscription-by-id.md)a następnie zmień właściwość [**Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) subskrypcji. Aby uzyskać informacje **na temat kodów** stanu, zapoznaj się z tematem [SubscriptionStatus enumeration/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus). Po wejściu zmiany użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Następnie zakończ, wywołując **metodę Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,7 +43,7 @@ updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subsc
    });
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: UpdateSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: UpdateSubscription.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -56,24 +51,24 @@ updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subsc
 
 | Metoda    | Identyfikator URI żądania                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby wstrzymać subskrypcję.
+W tej tabeli wymieniono parametr zapytania wymagany do wstrzymania subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **Identyfikator — dla subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
+| **identyfikator subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania jest wymagany pełny zasób **subskrypcji** . Upewnij się, że właściwość **status** została zaktualizowana.
+W treści **żądania** wymagany jest pełny zasób Subskrypcji. Upewnij **się, że właściwość Status** została zaktualizowana.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -113,11 +108,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zaktualizowane właściwości zasobów [subskrypcji](subscription-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zaktualizowane [właściwości](subscription-resources.md) zasobów subskrypcji w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

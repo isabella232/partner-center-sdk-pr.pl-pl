@@ -1,35 +1,31 @@
 ---
 title: Aktualizowanie zasad samoobsługi
-description: Jak zaktualizować zasady samoobsługowe.
+description: Jak zaktualizować zasady samoobsługi.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4d53ab8e5b8ef5b7be83360a3f43ec7791b2e3b4
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: d94382e73fd2a79751fe5f8f8414df2befde584f
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770251"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445259"
 ---
-# <a name="update-a-selfservepolicy"></a>Aktualizowanie elementu SelfServePolicy
+# <a name="update-a-selfservepolicy"></a>Aktualizowanie selfServePolicy
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-W tym temacie opisano sposób aktualizowania zasad samoobsługi.
+W tym artykule wyjaśniono, jak zaktualizować zasady samoobsługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby usunąć zasady samoobsługowe:
+Aby usunąć zasady samoobsługi:
 
-1. Wywołaj metodę [**IAggregatePartner. SelfServePolicies. ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) z identyfikatorem jednostki, aby pobrać interfejs do operacji w ramach zasad.
+1. Wywołaj [**metodę IAggregatePartner.SelfServePolicies.ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) z identyfikatorem jednostki, aby pobrać interfejs do operacji na zasadach.
 
-2. Wywołaj metodę [**Put**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.put) lub [**PutAsync**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.putasync) w celu zaktualizowania zasad samoobsługi.
+2. Wywołaj [**metodę Put**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.put) lub [**PutAsync,**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.putasync) aby zaktualizować zasady samoobsługi.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,12 +44,12 @@ partnerOperations.SelfServePolicies.ById(policy.id).Put(policy);
 
 | Metoda   | Identyfikator URI żądania                                                       |
 |----------|-------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/SelfServePolicy http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
 - Wymagany jest identyfikator żądania i identyfikator korelacji.
-- Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md) .
+- Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -65,15 +61,15 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 #### <a name="selfservepolicy"></a>SelfServePolicy
 
-Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) wymaganych do utworzenia nowych zasad samoobsługi.
+W tej tabeli opisano minimalne wymagane pola z zasobu [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) potrzebne do utworzenia nowych zasad samoobsługi.
 
 | Właściwość              | Typ             | Opis                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Identyfikator zasad samoobsługi, który jest dostarczany po pomyślnym utworzeniu zasad samoobsługi.     |
-| SelfServeEntity       | SelfServeEntity  | Samoobsługowa jednostka, do której uzyskuje się dostęp.                                                     |
-| Użytkownik udzielający uprawnienia               | Użytkownik udzielający uprawnienia          | Użytkownik udzielający uprawnienia udzielający dostępu.                                                                    |
-| Uprawnienia           | Tablica uprawnień| Tablica zasobów [uprawnień](self-serve-policy-resources.md#permission) .                                                      |
-| Element ETag                  | ciąg           | Element ETag.                                                                                               |
+| SelfServeEntity       | SelfServeEntity  | Jednostka samoobsługi, która ma przyznany dostęp.                                                     |
+| Grantor               | Grantor          | Grantor, który udziela dostępu.                                                                    |
+| Uprawnienia           | Tablica uprawnień| Tablica [zasobów](self-serve-policy-resources.md#permission) uprawnień.                                                      |
+| Etag                  | ciąg           | Tag Etag.                                                                                               |
 
 
 ### <a name="request-example"></a>Przykład żądania
@@ -110,11 +106,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ten interfejs API zwraca zasób [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) dla zaktualizowanych zasad samoobsługi.
+Jeśli to się powiedzie, ten interfejs API zwraca [zasób SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) dla zaktualizowanych zasad samoobsługi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 Ta metoda zwraca następujące kody błędów:
 

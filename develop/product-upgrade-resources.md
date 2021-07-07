@@ -1,45 +1,41 @@
 ---
 title: Zasoby uaktualniania produktu
-description: Do planu platformy Azure można użyć wielu zasobów związanych z uaktualnieniami produktów w centrum partnerskim. Obejmują one ProductUpgradeRequest, ProductUpgradesEligibility, ProductUpgradesStatus, UpgradesLineItem, UpgradeProduct i ErrorDetails.
+description: Możesz użyć wielu zasobów związanych z Partner Center uaktualnieniami produktu do planu platformy Azure. Należą do nich ProductUpgradeRequest, ProductUpgradesEligibility, ProductUpgradesStatus, UpgradesLineItem, UpgradeProduct i ErrorDetails.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d8975f0a135c88796a21f8abab944e53181f591e
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: c995ac44dbe22000f7bc86991cb973ed31a5c018
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274619"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445344"
 ---
 # <a name="product-upgrade-resources"></a>Zasoby uaktualniania produktu
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Korzystając z poniższych zasobów, można uzyskać informacje o uaktualnieniach produktów Centrum partnerskiego z subskrypcji Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
+Poniższe zasoby zawierają informacje o uaktualnieniach produktów Partner Center z subskrypcji Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
 
 ## <a name="productupgraderequest"></a>ProductUpgradeRequest
 
-Zasób **ProductUpgradesRequest** zawiera informacje o obiekcie żądanie aktualizacji produktu.
+Zasób **ProductUpgradesRequest zawiera** informacje o obiekcie żądania uaktualnień produktu.
 
 | Właściwość      | Typ                                                          | Opis                                                |
 |---------------|---------------------------------------------------------------|------------------------------------------------------------|
-| customerId    | ciąg                                                        | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta.      |
+| customerId    | ciąg                                                        | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.      |
 | productFamily | ciąg                                                        | Rodzina produktów, dla której zażądano uaktualnienia. |
 | atrybuty    | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                                   |
 
 ## <a name="productupgradeseligibility"></a>ProductUpgradesEligibility
 
-Zasób **ProductUpgradesEligibility** zawiera informacje o uprawnieniach klienta do uaktualniania produktu.
+Zasób **ProductUpgradesEligibility zawiera** informacje o uprawnieniach klienta do uaktualnienia produktu.
 
 | Właściwość      | Typ                                                          | Opis                                                                      |
 |---------------|---------------------------------------------------------------|----------------------------------------------------------------------------------|
-| customerId    | ciąg                                                        | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta.                            |
+| customerId    | ciąg                                                        | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.                            |
 | productFamily | ciąg                                                        | Rodzina produktów, dla której zażądano uaktualnienia.                       |
-| nie kwalifikuj    | bool                                                          | Wartość logiczna wskazuje, czy klient kwalifikuje się do żądanego uaktualnienia. |
-| upgradeId     | ciąg                                                        | Identyfikator uaktualnienia w przypadku, gdy uaktualnienie produktu dla danej rodziny już istnieje.        |
-| reason        | ciąg                                                        | Powód, dla którego klient nie kwalifikuje się do uaktualnienia produktu.                |
+| isEligible    | bool                                                          | Wartość logiczna wskazuje, czy klient kwalifikuje się do zażądania uaktualnienia. |
+| upgradeId     | ciąg                                                        | Identyfikator uaktualnienia, jeśli uaktualnienie produktu dla danej rodziny jest już na miejscu.        |
+| reason        | ciąg                                                        | Przyczyna, dla której klient nie kwalifikuje się do uaktualnienia produktu.                |
 | productFamily | ciąg                                                        | Rodzina produktów, dla której zażądano uaktualnienia.                       |
 | atrybuty    | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                                                         |
 
@@ -49,34 +45,34 @@ Zasób **ProductUpgradesStatus** zawiera informacje o stanie uaktualnienia produ
 
 | Właściwość | Typ   | Opis                                          |
 |----------|--------|------------------------------------------------------|
-| Id       | ciąg | Ciąg w formacie GUID, który identyfikuje uaktualnienie. |
+| Id       | ciąg | Ciąg w formacie identyfikatora GUID, który identyfikuje uaktualnienie. |
 | productFamily       | ciąg                                                         | Rodzina produktów, dla której zażądano uaktualnienia.
 | status              | ciąg                                                         | Stan uaktualnienia produktu.
-| lineItems           | Tablica zasobów [UpgradesLineItem](#upgradeslineitem)       | Tablica obiektów, która zawiera informacje o szczegółach uaktualnienia dla każdego elementu wiersza, który był częścią treści żądania.
-| errorDetails        | Zasób [ErrorDetails](#errordetails)                         | Szczegóły błędu dla żądania uaktualnienia.
+| lineItems           | tablica [zasobów UpgradesLineItem](#upgradeslineitem)       | Tablica obiektów, która dostarcza informacje o szczegółach uaktualnienia dla każdego elementu wiersza, który był częścią treści żądania.
+| errorDetails        | [Zasób ErrorDetails](#errordetails)                         | Szczegóły błędu dla żądanego uaktualnienia.
 | atrybuty          | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atrybuty metadanych. |
 
 ## <a name="upgradeslineitem"></a>UpgradesLineItem
 
-Zasób **UpgradesLineItem** opisuje stan szczegółów uaktualnienia produktu dla każdego elementu wiersza żądania.
+Zasób **UpgradesLineItem** opisuje stan szczegółów uaktualnienia produktu dla każdego wiersza żądania.
 
 | Właściwość      | Typ                                                          | Opis                                       |
 |---------------|---------------------------------------------------------------|---------------------------------------------------|
-| sourceProduct | Obiekt [UpgradeProduct](#upgradeproduct)                      | Informacje o uaktualnianym produkcie źródłowym. |
-| targetProduct | Obiekt [UpgradeProduct](#upgradeproduct)                      | Informacje o docelowym uaktualnieniu produktu.   |
-| upgradedDate  | ciąg w formacie daty i godziny UTC                                | Data uaktualnienia subskrypcji.           |
+| sourceProduct (źródłoProdukt) | [UpgradeProduct,](#upgradeproduct) obiekt                      | Informacje o uaktualnianych produktach źródłowych. |
+| targetProduct | [UpgradeProduct,](#upgradeproduct) obiekt                      | Informacje o produkcie docelowym po uaktualnieniu.   |
+| upgradedDate  | ciąg w formacie daty i czasu UTC                                | Data uaktualnienia subskrypcji.           |
 | status        | ciąg                                                        | Stan uaktualnienia produktu.                |
-| errorDetails  | Zasób [ErrorDetails](#errordetails)                        | Szczegóły błędu dla żądania uaktualnienia.          |
+| errorDetails  | [Zasób ErrorDetails](#errordetails)                        | Szczegóły błędu dla żądanego uaktualnienia.          |
 | atrybuty    | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                          |
 
 ## <a name="upgradeproduct"></a>UpgradeProduct
 
-Zasób **UpgradeProduct** zawiera informacje o uaktualnianym produkcie.
+Zasób **UpgradeProduct** zawiera informacje o uaktualnianych produktach.
 
 | Właściwość   | Typ                                                          | Opis                                          |
 |------------|---------------------------------------------------------------|------------------------------------------------------|
-| identyfikator         | ciąg                                                        | Ciąg w formacie GUID, który identyfikuje produkt. |
-| name       | ciąg                                                        | Przyjazna nazwa produktu, który jest uaktualniany.         |
+| identyfikator         | ciąg                                                        | Ciąg w formacie identyfikatora GUID, który identyfikuje produkt. |
+| name       | ciąg                                                        | Przyjazna nazwa uaktualnianego produktu.         |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                             |
 
 ## <a name="errordetails"></a>ErrorDetails
@@ -85,6 +81,6 @@ Zasób **ErrorDetails** zawiera szczegółowe informacje o błędach podczas pro
 
 | Właściwość   | Typ                                                          | Opis                                       |
 |------------|---------------------------------------------------------------|---------------------------------------------------|
-| kod       | ciąg                                                        | Kod błędu, gdy uaktualnienie produktu nie powiodło się.      |
-| message    | ciąg                                                        | Komunikat o błędzie podczas uaktualniania produktu kończy się niepowodzeniem. |
+| kod       | ciąg                                                        | Kod błędu, gdy uaktualnienie produktu zakończy się niepowodzeniem.      |
+| message    | ciąg                                                        | Komunikat o błędzie, gdy uaktualnienie produktu zakończy się niepowodzeniem. |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                          |

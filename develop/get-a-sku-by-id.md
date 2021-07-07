@@ -1,37 +1,33 @@
 ---
 title: Pobieranie jednostki SKU według identyfikatora
-description: Pobiera jednostkę SKU dla określonego produktu przy użyciu określonego identyfikatora jednostki SKU.
+description: Pobiera wartość SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
 ms.date: 01/08/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 54ef72413d2d2b9e7154e82e4bbdd7427a79a2dd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9516a87a438a0a84a6f6069c1f9b2a2e97e90fba
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767934"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873857"
 ---
 # <a name="get-a-sku-by-id"></a>Pobieranie jednostki SKU według identyfikatora
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Pobiera jednostkę SKU dla określonego produktu przy użyciu określonego identyfikatora jednostki SKU.
+Pobiera wartość SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
-- IDENTYFIKATOR JEDNOSTKI SKU.
+- Identyfikator SKU.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać szczegółowe informacje o określonej jednostce SKU, Zacznij od wykonania kroków w temacie [Uzyskiwanie produktu przez identyfikator](get-a-product-by-id.md) w celu uzyskania interfejsu dla operacji określonego produktu. Z poziomu interfejsu uzyskanego wybierz właściwość **SKU** , aby uzyskać interfejs z dostępnymi operacjami dla jednostek SKU. Przekaż identyfikator jednostki SKU do metody **ById ()** , a następnie Wywołaj polecenie **Get ()** lub **GetAsync ()** , aby pobrać szczegóły jednostki SKU.
+Aby uzyskać szczegółowe informacje o określonej określonej sku, zacznij od kroków z artykułu Get [a product by ID (Uzyskiwanie](get-a-product-by-id.md) produktu według identyfikatora) w celu uzyskania interfejsu dla operacji określonego produktu. Z wynikowego interfejsu wybierz właściwość **Jednostki SKU,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU. Przekaż identyfikator SKU do metody **ById()** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dotyczące tej drugiej.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -49,21 +45,21 @@ var sku = partnerOperations.Products.ByCountry(countryCode).ById(productId).Skus
 
 | Metoda  | Identyfikator URI żądania                                                                                                         |
 |---------|---------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Products/{Product-ID}/SKUs/{SKU-ID}? Country = {Country-Code} http/1.1   |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}/skus/{sku-id}?country={country-code} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującej ścieżki i parametrów zapytania, aby uzyskać jednostkę SKU dla określonego produktu przy użyciu określonego identyfikatora jednostki SKU.
+Użyj następującej ścieżki i parametrów zapytania, aby uzyskać wartość SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| Identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
-| jednostka SKU — identyfikator                 | ciąg   | Tak      | Ciąg, który identyfikuje jednostkę SKU.                               |
-| Kraj — kod           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
+| identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| identyfikator sku                 | ciąg   | Tak      | Ciąg identyfikujący sku.                               |
+| kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -85,18 +81,18 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [jednostki SKU](product-resources.md#sku) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób SKU.](product-resources.md#sku)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt nie został znaleziony.                                                                                    |
-| 404                  | 400018       | Nie znaleziono jednostki SKU.                                                                                        |
+| 404                  | 400013       | Nie znaleziono produktu.                                                                                    |
+| 404                  | 400018       | Nie znaleziono sku.                                                                                        |
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

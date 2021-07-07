@@ -1,29 +1,25 @@
 ---
-title: Pobieranie zasad samoobsługi według identyfikatora
-description: Pobiera określone zasady samoobsługowe za pomocą jej identyfikatora.
+title: Uzyskiwanie zasad samoobsługi według identyfikatora
+description: Pobiera określone zasady samoobsługi przy użyciu ich identyfikatora.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ec01d0d9b7c3858cdacf1dbaad3b2b0bb7b6a1a4
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 074d7ba65c7aab91687a67f50e871cee913fc2bb
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767933"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873840"
 ---
-# <a name="get-a-self-serve-policy-by-id"></a>Pobieranie zasad samoobsługi według identyfikatora
+# <a name="get-a-self-serve-policy-by-id"></a>Uzyskiwanie zasad samoobsługi według identyfikatora
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Pobiera określone zasady samoobsługowe za pomocą jej identyfikatora.
+Pobiera określone zasady samoobsługi przy użyciu ich identyfikatora.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 - Identyfikator zasad samoobsługi.
 
 ## <a name="examples"></a>Przykłady
@@ -35,19 +31,19 @@ Pobiera określone zasady samoobsługowe za pomocą jej identyfikatora.
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/SelfServePolicy/{ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{id} HTTP/1.1 |
 
 **Parametr URI**
 
-Aby uzyskać określony produkt, użyj następujących parametrów ścieżki.
+Użyj następujących parametrów ścieżki, aby uzyskać określony produkt.
 
 | Nazwa                       | Typ         | Wymagane | Opis                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy — identyfikator**     | **parametry**   | Tak      | Ciąg, który identyfikuje zasady samoobsługowe.                 |
+| **SelfServePolicy-id**     | **ciąg**   | Tak      | Ciąg, który identyfikuje zasady samoobsługi.                 |
 
 **Nagłówki żądań**
 
-- Zobacz [nagłówki](headers.md) , aby uzyskać więcej informacji.
+- Aby uzyskać więcej informacji, zobacz [Nagłówki](headers.md).
 
 **Treść żądania**
 
@@ -65,17 +61,17 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób SelfServePolicy.](self-serve-policy-resources.md#selfservepolicy)
 
-**Kody sukcesu i błędów odpowiedzi**
+**Kody powodzenia i błędów odpowiedzi**
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 600039       | Nie znaleziono zasad samoobsługowych.                                                     |
+| 404                  | 600039       | Nie znaleziono zasad samoobsługi.                                                     |
 
 **Przykład odpowiedzi**
 

@@ -1,39 +1,35 @@
 ---
 title: Aktualizowanie informacji kontaktowych pomocy technicznej subskrypcji
-description: Jak zaktualizować kontakt z pomocą techniczną w ramach subskrypcji do jednego z odsprzedawcaów dodanych przez partnera.
+description: Jak zaktualizować kontakt pomocy technicznej subskrypcji do jednego z odsprzedawców z dodaną wartością partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c8c6b658cfe6e14c75b0c06b177920ce3eb1b4ed
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8c89f91fc9e89384a7be1237c08d7a9a1cfe3164
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768266"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530365"
 ---
 # <a name="update-a-subscriptions-support-contact"></a>Aktualizowanie informacji kontaktowych pomocy technicznej subskrypcji
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak zaktualizować kontakt z pomocą techniczną w ramach subskrypcji do jednego z odsprzedawcaów dodanych przez partnera.
+Jak zaktualizować kontakt pomocy technicznej subskrypcji do jednego z odsprzedawców z dodaną wartością partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
-- Informacje na temat nowej osoby kontaktowej pomocy technicznej: Identyfikator dzierżawy, identyfikator Microsoft Partner Network i nazwa. Kontakt z pomocą techniczną musi być jednym z odsprzedawcaów dodanych przez partnera.
+- Informacje o nowym kontaktie z pomocą techniczną: identyfikator dzierżawy, Microsoft Partner Network identyfikatora i nazwy. Kontakt z pomocą techniczną musi być jednym z odsprzedawców z wartością dodaną partnera.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować kontakt z pomocą techniczną subskrypcji, najpierw Utwórz wystąpienie i wypełnij obiekt [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact) nowymi wartościami. Następnie użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji subskrybowania, wywołując metodę [**Subscription. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) , aby uzyskać interfejs do obsługi operacji kontaktowych. Na koniec Wywołaj metodę [**Update**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.updateasync) z wypełnionym obiektem SupportContact w celu zaktualizowania kontaktu z pomocą techniczną.
+Aby zaktualizować kontakt pomocy technicznej subskrypcji, należy najpierw utworzyć jego wystąpienia i wypełnić obiekt [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact) nowymi wartościami. Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**SupportContact,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) aby uzyskać interfejs do obsługi operacji kontaktowych. Na koniec wywołaj [**metodę Update**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.updateasync) za pomocą wypełnionego obiektu SupportContact, aby zaktualizować kontakt pomocy technicznej.
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -52,7 +48,7 @@ var supportContact = new SupportContact()
 var updatedSupportContact = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionID).SupportContact.Update(supportContact);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: UpdateSubscriptionSupportContact.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa:** UpdateSubscriptionSupportContact.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -60,7 +56,7 @@ var updatedSupportContact = partnerOperations.Customers.ById(customerId).Subscri
 
 | Metoda  | Identyfikator URI żądania                                                                                                                    |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions/{Subscription-ID}/supportcontact http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/supportcontact HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -68,16 +64,16 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subsk
 
 | Nazwa            | Typ   | Wymagane | Opis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.           |
-| Identyfikator subskrypcji | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje subskrypcję wersji próbnej. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.           |
+| subscription-id | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje subskrypcję wersji próbnej. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania musi znajdować się wypełniony zasób [SupportContact](subscription-resources.md#supportcontact) . Kontakt z pomocą techniczną musi być członkiem istniejącego odsprzedawcy z relacją do partnera.
+W treści żądania należy uwzględnić wypełniony zasób [SupportContact.](subscription-resources.md#supportcontact) Kontakt z pomocą techniczną musi być istniejącym odsprzedawcą z relacją z partnerem.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -112,11 +108,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [SupportContact](subscription-resources.md#supportcontact) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób SupportContact.](subscription-resources.md#supportcontact)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

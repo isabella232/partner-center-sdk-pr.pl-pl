@@ -1,40 +1,35 @@
 ---
 title: Pobieranie subskrypcji według identyfikatora
-description: Pobiera zasób subskrypcji, który jest zgodny z IDENTYFIKATORem klienta i IDENTYFIKATORem subskrypcji.
+description: Pobiera zasób subskrypcji, który odpowiada identyfikatorowi klienta i identyfikatorowi subskrypcji.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6690a6886eeb31a78cdb556280d4bdc2b4beb124
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 75f21a3f76e5502ba40b89995aa26bd0e668b3fa
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768293"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873823"
 ---
 # <a name="get-a-subscription-by-id"></a>Pobieranie subskrypcji według identyfikatora
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera zasób [subskrypcji](subscription-resources.md) , który jest zgodny z identyfikatorem klienta i identyfikatorem subskrypcji.
+Pobiera [zasób subskrypcji,](subscription-resources.md) który odpowiada identyfikatorowi klienta i identyfikatorowi subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać subskrypcję według identyfikatora, Zacznij od uzyskania interfejsu do operacji subskrypcji przez wywołanie metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta i metodę [**Subscription. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) , aby zidentyfikować subskrypcję. Użyj tego [**interfejsu**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) , aby pobrać szczegóły subskrypcji przez wywołanie metody [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
+Aby uzyskać subskrypcję według identyfikatora, zacznij od uzyskania interfejsu dla operacji subskrypcji, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, oraz metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) w celu zidentyfikowania subskrypcji. Użyj tego [**interfejsu,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) aby pobrać szczegóły subskrypcji, wywołując [**get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,7 +39,7 @@ Aby uzyskać subskrypcję według identyfikatora, Zacznij od uzyskania interfejs
 var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionID).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa:** GetSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -52,20 +47,20 @@ var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda  | Identyfikator URI żądania                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby uzyskać subskrypcję.
+Ta tabela zawiera listę parametrów zapytania wymaganych do uzyskania subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **Identyfikator — dla subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
+| **identyfikator subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -85,13 +80,13 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób [subskrypcji](subscription-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [zasób Subscription](subscription-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
-### <a name="response-example-for-a-standard-subscription"></a>Przykład odpowiedzi dla standardowej subskrypcji
+### <a name="response-example-for-a-standard-subscription"></a>Przykład odpowiedzi dla subskrypcji standardowej
 
 ```http
 HTTP/1.1 200 OK
@@ -140,7 +135,7 @@ Date: Fri, 27 Jan 2017 21:51:40 GMT
 
 ### <a name="response-example-for-an-add-on-subscription"></a>Przykład odpowiedzi dla subskrypcji dodatku
 
-Odpowiedź na subskrypcję dodatku zawiera identyfikator subskrypcji nadrzędnej w treści i łącza.
+Odpowiedź na subskrypcję dodatku zawiera identyfikator subskrypcji nadrzędnej w treści i linkach.
 
 ```http
 HTTP/1.1 200 OK

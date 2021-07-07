@@ -1,41 +1,37 @@
 ---
-title: Pobieranie podsumowania użycia dla partnera
-description: Zasobu PartnerUsageSummary można użyć do uzyskania podsumowania użycia partnerów dla wszystkich klientów, którzy kupili określoną usługę lub zasób platformy Azure w bieżącym okresie rozliczeniowym.
+title: Uzyskiwanie podsumowania użycia dla partnera
+description: Możesz użyć zasobu PartnerUsageSummary, aby uzyskać podsumowanie użycia partnera dla wszystkich klientów, którzy kupili określoną usługę lub zasób platformy Azure w bieżącym okresie rozliczeniowym.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: ba1885f46043a75274595239fe61ce3ef0998acf
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f003980f1b521ad0ac26dbfd0d4821b9096fdd27
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767898"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873908"
 ---
-# <a name="get-a-usage-summary-for-a-partner"></a>Pobieranie podsumowania użycia dla partnera
+# <a name="get-a-usage-summary-for-a-partner"></a>Uzyskiwanie podsumowania użycia dla partnera
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Możesz użyć zasobu **PartnerUsageSummary,** aby uzyskać podsumowanie użycia partnera dla wszystkich klientów, którzy kupili określoną usługę lub zasób platformy Azure w bieżącym okresie rozliczeniowym.
 
-Zasobu **PartnerUsageSummary** można użyć do uzyskania podsumowania użycia partnerów dla wszystkich klientów, którzy kupili określoną usługę lub zasób platformy Azure w bieżącym okresie rozliczeniowym.
-
-*Łączna wartość zwrócona przez ten interfejs API nie zwróci zużycia dla klientów z planem platformy Azure.* Planowane dla wycofania w przyszłości.
+*Suma zwrócona przez ten interfejs API nie zwróci zużycia dla klientów, którzy mają plan platformy Azure.* Planowane do cofania w przyszłości.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać podsumowanie użycia dla wszystkich klientów, którzy kupili określoną usługę lub zasób platformy Azure w bieżącym okresie rozliczeniowym:
 
-1. Użyj **IAggregatePartner**.
+1. Użyj swojego **konta IAggregatePartner.**
 
-2. Wywołaj Właściwość **UsageSummary** , a następnie metodę **Get ()** lub **GetAsync ()** :
+2. Wywołaj **właściwość UsageSummary,** a następnie metody **Get()** **lub GetAsync():**
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -43,10 +39,10 @@ Aby uzyskać podsumowanie użycia dla wszystkich klientów, którzy kupili okre�
     var usageSummary = partnerOperations.UsageSummary.Get();
     ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Project: **PartnerSDK.FeatureSamples**
 - Klasa: **GetPartnerUsageSummary.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -55,11 +51,11 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                         |
 |---------|---------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/usagesummary http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/usagesummary HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -77,11 +73,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób **PartnerUsageSummary** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **zasób PartnerUsageSummary** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

@@ -1,34 +1,29 @@
 ---
 title: Aktualizowanie profilu pomocy technicznej
-description: Aktualizuje profil obsługi użytkownika.
+description: Aktualizuje profil pomocy technicznej użytkownika.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 605c509eeb18f301144fec6287c9611d5a5acfe2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 143328c5501f525d52911eead805d420f79b78ff
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768270"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530348"
 ---
 # <a name="update-support-profile"></a>Aktualizowanie profilu pomocy technicznej
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Aktualizuje profil obsługi użytkownika.
+Aktualizuje profil pomocy technicznej użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil pomocy technicznej, należy najpierw [uzyskać profil pomocy technicznej](get-support-profile.md) i wprowadzić wszelkie wprowadzone zmiany. Następnie użyj swojej kolekcji [**IPartnerOperations. profile**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) . Wywołaj Właściwość [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) , a następnie metodę [**Update ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) lub [**UpdateAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) .
+Aby zaktualizować profil pomocy technicznej, najpierw [pobierz swój profil pomocy technicznej](get-support-profile.md) i wdaj wszelkie zmiany. Następnie użyj [**kolekcji IPartnerOperations.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Wywołaj [**właściwość SupportProfile,**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) a następnie metodę [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) lub [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,7 +39,7 @@ SupportProfile newSupportProfile = new SupportProfile
 SupportProfile updatedSupportProfile = partnerOperations.Profiles.SupportProfile.Update(newSupportProfile);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerCenterSDK. FeaturesSamples **Klasa**: UpdateSupportProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa**: UpdateSupportProfile.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -52,15 +47,15 @@ SupportProfile updatedSupportProfile = partnerOperations.Profiles.SupportProfile
 
 | Metoda  | Identyfikator URI żądania                                                                     |
 |---------|---------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/supportprofile http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Zasób profilu pełnej obsługi.
+Pełny zasób profilu pomocy technicznej.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -87,11 +82,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zaktualizowane właściwości obiektu **SupportProfile** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zaktualizowane **właściwości obiektu SupportProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

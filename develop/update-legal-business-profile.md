@@ -1,38 +1,33 @@
 ---
 title: Aktualizowanie profilu biznesowego partnera
-description: Jak zaktualizować profil biznesowy dla partnerów.
+description: Jak zaktualizować profil biznesowy partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 6c61b51ab0680e36daa99c11dc8e8c3506259d29
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cb9f5815e0019c5e9b648dfd865e9752f0afdf05
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768274"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530331"
 ---
 # <a name="update-the-partner-legal-business-profile"></a>Aktualizowanie profilu biznesowego partnera
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak zaktualizować profil biznesowy dla partnerów.
+Jak zaktualizować profil biznesowy partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil biznesowy partnera, należy najpierw utworzyć wystąpienie obiektu **LegalBusinessProfile** i wypełnić go istniejącym profilem. Aby uzyskać więcej informacji, zobacz sekcję [pobieranie służbowego profilu prawnego dla partnerów](get-legal-business-profile.md). Następnie zaktualizuj właściwości, które należy zmienić. Poniższy przykład kodu ilustruje zmianę adresu i podstawowych numerów telefonów kontaktów.
+Aby zaktualizować legalny profil biznesowy partnera, najpierw należy utworzyć jego wystąpienia w obiekcie **LegalBusinessProfile** i wypełnić go istniejącym profilem. Aby uzyskać więcej informacji, zobacz Get the partner legal business profile (Uzyskiwanie [profilu biznesowego partnera).](get-legal-business-profile.md) Następnie zaktualizuj właściwości, które należy zmienić. Poniższy przykład kodu ilustruje zmianę adresu i podstawowych numerów telefonów kontaktów.
 
-Następnie Pobierz interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner. profile** . Następnie Pobierz wartość właściwości **LegalBusinessProfile** , aby uzyskać interfejs do operacji w profilu biznesowym. Na koniec Wywołaj metodę [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) ze zmienionym obiektem w celu zaktualizowania profilu.
+Następnie pobierz interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner.Profiles.** Następnie pobierz wartość właściwości **LegalBusinessProfile,** aby uzyskać interfejs do operacji legalnych profilów biznesowych. Na koniec wywołaj [**metodę Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) ze zmienionym obiektem, aby zaktualizować profil.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -53,15 +48,15 @@ var updatedLegalBusinessProfile = partnerOperations.Profiles.LegalBusinessProfil
 
 | Metoda  | Identyfikator URI żądania                                                                    |
 |---------|--------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/legalbusiness http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Zasób profilu biznesowego firmy.
+Zasób legalnych profilów biznesowych.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -127,11 +122,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zaktualizowane **LegalBusinessProfile**
+W przypadku powodzenia treść odpowiedzi zawiera zaktualizowany **plik LegalBusinessProfile**
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

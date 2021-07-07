@@ -1,35 +1,31 @@
 ---
 title: Pobieranie listy ofert konwersji wersji próbnej
-description: Jak pobrać listę ofert konwersji wersji próbnej.
+description: Jak pobrać listę ofert konwersji w wersji próbnej.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e1eadecde9efa0b59fc7790bd474889bb32821dc
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 981910560faf7b7957b28e643c09a003826b9cff
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768234"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873925"
 ---
 # <a name="get-a-list-of-trial-conversion-offers"></a>Pobieranie listy ofert konwersji wersji próbnej
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak pobrać listę ofert konwersji wersji próbnej.
+Jak pobrać listę ofert konwersji w wersji próbnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator subskrypcji aktywnej subskrypcji próbnej.
+- Identyfikator subskrypcji dla aktywnej subskrypcji wersji próbnej.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę dostępnych konwersji z wersji próbnej, Zacznij od użycia metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji subskrybowania, wywołując metodę [**Subscription. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji wersji próbnej. Następnie użyj właściwości [**konwersje**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) , aby uzyskać interfejs do dostępnych operacji dla konwersji, a następnie wywołać metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) w celu pobrania kolekcji dostępnych ofert [**konwersji**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) .
+Aby uzyskać listę dostępnych konwersji w wersji próbnej, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie uzyskaj interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji wersji próbnej. Następnie użyj właściwości [**Conversions,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) aby uzyskać interfejs do dostępnych operacji konwersji, a następnie wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) aby pobrać kolekcję dostępnych [**ofert konwersji.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -47,7 +43,7 @@ var conversions =
 
 | Metoda  | Identyfikator URI żądania                                                                                                                 |
 |---------|-----------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions/{Subscription-ID}/conversions http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,12 +51,12 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subsk
 
 | Nazwa            | Typ   | Wymagane | Opis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.           |
-| Identyfikator subskrypcji | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje subskrypcję wersji próbnej. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.           |
+| subscription-id | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje subskrypcję wersji próbnej. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -80,11 +76,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [konwersji](conversions-resources.md#conversionresult) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [konwersji.](conversions-resources.md#conversionresult)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

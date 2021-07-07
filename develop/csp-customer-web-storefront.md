@@ -1,60 +1,59 @@
 ---
 title: Witryna sklepu internetowego klienta CSP
-description: Ten przykładowy kod witryny sieci Web przedstawia roboczy sklep online, który umożliwia klientom kupowanie subskrypcji produktów firmy Microsoft.
+description: Ten przykładowy kod witryny internetowej przedstawia roboczy sklep online, w ramach który klienci mogą kupować subskrypcje produktów firmy Microsoft.
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bd488b9b9bf2c1df4bebc8513d230a02b06b2ce4
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d68f17d707731f426cb980a566b6478790d3507c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767741"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973336"
 ---
 # <a name="csp-customer-web-storefront"></a>Witryna sklepu internetowego klienta CSP
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-> [!NOTE]
-> Ta przykładowa aplikacja dotyczy tylko globalnego wystąpienia Centrum partnerskiego. Nie dotyczy Centrum partnerskiego dla Microsoft Cloud Niemiec lub Centrum partnerskiego dla Microsoft Cloud dla instytucji rządowych USA.
+Ta przykładowa aplikacja ma zastosowanie tylko do globalnego wystąpienia Partner Center.
 
-Witryna sklepu w [centrum partnerskim](https://github.com/Microsoft/Partner-Center-Storefront) to **Przykładowa Witryna internetowa** dla sklepu online, za pomocą której klienci mogą kupować subskrypcje produktów firmy Microsoft. Możesz zmodyfikować ten **przykładowy kod** do własnych potrzeb, aby [skonfigurować oferty](#configure-offers), [dodać markę](#configure-branding) i [dodać metodę płatności](#configure-payment-types).
+Witryna [Partner Center storefront](https://github.com/Microsoft/Partner-Center-Storefront) to  przykładowa witryna internetowa sklepu online, za pomocą których klienci mogą kupować subskrypcje produktów firmy Microsoft. Możesz zmodyfikować ten **przykładowy kod** na własny użytek, aby skonfigurować [oferty,](#configure-offers)dodać znakowanie [i](#configure-branding)dodać formę [płatności.](#configure-payment-types)
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Pobierz [przykładowy kod sklepu Centrum partnerskiego](https://github.com/Microsoft/Partner-Center-Storefront) z usługi GitHub.
+Pobierz [przykładowy kod Partner Center storefront z](https://github.com/Microsoft/Partner-Center-Storefront) GitHub.
 
 ## <a name="configure-authentication"></a>Konfigurowanie uwierzytelniania
 
-Przed skompilowaniem aplikacji zaktualizuj następujące wartości w pliku Web.config w celu odzwierciedlenia informacji o uwierzytelnianiu usługi Azure AD utworzonych w ramach [uwierzytelniania w usłudze Partner Center](partner-center-authentication.md). Podczas wczesnego programowania lub testowania w środowisku produkcyjnym należy używać ustawień konta piaskownicy do integracji.
+Przed skompilowanie aplikacji zaktualizuj następujące wartości w pliku Web.config, aby odzwierciedlić informacje uwierzytelniania usługi Azure AD utworzone w ramach [Partner Center uwierzytelniania.](partner-center-authentication.md) Ustawień konta piaskownicy integracji należy używać na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym (TiP).
 
-- **partnerCenter. Identyfikator aplikacji**
+- **partnerCenter.applicationId**
 - **partnerCenter.applicationSecret**
-- **partnerCenter. domena**
-- **webports. clientId**
-- **webports. clientSecret**
-- **WebPortal. domena**
-- **webports. azureStorageConnectionString**
+- **partnerCenter.domain**
+- **webPortal.clientId**
+- **webPortal.clientSecret**
+- **webPortal.domain**
+- **webPortal.azureStorageConnectionString**
 
-## <a name="configure-offers"></a>Konfiguruj oferty
+## <a name="configure-offers"></a>Konfigurowanie ofert
 
-Zestaw ofert (**MicrosoftOffer**) można skonfigurować w **OfferCatalogViewModel**.
+Zestaw ofert **(MicrosoftOffer)** można skonfigurować w modelu **OfferCatalogViewModel.**
 
 ## <a name="configure-branding"></a>Konfigurowanie znakowania
 
-Ta przykładowa witryna sieci Web śledzi następujące informacje firmowe i markowe w *BrandingConfiguration.cs* i *PortalBranding.cs*:
+Ta przykładowa witryna internetowa śledzi następujące informacje o firmie i marce w *witrynach BrandingConfiguration.cs* i *PortalBranding.cs:*
 
 - Nazwa organizacji
 - Logo organizacji
 - Obraz nagłówka
-- Umowa dotycząca prywatności
+- Umowa o ochronie prywatności
 - Kontaktowy adres e-mail
-- Kontaktowy numer telefonu
+- Numer telefonu kontaktowego
 - Adres e-mail pomocy technicznej
 - Numer telefonu pomocy technicznej
 
 ### <a name="configure-payment-types"></a>Konfigurowanie typów płatności
 
-Aplikacja aktualnie używa bramy systemu PayPal zaimplementowaną w *PayPalGateway.cs*.
+Aplikacja używa obecnie bramy PayPal zaimplementowanej w *payPalGateway.cs.*

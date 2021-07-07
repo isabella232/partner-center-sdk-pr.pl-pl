@@ -1,31 +1,27 @@
 ---
 title: Pobieranie listy odsprzedawców pośrednich
-description: Jak pobrać listę pośrednich odsprzedawcaów zalogowanego partnera.
+description: Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e53237b97fa26d3a987f0ee7de491084b596af4a
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768398"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446568"
 ---
-# <a name="retrieve-a-list-of-indirect-resellers"></a><span data-ttu-id="f259b-103">Pobieranie listy odsprzedawców pośrednich</span><span class="sxs-lookup"><span data-stu-id="f259b-103">Retrieve a list of indirect resellers</span></span>
+# <a name="retrieve-a-list-of-indirect-resellers"></a><span data-ttu-id="40911-103">Pobieranie listy odsprzedawców pośrednich</span><span class="sxs-lookup"><span data-stu-id="40911-103">Retrieve a list of indirect resellers</span></span>
 
-<span data-ttu-id="f259b-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="f259b-104">**Applies To**</span></span>
+<span data-ttu-id="40911-104">Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.</span><span class="sxs-lookup"><span data-stu-id="40911-104">How to retrieve a list of the signed-in partner's indirect resellers.</span></span>
 
-- <span data-ttu-id="f259b-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="f259b-105">Partner Center</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="40911-105">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="40911-105">Prerequisites</span></span>
 
-<span data-ttu-id="f259b-106">Jak pobrać listę pośrednich odsprzedawcaów zalogowanego partnera.</span><span class="sxs-lookup"><span data-stu-id="f259b-106">How to retrieve a list of the signed-in partner's indirect resellers.</span></span>
+- <span data-ttu-id="40911-106">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="40911-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="40911-107">Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="40911-107">This scenario supports authentication with App+User credentials only.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="f259b-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="f259b-107">Prerequisites</span></span>
+## <a name="c"></a><span data-ttu-id="40911-108">C\#</span><span class="sxs-lookup"><span data-stu-id="40911-108">C\#</span></span>
 
-- <span data-ttu-id="f259b-108">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="f259b-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="f259b-109">Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="f259b-109">This scenario supports authentication with App+User credentials only.</span></span>
-
-## <a name="c"></a><span data-ttu-id="f259b-110">C\#</span><span class="sxs-lookup"><span data-stu-id="f259b-110">C\#</span></span>
-
-<span data-ttu-id="f259b-111">Aby pobrać listę pośrednich odsprzedawcaów, z którymi partner zalogowany ma relację, należy najpierw uzyskać interfejs do operacji kolekcji relacji z właściwości [**partnerOperations. Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) .</span><span class="sxs-lookup"><span data-stu-id="f259b-111">To retrieve a list of indirect resellers with whom the signed-in partner has a relationship, first get an interface to relationship collection operations from the [**partnerOperations.Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) property.</span></span> <span data-ttu-id="f259b-112">Następnie Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) , przekazując element członkowski wyliczenia [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) , aby zidentyfikować typ relacji.</span><span class="sxs-lookup"><span data-stu-id="f259b-112">Then call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) or [**Get\_Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) method, passing a member of the [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) enumeration to identify the relationship type.</span></span> <span data-ttu-id="f259b-113">Aby pobrać pośrednich odsprzedawcaów, musisz użyć IsIndirectCloudSolutionProviderOf.</span><span class="sxs-lookup"><span data-stu-id="f259b-113">To retrieve indirect resellers, you must use IsIndirectCloudSolutionProviderOf.</span></span>
+<span data-ttu-id="40911-109">Aby pobrać listę odsprzedawców pośrednich, z którymi jest relacja między zalogowanym partnerem, najpierw uzyskaj interfejs do operacji zbierania relacji z właściwości [**partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships)</span><span class="sxs-lookup"><span data-stu-id="40911-109">To retrieve a list of indirect resellers with whom the signed-in partner has a relationship, first get an interface to relationship collection operations from the [**partnerOperations.Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) property.</span></span> <span data-ttu-id="40911-110">Następnie wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**Get \_ Async,**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) przekazując członek wyliczenia [**PartnerRelationshipType,**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) aby zidentyfikować typ relacji.</span><span class="sxs-lookup"><span data-stu-id="40911-110">Then call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) or [**Get\_Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) method, passing a member of the [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) enumeration to identify the relationship type.</span></span> <span data-ttu-id="40911-111">Aby pobrać odsprzedawców pośrednich, należy użyć funkcji IsIndirectCloudSolutionProviderOf.</span><span class="sxs-lookup"><span data-stu-id="40911-111">To retrieve indirect resellers, you must use IsIndirectCloudSolutionProviderOf.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -33,33 +29,33 @@ ms.locfileid: "97768398"
 var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipType.IsIndirectCloudSolutionProviderOf);
 ```
 
-<span data-ttu-id="f259b-114">**Przykład**:**projekt** [aplikacji testowej konsoli](console-test-app.md): **Klasa** przykładów zestawu SDK Centrum partnerskiego: GetIndirectResellers.cs</span><span class="sxs-lookup"><span data-stu-id="f259b-114">**Sample**: [Console test app](console-test-app.md)**Project**: Partner Center SDK Samples **Class**: GetIndirectResellers.cs</span></span>
+<span data-ttu-id="40911-112">**Przykład:** [Aplikacja testowa konsoli](console-test-app.md)**Project**: zestaw SDK Centrum partnerskiego Samples **Class**: GetIndirectResellers.cs</span><span class="sxs-lookup"><span data-stu-id="40911-112">**Sample**: [Console test app](console-test-app.md)**Project**: Partner Center SDK Samples **Class**: GetIndirectResellers.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="f259b-115">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="f259b-115">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="40911-113">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="40911-113">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="f259b-116">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="f259b-116">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="40911-114">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="40911-114">Request syntax</span></span>
 
-| <span data-ttu-id="f259b-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="f259b-117">Method</span></span>  | <span data-ttu-id="f259b-118">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="f259b-118">Request URI</span></span>                                                                                                                |
+| <span data-ttu-id="40911-115">Metoda</span><span class="sxs-lookup"><span data-stu-id="40911-115">Method</span></span>  | <span data-ttu-id="40911-116">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="40911-116">Request URI</span></span>                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="f259b-119">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="f259b-119">**GET**</span></span> | <span data-ttu-id="f259b-120">[*{baseURL}*](partner-center-rest-urls.md)/V1/Relationships? \_ Typ relacji = IsIndirectCloudSolutionProviderOf http/1.1</span><span class="sxs-lookup"><span data-stu-id="f259b-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship\_type=IsIndirectCloudSolutionProviderOf HTTP/1.1</span></span> |
+| <span data-ttu-id="40911-117">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="40911-117">**GET**</span></span> | <span data-ttu-id="40911-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship \_ type=IsIndirectCloudSolutionProviderOf HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="40911-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship\_type=IsIndirectCloudSolutionProviderOf HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="f259b-121">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="f259b-121">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="40911-119">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="40911-119">URI parameter</span></span>
 
-<span data-ttu-id="f259b-122">Użyj następującego parametru zapytania, aby zidentyfikować typ relacji.</span><span class="sxs-lookup"><span data-stu-id="f259b-122">Use the following query parameter to identify the relationship type.</span></span>
+<span data-ttu-id="40911-120">Użyj następującego parametru zapytania, aby zidentyfikować typ relacji.</span><span class="sxs-lookup"><span data-stu-id="40911-120">Use the following query parameter to identify the relationship type.</span></span>
 
-| <span data-ttu-id="f259b-123">Nazwa</span><span class="sxs-lookup"><span data-stu-id="f259b-123">Name</span></span>               | <span data-ttu-id="f259b-124">Typ</span><span class="sxs-lookup"><span data-stu-id="f259b-124">Type</span></span>    | <span data-ttu-id="f259b-125">Wymagane</span><span class="sxs-lookup"><span data-stu-id="f259b-125">Required</span></span>  | <span data-ttu-id="f259b-126">Opis</span><span class="sxs-lookup"><span data-stu-id="f259b-126">Description</span></span>                         |
+| <span data-ttu-id="40911-121">Nazwa</span><span class="sxs-lookup"><span data-stu-id="40911-121">Name</span></span>               | <span data-ttu-id="40911-122">Typ</span><span class="sxs-lookup"><span data-stu-id="40911-122">Type</span></span>    | <span data-ttu-id="40911-123">Wymagane</span><span class="sxs-lookup"><span data-stu-id="40911-123">Required</span></span>  | <span data-ttu-id="40911-124">Opis</span><span class="sxs-lookup"><span data-stu-id="40911-124">Description</span></span>                         |
 |--------------------|---------|-----------|-------------------------------------|
-| <span data-ttu-id="f259b-127">relationship_type</span><span class="sxs-lookup"><span data-stu-id="f259b-127">relationship_type</span></span>  | <span data-ttu-id="f259b-128">ciąg</span><span class="sxs-lookup"><span data-stu-id="f259b-128">string</span></span>  | <span data-ttu-id="f259b-129">Tak</span><span class="sxs-lookup"><span data-stu-id="f259b-129">Yes</span></span>       | <span data-ttu-id="f259b-130">Wartość jest reprezentacją ciągu jednej z nazw składowych znalezionych w [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).</span><span class="sxs-lookup"><span data-stu-id="f259b-130">The value is the string representation of one of the member names found in [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).</span></span><br/><br/> <span data-ttu-id="f259b-131">Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę pośrednich odsprzedawcaów, z którymi ustanowiono relację, użyj IsIndirectCloudSolutionProviderOf.</span><span class="sxs-lookup"><span data-stu-id="f259b-131">If the partner is signed in as a provider and you want to get a list of the indirect resellers with whom they have established a relationship, use IsIndirectCloudSolutionProviderOf.</span></span><br/><br/> <span data-ttu-id="f259b-132">Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, którym ustanowiono relację, użyj IsIndirectResellerOf.</span><span class="sxs-lookup"><span data-stu-id="f259b-132">If the partner is signed in as a reseller and you want to get a list of the indirect providers with whom they have established a relationship, use IsIndirectResellerOf.</span></span>    |
+| <span data-ttu-id="40911-125">relationship_type</span><span class="sxs-lookup"><span data-stu-id="40911-125">relationship_type</span></span>  | <span data-ttu-id="40911-126">ciąg</span><span class="sxs-lookup"><span data-stu-id="40911-126">string</span></span>  | <span data-ttu-id="40911-127">Tak</span><span class="sxs-lookup"><span data-stu-id="40911-127">Yes</span></span>       | <span data-ttu-id="40911-128">Wartość jest ciągiem reprezentacji jednej z nazw członków znalezionych w [typie PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).</span><span class="sxs-lookup"><span data-stu-id="40911-128">The value is the string representation of one of the member names found in [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).</span></span><br/><br/> <span data-ttu-id="40911-129">Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę odsprzedawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectCloudSolutionProviderOf.</span><span class="sxs-lookup"><span data-stu-id="40911-129">If the partner is signed in as a provider and you want to get a list of the indirect resellers with whom they have established a relationship, use IsIndirectCloudSolutionProviderOf.</span></span><br/><br/> <span data-ttu-id="40911-130">Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectResellerOf.</span><span class="sxs-lookup"><span data-stu-id="40911-130">If the partner is signed in as a reseller and you want to get a list of the indirect providers with whom they have established a relationship, use IsIndirectResellerOf.</span></span>    |
 
-### <a name="request-headers"></a><span data-ttu-id="f259b-133">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="f259b-133">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="40911-131">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="40911-131">Request headers</span></span>
 
-<span data-ttu-id="f259b-134">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="f259b-134">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="40911-132">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="40911-132">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="f259b-135">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="f259b-135">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="40911-133">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="40911-133">Request body</span></span>
 
-<span data-ttu-id="f259b-136">Brak.</span><span class="sxs-lookup"><span data-stu-id="f259b-136">None.</span></span>
+<span data-ttu-id="40911-134">Brak.</span><span class="sxs-lookup"><span data-stu-id="40911-134">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="f259b-137">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="f259b-137">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="40911-135">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="40911-135">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/relationships?relationship_type=IsIndirectCloudSolutionProviderOf HTTP/1.1
@@ -71,15 +67,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="f259b-138">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="f259b-138">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="40911-136">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="40911-136">REST response</span></span>
 
-<span data-ttu-id="f259b-139">Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [PartnerRelationship](relationships-resources.md) , aby zidentyfikować odsprzedawcy.</span><span class="sxs-lookup"><span data-stu-id="f259b-139">If successful, the response body contains a collection of [PartnerRelationship](relationships-resources.md) resources to identify the resellers.</span></span>
+<span data-ttu-id="40911-137">Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [PartnerRelationship](relationships-resources.md) w celu zidentyfikowania odsprzedawców.</span><span class="sxs-lookup"><span data-stu-id="40911-137">If successful, the response body contains a collection of [PartnerRelationship](relationships-resources.md) resources to identify the resellers.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="f259b-140">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="f259b-140">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="40911-138">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="40911-138">Response success and error codes</span></span>
 
-<span data-ttu-id="f259b-141">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="f259b-141">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="f259b-142">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="f259b-142">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="f259b-143">Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="f259b-143">For the full list, see [Partner Center error codes](error-codes.md).</span></span>
+<span data-ttu-id="40911-139">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="40911-139">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="40911-140">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="40911-140">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="40911-141">Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="40911-141">For the full list, see [Partner Center error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="f259b-144">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="f259b-144">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="40911-142">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="40911-142">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

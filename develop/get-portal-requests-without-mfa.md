@@ -4,42 +4,38 @@ description: Pobierz listę żądań użytkowników bez uwierzytelniania wielosk
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: fd350aa3301f00926942ae6c6af359b0d0edc423
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 41627751d3402d7712d96c15c4281a25ed9a44a7
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767925"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445582"
 ---
-# <a name="get-portal-requests-without-mfa"></a><span data-ttu-id="9c9f3-103">Pobieranie żądań portalu bez uwierzytelniania wieloskładnikowego</span><span class="sxs-lookup"><span data-stu-id="9c9f3-103">Get portal requests without MFA</span></span>
+# <a name="get-portal-requests-without-mfa"></a><span data-ttu-id="bc973-103">Pobieranie żądań portalu bez uwierzytelniania wieloskładnikowego</span><span class="sxs-lookup"><span data-stu-id="bc973-103">Get portal requests without MFA</span></span>
 
-<span data-ttu-id="9c9f3-104">Dotyczy:</span><span class="sxs-lookup"><span data-stu-id="9c9f3-104">Applies to:</span></span>
+<span data-ttu-id="bc973-104">W tym artykule wyjaśniono, jak uzyskać listę najnowszych żądań od użytkowników, którzy mają dostęp do portalu Partner Center bez ukończenia uwierzytelniania wieloskładnikowego (MFA).</span><span class="sxs-lookup"><span data-stu-id="bc973-104">This article explains how to obtain a list of the most recent requests from users who access Partner Center portal without completing multi-factor authentication (MFA).</span></span>
 
-- <span data-ttu-id="9c9f3-105">Interfejs API Centrum partnerskiego</span><span class="sxs-lookup"><span data-stu-id="9c9f3-105">Partner Center API</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bc973-105">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="bc973-105">Prerequisites</span></span>
 
-<span data-ttu-id="9c9f3-106">W tym artykule wyjaśniono, jak uzyskać listę najnowszych żądań od użytkowników, którzy uzyskują dostęp do portalu usługi Partner Center bez wykonywania uwierzytelniania wieloskładnikowego (MFA).</span><span class="sxs-lookup"><span data-stu-id="9c9f3-106">This article explains how to obtain a list of the most recent requests from users who access Partner Center portal without completing multi-factor authentication (MFA).</span></span>
+- <span data-ttu-id="bc973-106">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="bc973-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="bc973-107">Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="bc973-107">This scenario supports authentication with App+User credentials.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9c9f3-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="9c9f3-107">Prerequisites</span></span>
+## <a name="rest-request"></a><span data-ttu-id="bc973-108">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="bc973-108">REST request</span></span>
 
-- <span data-ttu-id="9c9f3-108">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="9c9f3-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="9c9f3-109">Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="9c9f3-109">This scenario supports authentication with App+User credentials.</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="bc973-109">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="bc973-109">Request syntax</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="9c9f3-110">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="9c9f3-110">REST request</span></span>
-
-### <a name="request-syntax"></a><span data-ttu-id="9c9f3-111">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="9c9f3-111">Request syntax</span></span>
-
-| <span data-ttu-id="9c9f3-112">Metoda</span><span class="sxs-lookup"><span data-stu-id="9c9f3-112">Method</span></span>  | <span data-ttu-id="9c9f3-113">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="9c9f3-113">Request URI</span></span>                                                  |
+| <span data-ttu-id="bc973-110">Metoda</span><span class="sxs-lookup"><span data-stu-id="bc973-110">Method</span></span>  | <span data-ttu-id="bc973-111">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="bc973-111">Request URI</span></span>                                                  |
 |---------|--------------------------------------------------------------|
-| <span data-ttu-id="9c9f3-114">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="9c9f3-114">**GET**</span></span> | <span data-ttu-id="9c9f3-115">[*{baseURL}*](partner-center-rest-urls.md)/V1/nonMfaCompliantPartnerPrincipals</span><span class="sxs-lookup"><span data-stu-id="9c9f3-115">[*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals</span></span> |
+| <span data-ttu-id="bc973-112">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="bc973-112">**GET**</span></span> | <span data-ttu-id="bc973-113">[*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals</span><span class="sxs-lookup"><span data-stu-id="bc973-113">[*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="9c9f3-116">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="9c9f3-116">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="bc973-114">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="bc973-114">Request headers</span></span>
 
-- <span data-ttu-id="9c9f3-117">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md) .</span><span class="sxs-lookup"><span data-stu-id="9c9f3-117">See [Partner Center REST headers](headers.md) for more information.</span></span>
+- <span data-ttu-id="bc973-115">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="bc973-115">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="9c9f3-118">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="9c9f3-118">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="bc973-116">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="bc973-116">Request body</span></span>
 
-<span data-ttu-id="9c9f3-119">Brak.</span><span class="sxs-lookup"><span data-stu-id="9c9f3-119">None.</span></span>
+<span data-ttu-id="bc973-117">Brak.</span><span class="sxs-lookup"><span data-stu-id="bc973-117">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="9c9f3-120">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="9c9f3-120">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bc973-118">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="bc973-118">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/nonMfaCompliantPartnerPrincipals HTTP/1.1
@@ -52,15 +48,15 @@ Connection: keep-alive
 
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="9c9f3-121">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="9c9f3-121">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="bc973-119">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="bc973-119">REST response</span></span>
 
-<span data-ttu-id="9c9f3-122">Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [żądania portalu](mfa-resources.md#portal-request-without-mfa) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="9c9f3-122">If successful, this method returns a collection of [Portal request](mfa-resources.md#portal-request-without-mfa) resources in the response body.</span></span>
+<span data-ttu-id="bc973-120">W przypadku powodzenia ta metoda zwraca kolekcję zasobów żądania [portalu](mfa-resources.md#portal-request-without-mfa) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="bc973-120">If successful, this method returns a collection of [Portal request](mfa-resources.md#portal-request-without-mfa) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="9c9f3-123">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="9c9f3-123">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="bc973-121">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="bc973-121">Response success and error codes</span></span>
 
-<span data-ttu-id="9c9f3-124">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="9c9f3-124">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="9c9f3-125">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="9c9f3-125">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="9c9f3-126">Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="9c9f3-126">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="bc973-122">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="bc973-122">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="bc973-123">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="bc973-123">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="bc973-124">Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="bc973-124">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="9c9f3-127">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="9c9f3-127">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bc973-125">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="bc973-125">Response example</span></span>
 
 ``` http
 HTTP/1.1 200 OK

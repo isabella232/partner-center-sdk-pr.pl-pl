@@ -1,45 +1,40 @@
 ---
 title: Pobieranie zamówienia według identyfikatora
-description: Pobiera zasób zamówienia, który odpowiada IDENTYFIKATORowi klienta i zamówienia.
+description: Pobiera zasób Zamówienia, który pasuje do klienta i identyfikatora zamówienia.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 0a39d7142e5bf97f9fb345416964d4ed6bb935ad
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 2cb2822935113fe1c5337b4ffc899fccff333d2f
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768454"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760185"
 ---
-# <a name="get-an-order-by-id"></a><span data-ttu-id="db5bf-103">Pobieranie zamówienia według identyfikatora</span><span class="sxs-lookup"><span data-stu-id="db5bf-103">Get an order by ID</span></span>
+# <a name="get-an-order-by-id"></a><span data-ttu-id="e6fdc-103">Pobieranie zamówienia według identyfikatora</span><span class="sxs-lookup"><span data-stu-id="e6fdc-103">Get an order by ID</span></span>
 
-<span data-ttu-id="db5bf-104">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="db5bf-104">**Applies to:**</span></span>
+<span data-ttu-id="e6fdc-104">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="e6fdc-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="db5bf-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="db5bf-105">Partner Center</span></span>
-- <span data-ttu-id="db5bf-106">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="db5bf-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="db5bf-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="db5bf-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="db5bf-108">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="db5bf-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="e6fdc-105">Pobiera [zasób Zamówienia,](order-resources.md) który pasuje do klienta i identyfikatora zamówienia.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-105">Gets an [Order](order-resources.md) resource that matches the customer and order ID.</span></span>
 
-<span data-ttu-id="db5bf-109">Pobiera zasób [zamówienia](order-resources.md) , który odpowiada identyfikatorowi klienta i zamówienia.</span><span class="sxs-lookup"><span data-stu-id="db5bf-109">Gets an [Order](order-resources.md) resource that matches the customer and order ID.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e6fdc-106">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="e6fdc-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="db5bf-110">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="db5bf-110">Prerequisites</span></span>
+- <span data-ttu-id="e6fdc-107">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="e6fdc-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="e6fdc-108">Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="db5bf-111">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="db5bf-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="db5bf-112">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="db5bf-112">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="e6fdc-109">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-109">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="e6fdc-110">Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-110">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="e6fdc-111">Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-111">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="e6fdc-112">Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-112">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="e6fdc-113">Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-113">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="e6fdc-114">Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-114">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="db5bf-113">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="db5bf-113">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="db5bf-114">Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego.</span><span class="sxs-lookup"><span data-stu-id="db5bf-114">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="db5bf-115">Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**.</span><span class="sxs-lookup"><span data-stu-id="db5bf-115">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="db5bf-116">Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**.</span><span class="sxs-lookup"><span data-stu-id="db5bf-116">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="db5bf-117">Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** .</span><span class="sxs-lookup"><span data-stu-id="db5bf-117">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="db5bf-118">Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="db5bf-118">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+- <span data-ttu-id="e6fdc-115">Identyfikator zamówienia.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-115">An order ID.</span></span>
 
-- <span data-ttu-id="db5bf-119">Identyfikator zamówienia.</span><span class="sxs-lookup"><span data-stu-id="db5bf-119">An order ID.</span></span>
+## <a name="c"></a><span data-ttu-id="e6fdc-116">C\#</span><span class="sxs-lookup"><span data-stu-id="e6fdc-116">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="db5bf-120">C\#</span><span class="sxs-lookup"><span data-stu-id="db5bf-120">C\#</span></span>
+<span data-ttu-id="e6fdc-117">Aby uzyskać zamówienie klienta według identyfikatora:</span><span class="sxs-lookup"><span data-stu-id="e6fdc-117">To get a customer's order by ID:</span></span>
 
-<span data-ttu-id="db5bf-121">Aby uzyskać zamówienie klienta według identyfikatora:</span><span class="sxs-lookup"><span data-stu-id="db5bf-121">To get a customer's order by ID:</span></span>
+1. <span data-ttu-id="e6fdc-118">Użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-118">Use your **IAggregatePartner.Customers** collection and call the **ById()** method.</span></span>
 
-1. <span data-ttu-id="db5bf-122">Użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** .</span><span class="sxs-lookup"><span data-stu-id="db5bf-122">Use your **IAggregatePartner.Customers** collection and call the **ById()** method.</span></span>
-
-2. <span data-ttu-id="db5bf-123">Wywołaj Właściwość [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) , a następnie metodę [**ByID ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) jeszcze raz.</span><span class="sxs-lookup"><span data-stu-id="db5bf-123">Call the [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) property, followed by the [**ByID()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) method once more.</span></span>
-3. <span data-ttu-id="db5bf-124">Wywołanie [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).</span><span class="sxs-lookup"><span data-stu-id="db5bf-124">Call [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).</span></span>
+2. <span data-ttu-id="e6fdc-119">Ponownie [**wywołaj**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) właściwość Orders, a następnie ponownie metodę [**ByID().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid)</span><span class="sxs-lookup"><span data-stu-id="e6fdc-119">Call the [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) property, followed by the [**ByID()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) method once more.</span></span>
+3. <span data-ttu-id="e6fdc-120">Wywołaj [**get()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) lub [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-120">Call [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).</span></span>
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -49,18 +44,18 @@ ms.locfileid: "97768454"
 var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(selectedOrderId).Get();
 ```
 
-<span data-ttu-id="db5bf-125">**Przykład**: [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="db5bf-125">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="db5bf-126">**Project**: PartnerSDK. FeatureSample **Klasa**: GetOrder.cs</span><span class="sxs-lookup"><span data-stu-id="db5bf-126">**Project**: PartnerSDK.FeatureSample **Class**: GetOrder.cs</span></span>
+<span data-ttu-id="e6fdc-121">**Przykład:** [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-121">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="e6fdc-122">**Project:** Klasa PartnerSDK.FeatureSample: GetOrder.cs </span><span class="sxs-lookup"><span data-stu-id="e6fdc-122">**Project**: PartnerSDK.FeatureSample **Class**: GetOrder.cs</span></span>
 
-## <a name="java"></a><span data-ttu-id="db5bf-127">Java</span><span class="sxs-lookup"><span data-stu-id="db5bf-127">Java</span></span>
+## <a name="java"></a><span data-ttu-id="e6fdc-123">Java</span><span class="sxs-lookup"><span data-stu-id="e6fdc-123">Java</span></span>
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-<span data-ttu-id="db5bf-128">Aby uzyskać zamówienie klienta według identyfikatora:</span><span class="sxs-lookup"><span data-stu-id="db5bf-128">To get a customer's order by ID:</span></span>
+<span data-ttu-id="e6fdc-124">Aby uzyskać zamówienie klienta według identyfikatora:</span><span class="sxs-lookup"><span data-stu-id="e6fdc-124">To get a customer's order by ID:</span></span>
 
-1. <span data-ttu-id="db5bf-129">Użyj funkcji **IAggregatePartner. GetCustomers** i wywołaj funkcję **byId ()** .</span><span class="sxs-lookup"><span data-stu-id="db5bf-129">Use your **IAggregatePartner.getCustomers** function and call the **byId()** function.</span></span>
+1. <span data-ttu-id="e6fdc-125">Użyj funkcji **IAggregatePartner.getCustomers** i wywołaj **funkcję byId().**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-125">Use your **IAggregatePartner.getCustomers** function and call the **byId()** function.</span></span>
 
-2. <span data-ttu-id="db5bf-130">Wywołaj funkcję **GetOrders** , a następnie funkcję **byID ()** jeszcze raz.</span><span class="sxs-lookup"><span data-stu-id="db5bf-130">Call the **getOrders** function, followed by the **byID()** function once more.</span></span>
-3. <span data-ttu-id="db5bf-131">Wywołaj funkcję **Get ()** .</span><span class="sxs-lookup"><span data-stu-id="db5bf-131">Call the **get()** function.</span></span>
+2. <span data-ttu-id="e6fdc-126">Wywołaj **funkcję getOrders,** a następnie ponownie funkcję **byID().**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-126">Call the **getOrders** function, followed by the **byID()** function once more.</span></span>
+3. <span data-ttu-id="e6fdc-127">Wywołaj **funkcję get().**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-127">Call the **get()** function.</span></span>
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -70,11 +65,11 @@ var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(sel
 Order order = partnerOperations.getCustomers().byId(selectedCustomerId).getOrders().byId(selectedOrderId).get();
 ```
 
-## <a name="powershell"></a><span data-ttu-id="db5bf-132">PowerShell</span><span class="sxs-lookup"><span data-stu-id="db5bf-132">PowerShell</span></span>
+## <a name="powershell"></a><span data-ttu-id="e6fdc-128">PowerShell</span><span class="sxs-lookup"><span data-stu-id="e6fdc-128">PowerShell</span></span>
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-<span data-ttu-id="db5bf-133">Aby uzyskać identyfikator zamówienia klienta według identyfikatora, należy wykonać polecenie [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) i określić parametry **CustomerID** i **IDZamówienia** .</span><span class="sxs-lookup"><span data-stu-id="db5bf-133">To get a customer's order by ID, execute the [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) command, and specify the **CustomerId** and **OrderId** parameters.</span></span>
+<span data-ttu-id="e6fdc-129">Aby uzyskać zamówienie klienta według identyfikatora, wykonaj polecenie [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) i określ parametry **CustomerId** i **OrderId.**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-129">To get a customer's order by ID, execute the [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) command, and specify the **CustomerId** and **OrderId** parameters.</span></span>
 
 ```powershell
 # $selectedCustomerId
@@ -83,32 +78,32 @@ Order order = partnerOperations.getCustomers().byId(selectedCustomerId).getOrder
 Get-PartnerCustomerOrder -CustomerId $selectedCustomerId -OrderId $selectedOrderId
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="db5bf-134">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="db5bf-134">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="e6fdc-130">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="e6fdc-130">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="db5bf-135">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="db5bf-135">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="e6fdc-131">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="e6fdc-131">Request syntax</span></span>
 
-| <span data-ttu-id="db5bf-136">Metoda</span><span class="sxs-lookup"><span data-stu-id="db5bf-136">Method</span></span>  | <span data-ttu-id="db5bf-137">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="db5bf-137">Request URI</span></span>                                                                                                  |
+| <span data-ttu-id="e6fdc-132">Metoda</span><span class="sxs-lookup"><span data-stu-id="e6fdc-132">Method</span></span>  | <span data-ttu-id="e6fdc-133">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="e6fdc-133">Request URI</span></span>                                                                                                  |
 |---------|--------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="db5bf-138">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="db5bf-138">**GET**</span></span> | <span data-ttu-id="db5bf-139">[*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders/{ID-for-Order} http/1.1</span><span class="sxs-lookup"><span data-stu-id="db5bf-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{id-for-order} HTTP/1.1</span></span>  |
+| <span data-ttu-id="e6fdc-134">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="e6fdc-134">**GET**</span></span> | <span data-ttu-id="e6fdc-135">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{id-for-order} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="e6fdc-135">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{id-for-order} HTTP/1.1</span></span>  |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="db5bf-140">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="db5bf-140">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="e6fdc-136">Parametry URI</span><span class="sxs-lookup"><span data-stu-id="e6fdc-136">URI parameters</span></span>
 
-<span data-ttu-id="db5bf-141">Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania identyfikatora order by.</span><span class="sxs-lookup"><span data-stu-id="db5bf-141">This table lists the required query parameters to get an order by ID.</span></span>
+<span data-ttu-id="e6fdc-137">W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania zamówienia według identyfikatora.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-137">This table lists the required query parameters to get an order by ID.</span></span>
 
-| <span data-ttu-id="db5bf-142">Nazwa</span><span class="sxs-lookup"><span data-stu-id="db5bf-142">Name</span></span>                   | <span data-ttu-id="db5bf-143">Typ</span><span class="sxs-lookup"><span data-stu-id="db5bf-143">Type</span></span>     | <span data-ttu-id="db5bf-144">Wymagane</span><span class="sxs-lookup"><span data-stu-id="db5bf-144">Required</span></span> | <span data-ttu-id="db5bf-145">Opis</span><span class="sxs-lookup"><span data-stu-id="db5bf-145">Description</span></span>                                            |
+| <span data-ttu-id="e6fdc-138">Nazwa</span><span class="sxs-lookup"><span data-stu-id="e6fdc-138">Name</span></span>                   | <span data-ttu-id="e6fdc-139">Typ</span><span class="sxs-lookup"><span data-stu-id="e6fdc-139">Type</span></span>     | <span data-ttu-id="e6fdc-140">Wymagane</span><span class="sxs-lookup"><span data-stu-id="e6fdc-140">Required</span></span> | <span data-ttu-id="e6fdc-141">Opis</span><span class="sxs-lookup"><span data-stu-id="e6fdc-141">Description</span></span>                                            |
 |------------------------|----------|----------|--------------------------------------------------------|
-| <span data-ttu-id="db5bf-146">Identyfikator dzierżawy klienta</span><span class="sxs-lookup"><span data-stu-id="db5bf-146">customer-tenant-id</span></span>     | <span data-ttu-id="db5bf-147">ciąg</span><span class="sxs-lookup"><span data-stu-id="db5bf-147">string</span></span>   | <span data-ttu-id="db5bf-148">Tak</span><span class="sxs-lookup"><span data-stu-id="db5bf-148">Yes</span></span>      | <span data-ttu-id="db5bf-149">Ciąg w formacie GUID odpowiadający klientowi.</span><span class="sxs-lookup"><span data-stu-id="db5bf-149">A GUID formatted string corresponding to the customer.</span></span> |
-| <span data-ttu-id="db5bf-150">Identyfikator — dla zamówienia</span><span class="sxs-lookup"><span data-stu-id="db5bf-150">id-for-order</span></span>           | <span data-ttu-id="db5bf-151">ciąg</span><span class="sxs-lookup"><span data-stu-id="db5bf-151">string</span></span>   | <span data-ttu-id="db5bf-152">Tak</span><span class="sxs-lookup"><span data-stu-id="db5bf-152">Yes</span></span>      | <span data-ttu-id="db5bf-153">Ciąg odpowiadający IDENTYFIKATORowi zamówienia.</span><span class="sxs-lookup"><span data-stu-id="db5bf-153">A string corresponding to the order ID.</span></span>                |
+| <span data-ttu-id="e6fdc-142">identyfikator dzierżawy klienta</span><span class="sxs-lookup"><span data-stu-id="e6fdc-142">customer-tenant-id</span></span>     | <span data-ttu-id="e6fdc-143">ciąg</span><span class="sxs-lookup"><span data-stu-id="e6fdc-143">string</span></span>   | <span data-ttu-id="e6fdc-144">Tak</span><span class="sxs-lookup"><span data-stu-id="e6fdc-144">Yes</span></span>      | <span data-ttu-id="e6fdc-145">Ciąg w formacie IDENTYFIKATORA GUID odpowiadający klientowi.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-145">A GUID formatted string corresponding to the customer.</span></span> |
+| <span data-ttu-id="e6fdc-146">id-for-order</span><span class="sxs-lookup"><span data-stu-id="e6fdc-146">id-for-order</span></span>           | <span data-ttu-id="e6fdc-147">ciąg</span><span class="sxs-lookup"><span data-stu-id="e6fdc-147">string</span></span>   | <span data-ttu-id="e6fdc-148">Tak</span><span class="sxs-lookup"><span data-stu-id="e6fdc-148">Yes</span></span>      | <span data-ttu-id="e6fdc-149">Ciąg odpowiadający identyfikatorowi zamówienia.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-149">A string corresponding to the order ID.</span></span>                |
 
-### <a name="request-headers"></a><span data-ttu-id="db5bf-154">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="db5bf-154">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="e6fdc-150">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="e6fdc-150">Request headers</span></span>
 
-<span data-ttu-id="db5bf-155">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="db5bf-155">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="e6fdc-151">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="e6fdc-151">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="db5bf-156">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="db5bf-156">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="e6fdc-152">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="e6fdc-152">Request body</span></span>
 
-<span data-ttu-id="db5bf-157">Brak.</span><span class="sxs-lookup"><span data-stu-id="db5bf-157">None.</span></span>
+<span data-ttu-id="e6fdc-153">Brak.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-153">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="db5bf-158">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="db5bf-158">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="e6fdc-154">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="e6fdc-154">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/orders/<id-for-order> HTTP/1.1
@@ -119,15 +114,15 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="db5bf-159">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="db5bf-159">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="e6fdc-155">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="e6fdc-155">REST response</span></span>
 
-<span data-ttu-id="db5bf-160">Jeśli to się powiedzie, ta metoda zwraca zasób [zamówienia](order-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="db5bf-160">If successful, this method returns an [Order](order-resources.md) resource in the response body.</span></span>
+<span data-ttu-id="e6fdc-156">W przypadku powodzenia ta metoda zwraca [zasób Order](order-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-156">If successful, this method returns an [Order](order-resources.md) resource in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="db5bf-161">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="db5bf-161">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="e6fdc-157">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="e6fdc-157">Response success and error codes</span></span>
 
-<span data-ttu-id="db5bf-162">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="db5bf-162">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="db5bf-163">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="db5bf-163">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="db5bf-164">Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="db5bf-164">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="e6fdc-158">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-158">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="e6fdc-159">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="e6fdc-159">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="e6fdc-160">Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="e6fdc-160">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="db5bf-165">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="db5bf-165">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="e6fdc-161">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="e6fdc-161">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

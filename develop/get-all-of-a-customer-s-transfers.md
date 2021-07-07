@@ -1,53 +1,49 @@
 ---
 title: Pobieranie transferów klienta
-description: Jak uzyskać listę transferów klientów.
+description: Jak uzyskać listę transferów klienta.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4a25a9f6ccba0a3d64934b23ccd83a535da05e4a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: a5892e25953bc2eec4451bdbbd5accea008828b8
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767718"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760236"
 ---
-# <a name="get-a-customers-transfers"></a><span data-ttu-id="ffaba-103">Pobieranie transferów klienta</span><span class="sxs-lookup"><span data-stu-id="ffaba-103">Get a customer's transfers</span></span>
+# <a name="get-a-customers-transfers"></a><span data-ttu-id="c209e-103">Pobieranie transferów klienta</span><span class="sxs-lookup"><span data-stu-id="c209e-103">Get a customer's transfers</span></span>
 
-<span data-ttu-id="ffaba-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="ffaba-104">**Applies To**</span></span>
+<span data-ttu-id="c209e-104">Jak uzyskać listę transferów klienta.</span><span class="sxs-lookup"><span data-stu-id="c209e-104">How to get a list of a customer's transfers.</span></span>
 
-- <span data-ttu-id="ffaba-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="ffaba-105">Partner Center</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="c209e-105">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="c209e-105">Prerequisites</span></span>
 
-<span data-ttu-id="ffaba-106">Jak uzyskać listę transferów klientów.</span><span class="sxs-lookup"><span data-stu-id="ffaba-106">How to get a list of a customer's transfers.</span></span>
+- <span data-ttu-id="c209e-106">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="c209e-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="c209e-107">Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="c209e-107">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="ffaba-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="ffaba-107">Prerequisites</span></span>
+- <span data-ttu-id="c209e-108">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="c209e-108">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="c209e-109">Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard).</span><span class="sxs-lookup"><span data-stu-id="c209e-109">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="c209e-110">Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.**</span><span class="sxs-lookup"><span data-stu-id="c209e-110">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="c209e-111">Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**.</span><span class="sxs-lookup"><span data-stu-id="c209e-111">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="c209e-112">Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta.</span><span class="sxs-lookup"><span data-stu-id="c209e-112">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="c209e-113">Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="c209e-113">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="ffaba-108">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="ffaba-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="ffaba-109">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="ffaba-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="c209e-114">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="c209e-114">Request syntax</span></span>
 
-- <span data-ttu-id="ffaba-110">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="ffaba-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="ffaba-111">Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego.</span><span class="sxs-lookup"><span data-stu-id="ffaba-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="ffaba-112">Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**.</span><span class="sxs-lookup"><span data-stu-id="ffaba-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="ffaba-113">Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**.</span><span class="sxs-lookup"><span data-stu-id="ffaba-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="ffaba-114">Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** .</span><span class="sxs-lookup"><span data-stu-id="ffaba-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="ffaba-115">Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="ffaba-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
-
-### <a name="request-syntax"></a><span data-ttu-id="ffaba-116">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="ffaba-116">Request syntax</span></span>
-
-| <span data-ttu-id="ffaba-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="ffaba-117">Method</span></span>  | <span data-ttu-id="ffaba-118">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="ffaba-118">Request URI</span></span>                                                                                          |
+| <span data-ttu-id="c209e-115">Metoda</span><span class="sxs-lookup"><span data-stu-id="c209e-115">Method</span></span>  | <span data-ttu-id="c209e-116">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="c209e-116">Request URI</span></span>                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="ffaba-119">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="ffaba-119">**GET**</span></span> | <span data-ttu-id="ffaba-120">[*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Transfers http/1.1</span><span class="sxs-lookup"><span data-stu-id="ffaba-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
+| <span data-ttu-id="c209e-117">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="c209e-117">**GET**</span></span> | <span data-ttu-id="c209e-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="c209e-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="ffaba-121">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="ffaba-121">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="c209e-119">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="c209e-119">URI parameter</span></span>
 
-<span data-ttu-id="ffaba-122">Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania wszystkich subskrypcji.</span><span class="sxs-lookup"><span data-stu-id="ffaba-122">This table lists the required query parameter to get all the subscriptions.</span></span>
+<span data-ttu-id="c209e-120">W tej tabeli wymieniono parametr zapytania wymagany do uzyskania wszystkich subskrypcji.</span><span class="sxs-lookup"><span data-stu-id="c209e-120">This table lists the required query parameter to get all the subscriptions.</span></span>
 
-| <span data-ttu-id="ffaba-123">Nazwa</span><span class="sxs-lookup"><span data-stu-id="ffaba-123">Name</span></span>               | <span data-ttu-id="ffaba-124">Typ</span><span class="sxs-lookup"><span data-stu-id="ffaba-124">Type</span></span>   | <span data-ttu-id="ffaba-125">Wymagane</span><span class="sxs-lookup"><span data-stu-id="ffaba-125">Required</span></span> | <span data-ttu-id="ffaba-126">Opis</span><span class="sxs-lookup"><span data-stu-id="ffaba-126">Description</span></span>                                           |
+| <span data-ttu-id="c209e-121">Nazwa</span><span class="sxs-lookup"><span data-stu-id="c209e-121">Name</span></span>               | <span data-ttu-id="c209e-122">Typ</span><span class="sxs-lookup"><span data-stu-id="c209e-122">Type</span></span>   | <span data-ttu-id="c209e-123">Wymagane</span><span class="sxs-lookup"><span data-stu-id="c209e-123">Required</span></span> | <span data-ttu-id="c209e-124">Opis</span><span class="sxs-lookup"><span data-stu-id="c209e-124">Description</span></span>                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| <span data-ttu-id="ffaba-127">Identyfikator dzierżawy klienta</span><span class="sxs-lookup"><span data-stu-id="ffaba-127">customer-tenant-id</span></span> | <span data-ttu-id="ffaba-128">ciąg</span><span class="sxs-lookup"><span data-stu-id="ffaba-128">string</span></span> | <span data-ttu-id="ffaba-129">Tak</span><span class="sxs-lookup"><span data-stu-id="ffaba-129">Yes</span></span>      | <span data-ttu-id="ffaba-130">Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="ffaba-130">A GUID-formatted string that identifies the customer.</span></span> |
+| <span data-ttu-id="c209e-125">identyfikator dzierżawy klienta</span><span class="sxs-lookup"><span data-stu-id="c209e-125">customer-tenant-id</span></span> | <span data-ttu-id="c209e-126">ciąg</span><span class="sxs-lookup"><span data-stu-id="c209e-126">string</span></span> | <span data-ttu-id="c209e-127">Tak</span><span class="sxs-lookup"><span data-stu-id="c209e-127">Yes</span></span>      | <span data-ttu-id="c209e-128">Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="c209e-128">A GUID-formatted string that identifies the customer.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="ffaba-131">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="ffaba-131">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="c209e-129">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="c209e-129">Request headers</span></span>
 
-<span data-ttu-id="ffaba-132">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="ffaba-132">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="c209e-130">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="c209e-130">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="ffaba-133">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="ffaba-133">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="c209e-131">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="c209e-131">Request body</span></span>
 
-<span data-ttu-id="ffaba-134">Brak.</span><span class="sxs-lookup"><span data-stu-id="ffaba-134">None.</span></span>
+<span data-ttu-id="c209e-132">Brak.</span><span class="sxs-lookup"><span data-stu-id="c209e-132">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="ffaba-135">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="ffaba-135">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="c209e-133">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="c209e-133">Request example</span></span>
 
 ```http
 GET /v1/customers/b67f0b00-f9e8-4c57-bcb5-0b8b95c6ccf0/transfers HTTP/1.1
@@ -58,15 +54,15 @@ MS-CorrelationId: dec58181-67b5-4831-c2c9-2fa099122f5d
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="ffaba-136">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="ffaba-136">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="c209e-134">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="c209e-134">REST response</span></span>
 
-<span data-ttu-id="ffaba-137">Jeśli to się powiedzie, metoda zwraca listę zasobów [TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="ffaba-137">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
+<span data-ttu-id="c209e-135">W przypadku powodzenia ta metoda zwraca listę zasobów [TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="c209e-135">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="ffaba-138">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="ffaba-138">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="c209e-136">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="c209e-136">Response success and error codes</span></span>
 
-<span data-ttu-id="ffaba-139">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="ffaba-139">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="ffaba-140">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="ffaba-140">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="ffaba-141">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="ffaba-141">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="c209e-137">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="c209e-137">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="c209e-138">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="c209e-138">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="c209e-139">Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="c209e-139">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="ffaba-142">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="ffaba-142">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="c209e-140">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="c209e-140">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

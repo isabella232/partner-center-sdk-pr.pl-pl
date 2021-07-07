@@ -1,46 +1,42 @@
 ---
 title: Potwierdzenie akceptacji przez klienta umowy klienta firmy Microsoft
-description: Dowiedz się, w jaki sposób potwierdzić akceptację umowy klienta firmy Microsoft przy użyciu interfejsów API Centrum partnerskiego.
+description: Dowiedz się, jak potwierdzić akceptację Umowa z Klientem Microsoft przy użyciu Partner Center API.
 ms.date: 02/08/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 62a6cebd5d6d093377dd5940dcff6204b7095c70
-ms.sourcegitcommit: ebb36208d6e2dea705f62b7d60d471f10c55132e
+ms.openlocfilehash: 002508109191ede53cd06f25efc38286647fd67c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006066"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974016"
 ---
-# <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Potwierdzenie akceptacji przez klienta umowy klienta firmy Microsoft przy użyciu interfejsów API Centrum partnerskiego
+# <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Potwierdzanie akceptacji przez klientów Umowa z Klientem Microsoft przy użyciu Partner Center API
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Centrum partnerskie obecnie obsługuje Potwierdzanie akceptacji przez klienta umowy klienta firmy Microsoft tylko w *chmurze publicznej firmy Microsoft*. Ta funkcja nie ma obecnie zastosowania do:
+Partner Center obsługuje obecnie potwierdzenie akceptacji przez klienta Umowa z Klientem Microsoft tylko w chmurze publicznej firmy Microsoft.
 
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tym artykule opisano sposób potwierdzania lub ponownego potwierdzania akceptacji przez klienta umowy klienta firmy Microsoft.
+W tym artykule opisano sposób potwierdzania lub ponownego potwierdzania akceptacji Umowa z Klientem Microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- W przypadku korzystania z zestawu SDK platformy .NET w programie Partner Center wymagany jest program w wersji 1,14 lub nowszej.
+- Jeśli używasz zestawu SDK platformy .NET Partner Center, wymagana jest wersja 1.14 lub nowsza.
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](./partner-center-authentication.md). *Ten scenariusz obsługuje tylko uwierzytelnianie aplikacji i użytkowników.*
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](./partner-center-authentication.md) *Ten scenariusz obsługuje tylko uwierzytelnianie App+Użytkownik.*
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Data (**dateAgreed**), gdy klient zaakceptował umowę klienta firmy Microsoft.
+- Data **(dateAgreed),** kiedy klient zaakceptował Umowa z Klientem Microsoft.
 
-- Informacje o użytkowniku z organizacji klienta, które zaakceptowali umowę klienta firmy Microsoft. Obejmuje to następujące działania:
+- Informacje o użytkowniku z organizacji klienta, który zaakceptował Umowa z Klientem Microsoft. Obejmuje to następujące działania:
   - Imię
   - Nazwisko
   - Adres e-mail
-  - Numer telefonu (opcjonalnie)
-- Jeśli następujące wartości są zmieniane dla klienta, centrum partnerskie umożliwi utworzenie innej umowy dla tego klienta: imię nazwisko nazwisko numer telefonu adres E-mail w przeciwnym razie partnerzy otrzymają następujący kod błędu ze względu na utworzenie duplikatu klienta
+  - Telefon (opcjonalnie)
+- Jeśli dla klienta zmienią się następujące wartości, program Partner Center zezwoli na Partner Center utworzenia innej umowy dla tego klienta: Imię nazwisko Adres e-mail Telefon numer W przeciwnym razie partnerzy otrzymają następujący kod błędu z powodu utworzenia zduplikowanego klienta
 
 
 ```
@@ -57,9 +53,9 @@ W tym artykule opisano sposób potwierdzania lub ponownego potwierdzania akcepta
 
 ## <a name="net"></a>.NET
 
-Aby potwierdzić lub ponownie potwierdzić akceptację klienta umowy klienta firmy Microsoft:
+Aby potwierdzić lub ponownie potwierdzić akceptację przez klienta Umowa z Klientem Microsoft:
 
-1. Pobierz metadane umowy dla umowy klienta firmy Microsoft. Musisz uzyskać **TemplateID** umowy klienta firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Pobieranie metadanych umów dla umowy klienta firmy Microsoft](get-customer-agreement-metadata.md).
+1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Musisz uzyskać **szablon templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -69,11 +65,11 @@ Aby potwierdzić lub ponownie potwierdzić akceptację klienta umowy klienta fir
    var microsoftCustomerAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
    ```
 
-2. Utwórz nowy obiekt **umowy** zawierający szczegóły potwierdzenia.
+2. Utwórz nowy obiekt **Umowy** zawierający szczegóły potwierdzenia.
 
-3. Użyj kolekcji **IAgreggatePartner. Customers** i Wywołaj metodę **ById** z określonym **identyfikatorem dzierżawy klienta**.
+3. Użyj **kolekcji IAgreggatePartner.Customers** i wywołaj metodę **ById** z określonym **identyfikatorem customer-tenant-id**.
 
-4. Użyj właściwości **Agreements** , a następnie wywoływanie metody **Create** lub **Async**.
+4. Użyj właściwości **Agreements,** a następnie wywołaj właściwość **Create** lub **CreateAsync.**
 
    ```csharp
    // string selectedCustomerId;
@@ -94,21 +90,21 @@ Aby potwierdzić lub ponownie potwierdzić akceptację klienta umowy klienta fir
    Agreement agreement = partnerOperations.Customers.ById(selectedCustomerId).Agreements.Create(agreementToCreate);
    ```
 
-Pełny przykład można znaleźć w klasie [CreateCustomerAgreement](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) z projektu [aplikacji testowej konsoli](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
+Pełny przykład można znaleźć w klasie [CreateCustomerAgreement](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) w projekcie [aplikacji testowej konsoli.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="rest-request"></a>Żądanie REST
 
-Aby potwierdzić lub ponownie potwierdzić akceptację klienta umowy klienta firmy Microsoft:
+Aby potwierdzić lub ponownie potwierdzić akceptację przez klienta Umowa z Klientem Microsoft:
 
-1. Pobierz metadane umowy dla umowy klienta firmy Microsoft. Musisz uzyskać **TemplateID** umowy klienta firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Pobieranie metadanych umów dla umowy klienta firmy Microsoft](get-customer-agreement-metadata.md).
+1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Musisz uzyskać **szablon templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md).
 
-2. Utwórz nowy zasób [ **umowy**](agreement-resources.md) , aby potwierdzić, że klient zaakceptował umowę klienta firmy Microsoft. Użyj następującej [składni żądania REST](#request-syntax).
+2. Utwórz nowy [ **zasób umowy,**](agreement-resources.md) aby potwierdzić, że klient zaakceptował Umowa z Klientem Microsoft. Użyj następującej [składni żądania REST.](#request-syntax)
 
 ### <a name="request-syntax"></a>Składnia żądania
 
 | Metoda | Identyfikator URI żądania                                                                                        |
 |--------|----------------------------------------------------------------------------------------------------|
-| POST   | [*\{ BASEURL \}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Agreements http/1.1 |
+| POST   | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/agreements HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -116,11 +112,11 @@ Użyj następującego parametru zapytania, aby określić klienta, który potwie
 
 | Nazwa               | Typ | Wymagane | Opis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| Identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem GUID, który jest sformatowanym identyfikatorem **dzierżawy**, który umożliwia określenie klienta. |
+| identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem **customer-tenant-id** w formacie IDENTYFIKATORA GUID, który jest identyfikatorem umożliwiającym określenie klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -128,18 +124,18 @@ W tej tabeli opisano wymagane właściwości w treści żądania REST.
 
 | Nazwa      | Typ   | Opis                                                                                  |
 |-----------|--------|----------------------------------------------------------------------------------------------|
-| Umowa | object | Szczegóły dostarczone przez partnera w celu potwierdzenia akceptacji umowy klienta firmy Microsoft przez klienta. |
+| Umowa | object | Szczegółowe informacje udostępniane przez partnera w celu potwierdzenia akceptacji Umowa z Klientem Microsoft. |
 
 #### <a name="agreement"></a>Umowa
 
-Ta tabela zawiera opis minimalnych wymaganych pól w celu utworzenia [zasobu **umowy**](agreement-resources.md).
+W tej tabeli opisano minimalne pola wymagane do utworzenia zasobu [ **umowy**](agreement-resources.md).
 
 | Właściwość       | Typ   | Opis                              |
 |----------------|--------|------------------------------------------|
-| primaryContact | [Kontakt](./utility-resources.md#contact) | Informacje o użytkowniku z organizacji klienta, którzy zaakceptowali umowę klienta firmy Microsoft, w tym:  **FirstName**, **LastName**, **email** i numer **telefonu** (opcjonalnie) |
-| dateAgreed     | ciąg w formacie daty i godziny czasu UTC |Data zaakceptowania umowy przez klienta. |
-| templateId     | ciąg | Unikatowy identyfikator typu umowy akceptowany przez klienta. Możesz uzyskać **templateId** dla umowy klienta Microsoft, pobierając metadane umowy dla umowy klienta firmy Microsoft. Aby uzyskać szczegółowe informacje, zobacz artykuł [Pobierz metadane umowy dla umowy klienta firmy Microsoft](./get-customer-agreement-metadata.md) . |
-| typ           | ciąg | Typ umowy akceptowany przez klienta. Jeśli klient zaakceptuje umowę klienta firmy Microsoft, należy użyć "MicrosoftCustomerAgreement". |
+| primaryContact | [Kontakt](./utility-resources.md#contact) | Informacje o użytkowniku z organizacji klienta, który zaakceptował Umowa z Klientem Microsoft, w tym:  **firstName,** **lastName,** **email** i **phoneNumber** (opcjonalnie) |
+| dateAgreed     | ciąg w formacie daty i godzin UTC |Data zaakceptowania umowy przez klienta. |
+| templateId     | ciąg | Unikatowy identyfikator typu umowy zaakceptowany przez klienta. Możesz uzyskać szablon **templateId** dla Umowa z Klientem Microsoft, pobierania metadanych umowy dla Umowa z Klientem Microsoft. Aby [uzyskać szczegółowe informacje, zobacz Umowa z Klientem Microsoft](./get-customer-agreement-metadata.md) Get agreement metadata for Umowa z Klientem Microsoft (Uzyskiwanie metadanych umowy). |
+| typ           | ciąg | Typ umowy zaakceptowany przez klienta. Użyj "MicrosoftCustomerAgreement", jeśli klient zaakceptował Umowa z Klientem Microsoft. |
 
 #### <a name="request-example"></a>Przykład żądania
 
@@ -164,13 +160,13 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca [zasób **umowy**](./agreement-resources.md).
+W przypadku powodzenia ta metoda zwraca [ **zasób umowy**](./agreement-resources.md).
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.
 
-Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 #### <a name="response-example"></a>Przykład odpowiedzi
 

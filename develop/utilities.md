@@ -1,30 +1,25 @@
 ---
 title: Narzędzia
-description: W tej sekcji opisano sposób, w jaki partnerzy mogą używać Centrum partnerskiego do programowanego zarządzania funkcjami narzędzi.
+description: W tej sekcji opisano sposoby, w jakie partnerzy mogą używać Partner Center programowego zarządzania funkcjami narzędzi.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f1cbb2a1cc1f221c6a920695eb3455c5ed3b6dc1
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 3dfe08a727663902da11a662d7fca2601d65712e
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97768218"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529854"
 ---
 # <a name="utilities"></a>Narzędzia
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tej sekcji opisano sposób, w jaki partnerzy mogą używać Centrum partnerskiego do programowanego zarządzania funkcjami narzędzi.
+W tej sekcji opisano sposoby, w jakie partnerzy mogą używać Partner Center programowego zarządzania funkcjami narzędzi.
 
 - [Weryfikowanie adresu](validate-an-address.md)
 - [Pobieranie reguł formatowania adresów według rynku](get-market-specific-validation-data.md)
 - [Sprawdzanie dostępności domeny](verify-domain-availability.md)
 - [Usuwanie konta klienta z piaskownicy integracji](delete-a-customer-account-from-the-integration-sandbox.md)
 
-Aby uzyskać więcej informacji, zobacz [scenariusze](scenarios.md).
+Aby uzyskać więcej informacji, zobacz [Scenariusze](scenarios.md).

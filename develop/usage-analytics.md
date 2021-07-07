@@ -1,26 +1,21 @@
 ---
 title: Analiza
-description: Aby programowo pobrać informacje analityczne, można użyć zestawu SDK i interfejsów API Centrum partnerskiego. Aby uzyskać więcej informacji, zobacz artykuły wymienione tutaj.
+description: Za pomocą interfejsów zestaw SDK Centrum partnerskiego API można programowo pobierać informacje analityczne. Aby uzyskać więcej informacji, zobacz artykuły wymienione tutaj.
 ms.date: 07/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d779b749b318f1cfadbbcc46943c533c9635b994
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 503d00d9d4acf307cfa9fad86a322be2e8549b73
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767853"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530297"
 ---
 # <a name="analytics"></a>Analiza
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Aby programowo pobrać informacje analityczne, można użyć zestawu SDK i interfejsów API Centrum partnerskiego. Aby uzyskać więcej informacji, zobacz artykuły wymienione tutaj:
+Za pomocą interfejsów zestaw SDK Centrum partnerskiego API można programowo pobierać informacje analityczne. Aby uzyskać więcej informacji, zobacz artykuły wymienione tutaj:
 
 - [Analiza Centrum partnerskiego — zasoby](partner-center-analytics-resources.md)
 - [Pobieranie wszystkich informacji analitycznych dotyczących użycia platformy Azure](get-all-azure-usage-analytics.md)

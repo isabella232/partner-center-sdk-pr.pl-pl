@@ -1,37 +1,33 @@
 ---
 title: Pobieranie licencji przypisanych do użytkownika według grupy licencji
-description: Jak uzyskać listę licencji przypisanych do użytkowników dla określonych grup licencji.
+description: Jak uzyskać listę licencji przypisanych przez użytkownika dla określonych grup licencji.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 28c10e3e2acb30e4110213344959a87d4ddfcffb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 54acf6f315e3062d03903a98d0c6c1946065f95e
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768321"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446007"
 ---
 # <a name="get-licenses-assigned-to-a-user-by-license-group"></a>Pobieranie licencji przypisanych do użytkownika według grupy licencji
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak uzyskać listę licencji przypisanych do użytkowników dla określonych grup licencji.
+Jak uzyskać listę licencji przypisanych przez użytkownika dla określonych grup licencji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator użytkownika.
 
-- Lista co najmniej jednego z identyfikatorów grup licencji.
+- Lista co najmniej jednego identyfikatora grupy licencji.
 
 ## <a name="c"></a>C\#
 
-Aby sprawdzić, które licencje są przypisane do użytkownika z określonych grup licencji, Zacznij od utworzenia wystąpienia [list/dotnet/API/System. Collections. Generic. list -1) typu [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid), a następnie Dodaj do listy grupy licencji. Następnie użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie Wywołaj metodę user [**. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem użytkownika, aby zidentyfikować użytkownika. Następnie uzyskaj interfejs do operacji licencji użytkownika klienta na podstawie właściwości [**licenses**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) . Na koniec Przekaż listę grup licencji do metody [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) , aby pobrać kolekcję licencji przypisanych do użytkownika.
+Aby sprawdzić, które licencje są przypisane do użytkownika z określonych grup licencji, rozpocznij od wystąpienia klasy [List/dotnet/api/system.collections.generic.list-1) typu [**LicenseGroupId,**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)a następnie dodaj grupy licencji do listy. Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie wywołaj [**metodę Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem użytkownika, aby zidentyfikować użytkownika. Następnie pobierz interfejs do operacji licencji użytkownika klienta z [**właściwości Licencje.**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) Na koniec przekaż listę grup licencji do metody [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) aby pobrać kolekcję licencji przypisanych do użytkownika.
 
 ``` csharp
 // string selectedCustomerUserId;
@@ -57,23 +53,23 @@ var customerUserBothAadAndSfbAssignedLicenses = partnerOperations.Customers.ById
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/users/{User-ID}/licenses? LicenseGroupIds = grupa1 http/1.1                        |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/users/{User-ID}/licenses? LicenseGroupIds = group2 http/1.1                        |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/users/{User-ID}/licenses? LicenseGroupIds = grupa1&LicenseGroupIds = group2 http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users/{user-id}/licenses?licenseGroupIds=Group1 HTTP/1.1                        |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users/{user-id}/licenses?licenseGroupIds=Group2 HTTP/1.1                        |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/users/{identyfikator-użytkownika}/licenses?licenseGroupIds=Group1&licenseGroupIds=Group2 HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującej ścieżki i parametrów zapytania, aby zidentyfikować klientów, użytkowników i grupy licencji.
+Użyj następującej ścieżki i parametrów zapytania, aby zidentyfikować klienta, użytkownika i grupy licencji.
 
 | Nazwa            | Typ   | Wymagane | Opis                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
-| user-id         | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje użytkownika.                                                                                                                                                                                                                     |
-| licenseGroupIds | ciąg | Nie       | Wartość wyliczenia wskazująca grupę licencji przypisanych licencji. Prawidłowe wartości: grupa1, group2 grupa1 — ta grupa zawiera wszystkie produkty, których licencja może być zarządzana w Azure Active Directory (AAD). Group2 — ta grupa ma tylko Minecraft licencje na produkty. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
+| user-id         | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje użytkownika.                                                                                                                                                                                                                     |
+| licenseGroupIds | ciąg | Nie       | Wartość wyliczania wskazująca grupę licencji przypisanych licencji. Prawidłowe wartości: Grupa1, Grupa2 Grupa1 — ta grupa ma wszystkie produkty, których licencją można zarządzać w Azure Active Directory (AAD). Grupa2 — ta grupa ma tylko Minecraft licencji produktów. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -93,11 +89,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [licencji](license-resources.md#license) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [licencji.](license-resources.md#license)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 
@@ -157,7 +153,7 @@ Date: June 24 2016 22:00:25 PST
 
 ### <a name="response-example-no-matching-licenses-found"></a>Przykład odpowiedzi (nie znaleziono pasujących licencji)
 
-Jeśli nie można znaleźć pasujących licencji dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość wynosi 0.
+Jeśli nie można znaleźć pasujących licencji dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość to 0.
 
 ```http
 HTTP/1.1 200 OK

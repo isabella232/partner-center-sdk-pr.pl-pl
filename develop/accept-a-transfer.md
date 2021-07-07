@@ -1,29 +1,27 @@
 ---
-title: Akceptowanie transferu subskrypcji
-description: Dowiedz się, jak zatwierdzić transfer subskrypcji dla klienta za pomocą interfejsu API REST Centrum partnerskiego. Obejmuje składnię żądania REST, nagłówki i odpowiedzi REST.
+title: Akceptowanie przeniesienia subskrypcji
+description: Dowiedz się, jak przy użyciu Partner Center API REST akceptować przenoszenie subskrypcji dla klienta. Obejmuje składnię żądań REST, nagłówki i odpowiedzi REST.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd9a6788b3dd022470e516ba928a6cd873970e53
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 762f2106d6173e352bec11936c96bc3a9c9f89cb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768517"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025755"
 ---
-# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Akceptowanie transferu subskrypcji dla klienta przy użyciu interfejsów API REST Centrum partnerskiego
+# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Akceptowanie przeniesienia subskrypcji dla klienta przy użyciu Partner Center API REST
 
-**Dotyczy:**
-
-- Centrum partnerskie
+W tym artykule opisano sposób używania interfejsu API REST w Partner Center do akceptowania przenoszenia subskrypcji dla klienta. Przykład zawiera składnię REST, nagłówki i odpowiedzi REST.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator transferu dla istniejącego transferu.
+- Identyfikator przeniesienia istniejącego transferu.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -31,20 +29,20 @@ ms.locfileid: "97768517"
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Transfers/{transfer-ID}/Accept http/1.1                    |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/transfers/{transfer-id}/accept HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określić transfer, który ma zostać zaakceptowany.
+Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określić transfer do zaakceptowania.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
-| **Identyfikator transferu** | ciąg   | Tak      | Identyfikator transferu w formacie GUID, który identyfikuje transfer.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
+| **transfer-id** | ciąg   | Tak      | Identyfikator GUID sformatowany transfer-id, który identyfikuje transfer.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -63,11 +61,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca wypełniony zasób [TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca wypełniony [zasób TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

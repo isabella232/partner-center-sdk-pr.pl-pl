@@ -1,52 +1,48 @@
 ---
 title: Konwertowanie wersji próbnej subskrypcji na płatną
-description: Dowiedz się, jak używać interfejsów API usługi Partner Center, aby przekonwertować subskrypcję wersji próbnej na płatną.
+description: Dowiedz się, jak za pomocą Partner Center API przekonwertować subskrypcję wersji próbnej na płatną.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 59dcf6caf21d407b2fba4cc8438bc435fda9dc77
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: c1876cfc796b683bfff00b7d137bcfe0b7162c78
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768585"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973863"
 ---
-# <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Konwertuj subskrypcję wersji próbnej na płatną przy użyciu interfejsów API Centrum partnerskiego
+# <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Konwertowanie subskrypcji próbnej na płatną przy użyciu Partner Center API
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Możesz przekonwertować subskrypcję wersji próbnej na płatną.
+Subskrypcję wersji próbnej można przekonwertować na płatną.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator subskrypcji aktywnej subskrypcji próbnej.
+- Identyfikator subskrypcji dla aktywnej subskrypcji wersji próbnej.
 
 - Dostępna oferta konwersji.
 
-## <a name="convert-a-trial-subscription-to-paid-through-code"></a>Konwertuj subskrypcję wersji próbnej na płatną za pomocą kodu
+## <a name="convert-a-trial-subscription-to-a-paid-subscription-through-code"></a>Konwertowanie subskrypcji wersji próbnej na płatną subskrypcję za pomocą kodu
 
-Aby przekonwertować subskrypcję próbną na płatną, należy najpierw uzyskać kolekcję dostępnych konwersji. Następnie musisz wybrać ofertę konwersji, którą chcesz zakupić.
+Aby przekonwertować subskrypcję wersji próbnej na płatną, musisz najpierw uzyskać kolekcję dostępnych konwersji wersji próbnej. Następnie należy wybrać ofertę konwersji, którą chcesz kupić.
 
-Oferty konwersji określają liczbę domyślną dla tej samej liczby licencji co subskrypcja wersji próbnej. Tę ilość można zmienić, ustawiając właściwość [**ilość**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) na liczbę licencji, które chcesz zakupić.
+Oferty konwersji określają domyślną liczbę licencji, która jest taka sama jak w przypadku subskrypcji wersji próbnej. Możesz zmienić tę ilość, ustawiając właściwość [**Quantity**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) na liczbę licencji, które chcesz kupić.
 
 > [!NOTE]
-> Niezależnie od liczby zakupionych licencji Identyfikator subskrypcji wersji próbnej jest ponownie używany w przypadku zakupionych licencji. W związku z tym, okres próbny znika i jest zastępowany przez zakup.
+> Niezależnie od liczby zakupionych licencji identyfikator subskrypcji wersji próbnej jest ponownie wykorzystywany dla zakupionych licencji. W związku z tym okres próbny znika i jest zastępowany zakupem.
 
-Wykonaj następujące kroki, aby przekonwertować subskrypcję próbną za pomocą kodu:
+Aby przekonwertować subskrypcję wersji próbnej za pomocą kodu, należy wykonać następujące czynności:
 
-1. Uzyskaj interfejs do dostępnych operacji subskrypcji. Należy zidentyfikować klienta i określić identyfikator subskrypcji wersji próbnej subskrypcji.
+1. Uzyskiwanie interfejsu do dostępnych operacji subskrypcji. Należy zidentyfikować klienta i określić identyfikator subskrypcji wersji próbnej.
 
     ``` csharp
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2. Pobierz kolekcję dostępnych ofert konwersji. Aby uzyskać więcej informacji i szczegóły dotyczące żądania/odpowiedzi dla tej metody, zobacz [Pobieranie listy ofert konwersji wersji próbnej](get-a-list-of-trial-conversion-offers.md).
+2. Pobierz kolekcję dostępnych ofert konwersji. Aby uzyskać więcej informacji i szczegółów dotyczących żądania/odpowiedzi dla tej metody, zobacz Get a list of trial conversion offers (Uzyskiwanie listy ofert konwersji w wersji [próbnej).](get-a-list-of-trial-conversion-offers.md)
 
     ``` csharp
     var conversions = subscriptionOperations.Conversions.Get();
@@ -58,13 +54,13 @@ Wykonaj następujące kroki, aby przekonwertować subskrypcję próbną za pomoc
     var selectedConversion = conversions.Items.ToList()[0];
     ```
 
-4. Opcjonalnie możesz określić liczbę licencji do zakupu. Wartość domyślna to liczba licencji w subskrypcji wersji próbnej.
+4. Opcjonalnie określ liczbę licencji do zakupu. Wartość domyślna to liczba licencji w subskrypcji wersji próbnej.
 
     ``` csharp
     selectedConversion.Quantity = 10;
     ```
 
-5. Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) , aby przekonwertować subskrypcję wersji próbnej na płatne.
+5. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) lub [**CreateAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) aby przekonwertować subskrypcję wersji próbnej na płatną.
 
     ``` csharp
     var convertResult = subscriptionOperations.Conversions.Create(selectedConversion);
@@ -72,19 +68,19 @@ Wykonaj następujące kroki, aby przekonwertować subskrypcję próbną za pomoc
 
 ## <a name="c"></a>C\#
 
-Aby przekonwertować subskrypcję próbną na jedną płatną:
+Aby przekonwertować subskrypcję wersji próbnej na płatną:
 
-1. Użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
+1. Użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
 
-2. Uzyskaj interfejs do operacji subskrybowania, wywołując metodę [**Subscription. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji wersji próbnej. Zapisz odwołanie do interfejsu operacji subskrypcji w zmiennej lokalnej.
+2. Uzyskaj interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji wersji próbnej. Zapisz odwołanie do interfejsu operacji subskrypcji w zmiennej lokalnej.
 
-3. Użyj właściwości [**konwersje**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) , aby uzyskać interfejs do dostępnych operacji dla konwersji, a następnie wywołać metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) w celu pobrania kolekcji dostępnych ofert [**konwersji**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) . Musisz wybrać jeden z nich. Poniższy przykład jest wartością domyślną dla pierwszej dostępnej konwersji.
+3. Użyj właściwości [**Conversions,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) aby uzyskać interfejs dostępnych operacji na konwersjach, a następnie wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) aby pobrać kolekcję dostępnych [**ofert konwersji.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) Musisz wybrać jedną z nich. W poniższym przykładzie domyślna jest pierwsza dostępna konwersja.
 
-4. Użyj odwołania do interfejsu operacji subskrypcji zapisanego w zmiennej lokalnej i właściwości [**konwersje**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) , aby uzyskać interfejs do dostępnych operacji na konwersji.
+4. Użyj odwołania do interfejsu operacji subskrypcji zapisanego w zmiennej lokalnej i właściwości [**Conversions,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) aby uzyskać interfejs do dostępnych operacji na konwersjach.
 
-5. Przekaż wybrany obiekt oferty konwersji do metody [**Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) lub [**IsAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) w celu próby konwersji wersji próbnej.
+5. Przekaż wybrany obiekt oferty konwersji do [**metody Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) lub [**CreateAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) aby spróbować przetworzyć wersję próbną.
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład języka C \#
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -119,7 +115,7 @@ else
 
 | Metoda   | Identyfikator URI żądania                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions/{Subscription-ID}/conversions http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -127,16 +123,16 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subsk
 
 | Nazwa            | Typ   | Wymagane | Opis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.           |
-| Identyfikator subskrypcji | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje subskrypcję wersji próbnej. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.           |
+| subscription-id | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje subskrypcję wersji próbnej. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania musi znajdować się wypełniony zawarty zasób [konwersji](conversions-resources.md#conversion) .
+Wypełniony zasób [konwersji](conversions-resources.md#conversion) musi zostać uwzględniony w treści żądania.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -166,11 +162,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [ConversionResult](conversions-resources.md#conversionresult) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób ConversionResult.](conversions-resources.md#conversionresult)
 
-#### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+#### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 #### <a name="response-example"></a>Przykład odpowiedzi
 

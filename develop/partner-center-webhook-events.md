@@ -1,51 +1,46 @@
 ---
-title: Zdarzenia elementu webhook Centrum partnerskiego
-description: Dowiedz się, jak testować i używać zdarzeń elementu webhook, aby zauważyć, gdy subskrypcje i inne zdarzenia zmieniają się w centrum partnerskim.
+title: Partner Center zdarzeń webhook
+description: Dowiedz się, jak testować zdarzenia webhook i używać ich, aby zanotować zmiany subskrypcji i innych zdarzeń Partner Center.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 03ee1d4e74408b8cf69e2971054bf9060650cb77
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e5e363a2f928dd38304887547bdc0e5d652728d6
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500043"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547744"
 ---
-# <a name="partner-center-webhook-events"></a>Zdarzenia elementu webhook Centrum partnerskiego
+# <a name="partner-center-webhook-events"></a>Partner Center zdarzeń webhook
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Partner Center zdarzenia webhook to zdarzenia zmiany zasobów dostarczane w postaci punktów POP protokołu HTTP do zarejestrowanego adresu URL. Aby odebrać zdarzenie z Partner Center, hostuj wywołanie zwrotne, w którym Partner Center wysłać zdarzenie POST. Zdarzenie jest podpisane cyfrowo, dzięki czemu można zweryfikować, czy zostało ono wysłane z Partner Center.
 
-Zdarzenia dotyczące elementów webhook Centrum partnerskiego to zdarzenia zmiany zasobów dostarczone w formie wpisów HTTP do zarejestrowanego adresu URL. Aby odebrać zdarzenie z Centrum partnerskiego, możesz hostować wywołanie zwrotne, gdzie centrum partnerskie może ogłosić zdarzenie. Zdarzenie jest podpisane cyfrowo, aby można było sprawdzić, czy zostało wysłane z Centrum partnerskiego.
-
-Aby uzyskać informacje na temat sposobu odbierania zdarzeń, uwierzytelniania wywołania zwrotnego i używania interfejsów API elementu webhook Centrum partnerskiego do tworzenia, przeglądania i aktualizowania rejestracji zdarzeń, zobacz elementy [webhook Centrum partnerskiego](partner-center-webhooks.md).
+Aby uzyskać informacje na temat sposobu odbierania zdarzeń, uwierzytelniania wywołania zwrotnego i używania interfejsów API element webhook usługi Partner Center do tworzenia, wyświetlania i aktualizowania rejestracji zdarzeń, zobacz Partner Center [Webhook](partner-center-webhooks.md).
 
 ## <a name="supported-events"></a>Obsługiwane zdarzenia
 
-Centrum partnerskie obsługuje następujące zdarzenia elementu webhook.
+Następujące zdarzenia elementy webhook są obsługiwane przez Partner Center.
 
 ### <a name="test-event"></a>Zdarzenie testowe
 
-To zdarzenie umożliwia samodzielne dołączanie i testowanie rejestracji przez zażądanie zdarzenia testowego, a następnie śledzenie jego postępu. Podczas próby dostarczenia zdarzenia będą widoczne komunikaty o błędach, które są otrzymywane od firmy Microsoft. Dotyczy to tylko zdarzeń "utworzony test" i danych starszych niż 7 dni zostanie przeczyszczona.
+To zdarzenie umożliwia samodzielne dołączanie i testowanie rejestracji, żądając zdarzenia testowego, a następnie śledząc jego postęp. Podczas próby dostarczenia zdarzenia będą wyświetlane komunikaty o błędach odbierane od firmy Microsoft. Dotyczy to tylko zdarzeń "utworzonych przez test", a dane starsze niż siedem dni zostaną przeczyszone.
 
 >[!NOTE]
->W przypadku publikowania zdarzenia utworzonego testowego istnieje limit ograniczający wynoszący 2 żądania na minutę.
+>Istnieje limit ograniczenia 2 żądań na minutę podczas publikowania zdarzenia utworzonego przez test.
 
 #### <a name="properties"></a>Właściwości
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | ciąg                             | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartość to "test-created".                                          |
-| ResourceUri               | URI                                | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/V1/Registration/validationEvents/{{CorrelationId}}" |
-| ResourceName              | ciąg                             | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "test".                                  |
-| AuditUri                  | URI                                | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}" |
-| ResourceChangeUtcDate     | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu.                                                         |
+| EventName                 | ciąg                             | Nazwa zdarzenia. W postaci {resource}-{action}. W przypadku tego zdarzenia wartość to "test-created".                                          |
+| ResourceUri               | URI                                | URI, aby uzyskać zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/registration/validationEvents/{{CorrelationId}}" |
+| ResourceName              | ciąg                             | Nazwa zasobu, który wyzwoli zdarzenie. W przypadku tego zdarzenia wartość to "test".                                  |
+| AuditUri                  | URI                                | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | ciąg w formacie daty i godzin UTC | Data i godzina zmiany zasobu.                                                         |
 
 #### <a name="example"></a>Przykład
 
@@ -59,22 +54,22 @@ To zdarzenie umożliwia samodzielne dołączanie i testowanie rejestracji przez 
 }
 ```
 
-### <a name="subscription-updated-event"></a>Zdarzenie zaktualizowane subskrypcji
+### <a name="subscription-updated-event"></a>Zdarzenie aktualizacji subskrypcji
 
-To zdarzenie jest zgłaszane, gdy zostanie zmieniona określona subskrypcja. Zdarzenie zaktualizowane subskrypcji jest generowane, gdy istnieje zmiana wewnętrzna poza wprowadzeniem zmian za pomocą interfejsu API Centrum partnerskiego.  To zdarzenie zostanie wygenerowane tylko w przypadku zmiany poziomu handlu, na przykład w przypadku zmodyfikowania liczby licencji i zmiany stanu subskrypcji. Nie zostanie on wygenerowany podczas tworzenia zasobów w ramach subskrypcji.
+To zdarzenie jest wywoływane po zmianie określonej subskrypcji. Zdarzenie Aktualizacja subskrypcji jest generowane w przypadku zmiany wewnętrznej oprócz zmiany wprowadzonej za pośrednictwem interfejsu API Partner Center API.  To zdarzenie zostanie wygenerowane tylko w przypadku zmiany poziomu handlowego, na przykład po zmodyfikowaniu liczby licencji i zmianie stanu subskrypcji. Nie zostanie on wygenerowany podczas tworzenia zasobów w ramach subskrypcji.
 
 >[!NOTE]
->Istnieje opóźnienie do 48 godzin między zmianą subskrypcji i wyzwoleniem zdarzenia zaktualizowanej subskrypcji.
+>Między zmianą subskrypcji a wyzwoleniem zdarzenia Aktualizacja subskrypcji istnieje opóźnienie do 48 godzin.
 
 #### <a name="properties"></a>Właściwości
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | ciąg                             | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartością jest "subskrypcja została zaktualizowana".                                  |
-| ResourceUri               | URI                                | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/V1/Customers/{{CustomerID}}/subscriptions/{{SubscriptionID}}" |
-| ResourceName              | ciąg                             | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "subskrypcja".                          |
-| AuditUri                  | URI                                | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}" |
-| ResourceChangeUtcDate     | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu.                                                         |
+| EventName                 | ciąg                             | Nazwa zdarzenia. W postaci {resource}-{action}. W przypadku tego zdarzenia wartość to "subskrypcja-zaktualizowana".                                  |
+| ResourceUri               | URI                                | URI, aby uzyskać zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/{{CustomerId}}/subscriptions/{{SubscriptionId}}" |
+| ResourceName              | ciąg                             | Nazwa zasobu, który wyzwoli zdarzenie. W przypadku tego zdarzenia wartością jest "subskrypcja".                          |
+| AuditUri                  | URI                                | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | ciąg w formacie daty i godzin UTC | Data i godzina zmiany zasobu.                                                         |
 
 #### <a name="example"></a>Przykład
 
@@ -90,17 +85,17 @@ To zdarzenie jest zgłaszane, gdy zostanie zmieniona określona subskrypcja. Zda
 
 ### <a name="threshold-exceeded-event"></a>Zdarzenie przekroczenia progu
 
-To zdarzenie jest zgłaszane, gdy wielkość Microsoft Azure użycia dla każdego klienta przekroczy budżet wydatków użytkowania (ich próg). Aby uzyskać więcej informacji, zobacz [Ustawianie budżetu wydatków platformy Azure dla klientów/partnerów-Center/Set-a-Azure-wydatków-budżet-dla klientów).
+To zdarzenie jest wywoływane, gdy Microsoft Azure użycia dla dowolnego klienta przekracza budżet wydatków na użycie (próg). Aby uzyskać więcej informacji, zobacz [Ustawianie budżetu wydatków platformy Azure dla klientów/centrum partnerskiego/set-an-azure-spending-budget-for-your-customers).
 
 #### <a name="properties"></a>Właściwości
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | ciąg                             | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartością jest "usagerecords-thresholdExceeded".                                  |
-| ResourceUri               | URI                                | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/V1/Customers/usagerecords" |
-| ResourceName              | ciąg                             | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "usagerecords".                          |
-| AuditUri                  | URI                                | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}" |
-| ResourceChangeUtcDate     | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu.                                                         |
+| EventName                 | ciąg                             | Nazwa zdarzenia. W postaci {resource}-{action}. Dla tego zdarzenia wartość to "usagerecords-thresholdExceeded".                                  |
+| ResourceUri               | URI                                | URI, aby uzyskać zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/usagerecords" |
+| ResourceName              | ciąg                             | Nazwa zasobu, który wyzwoli zdarzenie. Dla tego zdarzenia wartość to "usagerecords".                          |
+| AuditUri                  | URI                                | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | ciąg w formacie daty i godzin UTC | Data i godzina zmiany zasobu.                                                         |
 
 #### <a name="example"></a>Przykład
 
@@ -116,17 +111,17 @@ To zdarzenie jest zgłaszane, gdy wielkość Microsoft Azure użycia dla każdeg
 
 ### <a name="referral-created-event"></a>Zdarzenie utworzenia odwołania
 
-To zdarzenie jest zgłaszane po utworzeniu odwołania.
+To zdarzenie jest wywoływane podczas tworzenia odwołania.
 
 #### <a name="properties"></a>Właściwości
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | ciąg                             | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartością jest "utworzono odwołanie".                                  |
-| ResourceUri               | URI                                | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/Engagements/V1/Referrals/{{ReferralID}}" |
-| ResourceName              | ciąg                             | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "odwołanie".                          |
-| AuditUri                  | URI                                | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}" |
-| ResourceChangeUtcDate     | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu.                                                         |
+| EventName                 | ciąg                             | Nazwa zdarzenia. W postaci {zasób}-{akcja}. W przypadku tego zdarzenia wartość to "utworzono polecenie".                                  |
+| ResourceUri               | URI                                | URI do uzyskania zasobu. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
+| ResourceName              | ciąg                             | Nazwa zasobu, który wyzwoli zdarzenie. W przypadku tego zdarzenia wartość to "odwołanie".                          |
+| AuditUri                  | URI                                | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | ciąg w formacie daty i czasu UTC | Data i godzina zmiany zasobu.                                                         |
 
 #### <a name="example"></a>Przykład
 
@@ -140,19 +135,19 @@ To zdarzenie jest zgłaszane po utworzeniu odwołania.
 }
 ```
 
-### <a name="referral-updated-event"></a>Zdarzenie zaktualizowane odwołania
+### <a name="referral-updated-event"></a>Zdarzenie zaktualizowanego polecenia
 
-To zdarzenie jest zgłaszane, gdy odwołanie zostanie zaktualizowane.
+To zdarzenie jest wywoływane po zaktualizowaniu odwołania.
 
 #### <a name="properties"></a>Właściwości
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | ciąg                             | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartością jest "odwołanie-zaktualizowane".                                  |
-| ResourceUri               | URI                                | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/Engagements/V1/Referrals/{{ReferralID}}" |
-| ResourceName              | ciąg                             | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "odwołanie".                          |
-| AuditUri                  | URI                                | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}" |
-| ResourceChangeUtcDate     | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu.                                                         |
+| EventName                 | ciąg                             | Nazwa zdarzenia. W postaci {zasób}-{akcja}. W przypadku tego zdarzenia wartość to "referral-updated".                                  |
+| ResourceUri               | URI                                | URI do uzyskania zasobu. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
+| ResourceName              | ciąg                             | Nazwa zasobu, który wyzwoli zdarzenie. W przypadku tego zdarzenia wartość to "odwołanie".                          |
+| AuditUri                  | URI                                | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | ciąg w formacie daty i czasu UTC | Data i godzina zmiany zasobu.                                                         |
 
 #### <a name="example"></a>Przykład
 
@@ -166,17 +161,17 @@ To zdarzenie jest zgłaszane, gdy odwołanie zostanie zaktualizowane.
 }
 ```
 
-### <a name="invoice-ready-event"></a>Wydarzenie gotowe do fakturowania
+### <a name="invoice-ready-event"></a>Zdarzenie gotowe na fakturę
 
-To zdarzenie jest zgłaszane w przypadku gotowości nowej faktury.
+To zdarzenie jest wywoływane, gdy nowa faktura jest gotowa.
 
 | Właściwość                  | Typ                               | Opis                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName | ciąg | Nazwa zdarzenia. W formularzu {Resource} — {Action}. Dla tego zdarzenia wartością jest "faktura-gotowa". |
-| ResourceUri | URI | Identyfikator URI, w którym ma zostać pobrany zasób. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{{InvoiceId}}" |
-| ResourceName | ciąg | Nazwa zasobu, który będzie wyzwalać zdarzenie. Dla tego zdarzenia wartością jest "Invoice". |
-| AuditUri |  URI | Obowiązkowe Identyfikator URI do pobrania rekordu inspekcji, jeśli istnieje. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/V1/AuditRecords/{{AuditId}}") |
-| ResourceChangeUtcDate | ciąg w formacie daty i godziny UTC | Data i godzina wystąpienia zmiany zasobu. |
+| EventName | ciąg | Nazwa zdarzenia. W postaci {zasób}-{akcja}. W przypadku tego zdarzenia wartość to "faktura jest gotowa". |
+| ResourceUri | URI | URI do uzyskania zasobu. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{{InvoiceId}}" |
+| ResourceName | ciąg | Nazwa zasobu, który wyzwoli zdarzenie. W przypadku tego zdarzenia wartością jest "faktura". |
+| AuditUri |  URI | (Opcjonalnie) Jeśli rekord inspekcji istnieje, ma być on rejestrem URI. Używa składni: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}") |
+| ResourceChangeUtcDate | ciąg w formacie daty i czasu UTC | Data i godzina zmiany zasobu. |
 
 #### <a name="example"></a>Przykład
 

@@ -1,27 +1,23 @@
 ---
 title: Tworzenie transferu
-description: Jak utworzyć transfer subskrypcji dla klienta.
+description: Jak utworzyć przeniesienie subskrypcji dla klienta.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d5e70cc5b7ce4fcfa715f581a2151f0b8d1922b0
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767761"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973710"
 ---
 # <a name="create-a-transfer"></a>Tworzenie transferu
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -29,7 +25,7 @@ ms.locfileid: "97767761"
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Transfers http/1.1                    |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/transfery HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -37,33 +33,33 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W tej tabeli opisano właściwości [TransferEntity](transfer-entity-resources.md) w treści żądania.
+W tej tabeli opisano [właściwości TransferEntity](transfer-entity-resources.md) w treści żądania.
 
 | Właściwość              | Typ          | Wymagane  | Opis                                                                                |
 |-----------------------|---------------|-----------|--------------------------------------------------------------------------------------------|
-| identyfikator                    | ciąg        | Nie    | Identyfikator transferEntity, który jest dostarczany po pomyślnym utworzeniu transferEntity.                               |
-| createdTime           | DateTime      | Nie    | Data, w której utworzono transferEntity, w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity.      |
-| lastModifiedTime      | DateTime      | Nie    | Data ostatniej aktualizacji transferEntity w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity. |
+| identyfikator                    | ciąg        | Nie    | Identyfikator transferEntity, który jest dostarczany po pomyślnym utworzeniu obiektu transferEntity.                               |
+| createdTime (czas utworzenia)           | DateTime      | Nie    | Data utworzenia przeniesieniaJedność w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity.      |
+| lastModifiedTime      | DateTime      | Nie    | Data ostatniej aktualizacji transakcji transferEntity w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity. |
 | lastModifiedUser      | ciąg        | Nie    | Użytkownik, który ostatnio zaktualizował transferEntity. Stosowane po pomyślnym utworzeniu transferEntity.                          |
-| customerName          | ciąg        | Nie    | Opcjonalny. Nazwa klienta, którego subskrypcje są transferowane.                                              |
-| customerTenantId      | ciąg        | Nie    | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta. Stosowane po pomyślnym utworzeniu transferEntity.         |
-| partnertenantid       | ciąg        | Nie    | Identyfikator GUID w formacie identyfikatora partnera, który identyfikuje partnera.                                                                   |
-| sourcePartnerName     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, która inicjuje transfer.                                           |
-| sourcePartnerTenantId | ciąg        | Tak   | Identyfikator GUID w formacie identyfikatora partnera, który identyfikuje partnera inicjującego transfer.                                           |
-| targetPartnerName     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, do której przeznaczony jest transfer.                                         |
-| targetPartnerTenantId | ciąg        | Tak   | Identyfikator partnera w formacie GUID, który identyfikuje partnera, do którego jest przeznaczony transfer.                                  |
-| lineItems             | Tablica obiektów | Tak| Tablica zasobów [TransferLineItem](transfer-entity-resources.md#transferlineitem) .                                   |
-| status                | ciąg        | Nie    | Stan transferEntity. Możliwe wartości to "Active" (można je usunąć/przesłać) i "ukończone" (zostały już ukończone). Stosowane po pomyślnym utworzeniu transferEntity.|
+| Customername          | ciąg        | Nie    | Opcjonalny. Nazwa klienta, którego subskrypcje są przenoszone.                                              |
+| customerTenantId      | ciąg        | Nie    | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta. Stosowane po pomyślnym utworzeniu transferEntity.         |
+| partnertenantid       | ciąg        | Nie    | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera.                                                                   |
+| sourcePartnerName (Nazwa partycji źródłowej)     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, który inicjuje przeniesienie.                                           |
+| sourcePartnerTenantId | ciąg        | Tak   | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera inicjujące przeniesienie.                                           |
+| targetPartnerName (nazwa_serwera_docelowego)     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, której celem jest przeniesienie.                                         |
+| targetPartnerTenantId | ciąg        | Tak   | Identyfikator GUID sformatowany jako partner-id, który identyfikuje partnera, do którego jest skierowany transfer.                                  |
+| lineItems             | Tablica obiektów | Tak| Tablica zasobów [TransferLineItem.](transfer-entity-resources.md#transferlineitem)                                   |
+| status                | ciąg        | Nie    | Stan transferEntity. Możliwe wartości to "Aktywne" (można je usunąć/przesłać) i "Ukończono" (zostało już zakończone). Stosowane po pomyślnym utworzeniu transferEntity.|
 
-W tej tabeli opisano właściwości [TransferLineItem](transfer-entity-resources.md#transferlineitem) w treści żądania.
+W tej tabeli [opisano właściwości TransferLineItem](transfer-entity-resources.md#transferlineitem) w treści żądania.
 
 |      Właściwość       |            Typ             | Wymagane | Opis                                                                                     |
 |---------------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------|
@@ -71,12 +67,12 @@ W tej tabeli opisano właściwości [TransferLineItem](transfer-entity-resources
 | subscriptionId       | ciąg                     | Tak      | Identyfikator subskrypcji.                                                                         |
 | quantity             | int                        | Nie       | Liczba licencji lub wystąpień.                                                                 |
 | billingCycle         | Obiekt                     | Nie       | Typ cyklu rozliczeniowego ustawiony dla bieżącego okresu.                                                |
-| friendlyName         | ciąg                     | Nie       | Opcjonalny. Przyjazna nazwa dla elementu zdefiniowanego przez partnera, która pomaga w odróżnieniu od siebie.                |
-| partnerIdOnRecord    | ciąg                     | Nie       | PartnerId on Record (MPNID) zakupu, który ma miejsce, gdy transfer zostanie zaakceptowany.              |
+| Friendlyname         | ciąg                     | Nie       | Opcjonalny. Przyjazna nazwa elementu zdefiniowanego przez partnera w celu uujednoznania.                |
+| partnerIdOnRecord    | ciąg                     | Nie       | PartnerId on Record (IDENTYFIKATOR MPN) przy zakupie, który ma miejsce po zaakceptowaniu przeniesienia.              |
 | offerId              | ciąg                     | Nie       | Identyfikator oferty.                                                                                |
-| addonItems           | Lista obiektów **TransferLineItem** | Nie | Kolekcja elementów transferEntity line dla dodatków, które będą transferowane wraz z subskrypcją podstawową, która jest transferowana. Stosowane po pomyślnym utworzeniu transferEntity.|
-| transferError        | ciąg                     | Nie       | Stosowane po zaakceptowaniu transferEntity w przypadku błędu.                                        |
-| status               | ciąg                     | Nie       | Stan LineItem w transferEntity.                                                    |
+| addonItems           | Lista obiektów **TransferLineItem** | Nie | Kolekcja elementów wiersza transferEntity dla dodatków, które zostaną przeniesione wraz z subskrypcją podstawową, która jest przesyłana. Stosowane po pomyślnym utworzeniu transferEntity.|
+| transferError        | ciąg                     | Nie       | Zastosowane po transferEntity jest akceptowana, jeśli wystąpi błąd.                                        |
+| status               | ciąg                     | Nie       | Stan lineitem w transferEntity.                                                    |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -109,11 +105,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca wypełniony zasób [TransferEnity](transfer-entity-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca wypełniony [zasób TransferEnity](transfer-entity-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

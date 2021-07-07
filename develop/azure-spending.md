@@ -1,47 +1,42 @@
 ---
-title: Zasoby interfejsu API do wydatków platformy Azure
-description: Dowiedz się, w jaki sposób partnerzy usług kryptograficznych mogą używać interfejsów API Centrum partnerskiego, aby wyświetlać i zarządzać wydatkami i użyciem platformy Azure w porównaniu z budżetem.
+title: Zasoby interfejsu API wydatków platformy Azure
+description: Dowiedz się, jak partnerzy programu CSP mogą używać Partner Center API do wyświetlania wydatków i użycia platformy Azure dla partnerów i klientów oraz zarządzania nimi w stosunku do ich budżetu.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 02a2995a06473cc6990d1234acd522a3b38a03d3
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 472554de1c354559d5bc4b21959c109467891806
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97768538"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974322"
 ---
-# <a name="azure-spending-api-resources-to-manage-partner-or-customer-spending-and-usage-against-a-budget"></a>Zasoby interfejsu API wydatków na platformę Azure umożliwiające zarządzanie wydatkami i obciążeniem klientów oraz korzystanie z budżetu 
+# <a name="azure-spending-api-resources-to-manage-partner-or-customer-spending-and-usage-against-a-budget"></a>Zasoby interfejsu API wydatków platformy Azure do zarządzania wydatkami i użyciem partnerów lub klientów względem budżetu 
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Dostawca rozwiązań w chmurze (CSP) mogą wyświetlać wydatki na platformę Azure i zarządzać nimi za pośrednictwem Partner Center API. Mogą również programowo wyświetlać wydatki klientów względem budżetu wydatków na platformę Azure.
 
-Partnerzy dostawcy rozwiązań w chmurze mogą wyświetlać swoje wydatki na platformę Azure i zarządzać nimi za pomocą interfejsów API Centrum partnerskiego. Mogą również programistycznie wyświetlać wydatki klientów w porównaniu z budżetem wydatków na platformę Azure.
-
-Aby uzyskać więcej informacji, zobacz [scenariusze, w których partnerzy programu CSP mogą używać interfejsów API Centrum partnerskiego do zarządzania kontami i zamówieniami klientów i partnerów](scenarios.md).
+Aby uzyskać więcej informacji, zobacz scenariusze, w których partnerzy programu CSP mogą używać interfejsów API Partner Center do zarządzania kontami klientów i [partnerów oraz zamówieniami.](scenarios.md)
 
 ## <a name="partner-usage-management"></a>Zarządzanie użyciem partnerów
 
-- [Pobieranie podsumowania użycia partnerów](get-a-partner-usage-summary.md) przy użyciu zasobu **PartnerUsageSummary**
-- [Pobierz rekordy użycia dla wszystkich klientów](get-a-customer-s-usage-records.md) korzystających z zasobów **CustomerMonthlyUsageRecord**
+- [Uzyskiwanie podsumowania użycia partnera przy](get-a-partner-usage-summary.md) użyciu zasobu **PartnerUsageSummary**
+- [Uzyskiwanie rekordów użycia dla wszystkich klientów przy](get-a-customer-s-usage-records.md) użyciu zasobu **CustomerMonthlyUsageRecord**
 
-## <a name="customer-usage-management"></a>Zarządzanie użyciem klienta
+## <a name="customer-usage-management"></a>Zarządzanie użyciem przez klientów
 
-- [Pobieranie podsumowania użycia klienta](get-a-customer-usage-summary.md) przy użyciu zasobu **CustomerUsageSummary**
-- [Pobierz wszystkie rekordy użycia subskrypcji dla klienta](get-a-customer-subscription-s-usage-records.md) przy użyciu zasobu **SubscriptionMonthlyUsageRecord**
+- [Pobierz podsumowanie użycia klienta przy użyciu](get-a-customer-usage-summary.md) zasobu **CustomerUsageSummary**
+- [Pobierz wszystkie rekordy użycia subskrypcji dla klienta przy](get-a-customer-subscription-s-usage-records.md) użyciu zasobu **SubscriptionMonthlyUsageRecord**
 
 ## <a name="subscription-usage-management"></a>Zarządzanie użyciem subskrypcji
 
-- [Pobieranie podsumowania użycia subskrypcji](get-a-customer-subscription-usage-summary.md) przy użyciu zasobu **SubscriptionUsageSummary**
-- [Pobierz wszystkie miesięczne rekordy użycia dla subskrypcji](get-all-monthly-usage-records-for-a-subscription.md) przy użyciu zasobu **AzureResourceMonthlyUsageRecord**
-- [Pobieranie danych użycia dla subskrypcji przez zasób](get-a-customer-subscription-resource-usage-records.md) przy użyciu zasobu **ResourceUsageRecord**
-- [Pobieranie danych użycia dla subskrypcji przez licznik](get-a-customer-subscription-meter-usage-records.md) przy użyciu zasobu **MeterUsageRecord**
+- [Uzyskiwanie podsumowania użycia subskrypcji przy](get-a-customer-subscription-usage-summary.md) użyciu zasobu **SubscriptionUsageSummary**
+- [Pobierz wszystkie miesięczne rekordy użycia dla subskrypcji przy](get-all-monthly-usage-records-for-a-subscription.md) użyciu zasobu **AzureResourceMonthlyUsageRecord**
+- [Uzyskiwanie danych użycia dla subskrypcji według zasobu przy](get-a-customer-subscription-resource-usage-records.md) użyciu zasobu **ResourceUsageRecord**
+- [Uzyskiwanie danych użycia subskrypcji według miernika przy](get-a-customer-subscription-meter-usage-records.md) użyciu **zasobu MeterUsageRecord**
 
-## <a name="azure-spending-budget-management"></a>Zarządzanie budżetem przez platformę Azure
+## <a name="azure-spending-budget-management"></a>Zarządzanie budżetem wydatków na platformę Azure
 
-- [Pobieranie budżetu użycia klienta](get-a-customer-s-usage-spending-budget.md) przy użyciu zasobu **CustomerUsageSummary**
-- [Aktualizowanie budżetu użycia klienta](update-a-customer-s-usage-spending-budget.md) przy użyciu zasobu **CustomerUsageSummary**
+- [Uzyskiwanie budżetu użycia klienta przy](get-a-customer-s-usage-spending-budget.md) użyciu zasobu **CustomerUsageSummary**
+- [Aktualizowanie budżetu użycia klienta przy](update-a-customer-s-usage-spending-budget.md) użyciu zasobu **CustomerUsageSummary**

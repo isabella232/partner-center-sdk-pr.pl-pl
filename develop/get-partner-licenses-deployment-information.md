@@ -1,34 +1,30 @@
 ---
 title: Pobieranie informacji dotyczących wdrażania licencji partnera
-description: Jak uzyskać informacje o wdrożeniu licencji partnerów zagregowane w celu uwzględnienia wszystkich klientów.
+description: Jak uzyskać zagregowane informacje o wdrażaniu licencji partnerów, aby uwzględnić wszystkich klientów.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 229f63d4df4f59cd0fde2bd0fc5e3f10cf6b25c0
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 2464242fc6dc4e7464511eac5d4197630e22fac0
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768433"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445987"
 ---
 # <a name="get-partner-licenses-deployment-information"></a>Pobieranie informacji dotyczących wdrażania licencji partnera
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak uzyskać informacje o wdrożeniu licencji partnerów zagregowane w celu uwzględnienia wszystkich klientów.
+Jak uzyskać zagregowane informacje o wdrażaniu licencji partnerów, aby uwzględnić wszystkich klientów.
 
 > [!NOTE]
-> Ten scenariusz został zastąpiony przez [uzyskanie informacji o wdrożeniu licencji](get-licenses-deployment-information.md).
+> Ten scenariusz jest przesłoowany przez uzyskiwanie [informacji o wdrożeniu licencji.](get-licenses-deployment-information.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać zagregowane dane dotyczące wdrożenia licencji, należy najpierw pobrać interfejs do operacji zbierania danych analitycznych na poziomie partnera ze [**IAggregatePartner. Analytics**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) właściwości. Następnie można pobrać interfejs do kolekcji analizy licencji poziomu partnera z właściwości [**licenses**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) . Na koniec Wywołaj metodę [**Deployment. Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) , aby uzyskać zagregowane dane dotyczące wdrożenia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**PartnerLicensesDeploymentInsights**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesdeploymentinsights) .
+Aby pobrać zagregowane dane dotyczące wdrożenia licencji, najpierw uzyskaj interfejs do operacji zbierania danych analitycznych na poziomie partnera z właściwości [**IAggregatePartner.Analytics.**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) Następnie pobierz interfejs do kolekcji analizy licencji na poziomie partnera z [**właściwości Licencje.**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) Na koniec wywołaj [**metodę Deployment.Get,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) aby uzyskać zagregowane dane dotyczące wdrożenia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**PartnerLicensesDeploymentInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesdeploymentinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,11 +38,11 @@ var partnerLicensesDeploymentAnalytics = partnerOperations.Analytics.Licenses.De
 
 | Metoda  | Identyfikator URI żądania                                                                           |
 |---------|---------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Analytics/licenses/Deployment http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/analytics/licenses/deployment HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -66,11 +62,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [PartnerLicensesDeploymentInsights](analytics-resources.md#partnerlicensesdeploymentinsights) , które zawierają informacje na temat wdrożonych licencji.
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [PartnerLicensesDeploymentInsights,](analytics-resources.md#partnerlicensesdeploymentinsights) które zawierają informacje o wdrożonych licencjach.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

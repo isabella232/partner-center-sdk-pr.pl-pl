@@ -1,31 +1,27 @@
 ---
 title: Pobieranie wszystkich informacji analitycznych dotyczących poleceń
-description: Jak uzyskać wszystkie informacje analityczne dotyczące odwołań.
+description: Jak uzyskać wszystkie informacje analityczne dotyczące poleceń.
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: Kim-Davis
 ms.author: kimnich
-ms.openlocfilehash: b470c59cecf8b214e6d90a244e928e5d15ebd3e0
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 7deda4098ceb9eb4e1ee75056c53c754618bf3e2
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767929"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760610"
 ---
 # <a name="get-all-referrals-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących poleceń
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak uzyskać wszystkie informacje o analizie odwołań dla swoich klientów.
+Jak uzyskać wszystkie informacje analityczne dotyczące poleceń dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie z poświadczeniami użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -33,21 +29,21 @@ Jak uzyskać wszystkie informacje o analizie odwołań dla swoich klientów.
 
 | Metoda  | Identyfikator URI żądania |
 |---------|-------------|
-| **Pobierz** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/V1/Analytics/Referrals http/1.1 |
+| **Pobierz** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/referrals HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 | Parametr | Typ | Opis |
 |-----------|------|-------------|
-| filter | ciąg | Zwraca dane pasujące do warunku filtru.</br> **Przykład:**</br>  `.../referrals?filter=field eq 'value'` |
-| GroupBy | ciąg | Obsługuje zarówno warunki, jak i daty. Algorytm krótkiego obwodu ograniczający liczbę przedziałów.</br> **Przykład:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
-| aggregationLevel | ciąg | Parametr *aggregationLevel* wymaga elementu *GroupBy*. Parametr *aggregationLevel* ma zastosowanie do wszystkich pól daty znajdujących się w *GroupBy*.</br> **Przykład:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
-| top (pierwsze) | ciąg | Limit stron to 10000. Przyjmuje dowolną wartość mniejszą niż 10000.</br> **Przykład:**</br> `.../referrals?top=100`</br> |
+| filter | ciąg | Zwraca dane zgodne z warunkiem filtru.</br> **Przykład:**</br>  `.../referrals?filter=field eq 'value'` |
+| Groupby | ciąg | Obsługuje zarówno terminy, jak i daty. Logika obwodu krótkiego ograniczająca liczbę zasobników.</br> **Przykład:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
+| aggregationLevel | ciąg | Parametr *aggregationLevel* wymaga *pogrupowania wartości*. Parametr *aggregationLevel* ma zastosowanie do wszystkich pól daty obecnych w tabeli *grupowania*.</br> **Przykład:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
+| top (pierwsze) | ciąg | Limit stron wynosi 10000. Przyjmuje dowolną wartość mniejszą niż 10000.</br> **Przykład:**</br> `.../referrals?top=100`</br> |
 | Pomiń | ciąg | Liczba wierszy do pominięcia.</br> **Przykład:**</br>  `.../referrals?top=100&skip=100` |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -65,11 +61,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [odwołań](partner-center-analytics-resources.md#referrals-resource) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów Polecenia.](partner-center-analytics-resources.md#referrals-resource)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

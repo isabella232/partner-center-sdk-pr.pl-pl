@@ -1,40 +1,35 @@
 ---
 title: Aktualizowanie nicku dla subskrypcji
-description: Aktualizuje przyjazną nazwę lub pseudonim dla subskrypcji klienta.
+description: Aktualizuje przyjazną nazwę lub pseudonim subskrypcji klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 57a9fec4b69d4a64128425ea58b4bb84d0d7dd54
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 195a85fcf29b3e4c9fe0e578d4d8cb80ca068c40
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768305"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530008"
 ---
 # <a name="update-the-nickname-for-a-subscription"></a>Aktualizowanie nicku dla subskrypcji
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Aktualizuje przyjazną nazwę lub pseudonim subskrypcji [klienta.](subscription-resources.md) Ta nazwa jest wyświetlana Partner Center, aby ułatwić odróżnienie subskrypcji na koncie klienta.
 
-Aktualizuje przyjazną nazwę lub pseudonim dla [subskrypcji](subscription-resources.md)klienta. Ta nazwa jest wyświetlana w centrum partnerskim, aby ułatwić odróżnienie subskrypcji na koncie klienta.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, [wybierając najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, której nazwę chcesz zmienić. Aby zakończyć, Zmień nazwę w polu **pseudonim subskrypcji** , a następnie wybierz pozycję **Prześlij.**
+Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, którą chcesz zmienić. Aby zakończyć, zmień nazwę w polu **Pseudonim subskrypcji,** a następnie wybierz pozycję **Prześlij.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować pseudonim subskrypcji klienta, najpierw [Uzyskaj subskrypcję](get-a-subscription-by-id.md), a następnie zmień właściwość [**FriendlyName**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) subskrypcji. Po wprowadzeniu zmiany Użyj kolekcji [**IPartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i Wywołaj metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) . Następnie Wywołaj Właściwość [**subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) , a następnie metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Następnie Zakończ, wywołując metodę [**patch ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch) .
+Aby zaktualizować pseudonim subskrypcji klienta, [](get-a-subscription-by-id.md)najpierw pobierz subskrypcję, a następnie zmień właściwość [**FriendlyName**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) subskrypcji. Po wejściu zmiany użyj [**kolekcji IPartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Następnie wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Następnie zakończ, wywołując [**metodę Patch().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,7 +43,7 @@ Subscription selectedSubscription = customerSubscriptions.Items.FirstOrDefault(s
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: UpdateSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa**: UpdateSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -56,24 +51,24 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda    | Identyfikator URI żądania                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-W tej tabeli przedstawiono parametr zapytania wymaganego do zaktualizowania pseudonimu subskrypcji.
+W tej tabeli wymieniono parametr zapytania wymagany do zaktualizowania pseudonimu subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                          |
 |-------------------------|----------|----------|--------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | **Identyfikator dzierżawy klienta** (identyfikator GUID). |
-| **Identyfikator — dla subskrypcji** | **guid** | Y        | Identyfikator subskrypcji (GUID).        |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator **dzierżawy klienta** (identyfikator GUID). |
+| **id-for-subscription** | **guid** | Y        | Identyfikator subskrypcji (identyfikator GUID).        |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania jest wymagany pełny zasób **subskrypcji** . Upewnij się, że właściwość **FriendlyName** została zaktualizowana.
+W treści **żądania** jest wymagany pełny zasób subskrypcji. Upewnij **się, że** właściwość FriendlyName została zaktualizowana.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -112,11 +107,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zaktualizowane właściwości zasobów [subskrypcji](subscription-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [zaktualizowane](subscription-resources.md) właściwości zasobu subskrypcji w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

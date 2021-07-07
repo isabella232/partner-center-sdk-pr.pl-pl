@@ -1,38 +1,35 @@
 ---
-title: Weryfikowanie statusu podpisywania umowy partnerskiej firmy Microsoft pośredniego odsprzedawcy
-description: Możesz użyć interfejsu API AgreementStatus, aby sprawdzić, czy pośredni odsprzedawca podpisał umowę partnera firmy Microsoft.
+title: Weryfikowanie stanu podpisywania Microsoft Partner Agreement odsprzedawcy pośredniego
+description: Interfejs API AgreementStatus umożliwia sprawdzenie, czy odsprzedawca pośredni podpisał umowę Microsoft Partner Agreement.
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: f83acc61624a72354c390905b1250bc021dd39aa
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711906"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529838"
 ---
-# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Weryfikowanie statusu podpisywania umowy partnerskiej firmy Microsoft pośredniego odsprzedawcy
+# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Weryfikowanie stanu podpisywania Microsoft Partner Agreement odsprzedawcy pośredniego
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Możesz sprawdzić, czy pośredni odsprzedawca podpisał umowę partnera firmy Microsoft przy użyciu identyfikatora dzierżawy usługi Microsoft Partner Network (MPN) (PGA/PLA) lub dostawcy rozwiązań w chmurze (CSP). Możesz użyć jednego z tych identyfikatorów, aby sprawdzić stan podpisywania umowy Microsoft Partner Agreement przy użyciu interfejsu API **AgreementStatus** .
+Możesz sprawdzić, czy odsprzedawca pośredni podpisał umowę Microsoft Partner Agreement przy użyciu identyfikatora Microsoft Partner Network (MPN) (PGA/PLA) lub identyfikatora dzierżawy Dostawca rozwiązań w chmurze (CSP) (identyfikator firmy Microsoft). Możesz użyć jednego z tych identyfikatorów, aby sprawdzić stan Microsoft Partner Agreement przy użyciu interfejsu API **AgreementStatus.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- IDENTYFIKATOR MPN (PGA/PLA) lub identyfikator dzierżawy dostawcy usług kryptograficznych (Microsoft ID) pośredniego odsprzedawcy. *Musisz użyć jednego z tych dwóch identyfikatorów.*
+- Identyfikator MPN (PGA/PLA) lub identyfikator dzierżawy CSP (identyfikator Microsoft) odsprzedawcy pośredniego. *Należy użyć jednego z tych dwóch identyfikatorów.*
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać status podpisu umowy partnerskiej firmy Microsoft dla pośredniego odsprzedawcy:
+Aby uzyskać Microsoft Partner Agreement stan podpisu odsprzedawcy pośredniego:
 
-1. Użyj kolekcji **IAggregatePartner. zgodność** , aby wywołać Właściwość **AgreementSignatureStatus** .
+1. Użyj **kolekcji IAggregatePartner.Compliance,** aby wywołać właściwość **AgreementSignatureStatus.**
 
-2. Wywołaj metodę [**Get ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) .
+2. Wywołaj [**metodę Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,8 +40,8 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 ```
 
 - Przykład: **[aplikacja testowa konsoli](console-test-app.md)**
-- Projekt: **PartnerCenterSDK. FeaturesSamples**
-- Klasa: **GetAgreementSignatureStatus. cs**
+- Project: **PartnerCenterSDK.FeaturesSamples**
+- Klasa: **GetAgreementSignatureStatus.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -52,26 +49,26 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 
 | Metoda | Identyfikator URI żądania |
 | ------ | ----------- |
-| **Pobierz** | *[{baseURL}](partner-center-rest-urls.md)*/V1/Compliance/{ProgramName}/agreementstatus? mpnId = {mpnId} &tenantId = {tenantId} |
+| **Pobierz** | *[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId} |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Musisz podać jeden z następujących dwóch parametrów zapytania, aby zidentyfikować partnera. Jeśli nie podano jednego z tych dwóch parametrów zapytania, zostanie wyświetlony komunikat o błędzie **400 (Nieprawidłowe żądanie)** .
+Aby zidentyfikować partnera, należy podać jeden z następujących dwóch parametrów zapytania. Jeśli nie po podaj jednego z tych dwóch parametrów zapytania, zostanie wyświetlony błąd **400 (Złe żądanie).**
 
 | Nazwa | Typ | Wymagane | Opis |
 | ---- | ---- | -------- | ----------- |
-| **MpnId** | int | Nie | Identyfikator Microsoft Partner Network (PGA/PLA) identyfikujący pośredniego odsprzedawcy. |
-| **TenantId** | GUID | Nie | Identyfikator Microsoft, który identyfikuje konto CSP pośredniego odsprzedawcy. |
+| **MpnId** | int | Nie | Identyfikator Microsoft Partner Network (PGA/PLA), który identyfikuje odsprzedawcę pośredniego. |
+| **TenantId** | GUID | Nie | Identyfikator firmy Microsoft, który identyfikuje konto CSP odsprzedawcy pośredniego. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz temat [Partner Center REST](headers.md).
+Aby uzyskać więcej informacji, zobacz [Partner Center REST](headers.md).
 
 ### <a name="request-examples"></a>Przykłady żądań
 
 #### <a name="request-using-mpn-id-pgapla"></a>Żądanie przy użyciu identyfikatora MPN (PGA/PLA)
 
-Poniższe przykładowe żądanie Pobiera stan podpisywania umowy partnerskiej Microsoft Partner pośredni przy użyciu identyfikatora Microsoft Partner Network pośredniego odsprzedawcy.
+Następujące przykładowe żądanie pobiera stan Microsoft Partner Agreement podpisywania odsprzedawcy pośredniego przy użyciu identyfikatora Microsoft Partner Network odsprzedawcy pośredniego.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?mpnid=1234567 HTTP/1.1
@@ -85,7 +82,7 @@ Host: api.partnercenter.microsoft.com
 
 #### <a name="request-using-csp-tenant-id"></a>Żądanie przy użyciu identyfikatora dzierżawy CSP
 
-Poniższe przykładowe żądanie Pobiera stan podpisywania umowy partnerskiej Microsoft Partner pośredni przy użyciu identyfikatora dzierżawy dostawcy CSP pośredniego Odsprzedawcy (identyfikator firmy Microsoft).
+Następujące przykładowe żądanie pobiera stan podpisywania Microsoft Partner Agreement odsprzedawcy pośredniego przy użyciu identyfikatora dzierżawy CSP odsprzedawcy pośredniego (Microsoft ID).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?tenantId=a2898e3a-06ca-454e-a0d0-c73b0ee36bba HTTP/1.1
@@ -99,13 +96,13 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [błąd REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center REST .](error-codes.md)
 
 ### <a name="response-example-success"></a>Przykład odpowiedzi (powodzenie)
 
-Następująca przykładowa odpowiedź pomyślnie zwraca, czy pośredni odsprzedawca zapisał umowę partnera firmy Microsoft.
+Następująca przykładowa odpowiedź pomyślnie zwraca, czy odsprzedawca pośredni podpisał umowę Microsoft Partner Agreement.
 
 ```http
 HTTP/1.1 200 OK
@@ -122,13 +119,13 @@ Connection: close
 }
 ```
 
-### <a name="response-examples-failure"></a>Przykłady odpowiedzi (niepowodzenie)
+### <a name="response-examples-failure"></a>Przykłady odpowiedzi (błąd)
 
-W przypadku, gdy nie można zwrócić stanu podpisywania pośredniej umowy partnerskiej partnera firmy Microsoft, użytkownik może otrzymywać odpowiedzi podobne do poniższych przykładów.
+Odpowiedzi mogą być podobne do poniższych przykładów, gdy nie można zwrócić stanu Microsoft Partner Agreement odsprzedawcy pośredniego.
 
-#### <a name="non-guid-formatted-csp-tenant-id"></a>Identyfikator dzierżawy CSP w formacie innym niż identyfikator GUID
+#### <a name="non-guid-formatted-csp-tenant-id"></a>Identyfikator dzierżawy CSP sformatowany bez identyfikatora GUID
 
-Poniższy przykład odpowiedzi jest zwracany, gdy identyfikator dzierżawy CSP, który został przesłany do interfejsu API, nie jest identyfikatorem GUID.
+Następująca przykładowa odpowiedź jest zwracana, gdy identyfikator dzierżawy dostawcy usług kryptograficznych przekazany do interfejsu API nie jest identyfikatorem GUID.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -150,7 +147,7 @@ Connection: close
 
 #### <a name="non-numeric-mpn-id"></a>Nieliczbowy identyfikator MPN
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy identyfikator MPN (PGA/PLA), który został przesłany do interfejsu API, nie jest wartością numeryczną.
+Następująca przykładowa odpowiedź jest zwracana, gdy identyfikator MPN (PGA/PLA) przekazany do interfejsu API jest nieliczbowy.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -170,9 +167,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpn-id-or-csp-tenant-id"></a>Brak identyfikatora dzierżawy lub identyfikatora MPN
+#### <a name="no-mpn-id-or-csp-tenant-id"></a>Brak identyfikatora MPN lub identyfikatora dzierżawy CSP
 
-Poniższy przykład odpowiedzi jest zwracany, jeśli nie przeszedł identyfikator MPN (PGA/PLA) ani identyfikator dzierżawcy dostawcy CSP do interfejsu API. Należy przekazać jeden z dwóch typów identyfikatorów do interfejsu API.
+Następująca przykładowa odpowiedź jest zwracana, gdy do interfejsu API nie przekazano identyfikatora MPN (PGA/PLA) lub identyfikatora dzierżawy dostawcy CSP. Do interfejsu API należy przekazać jeden z dwóch typów identyfikatorów.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -192,9 +189,9 @@ Connection: close
 }
 ```
 
-#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a>Przeszedł zarówno identyfikator MPN, jak i identyfikator dzierżawy dostawcy usług kryptograficznych
+#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a>Przekazano zarówno identyfikator MPN, jak i identyfikator dzierżawy CSP
 
-Poniższy Przykładowa odpowiedź jest zwracana w przypadku przekazywania identyfikatora MPN (PGA/PLA) i identyfikatora dzierżawy CSP do interfejsu API. Do interfejsu API należy przekazać *tylko jeden* z dwóch typów identyfikatorów.
+Następująca przykładowa odpowiedź jest zwracana, gdy do interfejsu API przekażemy zarówno identyfikator MPN ID (PGA/PLA), jak i identyfikator dzierżawy dostawcy CSP. Do *interfejsu* API należy przekazać tylko jeden z dwóch typów identyfikatorów.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -214,9 +211,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a>Pośredni odsprzedawca dostawcy usług kryptograficznych MPN identyfikator (PGA/PLA) jest nieprawidłowy lub nie został zmigrowany z Centrum członkostwa partnera do Centrum partnerskiego
+#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a>CSP Indirect Reseller IDENTYFIKATOR MPN (PGA/PLA) jest nieprawidłowy lub nie jest migrowany z Partner Membership Center do Partner Center
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy przekazana pośredni identyfikator MPN (PGA/PLA) jest nieprawidłowa lub nie została zmigrowana z Centrum członkostwa partnera do Centrum partnerskiego. [Więcej informacji](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
+Następująca przykładowa odpowiedź jest zwracana, gdy przekazany identyfikator MPN odsprzedawcy pośredniego (PGA/PLA) jest nieprawidłowy lub nie jest migrowany z Partner Membership Center do Partner Center. [Więcej informacji](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -238,9 +235,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>Region pośredni dostawcy usług kryptograficznych i region niebezpośredniego odsprzedawcy dostawcy CSP nie są zgodne
+#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>CSP Indirect Provider region i CSP Indirect Reseller są zgodne
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy region pośredniego odsprzedawcy MPN (PGA/PLA) nie jest zgodny z regionem dostawcy pośredniego. [Dowiedz się więcej](/partner-center/mpa-indirect-provider-faq) o regionach dostawcy usług kryptograficznych.
+Następująca przykładowa odpowiedź jest zwracana, gdy region odsprzedawcy pośredniego o identyfikatorze MPN (PGA/PLA) nie pasuje do regionu dostawcy pośredniego. [Dowiedz się więcej](/partner-center/mpa-indirect-provider-faq) o regionach CSP.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -262,9 +259,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>Pośredniego konta odsprzedawcy CSP istnieje w centrum partnerskim, ale nie podpisałem MPA
+#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>CSP Indirect Reseller istnieje w Partner Center, ale nie ma podpisanego umowy MPA
 
-Poniższy przykład odpowiedzi jest zwracany, gdy konto odsprzedawcy pośredniego dostawcy CSP w centrum partnerskim nie podpisał MPA. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
+Następująca przykładowa odpowiedź jest zwracana, CSP Indirect Reseller konto w Partner Center nie ma podpisanego umowy MPA. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -286,9 +283,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Brak pośredniego konta odsprzedawcy dostawcy CSP powiązanego z danym IDENTYFIKATORem MPN
+#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Żadne CSP Indirect Reseller nie jest skojarzone z danym identyfikatorem MPN
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie może rozpoznać identyfikator MPN (PGA/PLA) przekazany w żądaniu, ale nie istnieje Rejestracja dostawcy CSP skojarzona z danym IDENTYFIKATORem MPN (PGA/PLA). [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
+Następująca przykładowa odpowiedź jest zwracana, gdy program Partner Center może rozpoznać identyfikator MPN (PGA/PLA) przekazany w żądaniu, ale nie istnieje rejestracja CSP skojarzona z danym identyfikatorem MPN (PGA/PLA). [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -312,7 +309,7 @@ Connection: close
 
 #### <a name="invalid-tenant-id"></a>Nieprawidłowy identyfikator dzierżawy
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie nie znajdzie żadnego konta skojarzonego z IDENTYFIKATORem dzierżawy przesłanego w żądaniu.
+Następująca przykładowa odpowiedź jest zwracana, Partner Center nie znajdzie żadnego konta skojarzonego z identyfikatorem dzierżawy przekazanym w żądaniu.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -332,9 +329,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpa-found-with-the-given-tenant-id"></a>Nie znaleziono platformy MPA o podanym IDENTYFIKATORze dzierżawy
+#### <a name="no-mpa-found-with-the-given-tenant-id"></a>Nie znaleziono mpA o danym identyfikatorze dzierżawy
 
-Poniższy Przykładowa odpowiedź jest zwracana, gdy centrum partnerskie nie może znaleźć żadnego z nich podpisania MPA z danym IDENTYFIKATORem dzierżawy. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
+Następująca przykładowa odpowiedź jest zwracana, Partner Center nie może znaleźć żadnego podpisu MPA o danym identyfikatorze dzierżawy. [Więcej informacji](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request

@@ -1,45 +1,41 @@
 ---
 title: Tworzenie klienta dla odsprzedawcy pośredniego
-description: Dowiedz się, w jaki sposób Dostawca pośredni może użyć interfejsów API Centrum partnerskiego, aby utworzyć klienta dla pośredniego odsprzedawcy.
+description: Dowiedz się, jak dostawca pośredni może używać Partner Center API do tworzenia klienta dla odsprzedawcy pośredniego.
 ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 9a6218aeb61f3775c89d34b4d57a17741e3a1e93
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274584"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973744"
 ---
-# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Tworzenie klienta dla pośredniego odsprzedawcy przy użyciu interfejsów API usługi Partner Center
+# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Tworzenie klienta dla odsprzedawcy pośredniego przy użyciu Partner Center API
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Dostawca pośredni może utworzyć klienta dla pośredniego odsprzedawcy.
+Dostawca pośredni może utworzyć klienta dla odsprzedawcy pośredniego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator dzierżawy pośredniego odsprzedawcy.
+- Identyfikator dzierżawy odsprzedawcy pośredniego.
 
-- Pośredni odsprzedawca musi mieć partnerstwo z dostawcą pośrednim.
+- Odsprzedawca pośredni musi mieć partnerstwo z dostawcą pośrednim.
 
 ## <a name="c"></a>C\#
 
-Aby dodać nowego klienta w odniesieniu do pośredniego odsprzedawcy:
+Aby dodać nowego klienta dla odsprzedawcy pośredniego:
 
-1. Utwórz wystąpienie nowego obiektu [**klienta**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) , a następnie Utwórz wystąpienie i wypełnij [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) i [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile). Należy pamiętać, aby przypisać pośredni identyfikator odsprzedawcy do właściwości [**AssociatedPartnerID**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid) .
+1. Za pomocą wystąpienia nowego [**obiektu Klient**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) należy utworzyć jego wystąpienia, a następnie wypełnić pola [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) i [**CompanyProfile.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile) Pamiętaj, aby przypisać identyfikator odsprzedawcy pośredniego do właściwości [**AssociatedPartnerID.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid)
 
-2. Użyj właściwości [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby uzyskać interfejs do operacji zbierania danych przez klienta.
+2. Użyj właściwości [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs do operacji zbierania danych klientów.
 
-3. Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync) , aby utworzyć klienta.
+3. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) lub [**CreateAsync,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync) aby utworzyć klienta.
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -77,7 +73,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK Centrum partnerskiego: CreateCustomerforIndirectReseller. cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project**: zestaw SDK Centrum partnerskiego Samples **Class**: CreateCustomerforIndirectReseller.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -85,11 +81,11 @@ var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 
 | Metoda   | Identyfikator URI żądania                                                       |
 |----------|-------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -97,34 +93,34 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 | Nazwa                                          | Typ   | Wymagane | Opis                                                                                                                                                                                                                                                                                                                                           |
 |-----------------------------------------------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [BillingProfile](#billing-profile)             | object | Tak      | Informacje o profilu rozliczania klienta.                                                                                                                                                                                                                                                                                                           |
+| [BillingProfile](#billing-profile)             | object | Tak      | Informacje o profilu rozliczeniowym klienta.                                                                                                                                                                                                                                                                                                           |
 | [CompanyProfile](#company-profile)             | object | Tak      | Informacje o profilu firmy klienta.                                                               
-| [AssociatedPartnerId](customer-resources.md#customer) | ciąg | Tak      | Identyfikator pośredniego odsprzedawcy. Pośredni odsprzedawca określony przez podany tutaj identyfikator musi mieć powiązanie z dostawcą pośrednim lub żądanie zakończy się niepowodzeniem. Należy również pamiętać, że jeśli wartość AssociatedPartnerId nie zostanie podana, klient zostanie utworzony jako bezpośredni klient dostawcy pośredniego, a nie pośredni odsprzedawca. |
+| [AssociatedPartnerId](customer-resources.md#customer) | ciąg | Tak      | Identyfikator odsprzedawcy pośredniego. Odsprzedawca pośredni wskazany za pomocą identyfikatora podanego w tym miejscu musi mieć partnerstwo z dostawcą pośrednim, w przypadku gdy żądanie nie powiedzie się. Należy również zauważyć, że jeśli wartość AssociatedPartnerId nie zostanie dostarczona, klient jest tworzony jako bezpośredni klient dostawcy pośredniego, a nie odsprzedawcy pośredniego. |
 |Domena| Ciąg| Tak|Nazwa domeny klienta, na przykład contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    ciąg|Tak|     Numer identyfikacyjny organizacji klienta (określany również jako numer INN w niektórych krajach). Wymagane tylko w przypadku firmowego/organizacji klienta znajdującego się w następujących krajach: Armenia (AM), Azerbejdżan (AZ), Białoruś (w przypadku), Węgry (HU), Kazachstan (KZ), Kirgistan (KG), Mołdawia (MD), Rosja (RU), Tadżykistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indie, Brazylia, Afryka Południowa, Polskę, Zjednoczone Emiraty Arabskie, Arabia Saudyjska, Turcja, Tajlandia, Wietnam, Myanmar, Irak, Sudan Południowy i Wenezuela. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
+|organizationRegistrationNumber|    ciąg|Tak|     Numer rejestracji organizacji klienta (w niektórych krajach określany również jako numer NUMER TELEFONU). Wymagana tylko w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Zamówienie (AM), Kolumbia (AZ), Kolumbia (HU), KZ), Kyrgyzstan(KG), Azja (MD), Korea (RU), Tajikistan(TJ), Przemysl(UZ), Indie, Brazylia, Republika Południowej Afryki,Portal, Zjednoczone Królestwo, Arabia, Przećwicz, Wietnam, Anwil, Przemysl, Południowe Niemówiące i Ankai. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
 
 
 
 #### <a name="billing-profile"></a>Profil rozliczeniowy
 
-Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [CustomerBillingProfile](customer-resources.md#customerbillingprofile) wymaganych do utworzenia nowego klienta.
+W tej tabeli opisano minimalne wymagane pola z zasobu [CustomerBillingProfile](customer-resources.md#customerbillingprofile) potrzebne do utworzenia nowego klienta.
 
 | Nazwa             | Typ                                     | Wymagane | Opis                                                                                                                                                                                                     |
 |------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | poczta e-mail            | ciąg                                   | Tak      | Adres e-mail klienta.                                                                                                                                                                                   |
-| kultura          | ciąg                                   | Tak      | Ich preferowana kultura do komunikacji i waluty, na przykład "en-US". Zobacz obsługiwane [Języki w centrum partnerskim i ustawienia regionalne](partner-center-supported-languages-and-locales.md) dla obsługiwanych kultur. |
-| language         | ciąg                                   | Tak      | Język domyślny. Obsługiwane są dwa znaki kodów języka (na przykład `en` lub `fr` ).                                                                                                                                |
-| \_Nazwa firmy    | ciąg                                   | Tak      | Nazwa zarejestrowanej firmy/organizacji.                                                                                                                                                                       |
-| domyślny \_ adres | [Adres](utility-resources.md#address) | Tak      | Zarejestrowany adres firmy/organizacji klienta. Zobacz zasób [adresu](utility-resources.md#address) , aby uzyskać informacje o ograniczeniach długości.                                             |
+| kultura          | ciąg                                   | Tak      | Preferowana kultura komunikacji i waluty, na przykład "en-US". Zobacz [Partner Center obsługiwanych języków i lokalizacji regionalnych](partner-center-supported-languages-and-locales.md) dla obsługiwanych kultur. |
+| language         | ciąg                                   | Tak      | Język domyślny. Obsługiwane są dwa kody języków znaków (na `en` przykład lub `fr` ).                                                                                                                                |
+| nazwa \_ firmy    | ciąg                                   | Tak      | Nazwa zarejestrowanej firmy/organizacji.                                                                                                                                                                       |
+| adres \_ domyślny | [Adres](utility-resources.md#address) | Tak      | Zarejestrowany adres firmy/organizacji klienta. Zapoznaj się z [zasobem](utility-resources.md#address) Adres, aby uzyskać informacje o wszelkich ograniczeniach długości.                                             |
 
 #### <a name="company-profile"></a>Profil firmy
 
-Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) wymaganych do utworzenia nowego klienta.
+W tej tabeli opisano minimalne wymagane pola z zasobu [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) wymagane do utworzenia nowego klienta.
 
 | Nazwa   | Typ   | Wymagane | Opis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | domena | ciąg | Tak     | Nazwa domeny klienta, na przykład contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | ciąg | Zależy od warunku | Numer rejestracji organizacji klienta (określany również jako numer INN w niektórych krajach). <br/><br/>Wypełnienie tego pola jest wymagane tylko wtedy, gdy firma lub organizacja klienta znajduje się w następujących krajach: <br/><br/>-Armenia (AM) <br/>-Azerbejdżan (AZ)<br/>-Białoruś (przez)<br/>-Węgry (HU)<br/>-Kazachstan (KZ)<br/>-Kirgistan (KG)<br/>— Mołdawia (MD)<br/>— Rosja (RU)<br/>-Tadżykistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/>-Indie <br/>— Brazylia <br/>— Republika Południowej Afryki <br/>-Polska <br/>-Zjednoczone Emiraty Arabskie <br/>— Arabia Saudyjska <br/>— Turcja <br/>— Tajlandia <br/>— Wietnam <br/>-Myanmar <br/>-Irak <br/>— Sudan południowy <br/>-Wenezuela<br/> <br/>W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.  |
+| organizationRegistrationNumber | ciąg | Zależy od warunku | Numer rejestracji organizacji klienta (określany również jako numer IDENTYFIKACYJNY w niektórych krajach). <br/><br/>Ukończenie tego pola jest wymagane tylko wtedy, gdy firma/organizacja klienta znajduje się w następujących krajach: <br/><br/>— Zamów (AM) <br/>— Zakłotek (AZ)<br/>- Wniesienie (BY)<br/>- Wschowa (HU)<br/>- Wz (KZ)<br/>— Kyrgyzstan (KG)<br/>— Zamów (MD)<br/>- Rosyjski (RU)<br/>- Tadżykistan (TJ)<br/>- Zdjęcie (UZ)<br/>- Waze (UA)<br/>— Indie <br/>- Brazylia <br/>— Republika Południowej Afryki <br/>— Zięć <br/>— Zjednoczone Królestwo <br/>— Arabia Saudyjska <br/>- W tym celu <br/>- Zięć <br/>- Wietnam <br/>- Zięć <br/>- Wzgorę <br/>- Południowy Dobszczyń <br/>- Wzgorę<br/> <br/>W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.  |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -189,11 +185,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera zasób [klienta](customer-resources.md#customer) dla nowego klienta.
+W przypadku powodzenia odpowiedź zawiera [zasób Klient](customer-resources.md#customer) dla nowego klienta.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Odpowiedzi są uzyskiwane przy użyciu kodu stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Odpowiedzi zawierają kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

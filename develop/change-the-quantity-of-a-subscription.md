@@ -1,40 +1,35 @@
 ---
 title: Zmiana ilości subskrypcji
-description: Dowiedz się, jak zmienić liczbę licencji dla subskrypcji klienta przy użyciu interfejsów API usługi Partner Center. Można to również zrobić na pulpicie nawigacyjnym Centrum partnerskiego.
+description: Dowiedz się, jak Partner Center API, aby zmienić liczbę licencji dla subskrypcji klienta. Możesz to również zrobić na pulpicie nawigacyjnym Partner Center nawigacyjnym.
 ms.date: 06/05/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b9b781c50895aa3a14819bec43fcca1e931e3b30
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: d57ece4dd19ef2852f39130916222c54a9ccc85a
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768589"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974101"
 ---
-# <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Zmień liczbę licencji w ramach subskrypcji klienta
+# <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Zmienianie liczby licencji w subskrypcji klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Aktualizuje [subskrypcję,](subscription-resources.md) aby zwiększyć lub zmniejszyć liczbę licencji.
 
-Aktualizuje [subskrypcję](subscription-resources.md) , aby zwiększyć lub zmniejszyć liczbę licencji.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, [wybierając najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, której nazwę chcesz zmienić. Aby zakończyć, Zmień wartość w polu **ilość** , a następnie wybierz pozycję **Prześlij.**
+Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, którą chcesz zmienić. Aby zakończyć, zmień wartość w **polu Ilość,** a następnie wybierz pozycję **Prześlij.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby zmienić liczbę subskrypcji klienta, najpierw [Uzyskaj subskrypcję](get-a-subscription-by-id.md), a następnie [**Zmień właściwość wartość**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) subskrypcji. Po wprowadzeniu zmiany Użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** . Następnie Wywołaj Właściwość [**subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) , a następnie metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Następnie Zakończ, wywołując metodę **patch ()** .
+Aby zmienić ilość subskrypcji klienta, najpierw pobierz subskrypcję [,](get-a-subscription-by-id.md)a następnie zmień właściwość [**Quantity**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) subskrypcji. Po wgraniu zmiany użyj kolekcji **IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Następnie zakończ, wywołując **metodę Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -51,7 +46,7 @@ selectedSubscription.Quantity++;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: UpdateSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: UpdateSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -59,24 +54,24 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda    | Identyfikator URI żądania                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby zmienić liczbę subskrypcji.
+W tej tabeli wymieniono parametr zapytania wymagany do zmiany ilości subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **Identyfikator — dla subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
+| **id-for-subscription** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania jest wymagany pełny zasób **subskrypcji** . Upewnij się, że właściwość **ilość** została zaktualizowana.
+W treści **żądania** jest wymagany pełny zasób subskrypcji. Upewnij się, **że właściwość Quantity** została zaktualizowana.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -115,19 +110,19 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kod stanu **HTTP 200** i zaktualizowane właściwości [zasobów subskrypcji](subscription-resources.md)  w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kod stanu **HTTP 200** i zaktualizowane właściwości zasobów [subskrypcji](subscription-resources.md)  w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zwraca kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać kod stanu, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zwraca kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać kod stanu, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
-Gdy operacja patch trwa dłużej niż oczekiwany czas, centrum partnerskie wyśle kod stanu **http o stanie 202** i nagłówek lokalizacji wskazujący, gdzie pobrać subskrypcję. W celu monitorowania zmian stanu i ilości można wykonać zapytanie o subskrypcję okresowo.
+Gdy operacja poprawki trwa dłużej niż oczekiwano, Partner Center wysyła kod stanu **http 202** i nagłówek lokalizacji, który wskazuje, gdzie pobrać subskrypcję. Okresowo możesz wysyłać zapytania dotyczące subskrypcji, aby monitorować zmiany stanu i ilości.
 
 ### <a name="response-examples"></a>Przykłady odpowiedzi
 
 #### <a name="response-example-1"></a>Przykład odpowiedzi 1
 
-Pomyślne żądanie ze **stanem HTTP 200** kod stanu:
+Pomyślne żądanie z **kodem stanu 200** protokołu HTTP:
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscriptionID> HTTP/1.1
@@ -182,7 +177,7 @@ Connection: Keep-Alive
 
 #### <a name="response-example-2"></a>Przykład odpowiedzi 2
 
-Pomyślne żądanie ze **stanem HTTP 202** kod stanu:
+Pomyślne żądanie z **kodem stanu http 202:**
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscriptionID> HTTP/1.1

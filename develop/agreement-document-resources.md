@@ -1,31 +1,27 @@
 ---
-title: Zasoby dokumentu umowy
-description: Zasób AgreementDocument jest dokumentem umowy firmy Microsoft na potrzeby wersji zapoznawczej i pobierania. Jest ona obsługiwana przez centrum partnerskie w chmurze publicznej firmy Microsoft.
+title: Umowa z zasobami dokumentów
+description: Zasób AgreementDocument to dokument umowy firmy Microsoft do pobrania i wersji zapoznawczej. Jest ona obsługiwana przez Partner Center w chmurze publicznej firmy Microsoft.
 ms.date: 08/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 4805d25b0838bf922b81bebd998810c3f6a809c3
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 1a81da4f75594f241669db831125bd437872561c
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97768561"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025670"
 ---
-# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Zasoby dokumentu umowy obsługiwane przez centrum partnerskie w chmurze publicznej firmy Microsoft
+# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Umowa z zasobami dokumentów obsługiwanymi Partner Center w chmurze publicznej firmy Microsoft
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób **AgreementDocument** jest obecnie obsługiwany przez centrum partnerskie tylko w *chmurze publicznej firmy Microsoft*. Ten zasób nie ma zastosowania do:
+Zasób **AgreementDocument** jest obecnie obsługiwany Partner Center tylko w chmurze publicznej firmy Microsoft.
 
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Zasób **AgreementDocument** reprezentuje dokument umowy Microsoft, który jest dostępny do zaprezentowania i pobrania.
+Zasób **AgreementDocument** reprezentuje dokument umowy firmy Microsoft, który jest dostępny do podglądu i pobrania.
 
 ## <a name="agreementdocument"></a>AgreementDocument
 
@@ -33,7 +29,7 @@ Zasób **AgreementDocument** zawiera następujące właściwości:
 
 | Właściwość       | Typ   | Opis                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| country | ciąg | Kraj lub rynek, do którego odnosi się ten dokument. |
-| language | ciąg | Język, w którym znajduje się ten dokument. |
-| displayUri | ciąg | Link umożliwiający wyświetlenie podglądu dokumentu umowy w przeglądarce.  |
-| downloadUri |ciąg | Link umożliwiający pobranie dokumentu umowy (w formacie programu Microsoft Word). |
+| country | ciąg | Kraj lub rynek, do którego ma zastosowanie ten dokument. |
+| language | ciąg | Język, w którym zlokalizowany jest ten dokument. |
+| displayUri | ciąg | Link do podglądu dokumentu umowy w przeglądarce.  |
+| downloadUri |ciąg | Link do pobrania dokumentu umowy (w Microsoft Word formacie). |

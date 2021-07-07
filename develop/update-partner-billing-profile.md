@@ -1,36 +1,31 @@
 ---
 title: Aktualizowanie profilu rozliczeniowego partnera
-description: Aktualizuje profil rozliczeń partnera.
+description: Aktualizuje profil rozliczeniowy partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 34e7d2396d6dbdd45a6cf87a3bda481f51326f1e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 2b09a0045df15d774c892a59fba8502d4d4f7024
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768002"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529770"
 ---
 # <a name="update-the-partner-billing-profile"></a>Aktualizowanie profilu rozliczeniowego partnera
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Aktualizuje profil rozliczeń partnera
+Aktualizuje profil rozliczeniowy partnera
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil rozliczania partnera, Pobierz istniejący profil. Po zaktualizowaniu profilu Użyj kolekcji **IAggregatePartner. profile** i Wywołaj Właściwość **BillingProfile** . Na koniec Wywołaj metodę **Update ()** .
+Aby zaktualizować profil rozliczeniowy partnera, pobierz istniejący profil. Po zaktualizowaniu profilu użyj kolekcji **IAggregatePartner.Profiles** i wywołaj **właściwość BillingProfile.** Na koniec wywołaj **metodę Update().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +38,7 @@ existingBillingProfile.PurchaseOrderNumber = new Random().Next(9000, 10000).ToSt
 BillingProfile updatedPartnerBillingProfile = partnerOperations.Profiles.BillingProfile.Update(existingBillingProfile);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: UpdateBillingProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : UpdateBillingProfile.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: UpdateBillingProfile.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,11 +46,11 @@ BillingProfile updatedPartnerBillingProfile = partnerOperations.Profiles.Billing
 
 | Metoda  | Identyfikator URI żądania                                                              |
 |---------|--------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/Billing http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/billing HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -109,11 +104,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **BillingProfile** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca obiekt **BillingProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

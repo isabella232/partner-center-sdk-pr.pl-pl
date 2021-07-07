@@ -6,35 +6,30 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c95488b62449e1ab6bd2eeefea58d6686c291f4c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 857caa667245503f111b27379a5c8f93aa1fb0b0
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768349"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760661"
 ---
 # <a name="get-a-customers-subscriptions-by-partner-mpn-id"></a>Pobieranie subskrypcji klienta według identyfikatora MPN partnera
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak uzyskać listę subskrypcji dostarczonych przez danego partnera do określonego klienta.
+Jak uzyskać listę subskrypcji dostarczonych przez danego partnera Microsoft Partner Network (MPN) do określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator Microsoft Partner Network partnera (MPN).
+- Identyfikator MPN partnera.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę subskrypcji dostarczonych przez danego partnera do określonego klienta, najpierw Użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji zbierania danych subskrypcji klienta z właściwości [**subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) i Wywołaj metodę [**ByPartner**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.bypartner) z identyfikatorem MPN, aby zidentyfikować partnera i pobrać interfejs do operacji subskrypcji partnerskich. Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.getasync) w celu pobrania kolekcji.
+Aby uzyskać listę subskrypcji dostarczonych przez danego partnera dla określonego klienta, najpierw użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs do operacji zbierania subskrypcji klienta z właściwości [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) i wywołaj metodę [**ByPartner**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.bypartner) z identyfikatorem MPN, aby zidentyfikować partnera i pobrać interfejs do operacji subskrypcji partnera. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.getasync) aby pobrać kolekcję.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -44,13 +39,13 @@ Aby uzyskać listę subskrypcji dostarczonych przez danego partnera do określon
 var customerSubscriptionsByMpnId = partnerOperations.Customers.ById(customerId).Subscriptions.ByPartner(partnerMpnId).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetSubscriptionsByMpnid.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetSubscriptionsByMpnid.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać listę subskrypcji dostarczonych przez danego partnera do określonego klienta, najpierw Użyj funkcji **IAggregatePartner. GetCustomers. byId** z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji zbierania subskrypcji klienta z funkcji **Getsubscriptions** i wywołaj funkcję **byPartner** z identyfikatorem MPN, aby zidentyfikować partnera i pobrać interfejs do operacji subskrypcji partnerskich. Na koniec wywołaj funkcję **Get** w celu pobrania kolekcji.
+Aby uzyskać listę subskrypcji dostarczonych przez danego partnera określonemu klientowi, najpierw użyj funkcji **IAggregatePartner.getCustomers.byId** z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji zbierania subskrypcji klienta z funkcji **getSubscriptions** i wywołaj funkcję **byPartner** z identyfikatorem MPN, aby zidentyfikować partnera i pobrać interfejs do operacji subskrypcji partnera. Na koniec wywołaj **funkcję get,** aby pobrać kolekcję.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -64,7 +59,7 @@ ResourceCollection<Subscription> customerSubscriptionsByMpnId = partnerOperation
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać listę subskrypcji dostarczonych przez danego partnera do określonego klienta, uruchom polecenie [**Get-PartnerCustomerSubscription**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscription.md) . Określ identyfikator klienta, który będzie identyfikować klienta przy użyciu parametru **CustomerID** , i wypełnij parametr **MPNID** identyfikatorem MPN, aby zidentyfikować partnera.
+Aby uzyskać listę subskrypcji dostarczonych przez danego partnera określonemu klientowi, wykonaj polecenie [**Get-PartnerCustomerSubscription.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscription.md) Określ identyfikator klienta, aby zidentyfikować klienta przy użyciu parametru **CustomerId,** a następnie wypełnij parametr **MpnId** identyfikatorem MPN, aby zidentyfikować partnera.
 
 ```powershell
 # $customerId
@@ -79,20 +74,20 @@ Get-PartnerCustomerSubscription -CustomerId $customerId -MpnId $partnerMpnId
 
 | Metoda  | Identyfikator URI żądania |
 |---------|----------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions? MPN \_ ID = {MPN-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscriptions?mpn \_ id={mpn-id} HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następującej ścieżki i parametrów zapytania, aby zidentyfikować klienta i partnera.
 
 | Nazwa        | Typ   | Wymagane | Opis                                                 |
 |-------------|--------|----------|-------------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.       |
-| MPN — identyfikator      | int    | Tak      | Identyfikator Microsoft Partner Network, który identyfikuje partnera. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.       |
+| identyfikator mpn      | int    | Tak      | Identyfikator Microsoft Partner Network, który identyfikuje partnera. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -113,11 +108,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [subskrypcji](subscription-resources.md) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów](subscription-resources.md) subskrypcji.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

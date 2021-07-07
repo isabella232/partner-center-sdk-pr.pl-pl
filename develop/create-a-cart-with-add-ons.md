@@ -1,47 +1,43 @@
 ---
 title: Tworzenie koszyka z dodatkami
-description: Dowiedz się, jak za pomocą interfejsów API Centrum partnerskiego dodać zamówienie klienta z dodatkami za pomocą koszyka. Artykuł udostępnia wymagania wstępne i kroki tworzenia koszyka z dodatkami.
+description: Dowiedz się, jak używać Partner Center API do dodawania zamówienia klienta z dodatkimi za pośrednictwem koszyka. Artykuł udostępnia wymagania wstępne i kroki tworzenia koszyka z dodatków.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 81c41405a2f56eb4d1d3447d14b93e05d550cc70
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 513a9607b9194c36253630c91de9622325317c3a
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97768629"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973761"
 ---
-# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Tworzenie koszyka z dodatkami do zamówienia klienta
+# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Tworzenie koszyka z dodatkimi do zamówienia klienta
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Dodatki można kupić w koszyku. Aby uzyskać więcej informacji o tym, co jest obecnie dostępne do sprzedawania, zobacz [oferty partnerów w programie Cloud Solution Provider](/partner-center/csp-offers).
+Dodatki można kupić za pośrednictwem koszyka. Aby uzyskać więcej informacji o tym, co jest obecnie dostępne do sprzedaży, zobacz [Oferty partnerów w Dostawca rozwiązań w chmurze sprzedaży.](/partner-center/csp-offers)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Koszyk umożliwia zakup oferty podstawowej i jej odpowiednich dodatków. Wykonaj następujące kroki, aby utworzyć koszyk:
+Koszyk umożliwia zakup oferty podstawowej i odpowiadających jej dodatków. Wykonaj następujące kroki, aby utworzyć koszyk:
 
-1. Utwórz wystąpienie obiektu [**koszyka**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart) .
+1. Utworzyć wystąpienia obiektu [**koszyka.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart)
 
-2. Utwórz listę obiektów [**CartLineItem**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) reprezentujących oferty podstawowe i przypisz listę do właściwości [**LineItems**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems) koszyka.
+2. Utwórz listę obiektów [**CartLineItem**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) reprezentujących oferty podstawowe i przypisz listę do właściwości [**LineItems koszyka.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems)
 
-3. W obszarze każdego elementu linii koszyka podstawowej oferty Wypełnij listę **AddOnItems** innymi obiektami **CartLineItem** , które każdy reprezentuje dodatek, który zostanie zakupiony w ramach tej oferty podstawowej.
+3. W obszarze każdego elementu koszyka oferty podstawowej wypełnij listę elementów **AddOnItems** innymi obiektami **CartLineItem,** z których każdy reprezentuje dodatek, który zostanie zakupiony względem tej oferty podstawowej.
 
-4. Uzyskaj interfejs do operacji koszyka przy użyciu [**IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) do wywołania metody [**ICustomerCollection. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta, a następnie pobierając interfejs z właściwości **koszyka** .
+4. Uzyskaj interfejs do obsługi operacji koszyka przy użyciu narzędzia [**IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) w celu wywołania metody [**ICustomerCollection.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, a następnie pobierania interfejsu z właściwości **Cart.**
 
-5. Na koniec Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) , aby utworzyć koszyk.
+5. Na koniec wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) lub [**CreateAsync,**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) aby utworzyć koszyk.
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -84,9 +80,9 @@ var createdCart = partnerOperations.Customers.ById(customerId).Carts.Create(cart
 
 Wykonaj następujące kroki, aby utworzyć koszyk, który umożliwi zakup dodatków dla istniejących subskrypcji podstawowych:
 
-1. Utwórz **koszyk** z nowym **CARTLINEITEM** zawierającym Identyfikator subskrypcji we właściwości **ProvisioningContext** z kluczem "ParentSubscriptionId".
+1. Utwórz koszyk **z** nowym elementem **CartLineItem** zawierającym identyfikator subskrypcji we właściwości **ProvisioningContext z** kluczem "ParentSubscriptionId".
 
-2. Wywoływanie metody **Create** lub **onasync** .
+2. Wywołaj **metodę Create** lub **CreateAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -121,7 +117,7 @@ var createdCart = partnerOperations.Customers.ById(selectedCustomerId).Carts.Cre
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Carts http/1.1                        |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts HTTP/1.1                        |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -129,44 +125,44 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W tej tabeli opisano właściwości [koszyka](cart-resources.md) w treści żądania.
+W tej tabeli [opisano](cart-resources.md) właściwości koszyka w treści żądania.
 
 | Właściwość              | Typ             | Wymagane        | Opis |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Nie              | Identyfikator koszyka, który jest dostarczany po pomyślnym utworzeniu koszyka.                                  |
-| creationTimeStamp     | DateTime         | Nie              | Data i godzina utworzenia koszyka. Stosowane po pomyślnym utworzeniu koszyka.         |
-| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie daty i godziny. Stosowane po pomyślnym utworzeniu koszyka.    |
-| expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie daty i godziny.  Stosowane po pomyślnym utworzeniu koszyka.            |
+| creationTimeStamp     | DateTime         | Nie              | Data utworzenia koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.         |
+| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.    |
+| expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie data/godzina.  Stosowane po pomyślnym utworzeniu koszyka.            |
 | lastModifiedUser      | ciąg           | Nie              | Użytkownik, który ostatnio zaktualizował koszyk. Stosowane po pomyślnym utworzeniu koszyka.                             |
-| lineItems             | Tablica obiektów | Tak             | Tablica zasobów [CartLineItem](cart-resources.md#cartlineitem) .                                             |
+| lineItems             | Tablica obiektów | Tak             | Tablica [zasobów CartLineItem.](cart-resources.md#cartlineitem)                                             |
 
-W tej tabeli opisano właściwości [CartLineItem](cart-resources.md#cartlineitem) w treści żądania.
+W tej tabeli [opisano właściwości CartLineItem](cart-resources.md#cartlineitem) w treści żądania.
 
 | Właściwość             | Typ                             | Opis                                                                                                                                           |
 |----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator                   | ciąg                           | Unikatowy identyfikator dla elementu w wierszu koszyka. Stosowane po pomyślnym utworzeniu koszyka.                                                                   |
+| identyfikator                   | ciąg                           | Unikatowy identyfikator elementu wiersza koszyka. Stosowane po pomyślnym utworzeniu koszyka.                                                                   |
 | catalogId            | ciąg                           | Identyfikator elementu katalogu.                                                                                                                          |
-| friendlyName         | ciąg                           | Opcjonalny. Przyjazna nazwa dla elementu zdefiniowanego przez partnera, która pomaga w odróżnieniu od siebie.                                                                 |
+| Friendlyname         | ciąg                           | Opcjonalny. Przyjazna nazwa elementu zdefiniowanego przez partnera w celu uujednoznania.                                                                 |
 | quantity             | int                              | Liczba licencji lub wystąpień.                                                                                                                  |
 | currencyCode         | ciąg                           | Kod waluty.                                                                                                                                    |
 | billingCycle         | Obiekt                           | Typ cyklu rozliczeniowego ustawiony dla bieżącego okresu.                                                                                                 |
-| uczestnicy         | Lista par ciągów obiektów      | Kolekcja PartnerId on Record (MPNID) na zakupie.                                                                                          |
-| provisioningContext  | Ciąg<słownika, ciąg>       | Kontekst używany do aprowizacji oferty.                                                                                                             |
-| kolejność           | ciąg                           | Grupa wskazująca, które elementy mogą być umieszczone razem.                                                                                               |
+| uczestnicy         | Lista par ciągów obiektów      | Kolekcja identyfikatorów PartnerId w rekordzie (identyfikator MPN) podczas zakupu.                                                                                          |
+| provisioningContext  | Słownik<ciąg, ciąg>       | Kontekst używany do aprowizowania oferty.                                                                                                             |
+| orderGroup           | ciąg                           | Grupa wskazująca, które elementy można ze sobą umieścić.                                                                                               |
 | addonItems           | Lista obiektów **CartLineItem** | Kolekcja elementów wiersza koszyka dla dodatków, które zostaną zakupione w ramach subskrypcji podstawowej, która wynika z zakupu elementu wiersza koszyka nadrzędnego. |
-| error                | Obiekt                           | Zastosowano po utworzeniu koszyka w przypadku błędu.                                                                                                    |
+| error                | Obiekt                           | Zastosowane po utworzeniu koszyka, jeśli wystąpi błąd.                                                                                                    |
 
-### <a name="request-example-new-base-subscription"></a>Przykład żądania (Nowa subskrypcja podstawowa)
+### <a name="request-example-new-base-subscription"></a>Przykład żądania (nowa subskrypcja podstawowa)
 
-Poniższy przykład REST pokazuje, jak utworzyć koszyk z elementami dodatków dla nowej subskrypcji podstawowej.
+W poniższym przykładzie rest pokazano, jak utworzyć koszyk z elementami dodatków dla nowej subskrypcji podstawowej.
 
 ```http
 POST https://api.partnercenter.microsoft.com/v1/customers/18ac2950-8ea9-4dfc-92a4-ff4d4cd57796/carts HTTP/1.1
@@ -204,7 +200,7 @@ MS-CorrelationId: f73baf70-bbc3-43d0-8b29-dffa08ff9511
 
 #### <a name="request-example-existing-base-subscription"></a>Przykład żądania (istniejąca subskrypcja podstawowa)
 
-Poniższy przykład REST pokazuje, jak dołączyć Dodatki do istniejącej subskrypcji podstawowej.
+W poniższym przykładzie rest pokazano, jak dołączać dodatki do istniejącej subskrypcji podstawowej.
 
 ```http
 POST https://api.partnercenter.microsoft.com/v1/customers/18ac2950-8ea9-4dfc-92a4-ff4d4cd57796/carts HTTP/1.1
@@ -228,13 +224,13 @@ MS-CorrelationId: 182474ba-7303-4d0f-870a-8c7fba5ccc4b
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób [koszyka](cart-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
 
-#### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+#### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
-#### <a name="response-example-new-base-subscription"></a>Przykład odpowiedzi (Nowa subskrypcja podstawowa)
+#### <a name="response-example-new-base-subscription"></a>Przykład odpowiedzi (nowa subskrypcja podstawowa)
 
 ```http
 HTTP/1.1 201 Created

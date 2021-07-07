@@ -1,38 +1,33 @@
 ---
 title: Finalizacja zakupu koszyka
-description: Dowiedz się, jak sprawdzić zamówienie klienta w koszyku przy użyciu interfejsów API Centrum partnerskiego. Możesz to zrobić, aby zakończyć zamówienie klienta.
+description: Dowiedz się, jak sprawdzić zamówienie klienta w koszyku przy użyciu Partner Center API. Możesz to zrobić, aby ukończyć zamówienie klienta.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 094817a34cd29bc96788fcfb6a16610a8192d784
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768594"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974050"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Wyewidencjonowywanie zamówienia dla klienta w koszyku
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Wyewidencjonowanie zamówienia klienta w koszyku
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak wyewidencjonować zamówienie dla klienta w koszyku.
+Jak wyewidencjonować zamówienie klienta w koszyku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator koszyka dla istniejącego koszyka.
 
 ## <a name="c"></a>C\#
 
-Aby wyewidencjonować zamówienie dla klienta, Uzyskaj odwołanie do koszyka przy użyciu identyfikatora koszyka i klienta. Na koniec Wywołaj funkcje **Create** lub **setasync** , aby zakończyć zamówienie.
+Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcje Create** lub **CreateAsync,** aby ukończyć kolejność.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -46,7 +41,7 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Aby wyewidencjonować zamówienie dla klienta, Uzyskaj odwołanie do koszyka przy użyciu identyfikatora koszyka i klienta. Na koniec wywołaj funkcję **Create** , aby zakończyć zamówienie.
+Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcję create,** aby ukończyć kolejność.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -60,7 +55,7 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Aby wyewidencjonować zamówienie dla klienta, wykonaj polecenie [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) , aby zakończyć zamówienie.
+Aby wyewidencjonować zamówienie klienta, wykonaj polecenie [**Submit-PartnerCustomerCart,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) aby ukończyć zamówienie.
 
 ```powershell
 # $customerId
@@ -75,20 +70,20 @@ Submit-PartnerCustomerCart -CartId $cartId -CustomerId $customerId
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Carts/{Cart-ID}/Checkout http/1.1     |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1     |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
-Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i określić koszyk, który ma zostać wyewidencjonowany.
+Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i określić koszyk do wyewidencjonowania.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
-| **Identyfikator koszyka**     | ciąg   | Tak      | Identyfikator koszyka w formacie GUID, który identyfikuje koszyk.                     |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
+| **identyfikator koszyka**     | ciąg   | Tak      | Identyfikator GUID sformatowany jako cart-id, który identyfikuje koszyk.                     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -114,11 +109,11 @@ No-Content-Body
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera wypełniony zasób [CartCheckoutResult](cart-resources.md#cartcheckoutresult) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera wypełniony [zasób CartCheckoutResult.](cart-resources.md#cartcheckoutresult)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

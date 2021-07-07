@@ -4,35 +4,30 @@ description: Uaktualnia subskrypcję klienta do określonej subskrypcji docelowe
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9b757eee8bc65c16b5c65221a4c14b6c0fd6369e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 01455315825cad026830268b6bbd55509e964bb5
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767833"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530240"
 ---
 # <a name="transition-a-subscription"></a>Przejście do subskrypcji
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Uaktualnia subskrypcję klienta do określonej subskrypcji docelowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Dwa identyfikatory subskrypcji, jeden dla początkowej subskrypcji i jeden dla subskrypcji docelowej.
+- Dwa identyfikatory subskrypcji: jeden dla subskrypcji początkowej i jeden dla subskrypcji docelowej.
 
 ## <a name="c"></a>C\#
 
-Aby uaktualnić subskrypcję klienta, najpierw [zapoznaj się z subskrypcją usługi customer's](get-a-subscription-by-id.md). Następnie uzyskaj listę uaktualnień dla tej subskrypcji, wywołując Właściwość **Upgrades** , a następnie metodę **Get ()** lub **GetAsync ()** . Wybierz uaktualnienie docelowe z tej listy uaktualnień, a następnie Wywołaj Właściwość **Upgrades** subskrypcji początkowej, a następnie metodę **Create ()** .
+Aby podwyższyć subskrypcję klienta, najpierw pobierz subskrypcję [klienta](get-a-subscription-by-id.md). Następnie uzyskaj listę uaktualnień dla tej subskrypcji, wywołując właściwość **Upgrades,** a następnie metody **Get()** lub **GetAsync().** Wybierz uaktualnienie docelowe z tej listy uaktualnień, a następnie wywołaj właściwość **Upgrades** początkowej subskrypcji, a następnie metodę **Create().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +38,7 @@ Aby uaktualnić subskrypcję klienta, najpierw [zapoznaj się z subskrypcją us�
 UpgradeResult upgradeResult = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionIdForUpgrade).Upgrades.Create(targetOffer);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: UpgradeSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSamples: UpgradeSubscription.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,8 +46,8 @@ UpgradeResult upgradeResult = partnerOperations.Customers.ById(selectedCustomerI
 
 | Metoda   | Identyfikator URI żądania                                                                                                                         |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz**  | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription}/Upgrades http/1.1 |
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Target}/Upgrades http/1.1       |
+| **Pobierz**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription}/upgrades HTTP/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-target}/upgrades HTTP/1.1       |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -60,13 +55,13 @@ Użyj następującego parametru zapytania, aby przejść do subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.             |
-| **Identyfikator — dla subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
-| **Identyfikator dla elementu docelowego**       | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji docelowej.  |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.             |
+| **identyfikator subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
+| **id-for-target**       | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji docelowej.  |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -147,11 +142,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób wyniku **uaktualnienia** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **zasób wyniku** uaktualnienia w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

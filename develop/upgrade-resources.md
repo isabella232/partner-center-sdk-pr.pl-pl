@@ -4,49 +4,44 @@ description: Opisuje zasoby używane do uaktualniania użytkownika z subskrypcji
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bdbef383370761a01eb462f90284ad826a38ddaa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 4c57994d1b1e7659df5e6448578422f6d9c21fee
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767869"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529821"
 ---
 # <a name="upgrade-resources"></a>Uaktualnianie zasobów
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Opisuje zasoby używane do uaktualniania użytkownika z subskrypcji źródłowej do subskrypcji docelowej.
 
 ## <a name="upgrade"></a>Uaktualnienie
 
-Opisuje zachowanie indywidualnego zasobu uaktualnienia.
+Opisuje zachowanie pojedynczego zasobu uaktualnienia.
 
 | Właściwość      | Typ                   | Opis                                                                                  |
 |---------------|------------------------|----------------------------------------------------------------------------------------------|
 | TargetOffer   | Oferta                  | Oferta subskrypcji docelowej.                                                        |
-| Upgradetype   | ciąg                 | Typ uaktualnienia: "none", "upgrade \_ Only" lub "upgrade \_ with \_ License \_ transfer".         |
-| Nie kwalifikuj    | boolean                | Określa, czy można wykonać uaktualnienie.                                                  |
-| Ilość      | liczba całkowita                | Oszacowanie ilości nowej oferty do zakupu. Wartość domyślna to liczba dla subskrypcji źródłowej. |
-| UpgradeErrors | Tablica UpgradeErrors | Powody, dla których nie można przeprowadzić uaktualnienia, jeśli ma to zastosowanie.                                      |
+| UpgradeType   | ciąg                 | Typ uaktualnienia: "brak", \_ "tylko uaktualnienie" lub "uaktualnianie \_ z \_ \_ przeniesieniem licencji".         |
+| IsEligible    | boolean                | Określa, czy można przeprowadzić uaktualnienie.                                                  |
+| Liczba      | liczba całkowita                | Ilość nowej oferty do zakupienia. Wartość domyślna to ilość subskrypcji źródłowej. |
+| UpgradeErrors | tablica elementów UpgradeErrors | Przyczyny, dla których nie można przeprowadzić uaktualnienia, jeśli ma to zastosowanie.                                      |
 | Atrybuty    | ResourceAttributes     | Atrybuty metadanych odpowiadające uaktualnieniu.                                        |
 
 ## <a name="upgradeerror"></a>UpgradeError
 
-Opisuje powód, dla którego nie można przeprowadzić uaktualnienia.
+Opisuje przyczynę, dla którego nie można przeprowadzić uaktualnienia.
 
 | Właściwość          | Typ               | Opis                                                                                                                                                                                                                                                                                                                                                                                     |
 |-------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kod              | ciąg             | Kod błędu związany z problemem: "inne", " \_ wyłączono uprawnienia administratora delegowanego" \_ \_ , " \_ stan subskrypcji \_ \_ nieaktywny", "typy usługi powodującej konflikt \_ \_ ", "konflikty współbieżności", "wymagane przez użytkownika nie znaleziono", "subskrypcja nie została \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ zainicjowana" lub "subskrypcja \_ \_ Nieudostępniana". |
+| Kod              | ciąg             | Kod błędu skojarzony z problemem: "inne", "delegowane uprawnienia administratora wyłączone", "stan subskrypcji nie jest aktywny", "sprzeczne typy usług", "konflikty współbieżności", "wymagany kontekst użytkownika", "dodatki subskrypcji są obecne", "subskrypcja nie ma żadnych ścieżek \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ uaktualniania", "nie \_ \_ \_ \_ \_ \_ znaleziono oferty docelowej subskrypcji" lub "subskrypcja nie została aprowizowana". |
 | Opis       | ciąg             | Przyjazny tekst opisujący błąd.                                                                                                                                                                                                                                                                                                                                                             |
 | AdditionalDetails | ciąg             | Dodatkowe szczegóły dotyczące błędu.                                                                                                                                                                                                                                                                                                                                                         |
 | Atrybuty        | ResourceAttributes | Atrybuty metadanych odpowiadające błędowi.                                                                                                                                                                                                                                                                                                                                             |
 
-## <a name="upgraderesult"></a>UpgradeResult
+## <a name="upgraderesult"></a>Upgraderesult
 
 Opisuje wynik procesu uaktualniania subskrypcji.
 
@@ -54,20 +49,20 @@ Opisuje wynik procesu uaktualniania subskrypcji.
 |----------------------|-----------------------------|--------------------------------------------------------------------------------------|
 | SourceSubscriptionId | ciąg                      | Identyfikator subskrypcji źródłowej.                                           |
 | TargetSubscriptionID | ciąg                      | Identyfikator subskrypcji docelowej.                                           |
-| Upgradetype          | ciąg                      | Typ uaktualnienia: "none", "upgrade \_ Only" lub "upgrade \_ with \_ License \_ transfer". |
-| UpgradeErrors        | Tablica UpgradeErrors      | Napotkano błędy podczas próby przeprowadzenia uaktualnienia, jeśli ma to zastosowanie.           |
-| LicenseErrors        | Tablica UserLicenseErrrors | Napotkano błędy podczas próby migracji licencji użytkowników, jeśli ma to zastosowanie.          |
+| UpgradeType          | ciąg                      | Typ uaktualnienia: "brak", \_ "tylko uaktualnienie" lub "uaktualnianie \_ z \_ \_ przeniesieniem licencji". |
+| UpgradeErrors        | tablica elementów UpgradeErrors      | Błędy napotkane podczas próby wykonania uaktualnienia, jeśli ma to zastosowanie.           |
+| LicenseErrors        | tablica elementów UserLicenseErrrors | Błędy napotkane podczas próby migracji licencji użytkowników, jeśli ma to zastosowanie.          |
 | Atrybuty           | ResourceAttributes          | Atrybuty metadanych odpowiadające licencji.                                |
 
 ## <a name="userlicenseerror"></a>UserLicenseError
 
-Opisuje błędy wynikające z niepowodzenia transferu licencji użytkownika.
+Opisuje błędy wynikające z nieudanych transferów licencji użytkownika.
 
 | Właściwość     | Typ                   | Opis                                                               |
 |--------------|------------------------|---------------------------------------------------------------------------|
-| UserObjectId | ciąg                 | Unikatowy zidentyfikowany obiekt użytkownika.                                 |
+| UserObjectId | ciąg                 | Unikatowa zidentyfikowana obiektu użytkownika.                                 |
 | Nazwa         | ciąg                 | Nazwa użytkownika.                                                     |
 | E-mail        | ciąg                 | adres e-mail użytkownika.                                                    |
-| błędy       | Tablica servicefaults | Lista wyjątków zgłoszonych podczas próby przeprowadzenia transferu licencji użytkownika. |
+| błędy       | tablica wartości ServiceFaults | Lista wyjątków zgłaszanych podczas próby przeniesienia licencji użytkownika. |
 | Atrybuty   | ResourceAttributes     | Atrybuty metadanych odpowiadające licencji.                     |
 

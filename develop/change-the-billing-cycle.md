@@ -1,49 +1,44 @@
 ---
 title: Zmiana cyklu rozliczeniowego
-description: Dowiedz się, jak zaktualizować subskrypcję klienta do miesięcznej lub rocznej rozliczania przy użyciu interfejsów API Centrum partnerskiego. Można to również zrobić z poziomu pulpitu nawigacyjnego Centrum partnerskiego.
+description: Dowiedz się, jak zaktualizować subskrypcję klienta do rozliczeń miesięcznych lub rocznych przy użyciu Partner Center API. Możesz to również zrobić z Partner Center nawigacyjnego.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 8a2879db061ced799e29d84e71be5b1259b07689
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 435309229e2cb038c936028943f4c2cf27b032a7
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768601"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974118"
 ---
-# <a name="change-a-customer-subscription-billing-cycle"></a>Zmień cykl rozliczeniowy subskrypcji klienta
+# <a name="change-a-customer-subscription-billing-cycle"></a>Zmienianie cyklu rozliczeniowego subskrypcji klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Aktualizuje zamówienie [z](order-resources.md) rozliczenia miesięcznego na roczne lub rocznego na miesięczne.
 
-Aktualizuje [Zamówienie](order-resources.md) od miesięcznego do rocznego rozliczania lub rocznego rozliczania.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, przechodząc do strony szczegółów subskrypcji klienta. W tej chwili zobaczysz opcję definiującą bieżący cykl rozliczeniowy dla subskrypcji z możliwością jej zmiany i przesłania.
+Na Partner Center nawigacyjnym można wykonać tę operację, przechodząc do strony szczegółów subskrypcji klienta. W tym miejscu zobaczysz opcję definiowania bieżącego cyklu rozliczeniowego dla subskrypcji z możliwością jej zmiany i przesyłania.
 
 **Poza zakresem** tego artykułu:
 
-- Zmiana cyklu rozliczeniowego dla prób
-- Zmiana cykli rozliczeń w przypadku ofert nierocznych (miesięcznych, 6-letnich) & subskrypcji platformy Azure
-- Zmiana cykli rozliczeń dla nieaktywnych subskrypcji
-- Zmiana cykli rozliczeń dla subskrypcji opartych na licencji programu Microsoft Usługi online
+- Zmiana cyklu rozliczeniowego dla wersji próbnych
+- Zmiana cykli rozliczeniowych dla wszystkich ofert poza rocznym okresem (miesięcznych, sześciorocznych) & subskrypcji platformy Azure
+- Zmienianie cykli rozliczeniowych dla nieaktywnych subskrypcji
+- Zmienianie cykli rozliczeniowych dla subskrypcji Usługi online Microsoft opartych na licencjach
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zamówienia.
 
 ## <a name="c"></a>C\#
 
-Aby zmienić częstotliwość cyklu rozliczeniowego, zaktualizuj właściwość [**Order. BillingCycle**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle) .
+Aby zmienić częstotliwość cyklu rozliczeniowego, zaktualizuj [**właściwość Order.BillingCycle.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -76,20 +71,20 @@ var createdOrder = partnerOperations.Customers.ById(customerId).Orders.ById(orde
 
 | Metoda    | Identyfikator URI żądania                                                                                             |
 |-----------|---------------------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby zmienić liczbę subskrypcji.
+W tej tabeli wymieniono parametr zapytania wymagany do zmiany ilości subskrypcji.
 
 | Nazwa                   | Typ | Wymagane | Opis                                                          |
 |------------------------|------|----------|----------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | GUID |    Y     | Identyfikator GUID w formacie identyfikatora **dzierżawy klienta** , który identyfikuje klienta |
-| **Identyfikator zamówienia**           | GUID |    Y     | Identyfikator zamówienia                                                 |
+| **identyfikator dzierżawy klienta** | GUID |    Y     | Identyfikator GUID **sformatowany jako customer-tenant-id,** który identyfikuje klienta |
+| **order-id**           | GUID |    Y     | Identyfikator zamówienia                                                 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -99,28 +94,28 @@ W poniższych tabelach opisano właściwości w treści żądania.
 
 | Właściwość           | Typ             | Wymagane | Opis                                                                |
 |--------------------|------------------|----------|----------------------------------------------------------------------------|
-| Id                 | ciąg           |    N     | Identyfikator zamówienia, który jest dostarczany po pomyślnym utworzeniu zamówienia |
+| Id                 | ciąg           |    N     | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia |
 |ReferenceCustomerId | ciąg           |    Y     | Identyfikator klienta                                                    |
-| BillingCycle       | ciąg           |    Y     | Wskazuje częstotliwość, z jaką jest rozliczany partner dla tego zamówienia. Obsługiwane wartości to nazwy elementów członkowskich Znalezione w [BillingCycleType](product-resources.md#billingcycletype). |
-| LineItems          | Tablica obiektów |    Y     | Tablica zasobów [OrderLineItem](#orderlineitem)                      |
-| CreationDate       | datetime         |    N     | Data, w której zamówienie zostało utworzone, w formacie daty i godziny                        |
+| BillingCycle       | ciąg           |    Y     | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). |
+| LineItems          | tablica obiektów |    Y     | Tablica zasobów [OrderLineItem](#orderlineitem)                      |
+| Creationdate       | datetime         |    N     | Data utworzenia zamówienia w formacie data/godzina                        |
 | Atrybuty         | Obiekt           |    N     | Zawiera "ObjectType": "OrderLineItem"                                     |
 
 ### <a name="orderlineitem"></a>OrderLineItem
 
 | Właściwość             | Typ   | Wymagane | Opis                                                                        |
 |----------------------|--------|----------|------------------------------------------------------------------------------------|
-| LineItemNumber       | liczba |    Y     | Numer elementu wiersza, zaczynając od 0                                              |
+| LineItemNumber       | liczba |    Y     | Numer elementu wiersza rozpoczynający się od 0                                              |
 | OfferId              | ciąg |    Y     | Identyfikator oferty                                                                |
 | SubscriptionId       | ciąg |    Y     | Identyfikator subskrypcji                                                         |
-| FriendlyName         | ciąg |    N     | Przyjazna nazwa dla subskrypcji zdefiniowanej przez partnera, aby pomóc w odróżnieniu |
-| Ilość             | liczba |    Y     | Liczba licencji lub wystąpień                                                |
-| PartnerIdOnRecord    | ciąg |    N     | IDENTYFIKATOR MPN partnera rekordu                                                |
+| FriendlyName         | ciąg |    N     | Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania |
+| Liczba             | liczba |    Y     | Liczba licencji lub wystąpień                                                |
+| PartnerIdOnRecord    | ciąg |    N     | Identyfikator MPN partnera rekordu                                                |
 | Atrybuty           | Obiekt |    N     | Zawiera "ObjectType": "OrderLineItem"                                             |
 
 ### <a name="request-example"></a>Przykład żądania
 
-Aktualizowanie do rozliczeń rocznych
+Aktualizowanie do rozliczenia rocznego
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/4d3cf487-70f4-4e1e-9ff1-b2bfce8d9f04/orders/CF3B0E37-BE0B-4CDD-B584-D1A97D98A922 HTTP/1.1
@@ -159,11 +154,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zaktualizowany porządek subskrypcji w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zaktualizowaną kolejność subskrypcji w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

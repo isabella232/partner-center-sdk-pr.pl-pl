@@ -1,43 +1,39 @@
 ---
 title: Anulowanie zakupów oprogramowania
-description: Opcja samoobsługowego anulowania subskrypcji oprogramowania i zakupów bezterminowego w ramach interfejsów API Centrum partnerskiego.
+description: Samoobsługowa opcja anulowania subskrypcji oprogramowania i bezterminowych zakupów oprogramowania przy użyciu Partner Center API.
 ms.date: 12/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 25fd10a171fa6ca01f3442d49145443f2382cc18
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 877702ac930919ff72c6cc45a3c0e8ecc7e1b5f4
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768093"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974237"
 ---
 # <a name="cancel-software-purchases"></a>Anulowanie zakupów oprogramowania
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Możesz użyć interfejsów API Centrum partnerskiego, aby anulować subskrypcje oprogramowania i okresowe zakupy oprogramowania (o ile te zakupy zostały dokonane w oknie anulowania od daty zakupu). Nie musisz tworzyć biletu pomocy technicznej w celu dokonania takich operacji, a zamiast nich można używać następujących metod samoobsługi.
+Za pomocą interfejsów API Partner Center można anulować subskrypcje oprogramowania i bezterminowe zakupy oprogramowania (o ile te zakupy zostały dokonane w oknie anulowania od daty zakupu). Nie musisz tworzyć biletu pomocy technicznej, aby anulować takie zmiany, i zamiast tego możesz użyć następujących metod samoobsługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby anulować kolejność oprogramowania,
+Aby anulować zamówienie oprogramowania,
 
-1. Przekaż poświadczenia konta do metody [**CreatePartnerOperations**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) , aby uzyskać Interfejs [**IPartner**](/dotnet/api/microsoft.store.partnercenter.ipartner) w celu pobrania operacji partnerskich.
+1. Przekaż poświadczenia konta do metody [**CreatePartnerOperations,**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) aby uzyskać interfejs [**IPartner**](/dotnet/api/microsoft.store.partnercenter.ipartner) w celu uzyskania operacji partnera.
 
-2. Wybierz określoną [kolejność](order-resources.md#order) , którą chcesz anulować. Wywołaj metodę [**Customers. ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, a następnie **Orders. ById ()** z identyfikatorem zamówienia.
+2. Wybierz konkretne [zamówienie,](order-resources.md#order) które chcesz anulować. Wywołaj [**metodę Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, a następnie **orders.ById() z** identyfikatorem zamówienia.
 
-3. Wywołaj metodę **Get** lub **GetAsync** , aby pobrać zamówienie.
+3. Wywołaj **metodę Get** lub **GetAsync,** aby pobrać zamówienie.
 
-4. Ustaw właściwość [**Order. status**](order-resources.md#order) na wartość `cancelled` .
+4. Ustaw właściwość [**Order.Status**](order-resources.md#order) na `cancelled` wartość .
 
-5. Obowiązkowe Jeśli chcesz określić niektóre elementy wiersza do anulowania, ustaw polecenie [**Order. LineItems**](order-resources.md#order) na listę elementów wiersza, które chcesz anulować.
+5. (Opcjonalnie) Jeśli chcesz określić niektóre pozycje do anulowania, ustaw element [**Order.LineItems**](order-resources.md#order) na listę elementów wierszy, które chcesz anulować.
 
-6. Aby zaktualizować kolejność, użyj metody **patch ()** .
+6. Użyj metody **Patch(),** aby zaktualizować kolejność.
 
 ``` csharp
 // IPartnerCredentials accountCredentials;
@@ -62,20 +58,20 @@ order = accountPartnerOperations.Customers.ById(customerTenantId).Orders.ById(or
 
 | Metoda     | Identyfikator URI żądania                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów zapytania, aby usunąć klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość to identyfikator GUID w formacie identyfikatora dzierżawy klienta, który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **Identyfikator zamówienia** | **parametry** | Y        | Wartość jest ciągiem, który oznacza identyfikator zamówienia, który ma zostać anulowany. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem dzierżawy klienta w formacie GUID, który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **order-id** | **ciąg** | Y        | Wartość jest ciągiem oznaczający identyfikator zamówienia, które chcesz anulować. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -114,17 +110,17 @@ MS-CorrelationId: 1438ea3d-b515-45c7-9ec1-27ee0cc8e6bd
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zamówienie z anulowanymi elementami wiersza.
+W przypadku powodzenia ta metoda zwraca zamówienie ze anulowanym wierszem.
 
-Stan zamówienia zostanie oznaczony jako **anulowany** , jeśli wszystkie elementy wiersza w zamówieniu zostaną anulowane lub **ukończone** , jeśli nie wszystkie elementy wiersza w zamówieniu zostaną anulowane.
+Stan zamówienia zostanie oznaczony  jako anulowane, jeśli wszystkie pozycje w zamówieniu zostaną anulowane lub zakończone, jeśli nie wszystkie pozycje w zamówieniu zostaną anulowane. 
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 
-W poniższym przykładzie odpowiedzi można zobaczyć, że ilość elementu wiersza o identyfikatorze oferty **`DG7GMGF0FKZV:0003:DG7GMGF0DWMS`** stała się równa zero (0). Ta zmiana oznacza, że element wiersza, który został oznaczony do anulowania został pomyślnie anulowany. Przykładowa kolejność zawiera inne elementy wiersza, które nie zostały anulowane, co oznacza, że stan zamówienia ogólnego zostanie oznaczony jako **ukończone**, a nie **anulowane**.
+W poniższej przykładowej odpowiedzi widać, że liczba elementów wiersza z identyfikatorem oferty **`DG7GMGF0FKZV:0003:DG7GMGF0DWMS`** stała się zerem (0). Ta zmiana oznacza, że element wiersza, który został oznaczony do anulowania, został pomyślnie anulowany. Przykładowe zamówienie zawiera inne pozycje, które nie zostały anulowane, co oznacza, że stan całego zamówienia zostanie oznaczony jako **ukończone,** a nie anulowany .
 
 ```http
 HTTP/1.1 200 OK

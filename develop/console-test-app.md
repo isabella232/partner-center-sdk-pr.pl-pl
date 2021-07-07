@@ -1,76 +1,71 @@
 ---
 title: Aplikacja testowa konsoli
-description: Ta aplikacja testowa konsoli udostępnia przykładowy kod dla wszystkich scenariuszy obsługiwanych przez interfejsy API Centrum partnerskiego. Można go również użyć do testowania.
+description: Ta aplikacja testowa konsoli zawiera przykładowy kod dla wszystkich scenariuszy obsługiwanych przez Partner Center API. Można go również używać do testowania.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e82bac3ccc22d0e7cf898e5b2d2e002c622584ae
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b35167104deeede50107d59fca6112c10dc7b4bf
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767994"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974033"
 ---
 # <a name="console-test-app"></a>Aplikacja testowa konsoli
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Aplikacja testowa konsoli dostępna w języku C# i Java zawiera przykładowe kody dla wszystkich scenariuszy obsługiwanych przez interfejsy API Centrum partnerskiego. Można go również użyć do testowania.
+Aplikacja testowa konsoli jest dostarczana w językach C# i Java. Udostępnia przykładowe kody dla wszystkich scenariuszy obsługiwanych przez interfejsy API Partner Center Api. Można go również używać do testowania.
 
 ## <a name="get-the-code"></a>Uzyskiwanie kodu
 
-Pobierz przykładowy kod dla aplikacji testowej konsoli.
+Pobierz przykładowy kod aplikacji testowej konsoli.
 
 ## <a name="net"></a>.NET
 
-[Pobierz przykładowy kod](https://go.microsoft.com/fwlink/p/?LinkId=746682) i zmodyfikuj go w razie potrzeby.
+[Pobierz przykładowy kod i](https://go.microsoft.com/fwlink/p/?LinkId=746682) zmodyfikuj go w razie potrzeby.
 
 > [!IMPORTANT]
-> Przed skompilowaniem aplikacji należy zaktualizować wartości w pliku *App.config* w celu odzwierciedlenia informacji o uwierzytelnianiu usługi Azure AD utworzonych w ramach uwierzytelniania w usłudze [Partner Center](partner-center-authentication.md). W szczególnych przypadkach należy używać ustawień konta piaskownicy integracji podczas wczesnego opracowywania lub testowania w środowisku produkcyjnym.
+> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *App.config,* aby odzwierciedlić informacje uwierzytelniania usługi Azure AD utworzone w ramach [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
 
-W obszarze **ScenarioSettings** w pliku *App.config* można ustawić parametry, które będą automatycznie przesyłane do wykonywanych scenariuszy.
+W **obszarze ScenarioSettings** w *App.config* można ustawić parametry, które będą automatycznie przekazywane do uruchamianych scenariuszy.
 
-Aby zmodyfikować listę uruchomionych scenariuszy, należy dodać komentarz do wierszy w **IPartnerScenario \[ \] mainScenarios** lub w poszczególnych metodach **Get scenariusze** znalezionych w pliku *program.cs* .
+Aby zmodyfikować listę uruchamianych scenariuszy, przekrzywij wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w indywidualnej metodzie **Get Scenarios** znalezionej w *pliku Program.cs.*
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-[Pobierz przykładowy kod](https://go.microsoft.com/fwlink/p/?LinkId=2026887) i zmodyfikuj go w razie potrzeby.
+[Pobierz przykładowy kod i](https://go.microsoft.com/fwlink/p/?LinkId=2026887) zmodyfikuj go w razie potrzeby.
 
 > [!IMPORTANT]
-> Przed skompilowaniem aplikacji należy zaktualizować wartości w *SamplesConfigurations.jsw* pliku, aby odzwierciedlić informacje o uwierzytelnianiu usługi Azure AD utworzone w ramach uwierzytelniania w usłudze [Partner Center](partner-center-authentication.md). W szczególnych przypadkach należy używać ustawień konta piaskownicy integracji podczas wczesnego opracowywania lub testowania w środowisku produkcyjnym.
+> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *SamplesConfigurations.jsw* celu odzwierciedlenia informacji uwierzytelniania usługi Azure AD utworzonych podczas [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
 
-W obszarze **ScenarioSettings** w pliku *SamplesConfiguration.js* , można ustawić parametry, które będą automatycznie przesyłane do wykonywanych scenariuszy.
+W **obszarze ScenarioSettings** SamplesConfiguration.js *pliku* można ustawić parametry, które będą automatycznie przekazywane do uruchamianych scenariuszy.
 
-Aby zmodyfikować listę scenariuszy, które są uruchamiane, Dodaj komentarz do wierszy w **IPartnerScenario \[ \] mainScenarios** lub w poszczególnych metodach **Get scenariusze** , które znajdują się w pliku *program. Java* .
+Aby zmodyfikować listę uruchamianych scenariuszy, przekrzywij wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w indywidualnej metodzie **Get Scenarios** znalezionej w *pliku Program.java.*
 
 ## <a name="what-to-change"></a>Co należy zmienić
 
-Użyj poniższych list, aby określić, co zmienić lub nie zmienić w przykładowym kodzie.
+Użyj poniższych list, aby określić, co należy zmienić w przykładowym kodzie.
 
 ### <a name="partnerservicesettings"></a>PartnerServiceSettings
 
-W przypadku **PartnerServiceSettings** nie zmieniaj:
+W **przypadku usługi PartnerServiceSettings** nie zmieniaj:
 
 - **PartnerServiceApiEndpoint**
 - **AuthenticationAuthorityEndpoint**
 - **GraphEndpoint**
 - **CommonDomain**
 
-Wszystkie te ustawienia są niezbędne, aby przykładowe wywołania interfejsu API działały prawidłowo.
+Wszystkie te ustawienia są niezbędne do poprawnego działania przykładowych wywołań interfejsu API.
 
 ### <a name="userauthentication"></a>UserAuthentication
 
-W przypadku **UserAuthentication** wymagane jest zmianę:
+W **przypadku uwierzytelniania UserAuthentication** należy zmienić:
 
-- Identyfikator **aplikacji (Azure Active Directory** używany do logowania)
-- **Nazwa użytkownika** (nazwa użytkownika usługi Active Directory)
+- **ApplicationId** (identyfikator Azure Active Directory używany do logowania)
+- **UserName** (nazwa użytkownika usługi Active Directory)
 - **Hasło** (hasło usługi Active Directory).
 
 Nie zmieniaj:
@@ -80,31 +75,31 @@ Nie zmieniaj:
 
 ### <a name="appauthentication"></a>AppAuthentication
 
-W przypadku **AppAuthentication** wymagane jest zmianę:
+W **przypadku uwierzytelniania AppAuthentication** należy zmienić:
 
-- Aplikacja **(identyfikator** aplikacji usługi Active Directory używany do logowania aplikacji)
-- **ApplicationSecret** (klucz tajny aplikacji usługi Active Directory używany do logowania aplikacji)
-- **Domena** (domena usługi Active Directory, na której jest hostowana aplikacja)
+- **ApplicationId** (identyfikator aplikacji usługi Active Directory używany do logowania do aplikacji)
+- **ApplicationSecret** (klucz tajny aplikacji usługi Active Directory używany do logowania do aplikacji)
+- **Domena** (domena usługi Active Directory, w której jest hostowana aplikacja)
 
 ### <a name="scenariosettings"></a>ScenarioSettings
 
-W przypadku **ScenarioSettings** nie zmieniaj:
+W **przypadku ustawienia ScenarioSettings** nie zmieniaj:
 
 - **CustomerDomainSuffix** (sufiks domeny używany podczas tworzenia nowego klienta)
 
-Ustawienia opcjonalne. Jeśli pole pozostanie puste, te informacje będą musiały zostać zwrócone podczas uruchamiania scenariusza, w razie potrzeby):
+Ustawienia opcjonalne. W przypadku pozostawionych pustych informacji należy wprowadzić te informacje podczas uruchamiania scenariusza w razie potrzeby):
 
-- **CustomerIdToDelete** (identyfikator klienta używany do usuwania)
+- **CustomerIdToDelete** (identyfikator klienta użyty do usunięcia)
 - **DefaultCustomerId** (identyfikator klienta do użycia w scenariuszach związanych z klientem)
-- **DefaultInvoiceID** (Identyfikator faktury do użycia w scenariuszach faktur)
-- **PartnerMpnId** (identyfikator MPN partnera, który ma być używany w scenariuszach partnera pośredniego)
-- **DefaultServiceRequestId** (Identyfikator żądania obsługi, który ma być używany w scenariuszach żądania obsługi)
-- **DefaultSupportTopicID** (identyfikator tematu pomocy technicznej, który ma być używany w scenariuszach żądania obsługi)
+- **DefaultInvoiceID** (identyfikator faktury do użycia w scenariuszach faktur)
+- **PartnerMpnId** (identyfikator MPN partnera do użycia w scenariuszach partnerów pośrednich)
+- **DefaultServiceRequestId** (identyfikator żądania obsługi do użycia w scenariuszach żądania obsługi)
+- **DefaultSupportTopicID** (identyfikator tematu pomocy technicznej do użycia w scenariuszach żądania obsługi)
 - **DefaultOfferID** (identyfikator oferty do użycia w scenariuszach oferty)
-- **DefaultOrderID** (Identyfikator zamówienia do użycia w scenariuszach w kolejności)
-- **DefaultSubscriptionID** (Identyfikator subskrypcji do użycia w scenariuszach subskrypcji)
+- **DefaultOrderID** (identyfikator zamówienia do użycia w scenariuszach kolejności)
+- **DefaultSubscriptionID** (identyfikator subskrypcji do użycia w scenariuszach subskrypcji)
 
-Opcjonalne, aby zmienić. Wszystkie te ustawienia określają liczbę wpisów na stronie podczas pobierania zawartości stronicowanej:
+Opcjonalnie można zmienić. Wszystkie te ustawienia określają liczbę wpisów na stronie podczas pobierania zawartości stronicowej:
 
 - **CustomerPageSize**
 - **InvoicePageSize**

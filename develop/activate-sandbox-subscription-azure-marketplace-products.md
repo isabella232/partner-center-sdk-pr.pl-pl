@@ -1,46 +1,42 @@
 ---
-title: Aktywuj subskrypcję piaskownicy dla komercyjnych produktów Marketplace
-description: Dowiedz się, jak korzystać z interfejsów API REST usługi C/# i Centrum partnerskiego, aby aktywować subskrypcję piaskownicy dla komercyjnych produktów Marketplace.
+title: Aktywowanie subskrypcji piaskownicy dla produktów platformy handlowej
+description: Dowiedz się, jak używać języka C/# i Partner Center API REST do aktywowania subskrypcji piaskownicy dla produktów platformy handlowej.
 ms.date: 09/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a78b2c84368b29f1378f46971c4814929094e299
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: b32c3e87462f58218771fc5da7da56ed177489cb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768509"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025704"
 ---
-# <a name="activate-a-sandbox-subscription-for-commercial-marketplace-saas-products-to-enable-billing"></a>Aktywuj subskrypcję piaskownicy dla komercyjnych produktów SaaS Marketplace, aby włączyć rozliczenia
+# <a name="activate-a-sandbox-subscription-for-commercial-marketplace-saas-products-to-enable-billing"></a>Aktywowanie subskrypcji piaskownicy dla produktów SaaS komercyjnej platformy handlowej w celu włączenia rozliczeń
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Jak aktywować subskrypcję dla komercyjnych produktów jako usługi (SaaS) na kontach piaskownicy integracji, aby włączyć rozliczenia.
+Jak aktywować subskrypcję komercyjnych produktów platformy handlowej oprogramowania jako usługi (SaaS) z kont piaskownicy integracji w celu włączenia rozliczeń.
 
 > [!NOTE]
-> Istnieje możliwość aktywowania subskrypcji komercyjnych produktów SaaS Marketplace z kont piaskownicy integracji. Jeśli masz subskrypcję produkcyjną, należy odwiedzić witrynę wydawcy, aby ukończyć proces instalacji. Rozliczanie subskrypcji rozpocznie się dopiero po zakończeniu instalacji.
+> Subskrypcję produktów SaaS komercyjnej platformy handlowej można aktywować tylko z kont piaskownicy integracji. Jeśli masz subskrypcję produkcyjną, musisz odwiedzić witrynę wydawcy, aby ukończyć proces instalacji. Rozliczanie subskrypcji rozpocznie się dopiero po zakończeniu konfiguracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Konto partnera piaskownicy integracji z klientem z aktywną subskrypcją dla komercyjnych produktów SaaS Marketplace.
+- Konto partnera piaskownicy integracji z klientem, który ma aktywną subskrypcję produktów SaaS komercyjnej platformy handlowej.
 
-- W przypadku partnerów korzystających z zestawu SDK platformy .NET w usłudze Partner Center musisz użyć zestawu SDK 1.14.0 lub nowszego, aby uzyskać dostęp do tej funkcji.
+- W przypadku partnerów korzystających Partner Center .NET SDK należy użyć zestawu SDK w wersji 1.14.0 lub wyższej, aby uzyskać dostęp do tej możliwości.
 
 ## <a name="c"></a>C\#
 
-Wykonaj następujące kroki, aby aktywować subskrypcję dla komercyjnych produktów SaaS Marketplace:
+Aby aktywować subskrypcję produktów SaaS na platformie handlowej, należy wykonać następujące czynności:
 
-1. Utwórz interfejs dla dostępnych operacji subskrypcji. Należy zidentyfikować klienta i określić identyfikator subskrypcji wersji próbnej subskrypcji.
+1. Udostępnij interfejs dla operacji subskrypcji. Należy zidentyfikować klienta i określić identyfikator subskrypcji wersji próbnej.
 
    ```csharp
    var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
    ```
 
-2. Aktywuj subskrypcję przy użyciu operacji **uaktywniania** .
+2. Aktywuj subskrypcję przy użyciu **operacji** Aktywuj.
 
    ```csharp
    var subscriptionActivationResult = subscriptionOperations.Activate();
@@ -52,18 +48,18 @@ Wykonaj następujące kroki, aby aktywować subskrypcję dla komercyjnych produk
 
 | Metoda     | Identyfikator URI żądania                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{Subscription-ID}/Activate http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/activate HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y | Wartość to identyfikator identyfikatora dzierżawy klienta w formacie GUID (**Identyfikator dzierżawy klienta**), który umożliwia określenie klienta. |
-| **Identyfikator subskrypcji** | **guid** | Y | Wartość jest identyfikatorem subskrypcji w formacie GUID (**Identyfikator subskrypcji**), który umożliwia określenie subskrypcji. |
+| **identyfikator dzierżawy klienta** | **guid** | Y | Wartość jest identyfikatorem dzierżawy klienta w formacie GUID **(customer-tenant-id),** który umożliwia określenie klienta. |
+| **subscription-id** | **guid** | Y | Wartość jest identyfikatorem subskrypcji w formacie GUID **(subscription-id),** który umożliwia określenie subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -82,11 +78,11 @@ MS-RequestId: 655890ba-4d2b-4d09-a95f-4ea1348686a5
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Ta metoda zwraca właściwości **identyfikatora subskrypcji** i **stanu** .
+Ta metoda zwraca **właściwości subscription-id** **i status.**
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

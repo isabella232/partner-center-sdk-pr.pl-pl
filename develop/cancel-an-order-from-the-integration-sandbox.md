@@ -4,26 +4,21 @@ description: Dowiedz się, jak za pomocą Partner Center API anulować różne t
 ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
-ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
+ms.openlocfilehash: 4c4b658f406e420d8d3cd425688364fe3d440d3d
+ms.sourcegitcommit: a3a78ec0f5078645b5a4f3b534165eef30f2c822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108210023"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113104975"
 ---
 # <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Anulowanie zamówienia z piaskownicy integracji przy użyciu Partner Center API
 
-**Dotyczy:**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 W tym artykule opisano, jak za pomocą Partner Center API anulować różne typy zamówień subskrypcji z kont piaskownicy integracji. Takie zamówienia mogą obejmować wystąpienia zarezerwowane, oprogramowanie i zamówienia subskrypcji oprogramowania jako usługi (SaaS) na platformie handlowej.
 
->[!NOTE] 
->Należy pamiętać, że anulowanie zamówień subskrypcji SaaS wystąpienia zarezerwowanego lub komercyjnej platformy handlowej jest możliwe tylko z kont piaskownicy integracji. Zamówień piaskownicy starszych niż 60 dni nie można anulować z Partner Center. Jeśli potrzebujesz pomocy, słać do pomocy Partner Center pomocy technicznej. 
+> [!NOTE] 
+> Należy pamiętać, że anulowanie zamówień subskrypcji SaaS wystąpienia zarezerwowanego lub komercyjnej platformy handlowej jest możliwe tylko z kont piaskownicy integracji. Nie można anulować żadnych zamówień piaskownicy starszych niż 60 dni Partner Center.
 
 Aby anulować produkcyjne zamówienia oprogramowania za pośrednictwem interfejsu API, [użyj polecenia cancel-software-purchases.](cancel-software-purchases.md)
 Możesz również anulować produkcyjne zamówienia oprogramowania za pośrednictwem pulpitu [nawigacyjnego, anulując zakup.](/partner-center/csp-software-subscriptions)
@@ -106,7 +101,7 @@ W przypadku powodzenia ta metoda zwraca anulowane zamówienie.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

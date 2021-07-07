@@ -1,41 +1,37 @@
 ---
 title: Zasoby umowy
-description: Zasób umowy reprezentuje umowę klienta w chmurze firmy Microsoft, która zawiera szczegółowe informacje o certyfikatach dostarczonych przez partnera.
+description: Zasób Umowa reprezentuje umowę klienta chmury firmy Microsoft ze szczegółami certyfikacji dostarczonymi przez partnera.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: d964b1c7c6d70814ef68e48f05611ecbb113c8fe
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 5fa196e711d9ff899b61ba20e75edd92749165e5
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97768554"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025625"
 ---
-# <a name="agreement-resources-representing-a-microsoft-cloud-customer-agreement"></a>Zasoby umowy reprezentujące umowę klienta w chmurze firmy Microsoft
+# <a name="agreement-resources-representing-a-microsoft-cloud-customer-agreement"></a>Zasoby umowy reprezentujące umowę klienta chmury firmy Microsoft
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób z **umową** jest obecnie obsługiwany przez centrum partnerskie tylko w chmurze publicznej firmy Microsoft. Nie dotyczy:
+Zasób **Umowy** jest obecnie obsługiwany przez Partner Center tylko w chmurze publicznej firmy Microsoft.
 
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Zasób **umowy** reprezentuje umowę klienta w chmurze firmy Microsoft.
+Zasób **Umowa** reprezentuje umowę klienta chmury firmy Microsoft.
 
 ## <a name="agreement"></a>Umowa
 
-Zasób **umowy** reprezentuje szczegóły certyfikacji dostarczone przez partnera.
+**Zasób** Umowa reprezentuje szczegóły certyfikacji dostarczone przez partnera.
 
 | Właściwość       | Typ   | Opis                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| userId         | ciąg                         | Identyfikator obiektu zalogowanego użytkownika w dzierżawie partnera, który zapewnia potwierdzenie w imieniu organizacji partnerskiej. W przypadku tworzenia zasobu umowy przy użyciu aplikacji + uwierzytelnianie użytkownika centrum partnerskie automatycznie dziedziczy wartość atrybutu **userId** z tokenu App + User.                                                                             |
-| primaryContact | [Kontakt](./utility-resources.md#contact) | Informacje o użytkowniku z organizacji klienta, które zaakceptowali umowę, w tym:  **FirstName**, **nazwisko**, **adres e-mail** i numer **telefonu** (opcjonalnie). |
-| dateAgreed     | ciąg w formacie daty i godziny czasu UTC | Data zaakceptowania umowy przez klienta.                                 |
+| userId         | ciąg                         | Identyfikator obiektu zalogowanego użytkownika w dzierżawie partnera, który zapewnia potwierdzenie w imieniu organizacji partnerskiej. W przypadku tworzenia zasobu umowy przy użyciu uwierzytelniania App+User Partner Center automatycznie pobiera wartość atrybutu **userId** z tokenu App+User.                                                                             |
+| primaryContact | [Kontakt](./utility-resources.md#contact) | Informacje o użytkowniku z organizacji klienta, który zaakceptował umowę, w tym:  **firstName,** **lastName,** **email** i **phoneNumber** (opcjonalnie). |
+| dateAgreed     | ciąg w formacie daty i czasu UTC | Data zaakceptowania umowy przez klienta.                                 |
 | templateId     |ciąg                          | Unikatowy identyfikator umowy zaakceptowanej przez klienta. |
-| typ           |ciąg                          | Typ umowy. Obecnie obsługiwane wartości to **MicrosoftCloudAgreement** i **MicrosoftCustomerAgreement**.|
+| typ           |ciąg                          | Typ umowy. Obecnie obsługiwane wartości to **MicrosoftCloudAgreement** i **MicrosoftCustomerAgreement.**|
 | agreementLink  | ciąg                         | Adres URL szablonu umowy.                                                    |

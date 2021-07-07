@@ -1,36 +1,31 @@
 ---
 title: Weryfikowanie adresu
-description: Sprawdzanie poprawności adresu przy użyciu interfejsu API weryfikacji adresów.
+description: Jak zweryfikować adres przy użyciu interfejsu API weryfikacji adresu.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 22d5faec2fdab4907067bb01cb74e110032dea9a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 14d45977f3af6e8bba1b7cb7f969aa7c5bb671da
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767829"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529889"
 ---
 # <a name="validate-an-address"></a>Weryfikowanie adresu
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Jak zweryfikować adres przy użyciu interfejsu API weryfikacji adresu.
 
-Sprawdzanie poprawności adresu przy użyciu interfejsu API weryfikacji adresów.
-
-Interfejs API weryfikacji adresu powinien być używany tylko do weryfikacji aktualizacji profilu klienta. Należy jej użyć, aby w przypadku Stany Zjednoczone, Kanady, Chin lub Meksyku, pole Stan zostało zweryfikowane względem listy prawidłowych stanów w danym kraju. W pozostałych krajach ten test nie występuje, a interfejs API sprawdza, czy stan jest prawidłowym ciągiem.
+Interfejs API weryfikacji adresu powinien być używany tylko do wstępnej weryfikacji aktualizacji profilu klienta. Użyj go ze zrozumieniem, że jeśli kraj jest regionem Stany Zjednoczone, Kanadzie, Chinach lub Meksyku, pole stanu jest weryfikowane względem listy prawidłowych stanów dla odpowiedniego kraju. We wszystkich innych krajach ten test nie jest przeprowadzane, a interfejs API sprawdza tylko, czy stan jest prawidłowym ciągiem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby sprawdzić poprawność adresu, najpierw Utwórz wystąpienie nowego obiektu **adresu** i wypełnij go adresem do zweryfikowania. Następnie Pobierz interfejs do operacji **walidacji** z właściwości **IAggregatePartner. walidacje** i Wywołaj metodę **IsAddressValid** z obiektem Address.
+Aby zweryfikować adres, najpierw należy utworzyć nowe wystąpienia obiektu **Address** i wypełnić go adresem do zweryfikowania. Następnie pobierz interfejs operacji **Validations** z właściwości **IAggregatePartner.Validations** i wywołaj metodę **IsAddressValid** przy użyciu obiektu adresu.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -79,7 +74,7 @@ catch (PartnerException exception)
 
 ## <a name="java"></a>Java
 
-Aby sprawdzić poprawność adresu, najpierw Utwórz wystąpienie nowego obiektu **adresu** i wypełnij go adresem do zweryfikowania. Następnie Pobierz interfejs do operacji **walidacji** z funkcji **IAggregatePartner. getwalidacji** i Wywołaj metodę **isAddressValid** z obiektem Address.
+Aby zweryfikować adres, najpierw należy utworzyć nowe wystąpienia obiektu **Address** i wypełnić go adresem do zweryfikowania. Następnie pobierz interfejs do operacji **walidacji** z funkcji **IAggregatePartner.getValidations** i wywołaj metodę **isAddressValid** za pomocą obiektu adresu.
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
@@ -117,7 +112,7 @@ catch (Exception exception)
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby sprawdzić poprawność adresu, wykonaj polecenie [**test-PartnerAddress**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) z wypełnionymi parametrami adresu.
+Aby zweryfikować adres, wykonaj [**polecenie Test-PartnerAddress**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) z wypełnionymi parametrami adresu.
 
 ```powershell
 Test-PartnerAddress -AddressLine1 '700 Bellevue Way NE' -City 'Bellevue' -Country 'US' -PostalCode '98004' -State 'WA'
@@ -129,11 +124,11 @@ Test-PartnerAddress -AddressLine1 '700 Bellevue Way NE' -City 'Bellevue' -Countr
 
 | Metoda   | Identyfikator URI żądania                                                                 |
 |----------|-----------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/validations/Address http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -142,11 +137,11 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 | Nazwa         | Typ   | Wymagane | Opis                                                |
 |--------------|--------|----------|------------------------------------------------------------|
 | addressline1 | ciąg | Y        | Pierwszy wiersz adresu.                             |
-| addressline2 | ciąg | N        | Drugi wiersz adresu. Ta właściwość jest opcjonalna. |
+| Addressline2 | ciąg | N        | Drugi wiersz adresu. Ta właściwość jest opcjonalna. |
 | city         | ciąg | Y        | Miasto.                                                  |
 | stan        | ciąg | Y        | Stan.                                                 |
-| pocztowy   | ciąg | Y        | Kod pocztowy.                                           |
-| country      | ciąg | Y        | Dwuznakowy ISO kod kraju Alpha-2.                |
+| Postalcode   | ciąg | Y        | Kod pocztowy.                                           |
+| country      | ciąg | Y        | Dwue znakowy kod kraju ISO alpha-2.                |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -172,15 +167,15 @@ Content-Length: 129
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca kod stanu 200, jak pokazano w przykładzie odpowiedzi-Walidacja zakończyła się pomyślnie.
+Jeśli to się powiedzie, metoda zwróci kod stanu 200, jak pokazano w poniższym przykładzie Odpowiedź — walidacja powiodła się.
 
-Jeśli żądanie nie powiedzie się, metoda zwraca kod stanu 400, jak pokazano w przykładzie niepowodzenia weryfikacji odpowiedzi poniżej. Treść odpowiedzi zawiera ładunek JSON z dodatkowymi informacjami o błędzie.
+Jeśli żądanie zakończy się niepowodzeniem, metoda zwróci kod stanu 400, jak pokazano w przykładzie Odpowiedź — weryfikacja nie powiodła się, jak pokazano poniżej. Treść odpowiedzi zawiera ładunek JSON z dodatkowymi informacjami o błędzie.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
-### <a name="response---validation-succeeded-example"></a>Odpowiedź — sprawdzanie poprawności zakończyło się pomyślnie
+### <a name="response---validation-succeeded-example"></a>Odpowiedź — przykład powodzenia walidacji
 
 ```http
 HTTP/1.1 200 OK
@@ -192,7 +187,7 @@ MS-ServerId: 030011719
 Date: Mon, 13 Mar 2017 23:56:12 GMT
 ```
 
-### <a name="response---validation-failed-example"></a>Przykład weryfikacji odpowiedzi nie powiodła się
+### <a name="response---validation-failed-example"></a>Odpowiedź — przykład błędu walidacji
 
 ```http
 HTTP/1.1 400 Bad Request

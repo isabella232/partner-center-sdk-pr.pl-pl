@@ -1,35 +1,31 @@
 ---
-title: Pobierz listę zasad samoobsługi
+title: Uzyskiwanie listy zasad samoobsługi
 description: Jak uzyskać kolekcję zasobów reprezentujących zasady samoobsługi klienta.
 ms.date: 07/06/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ff3116b8757e28e03615930ebd19bc75f34e2efe
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: b18fde8a11d3ed3dd31e50fdba746dd6b0bf3f97
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770243"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025737"
 ---
-# <a name="get-a-list-of-self-serve-policies"></a>Pobierz listę zasad samoobsługi
+# <a name="get-a-list-of-self-serve-policies"></a>Uzyskiwanie listy zasad samoobsługi
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-W tym artykule opisano, jak uzyskać zbiór zasobów reprezentujących zasady samoobsługi dla jednostki.
+Pobiera kolekcję zasobów, która reprezentuje zasady samoobsługi dla jednostki.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać listę wszystkich zasad samoobsługi:
 
-1. Wywołaj metodę [**IAggregatePartner. SelfServePolicies**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection) z identyfikatorem jednostki, aby pobrać interfejs do operacji w ramach zasad.
+1. Wywołaj [**metodę IAggregatePartner.SelfServePolicies**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection) z identyfikatorem jednostki, aby pobrać interfejs do operacji na zasadach.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,10 +37,10 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 var SelfServePolicies = scopedPartnerOperations.SelfServePolicies.Get(customerIdAsEntity);
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Project: **PartnerSDK.FeatureSamples**
 - Klasa: **GetSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -53,7 +49,7 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy? entity_id = {ENTITY_ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy?entity_id={entity_id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -61,11 +57,11 @@ Użyj następującego parametru zapytania, aby uzyskać listę klientów.
 
 | Nazwa          | Typ       | Wymagane | Opis                                        |
 |---------------|------------|----------|----------------------------------------------------|
-| **entity_id** | **parametry** | Y        | Identyfikator jednostki żądającej dostępu dla. Będzie to identyfikator dzierżawy klienta. |
+| **entity_id** | **ciąg** | Y        | Identyfikator jednostki żądający dostępu. Będzie to identyfikator dzierżawy klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki](headers.md).
+Aby uzyskać więcej informacji, zobacz [Nagłówki](headers.md).
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -83,11 +79,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

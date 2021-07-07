@@ -1,37 +1,33 @@
 ---
 title: Aktualizowanie żądania obsługi
-description: Jak zaktualizować istniejące żądanie obsługi klienta zgłoszone przez dostawcę rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
+description: Jak zaktualizować istniejące żądanie obsługi klienta, które Dostawca rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a1df0d1f5fa4630b346d1c8b9cffabb86ce34cfb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768369"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530093"
 ---
 # <a name="update-a-service-request"></a>Aktualizowanie żądania obsługi
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Jak zaktualizować istniejące żądanie obsługi klienta, które Dostawca rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
 
-Jak zaktualizować istniejące żądanie obsługi klienta zgłoszone przez dostawcę rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, [wybierając najpierw klienta](get-a-customer-by-name.md). Następnie wybierz pozycję **Zarządzanie usługami** na lewym pasku bocznym. W nagłówku **żądania pomocy technicznej** wybierz odpowiednie żądanie obsługi. Aby zakończyć, wprowadź odpowiednie zmiany w żądaniu usługi, a następnie wybierz pozycję **Prześlij.**
+Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie wybierz pozycję **Zarządzanie usługami** na lewym pasku bocznym. W **nagłówku Żądania** pomocy technicznej wybierz odpowiednie żądanie obsługi. Aby zakończyć, należy wprowadzić żądane zmiany w żądaniu obsługi, a następnie wybrać pozycję **Prześlij.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Identyfikator żądania obsługi.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować żądanie obsługi klienta, wywołaj metodę [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) z identyfikatorem żądania obsługi, aby zidentyfikować i zwrócić interfejs żądania obsługi. Następnie Wywołaj metodę [**IServiceRequest. patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) lub [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) , aby zaktualizować żądanie obsługi. Aby podać zaktualizowane wartości, Utwórz nowy, pusty obiekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) i ustaw tylko wartości właściwości, które chcesz zmienić. Następnie Przekaż ten obiekt w wywołaniu metody patch lub PatchAsync.
+Aby zaktualizować żądanie obsługi klienta, wywołaj metodę [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) z identyfikatorem żądania obsługi, aby zidentyfikować i zwrócić interfejs żądania obsługi. Następnie wywołaj [**metodę IServiceRequest.Patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) lub [**PatchAsync,**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) aby zaktualizować żądanie obsługi. Aby podać zaktualizowane wartości, utwórz nowy, pusty obiekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) i ustaw tylko wartości właściwości, które chcesz zmienić. Następnie przekaż ten obiekt w wywołaniu metody Patch lub PatchAsync.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +39,7 @@ ServiceRequest updatedServiceRequest = partnerOperations.ServiceRequests.ById(ex
 });
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: UpdatePartnerServiceRequest.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : UpdatePartnerServiceRequest.cs **(Klasa przykładów zestaw SDK Centrum partnerskiego:** UpdatePartnerServiceRequest.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,23 +47,23 @@ ServiceRequest updatedServiceRequest = partnerOperations.ServiceRequests.ById(ex
 
 | Metoda    | Identyfikator URI żądania                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/servicerequests/{ServiceRequest-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{identyfikator-żądania-usługi} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Aby zaktualizować żądanie obsługi, użyj następującego parametru identyfikatora URI.
+Użyj następującego parametru URI, aby zaktualizować żądanie obsługi.
 
 | Nazwa                  | Typ     | Wymagane | Opis                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **Identyfikator żądania ServiceRequest** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
+| **servicerequest-id** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Treść żądania powinna zawierać zasób [ServiceRequest](service-request-resources.md) . Jedyne wymagane wartości to te, które mają zostać zaktualizowane.
+Treść żądania powinna zawierać [zasób ServiceRequest.](service-request-resources.md) Jedynymi wymaganymi wartościami są te, które mają zostać zaktualizowane.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -115,11 +111,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób **żądania obsługi** ze zaktualizowanymi właściwościami w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zasób **żądania obsługi** ze zaktualizowanymi właściwościami w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

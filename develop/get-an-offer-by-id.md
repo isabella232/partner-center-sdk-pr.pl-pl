@@ -1,38 +1,33 @@
 ---
 title: Pobieranie oferty według identyfikatora
-description: Pobiera zasób oferty, który jest zgodny z IDENTYFIKATORem oferty.
+description: Pobiera zasób Oferty, który odpowiada identyfikatorowi oferty.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: brentserbus
 ms.author: brserbus
-ms.openlocfilehash: 9448276e817affb823eddabbcab8757c79615fbd
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f759cbdeefb4f550c41b41de40e9979e72e4ddeb
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768481"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760644"
 ---
 # <a name="get-an-offer-by-id"></a>Pobieranie oferty według identyfikatora
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera zasób **oferty** , który jest zgodny z identyfikatorem oferty.
+Pobiera **zasób Oferty,** który odpowiada identyfikatorowi oferty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator oferty.
 
 ## <a name="c"></a>C\#
 
-Aby znaleźć określoną ofertę według identyfikatora, Użyj kolekcji **IAggregatePartner. offers** , ustal kraj z wywołaniem **ByCountry ()**, a następnie Wywołaj metodę [**ByID ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) . Następnie Wywołaj metodę [**Get ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) lub [**Get Async ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync) .
+Aby znaleźć określoną ofertę według identyfikatora, użyj kolekcji **IAggregatePartner.Offers,** ustanów kraj za pomocą wywołania metody **ByCountry(),** a następnie wywołaj metodę [**ByID().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) Następnie wywołaj metodę [**Get()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) [**lub Get Async().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync)
 
 ```csharp
 // IAggretagePartner partnerOperations;
@@ -43,13 +38,13 @@ Aby znaleźć określoną ofertę według identyfikatora, Użyj kolekcji **IAggr
 var offer = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: GetOffer.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: GetOffer.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby znaleźć określoną ofertę według identyfikatora, użyj funkcji **IAggregatePartner. Getoffers** , ustal kraj z wywołaniem funkcji **byCountry ()** , a następnie wywołaj funkcję **byID ()** . Następnie wywołaj funkcję **Get ()** .
+Aby znaleźć określoną ofertę według identyfikatora, użyj funkcji **IAggregatePartner.getOffers,** ustanów kraj za pomocą wywołania funkcji **byCountry(),** a następnie wywołaj funkcję **byID().** Następnie wywołaj **funkcję get().**
 
 ```java
 // IAggretagePartner partnerOperations;
@@ -64,7 +59,7 @@ Offer offer = partnerOperations.getOffers().byCountry(countryCode).byId(offerId)
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby znaleźć określoną ofertę według identyfikatora, należy wykonać polecenie [**Get-PartnerOffer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOffer.md) i określić parametry **CountryCode** i **OfferId** .
+Aby znaleźć określoną ofertę według identyfikatora, wykonaj polecenie [**Get-PartnerOffer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOffer.md) i określ parametry **CountryCode** i **OfferId.**
 
 ```powershell
 # $countryCode
@@ -79,19 +74,19 @@ Get-PartnerOffer -Country $countryCode -OfferId $offerId
 
 | Metoda  | Identyfikator URI żądania                                                                                    |
 |---------|------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/offers/{Offer-ID}? Country = {Country-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{identyfikator-oferty}?country={country-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
 | Nazwa           | Typ       | Wymagane | Opis                           |
 |----------------|------------|----------|---------------------------------------|
-| **Oferta — identyfikator**   | **guid**   | Y        | Identyfikator GUID, który odpowiada ofercie. |
-| **Identyfikator kraju** | **parametry** | Y        | Identyfikator kraju/regionu.                |
+| **identyfikator oferty**   | **guid**   | Y        | Identyfikator GUID odpowiadający ofercie. |
+| **country-id** | **ciąg** | Y        | Identyfikator kraju/regionu.                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Wymagany jest **identyfikator ustawień regionalnych** , który jest sformatowany jako ciąg.
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+- Wymagany **jest identyfikator locale-id** sformatowany jako ciąg.
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -111,11 +106,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób **oferty** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **zasób Offer** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

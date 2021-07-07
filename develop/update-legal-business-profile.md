@@ -1,38 +1,33 @@
 ---
 title: Aktualizowanie profilu biznesowego partnera
-description: Jak zaktualizować profil biznesowy dla partnerów.
+description: Jak zaktualizować profil biznesowy partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 6c61b51ab0680e36daa99c11dc8e8c3506259d29
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cb9f5815e0019c5e9b648dfd865e9752f0afdf05
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768274"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530331"
 ---
-# <a name="update-the-partner-legal-business-profile"></a><span data-ttu-id="edabf-103">Aktualizowanie profilu biznesowego partnera</span><span class="sxs-lookup"><span data-stu-id="edabf-103">Update the partner legal business profile</span></span>
+# <a name="update-the-partner-legal-business-profile"></a><span data-ttu-id="c7e61-103">Aktualizowanie profilu biznesowego partnera</span><span class="sxs-lookup"><span data-stu-id="c7e61-103">Update the partner legal business profile</span></span>
 
-<span data-ttu-id="edabf-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="edabf-104">**Applies To**</span></span>
+<span data-ttu-id="c7e61-104">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="c7e61-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="edabf-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="edabf-105">Partner Center</span></span>
-- <span data-ttu-id="edabf-106">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="edabf-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="edabf-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="edabf-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="edabf-108">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="edabf-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="c7e61-105">Jak zaktualizować profil biznesowy partnera.</span><span class="sxs-lookup"><span data-stu-id="c7e61-105">How to update the partner legal business profile.</span></span>
 
-<span data-ttu-id="edabf-109">Jak zaktualizować profil biznesowy dla partnerów.</span><span class="sxs-lookup"><span data-stu-id="edabf-109">How to update the partner legal business profile.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="c7e61-106">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="c7e61-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="edabf-110">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="edabf-110">Prerequisites</span></span>
+- <span data-ttu-id="c7e61-107">Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="c7e61-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="c7e61-108">Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="c7e61-108">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="edabf-111">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="edabf-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="edabf-112">Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="edabf-112">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="c7e61-109">C\#</span><span class="sxs-lookup"><span data-stu-id="c7e61-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="edabf-113">C\#</span><span class="sxs-lookup"><span data-stu-id="edabf-113">C\#</span></span>
+<span data-ttu-id="c7e61-110">Aby zaktualizować legalny profil biznesowy partnera, najpierw należy utworzyć jego wystąpienia w obiekcie **LegalBusinessProfile** i wypełnić go istniejącym profilem.</span><span class="sxs-lookup"><span data-stu-id="c7e61-110">To update the partner legal business profile, first instantiate a **LegalBusinessProfile** object and populate it with the existing profile.</span></span> <span data-ttu-id="c7e61-111">Aby uzyskać więcej informacji, zobacz Get the partner legal business profile (Uzyskiwanie [profilu biznesowego partnera).](get-legal-business-profile.md)</span><span class="sxs-lookup"><span data-stu-id="c7e61-111">For more information, see [Get the partner legal business profile](get-legal-business-profile.md).</span></span> <span data-ttu-id="c7e61-112">Następnie zaktualizuj właściwości, które należy zmienić.</span><span class="sxs-lookup"><span data-stu-id="c7e61-112">Then, update the properties that you need to change.</span></span> <span data-ttu-id="c7e61-113">Poniższy przykład kodu ilustruje zmianę adresu i podstawowych numerów telefonów kontaktów.</span><span class="sxs-lookup"><span data-stu-id="c7e61-113">The following code example illustrates changing the address and primary contact phone numbers.</span></span>
 
-<span data-ttu-id="edabf-114">Aby zaktualizować profil biznesowy partnera, należy najpierw utworzyć wystąpienie obiektu **LegalBusinessProfile** i wypełnić go istniejącym profilem.</span><span class="sxs-lookup"><span data-stu-id="edabf-114">To update the partner legal business profile, first instantiate a **LegalBusinessProfile** object and populate it with the existing profile.</span></span> <span data-ttu-id="edabf-115">Aby uzyskać więcej informacji, zobacz sekcję [pobieranie służbowego profilu prawnego dla partnerów](get-legal-business-profile.md).</span><span class="sxs-lookup"><span data-stu-id="edabf-115">For more information, see [Get the partner legal business profile](get-legal-business-profile.md).</span></span> <span data-ttu-id="edabf-116">Następnie zaktualizuj właściwości, które należy zmienić.</span><span class="sxs-lookup"><span data-stu-id="edabf-116">Then, update the properties that you need to change.</span></span> <span data-ttu-id="edabf-117">Poniższy przykład kodu ilustruje zmianę adresu i podstawowych numerów telefonów kontaktów.</span><span class="sxs-lookup"><span data-stu-id="edabf-117">The following code example illustrates changing the address and primary contact phone numbers.</span></span>
-
-<span data-ttu-id="edabf-118">Następnie Pobierz interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner. profile** .</span><span class="sxs-lookup"><span data-stu-id="edabf-118">Next, get an interface to the partner profile operations collection from the **IAggregatePartner.Profiles** property.</span></span> <span data-ttu-id="edabf-119">Następnie Pobierz wartość właściwości **LegalBusinessProfile** , aby uzyskać interfejs do operacji w profilu biznesowym.</span><span class="sxs-lookup"><span data-stu-id="edabf-119">Then, retrieve the value of the **LegalBusinessProfile** property to get an interface to legal business profile operations.</span></span> <span data-ttu-id="edabf-120">Na koniec Wywołaj metodę [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) ze zmienionym obiektem w celu zaktualizowania profilu.</span><span class="sxs-lookup"><span data-stu-id="edabf-120">Finally, call the [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) or [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) method with the changed object to update the profile.</span></span>
+<span data-ttu-id="c7e61-114">Następnie pobierz interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner.Profiles.**</span><span class="sxs-lookup"><span data-stu-id="c7e61-114">Next, get an interface to the partner profile operations collection from the **IAggregatePartner.Profiles** property.</span></span> <span data-ttu-id="c7e61-115">Następnie pobierz wartość właściwości **LegalBusinessProfile,** aby uzyskać interfejs do operacji legalnych profilów biznesowych.</span><span class="sxs-lookup"><span data-stu-id="c7e61-115">Then, retrieve the value of the **LegalBusinessProfile** property to get an interface to legal business profile operations.</span></span> <span data-ttu-id="c7e61-116">Na koniec wywołaj [**metodę Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) lub [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) ze zmienionym obiektem, aby zaktualizować profil.</span><span class="sxs-lookup"><span data-stu-id="c7e61-116">Finally, call the [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) or [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) method with the changed object to update the profile.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -47,23 +42,23 @@ legalBusinessProfile.PrimaryContact.PhoneNumber = "4255550110";
 var updatedLegalBusinessProfile = partnerOperations.Profiles.LegalBusinessProfile.Update(legalBusinessProfile);
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="edabf-121">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="edabf-121">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="c7e61-117">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="c7e61-117">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="edabf-122">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="edabf-122">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="c7e61-118">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="c7e61-118">Request syntax</span></span>
 
-| <span data-ttu-id="edabf-123">Metoda</span><span class="sxs-lookup"><span data-stu-id="edabf-123">Method</span></span>  | <span data-ttu-id="edabf-124">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="edabf-124">Request URI</span></span>                                                                    |
+| <span data-ttu-id="c7e61-119">Metoda</span><span class="sxs-lookup"><span data-stu-id="c7e61-119">Method</span></span>  | <span data-ttu-id="c7e61-120">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="c7e61-120">Request URI</span></span>                                                                    |
 |---------|--------------------------------------------------------------------------------|
-| <span data-ttu-id="edabf-125">**PUT**</span><span class="sxs-lookup"><span data-stu-id="edabf-125">**PUT**</span></span> | <span data-ttu-id="edabf-126">[*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/legalbusiness http/1.1</span><span class="sxs-lookup"><span data-stu-id="edabf-126">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1</span></span> |
+| <span data-ttu-id="c7e61-121">**PUT**</span><span class="sxs-lookup"><span data-stu-id="c7e61-121">**PUT**</span></span> | <span data-ttu-id="c7e61-122">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="c7e61-122">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="edabf-127">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="edabf-127">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="c7e61-123">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="c7e61-123">Request headers</span></span>
 
-<span data-ttu-id="edabf-128">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="edabf-128">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="c7e61-124">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="c7e61-124">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="edabf-129">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="edabf-129">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="c7e61-125">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="c7e61-125">Request body</span></span>
 
-<span data-ttu-id="edabf-130">Zasób profilu biznesowego firmy.</span><span class="sxs-lookup"><span data-stu-id="edabf-130">The legal business profile resource.</span></span>
+<span data-ttu-id="c7e61-126">Zasób legalnych profilów biznesowych.</span><span class="sxs-lookup"><span data-stu-id="c7e61-126">The legal business profile resource.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="edabf-131">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="edabf-131">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="c7e61-127">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="c7e61-127">Request example</span></span>
 
 ```http
 PUT https://api.partnercenter.microsoft.com/v1/profiles/legalbusiness HTTP/1.1
@@ -125,15 +120,15 @@ Expect: 100-continue
 }
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="edabf-132">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="edabf-132">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="c7e61-128">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="c7e61-128">REST response</span></span>
 
-<span data-ttu-id="edabf-133">Jeśli to się powiedzie, treść odpowiedzi zawiera zaktualizowane **LegalBusinessProfile**</span><span class="sxs-lookup"><span data-stu-id="edabf-133">If successful, the response body contains the updated **LegalBusinessProfile**</span></span>
+<span data-ttu-id="c7e61-129">W przypadku powodzenia treść odpowiedzi zawiera zaktualizowany **plik LegalBusinessProfile**</span><span class="sxs-lookup"><span data-stu-id="c7e61-129">If successful, the response body contains the updated **LegalBusinessProfile**</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="edabf-134">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="edabf-134">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="c7e61-130">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="c7e61-130">Response success and error codes</span></span>
 
-<span data-ttu-id="edabf-135">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="edabf-135">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="edabf-136">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="edabf-136">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="edabf-137">Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="edabf-137">For the full list, see [Partner Center error codes](error-codes.md).</span></span>
+<span data-ttu-id="c7e61-131">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="c7e61-131">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="c7e61-132">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="c7e61-132">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="c7e61-133">Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="c7e61-133">For the full list, see [Partner Center error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="edabf-138">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="edabf-138">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="c7e61-134">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="c7e61-134">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

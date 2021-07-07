@@ -4,30 +4,26 @@ description: Jak pobrać adres URL żądania relacji do wysłania do klienta.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5f899734b774ff460e005e20df8658275b2ce9d5
-ms.sourcegitcommit: d4e652e3b73c6137704d43d4a472cc5aa5549f11
+ms.openlocfilehash: 07804b36dfe0892cf8b531e0731188260c014f49
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "97770275"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547458"
 ---
-# <a name="retrieve-a-relationship-request-url"></a><span data-ttu-id="a7100-103">Pobieranie adresu URL żądania relacji</span><span class="sxs-lookup"><span data-stu-id="a7100-103">Retrieve a relationship request URL</span></span>
+# <a name="retrieve-a-relationship-request-url"></a><span data-ttu-id="60dd5-103">Pobieranie adresu URL żądania relacji</span><span class="sxs-lookup"><span data-stu-id="60dd5-103">Retrieve a relationship request URL</span></span>
 
-<span data-ttu-id="a7100-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="a7100-104">**Applies To**</span></span>
+<span data-ttu-id="60dd5-104">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany</span><span class="sxs-lookup"><span data-stu-id="60dd5-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany</span></span>
 
-- <span data-ttu-id="a7100-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="a7100-105">Partner Center</span></span>
-- <span data-ttu-id="a7100-106">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="a7100-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="a7100-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="a7100-107">Partner Center for Microsoft Cloud Germany</span></span>
+<span data-ttu-id="60dd5-105">Jak pobrać adres URL żądania relacji do wysłania do klienta.</span><span class="sxs-lookup"><span data-stu-id="60dd5-105">How to retrieve a relationship request URL to send to a customer.</span></span>
 
-<span data-ttu-id="a7100-108">Jak pobrać adres URL żądania relacji do wysłania do klienta.</span><span class="sxs-lookup"><span data-stu-id="a7100-108">How to retrieve a relationship request URL to send to a customer.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="60dd5-106">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="60dd5-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="a7100-109">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="a7100-109">Prerequisites</span></span>
+- <span data-ttu-id="60dd5-107">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="60dd5-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="60dd5-108">Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="60dd5-108">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="a7100-110">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="a7100-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="a7100-111">Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="a7100-111">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="60dd5-109">C\#</span><span class="sxs-lookup"><span data-stu-id="60dd5-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="a7100-112">C\#</span><span class="sxs-lookup"><span data-stu-id="a7100-112">C\#</span></span>
-
-<span data-ttu-id="a7100-113">Aby pobrać adres URL żądania relacji, najpierw Użyj [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby uzyskać interfejs do operacji klienta partnera.</span><span class="sxs-lookup"><span data-stu-id="a7100-113">To retrieve a relationship request URL, first use [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) to get an interface to the partner's customer operations.</span></span> <span data-ttu-id="a7100-114">Następnie użyj właściwości [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) , aby uzyskać interfejs do operacji żądania relacji klienta.</span><span class="sxs-lookup"><span data-stu-id="a7100-114">Next, use the [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) property to get an interface to customer relationship request operations.</span></span> <span data-ttu-id="a7100-115">Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) w celu pobrania adresu URL.</span><span class="sxs-lookup"><span data-stu-id="a7100-115">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) method to retrieve the URL.</span></span>
+<span data-ttu-id="60dd5-110">Aby pobrać adres URL żądania relacji, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs do operacji klienta partnera.</span><span class="sxs-lookup"><span data-stu-id="60dd5-110">To retrieve a relationship request URL, first use [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) to get an interface to the partner's customer operations.</span></span> <span data-ttu-id="60dd5-111">Następnie użyj właściwości [**RelationshipRequest,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) aby uzyskać interfejs do operacji żądania relacji z klientem.</span><span class="sxs-lookup"><span data-stu-id="60dd5-111">Next, use the [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) property to get an interface to customer relationship request operations.</span></span> <span data-ttu-id="60dd5-112">Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) aby pobrać adres URL.</span><span class="sxs-lookup"><span data-stu-id="60dd5-112">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) method to retrieve the URL.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -35,25 +31,25 @@ ms.locfileid: "97770275"
 var customerRelationshipRequest = partnerOperations.Customers.RelationshipRequest.Get();
 ```
 
-<span data-ttu-id="a7100-116">**Przykład**: [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="a7100-116">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="a7100-117">**Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetCustomerRelationshipRequest.cs</span><span class="sxs-lookup"><span data-stu-id="a7100-117">**Project**: Partner Center SDK Samples **Class**: GetCustomerRelationshipRequest.cs</span></span>
+<span data-ttu-id="60dd5-113">**Przykład:** [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="60dd5-113">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="60dd5-114">**Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomerRelationshipRequest.cs</span><span class="sxs-lookup"><span data-stu-id="60dd5-114">**Project**: Partner Center SDK Samples **Class**: GetCustomerRelationshipRequest.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="a7100-118">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="a7100-118">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="60dd5-115">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="60dd5-115">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="a7100-119">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="a7100-119">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="60dd5-116">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="60dd5-116">Request syntax</span></span>
 
-| <span data-ttu-id="a7100-120">Metoda</span><span class="sxs-lookup"><span data-stu-id="a7100-120">Method</span></span>  | <span data-ttu-id="a7100-121">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="a7100-121">Request URI</span></span>                                                                            |
+| <span data-ttu-id="60dd5-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="60dd5-117">Method</span></span>  | <span data-ttu-id="60dd5-118">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="60dd5-118">Request URI</span></span>                                                                            |
 |---------|----------------------------------------------------------------------------------------|
-| <span data-ttu-id="a7100-122">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="a7100-122">**GET**</span></span> | <span data-ttu-id="a7100-123">[*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/relationshiprequests http/1.1</span><span class="sxs-lookup"><span data-stu-id="a7100-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span></span> |
+| <span data-ttu-id="60dd5-119">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="60dd5-119">**GET**</span></span> | <span data-ttu-id="60dd5-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="60dd5-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="a7100-124">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="a7100-124">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="60dd5-121">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="60dd5-121">Request headers</span></span>
 
-<span data-ttu-id="a7100-125">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="a7100-125">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="60dd5-122">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="60dd5-122">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="a7100-126">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="a7100-126">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="60dd5-123">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="60dd5-123">Request body</span></span>
 
-<span data-ttu-id="a7100-127">Brak</span><span class="sxs-lookup"><span data-stu-id="a7100-127">None</span></span>
+<span data-ttu-id="60dd5-124">Brak</span><span class="sxs-lookup"><span data-stu-id="60dd5-124">None</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="a7100-128">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="a7100-128">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="60dd5-125">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="60dd5-125">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/relationshiprequests HTTP/1.1
@@ -66,15 +62,15 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="a7100-129">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="a7100-129">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="60dd5-126">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="60dd5-126">REST response</span></span>
 
-<span data-ttu-id="a7100-130">Jeśli to się powiedzie, odpowiedź zawiera obiekt [RelationshipRequest](relationships-resources.md#relationshiprequest) .</span><span class="sxs-lookup"><span data-stu-id="a7100-130">If successful, the response contains the [RelationshipRequest](relationships-resources.md#relationshiprequest) object.</span></span>
+<span data-ttu-id="60dd5-127">Jeśli to się powiedzie, odpowiedź zawiera [obiekt RelationshipRequest.](relationships-resources.md#relationshiprequest)</span><span class="sxs-lookup"><span data-stu-id="60dd5-127">If successful, the response contains the [RelationshipRequest](relationships-resources.md#relationshiprequest) object.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="a7100-131">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="a7100-131">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="60dd5-128">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="60dd5-128">Response success and error codes</span></span>
 
-<span data-ttu-id="a7100-132">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="a7100-132">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="a7100-133">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="a7100-133">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="a7100-134">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="a7100-134">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="60dd5-129">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="60dd5-129">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="60dd5-130">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="60dd5-130">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="60dd5-131">Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="60dd5-131">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="a7100-135">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="a7100-135">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="60dd5-132">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="60dd5-132">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

@@ -1,35 +1,31 @@
 ---
 title: Uzyskiwanie kwalifikacji klienta
-description: Dowiedz się, jak za pomocą walidacji asynchronicznej uzyskać kwalifikację klienta za pośrednictwem Partner Center API. Partnerzy mogą używać tego do weryfikowania klientów edukacyjnych.
+description: Dowiedz się, jak za pomocą walidacji asynchronicznej uzyskać kwalifikację klienta za pośrednictwem Partner Center API. Partnerzy mogą używać tej funkcji do weryfikowania klientów edukacyjnych.
 ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
-ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
+ms.openlocfilehash: 4795b6e1ad008f9d854dc7efbee0c2099aefa609
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110027932"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446313"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Asynchroniczne uzyskiwanie kwalifikacji klienta
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Jak asynchronicznie uzyskać kwalifikacje klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Kwalifikacja,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) aby pobrać [**interfejs ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Na koniec zadzwoń `GetQualifications()` do działu lub , aby pobrać `GetQualificationsAsync()` kwalifikacje klienta.
+Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Qualification,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) aby pobrać [**interfejs ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Na koniec zadzwoń `GetQualifications()` na numer lub , aby pobrać `GetQualificationsAsync()` kwalifikacje klienta.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +33,7 @@ Aby uzyskać kwalifikacje klienta, wywołaj metodę [**IAggregatePartner.Custome
 var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
 ```
 
-**Przykład:** [Przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples, **klasa**: GetCustomerQualifications.cs
+**Przykład:** [przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples, **klasa**: GetCustomerQualifications.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 

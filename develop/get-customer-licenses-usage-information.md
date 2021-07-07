@@ -1,36 +1,32 @@
 ---
 title: Pobieranie informacji dotyczących użycia licencji klienta
-description: Jak uzyskać szczegółowe informacje dotyczące użycia licencji dla określonego klienta.
+description: Jak uzyskać szczegółowe informacje o użyciu licencji dla określonego klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1ee19e458ec65faa21034dd230b5388f7de981b2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cfec12d37ce4f5f50baad57bfd45770388f8a2dc
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768346"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446432"
 ---
 # <a name="get-customer-licenses-usage-information"></a>Pobieranie informacji dotyczących użycia licencji klienta
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Jak uzyskać szczegółowe informacje o wdrażaniu licencji dla określonego klienta.
 
 > [!NOTE]
-> Ten scenariusz jest zastąpiony przez [uzyskanie informacji o użyciu licencji](get-licenses-usage-information.md).
+> Ten scenariusz został wyzłoszony przez informacje [o użyciu funkcji Get licenses](get-licenses-usage-information.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać zagregowane dane dotyczące wdrożenia określonego klienta, najpierw Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji zbierania danych analitycznych na poziomie klienta z właściwości [**Analiza**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) . Następnie Pobierz interfejs do kolekcji do analizy licencji na poziomie klienta z właściwości [**licencje**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) . Na koniec Wywołaj metodę [**Usage. Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) , aby uzyskać zagregowane dane dotyczące użycia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**CustomerLicensesUsageInsights**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights) .
+Aby pobrać zagregowane dane dotyczące wdrożenia dla określonego klienta, najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji zbierania danych analitycznych na poziomie klienta z [**właściwości Analytics.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) Następnie pobierz interfejs do kolekcji analizy licencji na poziomie klienta z [**właściwości Licencje.**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) Na koniec wywołaj [**metodę Usage.Get,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) aby uzyskać zagregowane dane dotyczące użycia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**CustomerLicensesUsageInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,7 +41,7 @@ var customerLicensesDeploymentAnalytics = partnerOperations.Customers.ById(custo
 
 | Metoda  | Identyfikator URI żądania                                                                                              |
 |---------|----------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Analytics/licenses/Usage http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/analytics/licenses/usage HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -53,11 +49,11 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ | Wymagane | Opis                                                |
 |-------------|------|----------|------------------------------------------------------------|
-| Identyfikator klienta | guid | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta. |
+| identyfikator klienta | guid | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -78,11 +74,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [CustomerLicensesUsageInsights](analytics-resources.md#customerlicensesusageinsights) , które zawierają informacje o użyciu licencji.
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [CustomerLicensesUsageInsights,](analytics-resources.md#customerlicensesusageinsights) które zawierają informacje o użyciu licencji.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

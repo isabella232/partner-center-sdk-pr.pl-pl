@@ -1,46 +1,42 @@
 ---
-title: Pobierz wszystkie miesięczne rekordy użycia dla subskrypcji.
-description: Możesz użyć kolekcji zasobów AzureResourceMonthlyUsageRecord, aby uzyskać listę usług w ramach subskrypcji klienta i ich skojarzone informacje o użyciu.
+title: Pobieranie wszystkich rekordów dotyczących miesięcznego użycia dla subskrypcji
+description: Możesz użyć kolekcji zasobów AzureResourceMonthlyUsageRecord, aby uzyskać listę usług w ramach subskrypcji klienta i skojarzonych z nimi informacji o użyciu.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1dd09d4976c9626e088cda02ce36669dd7121a99
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: ee4bd413eec7d5a2dddbe3803df8839589ab7504
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768365"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760287"
 ---
-# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Pobierz wszystkie miesięczne rekordy użycia dla subskrypcji.
+# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Pobieranie wszystkich rekordów dotyczących miesięcznego użycia dla subskrypcji
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Możesz użyć kolekcji zasobów [**AzureResourceMonthlyUsageRecord**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) , aby uzyskać listę usług w ramach subskrypcji klienta i ich skojarzone informacje o użyciu.
+Możesz użyć kolekcji zasobów [**AzureResourceMonthlyUsageRecord,**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) aby uzyskać listę usług w ramach subskrypcji klienta i skojarzonych z nimi informacji o użyciu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
-*Ten interfejs API obsługuje tylko subskrypcje Microsoft Azure (MS-AZR-0145P). Jeśli używasz planu platformy Azure, zobacz [pobieranie danych użycia dla subskrypcji według miernika](get-a-customer-subscription-meter-usage-records.md) .*
+*Ten interfejs API obsługuje Microsoft Azure subskrypcji (MS-AZR-0145P). Jeśli używasz planu platformy Azure, zobacz Zamiast tego zobacz [Get usage data for subscription by meter (Uzyskiwanie](get-a-customer-subscription-meter-usage-records.md) danych użycia dla subskrypcji według miernika).*
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać informacje o użyciu zasobów subskrypcji:
 
-1. Użyj kolekcji **IAggregatePartner. Customers** , aby wywołać metodę **ById ()** .
+1. Użyj **kolekcji IAggregatePartner.Customers,** aby wywołać **metodę ById().**
 
-2. Wywołaj Właściwość **subscriptions** , a następnie **UsageRecords**, a następnie właściwości **resources** .
-3. Wywołaj metody **Get ()** lub **GetAsync ()** .
+2. Wywołaj **właściwości Subscriptions** i **UsageRecords,** a następnie **właściwość Resources.**
+3. Wywołaj **metody Get()** **lub GetAsync().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,10 +46,10 @@ Aby uzyskać informacje o użyciu zasobów subskrypcji:
 var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageRecords.Resources.Get();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
+- Project: **PartnerSDK.FeatureSample**
 - Klasa: **SubscriptionResourceUsageRecords.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -62,20 +58,20 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{ID-for-Subscription}/usagerecords/Resources http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/usagerecords/resources HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby uzyskać informacje o ocenach użycia.
+W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania informacji o użyciu.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **Identyfikator subskrypcji** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
+| **subscription-id** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -93,11 +89,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów **AzureResourceMonthlyUsageRecord** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów **AzureResourceMonthlyUsageRecord** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

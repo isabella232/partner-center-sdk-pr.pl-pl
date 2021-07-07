@@ -1,33 +1,29 @@
 ---
 title: Pobieranie ról użytkowników dla klienta
-description: Pobierz listę wszystkich ról/uprawnień dołączonych do konta użytkownika. Warianty obejmują Pobieranie listy wszystkich uprawnień dla wszystkich kont użytkowników dla klienta i pobieranie listy użytkowników, którzy mają daną rolę.
+description: Pobierz listę wszystkich ról/uprawnień dołączonych do konta użytkownika. Odmiany obejmują pobieranie listy wszystkich uprawnień dla wszystkich kont użytkowników klienta i pobieranie listy użytkowników, którzy mają danej roli.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8dad5c035c08905c3d39052de07ebb912452a16b
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8f58e8b7eae5bb47265bb1ac83fcdcd160f735d2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767813"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445922"
 ---
 # <a name="get-user-roles-for-a-customer"></a>Pobieranie ról użytkowników dla klienta
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Pobierz listę wszystkich ról/uprawnień dołączonych do konta użytkownika. Warianty obejmują Pobieranie listy wszystkich uprawnień dla wszystkich kont użytkowników dla klienta i pobieranie listy użytkowników, którzy mają daną rolę.
+Pobierz listę wszystkich ról/uprawnień dołączonych do konta użytkownika. Odmiany obejmują pobieranie listy wszystkich uprawnień dla wszystkich kont użytkowników klienta i pobieranie listy użytkowników, którzy mają danej roli.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby pobrać wszystkie role katalogu dla określonego klienta, najpierw Pobierz określony identyfikator klienta. Następnie użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** . Następnie Wywołaj Właściwość **DirectoryRoles** , a następnie metodę **Get ()** lub **GetAsync ()**.
+Aby pobrać wszystkie role katalogu dla określonego klienta, najpierw pobierz określony identyfikator klienta. Następnie użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj **właściwość DirectoryRoles,** a następnie metodę **Get()** **lub GetAsync().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -36,9 +32,9 @@ Aby pobrać wszystkie role katalogu dla określonego klienta, najpierw Pobierz o
 var directoryRoles = partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetCustomerDirectoryRoles.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomerDirectoryRoles.cs
 
-Aby pobrać listę użytkowników klientów, którzy mają daną rolę, najpierw Pobierz określony identyfikator klienta i identyfikator roli katalogu. Następnie użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** . Następnie Wywołaj Właściwość **DirectoryRoles** , a następnie metodę **ById ()** , a następnie właściwość **UserMembers** , a następnie metodę **Get ()** lub **GetAsync ()** .
+Aby pobrać listę użytkowników klientów, którzy mają określoną rolę, najpierw pobierz określony identyfikator klienta i identyfikator roli katalogu. Następnie użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj właściwość **DirectoryRoles,** następnie metodę **ById(),** następnie właściwość **UserMembers,** a następnie metodę **Get()** lub **GetAsync().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -48,7 +44,7 @@ Aby pobrać listę użytkowników klientów, którzy mają daną rolę, najpierw
 var userMembers = partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedDirectoryRoleId).UserMembers.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: GetCustomerDirectoryRoleUserMembers.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSamples: GetCustomerDirectoryRoleUserMembers.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -56,23 +52,23 @@ var userMembers = partnerOperations.Customers.ById(selectedCustomerId).Directory
 
 | Metoda  | Identyfikator URI żądania                                                                                                           |
 |---------|-----------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users/{User-ID}/directoryroles http/1.1 |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/directoryroles http/1.1                 |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/directoryroles/{role-ID}/usermembers    |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id}/directoryroles HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/directoryroles HTTP/1.1                 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/directoryroles/{identyfikator-roli}/usermembers    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby zidentyfikować odpowiedniego klienta.
+Użyj następującego parametru zapytania, aby zidentyfikować prawidłowego klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                                                                                 |
 |------------------------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy.                                                      |
-| **Identyfikator użytkownika**            | **guid** | N        | Wartość jest **identyfikatorem użytkownika** w formacie GUID, który należy do jednego konta użytkownika.                                                                                                                            |
-| **Identyfikator roli**            | **guid** | N        | Wartość jest **identyfikatorem** GUID o formacie ID, który należy do typu roli. Identyfikatory te można uzyskać, badając wszystkie role katalogu dla klienta w ramach wszystkich kont użytkowników. (Drugi scenariusz, powyżej). |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy.                                                      |
+| **identyfikator użytkownika**            | **guid** | N        | Wartość to identyfikator GUID sformatowany **jako identyfikator użytkownika** należący do jednego konta użytkownika.                                                                                                                            |
+| **identyfikator roli**            | **guid** | N        | Wartość jest identyfikatorem roli sformatowanym **przez identyfikator** GUID, który należy do typu roli. Te identyfikatory można uzyskać, odpytując wszystkie role katalogu dla klienta na wszystkich kontach użytkowników. (Drugi scenariusz powyżej). |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -88,11 +84,11 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca listę ról skojarzonych z danym kontem użytkownika.
+W przypadku powodzenia ta metoda zwraca listę ról skojarzonych z danym kontem użytkownika.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

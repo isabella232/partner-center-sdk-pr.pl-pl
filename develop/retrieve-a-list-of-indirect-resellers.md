@@ -1,31 +1,27 @@
 ---
 title: Pobieranie listy odsprzedawców pośrednich
-description: Jak pobrać listę pośrednich odsprzedawcaów zalogowanego partnera.
+description: Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e53237b97fa26d3a987f0ee7de491084b596af4a
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768398"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446568"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Pobieranie listy odsprzedawców pośrednich
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak pobrać listę pośrednich odsprzedawcaów zalogowanego partnera.
+Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać listę pośrednich odsprzedawcaów, z którymi partner zalogowany ma relację, należy najpierw uzyskać interfejs do operacji kolekcji relacji z właściwości [**partnerOperations. Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) . Następnie Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) , przekazując element członkowski wyliczenia [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) , aby zidentyfikować typ relacji. Aby pobrać pośrednich odsprzedawcaów, musisz użyć IsIndirectCloudSolutionProviderOf.
+Aby pobrać listę odsprzedawców pośrednich, z którymi jest relacja między zalogowanym partnerem, najpierw uzyskaj interfejs do operacji zbierania relacji z właściwości [**partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Następnie wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**Get \_ Async,**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) przekazując członek wyliczenia [**PartnerRelationshipType,**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) aby zidentyfikować typ relacji. Aby pobrać odsprzedawców pośrednich, należy użyć funkcji IsIndirectCloudSolutionProviderOf.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -33,7 +29,7 @@ Aby pobrać listę pośrednich odsprzedawcaów, z którymi partner zalogowany ma
 var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipType.IsIndirectCloudSolutionProviderOf);
 ```
 
-**Przykład**:**projekt** [aplikacji testowej konsoli](console-test-app.md): **Klasa** przykładów zestawu SDK Centrum partnerskiego: GetIndirectResellers.cs
+**Przykład:** [Aplikacja testowa konsoli](console-test-app.md)**Project**: zestaw SDK Centrum partnerskiego Samples **Class**: GetIndirectResellers.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -41,7 +37,7 @@ var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipT
 
 | Metoda  | Identyfikator URI żądania                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Relationships? \_ Typ relacji = IsIndirectCloudSolutionProviderOf http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship \_ type=IsIndirectCloudSolutionProviderOf HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -49,11 +45,11 @@ Użyj następującego parametru zapytania, aby zidentyfikować typ relacji.
 
 | Nazwa               | Typ    | Wymagane  | Opis                         |
 |--------------------|---------|-----------|-------------------------------------|
-| relationship_type  | ciąg  | Tak       | Wartość jest reprezentacją ciągu jednej z nazw składowych znalezionych w [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę pośrednich odsprzedawcaów, z którymi ustanowiono relację, użyj IsIndirectCloudSolutionProviderOf.<br/><br/> Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, którym ustanowiono relację, użyj IsIndirectResellerOf.    |
+| relationship_type  | ciąg  | Tak       | Wartość jest ciągiem reprezentacji jednej z nazw członków znalezionych w [typie PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę odsprzedawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectCloudSolutionProviderOf.<br/><br/> Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectResellerOf.    |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -73,11 +69,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [PartnerRelationship](relationships-resources.md) , aby zidentyfikować odsprzedawcy.
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [PartnerRelationship](relationships-resources.md) w celu zidentyfikowania odsprzedawców.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

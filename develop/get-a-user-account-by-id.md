@@ -1,33 +1,29 @@
 ---
 title: Pobieranie konta użytkownika według identyfikatora
-description: Uzyskaj określone konto użytkownika dla klienta.
+description: Pobierz określone konto użytkownika dla klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: a2f42001365324a65376318cb1f2d57dc123df0c
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 3a7cac98a8081a8557dcadfb0724f5497be7d14c
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768054"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760270"
 ---
 # <a name="get-a-user-account-by-id"></a>Pobieranie konta użytkownika według identyfikatora
 
-**Dotyczy**
+Pobierz określone konto użytkownika dla klienta.
 
-- Centrum partnerskie
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-Uzyskaj określone konto użytkownika dla klienta.
-
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
-
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby pobrać konto użytkownika dla klienta, wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie Wywołaj metodę [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) , aby pobrać określonego użytkownika. Na koniec Wywołaj metodę [**users. Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) , aby pobrać konto użytkownika.
+Aby pobrać konto użytkownika dla klienta, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie wywołaj [**metodę Users.ById,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) aby pobrać określonego użytkownika. Na koniec wywołaj [**metodę Users.Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) aby pobrać konto użytkownika.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,7 +34,7 @@ Aby pobrać konto użytkownika dla klienta, wywołaj metodę [**IAggregatePartne
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetCustomerUserDetails.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomerUserDetails.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -46,20 +42,20 @@ var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.B
 
 | Metoda  | Identyfikator URI żądania                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users/{User-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następujących parametrów identyfikatora URI, aby zidentyfikować prawidłowego klienta i użytkownika.
+Użyj następujących parametrów identyfikatorów URI, aby zidentyfikować właściwego klienta i użytkownika.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **Identyfikator użytkownika**            | **guid** | Y        | Wartość jest **identyfikatorem użytkownika** w formacie GUID, który należy do jednego konta użytkownika.                                                                       |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **identyfikator użytkownika**            | **guid** | Y        | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który należy do jednego konta użytkownika.                                                                       |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -79,11 +75,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca konto użytkownika dla klienta.
+W przypadku powodzenia ta metoda zwraca konto użytkownika dla klienta.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

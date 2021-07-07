@@ -1,35 +1,31 @@
 ---
 title: Resetowanie hasła użytkownika dla klienta
-description: Resetowanie hasła jest bardzo podobne do aktualizowania innych szczegółów w istniejącym koncie użytkownika dla klienta.
+description: Zresetowanie hasła jest podobne do aktualizowania innych szczegółów na istniejącym koncie użytkownika dla klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e0df93c2db55ec0fe49fc0e3089b7e11928f32bb
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f3661a588f566485cbd58035c63ae9f8e5d383af
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767790"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445684"
 ---
 # <a name="reset-user-password-for-a-customer"></a>Resetowanie hasła użytkownika dla klienta
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Resetowanie hasła jest bardzo podobne do aktualizowania innych szczegółów w istniejącym koncie użytkownika dla klienta.
+Zresetowanie hasła jest podobne do aktualizowania innych szczegółów na istniejącym koncie użytkownika dla klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby zresetować hasło dla określonego użytkownika klienta, najpierw Pobierz określony identyfikator klienta i wskazanego użytkownika. Następnie utwórz nowy obiekt **CustomerUser** , który zawiera informacje dla istniejącego klienta, ale z nowym obiektem **PasswordProfile** . Następnie użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** . Następnie Wywołaj Właściwość **users** , metodę **ById ()** , a następnie metodę **patch** .
+Aby zresetować hasło dla określonego użytkownika klienta, najpierw pobierz określony identyfikator klienta i docelowego użytkownika. Następnie utwórz nowy obiekt **CustomerUser** zawierający informacje dotyczące istniejącego klienta, ale z nowym **obiektem PasswordProfile.** Następnie użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie **wywołaj właściwość Users,** **metodę ById(),** a następnie metodę **Patch.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -52,7 +48,7 @@ User updatedCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: CustomerUserUpdate.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa**: CustomerUserUpdate.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -60,20 +56,20 @@ User updatedCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 | Metoda    | Identyfikator URI żądania                                                                                  |
 |-----------|----------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby zidentyfikować odpowiedniego klienta.
+Użyj następującego parametru zapytania, aby zidentyfikować prawidłowego klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **Identyfikator użytkownika**            | **guid** | Y        | Wartość jest **identyfikatorem użytkownika** w formacie GUID, który należy do jednego konta użytkownika.                                                                       |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **identyfikator użytkownika**            | **guid** | Y        | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który należy do jednego konta użytkownika.                                                                       |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -99,11 +95,11 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca informacje o użytkowniku wraz z zaktualizowanymi informacjami o haśle.
+W przypadku powodzenia ta metoda zwraca informacje o użytkowniku wraz ze zaktualizowanymi informacjami o hasłach.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

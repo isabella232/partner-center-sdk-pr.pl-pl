@@ -1,84 +1,80 @@
 ---
 title: Tworzenie planu platformy Azure
-description: Deweloperzy mogą programistycznie kupować i tworzyć plany platformy Azure oraz zarządzać nimi przy użyciu interfejsów API Centrum partnerskiego.
+description: Deweloperzy mogą programowo kupować i tworzyć plany platformy Azure oraz zarządzać nimi przy użyciu Partner Center API.
 ms.date: 01/02/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: 372b94ac7217899ca560cf943bf11a7e8906872d
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: f329b6a3f9a61522a9fad1f0ead021563c393118
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768085"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973412"
 ---
 # <a name="create-an-azure-plan"></a>Tworzenie planu platformy Azure
 
-**Dotyczy:**
-
-* Centrum partnerskie
-
-Możesz kupić i utworzyć plan platformy Azure oraz zarządzać nim przy użyciu interfejsów API Centrum partnerskiego. Ten proces jest podobny do tworzenia subskrypcji Microsoft Azure (MS-AZR-0145P). Musisz [pobrać element katalogu dla planu platformy Azure](#get-the-catalog-item-for-azure-plan), a następnie [utworzyć i przesłać zamówienie](#create-and-submit-an-order).
+Plan platformy Azure można kupić, utworzyć i zarządzać nimi przy użyciu Partner Center API. Proces jest podobny do tworzenia subskrypcji Microsoft Azure (MS-AZR-0145P). Musisz uzyskać [element katalogu dla planu platformy Azure,](#get-the-catalog-item-for-azure-plan)a następnie utworzyć i [przesłać zamówienie.](#create-and-submit-an-order)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Poświadczenia [uwierzytelniania Centrum partnerskiego](partner-center-authentication.md) . Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
-* Identyfikator klienta. Jeśli nie masz identyfikatora klienta, wykonaj kroki opisane w sekcji [Pobieranie listy klientów](get-a-list-of-customers.md). Alternatywnie możesz zalogować się do Centrum partnerskiego, wybrać klienta z listy klientów, wybrać pozycję **konto**, a następnie zapisać **Identyfikator Microsoft**.
-* [Potwierdzenie akceptacji umowy klienta firmy Microsoft przez klienta](/partner-center/confirm-customer-agreement).
+* [Partner Center poświadczenia](partner-center-authentication.md) uwierzytelniania. Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+* Identyfikator klienta. Jeśli nie masz identyfikatora klienta, wykonaj kroki opisane w te tematu Get a list of customers (Uzyskiwanie [listy klientów).](get-a-list-of-customers.md) Możesz też zalogować się do Partner Center, wybrać klienta z listy klientów, wybrać pozycję **Konto**, a następnie zapisać **jego identyfikator Microsoft.**
+* [Potwierdzenie akceptacji przez klienta](/partner-center/confirm-customer-agreement)Umowa z Klientem Microsoft .
 
-## <a name="get-the-catalog-item-for-azure-plan"></a>Pobierz element katalogu dla planu platformy Azure
+## <a name="get-the-catalog-item-for-azure-plan"></a>Uzyskiwanie elementu katalogu dla planu platformy Azure
 
-Aby można było utworzyć plan platformy Azure dla klienta, należy pobrać odpowiedni element katalogu. Element katalogu można pobrać przy użyciu istniejących interfejsów API katalogu Centrum partnerskiego z następującymi modelami zasobów.
+Aby można było utworzyć plan platformy Azure dla klienta, należy pobrać odpowiedni element katalogu. Element katalogu można pobrać przy użyciu istniejących interfejsów API wykazu Partner Center z następującymi modelami zasobów.
 
-* **[Produkt](product-resources.md#product)**: konstrukcja grupująca dla jednostek towarów lub usług. Sam produkt nie jest elementem jednostek.
-* **[SKU](product-resources.md#sku)**: jednostka magazynowa jednostek (SKU) w ramach produktu. Jednostki SKU reprezentują różne kształty produktu.
-* **[Dostępność](product-resources.md#availability)**: Konfiguracja, w której jednostka SKU jest dostępna do zakupu (na przykład kraj, waluta lub segment branżowy).
+* **[Produkt:](product-resources.md#product)** Konstrukcja grupowania dla towarów lub usług, które można kupować. Sam produkt nie jest elementem do zakupu.
+* **[Jednostka SKU:](product-resources.md#sku)** jednostka magazynowa (SKU) do zakupu w ramach produktu. Jednostki SKU reprezentują różne kształty produktu.
+* **[Dostępność:](product-resources.md#availability)** konfiguracja, w której można kupić sku (na przykład kraj, waluta lub segment branży).
 
-Aby uzyskać element katalogu dla planu platformy Azure, wykonaj następujące czynności:
+Aby uzyskać element katalogu dla planu platformy Azure, wykonaj następujące kroki:
 
-1. Zidentyfikuj i Pobierz identyfikator *produktu* dla planu platformy Azure. Wykonaj kroki opisane w sekcji [Pobieranie listy produktów](get-a-list-of-products.md) i określanie **targetView** jako **MicrosoftAzure**. (Jeśli znasz już identyfikator *produktu* dla planu platformy Azure, możesz wykonać czynności opisane w sekcji [Uzyskiwanie produktu przy użyciu identyfikatora produktu](get-a-product-by-id.md) ).
+1. Zidentyfikuj *i* pobierz identyfikator produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of products](get-a-list-of-products.md) (Uzyskiwanie listy produktów) i określ element **targetView** jako **MicrosoftAzure.** (Jeśli znasz już *identyfikator* produktu dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get [a product using the product ID](get-a-product-by-id.md) (Uzyskiwanie produktu przy użyciu identyfikatora produktu).
 
-2. Pobierz **jednostkę SKU** z produktu dla planu platformy Azure. Wykonaj kroki opisane w sekcji [Pobieranie listy jednostek SKU dla produktu](get-a-list-of-skus-for-a-product.md). Jeśli znasz już identyfikator jednostki SKU planu platformy Azure, możesz wykonać kroki opisane w sekcji [pobieranie jednostki SKU przy użyciu identyfikatora jednostki SKU](get-a-sku-by-id.md) .
+2. Pobierz **sku z** produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of SKUs for a product (Uzyskiwanie listy jednostki SKU dla produktu).](get-a-list-of-skus-for-a-product.md) Jeśli znasz już identyfikator jednostki SKU dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get a SKU using the SKU ID (Uzyskiwanie jednostki SKU przy [użyciu identyfikatora jednostki SKU).](get-a-sku-by-id.md)
 
-3. Pobierz **dostępność** z jednostki SKU dla planu platformy Azure. Wykonaj kroki opisane w temacie [Pobieranie listy dostępność dla jednostki SKU](get-a-list-of-availabilities-for-a-sku.md). Jeśli znasz już identyfikator potrzebnej dostępności, możesz wykonać czynności opisane w sekcji [pobieranie dostępności przy użyciu identyfikatora dostępności](get-an-availability-by-id.md) . *Pamiętaj, aby zanotować wartość właściwości **CatalogItemId** dostępności planu platformy Azure. Ta wartość będzie potrzebna, aby można było utworzyć zamówienie.*
+3. Pobierz dostępność **z** wersji SKU dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of availabilities for a SKU](get-a-list-of-availabilities-for-a-sku.md)(Uzyskiwanie listy dostępności dla SKU). Jeśli znasz już identyfikator potrzebnej dostępności, możesz zamiast tego wykonać kroki opisane w części Uzyskiwanie dostępności [przy użyciu identyfikatora](get-an-availability-by-id.md) dostępności. *Pamiętaj, aby zanotować wartość właściwości **CatalogItemId** dostępności planu platformy Azure. Ta wartość będzie potrzebna do utworzenia zamówienia.*
 
-## <a name="create-and-submit-an-order"></a>Utwórz i prześlij zamówienie
+## <a name="create-and-submit-an-order"></a>Tworzenie i przesyłanie zamówienia
 
-Aby przesłać zamówienie do planu platformy Azure, wykonaj następujące kroki:
+Aby przesłać zamówienie dotyczące planu platformy Azure, wykonaj następujące kroki:
 
-1. [Utwórz koszyk](create-a-cart.md) do przechowywania kolekcji elementów wykazu, które zamierzasz kupić. Podczas tworzenia [koszyka](cart-resources.md#cart) [elementy w linii koszyka](cart-resources.md#cartlineitem) są automatycznie grupowane na podstawie tego, co można zakupić razem w tej samej [kolejności](order-resources.md#order). (Możesz również [zaktualizować koszyk](update-a-cart.md)).
+1. [Utwórz koszyk do](create-a-cart.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Po utworzeniu [koszyka](cart-resources.md#cart)elementy [wiersza](cart-resources.md#cartlineitem) koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu.](order-resources.md#order) (Możesz również [zaktualizować koszyk).](update-a-cart.md)
 
-2. [Sprawdź koszyk](checkout-a-cart.md), w wyniku którego powstaje [Zamówienie](order-resources.md#order).
+2. [Zapoznaj się z koszykiem](checkout-a-cart.md), co powoduje utworzenie [zamówienia](order-resources.md#order).
 
-## <a name="get-order-details"></a>Pobierz szczegóły zamówienia
+## <a name="get-order-details"></a>Uzyskiwanie szczegółów zamówienia
 
-[Szczegółowe informacje o poszczególnych zamówieniach można pobrać przy użyciu identyfikatora zamówienia](get-an-order-by-id.md). Możesz również [pobrać listę wszystkich zamówień dla określonego klienta](get-all-of-a-customer-s-orders.md).
+Szczegóły pojedynczego [zamówienia można pobrać przy użyciu identyfikatora zamówienia](get-an-order-by-id.md). Możesz również [pobrać listę wszystkich zamówień dla określonego klienta.](get-all-of-a-customer-s-orders.md)
 
 >[!NOTE]
->Po przesłaniu zamówienia istnieje opóźnienie do 15 minut, po upływie którego zamówienie zostanie wyświetlone na liście zamówienie tego klienta.
+>Po przesłaniu zamówienia istnieje opóźnienie do 15 minut, zanim zamówienie pojawi się na liście zamówień tego klienta.
 
 ## <a name="manage-azure-plans"></a>Zarządzanie planami platformy Azure
 
-Po pomyślnym przetworzeniu zamówienia zostanie utworzony zasób **subskrypcji** Centrum partnerskiego dla planu platformy Azure. Aby zarządzać planem platformy Azure, można użyć następujących metod zarządzania zasobami **subskrypcji** Centrum partnerskiego:
+Po pomyślnym przetworzeniu zamówienia zostanie utworzony Partner Center **subskrypcji** platformy Azure. Następujące metody zarządzania zasobami subskrypcji usługi Partner Center **do** zarządzania planem platformy Azure:
 
 * [Pobieranie subskrypcji klienta](get-all-of-a-customer-s-subscriptions.md)
 * [Pobieranie listy subskrypcji według zamówienia](get-a-list-of-subscriptions-by-order.md)
 
-Po utworzeniu planu platformy Azure w centrum partnerskim zostanie również utworzona odpowiednia subskrypcja użycia platformy Azure na platformie Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu witryny Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, wykonując czynności opisane w sekcji [Uzyskiwanie listy uprawnień platformy Azure na potrzeby subskrypcji Centrum partnerskiego](get-a-list-of-azure-entitlements-for-subscription.md)
+Gdy plan platformy Azure jest tworzony w Partner Center, na platformie Azure tworzona jest również odpowiednia subskrypcja użycia platformy Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, korzystając z procedury opisanej w tesłudze Get [a list of Azure entitlements for Partner Center subscription](get-a-list-of-azure-entitlements-for-subscription.md) (Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji Partner Center Azure)
 
 ## <a name="lifecycle-management"></a>Zarządzanie cyklem życia
 
-Istniejący plan platformy Azure można wstrzymać, wykonując czynności opisane w sekcji [wstrzymywanie subskrypcji](suspend-a-subscription.md).
+Możesz wstrzymać istniejący plan platformy Azure, korzystając z procedury [wstrzymywania subskrypcji](suspend-a-subscription.md).
 
-*Istniejący plan platformy Azure można wstrzymać tylko wtedy, gdy nie ma już skojarzonych aktywnych zasobów użycia, w tym subskrypcji użycia platformy Azure i rezerwacji platformy Azure.*
+*Istniejący plan platformy Azure można wstrzymać tylko wtedy, gdy nie ma już skojarzonych żadnych aktywnych zasobów użycia, w tym subskrypcji użycia platformy Azure i rezerwacji platformy Azure.*
 
-Aby uzyskać szczegółowe informacje na temat sposobu wyłączania subskrypcji użycia platformy Azure, zobacz [Azure API on Subscription Management](/rest/api/resources/subscriptions).
+Aby uzyskać szczegółowe informacje na temat wyłączania subskrypcji użycia platformy Azure, zobacz Interfejs [API platformy Azure na temat zarządzania cyklem życia subskrypcji.](/rest/api/resources/subscriptions)
 
-Aby usunąć istniejące rezerwacje platformy Azure, musisz [anulować rezerwacje](/partner-center/azure-reservations-manage#cancel-or-exchange-a-reservation).
-Po zawieszeniu planu platformy Azure Możesz go uaktywnić ponownie.
+Aby usunąć istniejące rezerwacje platformy Azure, musisz [anulować rezerwacje.](/partner-center/azure-reservations-manage#cancel-or-exchange-a-reservation)
+Po wstrzymaniu planu platformy Azure można go ponownie uaktywnić.
 
-Aby uzyskać szczegółowe informacje na temat ponownego uaktywnienia planu platformy Azure, zobacz [Ponowne uaktywnianie zawieszonej subskrypcji](reactivate-a-suspended-a-subscription.md)
+Aby uzyskać szczegółowe informacje na temat ponownego aktywowania planu platformy Azure, zobacz [Ponowne aktywowanie wstrzymanej subskrypcji](reactivate-a-suspended-a-subscription.md)
 
 ## <a name="transition-existing-csp-offers-to-azure-plan"></a>Przenoszenie istniejących ofert CSP do planu platformy Azure
 
@@ -90,7 +86,7 @@ Nie możesz utworzyć planu platformy Azure dla istniejącego klienta z subskryp
 
 ## <a name="azure-spending"></a>Wydatki na platformie Azure
 
-[Wydatki na platformę Azure](azure-spending.md) można śledzić, wykonując zapytania dotyczące podsumowania użycia i szczegółowych rekordów użycia przy użyciu następujących metod:
+Wydatki na [platformę Azure można śledzić,](azure-spending.md) odpytując o podsumowanie użycia i szczegółowe rekordy użycia przy użyciu następujących metod:
 
 * [Pobieranie podsumowania użycia przez partnera](get-a-partner-usage-summary.md)
 * [Pobieranie wszystkich rekordów dotyczących użycia przez klientów dla partnera](get-a-customer-s-usage-records.md)
@@ -102,21 +98,21 @@ Nie możesz utworzyć planu platformy Azure dla istniejącego klienta z subskryp
 * [Pobieranie zasobów rekordu użycia miernika](meter-usage-resources.md)
 * [Pobieranie zasobów rekordu użycia zasobu](resource-usage-resources.md)
 
-Możesz również ustawić i zarządzać budżetem użycia klienta przy użyciu następujących metod:
+Budżet użycia klientów można również ustawić i zarządzać nimi przy użyciu następujących metod:
 
 * [Pobieranie budżetu użycia klienta](get-a-customer-s-usage-spending-budget.md)
 * [Aktualizowanie budżetu użycia klienta](update-a-customer-s-usage-spending-budget.md)
 
-## <a name="invoice-and-reconciliation"></a>Faktura i uzgadnianie
+## <a name="invoice-and-reconciliation"></a>Faktury i uzgadnianie
 
-Można zarządzać fakturami i danymi uzgadnianymi przy użyciu następujących metod:
+Fakturami i danymi uzgodnień można zarządzać przy użyciu następujących metod:
 
 * [Pobieranie kolekcji faktur](get-a-collection-of-invoices.md)
 * [Pobieranie linków do szacunkowych faktur](get-invoice-estimate-links.md)
-* [Pobierz fakturę według identyfikatora](get-invoice-by-id.md)
+* [Uzyskiwanie faktury według identyfikatora](get-invoice-by-id.md)
 * [Pobieranie zestawienia faktur](get-invoice-statement.md)
 * [Pobieranie podsumowania faktur](get-invoice-summaries.md)
 * [Pobieranie zafakturowanych elementów wiersza dotyczących zużycia](get-invoice-billed-consumption-lineitems.md)
 * [Pobieranie niezafakturowanych elementów wiersza dotyczących zużycia](get-invoice-unbilled-consumption-lineitems.md)
-* [Pobierz faktury rozliczane za Rekonesans wierszy](get-invoiceline-items.md)
+* [Uzyskiwanie elementów ponownie rozliowanych na fakturze](get-invoiceline-items.md)
 * [Pobieranie niezafakturowanych elementów wiersza uzgodnienia](get-invoice-unbilled-recon-lineitems.md)

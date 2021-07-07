@@ -1,53 +1,49 @@
 ---
-title: Pobieranie faktur — elementy linii zużycia komercyjnego
-description: Za pomocą interfejsów API Centrum partnerskiego można uzyskać kolekcję nienaliczanych szczegółowych informacji o towarach związanych z sprzedażą komercyjną dla określonej faktury.
+title: Uzyskiwanie nienaliowanych pozycji użycia komercyjnego na fakturze
+description: Możesz uzyskać kolekcję nienalicznych szczegółów pozycji użycia komercyjnego dla określonej faktury przy użyciu Partner Center API.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8b6ca8d6ff7af53dd2a258ea20e6eaeb26421440
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 1b7dba3333aaec8df73f0e8147b0bbbc78b9b184
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274669"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446150"
 ---
-# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Pobieranie faktur — elementy linii zużycia komercyjnego
+# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Uzyskiwanie nienaliowanych pozycji użycia komercyjnego na fakturze
 
-**Dotyczy:**
+How to get a collection of unbilled commercial consumption line item details (Jak uzyskać kolekcję nienadmiernych szczegółów elementu wiersza użycia komercyjnego).
 
-- Centrum partnerskie
-
-Jak uzyskać kolekcję rozliczonych szczegółów dotyczących elementów linii zużycia komercyjnego.
-
-Korzystając z poniższych metod, można użyć programu w celu uzyskania kolekcji szczegółów dotyczących nieobciążanych elementów linii zużycia komercyjnego (nazywanych również otwartymi elementami wiersza użycia).
+Za pomocą poniższych metod można programowo pobrać kolekcję szczegółowych informacji o nienadmiernych pozycjach użycia komercyjnego (nazywanych również otwartymi elementami wiersza użycia).
 
 >[!NOTE]
->Dzienne użycie zwykle trwa 24 godziny w centrum partnerskim lub dostęp do niego za pomocą interfejsu API.
+>Dzienne użycie oceniane zwykle trwa 24 godziny, aby pojawiać się w Partner Center lub uzyskać do niego dostęp za pośrednictwem interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane elementy wiersza.
+- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane pozycje.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać elementy wiersza dla określonej faktury:
+Aby uzyskać pozycje dla określonej faktury:
 
-1. Wywołaj metodę [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , aby uzyskać interfejs do fakturowania operacji dla określonej faktury.
+1. Wywołaj [**metodę ById,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) aby uzyskać interfejs do operacji na fakturze dla określonej faktury.
 
-2. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać obiekt faktury.
+2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury.
 
-**Obiekt Invoice** zawiera wszystkie informacje dotyczące określonej faktury. **Dostawca** identyfikuje źródło informacji o nieobciążanych szczegółach (na przykład **jednorazowej**). **InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).
+Obiekt **faktury zawiera** wszystkie informacje dotyczące określonej faktury. Dostawca **identyfikuje** źródło nienaliczonych informacji szczegółowych (na przykład **OneTime).** **InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).
 
-Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji **InvoiceLineItems** . Dla każdego **InvoiceLineItemType** pobierana jest oddzielna Kolekcja elementów wiersza.
+Poniższy przykładowy kod używa **pętli foreach** do przetwarzania kolekcji **InvoiceLineItems.** Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wierszy.
 
-Aby uzyskać kolekcję elementów wierszy, które odpowiadają wystąpieniu **InvoiceDetail** :
+Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**by**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .
+1. Przekaż wartości **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
-2. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać skojarzone elementy wiersza.
-3. Utwórz moduł wyliczający, który przejdzie do kolekcji, jak pokazano w poniższym przykładzie.
+2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać skojarzone elementy wiersza.
+3. Utwórz moduł wyliczający w celu przechodzenia przez kolekcję, jak pokazano w poniższym przykładzie.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -105,40 +101,40 @@ while (fetchNext)
 }
 ```
 
-Aby poznać podobny przykład, zobacz:
+Aby uzyskać podobny przykład, zobacz:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
-- Klasa: **GetUnBilledConsumptionReconLineItemsPaging. cs**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
+- Klasa: **GetUnBilledConsumptionReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
 
 ### <a name="request-syntax"></a>Składnia żądania
 
-W zależności od przypadku użycia można użyć następujących składni dla żądania REST. Aby uzyskać więcej informacji, zobacz opisy poszczególnych składni.
+W zależności od przypadku użycia możesz użyć następujących składni dla żądania REST. Aby uzyskać więcej informacji, zobacz opisy poszczególnych składni.
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                                                              | Opis przypadku użycia składni                                                                                                     |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &okres = {period} http/1.1                       | Użyj tej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury.                                                    |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} http/1.1           | Ta składnia jest używana w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza. |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/unbilled/LineItems? Provider = jednorazowej&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next | Użyj tej składni, aby uzyskać następną stronę elementów wiersza uzgodnienia przy użyciu `seekOperation = "Next"` .                                  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period} HTTP/1.1                       | Użyj tej składni, aby zwrócić pełną listę wszystkich elementów wiersza dla danej faktury.                                                    |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1           | Użyj tej składni w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciem opartym na wartości 0, aby zwrócić stronicowane listy elementów wiersza. |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size}&seekOperation=Next | Użyj tej składni, aby uzyskać następną stronę elementów wiersza uzgodnień przy użyciu polecenia `seekOperation = "Next"` .                                  |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.
+Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 
 | Nazwa                   | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
 |------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| dostawcy               | ciąg | Tak      | Dostawca: "**jednorazowej**".                                                                                                                                                                                                               |
-| Typ faktury-wiersz-element | ciąg | Tak      | Typ faktury szczegóły: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
-| currencyCode           | ciąg | Tak      | Kod waluty dla nieobciążanych elementów wiersza.                                                                                                                                                                                             |
-| period                 | ciąg | Tak      | Okres nienaliczanych Rekonesans (na przykład: **Current**, **Previous**). Załóżmy, że musisz wykonać zapytanie dotyczące nienaliczanych danych użycia cyklu rozliczeniowego (01/01/2020 – 01/31/2020) w styczniu, wybierz okres jako **"Current", "** else **".** |
+| Dostawca               | ciąg | Tak      | Dostawca: "**OneTime**".                                                                                                                                                                                                               |
+| typ elementu wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| currencyCode           | ciąg | Tak      | Kod waluty dla nienaliowanych elementów wiersza.                                                                                                                                                                                             |
+| period                 | ciąg | Tak      | Okres dla nienadmiernego rekonesencji (na przykład: **bieżący**, **poprzedni**). Załóżmy, że musisz odpytać dane o nienaliczonym użyciu dla cyklu rozliczeniowego (01.01.2020 – 01.31.2020) w styczniu, wybrać okres **jako "Bieżący",** a jeszcze **"Poprzedni".** |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000.                                                                                                                                                                           |
-| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby uzyskać następną stronę elementów linii uzgadniania.                                                                                                                                                                |
+| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby pobrać następną stronę elementów wiersza uzgodnień.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -148,21 +144,21 @@ Brak.
 
 Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.
 
-*Dla pozycji **line ItemType** wartość **Purchase** jest mapowana na **nową** , a **zwrot** wartości jest mapowany na **przycisk Anuluj**.*
+*W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na nowy, a wartość **Zwrot** jest mapowana na **anuluj**.*
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
-## <a name="request-response-examples"></a>Przykłady żądania-odpowiedź
+## <a name="request-response-examples"></a>Przykłady żądań i odpowiedzi
 
-### <a name="request-response-example-1"></a>Przykład żądania — odpowiedź 1
+### <a name="request-response-example-1"></a>Przykład żądania i odpowiedzi 1
 
-Następujące szczegóły dotyczą tego przykładu:
+W tym przykładzie mają zastosowanie następujące szczegóły:
 
-- **Dostawca**: **jednorazowej**
+- **Dostawca:** **OneTime**
 - **InvoiceLineItemType**: **UsageLineItems**
-- **Okres**: **poprzedni**
+- **Okres:** **Poprzedni**
 
 #### <a name="request-example-1"></a>Przykład żądania 1
 
@@ -334,14 +330,14 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a>Przykład żądania — odpowiedź 2
+### <a name="request-response-example-2"></a>Przykład żądania i odpowiedzi 2
 
-Następujące szczegóły dotyczą tego przykładu:
+W tym przykładzie mają zastosowanie następujące szczegóły:
 
-- **Dostawca**: **jednorazowej**
+- **Dostawca:** **OneTime**
 - **InvoiceLineItemType**: **UsageLineItems**
-- **Okres**: **poprzedni**
-- **SeekOperation**: **dalej**
+- **Okres:** **Poprzedni**
+- **SeekOperation:** **Dalej**
 
 #### <a name="request-example-2"></a>Przykład żądania 2
 

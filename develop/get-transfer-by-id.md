@@ -1,29 +1,25 @@
 ---
-title: Pobierz szczegóły transferu według identyfikatora
-description: Jak uzyskać szczegółowe informacje dotyczące transferu subskrypcji dla klienta.
+title: Uzyskiwanie szczegółów przeniesienia według identyfikatora
+description: Jak uzyskać szczegółowe informacje o przeniesieniu subskrypcji dla klienta.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c39e9483f1e51469981b0d6fa2541a6372ff2dac
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 1347f95debec458b8c70c5e803cef6203ad34818
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767814"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445939"
 ---
-# <a name="get-transfer-details-by-id"></a>Pobierz szczegóły transferu według identyfikatora
-
-**Dotyczy:**
-
-- Centrum partnerskie
+# <a name="get-transfer-details-by-id"></a>Uzyskiwanie szczegółów przeniesienia według identyfikatora
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator transferu dla istniejącego transferu.
+- Identyfikator przeniesienia istniejącego transferu.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -31,20 +27,20 @@ ms.locfileid: "97767814"
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Transfers/{transfer-ID} http/1.1                    |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/transfers/{transfer-id} HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określić transfer, który ma zostać zaakceptowany.
+Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określić transfer do zaakceptowania.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
-| **Identyfikator transferu** | ciąg   | Tak      | Identyfikator transferu w formacie GUID, który identyfikuje transfer.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
+| **transfer-id** | ciąg   | Tak      | Identyfikator GUID sformatowany transfer-id, który identyfikuje transfer.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -59,11 +55,11 @@ Accept: application/json
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca wypełniony zasób [TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca wypełniony [zasób TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

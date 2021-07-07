@@ -1,32 +1,27 @@
 ---
 title: Pobieranie wszystkich informacji analitycznych dotyczących subskrypcji
-description: Jak uzyskać wszystkie informacje o usłudze Subscription Analytics.
+description: Jak uzyskać wszystkie informacje analityczne dotyczące subskrypcji.
 ms.date: 08/02/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: f32fb99ad52939ae8e9de26276588d3022f18fbc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e1f16c92569a02bc51c96a85ecb642fbeb76a9a7
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767710"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760253"
 ---
 # <a name="get-all-subscription-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących subskrypcji
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tym artykule opisano, jak uzyskać wszystkie informacje o usłudze Subscription Analytics dla swoich klientów.
+W tym artykule opisano sposób uzyskania wszystkich informacji analizy subskrypcji dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie z poświadczeniami użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -34,23 +29,23 @@ W tym artykule opisano, jak uzyskać wszystkie informacje o usłudze Subscriptio
 
 | Metoda | Identyfikator URI żądania |
 |--------|-------------|
-| **Pobierz** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/V1/Analytics/subscriptions http/1.1 |
+| **Pobierz** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/subscriptions HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
 W poniższej tabeli wymieniono parametry opcjonalne i ich opisy:
 
 | Parametr | Typ |  Opis |
 |-----------|------|--------------|
-| top (pierwsze) | int | Liczba wierszy danych do zwrócenia w żądaniu. Jeśli wartość nie jest określona, wartość maksymalna i wartość domyślna to `10000` . Jeśli zapytanie zawiera więcej wierszy, treść odpowiedzi obejmuje następny link, którego można użyć do żądania następnej strony danych. |
-| Pomiń | int | Liczba wierszy do pominięcia w zapytaniu. Użyj tego parametru, aby uzyskać stronę z dużymi zestawami danych. Na przykład program `top=10000` `skip=0` pobiera pierwsze 10000 wierszy danych `top=10000` i `skip=10000` pobiera następne 10000 wierszy danych. |
-| filter | ciąg | Jedna lub więcej instrukcji, które filtrują wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość, która jest skojarzona z **`eq`** , **`ne`** lub dla niektórych pól, **`contains`** operatora. Instrukcje można łączyć przy użyciu **`and`** lub **`or`** . Wartości ciągu muszą być ujęte w pojedyncze cudzysłowy w parametrze **Filter** . W poniższej sekcji znajduje się lista pól, które można filtrować i operatory, które są obsługiwane przez te pola. |
-| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może to być jeden z następujących ciągów: **dzień**, **tydzień** lub **miesiąc**. Jeśli wartość nie jest określona, wartością domyślną jest **dateRange**. Ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przesyłane jako część parametru **GroupBy** . |
-| groupBy | ciąg | Instrukcja, która stosuje agregację danych tylko do określonych pól. |
+| top (pierwsze) | int | Liczba wierszy danych do zwrócenia w żądaniu. Jeśli wartość nie zostanie określona, wartością maksymalną i wartością domyślną będzie `10000` . Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. |
+| Pomiń | int | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład `top=10000` i pobiera pierwsze `skip=0` 10000 wierszy danych i pobiera `top=10000` następne `skip=10000` 10000 wierszy danych. |
+| filter | ciąg | Co najmniej jedna instrukcja, która filtruje wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość skojarzoną z operatorem **`eq`** , lub dla niektórych **`ne`** **`contains`** pól. Instrukcje można łączyć przy użyciu **`and`** instrukcji lub **`or`** . Wartości ciągów muszą być otoczone pojedynczymi cudzysłowami w **parametrze filtru.** Zobacz następującą sekcję, aby uzyskać listę pól, które można filtrować, oraz operatory obsługiwane przez te pola. |
+| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: **dzień,** **tydzień** lub **miesiąc**. Jeśli wartość nie zostanie określona, wartością domyślną jest **dateRange**. Ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przekazywane jako część **parametru groupBy.** |
+| Groupby | ciąg | Instrukcja, która stosuje agregację danych tylko do określonych pól. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -68,11 +63,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [**subskrypcji**](partner-center-analytics-resources.md#subscription-resource) .
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [**subskrypcji.**](partner-center-analytics-resources.md#subscription-resource)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

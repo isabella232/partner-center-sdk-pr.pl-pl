@@ -1,27 +1,23 @@
 ---
 title: Pobieranie informacji dotyczących wdrażania licencji
-description: Jak uzyskać informacje o wdrażaniu licencji dla pakietu Office i usługi Dynamics.
+description: How to get deployment information for Office and Dynamics licenses (Jak uzyskać informacje o wdrażaniu Office licencji usługi Dynamics).
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ef0e5d73d34bc51e4cc58143db6c9fc49cb58fcb
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 9eb0dc655affb2216b11635e58e00ed6464d6792
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97768165"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445667"
 ---
 # <a name="get-licenses-deployment-information"></a>Pobieranie informacji dotyczących wdrażania licencji
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak uzyskać informacje o wdrażaniu licencji dla pakietu Office i usługi Dynamics.
+How to get deployment information for Office and Dynamics licenses (Jak uzyskać informacje o wdrażaniu Office licencji usługi Dynamics).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -29,21 +25,21 @@ Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerski
 
 | Metoda  | Identyfikator URI żądania                                                                                     |
 |---------|-------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Analytics/Commercial/Deployment/License/http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/analytics/commercial/deployment/license/ HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 | Parametr         | Typ     | Opis | Wymagane |
 |-------------------|----------|-------------|----------|
-| top (pierwsze)               | ciąg   | Liczba wierszy danych do zwrócenia w żądaniu. Wartość maksymalna i wartość domyślna, jeśli nie zostanie określona, to 10000. Jeśli zapytanie zawiera więcej wierszy, treść odpowiedzi obejmuje następny link, którego można użyć do żądania następnej strony danych. | Nie |
-| Pomiń              | int      | Liczba wierszy do pominięcia w zapytaniu. Użyj tego parametru, aby uzyskać stronę z dużymi zestawami danych. Na przykład: Top = 10000 i Skip = 0 pobiera pierwsze 10000 wierszy danych, Top = 10000 i Skip = 10000 pobiera następne 10000 wierszy danych i tak dalej. | Nie |
-| filter            | ciąg   | Parametr *Filter* żądania zawiera jedną lub więcej instrukcji, które filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z `eq` `ne` operatorami or, a instrukcje można łączyć za pomocą `and` lub `or` . Oto przykładowe parametry *filtru* :<br/><br/> *Filter = servicecode EQ "O365"*<br/> *Filter = servicecode EQ "O365"* lub (*Channel EQ "Odsprzedawca"*)<br/><br/> Można określić następujące pola:<br/><br/>**Kod servicecode**<br/>**serviceName**<br/>**ukierunkowan**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktu**<br/>**productName**  | Nie |
-| GroupBy           | ciąg   | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>**Kod servicecode**<br/>**serviceName**<br/>**ukierunkowan**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktu**<br/>**productName**<br/><br/> Zwracane wiersze danych będą zawierać pola określone w parametrze *GroupBy* , a także następujące:<br/><br/>**licensesDeployed**<br/>**licensesSold**  | Nie |
-| processedDateTime | DateTime | Jeden może określać datę przetworzenia danych użycia. Wartość domyślna to najnowsza Data przetworzenia danych | Nie |
+| top (pierwsze)               | ciąg   | Liczba wierszy danych do zwrócenia w żądaniu. Wartość maksymalna i wartość domyślna, jeśli nie zostanie określona, to 10000. Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. | Nie |
+| Pomiń              | int      | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład wartości top=10000 i skip=0 pobierają pierwsze 10000 wierszy danych, top=10000, a skip=10000 pobiera następne 10000 wierszy danych i tak dalej. | Nie |
+| filter            | ciąg   | Parametr *filter* żądania zawiera co najmniej jedną instrukcje filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje mogą być łączone przy `eq` `ne` użyciu lub `and` `or` . Oto kilka przykładowych *parametrów filtru:*<br/><br/> *filter=serviceCode eq 'O365'*<br/> *filter=serviceCode eq 'O365'* or (*channel eq 'Reseller'*)<br/><br/> Można określić następujące pola:<br/><br/>**kod usługi**<br/>**Servicename**<br/>**Kanał**<br/>**customerTenantId**<br/>**Customername**<br/>**Productid**<br/>**Productname**  | Nie |
+| Groupby           | ciąg   | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>**kod usługi**<br/>**Servicename**<br/>**Kanał**<br/>**customerTenantId**<br/>**Customername**<br/>**Productid**<br/>**Productname**<br/><br/> Zwrócone wiersze danych będą zawierać pola określone w parametrze *grupowania* i następujące elementy:<br/><br/>**licencjeWdeployed**<br/>**licensesSold**  | Nie |
+| processedDateTime | DateTime | Można określić datę przetwarzania danych użycia. Wartość domyślna to najpóźniejsza data przetwarzania danych | Nie |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -59,24 +55,24 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera następujące pola zawierające dane dotyczące wdrożonych licencji.
+W przypadku powodzenia treść odpowiedzi zawiera następujące pola zawierające dane dotyczące wdrożonych licencji.
 
 | Pole             | Typ     | Opis                           |
 |-------------------|----------|---------------------------------------|
-| Kod servicecode       | ciąg   | Kod usługi                          |
-| serviceName       | ciąg   | Nazwa usługi                          |
-| ukierunkowan           | ciąg   | Nazwa kanału, odsprzedawcy                |
-| customerTenantId  | ciąg   | Unikatowy identyfikator dla klienta    |
-| customerName      | ciąg   | Nazwa klienta                         |
+| kod usługi       | ciąg   | Kod usługi                          |
+| Servicename       | ciąg   | Nazwa usługi                          |
+| Kanał           | ciąg   | Nazwa kanału, odsprzedawca                |
+| customerTenantId  | ciąg   | Unikatowy identyfikator klienta    |
+| Customername      | ciąg   | Nazwa klienta                         |
 | productId         | ciąg   | Unikatowy identyfikator produktu     |
-| productName       | ciąg   | Nazwa produktu                          |
-| licensesDeployed  | długi     | Liczba wdrożonych licencji           |
+| Productname       | ciąg   | Nazwa produktu                          |
+| licencjeWdeployed  | długi     | Liczba wdrożonych licencji           |
 | licensesSold      | długi     | Liczba sprzedanych licencji               |
 | processedDateTime | DateTime | Data ostatniego przetworzenia danych |
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

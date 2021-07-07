@@ -1,33 +1,27 @@
 ---
-title: Stan bezpośredniej rejestracji (bezpośredniego akceptacji) umowy klienta.
-description: Zasób DirectSignedCustomerAgreementStatus reprezentuje stan bezpośredniej rejestracji (bezpośrednie zatwierdzenie) umowy klienta.
+title: Stan bezpośredniego podpisywania (akceptacji bezpośredniej) umowy klienta.
+description: Zasób DirectSignedCustomerAgreementStatus reprezentuje stan podpisywania bezpośredniego (akceptacji bezpośredniej) umowy klienta.
 ms.date: 02/11/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 9c4fd12ac3319057f3c4034aa0c8d93dcda726c6
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d4d97667b5fd6b92c85889f1288dd770c2d1c035
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767738"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973115"
 ---
-# <a name="direct-signing-direct-acceptance-status-of-a-customer-agreement"></a>Status bezpośredniej rejestracji (bezpośredniej akceptacji) umowy klienta
+# <a name="direct-signing-direct-acceptance-status-of-a-customer-agreement"></a>Stan podpisywania bezpośredniego (akceptacji bezpośredniej) umowy klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób **DirectSignedCustomerAgreementStatus** jest obecnie obsługiwany przez centrum partnerskie tylko w chmurze publicznej firmy Microsoft.
+Zasób **DirectSignedCustomerAgreementStatus** jest obecnie obsługiwany Partner Center tylko w chmurze publicznej firmy Microsoft.
 
-Ten zasób *nie ma zastosowania* do:
-
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Zasób **DirectSignedCustomerAgreementStatus** reprezentuje stan bezpośredniego akceptacji umowy klienta.
+Zasób **DirectSignedCustomerAgreementStatus** reprezentuje stan bezpośredniej akceptacji umowy klienta.
 
 ## <a name="directsignedcustomeragreementstatus"></a>DirectSignedCustomerAgreementStatus
 
@@ -35,4 +29,4 @@ Zasób **DirectSignedCustomerAgreementStatus** zawiera następujące właściwo�
 
 | Właściwość       | Typ   | Opis                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| IsSigned | boolean | Wskazuje, czy umowa klienta została bezpośrednio podpisana (zaakceptowana) przez klienta. |
+| Issigned | boolean | Wskazuje, czy umowa klienta została podpisana bezpośrednio (zaakceptowana) przez klienta. |

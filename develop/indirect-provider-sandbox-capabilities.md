@@ -6,39 +6,33 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vinayks-ms
 ms.author: vinayks
-ms.openlocfilehash: bd0f38103e6b6f93ab5da386042b00801b683ccd
-ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
+ms.openlocfilehash: da35dadd4e13247e923259a1cf3a67852f4b9e00
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2021
-ms.locfileid: "110244607"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445905"
 ---
-# <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>Możliwości piaskownicy dostawcy pośredniego CSP do tworzenia kont odsprzedawcy pośredniego 
+# <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>Możliwości piaskownicy dostawcy pośredniego dostawcy CSP do tworzenia kont odsprzedawcy pośredniego 
 
-**Dotyczy**
+**Odpowiednie role:** Dostawca pośredni
 
-- Centrum partnerskie
-
-**Odpowiednie role**
-
-- Dostawca pośredni
-
-Dostawcy pośredni dostawcy CSP mogą utworzyć konto CSP Indirect Reseller piaskownicy za pośrednictwem własnego konta piaskownicy warstwy 2 w Partner Center Portal.
+Dostawcy pośredni dostawcy CSP mogą utworzyć CSP Indirect Reseller piaskownicy za pośrednictwem własnego konta piaskownicy warstwy 2 w Partner Center Portal.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Partner Center piaskownicy dostawcy pośredniego (warstwa 2). Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika. 
+Partner Center poświadczeń piaskownicy dostawcy pośredniego (warstwa 2). Scenariusz piaskownicy obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika. 
  
 
 ## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Dostawca pośredni piaskownicy — tworzenie odsprzedawcy pośredniego piaskownicy przy Partner Center interfejsu użytkownika 
 
- Jest to funkcja piaskownicy, która umożliwia dostawcom pośrednim piaskownicy tworzenie konta odsprzedawcy pośredniego piaskownicy za pośrednictwem Partner Center portal.
+ Jest to funkcja dostępna tylko w piaskownicy, która umożliwia dostawcom pośrednim piaskownicy tworzenie konta odsprzedawcy pośredniego piaskownicy za pośrednictwem Partner Center portalu.
 
-Następujące scenariusze to, co dostawcy pośredni mogą zrobić dla odsprzedawców pośrednich w piaskownicy za pośrednictwem Partner Center interfejsu użytkownika: 
+W następujących scenariuszach dostawcy pośredni mogą zrobić dla pośrednich odsprzedawców w piaskownicy za pośrednictwem Partner Center interfejsu użytkownika: 
 
 1. Dostawcy pośredni dostawcy CSP mogą utworzyć konto CSP Indirect Reseller piaskownicy za pośrednictwem własnego konta piaskownicy warstwy 2 w Partner Center Portal.
-2. Odsprzedawcy pośredni w programie CSP mogą wyświetlać klientów według dostawców pośrednich. 
+2. Odsprzedawcy pośredni dostawcy CSP mogą wyświetlać klientów według dostawców pośrednich. 
 
 1. Odsprzedawcy pośredni programu CSP mogą zarządzać kontem klienta przy użyciu delegowanych uprawnień administratora.
 
@@ -46,13 +40,11 @@ Następujące scenariusze to, co dostawcy pośredni mogą zrobić dla odsprzedaw
  
 1. Dostawcy pośredni dostawcy CSP mogą usunąć konto CSP Indirect Reseller piaskownicy za pośrednictwem własnego konta piaskownicy warstwy 2 w Partner Center Portal.
 
-    a.  Gdy dostawca pośredni piaskownicy usuwa relację z odsprzedawcą pośrednim piaskownicy.
+    a.  Gdy dostawca pośredni piaskownicy usunie relację z odsprzedawcą pośrednim piaskownicy, sprawdź, czy odsprzedawca pośredni ma jakiekolwiek inne relacje z innymi dostawcami. Jeśli tak, zostanie usunięta tylko relacja z tym konkretnym dostawcą pośrednim.
 
-    b.  Sprawdź, czy odsprzedawca pośredni ma jakiekolwiek inne relacje z innymi dostawcami. Jeśli tak, zostanie usunięta tylko relacja z tym konkretnym dostawcą pośrednim.
+    c. Jeśli jest to jedyna relacja odsprzedawcy pośredniego, odsprzedawca pośredni zostanie usunięty.
 
-    c. Jeśli jest to jedyna relacja dla ir, to ir zostanie usunięte.
-
-1. CSP Indirect Provider usunąć CSP Indirect Reseller.
+1. Dostawcy pośredni dostawcy CSP mogą usunąć CSP Indirect Reseller.
 
     a. Jest to funkcja dostępna tylko w piaskownicy, która umożliwia dostawcom pośrednim piaskownicy usuwanie odsprzedawców pośrednich piaskownicy.
      
@@ -62,23 +54,23 @@ Następujące scenariusze to, co dostawcy pośredni mogą zrobić dla odsprzedaw
 
     1. Usuń wszystkich klientów odsprzedawcy pośredniego.
 
-1. Dozwolony limit 5 odsprzedawców pośrednich piaskownicy na dostawcę pośredniego piaskownicy. Po usunięciu odsprzedawcy pośredniego piaskownicy limit przydziału zostanie zresetowany.
+1. Dozwolony limit pięciu odsprzedawców pośrednich piaskownicy na dostawcę pośredniego piaskownicy. Po usunięciu odsprzedawcy pośredniego piaskownicy limit przydziału zostanie zresetowany.
 
 ### <a name="pre-requisites"></a>Wymagania wstępne
 
-- Dozwolony limit 5 odsprzedawców pośrednich piaskownicy na dostawcę pośredniego piaskownicy. 
+- Dozwolony limit pięciu odsprzedawców pośrednich piaskownicy na dostawcę pośredniego piaskownicy. 
 
-- Ten sam identyfikator MPN może służyć do tworzenia wielu kont piaskownicy odsprzedawcy pośredniego, jeśli kraj identyfikatora MPN i kraj piaskownicy odsprzedawcy pośredniego są takie same. Jeśli masz dostępny testowy identyfikator MPN, możesz go użyć lub uzyskać listę identyfikatorów MPN za pośrednictwem naszego kanału [usługi Yammer.]( https://www.yammer.com/cloudpartnercommunity/#/files/929991598080 ) Jeśli nie masz dostępu do usługi Yammer, usługa Yammer poprosi Cię o dostęp.
+- Tego samego identyfikatora MPN można użyć do utworzenia wielu kont piaskownicy odsprzedawcy pośredniego, jeśli kraj identyfikatora MPN i kraj piaskownicy odsprzedawcy pośredniego są takie same. Jeśli masz dostępny testowy identyfikator MPN, możesz go użyć lub uzyskać listę identyfikatorów MPN za pośrednictwem naszego [Yammer kanału]( https://www.yammer.com/cloudpartnercommunity/#/files/929991598080 ). Jeśli nie masz dostępu do Yammer, Yammer poprosi o dostęp.
  
 - Tylko 75 klientów jest dozwolonych na dostawcę pośredniego piaskownicy
 
 ## <a name="create-csp-indirect-reseller-sandbox-account"></a>Tworzenie CSP Indirect Reseller piaskownicy
 
-1. Zaloguj się Partner Center za pośrednictwem konta piaskownicy warstwy 2. 
+1. Zaloguj się Partner Center za pomocą konta piaskownicy warstwy 2. 
 
 2. Przejdź do pozycji Odsprzedawcy pośredni z menu po lewej stronie. 
 
-3. Kliknij przycisk "Dodaj piaskownicę odsprzedawcy". 
+3. Wybierz przycisk **Dodaj piaskownicę odsprzedawcy.** 
 
 4. Wypełnij formularz rejestracji konta. Nie wymaga to wyjaśnień, ale pamiętaj, że tworzysz konto piaskownicy dla odsprzedawcy pośredniego. To konto nie zostanie poddane testowi i zostanie aktywowane zaraz po zakończeniu rejestracji konta.  
 
@@ -112,7 +104,7 @@ Istniejące konto CSP Indirect Reseller piaskownicy skojarzone z Twoim własnym 
 
 2. Przejdź do pozycji Odsprzedawcy pośredni z menu po lewej stronie. 
 
-3. Kliknij link **Usuń piaskownicę odsprzedawcy** obok konta piaskownicy odsprzedawcy pośredniego, które chcesz usunąć. Konto piaskownicy odsprzedawcy pośredniego zostanie trwale usunięte i nie będzie można go odzyskać. 
+3. Wybierz link **Usuń piaskownicę odsprzedawcy** obok konta piaskownicy odsprzedawcy pośredniego, które chcesz usunąć. Konto piaskownicy odsprzedawcy pośredniego zostanie trwale usunięte i nie będzie można go odzyskać. 
 
 ## <a name="api-references"></a>Dokumentacja interfejsu API
 

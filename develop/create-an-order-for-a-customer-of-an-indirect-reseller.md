@@ -1,51 +1,47 @@
 ---
-title: Utwórz zamówienie klienta na potrzeby pośredniego odsprzedawcy
-description: Dowiedz się, jak za pomocą interfejsów API usługi Partner Center utworzyć zamówienie dla klienta pośredniego odsprzedawcy. Artykuł zawiera wymagania wstępne, kroki i Exmaples.
+title: Tworzenie zamówienia klienta dla odsprzedawcy pośredniego
+description: Dowiedz się, jak Partner Center api do tworzenia zamówienia dla klienta odsprzedawcy pośredniego. Artykuł zawiera wymagania wstępne, kroki i przykłady.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f72ecec8d82e6b8a1bc53c277206cafd7d8a4e03
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 6253ba2289ea1f58e7d8eaa960d7d0daaa887f0d
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770155"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973551"
 ---
 # <a name="create-an-order-for-a-customer-of-an-indirect-reseller"></a>Utwórz zamówienie dla klienta odsprzedawcy pośredniego
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Jak utworzyć zamówienie dla klienta pośredniego odsprzedawcy.
+Jak utworzyć zamówienie dla klienta odsprzedawcy pośredniego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator oferty elementu do zakupu.
+- Identyfikator oferty przedmiotu do zakupu.
 
-- Identyfikator dzierżawy pośredniego odsprzedawcy.
+- Identyfikator dzierżawy odsprzedawcy pośredniego.
 
 ## <a name="c"></a>C\#
 
-Aby utworzyć zamówienie dla klienta pośredniego odsprzedawcy:
+Aby utworzyć zamówienie dla klienta odsprzedawcy pośredniego:
 
-1. Pobierz kolekcję pośrednich odsprzedawcaów, które mają relację z zalogowanym partnerem.
+1. Pobierz kolekcję odsprzedawców pośrednich, którzy mają relację z zalogowanym partnerem.
 
-2. Pobierz zmienną lokalną do elementu w kolekcji, który jest zgodny z IDENTYFIKATORem pośredniego odsprzedawcy. Ten krok pozwala uzyskać dostęp do właściwości [**MpnId**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationship.mpnid) odsprzedawcy podczas tworzenia zamówienia.
+2. Pobierz zmienną lokalną do elementu w kolekcji, który odpowiada identyfikatorowi odsprzedawcy pośredniego. Ten krok pomaga uzyskać dostęp do właściwości [**MpnId odsprzedawcy**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationship.mpnid) podczas tworzenia zamówienia.
 
-3. Utwórz wystąpienie obiektu [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) i ustaw właściwość [**ReferenceCustomerID**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.referencecustomerid) na identyfikator klienta, aby zarejestrować klienta.
+3. Za pomocą wystąpienia obiektu [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) ustaw właściwość [**ReferenceCustomerID**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.referencecustomerid) na identyfikator klienta, aby zarejestrować klienta.
 
-4. Utwórz listę obiektów [**OrderLineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) i przypisz listę do właściwości [**LineItems**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.lineitems) zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Upewnij się, że właściwość [**PartnerIdOnRecord**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem.partneridonrecord) w każdym wierszu jest WYpełniona IDENTYFIKATORem MPN pośredniego odsprzedawcy. Musisz mieć co najmniej jeden element wiersza zamówienia.
+4. Utwórz listę obiektów [**OrderLineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) i przypisz listę do właściwości [**LineItems**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.lineitems) zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Pamiętaj, aby w każdym wierszu wypełnić właściwość [**PartnerIdOnRecord**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem.partneridonrecord) identyfikatorem MPN odsprzedawcy pośredniego. Musisz mieć co najmniej jeden wiersz zamówienia.
 
-5. Uzyskaj interfejs do porządkowania operacji, wywołując metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta, a następnie pobrać interfejs z właściwości [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) .
+5. Uzyskaj interfejs do obsługi zamówień operacji, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, a następnie pobierz interfejs z [**właściwości Orders.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders)
 
-6. Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) , aby utworzyć zamówienie.
+6. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**CreateAsync,**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) aby utworzyć zamówienie.
 
-### <a name="c-example"></a>\#Przykład C
+### <a name="c-example"></a>Przykład w \# języku C
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -81,7 +77,7 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Przykład**:**projekt** [aplikacji testowej konsoli](console-test-app.md): **Klasa** przykładów zestawu SDK Centrum partnerskiego: PlaceOrderForCustomer.cs
+**Przykład:** [Aplikacja testowa konsoli](console-test-app.md)**Project**: zestaw SDK Centrum partnerskiego Samples **Class**: PlaceOrderForCustomer.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -89,49 +85,49 @@ var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(or
 
 | Metoda   | Identyfikator URI żądania                                                                            |
 |----------|----------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Orders http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/orders HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
 #### <a name="order"></a>Zamówienie
 
-W tej tabeli opisano właściwości **zamówienia** w treści żądania.
+W tej tabeli **opisano właściwości** Order w treści żądania.
 
 | Nazwa | Typ | Wymagane | Opis |
 | ---- | ---- | -------- | ----------- |
-| identyfikator | ciąg | Nie | Identyfikator zamówienia, który jest dostarczany po pomyślnym utworzeniu zamówienia. |
+| identyfikator | ciąg | Nie | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia. |
 | referenceCustomerId | ciąg | Tak | Identyfikator klienta. |
-| billingCycle | ciąg | Nie | Częstotliwość, z jaką jest rozliczany partner dla tego zamówienia. Wartość domyślna to &quot; miesiąc &quot; i jest stosowana po pomyślnym utworzeniu zamówienia. Obsługiwane wartości to nazwy elementów członkowskich Znalezione w [**BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Uwaga: funkcja rocznego rozliczania nie jest jeszcze ogólnie dostępna. Pomoc techniczna dotycząca rozliczeń rocznych jest dostępna wkrótce. |
-| lineItems | Tablica obiektów | Tak | Tablica zasobów [**OrderLineItem**](#orderlineitem) . |
-| creationDate | ciąg | Nie | Data, w której zamówienie zostało utworzone, w formacie daty i godziny. Stosowane po pomyślnym utworzeniu zamówienia. |
+| billingCycle | ciąg | Nie | Częstotliwość, za jaką partner jest rozliczany za to zamówienie. Wartość domyślna &quot; to Co miesiąc i jest stosowana po &quot; pomyślnym utworzeniu zamówienia. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Uwaga: funkcja rozliczeń rocznych nie jest jeszcze ogólnie dostępna. Obsługa rozliczeń rocznych zostanie w wkrótce wywłasz ędna. |
+| lineItems | tablica obiektów | Tak | Tablica zasobów [**OrderLineItem.**](#orderlineitem) |
+| Creationdate | ciąg | Nie | Data utworzenia zamówienia w formacie data/godzina. Stosowane po pomyślnym utworzeniu zamówienia. |
 | atrybuty | object | Nie | Zawiera "ObjectType": "Order". |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
-W tej tabeli opisano właściwości **OrderLineItem** w treści żądania.
+W tej tabeli **opisano właściwości OrderLineItem** w treści żądania.
 
 | Nazwa | Typ | Wymagane | Opis |
 | ---- | ---- | -------- | ----------- |
-| lineItemNumber | int | Tak | Każdy element wiersza w kolekcji pobiera unikatowy numer wiersza, licząc do wartości z przedziału od 0 do count-1. |
+| lineItemNumber | int | Tak | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1. |
 | offerId | ciąg | Tak | Identyfikator oferty. |
 | subscriptionId | ciąg | Nie | Identyfikator subskrypcji. |
-| parentSubscriptionId | ciąg | Nie | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko poprawki. |
-| friendlyName | ciąg | Nie | Opcjonalny. Przyjazna nazwa dla subskrypcji zdefiniowanej przez partnera, która pomaga w odróżnieniu od siebie. |
-| quantity | int | Tak | Liczba licencji dla subskrypcji opartej na licencji. |
-| partnerIdOnRecord | ciąg | Nie | Gdy Dostawca pośredni umieści zamówienie w imieniu pośredniego odsprzedawcy, Wypełnij to pole IDENTYFIKATORem MPN **pośredniego odsprzedawcy** (nigdy nie jest identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednie Księgowanie zachęt. **Niedostarczenie identyfikatora MPN odsprzedawcy nie powoduje błędu zamówienia. Jednak odsprzedawca nie jest zarejestrowany i w związku z tym, że obliczenia bodźce mogą nie uwzględniać sprzedaży.** |
-| atrybuty | object | Nie | Zawiera "ObjectType": "OrderLineItem". |
+| parentSubscriptionId | ciąg | Nie | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko patch. |
+| Friendlyname | ciąg | Nie | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania. |
+| quantity | int | Tak | Liczba licencji dla subskrypcji opartej na licencjach. |
+| partnerIdOnRecord | ciąg | Nie | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. **Nie podaniem identyfikatora MPN odsprzedawcy nie powoduje niepowodzenia zamówienia. Odsprzedawca nie jest jednak zarejestrowany i w związku z tym obliczenia zachęt mogą nie obejmować sprzedaży.** |
+| atrybuty | object | Nie | Zawiera "ObjectType":"OrderLineItem". |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -173,11 +169,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zapełnione [zamówione](order-resources.md) zasoby.
+Jeśli to się powiedzie, treść odpowiedzi zawiera wypełniony [zasób Order.](order-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

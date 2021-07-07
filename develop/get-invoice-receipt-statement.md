@@ -1,36 +1,32 @@
 ---
 title: Pobieranie potwierdzenia otrzymania faktury
-description: Pobiera instrukcję paragonu faktury przy użyciu identyfikatora faktury i identyfikatora paragonu.
+description: Pobiera zestawienie paragonu faktury przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
 ms.date: 02/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 96cef11d6778de2d9bf28e466d88a39f9415727d
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dcac4c8f0b881409dcad3560eefb82d4bb5e877a
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767682"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446133"
 ---
 # <a name="get-invoice-receipt-statement"></a>Pobieranie potwierdzenia otrzymania faktury
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Pobiera instrukcję paragonu faktury przy użyciu identyfikatora faktury i identyfikatora paragonu.
+Pobiera zestawienie paragonu faktury przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
 
 > [!IMPORTANT]
-> Ta funkcja ma zastosowanie tylko do tajwańskich przyjęć podatkowych.
+> Ta funkcja ma zastosowanie tylko do tajwańskich paragonów podatkowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Prawidłowy identyfikator faktury i odpowiedni identyfikator paragonu.
+- Prawidłowy identyfikator faktury i odpowiedni identyfikator potwierdzenia.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać wyciąg z faktury paragonu według identyfikatora, rozpoczynając od zestawu SDK programu partnerskiego 1.12.0, Użyj kolekcji **IPartner.** Invoice i Wywołaj metodę **ById ()** przy użyciu identyfikatora faktury, a następnie Wywołaj kolekcję **potwierdzenia** i Wywołaj **ById ()** , a następnie wywołaj metody **Documents ()** i **Statement ()** , aby uzyskać dostęp do instrukcji odbioru faktury. Na koniec wywołaj metody **Get ()** lub **GetAsync ()** .
+Aby uzyskać zestawienie faktur według identyfikatora, począwszy od zestaw SDK Centrum partnerskiego v1.12.0, użyj kolekcji **IPartner.Invoices** i wywołaj metodę **ById()** przy użyciu identyfikatora faktury, a następnie wywołaj kolekcję **Receipts** i wywołaj metodę **ById(),** a następnie wywołaj metody **Documents()** i **Statement(),** aby uzyskać dostęp do zestawienia paragonu na fakturze. Na koniec wywołaj **metody Get()** **lub GetAsync().**
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -39,7 +35,7 @@ Aby uzyskać wyciąg z faktury paragonu według identyfikatora, rozpoczynając o
 var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Receipts.ById(selectedReceipt).Documents.Statement.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: GetInvoiceReceiptStatement.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: GetInvoiceReceiptStatement.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -47,20 +43,20 @@ var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).
 
 | Metoda  | Identyfikator URI żądania                                                                                                            |
 |---------|------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/Receipts/{receipt-ID}/Documents/Statement http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/receipts/{receipt-id}/documents/statement HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby pobrać instrukcję paragonu faktury.
+Użyj następującego parametru zapytania, aby uzyskać zestawienie faktur.
 
 | Nazwa       | Typ   | Wymagane | Opis                                                                                    |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|
-| Identyfikator faktury | ciąg | Tak      | Wartość jest identyfikatorem faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
-| Identyfikator paragonu | ciąg | Tak      | Wartość jest identyfikatorem paragonu, który umożliwia odsprzedawcy odfiltrowanie paragonów dla danej faktury. |
+| identyfikator faktury | ciąg | Tak      | Wartość to identyfikator faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
+| identyfikator potwierdzenia | ciąg | Tak      | Wartość to identyfikator paragonu, który umożliwia odsprzedawcy filtrowanie paragonów dla danej faktury. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -78,11 +74,11 @@ MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca strumień PDF w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca strumień pdf w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

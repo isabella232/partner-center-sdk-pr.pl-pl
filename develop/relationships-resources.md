@@ -1,21 +1,17 @@
 ---
-title: Relacje zasobów
+title: Zasoby relacji
 description: Opisuje zasoby związane z relacjami.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c5701414bd704b375dc23859b920609d5a975d9f
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 7dba1e99a6c97c759e3c61cde1e7565faa2ef4d1
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767793"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445735"
 ---
-# <a name="relationships-resources"></a>Relacje zasobów
-
-**Dotyczy**
-
-- Centrum partnerskie
+# <a name="relationships-resources"></a>Zasoby relacji
 
 Opisuje zasoby związane z relacjami.
 
@@ -25,17 +21,17 @@ Reprezentuje relację między dwoma partnerami.
 
 | Właściwość         | Typ                                                           | Opis                                                                                                                                    |
 |------------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator               | ciąg                                                         | Identyfikator partnera. Identyfikator partnera określa identyfikator dzierżawcy partnera, który znajduje się w relacji odbiorcy (od). |
+| identyfikator               | ciąg                                                         | Identyfikator partnera. Identyfikator partnera określa identyfikator dzierżawy partnera, który znajduje się po stronie odbiorcy (od) relacji. |
 | location         | ciąg                                                         | Lokalizacja partnera.                                                                                                                   |
 | mpnId            | ciąg                                                         | Identyfikator Microsoft Partner Network (MPN) partnera.                                                                                 |
 | name             | ciąg                                                         | Nazwa partnera.                                                                                                                       |
-| Atrybut | ciąg                                                         | Typ relacji.                                                                                                                      |
+| Relationshiptype | ciąg                                                         | Typ relacji.                                                                                                                      |
 | stan            | ciąg                                                         | Stan relacji (na przykład `active` ).                                                                                                 |
 | atrybuty       | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                                                                                                                       |
 
 ## <a name="relationshiprequest"></a>RelationshipRequest
 
-Określa adres URL, za pomocą którego klient może ustanowić relację z partnerem.
+Dostarcza adres URL, za pomocą którego klient może ustanowić relację z partnerem.
 
 | Właściwość   | Typ                                                           | Opis                   |
 |------------|----------------------------------------------------------------|-------------------------------|

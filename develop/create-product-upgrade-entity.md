@@ -1,43 +1,39 @@
 ---
 title: Tworzenie jednostki uaktualnienia produktu dla klienta
-description: Za pomocą zasobu ProductUpgradeRequest można utworzyć jednostkę uaktualnienia produktu w celu uaktualnienia klienta do danej rodziny produktów.
+description: Zasób ProductUpgradeRequest umożliwia utworzenie jednostki uaktualnienia produktu w celu uaktualnienia klienta do danej rodziny produktów.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 45830033d93e0906eafc169cf04b997e2ff7c3d8
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 4e346b7f5294a8847047c85115d8c80f34eaca84
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767750"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973420"
 ---
 # <a name="create-a-product-upgrade-entity-for-a-customer"></a>Tworzenie jednostki uaktualnienia produktu dla klienta
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Można utworzyć jednostkę uaktualnienia produktu w celu uaktualnienia klienta do danej rodziny produktów (na przykład planu platformy Azure) przy użyciu zasobu **ProductUpgradeRequest** .
+Możesz utworzyć jednostkę uaktualnienia produktu, aby uaktualnić klienta do danej rodziny produktów (na przykład planu platformy Azure) przy użyciu **zasobu ProductUpgradeRequest.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [bezpiecznym modelem aplikacji](enable-secure-app-model.md) podczas korzystania z aplikacji i uwierzytelniania użytkowników za pomocą interfejsów API Centrum partnerskiego.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji podczas](enable-secure-app-model.md) korzystania z uwierzytelniania app+user z Partner Center API.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Rodzina produktów, do której ma zostać uaktualniony klient.
+- Rodzina produktów, do której chcesz uaktualnić klienta.
 
 ## <a name="c"></a>C\#
 
 Aby uaktualnić klienta do planu platformy Azure:
 
-1. Utwórz obiekt **ProductUpgradesRequest** i określ identyfikator klienta oraz "Azure" jako rodzinę produktów.
+1. Utwórz obiekt **ProductUpgradesRequest** i określ identyfikator klienta oraz wartość "Azure" jako rodzinę produktów.
 
-2. Użyj kolekcji **IAggregatePartner. ProductUpgrades** .
+2. Użyj **kolekcji IAggregatePartner.ProductUpgrades.**
 
-3. Wywołaj metodę **Create** i przekaż obiekt **ProductUpgradesRequest** , który zwróci ciąg **nagłówka lokalizacji** .
+3. Wywołaj **metodę Create** i przekaż obiekt **ProductUpgradesRequest,** który zwróci ciąg **nagłówka** lokalizacji.
 
-4. Wyodrębnij **Identyfikator upgrade** z ciągu nagłówka lokalizacji, którego można użyć do [zbadania stanu uaktualnienia](get-product-upgrade-status.md).
+4. Wyodrębnij **identyfikator upgrade-id** z ciągu nagłówka lokalizacji, który może służyć do wykonywania [zapytań o stan uaktualnienia](get-product-upgrade-status.md).
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -64,15 +60,15 @@ var upgradeId = Regex.Split(productUpgradeLocationHeader, "/")[1];
 
 | Metoda   | Identyfikator URI żądania                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/productupgrades http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productupgrades HTTP/1.1 |
 
 #### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 #### <a name="request-body"></a>Treść żądania
 
-Treść żądania musi zawierać zasób [ProductUpgradeRequest](product-upgrade-resources.md#productupgraderequest) .
+Treść żądania musi zawierać [zasób ProductUpgradeRequest.](product-upgrade-resources.md#productupgraderequest)
 
 #### <a name="request-example"></a>Przykład żądania
 
@@ -97,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera nagłówek **lokalizacji** z identyfikatorem URI, którego można użyć do pobrania stanu uaktualnienia produktu. Zapisz ten identyfikator URI do użycia z innymi powiązanymi interfejsami API REST.
+Jeśli to się powiedzie, odpowiedź zawiera nagłówek **Location** z kodem URI, który może służyć do pobierania stanu uaktualnienia produktu. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

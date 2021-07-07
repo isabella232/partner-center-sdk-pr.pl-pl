@@ -4,30 +4,26 @@ description: Jak usunąć użytkownika z roli katalogu w ramach konta klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6253e86f3733bbf2b9c593c5ca3f3e2fccce7c2c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 36dc742c4f713131b4996d7dc945b6dd008a3ef5
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768306"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445650"
 ---
 # <a name="remove-a-customer-user-from-a-role"></a>Usuwanie użytkownika klienta z roli
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Jak usunąć użytkownika z roli katalogu w ramach konta klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby usunąć użytkownika z roli katalogu, wybierz klienta, który ma zostać zmodyfikowany za pomocą wywołania metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) , w tym miejscu określ rolę przy użyciu metody [**DirectoryRoles. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) z identyfikatorem roli katalogu. Następnie uzyskaj dostęp do metody [**UserMembers. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) , aby zidentyfikować użytkownika do usunięcia, i metodę [**delete**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) , aby usunąć użytkownika z roli.
+Aby usunąć użytkownika z roli katalogu, wybierz klienta z użytkownikiem do zmodyfikowania za pomocą wywołania metody [**IAggregatePartner.Customers.ById.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) W tym miejscu określ rolę przy użyciu metody [**DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) z identyfikatorem roli katalogu. Następnie uzyskaj dostęp do [**metody UserMembers.ById,**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) aby zidentyfikować użytkownika do usunięcia, oraz metody [**Delete,**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) aby usunąć użytkownika z roli.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,7 +34,7 @@ Aby usunąć użytkownika z roli katalogu, wybierz klienta, który ma zostać zm
 partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedRoleId).UserMembers.ById(selectedUserMemberId).Delete();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: RemoveCustomerUserMemberFromDirectoryRole.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: RemoveCustomerUserMemberFromDirectoryRole.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -46,21 +42,21 @@ partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selecte
 
 | Metoda     | Identyfikator URI żądania                                                                                                                           |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **USUNIĘTY** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/directoryroles/{role-ID}/usermembers/{User-ID} http/1.1 |
+| **Usunąć** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/directoryroles/{identyfikator-roli}/usermembers/{identyfikator użytkownika} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następujących parametrów identyfikatora URI, aby zidentyfikować prawidłowy klient, rolę i użytkownika.
+Użyj następujących parametrów identyfikatorów URI, aby zidentyfikować prawidłowego klienta, rolę i użytkownika.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , który identyfikuje klienta. |
-| **Identyfikator roli**            | **guid** | Y        | Wartość jest **identyfikatorem** GUID z sformatowaną rolą identyfikującą rolę.                |
-| **Identyfikator użytkownika**            | **guid** | Y        | Wartość jest **identyfikatorem użytkownika** w formacie identyfikatora GUID, który identyfikuje pojedyncze konto użytkownika.   |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość to identyfikator GUID sformatowany **jako customer-tenant-id,** który identyfikuje klienta. |
+| **identyfikator roli**            | **guid** | Y        | Wartość jest identyfikatorem roli sformatowanym przez **identyfikator** GUID, który identyfikuje rolę.                |
+| **identyfikator użytkownika**            | **guid** | Y        | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który identyfikuje jedno konto użytkownika.   |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -82,11 +78,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli użytkownik zostanie pomyślnie usunięty z roli, treść odpowiedzi jest pusta.
+Jeśli użytkownik zostanie pomyślnie usunięty z roli, treść odpowiedzi będzie pusta.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

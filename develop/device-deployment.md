@@ -1,24 +1,21 @@
 ---
 title: Wdrażanie urządzeń
-description: Funkcje wdrażania urządzeń interfejsu API Centrum partnerskiego obejmują zasady konfiguracji i urządzenia.
+description: Partner Center wdrażania urządzeń interfejsu API obejmują zasady konfiguracji i urządzenia.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 72292ee59955bb35be7ad9d59789a3e109d5f7ec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 46fd8b53d6d42816d498103192122a81b5f6564f
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767725"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906498"
 ---
 # <a name="device-deployment"></a>Wdrażanie urządzeń
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-
-Interfejsy API Centrum partnerskiego zapewniają dostęp do funkcji wdrażania bez dotyku, co pozwala uprościć bezpieczną konfigurację urządzeń dla klientów.
+Interfejsy PARTNER CENTER zapewniają dostęp do funkcji wdrażania bez dotykowych, dzięki czemu można uprościć bezpieczną konfigurację urządzeń dla klientów.
 
 ## <a name="configuration-policies"></a>Zasady konfiguracji
 
@@ -32,7 +29,7 @@ Tematy dotyczące dodawania, usuwania, aktualizowania i pobierania zasad konfigu
 
 ## <a name="devices"></a>Urządzenia
 
-Tematy dotyczące pracy z partiami urządzeń i metadanymi urządzeń oraz ich przekazywania:
+Tematy dotyczące sposobu pracy z partiami urządzeń i metadanymi urządzeń oraz ich przekazywania:
 
 - [Pobieranie stanu przekazywania wsadowego urządzeń](get-the-status-of-a-device-batch-upload.md)
 - [Pobieranie listy partii urządzeń dla określonego klienta](get-the-list-of-device-batches-for-the-specified-customer.md)

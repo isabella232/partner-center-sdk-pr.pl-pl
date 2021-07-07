@@ -1,35 +1,31 @@
 ---
 title: Usuwanie zasad samoobsługi
-description: Jak usunąć zasady samoobsługowe.
+description: Jak usunąć zasady samoobsługi.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3450145d6daf2ffca5e2886245e592406cb0886d
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 063cf98d4c78e82622e486427baeb1a5721715e5
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770227"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973098"
 ---
-# <a name="delete-a-selfservepolicy"></a>Usuń SelfServePolicy
+# <a name="delete-a-selfservepolicy"></a>Usuwanie samoobsługi (SelfServePolicy)
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-W tym temacie opisano sposób aktualizowania zasad samoobsługi.
+W tym artykule wyjaśniono, jak zaktualizować zasady samoobsługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby usunąć zasady samoobsługowe:
+Aby usunąć zasady samoobsługi:
 
-1. Wywołaj metodę [**IAggregatePartner. SelfServePolicies. ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) z identyfikatorem jednostki, aby pobrać interfejs do operacji w ramach zasad.
+1. Wywołaj [**metodę IAggregatePartner.SelfServePolicies.ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) z identyfikatorem jednostki, aby pobrać interfejs do operacji na zasadach.
 
-2. Wywołaj metodę [**delete**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) lub [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync) , aby usunąć zasady samoobsługi.
+2. Wywołaj [**metodę Delete**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) lub [**DeleteAsync,**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync) aby usunąć zasady samoobsługi.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,10 +38,10 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 partnerOperations.SelfServePolicies.ById(policyId).Delete();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Project: **PartnerSDK.FeatureSamples**
 - Klasa: **DeleteSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -54,20 +50,20 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **USUNIĘTY** | [*{baseURL}*](partner-center-rest-urls.md)/V1/SelfServePolicy/{ID} http/1.1 |
+| **Usunąć** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{id} HTTP/1.1 |
 
 **Parametr URI**
 
-Aby uzyskać określony produkt, użyj następujących parametrów ścieżki.
+Użyj następujących parametrów ścieżki, aby uzyskać określony produkt.
 
 | Nazwa                       | Typ         | Wymagane | Opis                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy — identyfikator**     | **parametry**   | Tak      | Ciąg identyfikujący zasady samoobsługi.                 |
+| **SelfServePolicy-id**     | **ciąg**   | Tak      | Ciąg, który identyfikuje zasady samoobsługi.                 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Identyfikator żądania i identyfikator korelacji są wymagane.
-- Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md) .
+- Wymagany jest identyfikator żądania i identyfikator korelacji.
+- Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -90,9 +86,9 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

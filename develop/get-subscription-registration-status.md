@@ -1,37 +1,33 @@
 ---
 title: Pobieranie stanu rejestracji subskrypcji
-description: Pobierz stan subskrypcji, która została zarejestrowana do użycia z Azure Reserved VM Instances.
+description: Uzyskaj stan subskrypcji, która została zarejestrowana do użycia z Azure Reserved VM Instances.
 ms.date: 03/19/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e06cf8a450d6c281f7f83a68c899d1e5b29e9855
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 9e39f94c0eac402a0be3afde84279aa637868f96
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768441"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445956"
 ---
 # <a name="get-subscription-registration-status"></a>Pobieranie stanu rejestracji subskrypcji
 
-**Dotyczy**
+Jak uzyskać stan rejestracji subskrypcji dla subskrypcji klienta, dla których włączono obsługę zakupu Azure Reserved VM Instances.
 
-- Centrum partnerskie
-
-Jak uzyskać informacje o stanie rejestracji subskrypcji klienta, dla którego włączono kupowanie Azure Reserved VM Instances.
-
-Aby kupić wystąpienie zarezerwowane maszyny wirtualnej platformy Azure przy użyciu interfejsu API Centrum partnerskiego, musisz mieć co najmniej jedną subskrypcję platformy Azure dla dostawcy CSP. Metoda [zarejestruj subskrypcję](register-a-subscription.md) umożliwia zarejestrowanie istniejącej subskrypcji platformy Azure w ramach dostawcy CSP i włączenie jej do Azure Reserved VM Instances zakupów. Ta metoda umożliwia pobranie stanu rejestracji.
+Aby kupić wystąpienie zarezerwowane maszyny wirtualnej platformy Azure przy użyciu interfejsu API Partner Center, musisz mieć co najmniej jedną istniejącą subskrypcję platformy Azure dostawcy usług w chmurze. Metoda [Rejestrowania subskrypcji](register-a-subscription.md) umożliwia zarejestrowanie istniejącej subskrypcji platformy Azure w programie CSP, umożliwiając jej zakup Azure Reserved VM Instances. Ta metoda umożliwia pobranie stanu tej rejestracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać stan rejestracji subskrypcji, Zacznij od użycia metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji subskrybowania, wywołując metodę [**Subscription. ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) przy użyciu identyfikatora subskrypcji, aby zidentyfikować subskrypcję. Następnie użyj właściwości RegistrationStatus, aby uzyskać interfejs do operacji stanu rejestracji bieżącej subskrypcji, i Wywołaj metodę **Get** lub **GetAsync** , aby pobrać obiekt **SubscriptionRegistrationStatus** .
+Aby uzyskać stan rejestracji subskrypcji, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) z identyfikatorem subskrypcji w celu zidentyfikowania subskrypcji. Następnie użyj właściwości RegistrationStatus, aby uzyskać interfejs dla operacji stanu rejestracji bieżącej subskrypcji, i wywołaj metodę **Get** lub **GetAsync,** aby pobrać obiekt **SubscriptionRegistrationStatus.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,20 +44,20 @@ var subscriptionRegistrationDetails = partnerOperations.Customers.ById(selectedC
 
 | Metoda    | Identyfikator URI żądania                                                                                                                        |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz**  | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions/{Subscription-ID}/registrationstatus http/1.1 |
+| **Pobierz**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/registrationstatus HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subskrypcję.
 
 | Nazwa                    | Typ       | Wymagane | Opis                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| Identyfikator klienta             | ciąg     | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.         |
-| Identyfikator subskrypcji         | ciąg     | Tak      | Ciąg w formacie GUID, który identyfikuje subskrypcję.     |
+| identyfikator klienta             | ciąg     | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.         |
+| subscription-id         | ciąg     | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje subskrypcję.     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -83,11 +79,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [SubscriptionRegistrationStatus](subscription-resources.md#subscriptionregistrationstatus) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób SubscriptionRegistrationStatus.](subscription-resources.md#subscriptionregistrationstatus)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

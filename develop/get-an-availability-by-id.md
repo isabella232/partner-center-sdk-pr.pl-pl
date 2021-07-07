@@ -1,39 +1,35 @@
 ---
-title: Pobierz dostępność według identyfikatora
-description: Pobiera dostępność dla określonego produktu i jednostki SKU przy użyciu identyfikatora dostępności.
+title: Uzyskiwanie dostępności według identyfikatora
+description: Pobiera dostępność dla określonego produktu i sku przy użyciu identyfikatora dostępności.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 824303d40e1dcb0405246c8e29562c4527d147fd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c31bc12d8d484cc8042f36aa865145600d9e6738
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767714"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760202"
 ---
-# <a name="get-the-availability-by-id"></a>Pobierz dostępność według identyfikatora
+# <a name="get-the-availability-by-id"></a>Uzyskiwanie dostępności według identyfikatora
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Pobiera dostępność dla określonego produktu i jednostki SKU przy użyciu identyfikatora dostępności.
+Pobiera dostępność dla określonego produktu i sku przy użyciu identyfikatora dostępności.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
-- IDENTYFIKATOR JEDNOSTKI SKU.
+- Identyfikator SKU.
 
 - Identyfikator dostępności.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać szczegółowe informacje o konkretnej [dostępności](product-resources.md#availability), Zacznij od wykonania kroków z sekcji [pobieranie jednostki SKU według identyfikatora](get-a-sku-by-id.md) , aby uzyskać interfejs dla operacji określonej [jednostki SKU](product-resources.md#sku) . Z poziomu interfejsu uzyskanego wybierz właściwość **dostępność** , aby uzyskać interfejs z dostępnymi operacjami dostępności. Następnie Przekaż identyfikator dostępności do metody **ById ()** w celu uzyskania operacji dla tej konkretnej dostępności, a następnie Wywołaj metodę **Get ()** lub **GetAsync ()** , aby pobrać szczegóły dostępności.
+Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)zacznij od kroków z artykułu Get [a SKU by ID (Uzyskiwanie sku za](get-a-sku-by-id.md) pomocą identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz właściwość **Availabilities,** aby uzyskać interfejs z dostępnymi operacjami dla właściwości Availabilities. Następnie przekaż identyfikator dostępności do metody **ById(),** aby pobrać operacje dla tej określonej dostępności, a następnie wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dostępności.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -50,7 +46,7 @@ var availability = partnerOperations.Products.ByCountry(countryCode).ById(produc
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać szczegółowe informacje o konkretnej [dostępności](product-resources.md#availability), Zacznij od wykonania kroków z sekcji [pobieranie jednostki SKU według identyfikatora](get-a-sku-by-id.md) , aby uzyskać interfejs dla operacji określonej [jednostki SKU](product-resources.md#sku) . W interfejsie wynikającym wybierz funkcję **getAvailabilities** , aby uzyskać interfejs z dostępnymi operacjami dostępności. Następnie Przekaż identyfikator dostępności do funkcji **byId ()** w celu uzyskania operacji dla tej konkretnej dostępności, a następnie wywołaj funkcję **Get ()** , aby pobrać szczegóły dostępności.
+Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)zacznij od kroków z artykułu Get [a SKU by ID (Uzyskiwanie sku za](get-a-sku-by-id.md) pomocą identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz funkcję **getAvailabilities,** aby uzyskać interfejs z dostępnymi operacjami dla opcji Dostępność. Następnie przekaż identyfikator dostępności do funkcji **byId(),** aby pobrać operacje dla tej określonej dostępności, a następnie wywołaj funkcję **get(),** aby pobrać szczegóły dostępności.
 
 ```java
 IAggregatePartner partnerOperations;
@@ -67,7 +63,7 @@ Availability availability = partnerOperations.getProducts().byCountry(countryCod
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać szczegółowe informacje o konkretnej [dostępności](product-resources.md#availability), wykonaj [**polecenie Get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) i określ **Parametry AvailabilityId**, **CountryCode**, **ProductID** i **identyfikatora skuId** , aby pobrać szczegóły dostępności.
+Aby uzyskać szczegółowe informacje o [określonej](product-resources.md#availability)dostępności, wykonaj polecenie [**Get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) i określ parametry **AvailabilityId**, **CountryCode,** **ProductId** i **SkuId,** aby pobrać szczegóły dostępności.
 
 ```powershell
 Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId $availabilityId
@@ -79,7 +75,7 @@ Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId
 
 | Metoda  | Identyfikator URI żądania |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Products/{Product-ID}/SKUs/{SKU-ID}/availabilities/{Availability-ID}? Country = {Country-Code} http/1.1         |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}/skus/{sku-id}/availabilities/{identyfikator-dostępności}?country={kod-kraju} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -87,14 +83,14 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać określoną
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| Identyfikator produktu             | ciąg   | Tak      | Ciąg w formacie GUID, który identyfikuje produkt.            |
-| jednostka SKU — identyfikator                 | ciąg   | Tak      | Ciąg w formacie GUID, który identyfikuje jednostkę SKU.                |
-| Identyfikator dostępności        | ciąg   | Tak      | Ciąg w formacie GUID, który identyfikuje dostępność.       |
-| Kraj — kod           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
+| identyfikator produktu             | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje produkt.            |
+| identyfikator sku                 | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje sku.                |
+| identyfikator dostępności        | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje dostępność.       |
+| kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -115,18 +111,18 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [dostępności](product-resources.md#availability) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób Availability.](product-resources.md#availability)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt nie został znaleziony.                                                                                    |
-| 404                  | 400018       | Nie znaleziono jednostki SKU.                                                                                        |
+| 404                  | 400013       | Nie znaleziono produktu.                                                                                    |
+| 404                  | 400018       | Nie znaleziono sku.                                                                                        |
 | 404                  | 400019       | Nie znaleziono dostępności.                                                                                   |
 
 ### <a name="response-example"></a>Przykład odpowiedzi

@@ -1,31 +1,27 @@
 ---
 title: Pobieranie uprawnień klienta do przeniesienia subskrypcji
-description: Jak uzyskać kolekcję subskrypcji klienta, które są uprawnione/ineligibile do przeniesienia.
+description: Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub są do nich do przekazania.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 43086a32fa0dbbdecf65aac167c687f26fc4c2c6
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fe8af76d1e1456754dec79291ec0853fb253d108
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767702"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446296"
 ---
 # <a name="get-a-customers-subscriptions-transfer-eligibility"></a>Pobieranie uprawnień klienta do przeniesienia subskrypcji
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak uzyskać kolekcję subskrypcji klienta uprawniających/niekwalifikujących się do przeniesienia.
+Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub nie są uprawnione do przeniesienia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -33,20 +29,20 @@ Jak uzyskać kolekcję subskrypcji klienta uprawniających/niekwalifikujących s
 
 | Metoda  | Identyfikator URI żądania                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/transferseligibility? typ transferu = {transfer-Type} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfereligibility?transferType={transfer-type} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania wszystkich subskrypcji.
+W tej tabeli wymieniono parametr zapytania wymagany do uzyskania wszystkich subskrypcji.
 
 | Nazwa               | Typ   | Wymagane | Opis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| Identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
-| Typ transferu      | ciąg | Tak      | Typ transferu, który jest przeznaczony.                |
+| identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
+| transfer-type      | ciąg | Tak      | Typ transferu, który jest zamierzony.                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -65,11 +61,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [TransferEligibility](transfer-eligibility-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [Uprawnień](transfer-eligibility-resources.md) do przeniesienia w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

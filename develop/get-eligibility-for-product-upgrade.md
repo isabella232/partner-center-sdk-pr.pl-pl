@@ -1,31 +1,27 @@
 ---
-title: Sprawdź uprawnienia klienta do uaktualniania do planu platformy Azure
-description: Za pomocą zasobu ProductUpgradeRequest można zwrócić zasób ProductUpgradesEligibility w celu ustalenia, czy klient ma uprawnienia do uaktualnienia z subskrypcji Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
+title: Sprawdzanie uprawnień klienta do uaktualnienia do planu platformy Azure
+description: Zasób ProductUpgradeRequest umożliwia zwrócenie zasobu ProductUpgradesEligibility w celu określenia, czy klient kwalifikuje się do uaktualnienia z subskrypcji usługi Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 568ed3f4cff7d9cd520e608d43cb89bb78e00ccc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 34a20611c7d92042b5432c5ffb3ba4702d77e0c2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767690"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446262"
 ---
-# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Sprawdź uprawnienia klienta do uaktualniania do planu platformy Azure
+# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Sprawdzanie uprawnień klienta do uaktualnienia do planu platformy Azure
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Możesz użyć zasobu [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) , aby sprawdzić, czy klient jest uprawniony do uaktualnienia do planu platformy Azure z subskrypcji Microsoft Azure (MS-AZR-0145P) Ta metoda zwraca zasób [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) z uprawnieniem do uaktualnienia produktu klienta.
+Za pomocą zasobu [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) możesz sprawdzić, czy klient kwalifikuje się do uaktualnienia do planu platformy Azure z subskrypcji usługi Microsoft Azure (MS-AZR-0145P) Ta metoda zwraca [**zasób ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) z uprawnieniami do uaktualnienia produktu klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [bezpiecznym modelem aplikacji](enable-secure-app-model.md) podczas korzystania z aplikacji i uwierzytelniania użytkowników za pomocą interfejsów API Centrum partnerskiego.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji w](enable-secure-app-model.md) przypadku korzystania z uwierzytelniania app+user z Partner Center API.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Rodzina produktów.
 
@@ -33,10 +29,10 @@ Możesz użyć zasobu [**ProductUpgradeRequest**](product-upgrade-resources.md#p
 
 Aby sprawdzić, czy klient kwalifikuje się do uaktualnienia do planu platformy Azure:
 
-1. Utwórz obiekt **ProductUpgradesRequest** i określ identyfikator klienta oraz "Azure" jako rodzinę produktów.
+1. Utwórz obiekt **ProductUpgradesRequest** i określ identyfikator klienta oraz wartość "Azure" jako rodzinę produktów.
 
-2. Użyj kolekcji **IAggregatePartner. ProductUpgrades** .
-3. Wywołaj metodę **CheckEligibility** i przekaż obiekt **ProductUpgradesRequest** , który zwróci obiekt **ProductUpgradesEligibility** .
+2. Użyj **kolekcji IAggregatePartner.ProductUpgrades.**
+3. Wywołaj **metodę CheckEligibility** i przekaż obiekt **ProductUpgradesRequest,** który zwróci **obiekt ProductUpgradesEligibility.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -66,15 +62,15 @@ if (productUpgradeEligibility.IsEligibile)
 
 | Metoda   | Identyfikator URI żądania                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/productUpgrades/Eligibility http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productUpgrades/eligibility HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Treść żądania musi zawierać zasób [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) .
+Treść żądania musi zawierać [**zasób ProductUpgradeRequest.**](product-upgrade-resources.md#productupgraderequest)
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -99,11 +95,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) w treści.
+W przypadku powodzenia ta metoda zwraca [**zasób ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) w treści.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

@@ -1,35 +1,31 @@
 ---
-title: Utwórz zamówienie klienta
-description: Dowiedz się, jak utworzyć zamówienie dla klienta przy użyciu interfejsów API usługi Partner Center. Artykuł zawiera wymagania wstępne, kroki i przykłady.
+title: Tworzenie zamówienia klienta
+description: Dowiedz się, jak Partner Center api do tworzenia zamówienia dla klienta. Artykuł zawiera wymagania wstępne, kroki i przykłady.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ce176909a1f9c350f1c16615171de57a7beb888d
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: c3a86a99f43bdeec5e4c560ab59e1924b76c0636
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97768625"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973552"
 ---
-# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Tworzenie zamówienia dla klienta przy użyciu interfejsów API Centrum partnerskiego
+# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Tworzenie zamówienia dla klienta przy użyciu interfejsów PARTNER CENTER API
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Tworzenie **zamówienia na produkty wystąpień zarezerwowanych maszyn wirtualnych platformy Azure** ma zastosowanie *tylko* do:
+Tworzenie zamówienia **dla produktów wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure** ma zastosowanie tylko *do:*
 
 - Centrum partnerskie
 
-Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedawania, zobacz [oferty partnerów w programie Cloud Solution Provider](/partner-center/csp-offers).
+Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz [Oferty partnerów w Dostawca rozwiązań w chmurze programie](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator oferty.
 
@@ -37,13 +33,13 @@ Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedawania, zobacz
 
 Aby utworzyć zamówienie dla klienta:
 
-1. Utwórz wystąpienie obiektu [**Order**](order-resources.md) i ustaw właściwość **ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
+1. Za pomocą wystąpienia obiektu [**Order**](order-resources.md) ustaw właściwość **ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
 
-2. Utwórz listę obiektów [**OrderLineItem**](order-resources.md#orderlineitem) i przypisz listę do właściwości **LineItems** zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Musisz mieć co najmniej jeden element wiersza zamówienia.
+2. Utwórz listę obiektów [**OrderLineItem**](order-resources.md#orderlineitem) i przypisz listę do właściwości **LineItems** zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Musisz mieć co najmniej jeden wiersz zamówienia.
 
-3. Uzyskaj interfejs do porządkowania operacji. Najpierw Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie Pobierz interfejs z właściwości [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) .
+3. Uzyskiwanie interfejsu do zamawiania operacji. Najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs z właściwości [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) (Zamówienia).
 
-4. Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) i przekaż obiekt [**Order**](order-resources.md) .
+4. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) i przekaż obiekt [**Order.**](order-resources.md)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -73,7 +69,7 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CreateOrder.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa:** CreateOrder.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -81,66 +77,66 @@ var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(or
 
 | Metoda   | Identyfikator URI żądania                                                                            |
 |----------|----------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Orders http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/orders HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ   | Wymagane | Opis                                                |
 |-------------|--------|----------|------------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
 #### <a name="order"></a>Zamówienie
 
-W tej tabeli opisano właściwości [zamówienia](order-resources.md) w treści żądania.
+W tej tabeli [opisano właściwości](order-resources.md) Order w treści żądania.
 
 | Właściwość             | Typ                        | Wymagane                        | Opis                                                                   |
 |----------------------|-----------------------------|---------------------------------|-------------------------------------------------------------------------------|
-| identyfikator                   | ciąg                      | Nie                              | Identyfikator zamówienia, który jest dostarczany po pomyślnym utworzeniu zamówienia.   |
+| identyfikator                   | ciąg                      | Nie                              | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia.   |
 | referenceCustomerId  | ciąg                      | Nie                              | Identyfikator klienta. |
-| billingCycle         | ciąg                      | Nie                              | Wskazuje częstotliwość, z jaką jest rozliczany partner dla tego zamówienia. Obsługiwane wartości to nazwy elementów członkowskich Znalezione w [BillingCycleType](product-resources.md#billingcycletype). Wartość domyślna to "Monthly" lub "jednorazowej" podczas tworzenia kolejności. To pole jest stosowane po pomyślnym utworzeniu zamówienia. |
-| lineItems            | Tablica zasobów [OrderLineItem](order-resources.md#orderlineitem) | Tak      | Lista elementów oferty, do których klient kupuje, wraz z ilością.        |
-| currencyCode         | ciąg                      | Nie                              | Tylko do odczytu. Waluta użyta podczas umieszczania zamówienia. Stosowane po pomyślnym utworzeniu zamówienia.           |
-| creationDate         | datetime                    | Nie                              | Tylko do odczytu. Data, w której zamówienie zostało utworzone, w formacie daty i godziny. Stosowane po pomyślnym utworzeniu zamówienia.                                   |
-| status               | ciąg                      | Nie                              | Tylko do odczytu. Stan zamówienia.  Obsługiwane wartości to nazwy elementów członkowskich Znalezione w [OrderStatus](order-resources.md#orderstatus).        |
-| linki                | [OrderLinks](utility-resources.md#resourcelinks)              | Nie                              | Linki do zasobów odpowiadające kolejności. |
+| billingCycle         | ciąg                      | Nie                              | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). Wartość domyślna to "Monthly" lub "OneTime" podczas tworzenia zamówienia. To pole jest stosowane po pomyślnym utworzeniu zamówienia. |
+| lineItems            | tablica [zasobów OrderLineItem](order-resources.md#orderlineitem) | Tak      | Lista pozycji ofert, które klient kupuje, łącznie z ilością.        |
+| currencyCode         | ciąg                      | Nie                              | Tylko do odczytu. Waluta używana podczas składania zamówienia. Stosowane po pomyślnym utworzeniu zamówienia.           |
+| Creationdate         | datetime                    | Nie                              | Tylko do odczytu. Data utworzenia zamówienia w formacie data/godzina. Stosowane po pomyślnym utworzeniu zamówienia.                                   |
+| status               | ciąg                      | Nie                              | Tylko do odczytu. Stan zamówienia.  Obsługiwane wartości to nazwy członków w [orderstatus](order-resources.md#orderstatus).        |
+| Linki                | [OrderLinks](utility-resources.md#resourcelinks)              | Nie                              | Zasób łączy się z zamówieniem. |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie                              | Atrybuty metadanych odpowiadające kolejności. |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
-W tej tabeli opisano właściwości [OrderLineItem](order-resources.md#orderlineitem) w treści żądania.
+W tej tabeli [opisano właściwości OrderLineItem](order-resources.md#orderlineitem) w treści żądania.
 
 >[!NOTE]
->PartnerIdOnRecord należy podać tylko wtedy, gdy Dostawca pośredni umieści zamówienie w imieniu pośredniego odsprzedawcy. Jest on używany do przechowywania tylko identyfikatora Microsoft Partner Network pośredniego Odsprzedawcy (nigdy nie jest to identyfikator dostawcy pośredniego).
+>Rekord partnerIdOnRecord powinien być podany tylko wtedy, gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego. Jest on używany do przechowywania Microsoft Partner Network tylko odsprzedawcy pośredniego (nigdy identyfikatora dostawcy pośredniego).
 
 | Nazwa                 | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int    | Tak      | Każdy element wiersza w kolekcji pobiera unikatowy numer wiersza, licząc do wartości z przedziału od 0 do count-1.                                                                                                                                                 |
+| lineItemNumber       | int    | Tak      | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1.                                                                                                                                                 |
 | offerId              | ciąg | Tak      | Identyfikator oferty.                                                                                                                                                                                                                      |
 | subscriptionId       | ciąg | Nie       | Identyfikator subskrypcji.                                                                                                                                                                                                               |
-| parentSubscriptionId | ciąg | Nie       | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko poprawki.                                                                                                                                                     |
-| friendlyName         | ciąg | Nie       | Opcjonalny. Przyjazna nazwa dla subskrypcji zdefiniowanej przez partnera, która pomaga w odróżnieniu od siebie.                                                                                                                                              |
-| quantity             | int    | Tak      | Liczba licencji dla subskrypcji opartej na licencji.                                                                                                                                                                                   |
-| partnerIdOnRecord    | ciąg | Nie       | Gdy Dostawca pośredni umieści zamówienie w imieniu pośredniego odsprzedawcy, Wypełnij to pole IDENTYFIKATORem MPN **pośredniego odsprzedawcy** (nigdy nie jest identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednie Księgowanie zachęt. |
-| provisioningContext  | Ciąg<słownika, ciąg>                | Nie       |  Informacje wymagane do aprowizacji dla niektórych elementów w wykazie. Właściwość provisioningVariables w jednostce SKU wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                  |
-| linki                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Nie       |  Tylko do odczytu. Linki do zasobów odpowiadające elementowi wiersza zamówienia.  |
+| parentSubscriptionId | ciąg | Nie       | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko PATCH.                                                                                                                                                     |
+| Friendlyname         | ciąg | Nie       | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu ujednoznacznienia.                                                                                                                                              |
+| quantity             | int    | Tak      | Liczba licencji dla subskrypcji opartej na licencjach.                                                                                                                                                                                   |
+| partnerIdOnRecord    | ciąg | Nie       | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN tylko odsprzedawcy pośredniego **(nigdy** identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. |
+| provisioningContext  | Ciąg<, ciąg>                | Nie       |  Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                  |
+| Linki                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Nie       |  Tylko do odczytu. Zasób łączy się z elementem wiersza Order.  |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie       | Atrybuty metadanych odpowiadające OrderLineItem. |
-| renewsTo             | Tablica obiektów                          | Nie    |Tablica zasobów [RenewsTo](order-resources.md#renewsto) .                                                                            |
+| renewsTo             | Tablica obiektów                          | Nie    |Tablica zasobów [RenewsTo.](order-resources.md#renewsto)                                                                            |
 
 ##### <a name="renewsto"></a>RenewsTo
 
-W tej tabeli opisano właściwości [RenewsTo](order-resources.md#renewsto) w treści żądania.
+W tej tabeli [opisano właściwości RenewsTo](order-resources.md#renewsto) w treści żądania.
 
 | Właściwość              | Typ             | Wymagane        | Opis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | ciąg           | Nie              | Reprezentacja ISO 8601 okresu ważności. Bieżące obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
+| termDuration          | ciąg           | Nie              | Reprezentacja czasu trwania okresu odnowienia w standardach ISO 8601. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -172,11 +168,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób [zamówienia](order-resources.md) w treści odpowiedzi.
+W przypadku powodzenia metoda zwraca [zasób Order](order-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

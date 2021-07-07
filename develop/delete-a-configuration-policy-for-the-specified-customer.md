@@ -1,30 +1,27 @@
 ---
 title: Usuwanie zasad konfiguracji dla określonego klienta
-description: Jak usunąć zasady konfiguracji dla określonego identyfikatora klienta i zasad.
+description: Jak usunąć zasady konfiguracji dla określonego klienta i identyfikator zasad.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 586878367fc0873ef0fb1415799b2b7022954053
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 2d6a7d392bd6af6850eb7716528e6745943bb7bb
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768134"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973030"
 ---
 # <a name="delete-a-configuration-policy-for-the-specified-customer"></a>Usuwanie zasad konfiguracji dla określonego klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-
-Jak usunąć zasady konfiguracji dla określonego identyfikatora klienta i zasad.
+Jak usunąć zasady konfiguracji dla określonego klienta i identyfikator zasad.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zasad.
 
@@ -32,11 +29,11 @@ Jak usunąć zasady konfiguracji dla określonego identyfikatora klienta i zasad
 
 Aby usunąć zasady konfiguracji dla określonego klienta:
 
-1. Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
+1. Wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
 
-2. Wywołaj metodę [**ConfigurationPolicies. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) z identyfikatorem zasad, aby pobrać interfejs do operacji zasad konfiguracji dla określonych zasad.
+2. Wywołaj [**metodę ConfigurationPolicies.ById z**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) identyfikatorem zasad, aby pobrać interfejs do operacji zasad konfiguracji dla określonych zasad.
 
-3. Wywołaj metodę [**delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) lub [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync) , aby usunąć zasady konfiguracji.
+3. Wywołaj [**metodę Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) lub [**DeleteAsync,**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync) aby usunąć zasady konfiguracji.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -46,7 +43,7 @@ string selectedPolicyId;
 partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedPolicyId).Delete();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: DeleteConfigurationPolicy.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project**: zestaw SDK Centrum partnerskiego Samples Class : DeleteConfigurationPolicy.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: DeleteConfigurationPolicy.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -54,20 +51,20 @@ partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(
 
 | Metoda     | Identyfikator URI żądania                                                                                          |
 |------------|------------------------------------------------------------------------------------------------------|
-| **USUNIĘTY** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/policies/{Policy-ID} http/1.1 |
+| **Usunąć** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/policies/{policy-id} HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj następujących parametrów ścieżki.
+Podczas tworzenia żądania użyj następujących parametrów ścieżki.
 
 | Nazwa        | Typ   | Wymagane | Opis                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta.         |
-| Identyfikator zasad   | ciąg | Tak      | Ciąg sformatowany przy użyciu identyfikatora GUID, który identyfikuje zasady do usunięcia. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.         |
+| identyfikator zasad   | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje zasady do usunięcia. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -88,11 +85,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zwróci 204 kod stanu zawartości.
+Jeśli to się powiedzie, odpowiedź zwróci kod stanu 204 Brak zawartości.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

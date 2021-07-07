@@ -1,37 +1,33 @@
 ---
 title: Aktualizowanie koszyka
-description: Jak zaktualizować zamówienie dla klienta w koszyku.
+description: Jak zaktualizować zamówienie klienta w koszyku.
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7c0806ccc87281b9b34005f22cd8d6ad57fb5de5
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8954d4dad39f9b1a1b9a2f213e0231f01856fcd2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767834"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446687"
 ---
 # <a name="update-a-cart"></a>Aktualizowanie koszyka
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak zaktualizować zamówienie dla klienta w koszyku.
+Jak zaktualizować zamówienie klienta w koszyku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator koszyka dla istniejącego koszyka.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować zamówienie dla klienta, należy uzyskać koszyk przy użyciu metody **Get ()** przez przekazanie identyfikatora klienta i koszyka przy użyciu funkcji **ById ()** . Wprowadź niezbędne zmiany w koszyku. Teraz Wywołaj metodę **Put** przy użyciu identyfikatora klienta i koszyka przy użyciu metody **ById ()** .
+Aby zaktualizować zamówienie klienta, pobierz koszyk przy użyciu metody **Get(),** przekazując identyfikatory klienta i koszyka przy użyciu **funkcji ById().** Wprowadzić niezbędne zmiany w koszyku. Teraz wywołaj **metodę Put** przy użyciu identyfikatorów klientów i koszyka przy użyciu **metody ById().**
 
-Na koniec Wywołaj metodę **Put ()** lub **PutAsync ()** , aby utworzyć zamówienie.
+Na koniec wywołaj **metodę Put()** lub **PutAsync(),** aby utworzyć zamówienie.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -51,48 +47,48 @@ var updatedCart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId)
 
 | Metoda  | Identyfikator URI żądania                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Carts/{Cart-ID} http/1.1              |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id} HTTP/1.1              |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i określić koszyk do zaktualizowania.
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **Identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.             |
-| **Identyfikator koszyka**     | ciąg   | Tak      | Identyfikator koszyka w formacie GUID, który identyfikuje koszyk.                     |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta.             |
+| **cart-id**     | ciąg   | Tak      | Identyfikator GUID w formacie cart-id, który identyfikuje koszyk.                     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W tej tabeli opisano właściwości [koszyka](cart-resources.md) w treści żądania.
+W tej tabeli [opisano](cart-resources.md) właściwości koszyka w treści żądania.
 
 | Właściwość              | Typ             | Wymagane        | Opis                                                                                               |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Nie              | Identyfikator koszyka, który jest dostarczany po pomyślnym utworzeniu koszyka.                                  |
-| creationTimeStamp     | DateTime         | Nie              | Data i godzina utworzenia koszyka. Stosowane po pomyślnym utworzeniu koszyka.        |
-| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie daty i godziny. Stosowane po pomyślnym utworzeniu koszyka.    |
-| expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie daty i godziny.  Stosowane po pomyślnym utworzeniu koszyka.            |
+| creationTimeStamp     | DateTime         | Nie              | Data utworzenia koszyka w formacie data/godzina. Zastosowane po pomyślnym utworzeniu koszyka.        |
+| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie data/godzina. Zastosowane po pomyślnym utworzeniu koszyka.    |
+| expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie data/godzina.  Stosowane po pomyślnym utworzeniu koszyka.            |
 | lastModifiedUser      | ciąg           | Nie              | Użytkownik, który ostatnio zaktualizował koszyk. Stosowane po pomyślnym utworzeniu koszyka.                             |
-| lineItems             | Tablica obiektów | Tak             | Tablica zasobów [CartLineItem](cart-resources.md#cartlineitem) .                                               |
+| lineItems             | Tablica obiektów | Tak             | Tablica [zasobów CartLineItem.](cart-resources.md#cartlineitem)                                               |
 
-W tej tabeli opisano właściwości [CartLineItem](cart-resources.md#cartlineitem) w treści żądania.
+W tej tabeli [opisano właściwości CartLineItem](cart-resources.md#cartlineitem) w treści żądania.
 
 | Właściwość             | Typ                        | Wymagane     | Opis                                                                                        |
 |----------------------|-----------------------------|--------------|----------------------------------------------------------------------------------------------------|
-| identyfikator                   | ciąg                      | Nie           | Unikatowy identyfikator dla elementu w wierszu koszyka. Stosowane po pomyślnym utworzeniu koszyka.                |
+| identyfikator                   | ciąg                      | Nie           | Unikatowy identyfikator elementu wiersza koszyka. Stosowane po pomyślnym utworzeniu koszyka.                |
 | catalogId            | ciąg                      | Tak          | Identyfikator elementu katalogu.                                                                       |
-| friendlyName         | ciąg                      | Nie           | Opcjonalny. Przyjazna nazwa dla elementu zdefiniowanego przez partnera, która pomaga w odróżnieniu od siebie.              |
+| Friendlyname         | ciąg                      | Nie           | Opcjonalny. Przyjazna nazwa elementu zdefiniowanego przez partnera w celu uujednoznania.              |
 | quantity             | int                         | Tak          | Liczba licencji lub wystąpień.     |
 | currencyCode         | ciąg                      | Nie           | Kod waluty.                                                                                 |
 | billingCycle         | Obiekt                      | Tak          | Typ cyklu rozliczeniowego ustawiony dla bieżącego okresu.                                              |
 | uczestnicy         | Lista par ciągów obiektów | Nie           | Kolekcja uczestników zakupu.                                                      |
-| provisioningContext  | Ciąg<słownika, ciąg>  | Nie           | Kontekst używany do aprowizacji oferty.                                                          |
-| kolejność           | ciąg                      | Nie           | Grupa wskazująca, które elementy mogą być umieszczone razem.                                            |
-| error                | Obiekt                      | Nie           | Zastosowano po utworzeniu koszyka w przypadku błędu.                                                 |
+| provisioningContext  | Ciąg<, ciąg>  | Nie           | Kontekst używany do aprowizowania oferty.                                                          |
+| orderGroup           | ciąg                      | Nie           | Grupa wskazująca, które elementy można ze sobą umieścić.                                            |
+| error                | Obiekt                      | Nie           | Zastosowane po utworzeniu koszyka w przypadku wystąpienia błędu.                                                 |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -136,11 +132,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób [koszyka](cart-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

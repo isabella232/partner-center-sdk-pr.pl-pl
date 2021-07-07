@@ -1,32 +1,28 @@
 ---
-title: Uzyskiwanie pozycji użycia komercyjnego rozliczanych na podstawie faktury
-description: Możesz uzyskać kolekcję szczegółów pozycji faktury za użycie komercyjne (zamkniętego dziennego użycia) dla określonej faktury przy użyciu interfejsów API Partner Center.
+title: Pobierz pozycje użycia komercyjnego rozliczane na podstawie faktury
+description: Możesz uzyskać kolekcję szczegółów pozycji pozycji faktury za użycie komercyjne (zamkniętego dziennego elementu wiersza użycia) dla określonej faktury przy użyciu interfejsów API Partner Center.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1406938b16e5a363a73c36ef0338eb5fc4305279
-ms.sourcegitcommit: 89aefbff6dbe740b6f27a888492ffc2e5f98b1e9
+ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/24/2021
-ms.locfileid: "110325449"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446228"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Uzyskiwanie pozycji użycia komercyjnego rozliczanych na podstawie faktury
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Pobierz pozycje użycia komercyjnego rozliczane na podstawie faktury
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Aby uzyskać kolekcję szczegółów dla pozycji faktur za użycie komercyjne (zwane również zamkniętymi pozycjami do dziennego użycia) dla określonej faktury, można użyć następujących metod.
+Aby uzyskać kolekcję szczegółów dla pozycji faktur za użycie komercyjne (nazywanych również zamkniętymi pozycjami dziennego użycia) dla określonej faktury, można użyć następujących metod.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane pozycje.
+- Identyfikator faktury. Pozwala to zidentyfikować fakturę, dla której mają zostać pobrane pozycje.
 
 ## <a name="c"></a>C\#
 
@@ -36,13 +32,13 @@ Aby uzyskać komercyjne pozycje dla określonej faktury, musisz pobrać obiekt f
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury. Obiekt faktury zawiera wszystkie informacje dotyczące określonej faktury.
 
-Dostawca **identyfikuje** źródło informacji szczegółowych rozliczanych (na przykład **onetime**). **InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).
+Dostawca **identyfikuje** źródło rozliczanych szczegółowych informacji (na przykład **jednogodzinnych**). Typ **invoiceLineItemType** określa typ (na przykład **UsageLineItem).**
 
-Poniższy przykładowy kod używa **pętli foreach** do przetwarzania kolekcji elementów wiersza. Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wierszy.
+Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji elementów wiersza. Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wiersza.
 
 Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż wartości **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
+1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać skojarzone elementy wiersza.
 3. Utwórz moduł wyliczający, aby przejść przez kolekcję, jak pokazano w poniższym przykładzie.
@@ -107,7 +103,7 @@ while (fetchNext)
 Podobny przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **zestaw SDK Centrum partnerskiego przykłady**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
 - Klasa: **GetBilledConsumptionReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -130,11 +126,11 @@ Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 |------------------------|--------|----------|-------------------------------------------------------------------|
 | invoice-id             | ciąg | Tak      | Ciąg, który identyfikuje fakturę.                             |
 | Dostawca               | ciąg | Tak      | Dostawca: "OneTime".                                  |
-| typ elementu wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "UsageLineItems". |
+| typ-elementu-wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "UsageLineItems". |
 | currencyCode           | ciąg | Tak      | Kod waluty dla rozliowanych pozycji.                    |
 | period                 | ciąg | Tak      | Okres dla rozliowanych rekonesencji. przykład: current, previous.        |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000       |
-| seekOperation          | ciąg | Nie       | Ustaw wartość seekOperation=Next, aby uzyskać następną stronę elementów ponownego wiersza. |
+| seekOperation          | ciąg | Nie       | Ustaw wartość seekOperation=Dalej, aby uzyskać następną stronę elementów wiersza ponownego. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -146,13 +142,13 @@ Brak.
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.
+Jeśli to się powiedzie, odpowiedź będzie zawierała kolekcję szczegółów elementu wiersza.
 
-W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.
+Dla elementu wiersza **ChargeType** wartość **Zakup jest** mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ## <a name="rest-examples"></a>Przykłady rest
 

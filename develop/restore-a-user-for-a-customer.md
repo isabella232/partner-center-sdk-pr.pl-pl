@@ -4,40 +4,36 @@ description: Jak przywrócić usuniętego użytkownika według identyfikatora kl
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9fd86a268c804a2fdd5efd67a8982afc043c95a6
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 23caf91c6b29b292c2638b4a1ad208c606c47492
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768406"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445718"
 ---
 # <a name="restore-a-deleted-user-for-a-customer"></a>Przywracanie usuniętego użytkownika dla klienta
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak przywrócić usuniętego **użytkownika** według identyfikatora klienta i identyfikatora użytkownika.
+Jak przywrócić usuniętego **użytkownika według** identyfikatora klienta i identyfikatora użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator użytkownika. Jeśli nie masz identyfikatora użytkownika, zobacz [Wyświetlanie usuniętych użytkowników dla klienta](view-a-deleted-user.md).
 
 ## <a name="when-can-you-restore-a-deleted-user-account"></a>Kiedy można przywrócić usunięte konto użytkownika?
 
-Po usunięciu konta użytkownika stan użytkownika ma wartość "nieaktywne". Nie jest to możliwe przez 30 dni, po upływie których konto użytkownika i powiązane z nim dane zostaną usunięte i nie można ich odzyskać. Usunięte konto użytkownika można przywrócić tylko w tym trzydzieści-dniowym oknie. Po usunięciu i oznaczeniu elementu "nieaktywne" konto użytkownika nie jest już zwracane jako członek kolekcji użytkowników (na przykład przy użyciu polecenia [Pobierz listę wszystkich kont użytkowników dla klienta](get-a-list-of-all-user-accounts-for-a-customer.md)).
+Stan użytkownika jest ustawiany na "nieaktywny" podczas usuwania konta użytkownika. Pozostanie w ten sposób przez 30 dni, po czym konto użytkownika i skojarzone z nim dane są przeczyszczania i nie można ich uzyskać. Usunięte konto użytkownika można przywrócić tylko w tym 30-dniowym oknie. Gdy konto użytkownika zostanie usunięte i oznaczone jako "nieaktywne", nie będzie już zwracane jako członek kolekcji użytkowników (na przykład przy użyciu funkcji Pobierz listę wszystkich kont użytkowników [dla klienta).](get-a-list-of-all-user-accounts-for-a-customer.md)
 
 ## <a name="c"></a>C\#
 
-Aby przywrócić użytkownika, Utwórz nowe wystąpienie klasy [**CustomerUser**](/dotnet/api/microsoft.store.partnercenter.models.users.customeruser) i ustaw wartość właściwości [**User. State**](/dotnet/api/microsoft.store.partnercenter.models.users.user.state) na [**userState. Active**](/dotnet/api/microsoft.store.partnercenter.models.users.userstate).
+Aby przywrócić użytkownika, utwórz nowe wystąpienie klasy [**CustomerUser**](/dotnet/api/microsoft.store.partnercenter.models.users.customeruser) i ustaw wartość właściwości [**User.State**](/dotnet/api/microsoft.store.partnercenter.models.users.user.state) na [**UserState.Active.**](/dotnet/api/microsoft.store.partnercenter.models.users.userstate)
 
-Użytkownik zostanie przywrócony przez ustawienie stanu użytkownika jako aktywny. Nie trzeba ponownie wypełniać pozostałych pól w zasobie użytkownika. Te wartości zostaną automatycznie przywrócone z usuniętego zasobu nieaktywnego użytkownika. Następnie użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta i metodę user [**. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) , aby zidentyfikować użytkownika.
+Usunięty użytkownik można przywrócić, ustawiając jego stan na aktywny. Nie trzeba ponownieopulacji pozostałych pól w zasobie użytkownika. Te wartości zostaną automatycznie przywrócone z usuniętego, nieaktywnego zasobu użytkownika. Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, a metody [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) w celu zidentyfikowania użytkownika.
 
-Na koniec Wywołaj metodę [**patch**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.patch) i przekaż wystąpienie **CustomerUser** w celu wysłania żądania przywrócenia użytkownika.
+Na koniec wywołaj [**metodę Patch**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.patch) i przekaż wystąpienie **CustomerUser,** aby wysłać żądanie przywrócenia użytkownika.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -53,7 +49,7 @@ var updatedCustomerUser = new CustomerUser()
 var restoredCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Patch(updatedCustomerUser);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CustomerUserRestore.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : CustomerUserRestore.cs **(Klasa przykładów** zestaw SDK Centrum partnerskiego: CustomerUserRestore.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -61,7 +57,7 @@ var restoredCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 | Metoda    | Identyfikator URI żądania                                                                                            |
 |-----------|--------------------------------------------------------------------------------------------------------|
-| **WYSŁANA** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users/{User-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -69,12 +65,12 @@ Użyj następujących parametrów zapytania, aby określić identyfikator klient
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                              |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników do danego klienta. |
-| **Identyfikator użytkownika**            | **guid** | Y        | Wartość jest **identyfikatorem użytkownika** w formacie GUID, który należy do jednego konta użytkownika.                                         |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników do danego klienta. |
+| **identyfikator użytkownika**            | **guid** | Y        | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który należy do jednego konta użytkownika.                                         |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -82,7 +78,7 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 | Nazwa       | Typ   | Wymagane | Opis                                                            |
 |------------|--------|----------|------------------------------------------------------------------------|
-| Stan      | ciąg | Y        | Stan użytkownika. Aby przywrócić usuniętego użytkownika, ten ciąg musi zawierać wartość "Active". |
+| Stan      | ciąg | Y        | Stan użytkownika. Aby przywrócić usuniętego użytkownika, ten ciąg musi zawierać wartość "active". |
 | Atrybuty | object | N        | Zawiera "ObjectType": "CustomerUser".                                 |
 
 ### <a name="request-example"></a>Przykład żądania
@@ -111,9 +107,9 @@ Expect: 100-continue
 
 Jeśli to się powiedzie, odpowiedź zwróci przywrócone informacje o użytkowniku w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

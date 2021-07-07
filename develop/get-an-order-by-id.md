@@ -1,34 +1,29 @@
 ---
 title: Pobieranie zamówienia według identyfikatora
-description: Pobiera zasób zamówienia, który odpowiada IDENTYFIKATORowi klienta i zamówienia.
+description: Pobiera zasób Zamówienia, który pasuje do klienta i identyfikatora zamówienia.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 0a39d7142e5bf97f9fb345416964d4ed6bb935ad
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 2cb2822935113fe1c5337b4ffc899fccff333d2f
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768454"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760185"
 ---
 # <a name="get-an-order-by-id"></a>Pobieranie zamówienia według identyfikatora
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera zasób [zamówienia](order-resources.md) , który odpowiada identyfikatorowi klienta i zamówienia.
+Pobiera [zasób Zamówienia,](order-resources.md) który pasuje do klienta i identyfikatora zamówienia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zamówienia.
 
@@ -36,10 +31,10 @@ Pobiera zasób [zamówienia](order-resources.md) , który odpowiada identyfikato
 
 Aby uzyskać zamówienie klienta według identyfikatora:
 
-1. Użyj kolekcji **IAggregatePartner. Customers** i Wywołaj metodę **ById ()** .
+1. Użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().**
 
-2. Wywołaj Właściwość [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) , a następnie metodę [**ByID ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) jeszcze raz.
-3. Wywołanie [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).
+2. Ponownie [**wywołaj**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) właściwość Orders, a następnie ponownie metodę [**ByID().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid)
+3. Wywołaj [**get()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) lub [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -49,7 +44,7 @@ Aby uzyskać zamówienie klienta według identyfikatora:
 var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(selectedOrderId).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: GetOrder.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: GetOrder.cs 
 
 ## <a name="java"></a>Java
 
@@ -57,10 +52,10 @@ var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(sel
 
 Aby uzyskać zamówienie klienta według identyfikatora:
 
-1. Użyj funkcji **IAggregatePartner. GetCustomers** i wywołaj funkcję **byId ()** .
+1. Użyj funkcji **IAggregatePartner.getCustomers** i wywołaj **funkcję byId().**
 
-2. Wywołaj funkcję **GetOrders** , a następnie funkcję **byID ()** jeszcze raz.
-3. Wywołaj funkcję **Get ()** .
+2. Wywołaj **funkcję getOrders,** a następnie ponownie funkcję **byID().**
+3. Wywołaj **funkcję get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -74,7 +69,7 @@ Order order = partnerOperations.getCustomers().byId(selectedCustomerId).getOrder
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać identyfikator zamówienia klienta według identyfikatora, należy wykonać polecenie [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) i określić parametry **CustomerID** i **IDZamówienia** .
+Aby uzyskać zamówienie klienta według identyfikatora, wykonaj polecenie [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) i określ parametry **CustomerId** i **OrderId.**
 
 ```powershell
 # $selectedCustomerId
@@ -89,20 +84,20 @@ Get-PartnerCustomerOrder -CustomerId $selectedCustomerId -OrderId $selectedOrder
 
 | Metoda  | Identyfikator URI żądania                                                                                                  |
 |---------|--------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders/{ID-for-Order} http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{id-for-order} HTTP/1.1  |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania identyfikatora order by.
+W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania zamówienia według identyfikatora.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                            |
 |------------------------|----------|----------|--------------------------------------------------------|
-| Identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg w formacie GUID odpowiadający klientowi. |
-| Identyfikator — dla zamówienia           | ciąg   | Tak      | Ciąg odpowiadający IDENTYFIKATORowi zamówienia.                |
+| identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg w formacie IDENTYFIKATORA GUID odpowiadający klientowi. |
+| id-for-order           | ciąg   | Tak      | Ciąg odpowiadający identyfikatorowi zamówienia.                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -121,11 +116,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób [zamówienia](order-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [zasób Order](order-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

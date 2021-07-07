@@ -4,29 +4,26 @@ description: Jak usunąć urządzenie należące do określonego klienta.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 69b5440f2cf07d3cb4ecd5addf429acd64530257
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a1e05ceb8615d6f84c1df101c542342f9a6eb04b
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768133"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973081"
 ---
 # <a name="delete-a-device-for-the-specified-customer"></a>Usuwanie urządzenia dla określonego klienta
 
-**Dotyczy:**
-
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
 W tym artykule wyjaśniono, jak usunąć urządzenie należące do określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator partii urządzeń.
+- Identyfikator wsadu urządzenia.
 
 - Identyfikator urządzenia.
 
@@ -34,13 +31,13 @@ W tym artykule wyjaśniono, jak usunąć urządzenie należące do określonego 
 
 Aby usunąć urządzenie dla określonego klienta:
 
-1. Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na kliencie.
+1. Wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na kliencie.
 
-2. Wywołaj metodę [**DeviceBatches. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) z identyfikatorem partii urządzeń, aby uzyskać interfejs do operacji dla określonej partii.
+2. Wywołaj [**metodę DeviceBatches.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) z identyfikatorem wsadowym urządzenia, aby uzyskać interfejs do operacji dla określonej partii.
 
-3. Wywołaj metodę [**Devices. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.byid) , aby uzyskać interfejs do operacji na określonym urządzeniu.
+3. Wywołaj [**metodę Devices.ById,**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.byid) aby uzyskać interfejs do operacji na określonym urządzeniu.
 
-4. Wywołaj metodę [**delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.delete) lub [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.deleteasync) , aby usunąć urządzenie z usługi Batch.
+4. Wywołaj [**metodę Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.delete) lub [**DeleteAsync,**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.deleteasync) aby usunąć urządzenie z partii.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -51,7 +48,7 @@ string selectedDeviceId;
 partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.ById(selectedDeviceId).Delete();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: DeleteDevice.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: DeleteDevice.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -59,21 +56,21 @@ partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selected
 
 | Metoda     | Identyfikator URI żądania                                                                                                                        |
 |------------|------------------------------------------------------------------------------------------------------------------------------------|
-| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/deviceBatches/{devicebatch-ID}/Devices/{Device-ID} http/1.1  |
+| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/deviceBatches/{devicebatch-id}/devices/{device-id} HTTP/1.1  |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj następujących parametrów ścieżki.
+Podczas tworzenia żądania użyj następujących parametrów ścieżki.
 
 | Nazwa           | Typ   | Wymagane | Opis                                                        |
 |----------------|--------|----------|--------------------------------------------------------------------|
-| Identyfikator klienta    | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta.              |
-| devicebatch — identyfikator | ciąg | Tak      | Identyfikator wsadu urządzenia partii zawierającej urządzenie. |
-| Identyfikator urządzenia      | ciąg | Tak      | Identyfikator urządzenia.                                             |
+| identyfikator klienta    | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.              |
+| devicebatch-id | ciąg | Tak      | Identyfikator wsadu urządzenia partii zawierającej urządzenie. |
+| identyfikator urządzenia      | ciąg | Tak      | Identyfikator urządzenia.                                             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -94,11 +91,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zwróci 204 kod stanu **zawartości** .
+Jeśli to się powiedzie, odpowiedź zwróci kod **stanu 204 Brak** zawartości.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

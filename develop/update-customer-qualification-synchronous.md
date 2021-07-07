@@ -1,37 +1,33 @@
 ---
 title: Aktualizowanie kwalifikacji klienta
-description: Dowiedz się, jak aktualizować kwalifikacje klienta za pośrednictwem synchronicznych ekranów lub przed sprawdzeniem, w tym adres skojarzony z profilem.
+description: Dowiedz się, jak zaktualizować kwalifikacje klienta za pomocą synchronicznego badania lub weryfikacyjnego, w tym adresu skojarzonego z profilem.
 ms.date: 12/07/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0ffe6d1a236a8a07e1ff71163e7639ef1f3437e1
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: 5047743afdef02033d9494e3d8c16c9ab96b3fe9
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030593"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446653"
 ---
-# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizowanie kwalifikacji klienta poprzez weryfikację synchroniczną
+# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizowanie kwalifikacji klienta za pomocą walidacji synchronicznej
 
-**Dotyczy**
+Dowiedz się, jak synchronicznie aktualizować kwalifikacje klienta za pośrednictwem Partner Center API. Aby dowiedzieć się, jak to zrobić asynchronicznie, zobacz Aktualizowanie kwalifikacji klienta za pomocą [walidacji asynchronicznej.](update-customer-qualification-asynchronous.md)
 
-- Centrum partnerskie
-
-Dowiedz się, jak aktualizować kwalifikacje klienta synchronicznie za pośrednictwem interfejsów API Centrum partnerskiego. Aby dowiedzieć się, jak to zrobić asynchronicznie, zobacz [Aktualizowanie kwalifikacji klienta za pośrednictwem walidacji asynchronicznej](update-customer-qualification-asynchronous.md).
-
-Partner może zaktualizować kwalifikację klienta pod kątem "edukacji" lub "GovernmentCommunityCloud". Nie można ustawić innych wartości, "none" i "non profit".
+Partner może zaktualizować kwalifikację klienta na "Edukacja" lub "GovernmentCo w chmurze". Innych wartości, "Brak" i "Nonprofit", nie można ustawić.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować kwalifikację klienta do "edukacji", wywołaj polecenie **[Update/dotnet/API/Microsoft. Store. partnercenter. kwalifikacja. icustomerqualification. Update)** na istniejącym  [**kliencie**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer).
+Aby zaktualizować kwalifikację klienta do "Edukacja", wywołaj **[Update/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification.update)** istniejącego [**klienta.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer)
 
 ``` csharp
 // CustomerQualification is an enum
@@ -39,9 +35,9 @@ Aby zaktualizować kwalifikację klienta do "edukacji", wywołaj polecenie **[Up
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: CustomerQualificationOperations. cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa:** CustomerQualificationOperations.cs
 
-Aby zaktualizować kwalifikację klienta do **GovernmentCommunityCloud** na istniejącym kliencie bez kwalifikacji, partner jest zobowiązany do uwzględnienia [**ValidationCode**](utility-resources.md#validationcode)klienta.
+Aby zaktualizować kwalifikację klienta do chmury **GovernmentCo w** przypadku istniejącego klienta bez kwalifikacji, partner musi uwzględnić kod [**weryfikacji klienta**](utility-resources.md#validationcode).
 
 ``` csharp
 // CustomerQualification is an enum
@@ -56,24 +52,24 @@ var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer
 
 | Metoda  | Identyfikator URI żądania                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer_ID}/Qualification? Code = {VALIDATIONCODE} http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer_id}/qualification?code={validationCode} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby zaktualizować kwalifikacje.
+Użyj następującego parametru zapytania, aby zaktualizować kwalifikację.
 
 | Nazwa                   | Typ | Wymagane | Opis                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | GUID | Tak      | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **validationCode**     | int  | Nie       | Wymagany tylko w przypadku chmury społecznościowej dla instytucji rządowych.                                                                                                            |
+| **identyfikator dzierżawy klienta** | GUID | Tak      | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **validationCode**     | int  | Nie       | Wymagane tylko w przypadku Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-Wartość całkowita z wyliczenia [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) .
+Wartość całkowita z [**wyliczenia CustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification)
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -88,11 +84,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zaktualizowaną Właściwość [**kwalifikacji**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zaktualizowaną właściwość [**Kwalifikacja**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

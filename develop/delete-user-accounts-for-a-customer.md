@@ -4,44 +4,40 @@ description: Jak usunąć istniejące konto użytkownika dla klienta.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 77fc1a1c7264779ca549be8d52798e90c91138bb
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: c45646da43b8926f911942374de5da07f318c526
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768129"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973064"
 ---
 # <a name="delete-a-user-account-for-a-customer"></a>Usuwanie konta użytkownika dla klienta
-
-**Dotyczy:**
-
-- Centrum partnerskie
 
 W tym artykule wyjaśniono, jak usunąć istniejące konto użytkownika dla klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator użytkownika. Jeśli nie masz identyfikatora użytkownika, zobacz temat [Pobieranie listy wszystkich kont użytkowników dla klienta](get-a-list-of-all-user-accounts-for-a-customer.md).
+- Identyfikator użytkownika. Jeśli nie masz identyfikatora użytkownika, zobacz Get a list of all user accounts for a customer (Uzyskiwanie listy wszystkich kont [użytkowników dla klienta).](get-a-list-of-all-user-accounts-for-a-customer.md)
 
 ## <a name="deleting-a-user-account"></a>Usuwanie konta użytkownika
 
-Po usunięciu konta użytkownika stan użytkownika jest ustawiony jako **nieaktywny** przez 30 dni. Po upływie 30 dni konto użytkownika i powiązane z nim dane są przeczyszczane i niemożliwym do odzyskania.
+Po usunięciu konta użytkownika stan użytkownika jest ustawiany na nieaktywny **przez** 30 dni. Po upływie 30 dni konto użytkownika i skojarzone z nim dane są przeczyszczane i nienadajne do nieodwracalności.
 
-Można [przywrócić usunięte konto użytkownika dla klienta](restore-a-user-for-a-customer.md) , jeśli konto nieaktywne znajduje się w oknie trzydziestu dni. Jednak podczas przywracania konta, które zostało usunięte i oznaczone jako nieaktywne, konto nie jest już zwracane jako element członkowski kolekcji użytkowników (na przykład po wyświetleniu [listy wszystkich kont użytkowników dla klienta](get-a-list-of-all-user-accounts-for-a-customer.md)).
+Możesz [przywrócić usunięte konto użytkownika dla klienta,](restore-a-user-for-a-customer.md) jeśli nieaktywne konto znajduje się w 30-dniowym oknie. Jednak po przywróceniu konta, które zostało usunięte i oznaczone jako nieaktywne, konto nie jest już zwracane jako element członkowski kolekcji użytkowników (na przykład w przypadku uzyskania listy wszystkich kont użytkowników dla [klienta).](get-a-list-of-all-user-accounts-for-a-customer.md)
 
 ## <a name="c"></a>C\#
 
 Aby usunąć istniejące konto użytkownika klienta:
 
-1. Użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
+1. Użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
 
-2. Wywołaj metodę [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) , aby zidentyfikować użytkownika.
+2. Wywołaj [**metodę Users.ById,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) aby zidentyfikować użytkownika.
 
-3. Wywołaj metodę [**delete**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.delete) , aby usunąć użytkownika i ustawić stan użytkownika jako nieaktywny.
+3. Wywołaj [**metodę Delete,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.delete) aby usunąć użytkownika i ustawić stan użytkownika na nieaktywny.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -51,7 +47,7 @@ Aby usunąć istniejące konto użytkownika klienta:
 partnerOperations.Customers.ById(selectedCustomerId).Users.ById(customerUserIdToDelete).Delete();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: DeleteCustomerUser.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: DeleteCustomerUser.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -59,20 +55,20 @@ partnerOperations.Customers.ById(selectedCustomerId).Users.ById(customerUserIdTo
 
 | Metoda     | Identyfikator URI żądania                                                                                            |
 |------------|--------------------------------------------------------------------------------------------------------|
-| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users/{User-ID} http/1.1 |
+| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id} HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów zapytania, aby zidentyfikować klienta i użytkownika.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                               |
 |------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------|
-| Identyfikator dzierżawy klienta     | GUID     | Y        | Wartość jest formatem **identyfikatora dzierżawy klienta** w formacie GUID, który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta. |
-| user-id                | GUID     | Y        | Wartość jest **identyfikatorem użytkownika** sformatowanym przez identyfikator GUID, który należy do jednego konta użytkownika.                                          |
+| identyfikator dzierżawy klienta     | GUID     | Y        | Wartość jest identyfikatorem **customer-tenant-id** w formacie identyfikatora GUID, który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta. |
+| user-id                | GUID     | Y        | Wartość jest identyfikatorem użytkownika w formacie **GUID,** który należy do jednego konta użytkownika.                                          |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -93,11 +89,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca 204 kod stanu **zawartości** .
+W przypadku powodzenia ta metoda zwraca kod **stanu 204 Brak** zawartości.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

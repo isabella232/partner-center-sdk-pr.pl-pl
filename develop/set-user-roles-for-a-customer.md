@@ -1,33 +1,29 @@
 ---
 title: Ustawianie ról użytkownika dla klienta
-description: W ramach konta klienta istnieje zestaw ról w katalogu. Do tych ról można przypisywać konta użytkowników.
+description: W ramach konta klienta istnieje zestaw ról katalogu. Do tych ról można przypisać konta użytkowników.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f42120e40e54ff8bd6242634d97268091abf8e1c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: a035d711ffa91200fa7b479ed5ec53929aa4feaf
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768269"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446704"
 ---
 # <a name="set-user-roles-for-a-customer"></a>Ustawianie ról użytkownika dla klienta
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-W ramach konta klienta istnieje zestaw ról w katalogu. Do tych ról można przypisywać konta użytkowników.
+W ramach konta klienta istnieje zestaw ról katalogu. Do tych ról można przypisać konta użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby przypisać rolę katalogu do użytkownika klienta, Utwórz nowy [**UserMember**](/dotnet/api/microsoft.store.partnercenter.models.roles.usermember) z odpowiednimi szczegółami użytkownika. Następnie Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z określonym identyfikatorem klienta, aby zidentyfikować klienta. W tym miejscu Użyj metody [**DirectoryRoles. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) z identyfikatorem roli katalogu, aby określić rolę. Następnie uzyskaj dostęp do kolekcji **UserMembers** i użyj metody [**Create**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.create) , aby dodać członka nowego użytkownika do kolekcji członków użytkownika przypisanych do tej roli.
+Aby przypisać rolę katalogu do użytkownika klienta, utwórz nowego użytkownika [**UserMember z**](/dotnet/api/microsoft.store.partnercenter.models.roles.usermember) odpowiednimi szczegółami użytkownika. Następnie wywołaj metodę [**IAggregatePartner.Customers.ById z**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) określonym identyfikatorem klienta, aby zidentyfikować klienta. W tym miejscu użyj [**metody DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) z identyfikatorem roli katalogu, aby określić rolę. Następnie uzyskaj dostęp do **kolekcji UserMembers** i użyj metody [**Create,**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.create) aby dodać nowego członka użytkownika do kolekcji członków użytkowników przypisanych do tej roli.
 
 ``` csharp
 // UserMember createdUser;
@@ -47,7 +43,7 @@ UserMember userMemberToAdd = new UserMember()
 var userMemberAdded = partnerOperations.Customers.ById(selectedCustomer.Id).DirectoryRoles.ById(selectedRole.Id).UserMembers.Create(userMemberToAdd);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: AddUserMemberToDirectoryRole.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: AddUserMemberToDirectoryRole.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -55,20 +51,20 @@ var userMemberAdded = partnerOperations.Customers.ById(selectedCustomer.Id).Dire
 
 | Metoda   | Identyfikator URI żądania                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/directoryroles/{role-ID}/usermembers http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/directoryroles/{identyfikator-roli}/usermembers HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następujących parametrów identyfikatora URI, aby zidentyfikować prawidłowego klienta i rolę. Aby zidentyfikować użytkownika, do którego ma zostać przypisana rola, podaj informacje identyfikacyjne w treści żądania.
+Użyj następujących parametrów URI, aby zidentyfikować prawidłowego klienta i rolę. Aby zidentyfikować użytkownika, do którego ma zostać przypisana rola, należy podać informacje identyfikujące w treści żądania.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
-| **Identyfikator roli**            | **guid** | Y        | Wartość jest **identyfikatorem** GUID z sformatowaną rolą identyfikującą rolę, która ma zostać przypisana do użytkownika.                                                              |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
+| **identyfikator roli**            | **guid** | Y        | Wartość jest identyfikatorem roli sformatowanym przez **identyfikator** GUID, który identyfikuje rolę, która ma zostać przypisana do użytkownika.                                                              |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -76,10 +72,10 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 | Nazwa                  | Typ       | Wymagane | Opis                            |
 |-----------------------|------------|----------|----------------------------------------|
-| **#C1**                | **parametry** | Y        | Identyfikator użytkownika, który ma zostać dodany do roli. |
-| **Nazwa wyświetlana**       | **parametry** | Y        | Przyjazna nazwa wyświetlana użytkownika. |
-| **UserPrincipalName** | **parametry** | Y        | Nazwa podmiotu zabezpieczeń użytkownika.        |
-| **Atrybuty**        | **Stream** | Y        | Zawiera "ObjectType": "UserMember"     |
+| **Identyfikator**                | **ciąg** | Y        | Identyfikator użytkownika, który ma dodać do roli. |
+| **Nazwa wyświetlana**       | **ciąg** | Y        | Przyjazna nazwa wyświetlana użytkownika. |
+| **Userprincipalname** | **ciąg** | Y        | Nazwa podmiotu zabezpieczeń użytkownika.        |
+| **Atrybuty**        | **Obiektu** | Y        | Zawiera "ObjectType":"UserMember"     |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -107,11 +103,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Ta metoda zwraca konto użytkownika z identyfikatorem roli dołączonym, gdy użytkownik pomyślnie przypisał rolę.
+Ta metoda zwraca konto użytkownika z dołączonym identyfikatorem roli, gdy użytkownik zostanie pomyślnie przypisany do roli.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

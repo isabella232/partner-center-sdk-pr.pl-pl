@@ -1,41 +1,37 @@
 ---
 title: Pobieranie klientów odsprzedawcy pośredniego
-description: Jak uzyskać listę klientów pośredniego odsprzedawcy.
+description: Jak uzyskać listę klientów odsprzedawcy pośredniego.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e4219f544a74bb3f34ec3aefe08cf18eed77fd42
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e05248b16b803529258de806c25b117f3104ad2a
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768333"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446330"
 ---
 # <a name="get-customers-of-an-indirect-reseller"></a>Pobieranie klientów odsprzedawcy pośredniego
 
-**Dotyczy**
-
-- Centrum partnerskie
-
-Jak uzyskać listę klientów pośredniego odsprzedawcy.
+Jak uzyskać listę klientów odsprzedawcy pośredniego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator dzierżawy pośredniego odsprzedawcy.
+- Identyfikator dzierżawy odsprzedawcy pośredniego.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję klientów, którzy mają relację z określonym odsprzedawcą średnią, należy najpierw utworzyć wystąpienie obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) , aby utworzyć filtr. Należy przekazać element członkowski wyliczenia [**CustomerSearchField. IndirectReseller**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield) przekonwertowany do ciągu i wskazać [**FieldFilterOperation. StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation) jako typ operacji filtrowania. Należy również podać identyfikator dzierżawy pośredniego odsprzedawcy, według którego ma zostać przefiltrowany.
+Aby uzyskać kolekcję klientów, którzy mają relację z określonym odsprzedawcą pośrednim, najpierw utwórz wystąpienia obiektu [**SimpleFieldFilter,**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) aby utworzyć filtr. Należy przekazać członka wyliczenia [**CustomerSearchField.IndirectReseller**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield) przekonwertowanego na ciąg i wskazać typ operacji filtrowania [**FieldFilterOperation.StartsWith.**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation) Należy również podać identyfikator dzierżawy odsprzedawcy pośredniego, według których ma być filtrowany.
 
-Następnie Utwórz wystąpienie obiektu [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) , aby przekazać go do zapytania przez wywołanie metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazanie jej do filtru. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez klasę [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .
+Następnie należy utworzyć wystąpienia obiektu [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) w celu przekazania do zapytania, wywołując metodę [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazując do niego filtr. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez [**klasę QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Aby wykonać filtr i uzyskać wynik, należy najpierw użyć [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby uzyskać interfejs do operacji klienta partnera. Następnie Wywołaj [**zapytanie**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub metodę [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) .
+Aby wykonać filtr i uzyskać wynik, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs do operacji klienta partnera. Następnie wywołaj [**metodę Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
-Aby utworzyć moduł wyliczający do przechodzenia z stronicowanymi wynikami, Pobierz interfejs fabryki modułu wyliczającego kolekcji klienta z właściwości [**IAggregatePartner. Enumerators. Customers**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumeratorcontainer.customers) , a następnie Wywołaj polecenie [**Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create), jak pokazano w poniższym kodzie, przekazując zmienną, która zawiera kolekcję klientów.
+Aby utworzyć moduł wyliczający do przechodzenia wyników stronicowania, pobierz interfejs fabryki modułu wyliczania kolekcji klientów z właściwości [**IAggregatePartner.Enumerators.Customers,**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumeratorcontainer.customers) a następnie wywołaj wywołanie create [**,**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create)jak pokazano w poniższym kodzie, przekazując zmienną, która przechowuje kolekcję klientów.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -70,7 +66,7 @@ while (customersEnumerator.HasValue)
 }
 ```
 
-**Przykład**:**projekt** [aplikacji testowej konsoli](console-test-app.md): **Klasa** przykładów zestawu SDK Centrum partnerskiego: GetCustomersOfIndirectReseller.cs
+**Przykład:** [Aplikacja testowa konsoli](console-test-app.md)**Project**: zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomersOfIndirectReseller.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -78,20 +74,20 @@ while (customersEnumerator.HasValue)
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers? size = {size}? Filter = {Filter} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size}?filter={filter} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następujących parametrów zapytania, aby utworzyć żądanie.
+Aby utworzyć żądanie, użyj następujących parametrów zapytania.
 
 | Nazwa   | Typ   | Wymagane | Opis                                                                                                                                                                                                                                                                                   |
 |--------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| size   | int    | Nie       | Liczba wyników do wyświetlenia w tym samym czasie. Ten parametr jest opcjonalny.                                                                                                                                                                                                                |
-| filter | filter | Tak      | Zapytanie filtrujące wyszukiwanie. Aby pobrać klientów dla określonego odsprzedawcy pośredniego, należy wstawić pośredni identyfikator odsprzedawcy i dołączyć i kodować następujący ciąg: {"pole": "IndirectReseller", "value": "{pośredni odsprzedawca identyfikator}", "operator": "zaczyna \_ się od"}. |
+| size   | int    | Nie       | Liczba wyników, które mają być wyświetlane jednocześnie. Ten parametr jest opcjonalny.                                                                                                                                                                                                                |
+| filter | filter | Tak      | Zapytanie filtruje wyszukiwanie. Aby pobrać klientów dla określonego odsprzedawcy pośredniego, należy wstawić identyfikator odsprzedawcy pośredniego oraz dołączyć i zakodować następujący ciąg: {"Pole":"IndirectReseller","Value":"{identyfikator odsprzedawcy pośredniego}","Operator":"rozpoczyna się \_ od"}. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -109,7 +105,7 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-### <a name="request-example-decoded"></a>Przykład żądania (zdekodowany)
+### <a name="request-example-decoded"></a>Przykładowe żądanie (zdekodowane)
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers?size=0&filter={"Field":"IndirectReseller","Value":"484e548c-f5f3-4528-93a9-c16c6373cb59","Operator":"starts_with"} HTTP/1.1
@@ -123,11 +119,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera informacje o klientach odsprzedawcy.
+W przypadku powodzenia treść odpowiedzi zawiera informacje o klientach odsprzedawcy.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

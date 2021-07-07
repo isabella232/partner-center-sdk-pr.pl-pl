@@ -4,30 +4,26 @@ description: Jak utworzyć nowe zasady samoobsługi.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd1579b2775ead57a440db0d6afb3bf22164c319
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 14f46e22fbd294c765b745204cf62474250cbfbd
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770219"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973693"
 ---
-# <a name="create-a-selfservepolicy"></a><span data-ttu-id="9695d-103">Utwórz SelfServePolicy</span><span class="sxs-lookup"><span data-stu-id="9695d-103">Create a SelfServePolicy</span></span>
+# <a name="create-a-selfservepolicy"></a><span data-ttu-id="ab241-103">Tworzenie selfServePolicy</span><span class="sxs-lookup"><span data-stu-id="ab241-103">Create a SelfServePolicy</span></span>
 
-<span data-ttu-id="9695d-104">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="9695d-104">**Applies to:**</span></span>
+<span data-ttu-id="ab241-104">W tym artykule wyjaśniono, jak utworzyć nowe zasady samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="ab241-104">This article explains how to create a new self-serve policy.</span></span>
 
-- <span data-ttu-id="9695d-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="9695d-105">Partner Center</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ab241-105">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="ab241-105">Prerequisites</span></span>
 
-<span data-ttu-id="9695d-106">W tym temacie opisano sposób tworzenia nowych zasad samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="9695d-106">This topic explains how to create a new self-serve policy.</span></span>
+- <span data-ttu-id="ab241-106">Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="ab241-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="ab241-107">Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="ab241-107">This scenario supports authentication with Application+User credentials.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9695d-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="9695d-107">Prerequisites</span></span>
+## <a name="c"></a><span data-ttu-id="ab241-108">C\#</span><span class="sxs-lookup"><span data-stu-id="ab241-108">C\#</span></span>
 
-- <span data-ttu-id="9695d-108">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="9695d-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="9695d-109">Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="9695d-109">This scenario supports authentication with Application+User credentials.</span></span>
+<span data-ttu-id="ab241-109">Utwórz zasady samoobsługowe:</span><span class="sxs-lookup"><span data-stu-id="ab241-109">Create a self-serve policy:</span></span>
 
-## <a name="c"></a><span data-ttu-id="9695d-110">C\#</span><span class="sxs-lookup"><span data-stu-id="9695d-110">C\#</span></span>
-
-<span data-ttu-id="9695d-111">Utwórz zasady samoobsługi:</span><span class="sxs-lookup"><span data-stu-id="9695d-111">Create a self-serve policy:</span></span>
-
-1. <span data-ttu-id="9695d-112">Wywołaj metodę [**IAggregatePartner. SelfServePolicies. Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) lub [**IAggregatePartner. SelfServePolicies. onasync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) z informacjami o zasadach samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="9695d-112">Call the [**IAggregatePartner.SelfServePolicies.Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) or [**IAggregatePartner.SelfServePolicies.CreateAsync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) method with the self-serve policy info.</span></span>
+1. <span data-ttu-id="ab241-110">Wywołaj [**metodę IAggregatePartner.SelfServePolicies.Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) lub [**IAggregatePartner.SelfServePolicies.CreateAsync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) z informacjami o zasadach samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="ab241-110">Call the [**IAggregatePartner.SelfServePolicies.Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) or [**IAggregatePartner.SelfServePolicies.CreateAsync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) method with the self-serve policy info.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -62,46 +58,46 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 SelfServePolicy createdSelfServePolicy = scopedPartnerOperations.selfServePolicies.Create(selfServePolicy);
 ```
 
-<span data-ttu-id="9695d-113">Aby zapoznać się z przykładem, zobacz następujące tematy:</span><span class="sxs-lookup"><span data-stu-id="9695d-113">For an example, see the following:</span></span>
+<span data-ttu-id="ab241-111">Przykład można znaleźć w następujących tematach:</span><span class="sxs-lookup"><span data-stu-id="ab241-111">For an example, see the following:</span></span>
 
-- <span data-ttu-id="9695d-114">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="9695d-114">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="9695d-115">Projekt: **PartnerSDK. FeatureSamples**</span><span class="sxs-lookup"><span data-stu-id="9695d-115">Project: **PartnerSDK.FeatureSamples**</span></span>
-- <span data-ttu-id="9695d-116">Klasa: **CreateSelfServePolicies.cs**</span><span class="sxs-lookup"><span data-stu-id="9695d-116">Class: **CreateSelfServePolicies.cs**</span></span>
+- <span data-ttu-id="ab241-112">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="ab241-112">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="ab241-113">Project: **PartnerSDK.FeatureSamples**</span><span class="sxs-lookup"><span data-stu-id="ab241-113">Project: **PartnerSDK.FeatureSamples**</span></span>
+- <span data-ttu-id="ab241-114">Klasa: **CreateSelfServePolicies.cs**</span><span class="sxs-lookup"><span data-stu-id="ab241-114">Class: **CreateSelfServePolicies.cs**</span></span>
 
 
-## <a name="rest-request"></a><span data-ttu-id="9695d-117">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="9695d-117">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="ab241-115">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="ab241-115">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="9695d-118">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="9695d-118">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="ab241-116">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="ab241-116">Request syntax</span></span>
 
-| <span data-ttu-id="9695d-119">Metoda</span><span class="sxs-lookup"><span data-stu-id="9695d-119">Method</span></span>   | <span data-ttu-id="9695d-120">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="9695d-120">Request URI</span></span>                                                       |
+| <span data-ttu-id="ab241-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="ab241-117">Method</span></span>   | <span data-ttu-id="ab241-118">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="ab241-118">Request URI</span></span>                                                       |
 |----------|-------------------------------------------------------------------|
-| <span data-ttu-id="9695d-121">**POUBOJOWEGO**</span><span class="sxs-lookup"><span data-stu-id="9695d-121">**POST**</span></span> | <span data-ttu-id="9695d-122">[*{baseURL}*](partner-center-rest-urls.md)/V1/SelfServePolicy http/1.1</span><span class="sxs-lookup"><span data-stu-id="9695d-122">[*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1</span></span> |
+| <span data-ttu-id="ab241-119">**Post**</span><span class="sxs-lookup"><span data-stu-id="ab241-119">**POST**</span></span> | <span data-ttu-id="ab241-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="ab241-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="9695d-123">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="9695d-123">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="ab241-121">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="ab241-121">Request headers</span></span>
 
-- <span data-ttu-id="9695d-124">Identyfikator żądania i identyfikator korelacji są wymagane.</span><span class="sxs-lookup"><span data-stu-id="9695d-124">A request ID and correlation ID are required.</span></span>
-- <span data-ttu-id="9695d-125">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md) .</span><span class="sxs-lookup"><span data-stu-id="9695d-125">See [Partner Center REST headers](headers.md) for more information.</span></span>
+- <span data-ttu-id="ab241-122">Wymagany jest identyfikator żądania i identyfikator korelacji.</span><span class="sxs-lookup"><span data-stu-id="ab241-122">A request ID and correlation ID are required.</span></span>
+- <span data-ttu-id="ab241-123">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="ab241-123">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="9695d-126">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="9695d-126">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="ab241-124">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="ab241-124">Request body</span></span>
 
-<span data-ttu-id="9695d-127">W tej tabeli opisano wymagane właściwości w treści żądania.</span><span class="sxs-lookup"><span data-stu-id="9695d-127">This table describes the required properties in the request body.</span></span>
+<span data-ttu-id="ab241-125">W tej tabeli opisano wymagane właściwości w treści żądania.</span><span class="sxs-lookup"><span data-stu-id="ab241-125">This table describes the required properties in the request body.</span></span>
 
-| <span data-ttu-id="9695d-128">Nazwa</span><span class="sxs-lookup"><span data-stu-id="9695d-128">Name</span></span>                              | <span data-ttu-id="9695d-129">Typ</span><span class="sxs-lookup"><span data-stu-id="9695d-129">Type</span></span>   | <span data-ttu-id="9695d-130">Opis</span><span class="sxs-lookup"><span data-stu-id="9695d-130">Description</span></span>                                 |
+| <span data-ttu-id="ab241-126">Nazwa</span><span class="sxs-lookup"><span data-stu-id="ab241-126">Name</span></span>                              | <span data-ttu-id="ab241-127">Typ</span><span class="sxs-lookup"><span data-stu-id="ab241-127">Type</span></span>   | <span data-ttu-id="ab241-128">Opis</span><span class="sxs-lookup"><span data-stu-id="ab241-128">Description</span></span>                                 |
 |------------------------------------------------------------------|--------|---------------------------------------------|
-| [<span data-ttu-id="9695d-131">SelfServePolicy</span><span class="sxs-lookup"><span data-stu-id="9695d-131">SelfServePolicy</span></span>](self-serve-policy-resources.md#selfservepolicy)| <span data-ttu-id="9695d-132">object</span><span class="sxs-lookup"><span data-stu-id="9695d-132">object</span></span> | <span data-ttu-id="9695d-133">Informacje o zasadach samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="9695d-133">The self-serve policy information.</span></span> |
+| [<span data-ttu-id="ab241-129">SelfServePolicy</span><span class="sxs-lookup"><span data-stu-id="ab241-129">SelfServePolicy</span></span>](self-serve-policy-resources.md#selfservepolicy)| <span data-ttu-id="ab241-130">object</span><span class="sxs-lookup"><span data-stu-id="ab241-130">object</span></span> | <span data-ttu-id="ab241-131">Informacje o zasadach samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="ab241-131">The self-serve policy information.</span></span> |
 
-#### <a name="selfservepolicy"></a><span data-ttu-id="9695d-134">SelfServePolicy</span><span class="sxs-lookup"><span data-stu-id="9695d-134">SelfServePolicy</span></span>
+#### <a name="selfservepolicy"></a><span data-ttu-id="ab241-132">SelfServePolicy</span><span class="sxs-lookup"><span data-stu-id="ab241-132">SelfServePolicy</span></span>
 
-<span data-ttu-id="9695d-135">Ta tabela zawiera opis minimalnych wymaganych pól z zasobów [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) wymaganych do utworzenia nowych zasad samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="9695d-135">This table describes the minimum required fields from the [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) resource needed to create a new self-serve policy.</span></span>
+<span data-ttu-id="ab241-133">W tej tabeli opisano minimalne wymagane pola z zasobu [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) potrzebne do utworzenia nowych zasad samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="ab241-133">This table describes the minimum required fields from the [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) resource needed to create a new self-serve policy.</span></span>
 
-| <span data-ttu-id="9695d-136">Właściwość</span><span class="sxs-lookup"><span data-stu-id="9695d-136">Property</span></span>              | <span data-ttu-id="9695d-137">Typ</span><span class="sxs-lookup"><span data-stu-id="9695d-137">Type</span></span>             | <span data-ttu-id="9695d-138">Opis</span><span class="sxs-lookup"><span data-stu-id="9695d-138">Description</span></span>                                                                                            |
+| <span data-ttu-id="ab241-134">Właściwość</span><span class="sxs-lookup"><span data-stu-id="ab241-134">Property</span></span>              | <span data-ttu-id="ab241-135">Typ</span><span class="sxs-lookup"><span data-stu-id="ab241-135">Type</span></span>             | <span data-ttu-id="ab241-136">Opis</span><span class="sxs-lookup"><span data-stu-id="ab241-136">Description</span></span>                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="9695d-139">SelfServeEntity</span><span class="sxs-lookup"><span data-stu-id="9695d-139">SelfServeEntity</span></span>       | <span data-ttu-id="9695d-140">SelfServeEntity</span><span class="sxs-lookup"><span data-stu-id="9695d-140">SelfServeEntity</span></span>  | <span data-ttu-id="9695d-141">Samoobsługowa jednostka, do której uzyskuje się dostęp.</span><span class="sxs-lookup"><span data-stu-id="9695d-141">The self-serve entity that is being granted access.</span></span>                                                     |
-| <span data-ttu-id="9695d-142">Użytkownik udzielający uprawnienia</span><span class="sxs-lookup"><span data-stu-id="9695d-142">Grantor</span></span>               | <span data-ttu-id="9695d-143">Użytkownik udzielający uprawnienia</span><span class="sxs-lookup"><span data-stu-id="9695d-143">Grantor</span></span>          | <span data-ttu-id="9695d-144">Użytkownik udzielający uprawnienia udzielający dostępu.</span><span class="sxs-lookup"><span data-stu-id="9695d-144">The grantor that is granting access.</span></span>                                                                    |
-| <span data-ttu-id="9695d-145">Uprawnienia</span><span class="sxs-lookup"><span data-stu-id="9695d-145">Permissions</span></span>           | <span data-ttu-id="9695d-146">Tablica uprawnień</span><span class="sxs-lookup"><span data-stu-id="9695d-146">Array of Permission</span></span>| <span data-ttu-id="9695d-147">Tablica zasobów [uprawnień](self-serve-policy-resources.md#permission) .</span><span class="sxs-lookup"><span data-stu-id="9695d-147">An Array of [Permission](self-serve-policy-resources.md#permission) resources.</span></span>                                                                     |
+| <span data-ttu-id="ab241-137">SelfServeEntity</span><span class="sxs-lookup"><span data-stu-id="ab241-137">SelfServeEntity</span></span>       | <span data-ttu-id="ab241-138">SelfServeEntity</span><span class="sxs-lookup"><span data-stu-id="ab241-138">SelfServeEntity</span></span>  | <span data-ttu-id="ab241-139">Jednostka samoobsługi, która ma przyznany dostęp.</span><span class="sxs-lookup"><span data-stu-id="ab241-139">The self-serve entity that is being granted access.</span></span>                                                     |
+| <span data-ttu-id="ab241-140">Grantor</span><span class="sxs-lookup"><span data-stu-id="ab241-140">Grantor</span></span>               | <span data-ttu-id="ab241-141">Grantor</span><span class="sxs-lookup"><span data-stu-id="ab241-141">Grantor</span></span>          | <span data-ttu-id="ab241-142">Grantor, który udziela dostępu.</span><span class="sxs-lookup"><span data-stu-id="ab241-142">The grantor that is granting access.</span></span>                                                                    |
+| <span data-ttu-id="ab241-143">Uprawnienia</span><span class="sxs-lookup"><span data-stu-id="ab241-143">Permissions</span></span>           | <span data-ttu-id="ab241-144">Tablica uprawnień</span><span class="sxs-lookup"><span data-stu-id="ab241-144">Array of Permission</span></span>| <span data-ttu-id="ab241-145">Tablica [zasobów](self-serve-policy-resources.md#permission) uprawnień.</span><span class="sxs-lookup"><span data-stu-id="ab241-145">An Array of [Permission](self-serve-policy-resources.md#permission) resources.</span></span>                                                                     |
 
 
-### <a name="request-example"></a><span data-ttu-id="9695d-148">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="9695d-148">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="ab241-146">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="ab241-146">Request example</span></span>
 
 ```http
 POST https://api.partnercenter.microsoft.com/v1/SelfServePolicy HTTP/1.1
@@ -132,22 +128,22 @@ Connection: Keep-Alive
 }
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="9695d-149">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="9695d-149">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="ab241-147">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="ab241-147">REST response</span></span>
 
-<span data-ttu-id="9695d-150">Jeśli to się powiedzie, ten interfejs API zwraca zasób [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) dla nowych zasad samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="9695d-150">If successful, this API returns a [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) resource for the new self-serve policy.</span></span>
+<span data-ttu-id="ab241-148">Jeśli to się powiedzie, ten interfejs API zwraca [zasób SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) dla nowych zasad samoobsługi.</span><span class="sxs-lookup"><span data-stu-id="ab241-148">If successful, this API returns a [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) resource for the new self-serve policy.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="9695d-151">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="9695d-151">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="ab241-149">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="ab241-149">Response success and error codes</span></span>
 
-<span data-ttu-id="9695d-152">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="9695d-152">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="9695d-153">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="9695d-153">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="9695d-154">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="9695d-154">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="ab241-150">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="ab241-150">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="ab241-151">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="ab241-151">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="ab241-152">Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="ab241-152">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-<span data-ttu-id="9695d-155">Ta metoda zwraca następujące kody błędów:</span><span class="sxs-lookup"><span data-stu-id="9695d-155">This method returns the following error codes:</span></span>
+<span data-ttu-id="ab241-153">Ta metoda zwraca następujące kody błędów:</span><span class="sxs-lookup"><span data-stu-id="ab241-153">This method returns the following error codes:</span></span>
 
-| <span data-ttu-id="9695d-156">Kod stanu HTTP</span><span class="sxs-lookup"><span data-stu-id="9695d-156">HTTP Status Code</span></span>     | <span data-ttu-id="9695d-157">Kod błędu</span><span class="sxs-lookup"><span data-stu-id="9695d-157">Error code</span></span>   | <span data-ttu-id="9695d-158">Opis</span><span class="sxs-lookup"><span data-stu-id="9695d-158">Description</span></span>                                                                |
+| <span data-ttu-id="ab241-154">Kod stanu HTTP</span><span class="sxs-lookup"><span data-stu-id="ab241-154">HTTP Status Code</span></span>     | <span data-ttu-id="ab241-155">Kod błędu</span><span class="sxs-lookup"><span data-stu-id="ab241-155">Error code</span></span>   | <span data-ttu-id="ab241-156">Opis</span><span class="sxs-lookup"><span data-stu-id="ab241-156">Description</span></span>                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| <span data-ttu-id="9695d-159">409</span><span class="sxs-lookup"><span data-stu-id="9695d-159">409</span></span>                  | <span data-ttu-id="9695d-160">600041</span><span class="sxs-lookup"><span data-stu-id="9695d-160">600041</span></span>       | <span data-ttu-id="9695d-161">Zasady samoobsługowe już istnieją.</span><span class="sxs-lookup"><span data-stu-id="9695d-161">Self-serve policy already exists.</span></span>                                                     |
+| <span data-ttu-id="ab241-157">409</span><span class="sxs-lookup"><span data-stu-id="ab241-157">409</span></span>                  | <span data-ttu-id="ab241-158">600041</span><span class="sxs-lookup"><span data-stu-id="ab241-158">600041</span></span>       | <span data-ttu-id="ab241-159">Zasady samoobsługi już istnieją.</span><span class="sxs-lookup"><span data-stu-id="ab241-159">Self-serve policy already exists.</span></span>                                                     |
 
 
-### <a name="response-example"></a><span data-ttu-id="9695d-162">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="9695d-162">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="ab241-160">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="ab241-160">Response example</span></span>
 
 ```http
 HTTP/1.1 201 Created

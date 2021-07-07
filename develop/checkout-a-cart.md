@@ -1,38 +1,33 @@
 ---
 title: Finalizacja zakupu koszyka
-description: Dowiedz się, jak sprawdzić zamówienie klienta w koszyku przy użyciu interfejsów API Centrum partnerskiego. Możesz to zrobić, aby zakończyć zamówienie klienta.
+description: Dowiedz się, jak sprawdzić zamówienie klienta w koszyku przy użyciu Partner Center API. Możesz to zrobić, aby ukończyć zamówienie klienta.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 094817a34cd29bc96788fcfb6a16610a8192d784
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97768594"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974050"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a><span data-ttu-id="5add9-104">Wyewidencjonowywanie zamówienia dla klienta w koszyku</span><span class="sxs-lookup"><span data-stu-id="5add9-104">Checkout an order for a customer in a cart</span></span>
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a><span data-ttu-id="051e3-104">Wyewidencjonowanie zamówienia klienta w koszyku</span><span class="sxs-lookup"><span data-stu-id="051e3-104">Checkout an order for a customer in a cart</span></span>
 
-<span data-ttu-id="5add9-105">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="5add9-105">**Applies to:**</span></span>
+<span data-ttu-id="051e3-105">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="051e3-105">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="5add9-106">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="5add9-106">Partner Center</span></span>
-- <span data-ttu-id="5add9-107">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="5add9-107">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="5add9-108">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="5add9-108">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="5add9-109">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="5add9-109">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="051e3-106">Jak wyewidencjonować zamówienie klienta w koszyku.</span><span class="sxs-lookup"><span data-stu-id="051e3-106">How to checkout an order for a customer in a cart.</span></span>
 
-<span data-ttu-id="5add9-110">Jak wyewidencjonować zamówienie dla klienta w koszyku.</span><span class="sxs-lookup"><span data-stu-id="5add9-110">How to checkout an order for a customer in a cart.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="051e3-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="051e3-107">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5add9-111">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="5add9-111">Prerequisites</span></span>
+- <span data-ttu-id="051e3-108">Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="051e3-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="051e3-109">Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="051e3-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="5add9-112">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="5add9-112">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="5add9-113">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="5add9-113">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="051e3-110">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="051e3-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="051e3-111">Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard).</span><span class="sxs-lookup"><span data-stu-id="051e3-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="051e3-112">Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.**</span><span class="sxs-lookup"><span data-stu-id="051e3-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="051e3-113">Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**.</span><span class="sxs-lookup"><span data-stu-id="051e3-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="051e3-114">Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta.</span><span class="sxs-lookup"><span data-stu-id="051e3-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="051e3-115">Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="051e3-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="5add9-114">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="5add9-114">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="5add9-115">Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego.</span><span class="sxs-lookup"><span data-stu-id="5add9-115">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="5add9-116">Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**.</span><span class="sxs-lookup"><span data-stu-id="5add9-116">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="5add9-117">Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**.</span><span class="sxs-lookup"><span data-stu-id="5add9-117">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="5add9-118">Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** .</span><span class="sxs-lookup"><span data-stu-id="5add9-118">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="5add9-119">Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="5add9-119">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+- <span data-ttu-id="051e3-116">Identyfikator koszyka dla istniejącego koszyka.</span><span class="sxs-lookup"><span data-stu-id="051e3-116">A Cart ID for an existing cart.</span></span>
 
-- <span data-ttu-id="5add9-120">Identyfikator koszyka dla istniejącego koszyka.</span><span class="sxs-lookup"><span data-stu-id="5add9-120">A Cart ID for an existing cart.</span></span>
+## <a name="c"></a><span data-ttu-id="051e3-117">C\#</span><span class="sxs-lookup"><span data-stu-id="051e3-117">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="5add9-121">C\#</span><span class="sxs-lookup"><span data-stu-id="5add9-121">C\#</span></span>
-
-<span data-ttu-id="5add9-122">Aby wyewidencjonować zamówienie dla klienta, Uzyskaj odwołanie do koszyka przy użyciu identyfikatora koszyka i klienta.</span><span class="sxs-lookup"><span data-stu-id="5add9-122">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="5add9-123">Na koniec Wywołaj funkcje **Create** lub **setasync** , aby zakończyć zamówienie.</span><span class="sxs-lookup"><span data-stu-id="5add9-123">Finally, call the **Create** or **CreateAsync** functions to complete the order.</span></span>
+<span data-ttu-id="051e3-118">Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta.</span><span class="sxs-lookup"><span data-stu-id="051e3-118">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="051e3-119">Na koniec wywołaj **funkcje Create** lub **CreateAsync,** aby ukończyć kolejność.</span><span class="sxs-lookup"><span data-stu-id="051e3-119">Finally, call the **Create** or **CreateAsync** functions to complete the order.</span></span>
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -42,11 +37,11 @@ ms.locfileid: "97768594"
 var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checkout();
 ```
 
-## <a name="java"></a><span data-ttu-id="5add9-124">Java</span><span class="sxs-lookup"><span data-stu-id="5add9-124">Java</span></span>
+## <a name="java"></a><span data-ttu-id="051e3-120">Java</span><span class="sxs-lookup"><span data-stu-id="051e3-120">Java</span></span>
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-<span data-ttu-id="5add9-125">Aby wyewidencjonować zamówienie dla klienta, Uzyskaj odwołanie do koszyka przy użyciu identyfikatora koszyka i klienta.</span><span class="sxs-lookup"><span data-stu-id="5add9-125">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="5add9-126">Na koniec wywołaj funkcję **Create** , aby zakończyć zamówienie.</span><span class="sxs-lookup"><span data-stu-id="5add9-126">Finally, call the **create** function to complete the order.</span></span>
+<span data-ttu-id="051e3-121">Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta.</span><span class="sxs-lookup"><span data-stu-id="051e3-121">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="051e3-122">Na koniec wywołaj **funkcję create,** aby ukończyć kolejność.</span><span class="sxs-lookup"><span data-stu-id="051e3-122">Finally, call the **create** function to complete the order.</span></span>
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -56,11 +51,11 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(cartId).checkout();
 ```
 
-## <a name="powershell"></a><span data-ttu-id="5add9-127">PowerShell</span><span class="sxs-lookup"><span data-stu-id="5add9-127">PowerShell</span></span>
+## <a name="powershell"></a><span data-ttu-id="051e3-123">PowerShell</span><span class="sxs-lookup"><span data-stu-id="051e3-123">PowerShell</span></span>
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-<span data-ttu-id="5add9-128">Aby wyewidencjonować zamówienie dla klienta, wykonaj polecenie [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) , aby zakończyć zamówienie.</span><span class="sxs-lookup"><span data-stu-id="5add9-128">To checkout an order for a customer, execute the [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) to complete the order.</span></span>
+<span data-ttu-id="051e3-124">Aby wyewidencjonować zamówienie klienta, wykonaj polecenie [**Submit-PartnerCustomerCart,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) aby ukończyć zamówienie.</span><span class="sxs-lookup"><span data-stu-id="051e3-124">To checkout an order for a customer, execute the [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) to complete the order.</span></span>
 
 ```powershell
 # $customerId
@@ -69,32 +64,32 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 Submit-PartnerCustomerCart -CartId $cartId -CustomerId $customerId
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="5add9-129">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="5add9-129">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="051e3-125">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="051e3-125">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="5add9-130">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="5add9-130">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="051e3-126">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="051e3-126">Request syntax</span></span>
 
-| <span data-ttu-id="5add9-131">Metoda</span><span class="sxs-lookup"><span data-stu-id="5add9-131">Method</span></span>   | <span data-ttu-id="5add9-132">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="5add9-132">Request URI</span></span>                                                                                                 |
+| <span data-ttu-id="051e3-127">Metoda</span><span class="sxs-lookup"><span data-stu-id="051e3-127">Method</span></span>   | <span data-ttu-id="051e3-128">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="051e3-128">Request URI</span></span>                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5add9-133">**POUBOJOWEGO**</span><span class="sxs-lookup"><span data-stu-id="5add9-133">**POST**</span></span> | <span data-ttu-id="5add9-134">[*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/Carts/{Cart-ID}/Checkout http/1.1</span><span class="sxs-lookup"><span data-stu-id="5add9-134">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span></span>     |
+| <span data-ttu-id="051e3-129">**Post**</span><span class="sxs-lookup"><span data-stu-id="051e3-129">**POST**</span></span> | <span data-ttu-id="051e3-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="051e3-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span></span>     |
 
-### <a name="uri-parameters"></a><span data-ttu-id="5add9-135">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="5add9-135">URI parameters</span></span>
+### <a name="uri-parameters"></a><span data-ttu-id="051e3-131">Parametry URI</span><span class="sxs-lookup"><span data-stu-id="051e3-131">URI parameters</span></span>
 
-<span data-ttu-id="5add9-136">Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i określić koszyk, który ma zostać wyewidencjonowany.</span><span class="sxs-lookup"><span data-stu-id="5add9-136">Use the following path parameters to identify the customer and specify the cart to be checked out.</span></span>
+<span data-ttu-id="051e3-132">Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i określić koszyk do wyewidencjonowania.</span><span class="sxs-lookup"><span data-stu-id="051e3-132">Use the following path parameters to identify the customer and specify the cart to be checked out.</span></span>
 
-| <span data-ttu-id="5add9-137">Nazwa</span><span class="sxs-lookup"><span data-stu-id="5add9-137">Name</span></span>            | <span data-ttu-id="5add9-138">Typ</span><span class="sxs-lookup"><span data-stu-id="5add9-138">Type</span></span>     | <span data-ttu-id="5add9-139">Wymagane</span><span class="sxs-lookup"><span data-stu-id="5add9-139">Required</span></span> | <span data-ttu-id="5add9-140">Opis</span><span class="sxs-lookup"><span data-stu-id="5add9-140">Description</span></span>                                                            |
+| <span data-ttu-id="051e3-133">Nazwa</span><span class="sxs-lookup"><span data-stu-id="051e3-133">Name</span></span>            | <span data-ttu-id="051e3-134">Typ</span><span class="sxs-lookup"><span data-stu-id="051e3-134">Type</span></span>     | <span data-ttu-id="051e3-135">Wymagane</span><span class="sxs-lookup"><span data-stu-id="051e3-135">Required</span></span> | <span data-ttu-id="051e3-136">Opis</span><span class="sxs-lookup"><span data-stu-id="051e3-136">Description</span></span>                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| <span data-ttu-id="5add9-141">**Identyfikator klienta**</span><span class="sxs-lookup"><span data-stu-id="5add9-141">**customer-id**</span></span> | <span data-ttu-id="5add9-142">ciąg</span><span class="sxs-lookup"><span data-stu-id="5add9-142">string</span></span>   | <span data-ttu-id="5add9-143">Tak</span><span class="sxs-lookup"><span data-stu-id="5add9-143">Yes</span></span>      | <span data-ttu-id="5add9-144">Identyfikator GUID sformatowany przez klienta, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="5add9-144">A GUID formatted customer-id that identifies the customer.</span></span>             |
-| <span data-ttu-id="5add9-145">**Identyfikator koszyka**</span><span class="sxs-lookup"><span data-stu-id="5add9-145">**cart-id**</span></span>     | <span data-ttu-id="5add9-146">ciąg</span><span class="sxs-lookup"><span data-stu-id="5add9-146">string</span></span>   | <span data-ttu-id="5add9-147">Tak</span><span class="sxs-lookup"><span data-stu-id="5add9-147">Yes</span></span>      | <span data-ttu-id="5add9-148">Identyfikator koszyka w formacie GUID, który identyfikuje koszyk.</span><span class="sxs-lookup"><span data-stu-id="5add9-148">A GUID formatted cart-id that identifies the cart.</span></span>                     |
+| <span data-ttu-id="051e3-137">**identyfikator klienta**</span><span class="sxs-lookup"><span data-stu-id="051e3-137">**customer-id**</span></span> | <span data-ttu-id="051e3-138">ciąg</span><span class="sxs-lookup"><span data-stu-id="051e3-138">string</span></span>   | <span data-ttu-id="051e3-139">Tak</span><span class="sxs-lookup"><span data-stu-id="051e3-139">Yes</span></span>      | <span data-ttu-id="051e3-140">Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="051e3-140">A GUID formatted customer-id that identifies the customer.</span></span>             |
+| <span data-ttu-id="051e3-141">**identyfikator koszyka**</span><span class="sxs-lookup"><span data-stu-id="051e3-141">**cart-id**</span></span>     | <span data-ttu-id="051e3-142">ciąg</span><span class="sxs-lookup"><span data-stu-id="051e3-142">string</span></span>   | <span data-ttu-id="051e3-143">Tak</span><span class="sxs-lookup"><span data-stu-id="051e3-143">Yes</span></span>      | <span data-ttu-id="051e3-144">Identyfikator GUID sformatowany jako cart-id, który identyfikuje koszyk.</span><span class="sxs-lookup"><span data-stu-id="051e3-144">A GUID formatted cart-id that identifies the cart.</span></span>                     |
 
-### <a name="request-headers"></a><span data-ttu-id="5add9-149">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="5add9-149">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="051e3-145">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="051e3-145">Request headers</span></span>
 
-<span data-ttu-id="5add9-150">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="5add9-150">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="051e3-146">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="051e3-146">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="5add9-151">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="5add9-151">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="051e3-147">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="051e3-147">Request body</span></span>
 
-<span data-ttu-id="5add9-152">Brak.</span><span class="sxs-lookup"><span data-stu-id="5add9-152">None.</span></span>
+<span data-ttu-id="051e3-148">Brak.</span><span class="sxs-lookup"><span data-stu-id="051e3-148">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="5add9-153">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="5add9-153">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="051e3-149">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="051e3-149">Request example</span></span>
 
 ```http
 POST /v1/customers/d6bf25b7-e0a8-4f2d-a31b-97b55cfc774d/carts/b4c8fdea-cbe4-4d17-9576-13fcacbf9605/checkout HTTP/1.1
@@ -112,15 +107,15 @@ Expect: 100-continue
 No-Content-Body
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="5add9-154">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="5add9-154">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="051e3-150">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="051e3-150">REST response</span></span>
 
-<span data-ttu-id="5add9-155">Jeśli to się powiedzie, treść odpowiedzi zawiera wypełniony zasób [CartCheckoutResult](cart-resources.md#cartcheckoutresult) .</span><span class="sxs-lookup"><span data-stu-id="5add9-155">If successful, the response body contains the populated [CartCheckoutResult](cart-resources.md#cartcheckoutresult) resource.</span></span>
+<span data-ttu-id="051e3-151">Jeśli to się powiedzie, treść odpowiedzi zawiera wypełniony [zasób CartCheckoutResult.](cart-resources.md#cartcheckoutresult)</span><span class="sxs-lookup"><span data-stu-id="051e3-151">If successful, the response body contains the populated [CartCheckoutResult](cart-resources.md#cartcheckoutresult) resource.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="5add9-156">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="5add9-156">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="051e3-152">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="051e3-152">Response success and error codes</span></span>
 
-<span data-ttu-id="5add9-157">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="5add9-157">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="5add9-158">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="5add9-158">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="5add9-159">Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="5add9-159">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="051e3-153">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="051e3-153">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="051e3-154">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="051e3-154">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="051e3-155">Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="051e3-155">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="5add9-160">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="5add9-160">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="051e3-156">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="051e3-156">Response example</span></span>
 
 ```http
 HTTP/1.1 201 Created

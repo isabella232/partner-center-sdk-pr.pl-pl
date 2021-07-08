@@ -1,33 +1,29 @@
 ---
 title: Pobieranie cen usług Microsoft Azure Partner Shared Services
-description: Jak uzyskać kartę stawki platformy Azure z cenami usług udostępnionych Microsoft Azure partnerskich.
+description: Jak uzyskać kartę stawki platformy Azure z cenami dla usług udostępnionych Microsoft Azure Partner.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cd396c35b6b89de4d0f092ba4da738a2ed0ac633
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 0008d7474f7e57bbbd765afdf2487ee279848ac3
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768478"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548808"
 ---
 # <a name="get-prices-for-microsoft-azure-partner-shared-services"></a>Pobieranie cen usług Microsoft Azure Partner Shared Services
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Jak uzyskać kartę [stawki platformy Azure z](azure-rate-card-resources.md) cenami dla usług udostępnionych Microsoft Azure Partner.
 
-Jak uzyskać [kartę stawki platformy Azure](azure-rate-card-resources.md) z cenami usług udostępnionych Microsoft Azure partnerskich.
-
-Ceny różnią się w zależności od rynku i waluty, a ten interfejs API przyjmuje lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w centrum partnerskim i w języku przeglądarki. te ustawienia można dostosować. Rozpoznawanie lokalizacji jest szczególnie istotne w przypadku zarządzania sprzedażą na wielu rynkach z jednego, scentralizowanego biura.
+Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać. Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura.
 
 ## <a name="example-code"></a>Przykładowy kod
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kartę stawki platformy Azure, wywołaj metodę [**IAzureRateCard. Getshared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) w celu zwrócenia zasobu [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierającego ceny platformy Azure.
+Aby uzyskać kartę stawki platformy Azure, wywołaj metodę [**IAzureRateCard.GetShared,**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) aby zwrócić [**zasób AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierający ceny platformy Azure.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -39,7 +35,7 @@ var azureRateCard = partner.RateCards.Azure.GetShared();
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard. Getshared** , aby zwracała szczegóły karty szybkości zawierającej ceny platformy Azure.
+Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard.getShared,** aby zwrócić szczegóły karty stawki zawierającej ceny platformy Azure.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -51,7 +47,7 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().getShared();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) i określ parametr **SharedServices** w celu zwrócenia szczegółów karty częstotliwość, która zawiera ceny platformy Azure.
+Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) i określ parametr **SharedServices,** aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.
 
 ```powershell
 Get-PartnerAzureRateCard -SharedServices
@@ -63,20 +59,20 @@ Get-PartnerAzureRateCard -SharedServices
 
 | Metoda  | Identyfikator URI żądania                                                               |
 |---------|---------------------------------------------------------------------------|
-| **Pobierz** | *{baseURL}*/V1/ratecards/Azure-Shared? Currency = {currency} &region = {Region} |
+| **Pobierz** | *{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region} |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 | Nazwa     | Typ   | Wymagane | Opis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO dla waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to waluta skojarzona z rynkiem w profilu partnera. |
-| region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu w formacie ISO, który wskazuje rynek zakupu oferty (na przykład `FR` ). Wartość domyślna to kod kraju/regionu ustawiony w profilu partnera.        |
+| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartością domyślną jest waluta skojarzona z rynek w profilu partnera. |
+| region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu ISO, który wskazuje rynek, na którym zakupiono ofertę (na przykład `FR` ). Wartość domyślna to kod kraju/regionu ustawiony w profilu partnera.        |
 
-Jeśli opcjonalny nagłówek X-locale zostanie uwzględniony w żądaniu, jego wartość określa język używany dla szczegółów odpowiedzi.
+Jeśli opcjonalny nagłówek X-Locale jest uwzględniony w żądaniu, jego wartość określa język używany dla szczegółów w odpowiedzi.
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -97,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli żądanie zakończy się pomyślnie, zwraca zasób [karty usługi Azure rate](azure-rate-card-resources.md) .
+Jeśli żądanie powiedzie się, zwraca zasób [karty stawki platformy Azure.](azure-rate-card-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

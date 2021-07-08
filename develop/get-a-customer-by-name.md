@@ -1,42 +1,37 @@
 ---
 title: Pobieranie listy klientów filtrowanych według pola wyszukiwania
-description: Pobiera kolekcję zasobów klienta, które pasują do filtru. Opcjonalnie można ustawić rozmiar strony. Można filtrować według nazwy firmy, domeny, odsprzedawcy pośredniego lub pośredniego dostawcy rozwiązań w chmurze (CSP).
+description: Pobiera kolekcję zasobów klienta, które pasują do filtru. Opcjonalnie możesz ustawić rozmiar strony. Możesz filtrować według nazwy firmy, domeny, odsprzedawcy pośredniego lub pośredniego dostawcy rozwiązań w chmurze (CSP).
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: aad9524dbe2c9edbbd7c1d50da7a448f6872fcb9
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 663b8509d8704f9c443796d9fbcf72fb9c5b7fb2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768125"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874962"
 ---
 # <a name="get-a-list-of-customers-filtered-by-a-search-field"></a>Pobieranie listy klientów filtrowanych według pola wyszukiwania
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera kolekcję zasobów [klienta](customer-resources.md#customer) , które pasują do filtru. Opcjonalnie można ustawić rozmiar strony. Można filtrować według nazwy firmy, domeny, odsprzedawcy pośredniego lub pośredniego dostawcy rozwiązań w chmurze (CSP).
+Pobiera kolekcję [zasobów klienta,](customer-resources.md#customer) które pasują do filtru. Opcjonalnie możesz ustawić rozmiar strony. Możesz filtrować według nazwy firmy, domeny, odsprzedawcy pośredniego lub pośredniego dostawcy rozwiązań w chmurze (CSP).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Filtr skonstruowany przez użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję klientów pasujących do filtru, należy najpierw utworzyć wystąpienie obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) , aby utworzyć filtr. Należy przekazać ciąg, który zawiera [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield), i wskazać typ operacji filtru jako [**FieldFilterOperation. StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Jest to jedyna operacja filtru pola obsługiwana przez punkt końcowy klientów. Należy również podać ciąg do filtrowania.
+Aby uzyskać kolekcję klientów, którzy pasują do filtru, najpierw utwórz obiekt [**SimpleFieldFilter,**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) aby utworzyć filtr. Musisz przekazać ciąg zawierający pole [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield)i wskazać typ operacji filtrowania jako [**FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Jest to jedyna operacja filtrowania pól obsługiwana przez punkt końcowy klientów. Należy również podać ciąg, według których ma być filtrowany ciąg.
 
-Następnie Utwórz wystąpienie obiektu [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) , aby przekazać go do zapytania przez wywołanie metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazanie jej do filtru. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez klasę [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .
+Następnie zaimplestruj obiekt [**iQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) aby przekazać go do zapytania, wywołując metodę [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazując do niego filtr. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez [**klasę QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Na koniec aby wykonać filtr i uzyskać wynik, należy najpierw użyć [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby uzyskać interfejs do operacji klienta partnera. Następnie Wywołaj [**zapytanie**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub metodę [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) .
+Na koniec, aby wykonać filtr i uzyskać wynik, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs dla operacji klienta partnera. Następnie wywołaj [**metodę Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -57,7 +52,7 @@ var myQuery = QueryFactory.Instance.BuildSimpleQuery(fieldFilter);
 var customers = partnerOperations.Customers.Query(myQuery);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: FilterCustomers.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : FilterCustomers.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: FilterCustomers.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -65,20 +60,20 @@ var customers = partnerOperations.Customers.Query(myQuery);
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers? size = {size} &Filter = {Filter} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size}&filter={filter} HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów zapytania.
 
 | Nazwa   | Typ   | Wymagane | Opis                                                                    |
 |--------|--------|----------|--------------------------------------------------------------------------------|
-| size   | int    | Nie       | Liczba wyników do wyświetlenia w tym samym czasie. Ten parametr jest opcjonalny. |
-| filter | filter | Tak      | Filtr, który ma zostać zastosowany do klientów. Musi to być ciąg zakodowany.              |
+| size   | int    | Nie       | Liczba wyników, które mają być wyświetlane jednocześnie. Ten parametr jest opcjonalny. |
+| filter | filter | Tak      | Filtr do zastosowania do klientów. Musi to być zakodowany ciąg.              |
 
 ### <a name="filter-syntax"></a>Składnia filtru
 
-Należy złożyć parametr filtru jako serię oddzielonych przecinkami par klucz-wartość. Każdy klucz i wartość muszą być osobno cytowane i oddzielone dwukropkiem. Cały filtr musi być zakodowany.
+Parametr filtru należy skomponować jako serię rozdzielonych przecinkami par klucz-wartość. Każdy klucz i wartość muszą być oddzielnie cytowane i oddzielone dwukropkiem. Cały filtr musi być zakodowany.
 
 Niezakodowany przykład wygląda następująco:
 
@@ -90,13 +85,13 @@ W poniższej tabeli opisano wymagane pary klucz-wartość:
 
 | Klucz      | Wartość                                                                                                                    |
 |----------|--------------------------------------------------------------------------------------------------------------------------|
-| Pole    | Pole do filtrowania. Prawidłowe wartości można znaleźć w [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
-| Wartość    | Wartość, według której ma zostać przefiltrowana. Wielkość liter jest ignorowana.                                                                |
-| Operator | Operator, który ma zostać zastosowany. Jedyną obsługiwaną wartością tego scenariusza klienta jest "zaczyna się \_ od".                            |
+| Pole    | Pole do filtrowania. Prawidłowe wartości można znaleźć w [**customersearchfield**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
+| Wartość    | Wartość do filtrowania. Przypadek wartości jest ignorowany.                                                                |
+| Operator | Operator do zastosowania. Jedyną obsługiwaną wartością w tym scenariuszu klienta jest "zaczyna \_ się od".                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -117,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję pasujących zasobów [klienta](customer-resources.md#customer) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję [pasujących zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

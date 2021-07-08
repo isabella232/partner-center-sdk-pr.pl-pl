@@ -1,56 +1,51 @@
 ---
 title: Pobieranie elementów wiersza faktury
-description: Możesz uzyskać informacje o kolekcji pozycji wiersza faktury (zamknięty element linii rozliczeniowej) dla określonej faktury przy użyciu interfejsów API Centrum partnerskiego.
+description: Kolekcję szczegółów pozycji faktury (zamkniętego elementu wiersza rozliczeniowego) dla określonej faktury można uzyskać przy użyciu interfejsów API Partner Center.
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ddc49e4d83518b809402a65f990f3e9c2658e64b
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 944dddef64ec980d92c292a7f5b9f5eb4e7cecb6
+ms.sourcegitcommit: 15c6cfe72284cf5d4ea3535120e83e473c33f5ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730233"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112443176"
 ---
 # <a name="get-invoice-line-items"></a>Pobieranie elementów wiersza faktury
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Następujące metody umożliwia pobieranie szczegółów kolekcji pozycji faktur (nazywanych również zamkniętymi pozycjami rozliczeniowymi) dla określonej faktury.
 
-Przy użyciu poniższych metod można pobrać szczegóły kolekcji dla elementów wiersza faktury (znanych także jako zamknięte elementy wierszy rozliczeń) dla określonej faktury.
+*Z wyjątkiem poprawek błędów ten interfejs API nie jest już aktualizowany.* Należy zaktualizować aplikacje w celu wywołania interfejsu API **onetime** zamiast witryny **Marketplace.** **Jednogodzinny interfejs** API zapewnia dodatkowe funkcje i będzie nadal aktualizowany.
 
-*Ten interfejs API nie jest już aktualizowany, z wyjątkiem poprawek błędów.* Aplikacje należy zaktualizować w taki sposób, aby wywoływać interfejs API **jednorazowej** zamiast **witryny Marketplace**. Interfejs API **jednorazowej** zapewnia dodatkową funkcjonalność i będzie nadal aktualizowany.
+Należy używać funkcji **onetime do** wykonywania zapytań o wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
 
-Należy używać **jednorazowej** do wysyłania zapytań do wszystkich elementów linii zużycia komercyjnego, a nie z **witryny Marketplace**. Można też użyć linków w wywołaniu łączy.
-
-Ten interfejs API obsługuje również typy **dostawców** subskrypcji **platformy Azure** i **pakietu Office** dla Microsoft Azure (MS-AZR-0145P) i oferty pakietu Office, dzięki czemu funkcja interfejsu API jest zgodna z poprzednimi wersjami.
+Ten interfejs API  obsługuje również typy dostawców subskrypcji platformy **Azure** i pakietu **Office** dla platformy Microsoft Azure (MS-AZR-0145P) i ofert Office, dzięki czemu funkcja interfejsu API jest zgodna z poprzednimi wersjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane elementy wiersza.
+- Identyfikator faktury. Pozwala to zidentyfikować fakturę, dla której mają zostać pobrane pozycje.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać elementy wiersza dla określonej faktury:
+Aby uzyskać pozycje dla określonej faktury:
 
-1. Wywołaj metodę [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , aby uzyskać interfejs do fakturowania operacji dla określonej faktury.
+1. Wywołaj [**metodę ById,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) aby uzyskać interfejs do operacji na fakturze dla określonej faktury.
 
-2. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) , aby pobrać obiekt faktury. Obiekt Invoice zawiera wszystkie informacje dotyczące określonej faktury.
-3. Użyj właściwości [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) obiektu faktury, aby uzyskać dostęp do kolekcji obiektów [**InvoiceDetail**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) , z których każdy zawiera [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) i [**InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype). **BillingProvider** identyfikuje źródło informacji szczegółowych faktury (takich jak **Office**, **Azure**, **jednorazowej**), a **InvoiceLineItemType** określa typ (na przykład **BillingLineItem**).
+2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury. Obiekt faktury zawiera wszystkie informacje dotyczące określonej faktury.
+3. Użyj właściwości [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) obiektu invoice, aby uzyskać dostęp do kolekcji obiektów [**InvoiceDetail,**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) z których każdy zawiera obiekt [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) i [**typ InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype). **BillingProvider** identyfikuje źródło szczegółowych informacji o fakturze (takich jak **Office,** **Azure,** **OneTime**), a **typ InvoiceLineItemType** określa typ (na przykład **BillingLineItem).**
 
-Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji **InvoiceDetails** . Dla każdego wystąpienia **InvoiceDetail** pobierana jest oddzielna Kolekcja elementów wierszy.
+Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji **InvoiceDetails.** Dla każdego wystąpienia **InvoiceDetail** pobierana jest oddzielna kolekcja elementów wiersza.
 
-Aby uzyskać kolekcję elementów wierszy, które odpowiadają wystąpieniu **InvoiceDetail** :
+Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**by**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .
+1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
-2. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) , aby pobrać skojarzone elementy wiersza.
-3. Utwórz moduł wyliczający, który przejdzie do kolekcji, jak pokazano w poniższym przykładzie.
+2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) aby pobrać skojarzone elementy wiersza.
+3. Utwórz moduł wyliczający, aby przejść przez kolekcję, jak pokazano w poniższym przykładzie.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -102,72 +97,72 @@ foreach (var invoiceDetail in invoice.InvoiceDetails)
 Podobny przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
-- Klasa: **GetInvoiceLineItems. cs**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
+- Klasa: **GetInvoiceLineItems.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
 
 ### <a name="request-syntax"></a>Składnia żądania
 
-Prześlij żądanie przy użyciu odpowiedniej składni dla dostawcy rozliczeń w danym scenariuszu.
+Zamieć żądanie przy użyciu odpowiedniej składni dla dostawcy rozliczeń w swoim scenariuszu.
 
 #### <a name="office"></a>Office
 
-Następująca składnia ma zastosowanie, gdy dostawca rozliczeń to **pakiet Office**.
+Następująca składnia ma zastosowanie, gdy dostawca rozliczeń jest **Office**.
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = Office&invoicelineitemtype = billinglineitems&size = {size} &offset = {offset} http/1.1                               |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator-faktury}/lineitems?provider=office&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1                               |
 
-#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a>Subskrypcja Microsoft Azure (MS-AZR-0145P)
+#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a>Microsoft Azure subskrypcji (MS-AZR-0145P)
 
-Poniższe składnie są stosowane, gdy dostawca rozliczeń ma subskrypcję Microsoft Azure (MS-AZR-0145P).
-
-| Metoda  | Identyfikator URI żądania                                                                                                                                                     |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = billinglineitems&size = {size} &offset = {offset} http/1.1  |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = usagelineitems&size = {size} &offset = {offset} http/1.1  |
-
-##### <a name="onetime"></a>Jednorazowej
-
-Poniższe składnie są stosowane, gdy dostawca rozliczeń jest **jednorazowej**. Obejmuje to opłaty za rezerwacje, oprogramowanie, plany platformy Azure i komercyjne produkty korporacyjne platformy Azure.
+Poniższe składnie mają zastosowanie, gdy dostawca rozliczeń ma subskrypcję Microsoft Azure (MS-AZR-0145P).
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems? Provider = jednorazowej&invoicelineitemtype = billinglineitems&size = {size} http/1.1  |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems/onetime/billinglineitems&size = {size}? SeekOperation = Next                           |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1  |
+
+##### <a name="onetime"></a>OneTime
+
+Następujące składnie mają zastosowanie, gdy dostawca rozliczeń to **OneTime**. Obejmuje to opłaty za rezerwacje platformy Azure, oprogramowanie, plany platformy Azure i produkty platformy handlowej.
+
+| Metoda  | Identyfikator URI żądania                                                                                                                                                     |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator-faktury}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&size={size} HTTP/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator-faktury}/lineitems/onetime/billinglineitems&size={size}?seekOperation=Next                           |
 
 #### <a name="previous-syntaxes"></a>Poprzednie składnie
 
-Jeśli używasz następujących składni, pamiętaj, aby użyć odpowiedniej składni dla przypadku użycia.
+Jeśli używasz następujących składni, upewnij się, że używasz odpowiedniej składni dla twojego przypadku użycia.
 
-*Ten interfejs API nie jest już aktualizowany, z wyjątkiem poprawek błędów.* Aplikacje należy zaktualizować w taki sposób, aby wywoływać interfejs API **jednorazowej** zamiast **witryny Marketplace**. Interfejs API **jednorazowej** zapewnia dodatkową funkcjonalność i będzie nadal aktualizowany.
+*Z wyjątkiem poprawek błędów ten interfejs API nie jest już aktualizowany.* Należy zaktualizować aplikacje w celu wywołania interfejsu API **onetime** zamiast witryny **Marketplace.** **Jednogodzinny interfejs** API zapewnia dodatkowe funkcje i będzie nadal aktualizowany.
 
-Należy używać **jednorazowej** do wysyłania zapytań do wszystkich elementów linii zużycia komercyjnego, a nie z **witryny Marketplace**. Można też użyć linków w wywołaniu łączy.
+Należy używać funkcji **onetime do** wykonywania zapytań o wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
 
 | Metoda | Identyfikator URI żądania | Opis przypadku użycia składni |
 | ------ | ----------- | -------------------------------- |
-| GET | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type} http/1.1                              | Możesz użyć tej składni, aby zwrócić pełną listę każdego elementu wiersza dla danej faktury. |
-| GET | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type}? size = {size} &offset = {offset} http/1.1  | W przypadku dużych faktur można użyć tej składni z określonym rozmiarem i przesunięciu na 0, aby zwrócić stronicowaną listę elementów wiersza. |
-| GET | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/LineItems/onetime/{Invoice-line-Item-Type}? SeekOperation = Next                               | Możesz użyć tej składni dla faktury z wartością dostawcy rozliczeń **jednorazowej** i ustawić **SeekOperation** , aby **dalej** uzyskać następną stronę elementów wiersza faktury. |
+| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems/{dostawca-rozliczeń}/{typ-elementu-wiersza-faktury} HTTP/1.1                              | Ta składnia umożliwia zwrócenie pełnej listy wszystkich pozycji dla danej faktury. |
+| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems/{dostawca-rozliczeń}/{typ-elementu-wiersza-faktury}?size={rozmiar}&offset={offset} HTTP/1.1  | W przypadku dużych faktur można użyć tej składni z określonym rozmiarem i przesunięciem 0 w celu zwrócenia stronicowej listy elementów wiersza. |
+| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next                               | Tej składni można użyć dla faktury z wartością dostawcy rozliczeń **OneTime** i ustawić **wartość seekOperation** na **Dalej,** aby uzyskać następną stronę pozycji faktury. |
 
-##### <a name="uri-parameters"></a>Parametry identyfikatora URI
+##### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj następujących parametrów URI i zapytania.
+Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 
 | Nazwa                   | Typ   | Wymagane | Opis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| Identyfikator faktury             | ciąg | Tak      | Ciąg, który identyfikuje fakturę.                             |
-| rozliczenia — dostawca       | ciąg | Tak      | Dostawca rozliczeń: "Office", "Azure", "jednorazowej". W starszej wersji istnieją osobne modele danych dla transakcji pakietu Office & platformy Azure. Jednak nowoczesny ma jeden model danych dla wszystkich transakcji przefiltrowanych przez wartość "jednorazowej".            |
-| Typ faktury-wiersz-element | ciąg | Tak      | Typ faktury szczegóły: "BillingLineItems", "UsageLineItems". |
+| invoice-id             | ciąg | Tak      | Ciąg, który identyfikuje fakturę.                             |
+| dostawca rozliczeń       | ciąg | Tak      | Dostawca rozliczeń: "Office", "Azure", "OneTime". W starszej wersji mamy oddzielne modele danych dla Office & platformy Azure. Jednak nowoczesna ma jeden model danych dla wszystkich transakcji przefiltrowanych za pomocą wartości "OneTime".            |
+| typ-elementu-wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "BillingLineItems", "UsageLineItems". |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny maksymalny rozmiar = 2000    |
-| przesunięcie                 | liczba | Nie       | Indeks (liczony od zera) elementu pierwszego wiersza do zwrócenia.            |
-| seekOperation          | ciąg | Nie       | Jeśli **dostawca rozliczeń** jest równy **jednorazowej**, ustaw wartość **seekOperation** równą **Next** , aby uzyskać następną stronę elementów wiersza faktury. |
-| hasPartnerEarnedCredit | bool | Nie | Wartość wskazująca, czy zwrócić elementy wiersza z zastosowaniem środków uzyskanych przez partnera. Uwaga: ten parametr zostanie zastosowany tylko wtedy, gdy typ dostawcy rozliczeń to jednorazowej, a InvoiceLineItemType to UsageLineItems. |
+| przesunięcie                 | liczba | Nie       | Indeks pierwszego wiersza, który ma być zwracany od zera.            |
+| seekOperation          | ciąg | Nie       | Jeśli **dostawca rozliczeń ma** wartość **OneTime,** ustaw **wartość seekOperation** równą **Dalej,** aby pobrać następną stronę pozycji faktury. |
+| hasPartnerEarnedCredit | bool | Nie | Wartość wskazująca, czy zwrócić pozycje z zastosowanymi środków uzyskane przez partnera. Uwaga: ten parametr będzie stosowany tylko wtedy, gdy typ dostawcy rozliczeń to OneTime, a InvoiceLineItemType to UsageLineItems. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -177,20 +172,20 @@ Brak.
 
 Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.
 
-*Dla pozycji **line ItemType** wartość **Purchase** jest mapowana na **nową**. **Zwrot** wartości jest mapowany na **Anuluj**.*
+*W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.*
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
-### <a name="rest-request-response-examples"></a>Przykłady żądania REST — odpowiedzi
+### <a name="rest-request-response-examples"></a>Przykłady żądań i odpowiedzi REST
 
-### <a name="request-response-example-1"></a>Przykład żądania — odpowiedź 1
+### <a name="request-response-example-1"></a>Przykład żądania i odpowiedzi 1
 
-W tym przykładzie szczegóły są następujące:
+W tym przykładzie szczegółowe informacje są następujące:
 
 - **BillingProvider**: **Office**
-- **InvoiceLineItemType**: **BillingLineItems**
+- **InvoiceLineItemType:** **BillingLineItems**
 
 #### <a name="request-example-1"></a>Przykład żądania 1
 
@@ -307,12 +302,12 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a>Przykład żądania — odpowiedź 2
+### <a name="request-response-example-2"></a>Przykład żądania i odpowiedzi 2
 
-W poniższym przykładzie szczegóły są następujące:
+W poniższym przykładzie szczegółowe informacje są następujące:
 
-- **BillingProvider**: **Azure**
-- **InvoiceLineItemType**: **BillingLineItems**
+- **BillingProvider:** **Azure**
+- **InvoiceLineItemType:** **BillingLineItems**
 
 #### <a name="request-example-2"></a>Przykład żądania 2
 
@@ -445,11 +440,11 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-3"></a>Przykład żądania — odpowiedź 3
+### <a name="request-response-example-3"></a>Przykład żądania i odpowiedzi 3
 
-W poniższym przykładzie szczegóły są następujące:
+W poniższym przykładzie szczegółowe informacje są następujące:
 
-- **BillingProvider**: **Azure**
+- **BillingProvider:** **Azure**
 - **InvoiceLineItemType**: **UsageLineItems**
 
 #### <a name="request-example-3"></a>Przykład żądania 3
@@ -563,12 +558,12 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-4"></a>Przykład żądania-odpowiedź 4
+### <a name="request-response-example-4"></a>Przykład żądania i odpowiedzi 4
 
-W poniższym przykładzie szczegóły są następujące:
+W poniższym przykładzie szczegółowe informacje są następujące:
 
-- **BillingProvider**: **jednorazowej**
-- **InvoiceLineItemType**: **BillingLineItems**
+- **BillingProvider:** **OneTime**
+- **InvoiceLineItemType:** **BillingLineItems**
 
 #### <a name="request-example-4"></a>Przykład żądania 4
 
@@ -597,111 +592,179 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 
  {
     "continuationToken": "d19617b8-fbe5-4684-a5d8-0230972fb0cf,0705c4a9-39f7-4261-ba6d-53e24a9ce47d_a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=,0d81c700-98b4-4b13-9129-ffd5620f72e7",
-    "totalCount": 2,
+    {
+    {
+    "totalCount": 3,
     "items": [
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f000000",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38000000",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
-            "resellerMpnId": 0,
-            "orderId": "QDOx5ZN3YR9uYhm4M1MGQJ_0nievUOrx1",
-            "orderDate": "2018-02-08T22:31:42.9397946Z",
-            "productId": "productid",
-            "skuId": "skuid",
-            "availabilityId": "availabilityid",
-            "productName": "TEST PRODUCT",
-            "skuName": "TEST SKU TITLE",
-            "chargeType": "New",
-            "unitPrice": 431.8,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "Seats",
-            "quantity": 1,
-            "subtotal": 431.8,
-            "taxTotal": 38.87,
-            "totalForCustomer": 470.67,
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "4649221",
+            "orderId": "94e858b6d855",
+            "orderDate": "2021-05-20T18:30:06.6045692Z",
+            "productId": "CFQ7TTC0LH0R",
+            "skuId": "0002",
+            "availabilityId": "CFQ7TTC0K5RQ",
+            "productName": "Microsoft 365 Phone System - Virtual User",
+            "skuName": "Microsoft 365 Phone System - Virtual User",
+            "productQualifiers": [
+                "AddOn",
+                "Trial"
+            ],
+            "chargeType": "new",
+            "unitPrice": "0",
+            "effectiveUnitPrice": "0",
+            "unitType": "",
+            "quantity": "25",
+            "subtotal": "0",
+            "taxTotal": "0",
+            "totalForCustomer": "0",
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232000000",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234278124b8",
-            "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
-            "creditReasonCode": "Azure Consumption Credit",
+            "subscriptionId": "86646af9-e80a-4aa0-da80-3fd2b792c2cc",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2021-06-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Month commitment for trial",
+            "alternateId": "94e858b6d855",
+            "referenceId": "0cf1202a-5b7d-4219-966e-93c637113708",
+            "priceAdjustmentDescription": "",
+            "discountDetails": "",
             "pricingCurrency": "USD",
-            "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0159369774,
-            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "billingFrequency": "Monthly",
-            "reservationOrderId": "883d475b-0000-2222-0000-8818752f1234",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "25",
+            "meterDescription": "",
+            "billingFrequency": "",
+            "reservationOrderId": "99f246cf-ed96-41b4-b0cd-0aa43eb1fe91",
             "invoiceLineItemType": "billing_line_items",
             "billingProvider": "one_time",
+            "promotionId": "",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+            
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "835a59a7-3172-47b5-bdef-d9cc65f4d0e4",
+            "customerName": "TEST_TEST Test Promotions 01",
+            "customerDomainName": "kyletestpromos01.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "0",
+            "orderId": "5f9d52bb1408",
+            "orderDate": "2021-05-20T18:48:30.6168285Z",
+            "productId": "CFQ7TTC0HL8W",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0K59S",
+            "productName": "Power BI Premium Per User",
+            "skuName": "Power BI Premium Per User",
+            "productQualifiers": [],
+            "chargeType": "new",
+            "unitPrice": "16",
+            "effectiveUnitPrice": "14.4",
+            "unitType": "",
+            "quantity": "50",
+            "subtotal": "720",
+            "taxTotal": "73",
+            "totalForCustomer": "793",
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "9d7d1f3d-c8de-461c-db6d-91debd5129f0",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2022-05-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "alternateId": "5f9d52bb1408",
+            "referenceId": "28b535e0-68f4-40b5-84f7-8ed9241eb149",
+            "priceAdjustmentDescription": "[\"Price for given billing period\",\"You are getting a discount due to a pre-determined override.\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Price for given term\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "50",
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "8fdebb4a-7110-496e-9570-623e4c992797",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+            "promotionId": "78bcf906-b945-4210-8818-cfb93caf12a1",
+            "attributes/objectType": "OneTimeInvoiceLineItem",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         },
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f4badc2",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38cbb28e",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "T000773581",
+            "mpnId": "1234567",
             "resellerMpnId": 0,
-            "orderId": "QDOx5ZN3YR9uYhm4M1MGQJ_0nievUOrx1",
-            "orderDate": "2018-02-08T22:31:42.9397946Z",
-            "productId": "productid",
-            "skuId": "skuid",
-            "availabilityId": "availabilityid",
-            "productName": "TEST PRODUCT",
-            "skuName": "TEST SKU TITLE",
+            "orderId": "HJVtMZMkgQ2miuCiNv0RSr51zQDans0m1",
+            "orderDate": "2019-02-04T17:59:52.9460102Z",
+            "productId": "DZH318Z0BXWC",
+            "skuId": "0002",
+            "availabilityId": "DZH318Z0BP8B",
+            "productName": "Test WAF-as-a-Service",
+            "skuName": "Test WaaS - Medium Plan",
             "chargeType": "New",
-            "unitPrice": 26.35,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "1 Hour",
+            "unitPrice": 820,
+            "effectiveUnitPrice": 820,
+            "unitType": "",
             "quantity": 1,
-            "subtotal": 26.35,
-            "taxTotal": 2.37,
-            "totalForCustomer": 28.72,
+            "subtotal": 820,
+            "taxTotal": 0,
+            "totalForCustomer": 0,
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Test Networks, Inc.",
+            "publisherId": "21223810",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232ea904a",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234578124b8",
-            "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
+            "subscriptionId": "12345678-9cf0-4a1f-9514-7fcc7fe9d1fe",
+            "subscriptionStartDate": "2019-02-01T00:00:00Z",
+            "subscriptionEndDate": "2020-01-31T00:00:00Z",
+            "chargeStartDate": "2019-02-04T09:22:40.1767993-08:00",
+            "chargeEndDate": "2019-03-03T09:22:40.1767993-08:00",
+            "termAndBillingCycle": "1 Year Subscription",
+            "alternateId": "123456ad566",
+            "priceAdjustmentDescription": "[\"15.0% Partner earned credit for services managed\"]",
+            "discountDetails": "",
             "pricingCurrency": "USD",
             "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0130687981,
+            "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
+            "billableQuantity": 3.1618,
             "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "reservationOrderId": "",
-            "invoiceLineItemType": "billing_line_items",
-            "billingProvider": "one_time",
+            "reservationOrderId": "883d475b-0000-1234-0000-8818752f1234",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         }
+    ]
+}
     ],
     "links": {
         "self": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
             "method": "GET",
             "headers": []
         },
         "next": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2?seekOperation=Next",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2?seekOperation=Next",
             "method": "GET",
             "headers": [
                 {
@@ -717,13 +780,13 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-5"></a>Przykład żądania — odpowiedź 5
+### <a name="request-response-example-5"></a>Przykład żądania i odpowiedzi 5
 
 W poniższym przykładzie jest stronicowanie przy użyciu tokenu kontynuacji. Szczegóły są następujące:
 
-- **BillingProvider**: **jednorazowej**
-- **InvoiceLineItemType**: **BillingLineItems**
-- **SeekOperation**: **dalej**
+- **BillingProvider:** **OneTime**
+- **InvoiceLineItemType:** **BillingLineItems**
+- **SeekOperation:** **Dalej**
 
 #### <a name="request-example-5"></a>Przykład żądania 5
 
@@ -752,59 +815,174 @@ MS-ServerId: 202010406
 Date: Thu, 07 Sep 2017 23:31:09 GMT
 
 {
-    "totalCount": 1,
+    {
+    {
+    "totalCount": 3,
     "items": [
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f000000",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38000000",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
-            "resellerMpnId": 0,
-            "orderId": "NeqT31Kziwf8gkCXM9YQToWTqU-9Jbm81",
-            "orderDate": "2018-02-08T22:31:47.1751688Z",
-            "productId": "DZH318Z0BQ3P",
-            "skuId": "001F",
-            "availabilityId": "DZH318Z0DR0H",
-            "productName": "Reserved VM Instance, Standard_D1, AP East, 3 years",
-            "skuName": "D Series",
-            "chargeType": "New",
-            "unitPrice": 1447,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "Seats",
-            "quantity": 1,
-            "subtotal": 1447,
-            "taxTotal": 130.24,
-            "totalForCustomer": 1577.24,
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "4649221",
+            "orderId": "94e858b6d855",
+            "orderDate": "2021-05-20T18:30:06.6045692Z",
+            "productId": "CFQ7TTC0LH0R",
+            "skuId": "0002",
+            "availabilityId": "CFQ7TTC0K5RQ",
+            "productName": "Microsoft 365 Phone System - Virtual User",
+            "skuName": "Microsoft 365 Phone System - Virtual User",
+            "productQualifiers": [
+                "AddOn",
+                "Trial"
+            ],
+            "chargeType": "new",
+            "unitPrice": "0",
+            "effectiveUnitPrice": "0",
+            "unitType": "",
+            "quantity": "25",
+            "subtotal": "0",
+            "taxTotal": "0",
+            "totalForCustomer": "0",
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232000000",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234568124b8",
+            "subscriptionId": "86646af9-e80a-4aa0-da80-3fd2b792c2cc",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2021-06-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Month commitment for trial",
+            "alternateId": "94e858b6d855",
+            "referenceId": "0cf1202a-5b7d-4219-966e-93c637113708",
             "priceAdjustmentDescription": "",
+            "discountDetails": "",
             "pricingCurrency": "USD",
-            "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0130687981,
-            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "reservationOrderId": "",
-            "billingFrequency": "Monthly",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "25",
+            "meterDescription": "",
+            "billingFrequency": "",
+            "reservationOrderId": "99f246cf-ed96-41b4-b0cd-0aa43eb1fe91",
             "invoiceLineItemType": "billing_line_items",
             "billingProvider": "one_time",
+            "promotionId": "",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+            
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "835a59a7-3172-47b5-bdef-d9cc65f4d0e4",
+            "customerName": "TEST_TEST Test Promotions 01",
+            "customerDomainName": "kyletestpromos01.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "0",
+            "orderId": "5f9d52bb1408",
+            "orderDate": "2021-05-20T18:48:30.6168285Z",
+            "productId": "CFQ7TTC0HL8W",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0K59S",
+            "productName": "Power BI Premium Per User",
+            "skuName": "Power BI Premium Per User",
+            "productQualifiers": [],
+            "chargeType": "new",
+            "unitPrice": "16",
+            "effectiveUnitPrice": "14.4",
+            "unitType": "",
+            "quantity": "50",
+            "subtotal": "720",
+            "taxTotal": "73",
+            "totalForCustomer": "793",
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "9d7d1f3d-c8de-461c-db6d-91debd5129f0",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2022-05-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "alternateId": "5f9d52bb1408",
+            "referenceId": "28b535e0-68f4-40b5-84f7-8ed9241eb149",
+            "priceAdjustmentDescription": "[\"Price for given billing period\",\"You are getting a discount due to a pre-determined override.\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Price for given term\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "50",
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "8fdebb4a-7110-496e-9570-623e4c992797",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+            "promotionId": "78bcf906-b945-4210-8818-cfb93caf12a1",
+            "attributes/objectType": "OneTimeInvoiceLineItem",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "T000773581",
+            "mpnId": "1234567",
+            "resellerMpnId": 0,
+            "orderId": "HJVtMZMkgQ2miuCiNv0RSr51zQDans0m1",
+            "orderDate": "2019-02-04T17:59:52.9460102Z",
+            "productId": "DZH318Z0BXWC",
+            "skuId": "0002",
+            "availabilityId": "DZH318Z0BP8B",
+            "productName": "Test WAF-as-a-Service",
+            "skuName": "Test WaaS - Medium Plan",
+            "chargeType": "New",
+            "unitPrice": 820,
+            "effectiveUnitPrice": 820,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 820,
+            "taxTotal": 0,
+            "totalForCustomer": 0,
+            "currency": "USD",
+            "publisherName": "Test Networks, Inc.",
+            "publisherId": "21223810",
+            "subscriptionDescription": "",
+            "subscriptionId": "12345678-9cf0-4a1f-9514-7fcc7fe9d1fe",
+            "subscriptionStartDate": "2019-02-01T00:00:00Z",
+            "subscriptionEndDate": "2020-01-31T00:00:00Z",
+            "chargeStartDate": "2019-02-04T09:22:40.1767993-08:00",
+            "chargeEndDate": "2019-03-03T09:22:40.1767993-08:00",
+            "termAndBillingCycle": "1 Year Subscription",
+            "alternateId": "123456ad566",
+            "priceAdjustmentDescription": "[\"15.0% Partner earned credit for services managed\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
+            "billableQuantity": 3.1618,
+            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
+            "reservationOrderId": "883d475b-0000-1234-0000-8818752f1234",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         }
+    ]
+}
     ],
     "links": {
         "self": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
             "method": "GET",
             "headers": []
         }
@@ -813,4 +991,5 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
         "objectType": "Collection"
     }
 }
+
 ```

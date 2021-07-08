@@ -1,30 +1,26 @@
 ---
 title: Pobieranie reguł formatowania adresów według rynku
-description: Pobierz oczekiwany format adresu na podstawie kodu ISO dla rynku.
+description: Uzyskaj oczekiwany format adresu na podstawie kodu ISO dla rynku.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c755a38c11ed9803edb7777a0f661c1fbc5a6107
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d5233d059ea6e71c28df36b2242659c28c5dd857
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767878"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549046"
 ---
 # <a name="get-address-formatting-rules-by-market"></a>Pobieranie reguł formatowania adresów według rynku
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
 
-Pobierz oczekiwany format adresu na podstawie kodu ISO dla rynku.
+Uzyskaj oczekiwany format adresu na podstawie kodu ISO dla rynku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -32,17 +28,17 @@ Pobierz oczekiwany format adresu na podstawie kodu ISO dla rynku.
 
 | Metoda  | Identyfikator URI żądania                                                                                 |
 |---------|---------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/countryvalidationrules/{isoCode-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/countryvalidationrules/{isocode-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
 | Nazwa           | Typ       | Wymagane | Opis                         |
 |----------------|------------|----------|-------------------------------------|
-| **isoCode — identyfikator** | **parametry** | Y        | Dwuznakowy kod ISO kraju. |
+| **identyfikator isocode** | **ciąg** | Y        | Dwue znakowy kod kraju ISO. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -60,11 +56,11 @@ MS-CorrelationId: 5cfd634d-b936-47af-87f0-0f0217425dcc
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **CountryInformation** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **obiekt CountryInformation** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

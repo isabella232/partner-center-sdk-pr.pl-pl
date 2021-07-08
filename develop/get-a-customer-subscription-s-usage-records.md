@@ -1,39 +1,35 @@
 ---
 title: Pobieranie wszystkich rekordów dotyczących użycia subskrypcji dla klienta
-description: Kolekcji zasobów SubscriptionMonthlyUsageRecord można użyć do uzyskania rekordów użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.
+description: Kolekcji zasobów SubscriptionMonthlyUsageRecord można użyć do pobierania rekordów użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 765ea16ff58b462d83ae3b8764b8b34c3ef804dc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 976abd86f34c1c27184f277ffc89fbc65f16bb37
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767970"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874690"
 ---
-# <a name="get-subscription-usage-records-for-a-customer"></a>Pobieranie rekordów użycia subskrypcji dla klienta
+# <a name="get-subscription-usage-records-for-a-customer"></a>Uzyskiwanie rekordów użycia subskrypcji dla klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Kolekcji zasobów **SubscriptionMonthlyUsageRecord** można użyć do uzyskania rekordów użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym. Ten zasób reprezentuje wszystkie subskrypcje dla klienta. W przypadku klienta z planem platformy Azure ten zasób zwraca listę tych planów (nie poszczególnych subskrypcji platformy Azure).
+Kolekcji zasobów **SubscriptionMonthlyUsageRecord** można użyć do pobierania rekordów użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym. Ten zasób reprezentuje wszystkie subskrypcje dla klienta. W przypadku klienta z planem platformy Azure ten zasób zwraca listę tych planów (nie pojedynczych subskrypcji platformy Azure).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Pobieranie rekordów użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.:
+Aby uzyskać rekordy użycia subskrypcji dla klienta określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym, wykonaj następujące czynności:
 
-1. Użyj kolekcji **IAggregatePartner. Customers** , aby wywołać metodę **ById ()** .
+1. Użyj **kolekcji IAggregatePartner.Customers,** aby wywołać **metodę ById().**
 
-2. Następnie Wywołaj Właściwość **subscriptions** , a także właściwość **UsageRecords** . Zakończ, wywołując metody get () lub GetAsync ().
+2. Następnie **wywołaj właściwość Subscriptions** i **właściwość UsageRecords.** Zakończ, wywołując metody Get() lub GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -42,10 +38,10 @@ Pobieranie rekordów użycia subskrypcji dla klienta określonej usługi lub zas
     var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.UsageRecords.Get();
     ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Project: **PartnerSDK.FeatureSamples**
 - Klasa: **GetSubscriptionUsageRecords.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -54,19 +50,19 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                                                      |
 |---------|------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/usagerecords http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/usagerecords HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-W tej tabeli przedstawiono parametr zapytania wymaganego do uzyskania informacji o znamionowym użyciu klienta.
+W tej tabeli wymieniono wymagany parametr zapytania w celu uzyskania informacji o użyciu ocenionym przez klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                           |
 |------------------------|----------|----------|---------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -84,17 +80,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób **SubscriptionMonthlyUsageRecord** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **zasób SubscriptionMonthlyUsageRecord** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Przykład odpowiedzi dla subskrypcji Microsoft Azure (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Przykład odpowiedzi dla Microsoft Azure subskrypcji (MS-AZR-0145P)
 
-W tym przykładzie klient zakupił ofertę **145Pą platformy Azure** .
+W tym przykładzie klient kupił ofertę **Azure PayG 145P.**
 
-*W przypadku klientów z subskrypcjami Microsoft Azure (MS-AZR-0145P) nie będzie zmieniana odpowiedź interfejsu API.*
+*W przypadku klientów Microsoft Azure subskrypcji interfejsu API (MS-AZR-0145P) nie ma żadnych zmian w odpowiedzi interfejsu API.*
 
 ```http
 HTTP/1.1 200 OK
@@ -136,14 +132,14 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 }
 ```
 
-## <a name="rest-response-example-for-azure-plan"></a>Przykład odpowiedzi REST dla usługi Azure plan
+## <a name="rest-response-example-for-azure-plan"></a>Przykład odpowiedzi REST dla planu platformy Azure
 
 W tym przykładzie klient kupił plan platformy Azure.
 
-*W przypadku klientów z planami platformy Azure w odpowiedzi interfejsu API istnieją następujące zmiany:*
+*W przypadku klientów korzystających z planów platformy Azure w odpowiedzi interfejsu API występują następujące zmiany:*
 
-- **currencyLocale** został zastąpiony **CurrencyCode**
-- **usdTotalCost** jest nowym polem
+- **CurrencyLocale został** zastąpiony wartością **currencyCode**
+- **USDTotalCost** to nowe pole
 
 ```http
 HTTP/1.1 200 OK

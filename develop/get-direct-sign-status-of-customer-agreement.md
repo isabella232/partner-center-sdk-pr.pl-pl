@@ -1,43 +1,37 @@
 ---
-title: Pobierz bezpośredni stan podpisywania klienta dla umowy Microsoft Customer Agreement.
-description: Za pomocą zasobu DirectSignedCustomerAgreementStatus można uzyskać status bezpośredniego podpisywania klienta (bezpośrednie zatwierdzenie) umowy klienta firmy Microsoft.
+title: Uzyskiwanie stanu bezpośredniego podpisywania klienta dla Umowa z Klientem Microsoft.
+description: Możesz użyć zasobu DirectSignedCustomerAgreementStatus, aby uzyskać stan bezpośredniego podpisywania klienta (akceptacja bezpośrednia) Umowa z Klientem Microsoft.
 ms.date: 02/11/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 267e3aa63a94c5045977ad566eb5061df3b59882
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: a17775614b4eb328514b2b32b4cac1e513019cff
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030566"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549182"
 ---
-# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Uzyskaj status bezpośredniego podpisywania klienta (bezpośrednie zatwierdzenie) umowy klienta firmy Microsoft
+# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Uzyskiwanie stanu bezpośredniego podpisywania klienta (akceptacja bezpośrednia) Umowa z Klientem Microsoft
 
-**Dotyczy:**
+**Dotyczy:** Partner Center
 
-- Centrum partnerskie
+**Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób **DirectSignedCustomerAgreementStatus** jest obecnie obsługiwany przez centrum partnerskie tylko w chmurze publicznej firmy Microsoft.
+Zasób **DirectSignedCustomerAgreementStatus** jest obecnie obsługiwany Partner Center tylko w chmurze publicznej firmy Microsoft.
 
-Ten zasób *nie ma zastosowania* do:
-
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tym artykule wyjaśniono, jak można pobrać stan bezpośredniej akceptacji umowy klienta firmy Microsoft przez klienta.
+W tym artykule wyjaśniono, jak można pobrać stan bezpośredniej akceptacji klienta dla Umowa z Klientem Microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby pobrać stan bezpośredniego akceptacji umowy klienta firmy Microsoft przez klienta, wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) , aby pobrać Interfejs [**ICustomerAgreementCollection**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) . Na koniec Wywołaj `GetDirectSignedCustomerAgreementStatus()` lub, `GetDirectSignedCustomerAgreementStatusAsync()` Aby pobrać stan.
+Aby pobrać stan bezpośredniej akceptacji klienta dla klienta Umowa z Klientem Microsoft, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta. Następnie użyj właściwości [**Agreements,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) aby pobrać [**interfejs ICustomerAgreementCollection.**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) Na koniec `GetDirectSignedCustomerAgreementStatus()` wywołaj lub `GetDirectSignedCustomerAgreementStatusAsync()` , aby pobrać stan.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,11 +39,11 @@ Aby pobrać stan bezpośredniego akceptacji umowy klienta firmy Microsoft przez 
 var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
 ```
 
-**Przykład**: [Przykładowa aplikacja konsolowa](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples **Class**: GetDirectSignedCustomerAgreementStatus. cs
+**Przykład:** [Przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples, **klasa**: GetDirectSignedCustomerAgreementStatus.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
-Aby pobrać stan bezpośredniej akceptacji umowy klienta firmy Microsoft przez klienta, Utwórz żądanie REST w celu pobrania [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) dla klienta.
+Aby pobrać stan bezpośredniej akceptacji klienta dla klienta Umowa z Klientem Microsoft, utwórz żądanie REST w celu pobrania dla klienta stanu [DirectSignedCustomerAgreementStatus.](./customer-agreement-direct-sign-status-resource.md)
 
 ### <a name="request-syntax"></a>Składnia żądania
 
@@ -57,19 +51,19 @@ Użyj następującej składni żądania:
 
 | Metoda | Identyfikator URI żądania                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/directSignedMicrosoftCustomerAgreementStatus http/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
-Z żądaniem można użyć następujących parametrów URI:
+W żądaniu można użyć następujących parametrów URI:
 
 | Nazwa             | Typ | Wymagane | Opis                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| Identyfikator dzierżawy klienta | GUID | Tak | Wartość jest **CustomerTenantId** w formacie GUID, która umożliwia określenie identyfikatora dzierżawy klienta. |
+| identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem **CustomerTenantId** w formacie identyfikatora GUID, który umożliwia określenie identyfikatora dzierżawy klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -87,19 +81,19 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca [zasób **DirectSignedCustomerAgreementStatus**](./customer-agreement-direct-sign-status-resource.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [ **zasób DirectSignedCustomerAgreementStatus**](./customer-agreement-direct-sign-status-resource.md) w treści odpowiedzi.
 
-Zasób ma właściwość **IsSigned** , która wskazuje stan bezpośredniego podpisywania klienta (zatwierdzenie bezpośrednie).
+Zasób ma właściwość **isSigned,** która wskazuje stan bezpośredniego podpisywania (akceptacji bezpośredniej) klienta.
 
-- Wartość **true** wskazuje, że umowa została podpisana (zaakceptowana) bezpośrednio przez klienta.
+- Wartość true **oznacza,** że umowa została podpisana (zaakceptowana) bezpośrednio przez klienta.
 
-- Wartość **false** wskazuje, że umowa *nie* została podpisana (zaakceptowana) bezpośrednio przez klienta.
+- Wartość false **oznacza,** że umowa *nie* została podpisana (zaakceptowana) bezpośrednio przez klienta.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.
 
-Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

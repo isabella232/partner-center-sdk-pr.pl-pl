@@ -1,39 +1,34 @@
 ---
 title: Pobieranie linków do szacunkowych faktur
-description: Możesz uzyskać kolekcję linków szacowania do szczegółów elementu wiersza uzgodnienia zapytania.
+description: Możesz uzyskać kolekcję linków do szacowania, aby utworzyć zapytanie dotyczące szczegółów elementu wiersza uzgodnień.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 10801cdb1f9d4f50a1f8fc86c2d0eaf8610ed68c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767886"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549148"
 ---
 # <a name="get-invoice-estimate-links"></a>Pobieranie linków do szacunkowych faktur
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Możesz uzyskać linki szacowania, aby ułatwić szczegółowe zapytanie dotyczące nienaliczanych elementów wierszy uzgadniania.
+Możesz uzyskać linki do szacowania, aby pomóc w zapytaniu o szczegółowe informacje dotyczące nienaliowanych elementów wiersza uzgodnień.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane elementy wiersza.
+- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane pozycje.
 
 ## <a name="c"></a>C\#
 
-Poniższy przykładowy kod pokazuje, jak można uzyskać linki szacowania do zapytania nieobciążane wiersze w danej walucie. Odpowiedź zawiera linki szacowania dla każdego okresu (na przykład bieżący i poprzedni miesiąc).
+Poniższy przykładowy kod pokazuje, jak uzyskać linki do szacowania w celu wykonywania zapytań o nienadane elementy wiersza dla danej waluty. Odpowiedź zawiera linki do szacowania dla każdego okresu (na przykład bieżącego i poprzedniego miesiąca).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -49,7 +44,7 @@ var estimateLinks = scopedPartnerOperations.Invoices.Estimates.Links.ByCurrency(
 Podobny przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
 - Klasa: **GetEstimatesLinks.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -58,19 +53,19 @@ Podobny przykład można znaleźć w następujących tematach:
 
 | Metoda  | Identyfikator URI żądania                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/estimates/Links? CurrencyCode = {CURRENCYCODE} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/estimates/links?currencycode={currencycode} HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Podczas tworzenia żądania Użyj poniższego identyfikatora URI i parametru zapytania.
+Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 
 | Nazwa                   | Typ   | Wymagane | Opis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| currencyCode           | ciąg | Tak      | Kod waluty dla nieobciążanych elementów wiersza.                    |
+| currencyCode           | ciąg | Tak      | Kod waluty dla nienaliowanych elementów wiersza.                    |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -79,7 +74,7 @@ Brak.
 ### <a name="request-example"></a>Przykład żądania
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 1234ecb8-37af-45f4-a1a1-358de3ca2b9e
@@ -91,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera linki do pobrania nienaliczanych oszacowań.
+Jeśli to się powiedzie, odpowiedź zawiera linki do pobierania nienalionych oszacowań.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

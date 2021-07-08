@@ -1,34 +1,29 @@
 ---
 title: Pobieranie profilu biznesowego partnera
-description: Dowiedz się, jak używać interfejsów API do uzyskiwania służbowego profilu biznesowego.
+description: Dowiedz się, jak uzyskać profil biznesowy dla celów prawnych przy użyciu interfejsów API.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1d488c8deb9f01110e92327035ce0c3c023fcb46
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: ba0654e364674bc2db129a0904d411c6fb67cbb9
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500026"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549063"
 ---
 # <a name="get-the-partner-legal-business-profile"></a>Pobieranie profilu biznesowego partnera
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Jak uzyskać legalny profil biznesowy partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać legalny profil biznesowy partnera, najpierw Uzyskaj interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner. profile** . Następnie Pobierz wartość właściwości **LegalBusinessProfile** , aby pobrać interfejs do firmowych operacji profilowania. Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.getasync) , aby pobrać profil.
+Aby uzyskać legalny profil biznesowy partnera, najpierw uzyskaj interfejs do kolekcji operacji profilu partnera z właściwości **IAggregatePartner.Profiles.** Następnie pobierz wartość właściwości **LegalBusinessProfile,** aby pobrać interfejs do operacji legalnych profilów biznesowych. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.getasync) aby pobrać profil.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,7 +31,7 @@ Aby uzyskać legalny profil biznesowy partnera, najpierw Uzyskaj interfejs do ko
 var billingProfile = partnerOperations.Profiles.LegalBusinessProfile.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK Centrum partnerskiego: GetLegalBusinessProfile. cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Przykłady klasy:** GetLegalBusinessProfile.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -44,11 +39,11 @@ var billingProfile = partnerOperations.Profiles.LegalBusinessProfile.Get();
 
 | Metoda  | Identyfikator URI żądania                                                                    |
 |---------|--------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/legalbusiness http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -69,11 +64,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **LegalBusinessProfile** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca **obiekt LegalBusinessProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

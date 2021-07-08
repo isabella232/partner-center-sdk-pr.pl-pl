@@ -1,33 +1,29 @@
 ---
 title: Pobieranie cen platformy Microsoft Azure
-description: Jak uzyskać kartę usługi Azure rate z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość często dynamiczny i zmieniany.
+description: Jak uzyskać kartę stawki platformy Azure z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość dynamiczny i często się zmienia.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0716f0428b13604105b435a2ce8287a8b4609fea
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: 4f66ab19ef3723fbaa27acff941cf48683a7c25c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97770292"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548791"
 ---
 # <a name="get-prices-for-microsoft-azure"></a>Pobieranie cen platformy Microsoft Azure
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Jak uzyskać kartę [stawki platformy Azure](azure-rate-card-resources.md) z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość dynamiczny i często się zmienia.
 
-Jak uzyskać [kartę usługi Azure rate](azure-rate-card-resources.md) z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość często dynamiczny i zmieniany.
+Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku oraz rachunku dla poszczególnych klientów, możesz połączyć to zapytanie dotyczące karty stawki platformy Azure w celu uzyskania cen platformy Microsoft Azure z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)
 
-Aby śledzić użycie i pomóc w przewidywaniu miesięcznych opłat i rachunków dla poszczególnych klientów, możesz połączyć tę kwerendę z kartą usługi Azure rate, aby uzyskać ceny za Microsoft Azure z żądaniem [uzyskania rekordów użycia klienta na platformie Azure](get-a-customer-s-utilization-record-for-azure.md).
-
-Ceny różnią się w zależności od rynku i waluty, a ten interfejs API przyjmuje lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w centrum partnerskim i w języku przeglądarki. te ustawienia można dostosować. Rozpoznawanie lokalizacji jest szczególnie istotne w przypadku zarządzania sprzedażą na wielu rynkach z jednego, scentralizowanego biura. Aby uzyskać więcej informacji, zobacz [Parametry identyfikatora URI](#uri-parameters).
+Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać. Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura. Aby uzyskać więcej informacji, zobacz [Parametry URI](#uri-parameters).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kartę usługi Azure rate, wywołaj metodę [**IAzureRateCard. Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) w celu zwrócenia zasobu [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierającego ceny platformy Azure.
+Aby uzyskać kartę stawki platformy Azure, wywołaj metodę [**IAzureRateCard.Get,**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) aby zwrócić [**zasób AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierający ceny platformy Azure.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,13 +31,13 @@ Aby uzyskać kartę usługi Azure rate, wywołaj metodę [**IAzureRateCard. Get*
 var azureRateCard = partner.RateCards.Azure.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetAzureRateCard.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetAzureRateCard.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: GetAzureRateCard.cs)
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard. Get** w celu zwrócenia szczegółów karty rate zawierającej ceny platformy Azure.
+Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard.get,** aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -53,7 +49,7 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) , aby wyświetlić szczegóły karty stawki zawierającej ceny platformy Azure.
+Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.
 
 ```powershell
 Get-PartnerAzureRateCard
@@ -65,24 +61,24 @@ Get-PartnerAzureRateCard
 
 | Metoda  | Identyfikator URI żądania                                                        |
 |---------|--------------------------------------------------------------------|
-| **Pobierz** | *{baseURL}*/V1/ratecards/Azure? Currency = {currency} &region = {Region} |
+| **Pobierz** | *{baseURL}*/v1/ratecards/azure?currency={currency}&region={region} |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 | Nazwa     | Typ   | Wymagane | Opis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO dla waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to `USD`. |
-| region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu w formacie ISO, który wskazuje rynek zakupu oferty (na przykład `FR` ). Wartość domyślna to `US`.        |
+| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to `USD`. |
+| region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu ISO, który wskazuje rynek, na którym zakupiono ofertę (na przykład `FR` ). Wartość domyślna to `US`.        |
 
-W żądaniu można uwzględnić opcjonalny [nagłówek](headers.md#rest-request-headers) "X-locale". Jeśli nie dołączysz nagłówka "X-local", zostanie użyta wartość domyślna ("en-US").
+W żądaniu możesz uwzględnić [](headers.md#rest-request-headers) opcjonalny nagłówek X-Locale. Jeśli nie dołączysz nagłówka X-Locale, zostanie użyta wartość domyślna ("en-US").
 
-- Jeśli podano parametry waluty i regionu w żądaniu, wartość X-locale służy do określenia języka odpowiedzi.
+- W przypadku podania parametrów waluty i regionu w żądaniu wartość X-Locale jest używana do określenia języka odpowiedzi.
 
-- Jeśli nie podano parametrów regionu i waluty w żądaniu, wartość X-locale służy do określenia regionu, waluty i języka odpowiedzi.
+- Jeśli w żądaniu nie podaniem parametrów regionu i waluty, wartość X-Locale (Ustawienia lokalne X) jest używana do określenia regionu, waluty i języka odpowiedzi.
 
 ### <a name="request-header"></a>Nagłówek żądania
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -103,11 +99,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli żądanie zakończy się pomyślnie, zwraca zasób [karty usługi Azure rate](azure-rate-card-resources.md) .
+Jeśli żądanie powiedzie się, zwraca zasób [karty stawki platformy Azure.](azure-rate-card-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

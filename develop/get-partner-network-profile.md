@@ -4,31 +4,26 @@ description: Pobiera obiekt reprezentujący profil MPN partnera.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f8f3e74462da05de0be47964beb34228650b1f53
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 38c12a9a9755b9838b7742d9f38c5cbd52b81210
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768482"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548859"
 ---
 # <a name="get-microsoft-partner-network-profile"></a>Pobieranie profilu Microsoft Partner Network
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Pobiera obiekt reprezentujący profil MPN partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać profil sieci partnera, Użyj kolekcji **IAggregatePartner. profile** i Wywołaj Właściwość **MpnProfile** . Na koniec wywołaj metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) .
+Aby uzyskać profil sieci partnera, użyj **kolekcji IAggregatePartner.Profiles** i wywołaj **właściwość MpnProfile.** Na koniec wywołaj [**metody Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,13 +31,13 @@ Aby uzyskać profil sieci partnera, Użyj kolekcji **IAggregatePartner. profile*
 var mpnProfile = partnerOperations.Profiles.MpnProfile.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**:P Artnercentersdk. FeaturesSamples, **Klasa**: GetMPNProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project**:P artnerCenterSDK.FeaturesKlasa : GetMPNProfile.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać profil sieci partnera, użyj funkcji **IAggregatePartner. Getprofiles** i wywołaj funkcję **getMpnProfile** . Na koniec wywołaj funkcję **Get ()** .
+Aby uzyskać profil sieci partnera, użyj funkcji **IAggregatePartner.getProfiles** i wywołaj funkcję **getMpnProfile.** Na koniec wywołaj **funkcję get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -54,7 +49,7 @@ MpnProfile mpnProfile = partnerOperations.getProfiles().getMpnProfile().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać profil sieci partnera, uruchom polecenie [**Get-PartnerMpnProfile**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md) .
+Aby uzyskać profil sieci partnera, wykonaj polecenie [**Get-PartnerMpnProfile.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md)
 
 ```powershell
 Get-PartnerMpnProfile
@@ -66,11 +61,11 @@ Get-PartnerMpnProfile
 
 | Metoda  | Identyfikator URI żądania                                                          |
 |---------|----------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/MPN http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -89,11 +84,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **MPNProfile** w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca obiekt **MPNProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

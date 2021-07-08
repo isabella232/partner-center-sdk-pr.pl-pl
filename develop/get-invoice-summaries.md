@@ -1,43 +1,38 @@
 ---
 title: Pobieranie podsumowania faktur
-description: Możesz użyć zasobu podsumowania faktury dla każdego typu waluty, aby pokazać saldo i łączne opłaty zarówno dla opłat cyklicznych, jak i jednorazowych.
+description: Możesz użyć zasobu podsumowań faktur dla każdego typu waluty, aby wyświetlić saldo i łączne opłaty zarówno opłat cyklicznych, jak i jednorazowych.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 82cd669117db72e1819d941f48f8ea69b2eddaec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fb6ff839c56c7b0b77a9904abf05d95ca0500b00
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767685"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549114"
 ---
 # <a name="get-invoice-summaries"></a>Pobieranie podsumowania faktur
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Można użyć **InvoiceSummaries** do pobrania podsumowania faktury, który pokazuje saldo i łączne opłaty zarówno dla opłat cyklicznych, jak i jednorazowych. Zasób **InvoiceSummaries** zawiera podsumowanie faktury dla każdego typu waluty.
+Możesz użyć funkcji **InvoiceSummaries,** aby pobrać podsumowanie faktury, które pokazuje saldo i łączne opłaty zarówno opłat cyklicznych, jak i jednorazowych. Zasób **InvoiceSummaries** zawiera podsumowanie faktury dla każdego typu waluty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Prawidłowy identyfikator faktury.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać kolekcję [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) , która zawiera [**InvoiceSummary**](invoice-resources.md#invoicesummary) dla każdego typu waluty:
+Aby pobrać [**kolekcję InvoiceSummaries**](invoice-resources.md#invoicesummaries) zawierającą element [**InvoiceSummary**](invoice-resources.md#invoicesummary) dla każdego typu waluty:
 
-1. Użyj kolekcji **IAggregatePartner. Revoices** , aby wywołać Właściwość **podsumowania** .
+1. Użyj **kolekcji IAggregatePartner.Invoices,** aby wywołać **właściwość Summaries.**
 
-2. Wywołaj metodę **Get ()** .
-3. Aby uzyskać balans poszczególnych [**InvoiceSummary**](invoice-resources.md#invoicesummary), uzyskaj dostęp do właściwości **BalanceAmount** dla tego elementu członkowskiego kolekcji.
+2. Wywołaj **metodę Get().**
+3. Aby uzyskać saldo pojedynczego obiektu [**InvoiceSummary,**](invoice-resources.md#invoicesummary)uzyskaj dostęp do właściwości **BalanceAmount** dla tego członka kolekcji.
 
 ``` csharp
 // IAggregatePartner scopedPartnerOperations;
@@ -52,7 +47,7 @@ Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummaries[0].Bal
 Aby uzyskać więcej informacji, zobacz następujący przykładowy kod:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
+- Project: **PartnerSDK.FeatureSample**
 - Klasa: **GetInvoiceSummaries.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -61,7 +56,7 @@ Aby uzyskać więcej informacji, zobacz następujący przykładowy kod:
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/Summaries http/1.1     |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/summaries HTTP/1.1     |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -69,7 +64,7 @@ Brak.
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -88,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [**zasób InvoiceSummaries**](invoice-resources.md#invoicesummaries) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

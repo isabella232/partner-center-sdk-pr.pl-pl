@@ -1,35 +1,31 @@
 ---
-title: Pobierz szczegóły żądania obsługi według identyfikatora.
+title: Uzyskiwanie szczegółów żądania obsługi według identyfikatora.
 description: Jak pobrać szczegóły istniejącego żądania obsługi klienta według identyfikatora.
 ms.date: 02/06/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c79fd3f5e5609a1893891e9b2a8078f8678497b3
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 66488cf9592d630cb1f0237d379e8df5ead6a3a8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768474"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548774"
 ---
 # <a name="get-service-request-details-by-id"></a>Pobieranie szczegółów żądania obsługi według identyfikatora
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Jak pobrać szczegóły istniejącego żądania obsługi klienta przy użyciu identyfikatora żądania obsługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Identyfikator żądania obsługi.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać szczegóły istniejącego żądania obsługi klienta, wywołaj metodę [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) i przekaż element [**ServiceRequest.ID**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) , aby zidentyfikować i zwrócić interfejs do określonego obiektu [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) .
+Aby pobrać szczegóły istniejącego żądania obsługi klienta, wywołaj metodę [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) i przekaż element [**ServiceRequest.Id**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) w celu zidentyfikowania i zwrócenia interfejsu do określonego obiektu [**ServiceRequest.**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,19 +46,19 @@ Console.WriteLine(string.Format("The primary contact for the service request {0}
 
 | Metoda    | Identyfikator URI żądania                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/servicerequests/{ServiceRequest-ID} http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{identyfikator-żądania-usługi} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru identyfikatora URI, aby uzyskać określone żądanie obsługi.
+Użyj następującego parametru URI, aby uzyskać określone żądanie obsługi.
 
 | Nazwa                  | Typ     | Wymagane | Opis                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **Identyfikator żądania ServiceRequest** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
+| **identyfikator servicerequest-id** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -84,11 +80,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób **żądania obsługi** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zasób **żądania obsługi** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz Partner Center REST Error Codes (Kody [błędów REST).](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

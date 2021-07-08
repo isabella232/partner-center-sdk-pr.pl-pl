@@ -1,32 +1,27 @@
 ---
-title: Pobierz fakturę według identyfikatora
-description: Pobiera daną fakturę przy użyciu identyfikatora faktury.
+title: Uzyskiwanie faktury według identyfikatora
+description: Pobiera fakturę przy użyciu identyfikatora faktury.
 ms.date: 06/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 17880265d06e8e5eaacc5470d83c49defd10ad51
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c888786a6b6ca941629bb7aac95227021c37a7fc
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767686"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549165"
 ---
-# <a name="get-invoice-by-id"></a>Pobierz fakturę według identyfikatora
+# <a name="get-invoice-by-id"></a>Uzyskiwanie faktury według identyfikatora
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera daną fakturę przy użyciu identyfikatora faktury.
+Pobiera fakturę przy użyciu identyfikatora faktury.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Prawidłowy identyfikator faktury.
 
@@ -34,9 +29,9 @@ Pobiera daną fakturę przy użyciu identyfikatora faktury.
 
 Aby uzyskać fakturę według identyfikatora:
 
-1. Użyj kolekcji **IPartner. faktur** i Wywołaj metodę **ById ()** .
+1. Użyj **kolekcji IPartner.Invoices** i wywołaj **metodę ById().**
 
-2. Wywołaj metody **Get ()** lub **GetAsync ()** .
+2. Wywołaj **metody Get()** **lub GetAsync().**
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -45,7 +40,7 @@ Aby uzyskać fakturę według identyfikatora:
 var invoice = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: GetInvoice.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: GetInvoice.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -53,19 +48,19 @@ var invoice = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Get();
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby pobrać fakturę.
+Użyj następującego parametru zapytania, aby uzyskać fakturę.
 
 | Nazwa           | Typ       | Wymagane | Opis                                                                                        |
 |----------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| **Identyfikator faktury** | **parametry** | Tak      | Wartość jest **identyfikatorem faktury** , który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
+| **identyfikator faktury** | **ciąg** | Tak      | Wartość to identyfikator **faktury,** który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -83,11 +78,11 @@ MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zasób [faktury](invoice-resources.md#invoice) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca [zasób faktury](invoice-resources.md#invoice) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

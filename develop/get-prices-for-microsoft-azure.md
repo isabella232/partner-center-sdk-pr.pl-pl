@@ -1,33 +1,29 @@
 ---
 title: Pobieranie cen platformy Microsoft Azure
-description: Jak uzyskać kartę usługi Azure rate z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość często dynamiczny i zmieniany.
+description: Jak uzyskać kartę stawki platformy Azure z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość dynamiczny i często się zmienia.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0716f0428b13604105b435a2ce8287a8b4609fea
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: 4f66ab19ef3723fbaa27acff941cf48683a7c25c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97770292"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548791"
 ---
-# <a name="get-prices-for-microsoft-azure"></a><span data-ttu-id="90406-104">Pobieranie cen platformy Microsoft Azure</span><span class="sxs-lookup"><span data-stu-id="90406-104">Get prices for Microsoft Azure</span></span>
+# <a name="get-prices-for-microsoft-azure"></a><span data-ttu-id="62038-104">Pobieranie cen platformy Microsoft Azure</span><span class="sxs-lookup"><span data-stu-id="62038-104">Get prices for Microsoft Azure</span></span>
 
-<span data-ttu-id="90406-105">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="90406-105">**Applies To**</span></span>
+<span data-ttu-id="62038-105">**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="62038-105">**Applies to**: Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="90406-106">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="90406-106">Partner Center</span></span>
-- <span data-ttu-id="90406-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="90406-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="90406-108">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="90406-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="62038-106">Jak uzyskać kartę [stawki platformy Azure](azure-rate-card-resources.md) z cenami w czasie rzeczywistym dla oferty platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="62038-106">How to get an [Azure Rate Card](azure-rate-card-resources.md) with real-time prices for an Azure offer.</span></span> <span data-ttu-id="62038-107">Cennik platformy Azure jest dość dynamiczny i często się zmienia.</span><span class="sxs-lookup"><span data-stu-id="62038-107">Azure pricing is quite dynamic and changes frequently.</span></span>
 
-<span data-ttu-id="90406-109">Jak uzyskać [kartę usługi Azure rate](azure-rate-card-resources.md) z cenami w czasie rzeczywistym dla oferty platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="90406-109">How to get an [Azure Rate Card](azure-rate-card-resources.md) with real-time prices for an Azure offer.</span></span> <span data-ttu-id="90406-110">Cennik platformy Azure jest dość często dynamiczny i zmieniany.</span><span class="sxs-lookup"><span data-stu-id="90406-110">Azure pricing is quite dynamic and changes frequently.</span></span>
+<span data-ttu-id="62038-108">Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku oraz rachunku dla poszczególnych klientów, możesz połączyć to zapytanie dotyczące karty stawki platformy Azure w celu uzyskania cen platformy Microsoft Azure z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)</span><span class="sxs-lookup"><span data-stu-id="62038-108">To track usage and help predict your monthly bill and the bills for individual customers, you can combine this Azure Rate Card query to get prices for Microsoft Azure with a request to [Get a customer's utilization records for Azure](get-a-customer-s-utilization-record-for-azure.md).</span></span>
 
-<span data-ttu-id="90406-111">Aby śledzić użycie i pomóc w przewidywaniu miesięcznych opłat i rachunków dla poszczególnych klientów, możesz połączyć tę kwerendę z kartą usługi Azure rate, aby uzyskać ceny za Microsoft Azure z żądaniem [uzyskania rekordów użycia klienta na platformie Azure](get-a-customer-s-utilization-record-for-azure.md).</span><span class="sxs-lookup"><span data-stu-id="90406-111">To track usage and help predict your monthly bill and the bills for individual customers, you can combine this Azure Rate Card query to get prices for Microsoft Azure with a request to [Get a customer's utilization records for Azure](get-a-customer-s-utilization-record-for-azure.md).</span></span>
+<span data-ttu-id="62038-109">Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację.</span><span class="sxs-lookup"><span data-stu-id="62038-109">Prices differ by market and currency, and this API takes location into consideration.</span></span> <span data-ttu-id="62038-110">Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać.</span><span class="sxs-lookup"><span data-stu-id="62038-110">By default, the API uses your partner profile settings in Partner Center and your browser language, and those settings are customizable.</span></span> <span data-ttu-id="62038-111">Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura.</span><span class="sxs-lookup"><span data-stu-id="62038-111">The location awareness is especially relevant if you manage sales in multiple markets from a single, centralized office.</span></span> <span data-ttu-id="62038-112">Aby uzyskać więcej informacji, zobacz [Parametry URI](#uri-parameters).</span><span class="sxs-lookup"><span data-stu-id="62038-112">For more information, see [URI parameters](#uri-parameters).</span></span>
 
-<span data-ttu-id="90406-112">Ceny różnią się w zależności od rynku i waluty, a ten interfejs API przyjmuje lokalizację.</span><span class="sxs-lookup"><span data-stu-id="90406-112">Prices differ by market and currency, and this API takes location into consideration.</span></span> <span data-ttu-id="90406-113">Domyślnie interfejs API używa ustawień profilu partnera w centrum partnerskim i w języku przeglądarki. te ustawienia można dostosować.</span><span class="sxs-lookup"><span data-stu-id="90406-113">By default, the API uses your partner profile settings in Partner Center and your browser language, and those settings are customizable.</span></span> <span data-ttu-id="90406-114">Rozpoznawanie lokalizacji jest szczególnie istotne w przypadku zarządzania sprzedażą na wielu rynkach z jednego, scentralizowanego biura.</span><span class="sxs-lookup"><span data-stu-id="90406-114">The location awareness is especially relevant if you manage sales in multiple markets from a single, centralized office.</span></span> <span data-ttu-id="90406-115">Aby uzyskać więcej informacji, zobacz [Parametry identyfikatora URI](#uri-parameters).</span><span class="sxs-lookup"><span data-stu-id="90406-115">For more information, see [URI parameters](#uri-parameters).</span></span>
+## <a name="c"></a><span data-ttu-id="62038-113">C\#</span><span class="sxs-lookup"><span data-stu-id="62038-113">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="90406-116">C\#</span><span class="sxs-lookup"><span data-stu-id="90406-116">C\#</span></span>
-
-<span data-ttu-id="90406-117">Aby uzyskać kartę usługi Azure rate, wywołaj metodę [**IAzureRateCard. Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) w celu zwrócenia zasobu [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierającego ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="90406-117">To obtain the Azure Rate Card, call the [**IAzureRateCard.Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) method to return an [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) resource that contains the Azure prices.</span></span>
+<span data-ttu-id="62038-114">Aby uzyskać kartę stawki platformy Azure, wywołaj metodę [**IAzureRateCard.Get,**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) aby zwrócić [**zasób AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) zawierający ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="62038-114">To obtain the Azure Rate Card, call the [**IAzureRateCard.Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) method to return an [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) resource that contains the Azure prices.</span></span>
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,13 +31,13 @@ ms.locfileid: "97770292"
 var azureRateCard = partner.RateCards.Azure.Get();
 ```
 
-<span data-ttu-id="90406-118">**Przykład**: [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="90406-118">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="90406-119">**Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetAzureRateCard.cs</span><span class="sxs-lookup"><span data-stu-id="90406-119">**Project**: Partner Center SDK Samples **Class**: GetAzureRateCard.cs</span></span>
+<span data-ttu-id="62038-115">**Przykład:** [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="62038-115">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="62038-116">**Project:** zestaw SDK Centrum partnerskiego Samples Class : GetAzureRateCard.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: GetAzureRateCard.cs)</span><span class="sxs-lookup"><span data-stu-id="62038-116">**Project**: Partner Center SDK Samples **Class**: GetAzureRateCard.cs</span></span>
 
-## <a name="java"></a><span data-ttu-id="90406-120">Java</span><span class="sxs-lookup"><span data-stu-id="90406-120">Java</span></span>
+## <a name="java"></a><span data-ttu-id="62038-117">Java</span><span class="sxs-lookup"><span data-stu-id="62038-117">Java</span></span>
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-<span data-ttu-id="90406-121">Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard. Get** w celu zwrócenia szczegółów karty rate zawierającej ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="90406-121">To obtain the Azure Rate Card, call the **IAzureRateCard.get** function to return rate card details that contains the Azure prices.</span></span>
+<span data-ttu-id="62038-118">Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard.get,** aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="62038-118">To obtain the Azure Rate Card, call the **IAzureRateCard.get** function to return rate card details that contains the Azure prices.</span></span>
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -49,46 +45,46 @@ var azureRateCard = partner.RateCards.Azure.Get();
 AzureRateCard azureRateCard = partner.getRateCards().getAzure().get();
 ```
 
-## <a name="powershell"></a><span data-ttu-id="90406-122">PowerShell</span><span class="sxs-lookup"><span data-stu-id="90406-122">PowerShell</span></span>
+## <a name="powershell"></a><span data-ttu-id="62038-119">PowerShell</span><span class="sxs-lookup"><span data-stu-id="62038-119">PowerShell</span></span>
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-<span data-ttu-id="90406-123">Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) , aby wyświetlić szczegóły karty stawki zawierającej ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="90406-123">To obtain the Azure Card, execute the [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) command to return rate card details that contains the Azure prices.</span></span>
+<span data-ttu-id="62038-120">Aby uzyskać kartę platformy Azure, wykonaj polecenie [**Get-PartnerAzureRateCard,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.</span><span class="sxs-lookup"><span data-stu-id="62038-120">To obtain the Azure Card, execute the [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) command to return rate card details that contains the Azure prices.</span></span>
 
 ```powershell
 Get-PartnerAzureRateCard
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="90406-124">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="90406-124">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="62038-121">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="62038-121">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="90406-125">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="90406-125">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="62038-122">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="62038-122">Request syntax</span></span>
 
-| <span data-ttu-id="90406-126">Metoda</span><span class="sxs-lookup"><span data-stu-id="90406-126">Method</span></span>  | <span data-ttu-id="90406-127">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="90406-127">Request URI</span></span>                                                        |
+| <span data-ttu-id="62038-123">Metoda</span><span class="sxs-lookup"><span data-stu-id="62038-123">Method</span></span>  | <span data-ttu-id="62038-124">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="62038-124">Request URI</span></span>                                                        |
 |---------|--------------------------------------------------------------------|
-| <span data-ttu-id="90406-128">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="90406-128">**GET**</span></span> | <span data-ttu-id="90406-129">*{baseURL}*/V1/ratecards/Azure? Currency = {currency} &region = {Region}</span><span class="sxs-lookup"><span data-stu-id="90406-129">*{baseURL}*/v1/ratecards/azure?currency={currency}&region={region}</span></span> |
+| <span data-ttu-id="62038-125">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="62038-125">**GET**</span></span> | <span data-ttu-id="62038-126">*{baseURL}*/v1/ratecards/azure?currency={currency}&region={region}</span><span class="sxs-lookup"><span data-stu-id="62038-126">*{baseURL}*/v1/ratecards/azure?currency={currency}&region={region}</span></span> |
 
-### <a name="uri-parameters"></a><span data-ttu-id="90406-130">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="90406-130">URI parameters</span></span>
+### <a name="uri-parameters"></a><span data-ttu-id="62038-127">Parametry URI</span><span class="sxs-lookup"><span data-stu-id="62038-127">URI parameters</span></span>
 
-| <span data-ttu-id="90406-131">Nazwa</span><span class="sxs-lookup"><span data-stu-id="90406-131">Name</span></span>     | <span data-ttu-id="90406-132">Typ</span><span class="sxs-lookup"><span data-stu-id="90406-132">Type</span></span>   | <span data-ttu-id="90406-133">Wymagane</span><span class="sxs-lookup"><span data-stu-id="90406-133">Required</span></span> | <span data-ttu-id="90406-134">Opis</span><span class="sxs-lookup"><span data-stu-id="90406-134">Description</span></span>                                                                                                                                                                               |
+| <span data-ttu-id="62038-128">Nazwa</span><span class="sxs-lookup"><span data-stu-id="62038-128">Name</span></span>     | <span data-ttu-id="62038-129">Typ</span><span class="sxs-lookup"><span data-stu-id="62038-129">Type</span></span>   | <span data-ttu-id="62038-130">Wymagane</span><span class="sxs-lookup"><span data-stu-id="62038-130">Required</span></span> | <span data-ttu-id="62038-131">Opis</span><span class="sxs-lookup"><span data-stu-id="62038-131">Description</span></span>                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="90406-135">currency</span><span class="sxs-lookup"><span data-stu-id="90406-135">currency</span></span> | <span data-ttu-id="90406-136">ciąg</span><span class="sxs-lookup"><span data-stu-id="90406-136">string</span></span> | <span data-ttu-id="90406-137">Nie</span><span class="sxs-lookup"><span data-stu-id="90406-137">No</span></span>       | <span data-ttu-id="90406-138">Opcjonalny trzyliterowy kod ISO dla waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ).</span><span class="sxs-lookup"><span data-stu-id="90406-138">Optional three letter ISO code for the currency in which the resource rates will be provided (for example `EUR`).</span></span> <span data-ttu-id="90406-139">Wartość domyślna to `USD`.</span><span class="sxs-lookup"><span data-stu-id="90406-139">The default is `USD`.</span></span> |
-| <span data-ttu-id="90406-140">region</span><span class="sxs-lookup"><span data-stu-id="90406-140">region</span></span>   | <span data-ttu-id="90406-141">ciąg</span><span class="sxs-lookup"><span data-stu-id="90406-141">string</span></span> | <span data-ttu-id="90406-142">Nie</span><span class="sxs-lookup"><span data-stu-id="90406-142">No</span></span>       | <span data-ttu-id="90406-143">Opcjonalny dwuliterowy kod kraju/regionu w formacie ISO, który wskazuje rynek zakupu oferty (na przykład `FR` ).</span><span class="sxs-lookup"><span data-stu-id="90406-143">Optional two-letter ISO country/region code that indicates the market where the offer is purchased (for example `FR`).</span></span> <span data-ttu-id="90406-144">Wartość domyślna to `US`.</span><span class="sxs-lookup"><span data-stu-id="90406-144">The default is `US`.</span></span>        |
+| <span data-ttu-id="62038-132">currency</span><span class="sxs-lookup"><span data-stu-id="62038-132">currency</span></span> | <span data-ttu-id="62038-133">ciąg</span><span class="sxs-lookup"><span data-stu-id="62038-133">string</span></span> | <span data-ttu-id="62038-134">Nie</span><span class="sxs-lookup"><span data-stu-id="62038-134">No</span></span>       | <span data-ttu-id="62038-135">Opcjonalny trzyliterowy kod ISO waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ).</span><span class="sxs-lookup"><span data-stu-id="62038-135">Optional three letter ISO code for the currency in which the resource rates will be provided (for example `EUR`).</span></span> <span data-ttu-id="62038-136">Wartość domyślna to `USD`.</span><span class="sxs-lookup"><span data-stu-id="62038-136">The default is `USD`.</span></span> |
+| <span data-ttu-id="62038-137">region</span><span class="sxs-lookup"><span data-stu-id="62038-137">region</span></span>   | <span data-ttu-id="62038-138">ciąg</span><span class="sxs-lookup"><span data-stu-id="62038-138">string</span></span> | <span data-ttu-id="62038-139">Nie</span><span class="sxs-lookup"><span data-stu-id="62038-139">No</span></span>       | <span data-ttu-id="62038-140">Opcjonalny dwuliterowy kod kraju/regionu ISO, który wskazuje rynek, na którym zakupiono ofertę (na przykład `FR` ).</span><span class="sxs-lookup"><span data-stu-id="62038-140">Optional two-letter ISO country/region code that indicates the market where the offer is purchased (for example `FR`).</span></span> <span data-ttu-id="62038-141">Wartość domyślna to `US`.</span><span class="sxs-lookup"><span data-stu-id="62038-141">The default is `US`.</span></span>        |
 
-<span data-ttu-id="90406-145">W żądaniu można uwzględnić opcjonalny [nagłówek](headers.md#rest-request-headers) "X-locale".</span><span class="sxs-lookup"><span data-stu-id="90406-145">You can include the optional X-Locale [header](headers.md#rest-request-headers) in your request.</span></span> <span data-ttu-id="90406-146">Jeśli nie dołączysz nagłówka "X-local", zostanie użyta wartość domyślna ("en-US").</span><span class="sxs-lookup"><span data-stu-id="90406-146">If you don't include the X-Locale header, the default value ("en-US") is used.</span></span>
+<span data-ttu-id="62038-142">W żądaniu możesz uwzględnić [](headers.md#rest-request-headers) opcjonalny nagłówek X-Locale.</span><span class="sxs-lookup"><span data-stu-id="62038-142">You can include the optional X-Locale [header](headers.md#rest-request-headers) in your request.</span></span> <span data-ttu-id="62038-143">Jeśli nie dołączysz nagłówka X-Locale, zostanie użyta wartość domyślna ("en-US").</span><span class="sxs-lookup"><span data-stu-id="62038-143">If you don't include the X-Locale header, the default value ("en-US") is used.</span></span>
 
-- <span data-ttu-id="90406-147">Jeśli podano parametry waluty i regionu w żądaniu, wartość X-locale służy do określenia języka odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="90406-147">If you provide currency and region parameters in your request, the value of X-Locale is used to determine the response's language.</span></span>
+- <span data-ttu-id="62038-144">W przypadku podania parametrów waluty i regionu w żądaniu wartość X-Locale jest używana do określenia języka odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="62038-144">If you provide currency and region parameters in your request, the value of X-Locale is used to determine the response's language.</span></span>
 
-- <span data-ttu-id="90406-148">Jeśli nie podano parametrów regionu i waluty w żądaniu, wartość X-locale służy do określenia regionu, waluty i języka odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="90406-148">If you don't provide region and currency parameters in your request, the value of X-Locale is used to determine the response's region, currency, and language.</span></span>
+- <span data-ttu-id="62038-145">Jeśli w żądaniu nie podaniem parametrów regionu i waluty, wartość X-Locale (Ustawienia lokalne X) jest używana do określenia regionu, waluty i języka odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="62038-145">If you don't provide region and currency parameters in your request, the value of X-Locale is used to determine the response's region, currency, and language.</span></span>
 
-### <a name="request-header"></a><span data-ttu-id="90406-149">Nagłówek żądania</span><span class="sxs-lookup"><span data-stu-id="90406-149">Request header</span></span>
+### <a name="request-header"></a><span data-ttu-id="62038-146">Nagłówek żądania</span><span class="sxs-lookup"><span data-stu-id="62038-146">Request header</span></span>
 
-<span data-ttu-id="90406-150">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="90406-150">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="62038-147">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="62038-147">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="90406-151">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="90406-151">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="62038-148">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="62038-148">Request body</span></span>
 
-<span data-ttu-id="90406-152">Brak.</span><span class="sxs-lookup"><span data-stu-id="90406-152">None.</span></span>
+<span data-ttu-id="62038-149">Brak.</span><span class="sxs-lookup"><span data-stu-id="62038-149">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="90406-153">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="90406-153">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="62038-150">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="62038-150">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/ratecards/azure HTTP/1.1
@@ -101,15 +97,15 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="90406-154">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="90406-154">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="62038-151">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="62038-151">REST response</span></span>
 
-<span data-ttu-id="90406-155">Jeśli żądanie zakończy się pomyślnie, zwraca zasób [karty usługi Azure rate](azure-rate-card-resources.md) .</span><span class="sxs-lookup"><span data-stu-id="90406-155">If the request is successful, it returns an [Azure Rate Card](azure-rate-card-resources.md) resource.</span></span>
+<span data-ttu-id="62038-152">Jeśli żądanie powiedzie się, zwraca zasób [karty stawki platformy Azure.](azure-rate-card-resources.md)</span><span class="sxs-lookup"><span data-stu-id="62038-152">If the request is successful, it returns an [Azure Rate Card](azure-rate-card-resources.md) resource.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="90406-156">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="90406-156">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="62038-153">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="62038-153">Response success and error codes</span></span>
 
-<span data-ttu-id="90406-157">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="90406-157">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="90406-158">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="90406-158">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="90406-159">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="90406-159">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="62038-154">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="62038-154">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="62038-155">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="62038-155">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="62038-156">Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="62038-156">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="90406-160">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="90406-160">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="62038-157">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="62038-157">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

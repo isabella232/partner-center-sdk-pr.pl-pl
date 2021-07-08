@@ -6,33 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 42e5201919eea5644da463dfe2584c8d55002083
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f0324916eb2efd9244530a53b1d7bb4abc0c8e6e
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767885"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549131"
 ---
-# <a name="get-invoice-statement"></a><span data-ttu-id="5cf27-103">Pobieranie zestawienia faktur</span><span class="sxs-lookup"><span data-stu-id="5cf27-103">Get invoice statement</span></span>
+# <a name="get-invoice-statement"></a><span data-ttu-id="91602-103">Pobieranie zestawienia faktur</span><span class="sxs-lookup"><span data-stu-id="91602-103">Get invoice statement</span></span>
 
-<span data-ttu-id="5cf27-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="5cf27-104">**Applies To**</span></span>
+<span data-ttu-id="91602-104">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="91602-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="5cf27-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="5cf27-105">Partner Center</span></span>
-- <span data-ttu-id="5cf27-106">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="5cf27-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="5cf27-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="5cf27-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="5cf27-108">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="5cf27-108">Partner Center for Microsoft Cloud for US Government</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="91602-105">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="91602-105">Prerequisites</span></span>
 
-<span data-ttu-id="5cf27-109">Pobiera zestawienie faktur przy użyciu identyfikatora faktury.</span><span class="sxs-lookup"><span data-stu-id="5cf27-109">Retrieves an invoice statement using the invoice ID.</span></span>
+- <span data-ttu-id="91602-106">Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="91602-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="91602-107">Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="91602-107">This scenario supports authentication with App+User credentials only.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5cf27-110">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="5cf27-110">Prerequisites</span></span>
+- <span data-ttu-id="91602-108">Prawidłowy identyfikator faktury.</span><span class="sxs-lookup"><span data-stu-id="91602-108">A valid Invoice ID.</span></span>
 
-- <span data-ttu-id="5cf27-111">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="5cf27-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="5cf27-112">Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="5cf27-112">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="91602-109">C\#</span><span class="sxs-lookup"><span data-stu-id="91602-109">C\#</span></span>
 
-- <span data-ttu-id="5cf27-113">Prawidłowy identyfikator faktury.</span><span class="sxs-lookup"><span data-stu-id="5cf27-113">A valid Invoice ID.</span></span>
-
-## <a name="c"></a><span data-ttu-id="5cf27-114">C\#</span><span class="sxs-lookup"><span data-stu-id="5cf27-114">C\#</span></span>
-
-<span data-ttu-id="5cf27-115">Aby uzyskać wyciąg z faktury według identyfikatora, Użyj kolekcji **IPartner.** Invoice i Wywołaj metodę **ById ()** przy użyciu identyfikatora faktury, a następnie wywołaj metody **Documents ()** i **Statement ()** , aby uzyskać dostęp do instrukcji Invoice.</span><span class="sxs-lookup"><span data-stu-id="5cf27-115">To get an invoice statement by ID, use your **IPartner.Invoices** collection and call the **ById()** method using the invoice ID, then call the **Documents()** and **Statement()** methods to access the invoice statement.</span></span> <span data-ttu-id="5cf27-116">Na koniec wywołaj metody **Get ()** lub **GetAsync ()** .</span><span class="sxs-lookup"><span data-stu-id="5cf27-116">Finally, call the **Get()** or **GetAsync()** methods.</span></span>
+<span data-ttu-id="91602-110">Aby uzyskać zestawienie faktur według identyfikatora, użyj kolekcji **IPartner.Invoices** i wywołaj metodę **ById()** przy użyciu identyfikatora faktury, a następnie wywołaj metody **Documents()** i **Statement(),** aby uzyskać dostęp do zestawienia faktur.</span><span class="sxs-lookup"><span data-stu-id="91602-110">To get an invoice statement by ID, use your **IPartner.Invoices** collection and call the **ById()** method using the invoice ID, then call the **Documents()** and **Statement()** methods to access the invoice statement.</span></span> <span data-ttu-id="91602-111">Na koniec wywołaj **metody Get()** **lub GetAsync().**</span><span class="sxs-lookup"><span data-stu-id="91602-111">Finally, call the **Get()** or **GetAsync()** methods.</span></span>
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -41,33 +34,33 @@ ms.locfileid: "97767885"
 var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Documents.Statement.Get();
 ```
 
-<span data-ttu-id="5cf27-117">**Przykład**: [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="5cf27-117">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="5cf27-118">**Project**: PartnerSDK. FeatureSample **Klasa**: GetInvoiceStatement.cs</span><span class="sxs-lookup"><span data-stu-id="5cf27-118">**Project**: PartnerSDK.FeatureSample **Class**: GetInvoiceStatement.cs</span></span>
+<span data-ttu-id="91602-112">**Przykład:** [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="91602-112">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="91602-113">**Project:** Klasa PartnerSDK.FeatureSample: GetInvoiceStatement.cs </span><span class="sxs-lookup"><span data-stu-id="91602-113">**Project**: PartnerSDK.FeatureSample **Class**: GetInvoiceStatement.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="5cf27-119">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="5cf27-119">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="91602-114">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="91602-114">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="5cf27-120">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="5cf27-120">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="91602-115">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="91602-115">Request syntax</span></span>
 
-| <span data-ttu-id="5cf27-121">Metoda</span><span class="sxs-lookup"><span data-stu-id="5cf27-121">Method</span></span>  | <span data-ttu-id="5cf27-122">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="5cf27-122">Request URI</span></span>                                                                                       |
+| <span data-ttu-id="91602-116">Metoda</span><span class="sxs-lookup"><span data-stu-id="91602-116">Method</span></span>  | <span data-ttu-id="91602-117">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="91602-117">Request URI</span></span>                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5cf27-123">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="5cf27-123">**GET**</span></span> | <span data-ttu-id="5cf27-124">[*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/{Invoice-ID}/Documents/Statement http/1.1</span><span class="sxs-lookup"><span data-stu-id="5cf27-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span></span>  |
+| <span data-ttu-id="91602-118">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="91602-118">**GET**</span></span> | <span data-ttu-id="91602-119">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="91602-119">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span></span>  |
 
-### <a name="uri-parameter"></a><span data-ttu-id="5cf27-125">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="5cf27-125">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="91602-120">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="91602-120">URI parameter</span></span>
 
-<span data-ttu-id="5cf27-126">Użyj następującego parametru zapytania, aby pobrać instrukcję faktury.</span><span class="sxs-lookup"><span data-stu-id="5cf27-126">Use the following query parameter to get the invoice statement.</span></span>
+<span data-ttu-id="91602-121">Użyj następującego parametru zapytania, aby pobrać zestawienie faktur.</span><span class="sxs-lookup"><span data-stu-id="91602-121">Use the following query parameter to get the invoice statement.</span></span>
 
-| <span data-ttu-id="5cf27-127">Nazwa</span><span class="sxs-lookup"><span data-stu-id="5cf27-127">Name</span></span>       | <span data-ttu-id="5cf27-128">Typ</span><span class="sxs-lookup"><span data-stu-id="5cf27-128">Type</span></span>       | <span data-ttu-id="5cf27-129">Wymagane</span><span class="sxs-lookup"><span data-stu-id="5cf27-129">Required</span></span> | <span data-ttu-id="5cf27-130">Opis</span><span class="sxs-lookup"><span data-stu-id="5cf27-130">Description</span></span>                                                                                        |
+| <span data-ttu-id="91602-122">Nazwa</span><span class="sxs-lookup"><span data-stu-id="91602-122">Name</span></span>       | <span data-ttu-id="91602-123">Typ</span><span class="sxs-lookup"><span data-stu-id="91602-123">Type</span></span>       | <span data-ttu-id="91602-124">Wymagane</span><span class="sxs-lookup"><span data-stu-id="91602-124">Required</span></span> | <span data-ttu-id="91602-125">Opis</span><span class="sxs-lookup"><span data-stu-id="91602-125">Description</span></span>                                                                                        |
 |------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5cf27-131">Identyfikator faktury</span><span class="sxs-lookup"><span data-stu-id="5cf27-131">invoice-id</span></span> | <span data-ttu-id="5cf27-132">ciąg</span><span class="sxs-lookup"><span data-stu-id="5cf27-132">string</span></span>     | <span data-ttu-id="5cf27-133">Tak</span><span class="sxs-lookup"><span data-stu-id="5cf27-133">Yes</span></span>      | <span data-ttu-id="5cf27-134">Wartość jest identyfikatorem faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury.</span><span class="sxs-lookup"><span data-stu-id="5cf27-134">The value is an invoice-id that allows the reseller to filter the results for a given invoice.</span></span> |
+| <span data-ttu-id="91602-126">invoice-id</span><span class="sxs-lookup"><span data-stu-id="91602-126">invoice-id</span></span> | <span data-ttu-id="91602-127">ciąg</span><span class="sxs-lookup"><span data-stu-id="91602-127">string</span></span>     | <span data-ttu-id="91602-128">Tak</span><span class="sxs-lookup"><span data-stu-id="91602-128">Yes</span></span>      | <span data-ttu-id="91602-129">Wartość to identyfikator faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury.</span><span class="sxs-lookup"><span data-stu-id="91602-129">The value is an invoice-id that allows the reseller to filter the results for a given invoice.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="5cf27-135">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="5cf27-135">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="91602-130">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="91602-130">Request headers</span></span>
 
-<span data-ttu-id="5cf27-136">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="5cf27-136">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="91602-131">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="91602-131">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="5cf27-137">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="5cf27-137">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="91602-132">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="91602-132">Request body</span></span>
 
-<span data-ttu-id="5cf27-138">Brak</span><span class="sxs-lookup"><span data-stu-id="5cf27-138">None</span></span>
+<span data-ttu-id="91602-133">Brak</span><span class="sxs-lookup"><span data-stu-id="91602-133">None</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="5cf27-139">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="5cf27-139">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="91602-134">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="91602-134">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/<invoice-id>/documents/statement HTTP/1.1
@@ -77,15 +70,15 @@ MS-RequestId: 8ac25aa5-9537-4b6d-b782-aa0c8e979e99
 MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="5cf27-140">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="5cf27-140">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="91602-135">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="91602-135">REST response</span></span>
 
-<span data-ttu-id="5cf27-141">Jeśli to się powiedzie, metoda zwraca zasób [InvoiceStatement](invoice-resources.md#invoicestatement) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="5cf27-141">If successful, this method returns an [InvoiceStatement](invoice-resources.md#invoicestatement) resource in the response body.</span></span>
+<span data-ttu-id="91602-136">W przypadku powodzenia ta metoda zwraca [zasób InvoiceStatement](invoice-resources.md#invoicestatement) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="91602-136">If successful, this method returns an [InvoiceStatement](invoice-resources.md#invoicestatement) resource in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="5cf27-142">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="5cf27-142">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="91602-137">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="91602-137">Response success and error codes</span></span>
 
-<span data-ttu-id="5cf27-143">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="5cf27-143">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="5cf27-144">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="5cf27-144">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="5cf27-145">Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="5cf27-145">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="91602-138">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="91602-138">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="91602-139">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="91602-139">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="91602-140">Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="91602-140">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="5cf27-146">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="5cf27-146">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="91602-141">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="91602-141">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

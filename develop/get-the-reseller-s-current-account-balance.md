@@ -1,34 +1,29 @@
 ---
 title: Pobieranie bieżącego salda konta partnera
-description: Pobiera bieżące saldo konta partnera. Podsumowanie salda i łącznego kosztu faktury dla jednorazowych i jednorazowych opłat.
+description: Pobiera bieżące saldo konta partnera. Podsumowanie salda i łącznych opłat na fakturze dla opłat cyklicznych i jednorazowych.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 110da433faa6ff4d3d068c6d68a6f497f4a2721a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: a04ab63482ec9d06e2fe47d2b6ce1bc6a5fd5f27
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767905"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548502"
 ---
 # <a name="get-the-partners-current-account-balance"></a>Pobieranie bieżącego salda konta partnera
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera bieżące saldo konta partnera. Podsumowanie salda i łącznego kosztu faktury dla jednorazowych i jednorazowych opłat.
+Pobiera bieżące saldo konta partnera. Podsumowanie salda i łącznych opłat na fakturze dla opłat cyklicznych i jednorazowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać saldo konta, Użyj kolekcji **IAggregatePartner. Revoices** , a następnie Wywołaj Właściwość **Summary** . Następnie wywołaj funkcję **Get** i na koniec Wywołaj Właściwość **BalanceAmount** .
+Aby pobrać saldo konta, użyj **kolekcji IAggregatePartner.Invoices,** a następnie wywołaj **właściwość Summary.** Następnie wywołaj **funkcję Get** i na koniec wywołaj **właściwość BalanceAmount.**
 
 ``` csharp
 // IAggregatePartner scopedPartnerOperations;
@@ -38,7 +33,7 @@ var invoiceSummary = scopedPartnerOperations.Invoices.Summary.Get();
 Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummary.BalanceAmount);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: GetInvoiceSummary.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: GetInvoiceSummary.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -46,11 +41,11 @@ Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummary.BalanceA
 
 | Metoda  | Identyfikator URI żądania                                                              |
 |---------|--------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Invoices/Summary http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/summary HTTP/1.1  |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -69,11 +64,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca zasób [InvoiceSummary](invoice-resources.md#invoicesummary) w odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [zasób InvoiceSummary](invoice-resources.md#invoicesummary) w odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

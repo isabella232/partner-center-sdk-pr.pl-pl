@@ -1,31 +1,28 @@
 ---
 title: Zakup rezerwacji platformy Azure
-description: Rezerwacje platformy Azure dla klienta można zakupić za pomocą interfejsu API Centrum partnerskiego za pośrednictwem istniejącej subskrypcji Microsoft Azure (MS-AZR-0145P) lub planu platformy Azure.
+description: Rezerwacje platformy Azure dla klienta można kupić przy użyciu interfejsu API Partner Center za pośrednictwem istniejącej subskrypcji platformy Microsoft Azure (MS-AZR-0145P) lub planu platformy Azure.
 ms.date: 11/01/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4c09f65ae5105a74be41a7ec45824e3889217a1c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 0b9ce4a808ac12c32bd67888fc92808baeb0e575
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767862"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547771"
 ---
 # <a name="purchase-azure-reservations"></a>Zakup rezerwacji platformy Azure
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API Centrum partnerskiego, musisz mieć istniejącą subskrypcję Microsoft Azure (**MS-AZR-0145P**) lub plan platformy Azure.
+Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API usługi Partner Center, musisz mieć istniejącą subskrypcję platformy Microsoft Azure **(MS-AZR-0145P)** lub plan platformy Azure.
 
 > [!NOTE]
 > Rezerwacje platformy Azure nie są dostępne na następujących rynkach:
 >
-> | Niedostępne rynki            | Dostępne rynki (kontynuuje...) | Dostępne rynki (kontynuuje...)      |
+> | Niedostępne rynki            | Niedostępne rynki (ciąg dalszy...) | Niedostępne rynki (ciąg dalszy...)      |
 > |--------------------------------|-----------------------------------|------------------------------------------|
-> | Wyspy Åland                  | Grenlandia                         | Papua Nowa Gwinea                         |
+> | Wyspy alandzkie                  | Grenlandia                         | Papua Nowa Gwinea                         |
 > | Samoa Amerykańskie                 | Grenada                           | Wyspy Pitcairn                         |
 > | Andora                        | Gwadelupa                        | Reunion                                  |
 > | Anguilla                       | Guam                              | Federacja Rosyjska                       |
@@ -37,7 +34,7 @@ Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API C
 > | Bonaire                        | Wyspy Heard i McDonalda | Saint Vincent i Grenadyny         |
 > | Wyspa Bouveta                  | Wyspa Man                       | Samoa                                    |
 > | Brazylia                         | Jan Mayen                         | San Marino                               |
-> | Brytyjskie Terytorium Oceanu Indyjskiego | Jersey                            | Wyspy Świętego Tomasza i Książęca                    |
+> | Brytyjskie Terytorium Oceanu Indyjskiego | Jersey                            | São Tomé i Prüncipe                    |
 > | Brytyjskie Wyspy Dziewicze         | Kiribati                          | Seszele                               |
 > | Burkina Faso                   | Kosowo                            | Sierra Leone                             |
 > | Burundi                        | Laos                              | Sint Eustatius                           |
@@ -46,7 +43,7 @@ Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API C
 > | Czad                           | Madagaskar                        | Somalia                                  |
 > | Chiny                          | Malawi                            | Georgia Południowa i Sandwich Południowy |
 > | Wyspa Bożego Narodzenia               | Malediwy                          | Sudan Południowy                              |
-> | Wyspy Kokosowe (Keelinga)        | Mali                              | Święta Helena, Wyspa Wniebowstąpienia, Tristan da Cunha   |
+> | Wyspy Kokosowe (Keelinga)        | Mali                              | St Stana, Ascension, Tristan da Cunha   |
 > | Komory                        | Wyspy Marshalla                  | Surinam                                 |
 > | Kongo                          | Martynika                        | Svalbard                                 |
 > | Kongo (DRK)                    | Mauretania                        | Suazi                                |
@@ -56,7 +53,7 @@ Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API C
 > | Gwinea Równikowa              | Mozambik                        | Tonga                                    |
 > | Erytrea                        | Myanmar                           | Wyspy Turks i Caicos                 |
 > | Falklandy               | Nauru                             | Tuvalu                                   |
-> | Gujana Francuska                  | Nowa Kaledonia                     | Odległe wyspy Stanów Zjednoczonych                    |
+> | Gujana Francuska                  | Nowa Kaledonia                     | Stany Zjednoczone Odlying Islands                    |
 > | Polinezja Francuska               | Niger                             | Vanuatu                                  |
 > | Francuskie Terytoria Południowe i Antarktyczne    | Niue                              | Watykan                             |
 > | Gabon                          | Norfolk                    | Wallis i Futuna                        |
@@ -66,128 +63,128 @@ Aby kupić rezerwację platformy Azure dla klienta przy użyciu interfejsu API C
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator subskrypcji dla aktywnej subskrypcji platformy Azure w ramach dostawcy CSP lub planu platformy Azure.
+- Identyfikator subskrypcji dla aktywnej subskrypcji platformy Azure lub planu platformy Azure dla programu CSP.
 
-## <a name="how-to-purchase-microsoft-azure-reservations"></a>Jak kupić rezerwacje Microsoft Azure
+## <a name="how-to-purchase-microsoft-azure-reservations"></a>Jak kupić rezerwacje Microsoft Azure rezerwacje
 
-Po zidentyfikowaniu aktywnej subskrypcji programu CSP Azure, do której chcesz dodać zastrzeżenie platformy Azure, wykonaj następujące kroki, aby je zakupić:
+Po zidentyfikowaniu aktywnej subskrypcji platformy Azure dla programu CSP, do której chcesz dodać rezerwację platformy Azure, użyj następujących kroków, aby ją kupić:
 
-1. [Włącz](#enablement) — Zarejestruj aktywną subskrypcję platformy Azure dostawcy usług kryptograficznych, aby umożliwić jej kupowanie rezerwacji na platformie Azure.
+1. [Włączanie — zarejestruj](#enablement) aktywną subskrypcję platformy Azure dla programu CSP, aby umożliwić jej zakup rezerwacji platformy Azure.
 
-2. [Odnajdywanie](#discovery) — Znajdź i wybierz produkty i jednostki SKU rezerwacji platformy Azure, które chcesz kupić, i sprawdź ich dostępność.
+2. [Odnajdywanie](#discovery) — znajdź i wybierz produkty rezerwacji platformy Azure oraz jednostki magazynowe (SKU), które chcesz kupić, i sprawdź ich dostępność.
 
-3. [Zamówienie przesłania](#order-submission) — Utwórz koszyk z elementami w zamówieniu i prześlij go.
+3. [Przesyłanie zamówienia](#order-submission) — utwórz koszyk z elementami w zamówieniu i prześlij go.
 
-4. [Pobierz szczegóły zamówienia](#get-order-details) — Przejrzyj szczegóły zamówienia, wszystkie zamówienia dla klienta lub Wyświetl zamówienia według typu cyklu rozliczeniowego.
+4. [Uzyskiwanie szczegółów zamówienia](#get-order-details) — przejrzyj szczegóły zamówienia, wszystkie zamówienia dla klienta lub wyświetl zamówienia według typu cyklu rozliczeniowego.
 
-Po zakupionym rezerwacjach platformy Azure następujące scenariusze pokazują, jak zarządzać cyklem życia, pobierając informacje o uprawnieniach do rezerwacji platformy Azure oraz o sposobie pobierania zestawień bilansowych, faktur i podsumowań faktur.
+Po zakupie rezerwacji platformy Azure następujące scenariusze pokazują, jak zarządzać ich cyklem życia, pobierać informacje o uprawnieniach do rezerwacji platformy Azure oraz jak pobierać zestawienia sald, faktury i podsumowania faktur.
 
 - [Zarządzanie cyklem życia](#lifecycle-management)
 - [Faktura i uzgadnianie](#invoice-and-reconciliation)
 
 ## <a name="enablement"></a>Włączanie
 
-Włączenie oznacza skojarzenie istniejącej subskrypcji Microsoft Azure (**MS-AZR-0145P**) z zarezerwowanym wystąpieniem maszyny wirtualnej platformy Azure przez zarejestrowanie subskrypcji, aby była ona włączona dla rezerwacji platformy Azure. Rejestracja jest wymaganiem wstępnym zakupu Azure Reserved VM Instances.
+Włączenie oznacza skojarzenie istniejącej subskrypcji Microsoft Azure **(MS-AZR-0145P)** z wystąpieniem zarezerwowanym maszyny wirtualnej platformy Azure przez zarejestrowanie subskrypcji w celu włączenia jej dla rezerwacji platformy Azure. Rejestracja jest warunkiem wstępnym zakupu Azure Reserved VM Instances.
 
-Wymagana jest subskrypcja z powodu następujących czynności:
+Subskrypcja jest wymagana do obsługi następujących zadań:
 
-1. Aby sprawdzić, czy klient kwalifikuje się do wdrażania zasobów, a tym samym kupić Azure Reserved VM Instances w regionie.
+1. Aby sprawdzić, czy klient kwalifikuje się do wdrażania zasobów, a tym samym Azure Reserved VM Instances zakupu w regionie.
 
-2. Zapewnienie priorytetu pojemności dla wdrożeń w ramach subskrypcji. Ma to zastosowanie tylko do jednego zakresu Azure Reserved VM Instances z wybraną opcją **priorytet pojemności** .
+2. Aby zapewnić priorytet pojemności dla wdrożeń w ramach subskrypcji. Dotyczy to tylko pojedynczych zakresów Azure Reserved VM Instances z wybraną **opcją priorytetu** pojemności.
 
-Po zidentyfikowaniu aktywnej subskrypcji, do której chcesz dodać zastrzeżenie platformy Azure, musisz zarejestrować subskrypcję, aby była ona włączona dla rezerwacji na platformie Azure. Aby zarejestrować istniejący zasób [subskrypcji](subscription-resources.md) , aby był on dostępny do porządkowania rezerwacji platformy Azure, zobacz artykuł [Rejestrowanie subskrypcji](register-a-subscription.md).
+Po zidentyfikowaniu aktywnej subskrypcji, do której chcesz dodać rezerwację platformy Azure, musisz zarejestrować subskrypcję, aby była włączona dla rezerwacji platformy Azure. Aby zarejestrować istniejący [zasób subskrypcji,](subscription-resources.md) aby umożliwić zamawianie rezerwacji platformy Azure, zobacz [Rejestrowanie subskrypcji](register-a-subscription.md).
 
-Po zarejestrowaniu subskrypcji należy upewnić się, że proces rejestracji został ukończony przez sprawdzenie stanu rejestracji. Aby to zrobić, zobacz [pobieranie stanu rejestracji subskrypcji](get-subscription-registration-status.md).
+Po zarejestrowaniu subskrypcji należy potwierdzić ukończenie procesu rejestracji, sprawdzając stan rejestracji. Aby to zrobić, zobacz [Uzyskiwanie stanu rejestracji subskrypcji.](get-subscription-registration-status.md)
 
 > [!NOTE]
-> Przy zakupie Microsoft Azure rezerwacji dla klienta z planem platformy Azure należy najpierw zarejestrować plan platformy Azure. Podobnie jak w przypadku subskrypcji Microsoft Azure (**MS-AZR-0145P**), plan platformy Azure jest reprezentowany przez zasób [subskrypcji](subscription-resources.md) Centrum partnerskiego. W związku z tym możesz użyć tej samej metody [rejestracji](register-a-subscription.md) w celu zarejestrowania planu platformy Azure.
+> W przypadku Microsoft Azure rezerwacji dla klienta z planem platformy Azure należy najpierw zarejestrować plan platformy Azure. Podobnie jak Microsoft Azure subskrypcji platformy Azure **(MS-AZR-0145P),** plan platformy Azure jest reprezentowany przez Partner Center [subskrypcji.](subscription-resources.md) W związku z tym możesz użyć tej samej metody [rejestrowania subskrypcji,](register-a-subscription.md) aby zarejestrować plan platformy Azure.
 
 ## <a name="discovery"></a>Odnajdywanie
 
-Po włączeniu subskrypcji zakupów platformy Azure Możesz wybrać produkty i jednostki SKU oraz sprawdzić ich dostępność przy użyciu następujących modeli interfejsu API Centrum partnerskiego:
+Po włączeniu subskrypcji w celu zakupu rezerwacji platformy Azure możesz wybrać produkty i jednostki SKU i sprawdzić ich dostępność przy użyciu następujących modeli Partner Center API:
 
-- [Product](product-resources.md#product) -konstrukcja grupująca dla jednostek towarów lub usług. Produkt nie jest elementem jednostek.
+- [Produkt](product-resources.md#product) — konstrukcja grupowania dla produktów lub usług, które można kupować. Sam produkt nie jest elementem do kupienia.
 
-- [SKU](product-resources.md#sku) — jednostka magazynowa jednostek (SKU) w ramach produktu. Reprezentują one różne kształty produktu.
+- [SKU](product-resources.md#sku) — zakupna sku w ramach produktu. Reprezentują one różne kształty produktu.
 
-- [Dostępność](product-resources.md#availability) — konfiguracja, w której jednostka SKU jest dostępna do zakupu (na przykład kraj, waluta i segment branżowy).
+- [Dostępność](product-resources.md#availability) — konfiguracja, w której można kupić sku (na przykład kraj, waluta i segment branży).
 
 Przed zakupem rezerwacji platformy Azure wykonaj następujące czynności:
 
-1. Zidentyfikuj i Pobierz produkt i jednostkę SKU, które chcesz kupić. Można to zrobić, wymieniając najpierw produkty i jednostki SKU, lub jeśli znasz już identyfikatory produktu i jednostki SKU, wybierając je.
+1. Zidentyfikuj i pobierz produkt i sku, które chcesz kupić. Możesz to zrobić, najpierw, wymieniając produkty i jednostki SKU, lub jeśli znasz już identyfikatory produktu i jednostki SKU, wybierając je.
 
    - [Pobieranie listy produktów (według kraju)](get-a-list-of-products.md)
    - [Uzyskiwanie produktu przy użyciu identyfikatora produktu](get-a-product-by-id.md)
    - [Pobieranie listy jednostek SKU dla produktu (według kraju)](get-a-list-of-skus-for-a-product.md)
-   - [Pobierz jednostkę SKU przy użyciu identyfikatora jednostki SKU](get-a-sku-by-id.md)
+   - [Uzyskiwanie sku przy użyciu identyfikatora SKU](get-a-sku-by-id.md)
 
-2. Sprawdź spis dla jednostki SKU. Ten krok jest wymagany tylko w przypadku jednostek SKU, które są oznaczone jako wymaganie wstępne **InventoryCheck** .
+2. Sprawdź spis dla sku. Ten krok jest wymagany tylko w przypadku jednostki SKU, które są oznaczone wstępnie **wymaganym elementem InventoryCheck.**
 
    - [Sprawdzenie spisu](check-inventory.md)
 
-3. Pobierz [dostępność](product-resources.md#availability) dla [jednostki SKU](product-resources.md#sku). Podczas umieszczania zamówienia będzie potrzebna **CatalogItemId** dostępność. Aby uzyskać tę wartość, użyj jednego z następujących interfejsów API:
+3. Pobierz dostępność [dla](product-resources.md#availability) [SKU](product-resources.md#sku). Podczas składania zamówienia będziesz potrzebować wartości **CatalogItemId** dostępności. Aby uzyskać tę wartość, użyj jednego z następujących interfejsów API:
 
    - [Pobieranie listy dostępności dla jednostki SKU (według kraju)](get-a-list-of-availabilities-for-a-sku.md)
-   - [Uzyskaj dostępność przy użyciu identyfikatora dostępności](get-an-availability-by-id.md)
+   - [Uzyskiwanie dostępności przy użyciu identyfikatora dostępności](get-an-availability-by-id.md)
 
 > [!IMPORTANT]
-> Każdy Microsoft Azure produkt rezerwacji ma inną dostępność dla subskrypcji Microsoft Azure (**MS-AZR-0145P**) i planu platformy Azure. Aby [uzyskać listę produktów (według kraju)](get-a-list-of-products.md)lub [uzyskać listę jednostek SKU dla produktu (według kraju)](get-a-list-of-skus-for-a-product.md)lub uzyskać listę dostępności dla [jednostki SKU (według kraju)](get-a-list-of-availabilities-for-a-sku.md) , które mają zastosowanie tylko do planu platformy Azure, określ parametr "reservationScope = AzurePlan".
+> Każdy Microsoft Azure rezerwacji ma różne możliwości Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planu platformy Azure. Aby uzyskać listę produktów [(według kraju)](get-a-list-of-products.md)lub uzyskać listę jednostki SKU dla produktu [(według kraju)](get-a-list-of-skus-for-a-product.md)lub uzyskać listę dostępności dla jednostki [SKU (według kraju),](get-a-list-of-availabilities-for-a-sku.md) które mają zastosowanie tylko do planu platformy Azure, określ parametr "reservationScope=AzurePlan".
 
 ## <a name="order-submission"></a>Przesyłanie zamówienia
 
-Aby przesłać swoją kolejność rezerwacji na platformie Azure, wykonaj następujące czynności:
+Aby przesłać zamówienie rezerwacji platformy Azure, wykonaj następujące zadania:
 
-1. Utwórz koszyk do przechowywania kolekcji elementów wykazu, które zamierzasz kupić. Podczas tworzenia [koszyka](cart-resources.md) [elementy w linii koszyka](cart-resources.md#cartlineitem) są automatycznie grupowane na podstawie tego, co można zakupić razem w tej samej [kolejności](order-resources.md).
+1. Utwórz koszyk do przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Podczas tworzenia koszyka [elementy wiersza](cart-resources.md) [koszyka](cart-resources.md#cartlineitem) są automatycznie grupowane na podstawie elementów, które można kupić razem w tym samym [zamówieniu.](order-resources.md)
 
    - [Tworzenie koszyka](create-a-cart.md)
    - [Aktualizowanie koszyka](update-a-cart.md)
 
-2. Sprawdź koszyk. Wyewidencjonowanie koszyka powoduje utworzenie [zamówienia](order-resources.md).
+2. Zapoznaj się z koszykiem. Wyeencjonuj koszyk powoduje utworzenie [zamówienia](order-resources.md).
 
-   - [Wyewidencjonuj koszyk](checkout-a-cart.md)
+   - [Finalizacji zakupu koszyka](checkout-a-cart.md)
 
-## <a name="get-order-details"></a>Pobierz szczegóły zamówienia
+## <a name="get-order-details"></a>Uzyskiwanie szczegółów zamówienia
 
-Po utworzeniu zamówienia rezerwacji na platformie Azure Możesz pobrać szczegóły indywidualnego zamówienia przy użyciu identyfikatora zamówienia lub uzyskać listę zamówień dla klienta. Istnieje opóźnienie do 15 minut od momentu, gdy zamówienie zostanie przesłane i pojawi się na liście zamówień klienta.
+Po utworzeniu zamówienia rezerwacji platformy Azure możesz pobrać szczegóły pojedynczego zamówienia przy użyciu identyfikatora zamówienia lub uzyskać listę zamówień dla klienta. Istnieje opóźnienie do 15 minut między tym, kiedy zamówienie zostanie przesłane, a kiedy pojawi się na liście zamówień klienta.
 
-- Aby uzyskać szczegółowe informacje o poszczególnych zamówieniach przy użyciu identyfikatora zamówienia. Zobacz, [Pobierz zamówienie według identyfikatora](get-an-order-by-id.md).
+- Aby uzyskać szczegółowe informacje o indywidualnym zamówieniu przy użyciu identyfikatora zamówienia. Zobacz Get [an order by ID (Uzyskiwanie zamówienia według identyfikatora).](get-an-order-by-id.md)
 
-- Aby uzyskać listę zamówień dla klienta przy użyciu identyfikatora klienta. Zobacz, aby [uzyskać wszystkie zamówienia klienta](get-all-of-a-customer-s-orders.md).
+- Aby uzyskać listę zamówień dla klienta przy użyciu identyfikatora klienta. Zobacz [Get all of a customer's orders](get-all-of-a-customer-s-orders.md)( Pobierz wszystkie zamówienia klienta).
 
-- Aby uzyskać listę zamówień dla klienta według [typu cyklu rozliczeniowego](product-resources.md#billingcycletype) , na podstawie których można wyświetlić listę zamówień rezerwacji platformy Azure (opłaty jednorazowe) i osobno i comiesięcznie rozliczać zamówienia rocznie. Zobacz, aby [uzyskać listę zamówień według typu cyklu klienta i rozliczeń](get-a-list-of-orders-by-customer-and-billing-cycle-type.md).
+- Aby uzyskać listę zamówień dla [](product-resources.md#billingcycletype) klienta według typu cyklu rozliczeniowego, możesz oddzielnie wyświetlić listę zamówień rezerwacji platformy Azure (opłaty roczne lub miesięczne). Zobacz Get a list of orders by customer and billing cycle type (Uzyskiwanie listy [zamówień według klienta i typu cyklu rozliczeniowego).](get-a-list-of-orders-by-customer-and-billing-cycle-type.md)
 
 ## <a name="lifecycle-management"></a>Zarządzanie cyklem życia
 
-W ramach zarządzania cyklem życia zastrzeżeń platformy Azure w centrum partnerskim można pobrać informacje o [uprawnieniach](entitlement-resources.md)do rezerwacji na platformie Azure i uzyskać szczegółowe informacje dotyczące rezerwacji przy użyciu identyfikatora zamówienia rezerwacji. Aby zapoznać się z przykładami, zobacz [Uzyskaj uprawnienia](get-a-collection-of-entitlements.md).   
+W ramach zarządzania cyklem życia rezerwacji platformy Azure w usłudze Partner Center [](entitlement-resources.md)można pobrać informacje o uprawnieniach rezerwacji platformy Azure i uzyskać szczegóły rezerwacji przy użyciu identyfikatora zamówienia rezerwacji. Aby uzyskać przykłady, jak to zrobić, zobacz [Get entitlements (Uzyskiwanie uprawnień).](get-a-collection-of-entitlements.md)   
 
 ## <a name="invoice-and-reconciliation"></a>Faktura i uzgadnianie
 
-W poniższych scenariuszach pokazano, jak programowo wyświetlić [faktury](invoice-resources.md)klienta i uzyskać salda konta oraz podsumowania, które zawierają opłaty jednorazowe dla rezerwacji platformy Azure.
+Poniższe scenariusze pokazują, jak programowo wyświetlać [](invoice-resources.md)faktury klienta oraz pobierać salda i podsumowania konta, które obejmują opłaty za rezerwacje platformy Azure.
 
 ### <a name="balance-and-payment"></a>Saldo i płatność
 
-Aby uzyskać bieżące saldo konta w domyślnym typie waluty, który jest bilansem opłat cyklicznych i jednorazowych (rezerwacja Azure), zobacz [pobieranie bieżącego salda konta](get-the-reseller-s-current-account-balance.md) .
+Aby uzyskać bieżące saldo konta w domyślnym typie waluty, który jest saldem zarówno cyklicznych, jak i jednorazowych opłat (rezerwacja platformy Azure), zobacz Get your current account balance (Uzyskiwanie [bieżącego salda konta)](get-the-reseller-s-current-account-balance.md)
 
-### <a name="multi-currency-balance-and-payment"></a>Saldo i płatność za wiele walut
+### <a name="multi-currency-balance-and-payment"></a>Saldo i płatność w wielu walutach
 
-Aby skorzystać z bieżącego salda konta i kolekcji podsumowań faktur zawierających Podsumowanie faktur z uwzględnieniem zarówno cyklicznych, jak i jednorazowych opłat dla każdego z typów walutowych klienta, zobacz [Pobierz podsumowania faktur](get-invoice-summaries.md).
+Aby uzyskać bieżące saldo konta i kolekcję podsumowań faktur zawierających podsumowanie faktury z opłatami cyklicznym i jednorazowym dla każdego typu waluty klienta, zobacz Pobieranie podsumowań [faktur](get-invoice-summaries.md).
 
 ### <a name="invoices"></a>Faktury
 
-Aby uzyskać kolekcję faktur, które pokazują jednocześnie opłaty cykliczne i jednorazowe, zobacz [pobieranie kolekcji faktur](get-a-collection-of-invoices.md). 
+Aby uzyskać kolekcję faktur, które pokazują opłaty cykliczne i jednorazowy, zobacz [Pobieranie kolekcji faktur](get-a-collection-of-invoices.md). 
 
 ### <a name="single-invoice"></a>Pojedyncza faktura
 
-Aby pobrać określoną fakturę przy użyciu identyfikatora faktury, zobacz [pobieranie faktury według identyfikatora](get-invoice-by-id.md).  
+Aby pobrać określoną fakturę przy użyciu identyfikatora faktury, zobacz [Pobieranie faktury według identyfikatora](get-invoice-by-id.md).  
 
-### <a name="reconciliation"></a>Uzgadniania
+### <a name="reconciliation"></a>Pojednania
 
-Aby uzyskać kolekcję szczegółów elementu wiersza faktury (elementy linii uzgadniania) dla określonego identyfikatora faktury, zobacz [Pobieranie elementów wiersza faktury](get-invoiceline-items.md).  
+Aby uzyskać kolekcję szczegółów pozycji faktury (pozycje uzgodnień) dla określonego identyfikatora faktury, zobacz [Pobieranie pozycji faktury](get-invoiceline-items.md).  
 
-### <a name="download-an-invoice-as-a-pdf"></a>Pobierz fakturę jako plik PDF
+### <a name="download-an-invoice-as-a-pdf"></a>Pobieranie faktury w formacie PDF
 
-Aby pobrać instrukcję faktury w formularzu PDF przy użyciu identyfikatora faktury, zobacz artykuł [pobieranie faktury](get-invoice-statement.md).
+Aby pobrać zestawienie faktur w formacie PDF przy użyciu identyfikatora faktury, zobacz [Pobieranie zestawienia faktury.](get-invoice-statement.md)

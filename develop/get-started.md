@@ -1,64 +1,59 @@
 ---
 title: Rozpoczęcie pracy
-description: Zestaw SDK Centrum partnerskiego zawiera zarządzany interfejs API i interfejs API REST dla partnerów służących do zarządzania danymi klienta, subskrypcji i zamówień.
+description: Usługa zestaw SDK Centrum partnerskiego zarządzany interfejs API i interfejs API REST dla partnerów, których można używać do zarządzania danymi klientów, subskrypcji i zamówień.
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9c2af1e11dbda19489a27e37c7f3de8ede90fd1c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b5d05f26d63574ef876519091dc1c33c05f36e25
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767913"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548757"
 ---
 # <a name="get-started"></a>Rozpoczęcie pracy
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Zestaw SDK Centrum partnerskiego zawiera zarządzany interfejs API i interfejs API REST dla partnerów służących do zarządzania danymi klienta, subskrypcji i zamówień.
+Usługa zestaw SDK Centrum partnerskiego zarządzany interfejs API i interfejs API REST dla partnerów, których można używać do zarządzania danymi klientów, subskrypcji i zamówień.
 
 ## <a name="get-the-code"></a>Uzyskiwanie kodu
 
 [Pobierz zestaw SDK Centrum partnerskiego](https://go.microsoft.com/fwlink/p/?LinkId=746681)
 
 > [!NOTE]
-> Dostęp za pomocą interfejsu API do Centrum partnerskiego dla pośrednich odsprzedawcy nie jest obsługiwanym scenariuszem.
+> Dostęp do interfejsu API Partner Center dla odsprzedawców pośrednich nie jest obsługiwanym scenariuszem.
 
-## <a name="determine-your-version-of-partner-center"></a>Określ swoją wersję Centrum partnerskiego
+## <a name="determine-your-version-of-partner-center"></a>Określanie wersji Partner Center
 
-Niektóre wersje Centrum partnerskiego nie mają dostępnego całego zestawu SDK. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji dla firm partnerskich w chmurze firmy Microsoft](developing-for-partner-center-for-microsoft-national-cloud.md).
+Niektóre wersje Partner Center nie mają dostępnego całego zestawu SDK. Aby uzyskać więcej informacji, zobacz Developing for Partner Center for Microsoft National Cloud (Tworzenie aplikacji dla [chmury microsoft national cloud).](developing-for-partner-center-for-microsoft-national-cloud.md)
 
 ## <a name="get-the-samples"></a>Pobierz przykłady
 
-Aby uzyskać więcej informacji na temat fragmentów języka C#, przykładów REST i przykładowej aplikacji, zobacz [przykłady Centrum partnerskiego](partner-center-samples.md).
+Aby uzyskać więcej informacji na temat fragmentów kodu w języku C#, przykładów REST i przykładowej aplikacji, [zobacz Partner Center przykłady.](partner-center-samples.md)
 
-## <a name="test-vs-production"></a>Test a produkcja
+## <a name="test-vs-production"></a>Testowanie a produkcja
 
-Podczas pierwszego pisania i testowania kodu, należy użyć konta piaskownicy integracji (i odpowiednich tokenów), aby nie nawiązać przypadkowo ponoszenia nowych opłat, które firma zobowiązana do płacenia. Aby uzyskać więcej informacji o tym środowisku testowym, zobacz [Konfigurowanie dostępu do interfejsu API w centrum partnerskim](set-up-api-access-in-partner-center.md).
+Podczas początkowego pisania i testowania kodu należy użyć konta piaskownicy integracji (i odpowiednich tokenów), aby uniknąć przypadkowego naliczenie nowych opłat, za które firma jest odpowiedzialna. Aby uzyskać więcej informacji na temat tego środowiska testowego, zobacz [Konfigurowanie dostępu do interfejsu API w Partner Center](set-up-api-access-in-partner-center.md).
 
-Gdy Twoje rozwiązanie zostanie przetestowane i będzie gotowe do użycia na rzeczywistych kontach klienta, musisz zaktualizować tokeny, aby korzystać z aplikacji klienckiej usługi Azure AD i wpisu tajnego odpowiadającego Twojemu podstawowemu kontu Centrum partnerskiego.
+Gdy rozwiązanie zostanie przetestowane i będzie gotowe do użycia na rzeczywistych kontach klientów, musisz zaktualizować tokeny, aby używać aplikacji klienckiej usługi Azure AD i klucza tajnego, które odpowiadają głównemu kontu Partner Center podstawowego.
 
-Aby uzyskać porady i sugestie dotyczące testowania i debugowania, w tym więcej informacji na temat testów w środowisku produkcyjnym (TiP) i piaskownicy integracji, zobacz [testowanie i debugowanie](test-and-debug.md).
+Aby uzyskać porady i sugestie dotyczące testowania i debugowania, w tym więcej informacji na temat testowania w środowisku produkcyjnym (TiP) i piaskownicy integracji, zobacz [Testowanie i debugowanie](test-and-debug.md).
 
 ## <a name="configure-your-authentication"></a>Konfigurowanie uwierzytelniania
 
-Aby skonfigurować uwierzytelnianie usługi Azure AD w taki sposób, aby można było używać interfejsów API Centrum partnerskiego, zobacz [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).
+Aby skonfigurować uwierzytelnianie usługi Azure AD w celu korzystania z interfejsów API Partner Center, zobacz [Partner Center uwierzytelniania.](partner-center-authentication.md)
 
 > [!IMPORTANT]
-> Firma Microsoft wprowadza bezpieczną i skalowalną platformę do uwierzytelniania partnerów dostawcy rozwiązań w chmurze (CSP) i dostawców panelu sterowania (CPV) za pomocą Microsoft Azure architekturę uwierzytelniania wieloskładnikowego (MFA).
-Centrum partnerskie używa usługi Azure AD do uwierzytelniania i korzystania z interfejsów API Centrum partnerskiego należy prawidłowo skonfigurować ustawienia uwierzytelniania.
+> Firma Microsoft wprowadza bezpieczną, skalowalną platformę do uwierzytelniania partnerów dostawców rozwiązań w chmurze (CSP) i dostawców panelu sterowania (CPV) za pośrednictwem architektury Microsoft Azure Multi-Factor Authentication (MFA).
+Partner Center używa usługi Azure AD do uwierzytelniania, a aby korzystać z interfejsów API Partner Center, musisz poprawnie skonfigurować ustawienia uwierzytelniania.
 >
-> Aby uzyskać więcej informacji, zobacz [Włączanie bezpiecznego modelu aplikacji](enable-secure-app-model.md).
+> Aby uzyskać więcej informacji, zobacz [Włączanie bezpiecznego modelu aplikacji.](enable-secure-app-model.md)
 
 ## <a name="get-help"></a>Uzyskaj pomoc
 
-Partnerzy mogą uzyskać pomoc techniczną w [grupie yammera zestawu SDK Centrum partnerskiego](https://go.microsoft.com/fwlink/p/?LinkID=717360). Aby uzyskać bardziej spersonalizowaną pomoc, deweloperzy mogą korzystać z korzyści z pomocy technicznej MPN lub pomoc techniczna Premium.
+Partnerzy mogą uzyskać pomoc techniczną w [zestaw SDK Centrum partnerskiego Yammer grupy](https://go.microsoft.com/fwlink/p/?LinkID=717360). Aby uzyskać bardziej spersonalizowaną pomoc, deweloperzy mogą korzystać z korzyści pomocy technicznej MPN lub pomocy technicznej Premier.
 
 ## <a name="join-the-partner-center-api-and-sdk-early-adopter-program"></a>Dołącz do programu wczesnych użytkowników w interfejsu API i zestawu SDK Centrum partnerskiego
 
-Aby dowiedzieć się, w jaki sposób można współpracować z firmą Microsoft w zakresie opracowywania funkcji i możliwości partnerów, zobacz [dodatek do interfejsu API Centrum partnerskiego i zestawu SDK wczesnego oprogramowania do wdrażania](early-adopter-program.md).
+Aby dowiedzieć się, jak możesz współpracować z firmą Microsoft nad opracowywaniem funkcji i możliwości partnerów, zobacz [Join the Partner Center API and SDK Early Adopter Program](early-adopter-program.md)(Dołączanie do interfejsu API i zestawu SDK wcześnie przyjętego programu).

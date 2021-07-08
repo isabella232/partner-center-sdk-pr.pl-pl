@@ -1,36 +1,33 @@
 ---
 title: Pobieranie listy partii urządzeń dla określonego klienta
-description: Jak pobrać kolekcję partii urządzeń dla określonego klienta.
+description: Pobieranie kolekcji partii urządzeń dla określonego klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ea5797bbaff4d4eafd1e63428556ab784bcb0ee2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 9d020bbfa1faef0be423d2fef2d8982465dfa21f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768414"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548424"
 ---
 # <a name="get-a-list-of-device-batches-for-the-specified-customer"></a>Pobieranie listy partii urządzeń dla określonego klienta
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
+Pobieranie kolekcji partii urządzeń dla określonego klienta.
 
-Jak pobrać kolekcję partii urządzeń dla określonego klienta.
-
-Każda partia urządzeń zawiera podsumowanie informacji o stanie urządzeń, które zostały zarejestrowane w ramach wdrożenia bez dotknięcia.
+Każda partia urządzeń zawiera podsumowanie informacji o stanie urządzeń zarejestrowanych we wdrożeniu bez dotykowym.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję partii urządzeń dla określonego klienta, najpierw Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie Pobierz wartość właściwości [**DeviceBatches**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicebatches) , aby uzyskać interfejs do operacji zbierania danych wsadowych na urządzeniu. Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.getasync) w celu pobrania kolekcji.
+Aby pobrać kolekcję partii urządzeń dla określonego klienta, najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie pobierz wartość właściwości [**DeviceBatches,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicebatches) aby uzyskać interfejs operacji zbierania wsadowego urządzeń. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.getasync) aby pobrać kolekcję.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -40,7 +37,7 @@ var devicesBatches =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetDevicesBatches.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: GetDevicesBatches.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -48,19 +45,19 @@ var devicesBatches =
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/deviceBatches http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/deviceBatches HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Podczas tworzenia żądania Użyj następujących parametrów ścieżki.
+Podczas tworzenia żądania użyj następujących parametrów ścieżki.
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -80,11 +77,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [DeviceBatch](device-deployment-resources.md#devicebatch) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów DeviceBatch.](device-deployment-resources.md#devicebatch)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

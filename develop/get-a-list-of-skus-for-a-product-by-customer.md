@@ -1,37 +1,32 @@
 ---
-title: Pobierz listę jednostek SKU dla produktu (przez klienta)
-description: Pobiera kolekcję jednostek SKU dla określonego produktu przez klienta.
+title: Uzyskiwanie listy jednostki SKU dla produktu (według klienta)
+description: Pobiera kolekcję jednostki SKU dla określonego produktu przez klienta.
 ms.assetid: ''
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6b9c9bcd52798006d7f686405f059192a722c7e8
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b76526d97ba9027897fc88954ba45186d58aefb8
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767938"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874163"
 ---
-# <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Pobierz listę jednostek SKU dla produktu (przez klienta)
+# <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Uzyskiwanie listy jednostki SKU dla produktu (według klienta)
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera kolekcję jednostek SKU dla określonego produktu, który jest dostępny dla istniejącego klienta.
+Pobiera kolekcję jednostki SKU dla określonego produktu, który jest dostępny dla istniejącego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator produktu (**Identyfikator produktu**).
+- Identyfikator produktu **(product-id).**
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -39,18 +34,18 @@ Pobiera kolekcję jednostek SKU dla określonego produktu, który jest dostępny
 
 | Metoda | Identyfikator URI żądania                                                                                                        |
 |--------|--------------------------------------------------------------------------------------------------------------------|
-| POST   | [*\{ BASEURL \}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Products/{Product-ID}/SKUs http/1.1 |
+| POST   | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/products/{product-id}/skus HTTP/1.1 |
 
-### <a name="request-uri-parameter"></a>Parametr identyfikatora URI żądania
+### <a name="request-uri-parameter"></a>Parametr URI żądania
 
 | Nazwa               | Typ | Wymagane | Opis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| Identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem GUID, który jest sformatowanym identyfikatorem **dzierżawy**, który umożliwia określenie klienta. |
-| Identyfikator produktu | ciąg | Tak | Ciąg identyfikujący produkt. |
+| identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem **customer-tenant-id** w formacie IDENTYFIKATORA GUID, który jest identyfikatorem umożliwiającym określenie klienta. |
+| product-id | ciąg | Tak | Ciąg identyfikujący produkt. |
 
 ### <a name="request-header"></a>Nagłówek żądania
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -68,9 +63,9 @@ MS-CorrelationId: b1939cb2-e83d-4fb0-989f-514fb741b734
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 

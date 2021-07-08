@@ -1,40 +1,35 @@
 ---
 title: Pobieranie profilu rozliczeniowego klienta
-description: Pobiera profil rozliczeń dla klienta. Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, wybierając najpierw klienta.
+description: Pobiera profil rozliczeniowy klienta. Na Partner Center nawigacyjnym tę operację można wykonać, wybierając najpierw klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 6c837c1c220e334df82e75eb680b6012862c9686
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: d22be53a5be4efcda76a568578468615495febb6
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768362"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760593"
 ---
 # <a name="get-a-customers-billing-profile"></a>Pobieranie profilu rozliczeniowego klienta
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Pobiera profil rozliczeniowy klienta.
 
-Pobiera profil rozliczeń dla klienta.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego można wykonać tę operację, [wybierając najpierw klienta](get-a-customer-by-name.md). Następnie w polu Nazwa klienta na lewym pasku bocznym wybierz pozycję **konto**. Profil rozliczeń można znaleźć w nagłówku **informacji dotyczących rachunku** .
+Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie pod nazwą klienta na lewym pasku bocznym wybierz pozycję **Konto**. Profil rozliczeniowy można znaleźć pod nagłówkiem **Informacje dotyczące rozliczeń.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać profil rozliczeń klienta, Użyj kolekcji [**IPartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i Wywołaj metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) . Następnie Wywołaj Właściwość [**Profile**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) , a następnie właściwość [**rozliczenia**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) . Na koniec wywołaj metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync) .
+Aby uzyskać profil rozliczeniowy klienta, użyj kolekcji [**IPartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Następnie wywołaj [**właściwość Profiles,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) a następnie właściwość [**Rozliczenia.**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) Na koniec wywołaj [**metody Get()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +38,7 @@ Aby uzyskać profil rozliczeń klienta, Użyj kolekcji [**IPartner. Customers**]
 var billingProfile = partnerOperations.Customers.ById(selectedCustomerId).Profiles.Billing.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: GetCustomerBillingProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSamples: GetCustomerBillingProfile.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,19 +46,19 @@ var billingProfile = partnerOperations.Customers.ById(selectedCustomerId).Profil
 
 | Metoda  | Identyfikator URI żądania                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Profiles/Billing http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/profiles/billing HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby uzyskać profil rozliczeń.
+Użyj następującego parametru zapytania, aby uzyskać profil rozliczeniowy.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -81,11 +76,11 @@ MS-CorrelationId: 51d521b3-62db-4682-b75d-fb8ab09113b2
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [profilu](profile-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [profilu](profile-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

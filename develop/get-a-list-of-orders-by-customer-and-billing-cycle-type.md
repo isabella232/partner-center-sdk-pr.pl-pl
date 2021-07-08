@@ -1,43 +1,38 @@
 ---
 title: Pobieranie listy zamówień według klienta i typu cyklu rozliczeń
-description: Pobiera kolekcję zasobów zamówienia dla określonego typu cyklu klienta i rozliczeń.
+description: Pobiera kolekcję zasobów zamówień dla określonego typu klienta i cyklu rozliczeniowego.
 ms.date: 06/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 43fe08b0791851f915e2b39a25394db5ffd022ca
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: c52a556887dba065c4ccd1a82d6223624d0ad1f2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768233"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874231"
 ---
 # <a name="get-a-list-of-orders-by-customer-and-billing-cycle-type"></a>Pobieranie listy zamówień według klienta i typu cyklu rozliczeń
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera kolekcję zasobów zamówienia, które odpowiadają danemu typowi cyklu klienta i rozliczeń. Istnieje opóźnienie do 15 minut od momentu, gdy zamówienie zostanie przesłane i pojawi się w kolekcji zamówień klienta.
+Pobiera kolekcję zasobów zamówienia, które odpowiadają danemu typowi klienta i cyklu rozliczeniowego. Istnieje opóźnienie do 15 minut od czasu, w którym zamówienie zostanie przesłane, a kiedy pojawi się w kolekcji zamówień klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać kolekcję zamówień klienta:
 
-1. Użyj kolekcji [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i Wywołaj metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu wybranego identyfikatora klienta.
+1. Użyj [**kolekcji IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z wybranym identyfikatorem klienta.
 
-2. Wywołaj Właściwość [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę **ByBillingCycleType ()** z określonym  [**BillingCycleType**](product-resources.md#billingcycletype).
-3. Wywołaj metodę [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) .
+2. Wywołaj [**właściwość Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę **ByBillingCycleType() przy** użyciu określonego typu  [**BillingCycleType**](product-resources.md#billingcycletype).
+3. Wywołaj [**metodę Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -53,20 +48,20 @@ var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.ByBilli
 
 | Metoda  | Identyfikator URI żądania                                                                                                                    |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders? rozliczenia = {rozliczanie-typ cyklu} http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders?billingType={billing-cycle-type} HTTP/1.1  |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-W tej tabeli wymieniono wymagane parametry zapytania umożliwiające pobranie kolekcji zamówień według identyfikatora klienta i typu cyklu rozliczeniowego.
+Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania kolekcji zamówień według identyfikatora klienta i typu cyklu rozliczeniowego.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                               |
 |------------------------|----------|----------|-----------------------------------------------------------|
-| Identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg w formacie GUID odpowiadający klientowi.    |
-| rozliczenia — typ cyklu     | ciąg   | Nie       | Ciąg odpowiadający typowi cyklu rozliczeniowego.         |
+| identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg sformatowany identyfikatora GUID odpowiadający klientowi.    |
+| typ cyklu rozliczeniowego     | ciąg   | Nie       | Ciąg odpowiadający typowi cyklu rozliczeniowego.         |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -85,11 +80,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [zamówienia](order-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [Order](order-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

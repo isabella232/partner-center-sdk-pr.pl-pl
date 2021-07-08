@@ -6,37 +6,32 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 4d71cd138421704d94a55a9fe21e074d92638815
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e8f23e90cbb5afb45e519e2c58fd0d3b9ea2de6a
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768358"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760304"
 ---
 # <a name="get-all-of-a-customers-orders"></a>Pobieranie wszystkich zamówień klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera kolekcję wszystkich zamówień dla określonego klienta. Istnieje opóźnienie do 15 minut od momentu, gdy zamówienie zostanie przesłane i pojawi się w kolekcji zamówień klienta.
+Pobiera kolekcję wszystkich zamówień dla określonego klienta. Istnieje opóźnienie do 15 minut od czasu, w którym zamówienie zostanie przesłane, a kiedy pojawi się w kolekcji zamówień klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać kolekcję wszystkich zamówień klienta:
 
-1. Użyj kolekcji [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i Wywołaj metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) .
+1. Użyj [**kolekcji IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid)
 
-2. Wywołaj Właściwość [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) , a następnie metodę [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) .
+2. Wywołaj [**właściwość Orders,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) a następnie metody [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,7 +40,7 @@ Aby uzyskać kolekcję wszystkich zamówień klienta:
 var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **Klasa**: GetOrders.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSamples: GetOrders.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -53,19 +48,19 @@ var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.Get();
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/Orders http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders HTTP/1.1  |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby pobrać wszystkie zamówienia.
+Użyj następującego parametru zapytania, aby uzyskać wszystkie zamówienia.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                               |
 |------------------------|----------|----------|-----------------------------------------------------------|
-| Identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg w formacie GUID odpowiadający klientowi.    |
+| identyfikator dzierżawy klienta     | ciąg   | Tak      | Ciąg sformatowany identyfikatora GUID odpowiadający klientowi.    |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -84,11 +79,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [zamówienia](order-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [Order](order-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

@@ -1,42 +1,40 @@
 ---
 title: Dokumentacja interfejsu API REST Centrum partnerskiego
-description: Dowiedz się, w jaki sposób partnerzy CSP mogą używać interfejsów API REST Centrum partnerskiego do integrowania oprogramowania CRM i rozliczeń z systemami firmy Microsoft w celu lepszego zarządzania kontami klientów
+description: Dowiedz się, jak partnerzy programu CSP mogą używać Partner Center API REST w celu zintegrowania oprogramowania CRM i rozliczeń z systemami firmy Microsoft w celu lepszego zarządzania kontami klientów.
 ms.date: 11/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 3f83b2b73c3480f76646cae4fcbbcbacd31d4b3f
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 18621fdb94f91f066b69a11f7d557410d653787e
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768502"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548043"
 ---
-# <a name="partner-center-rest-api-reference-to-rest-urls-rest-headers-rest-resources-and-rest-events"></a>Dokumentacja interfejsu API REST Centrum partnerskiego do adresów URL REST, nagłówków REST, zasobów REST i zdarzeń REST
+# <a name="partner-center-rest-api-reference-to-rest-urls-rest-headers-rest-resources-and-rest-events"></a>Partner Center API REST do adresów URL REST, nagłówków REST, zasobów REST i zdarzeń REST
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+## <a name="partner-center-rest-api"></a>Partner Center REST API
 
-## <a name="partner-center-rest-api"></a>Interfejs API REST Centrum partnerskiego
+Interfejs API REST usługi Partner Center pomaga partnerom firmy Dostawca rozwiązań w chmurze (CSP) zintegrować istniejące oprogramowanie CRM lub rozliczeniowe z systemami firmy Microsoft, które zarządzają kontami klientów, składają zamówienia, zarządzają subskrypcjami i obsługują żądania pomocy technicznej.
 
-Interfejs API REST Centrum partnerskiego pomaga partnerom dostawcy rozwiązań w chmurze zintegrować swoje istniejące oprogramowanie CRM lub rozliczeń z systemami firmy Microsoft, które zarządzają kontami klientów, umieszczają zamówienia, zarządzają subskrypcjami i obsługują żądania pomocy technicznej.
+Aby uzyskać więcej informacji na temat tego, co interfejs API może zrobić, w tym przykładowy kod, zobacz temat [Scenariusze,](scenarios.md) w tym omówienie w tle.
 
-Aby uzyskać więcej informacji o tym, co może zrobić interfejs API, w tym przykładowy kod, zobacz temat [scenariusze](scenarios.md) , w tym omówienie w tle.
+Przed rozpoczęciem kodowania przeczytaj temat [Wprowadzenie.](get-started.md) Ten artykuł zawiera informacje dotyczące konfigurowania kont testowych i produkcyjnych, uzyskiwania uwierzytelniania i znajdowania przykładowego kodu.
 
-Przed rozpoczęciem kodowania zapoznaj się [z tematem wprowadzenie.](get-started.md) Ten artykuł zawiera informacje na temat konfigurowania kont testowych i produkcyjnych, uzyskiwania informacji o działaniu uwierzytelniania i znajdowania przykładowego kodu.
+Aby uzyskać przewodnik informacyjny objaśnijący poszczególne interfejsy API, zobacz [Partner Center API REST.](/rest/api/partner-center-rest/)
 
 ## <a name="topics"></a>Tematy
 
 | Temat | Opis |
 | ----- | ----------- |
-| [Adresy URL REST Centrum partnerskiego](partner-center-rest-urls.md) | Definiuje punkty końcowe interfejsu API REST dla różnych wersji Centrum partnerskiego. |
+| [Partner Center REST API](/rest/api/partner-center-rest/) | Dokumentacja każdego interfejsu API REST dostępnego dla Partner Center. |
+| [Adresy URL REST Centrum partnerskiego](partner-center-rest-urls.md) | Definiuje punkty końcowe interfejsu API REST dla różnych wersji Partner Center. |
 | [Nagłówki REST Centrum partnerskiego](headers.md) | Definiuje nagłówki żądań i odpowiedzi używane przez interfejs API REST. |
-| [Zasoby REST Centrum partnerskiego](partner-center-rest-resources.md) | Definiuje konstrukcje JSON reprezentujące obiekty, które są konieczne do korzystania z interfejsu API REST. |
-| [Zdarzenia REST Centrum partnerskiego](partner-center-webhook-events.md) | Definiuje zdarzenia zmiany zasobów REST, które są obsługiwane przez elementy webhook Centrum partnerskiego. |
-| [Języki obsługiwane przez Centrum partnerskie i ustawienia regionalne](partner-center-supported-languages-and-locales.md) | Wyświetla listę ustawień regionalnych, języków i krajów/regionów, które są obsługiwane przez interfejsy API Centrum partnerskiego. |
-| [Elementy webhook Centrum partnerskiego](partner-center-webhooks.md) | Jak odbierać zdarzenia, uwierzytelniać wywołania zwrotne i używać interfejsów API elementu webhook Centrum partnerskiego do tworzenia, przeglądania i aktualizowania rejestracji zdarzeń. |
+| [Zasoby REST Centrum partnerskiego](partner-center-rest-resources.md) | Definiuje konstrukcje JSON reprezentujące obiekty potrzebne do korzystania z interfejsu API REST. |
+| [Zdarzenia REST Centrum partnerskiego](partner-center-webhook-events.md) | Definiuje zdarzenia zmiany zasobów REST, które są obsługiwane przez Partner Center webhook. |
+| [Języki obsługiwane przez Centrum partnerskie i ustawienia regionalne](partner-center-supported-languages-and-locales.md) | Wyświetla listę lokalizacji regionalnych, języków i kodów krajów/regionów, które są obsługiwane w Partner Center API. |
+| [Elementy webhook Centrum partnerskiego](partner-center-webhooks.md) | Jak odbierać zdarzenia, uwierzytelniać wywołanie zwrotne i używać interfejsów API Partner Center webhook do tworzenia, wyświetlania i aktualizowania rejestracji zdarzeń. |

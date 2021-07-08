@@ -1,40 +1,35 @@
 ---
 title: Pobieranie stanu aprowizacji subskrypcji
-description: Jak uzyskać status aprowizacji subskrypcji klienta.
+description: Jak uzyskać stan aprowizowania subskrypcji dla subskrypcji klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 38544aa380ba0a6a8804ae45f7d8ae7cb431d3ba
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f8797fa494cd77f11a1179d6406ca021f0d7788c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768437"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548706"
 ---
 # <a name="get-subscription-provisioning-status"></a>Pobieranie stanu aprowizacji subskrypcji
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak uzyskać status aprowizacji subskrypcji klienta.
+Jak uzyskać stan aprowizowania subskrypcji dla subskrypcji klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
-- Do wykonania tej operacji są wymagane uprawnienia administratora delegowanego.
+- Do wykonania tej operacji wymagane są delegowane uprawnienia administratora w subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać stan aprowizacji subskrypcji, Zacznij od użycia metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie uzyskaj interfejs do operacji subskrybowania, wywołując metodę Subscription [**. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**ProvisioningStatus**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.provisioningstatus) , aby uzyskać interfejs do operacji stanu aprowizacji bieżącej subskrypcji, a następnie Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.getasync) , aby pobrać obiekt [**SubscriptionProvisioningStatus**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionprovisioningstatus) .
+Aby uzyskać stan aprowacji subskrypcji, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**ProvisioningStatus,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.provisioningstatus) aby uzyskać interfejs dla operacji stanu aprowacji bieżącej subskrypcji, a następnie wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.getasync) aby pobrać obiekt [**SubscriptionProvisioningStatus.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionprovisioningstatus)
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -51,20 +46,20 @@ var provisioningStatus = partnerOperations.Customers.ById(customerId).Subscripti
 
 | Metoda  | Identyfikator URI żądania                                                                                                                        |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscriptions/{Subscription-ID}/provisioningstatus http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/provisioningstatus HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subskrypcję.
 
 | Nazwa            | Typ   | Wymagane | Opis                                               |
 |-----------------|--------|----------|-----------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.     |
-| Identyfikator subskrypcji | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje subskrypcję. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.     |
+| subscription-id | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje subskrypcję. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -84,11 +79,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób SubscriptionProvisioningStatus.](subscription-resources.md#subscriptionprovisioningstatus)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 
@@ -115,6 +110,6 @@ Date: Thu, 20 Apr 2017 19:23:39 GMT
 
 ## <a name="remarks"></a>Uwagi
 
-- Podczas przypisywania zmiany licencji pole Stan w [SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) ma wartość "oczekiwanie".
+- Podczas przypisywania zmiany licencji pole stanu w obszarze [SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) jest ustawione na wartość "oczekujące".
 
-- Pole Stan jest aktualizowane co 15 minut.
+- Pole stanu jest aktualizowane co 15 minut.

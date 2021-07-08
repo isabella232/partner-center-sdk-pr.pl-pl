@@ -1,41 +1,37 @@
 ---
 title: Pobieranie rejestru aktywności w Centrum partnerskim
-description: Jak pobrać rekord operacji wykonywanych przez użytkownika lub aplikację partnera w danym okresie czasu.
+description: Pobieranie rekordu operacji wykonywanego przez użytkownika partnera lub aplikację w czasie.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2f37eae8bb96c1c1e7008e8c566b085e25d8807d
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: aec933d4b681d99080619505792bde56bdd25580
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768229"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873975"
 ---
 # <a name="get-a-record-of-partner-center-activity"></a>Pobieranie rejestru aktywności w Centrum partnerskim
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+W tym artykule opisano sposób pobierania rekordu operacji, które były wykonywane przez użytkownika partnera lub aplikację w czasie.
 
-W tym artykule opisano sposób pobierania rekordu operacji wykonanych przez użytkownika lub aplikację partnera w określonym czasie.
-
-Użyj tego interfejsu API, aby pobrać rekordy inspekcji z ostatnich 30 dni od bieżącej daty lub dla zakresu dat określonego przez dołączenie daty rozpoczęcia i/lub daty zakończenia. Należy jednak pamiętać, że ze względu na wydajność dostępność danych dziennika aktywności jest ograniczona do poprzednich 90 dni. Żądania z datą rozpoczęcia większą niż 90 dni przed bieżącą datą otrzymają błędny wyjątek żądania (kod błędu: 400) i odpowiedni komunikat.
+Ten interfejs API umożliwia pobieranie rekordów inspekcji z ostatnich 30 dni od bieżącej daty lub dla zakresu dat określonego przez uwzględnienia daty rozpoczęcia i/lub daty zakończenia. Należy jednak pamiętać, że ze względu na wydajność dostępność danych dziennika aktywności jest ograniczona do poprzednich 90 dni. Żądania z datą rozpoczęcia większą niż 90 dni przed bieżącą datą otrzymają wyjątek złego żądania (kod błędu: 400) i odpowiedni komunikat.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać rekord operacji Centrum partnerskiego, najpierw Ustal zakres dat dla rekordów, które chcesz pobrać. Poniższy przykład kodu używa tylko daty rozpoczęcia, ale można również dołączyć datę końcową. Aby uzyskać więcej informacji, zobacz Metoda [**zapytania**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) . Następnie należy utworzyć zmienne potrzebne dla typu filtru, który ma zostać zastosowany, i przypisać odpowiednie wartości. Na przykład aby przefiltrować według podciągu nazwy firmy, należy utworzyć zmienną do przechowywania podciągu. Aby odfiltrować według identyfikatora klienta, Utwórz zmienną do przechowywania identyfikatora.
+Aby pobrać rekord operacji Partner Center, najpierw ustal zakres dat dla rekordów, które chcesz pobrać. W poniższym przykładzie kodu użyto tylko daty rozpoczęcia, ale można również uwzględnić datę zakończenia. Aby uzyskać więcej informacji, zobacz [**metodę**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) Query. Następnie utwórz zmienne potrzebne dla typu filtru, który chcesz zastosować, i przypisz odpowiednie wartości. Aby na przykład filtrować według podciągu nazwy firmy, utwórz zmienną do przechowywania podciągu. Aby filtrować według identyfikatora klienta, utwórz zmienną do przechowywania identyfikatora.
 
-W poniższym przykładzie przedstawiono przykładowy kod służący do filtrowania według podciągu nazwy firmy, identyfikatora klienta lub typu zasobu. Wybierz jeden z nich i Dodaj komentarz do innych elementów. W każdym przypadku należy najpierw utworzyć wystąpienie obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) przy użyciu jego domyślnego [**konstruktora**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) do utworzenia filtru. Należy przekazać ciąg, który zawiera pole do wyszukania, i odpowiedni operator do zastosowania, jak pokazano. Należy również podać ciąg do filtrowania.
+W poniższym przykładzie podano przykładowy kod do filtrowania według podciągu nazwy firmy, identyfikatora klienta lub typu zasobu. Wybierz jedną z nich i zakłoń pozostałe. W każdym przypadku należy najpierw utworzyć obiekt [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) przy użyciu jego domyślnego [**konstruktora**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) w celu utworzenia filtru. Musisz przekazać ciąg zawierający pole do wyszukania oraz odpowiedni operator do zastosowania, jak pokazano poniżej. Należy również podać ciąg do filtrowania.
 
-Następnie użyj właściwości [**AuditRecords**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) , aby uzyskać interfejs do inspekcji operacji rejestrowania i wywołać metodę [**Query**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) lub [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) , aby wykonać filtr i pobrać kolekcję [**AuditRecord**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) reprezentującą pierwszą stronę wyniku. Przekaż metodę, która jest datą początkową, opcjonalną datą końcową, która nie jest używana w przykładzie, i obiekt [**IQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) , który reprezentuje zapytanie w jednostce. Obiekt IQuery jest tworzony przez przekazanie wyżej utworzonego powyżej filtru do metody [](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) QueryFactory.
+Następnie użyj właściwości [**AuditRecords,**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) aby uzyskać interfejs do inspekcji operacji na rekordach, i wywołaj metodę [**Query**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) lub [**QueryAsync,**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) aby wykonać filtr i pobrać kolekcję rekordów [**AuditRecord**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) reprezentujących pierwszą stronę wyniku. Przekaż metodę data rozpoczęcia, opcjonalną datę końcową, która nie została użyta w tym przykładzie, oraz obiekt [**IQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) który reprezentuje zapytanie w jednostce. Obiekt IQuery jest tworzony przez przekazanie utworzonego powyżej filtru do metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) w [**obiekcie QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Gdy masz początkową stronę elementów, użyj metody [**Enumerators. AuditRecords. Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) , aby utworzyć moduł wyliczający, którego można użyć do iteracji przez pozostałe strony.
+Po utworzeniu początkowej strony elementów użyj metody [**Enumerators.AuditRecords.Create,**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) aby utworzyć moduł wyliczający, który będzie można użyć do iterowania po pozostałych stronach.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -77,7 +73,7 @@ while (auditRecordEnumerator.HasValue)
 }
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **folder** przykładów zestawu SDK Centrum partnerskiego: Inspekcja
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Przykłady **folderu:** Inspekcja
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -85,24 +81,24 @@ while (auditRecordEnumerator.HasValue)
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                                                    |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/AuditRecords? StartDate = {STARTDATE} http/1.1                                                                                                     |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/AuditRecords? StartDate = {startDate} &EndDate = {EndDate} http/1.1                                                                                   |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/AuditRecords? startDated = {startDate} &EndDate = {endDate} &Filter = {"Field": "NazwaFirmy", "value": "{searchSubstring}", "operator": "substring"} http/1.1 |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/AuditRecords? startDated = {startDate} &EndDate = {endDate} &Filter = {"Field": "CustomerID", "value": "{CustomerID}", "operator": "Equals"} http/1.1          |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/AuditRecords? startDated = {startDate} &EndDate = {endDate} &Filter = {"Field": "ResourceType", "value": "{ResourceType}", "operator": "Equals"} http/1.1      |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate} HTTP/1.1                                                                                                     |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate} HTTP/1.1                                                                                   |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CompanyName","Value":"{searchSubstring}","Operator":"substring"} HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CustomerId","Value":"{customerId}","Operator":"equals"} HTTP/1.1          |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"ResourceType","Value":"{resourceType}","Operator":"equals"} HTTP/1.1      |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Podczas tworzenia żądania Użyj następujących parametrów zapytania.
+Podczas tworzenia żądania użyj następujących parametrów zapytania.
 
 | Nazwa      | Typ   | Wymagane | Opis                                                                                                                                                                                                                |
 |-----------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| startDate | date   | Nie       | Data rozpoczęcia w formacie RRRR-MM-DD. Jeśli żaden nie jest podany, zestaw wyników będzie domyślnie miał 30 dni przed datą żądania. Ten parametr jest opcjonalny w przypadku podania filtru.                                          |
-| endDate   | date   | Nie       | Data zakończenia w formacie RRRR-MM-DD. Ten parametr jest opcjonalny w przypadku podania filtru. Gdy data zakończenia jest pomijana lub ma wartość null, żądanie zwróci wartość maksymalnego okna lub używa dzisiaj jako daty zakończenia, w zależności od tego, która wartość jest mniejsza. |
-| filter    | ciąg | Nie       | Filtr, który ma zostać zastosowany. Ten parametr musi być zakodowanym ciągiem. Ten parametr jest opcjonalny, gdy podano datę początkową lub datę końcową.                                                                                              |
+| Startdate | data   | Nie       | Data rozpoczęcia w formacie yyyy-mm-dd. Jeśli żadna wartość nie zostanie podany, zestaw wyników zostanie ustawiony domyślnie na 30 dni przed datą żądania. Ten parametr jest opcjonalny, gdy jest podany filtr.                                          |
+| Enddate   | data   | Nie       | Data końcowa w formacie yyyy-mm-dd. Ten parametr jest opcjonalny, gdy jest podany filtr. Gdy data zakończenia zostanie pominięta lub ustawiona na wartość null, żądanie zwróci maksymalne okno lub użyje dzisiaj jako daty zakończenia, w zależności od tego, która wartość jest mniejsza. |
+| filter    | ciąg | Nie       | Filtr do zastosowania. Ten parametr musi być zakodowanym ciągiem. Ten parametr jest opcjonalny, gdy podano datę rozpoczęcia lub datę zakończenia.                                                                                              |
 
 ### <a name="filter-syntax"></a>Składnia filtru
-Należy złożyć parametr filtru jako serię oddzielonych przecinkami par klucz-wartość. Każdy klucz i wartość muszą być osobno cytowane i oddzielone dwukropkiem. Cały filtr musi być zakodowany.
+Parametr filtru należy skomponować jako serię rozdzielonych przecinkami par klucz-wartość. Każdy klucz i wartość muszą być oddzielnie cytowane i oddzielone dwukropkiem. Cały filtr musi być zakodowany.
 
 Niezakodowany przykład wygląda następująco:
 
@@ -114,13 +110,13 @@ W poniższej tabeli opisano wymagane pary klucz-wartość:
 
 | Klucz                 | Wartość                             |
 |:--------------------|:----------------------------------|
-| Pole               | Pole do filtrowania. Obsługiwane wartości można znaleźć w [składni żądania](get-a-record-of-partner-center-activity-by-user.md#rest-request).                                         |
-| Wartość               | Wartość, według której ma zostać przefiltrowana. Wielkość liter jest ignorowana. Następujące parametry wartości są obsługiwane, jak pokazano w [składni żądania](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* — Zamień na nazwę firmy. Aby dopasować część nazwy firmy (na przykład, będzie ona pasować), można wprowadzić podciąg `bri` `Fabrikam, Inc` .<br/>**Przykład:** `"Value":"bri"`<br/><br/>                                                                *customerId* -Zamień na ciąg z SFORMATOWANYm identyfikatorem GUID, który reprezentuje identyfikator klienta.<br/>**Przykład:** `"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *ResourceType* — Zamień na typ zasobu, dla którego mają zostać pobrane rekordy inspekcji (na przykład subskrypcja). Dostępne typy zasobów są zdefiniowane w elemencie [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Przykład:** `"Value":"Subscription"`                                 |
-| Operator          | Operator, który ma zostać zastosowany. Obsługiwane operatory można znaleźć w [składni żądania](get-a-record-of-partner-center-activity-by-user.md#rest-request).   |
+| Pole               | Pole do filtrowania. Obsługiwane wartości można znaleźć w tece [Request syntax (Składnia żądania).](get-a-record-of-partner-center-activity-by-user.md#rest-request)                                         |
+| Wartość               | Wartość do filtrowania. Przypadek wartości jest ignorowany. Obsługiwane są następujące parametry wartości, jak pokazano w [tece Request syntax (Składnia żądania):](get-a-record-of-partner-center-activity-by-user.md#rest-request)<br/><br/>                                                                *searchSubstring* — zastąp nazwą firmy. Możesz wprowadzić podciąg, aby dopasować część nazwy firmy (na przykład `bri` będzie odpowiadać `Fabrikam, Inc` ).<br/>**Przykład:**`"Value":"bri"`<br/><br/>                                                                *customerId* — zastąp ciąg ciągiem sformatowanym przy użyciu identyfikatora GUID, który reprezentuje identyfikator klienta.<br/>**Przykład:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* — zastąp typem zasobu, dla którego mają być pobierane rekordy inspekcji (na przykład Subskrypcja). Dostępne typy zasobów są zdefiniowane w [typie ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Przykład:**`"Value":"Subscription"`                                 |
+| Operator          | Operator do zastosowania. Obsługiwane operatory można znaleźć w tece [Request syntax (Składnia żądania).](get-a-record-of-partner-center-activity-by-user.md#rest-request)   |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Aby uzyskać więcej informacji, zobacz [nagłówki REST programu Part Center](headers.md) .
+- Aby uzyskać więcej informacji, zobacz [Parter Center REST headers (Nagłówki REST centrum części).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -141,11 +137,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca zestaw działań, które spełniają filtry.
+W przypadku powodzenia ta metoda zwraca zestaw działań spełniających wymagania filtrów.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

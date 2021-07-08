@@ -1,48 +1,43 @@
 ---
 title: Nagłówki REST Centrum partnerskiego
-description: Dowiedz się więcej na temat nagłówków żądań REST protokołu HTTP i nagłówków odpowiedzi REST obsługiwanych przez interfejs API REST Centrum partnerskiego.
+description: Dowiedz się więcej na temat nagłówków żądań REST protokołu HTTP i nagłówków odpowiedzi REST obsługiwanych przez Partner Center API REST.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9f506c8c610c2584912c24453288d0f3578b84e3
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 3f09ab5808a9751f02e451da2027f6b35877390b
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768510"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548468"
 ---
-# <a name="partner-center-rest-and-response-headers-supported-by-the-partner-center-rest-api"></a>Nagłówki REST i odpowiedzi Centrum partnerskiego obsługiwane przez interfejs API REST Centrum partnerskiego 
+# <a name="partner-center-rest-and-response-headers-supported-by-the-partner-center-rest-api"></a>Partner Center REST i nagłówki odpowiedzi obsługiwane przez interfejs API REST Partner Center api 
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Następujące nagłówki żądania HTTP i odpowiedzi są obsługiwane przez interfejs API REST Centrum partnerskiego. Nie wszystkie wywołania interfejsu API akceptują wszystkie nagłówki.
+Następujące nagłówki żądań i odpowiedzi HTTP są obsługiwane przez interfejs API REST Partner Center HTTP. Nie wszystkie wywołania interfejsu API akceptują wszystkie nagłówki.
 
 ## <a name="rest-request-headers"></a>Nagłówki żądań REST
 
-Następujące nagłówki żądania HTTP są obsługiwane przez interfejs API REST Centrum partnerskiego.
+Następujące nagłówki żądań HTTP są obsługiwane przez interfejs API REST Partner Center HTTP.
 
 | Nagłówek                       | Opis                                                                                                                                                                                                                                                                            | Typ wartości |
 |------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Authorization:               | Wymagane. Token autoryzacji w postaci &lt; tokenu okaziciela &gt; .                                                                                                                                                                                                                    | ciąg     |
-| Odebrać                      | Określa typ żądania i odpowiedzi "Application/JSON".                                                                                                                                                                                                                           | ciąg     |
-| MS-identyfikator żądania:                | Unikatowy identyfikator wywołania, używany do zapewnienia działania dotyczącego identyfikatora. Jeśli wystąpiło przekroczenie limitu czasu, wywołanie ponawiania powinno zawierać tę samą wartość. Po odebraniu odpowiedzi (sukces lub błąd biznesowy) należy zresetować wartość dla następnego wywołania.                                            | GUID       |
-| MS-identyfikator korelacji:            | Unikatowy identyfikator wywołania, przydatny w dziennikach i śladach sieci do rozwiązywania problemów z błędami. Wartość powinna być resetowana dla każdego wywołania. Wszystkie operacje powinny zawierać ten nagłówek. Aby uzyskać więcej informacji, zobacz informacje o IDENTYFIKATORze korelacji w [teście i debugowaniu](test-and-debug.md). | GUID       |
-| MS-Contract-Version:         | Wymagane. Określa wersję żądanego interfejsu API; Ogólnie wersja interfejsu API: V1, o ile nie określono inaczej w sekcji [scenariusze](scenarios.md) .                                                                                                                                  | ciąg     |
-| If-Match:                    | Używany na potrzeby kontroli współbieżności. Niektóre wywołania interfejsu API wymagają przekazania elementu ETag za pośrednictwem nagłówka If-Match. Element ETag zazwyczaj znajduje się w zasobie i w związku z tym wymaga pobrania najnowszych. Aby uzyskać więcej informacji, zobacz informacje ETag w artykule [Test and Debug](test-and-debug.md).                | ciąg     |
-| MS-PartnerCenter — aplikacja | Opcjonalny. Określa nazwę aplikacji korzystającej z interfejsu API REST Centrum partnerskiego.                                                                                                                                                                                             | ciąg     |
-| X — ustawienia regionalne:                    | Opcjonalny. Określa język, w którym są zwracane stawki. Wartość domyślna to "pl-US". Aby uzyskać listę obsługiwanych wartości, zobacz [obsługiwane języki i ustawienia regionalne usługi Partner Center](partner-center-supported-languages-and-locales.md).                                                                                                                                                                                                  | ciąg     |
+| Authorization:               | Wymagane. Token autoryzacji w postaci tokenu bearer &lt; &gt; .                                                                                                                                                                                                                    | ciąg     |
+| Zaakceptować:                      | Określa typ żądania i odpowiedzi "application/json".                                                                                                                                                                                                                           | ciąg     |
+| MS-RequestId:                | Unikatowy identyfikator wywołania, używany w celu zapewnienia id-identyfikator. Jeśli istnieje limit czasu, wywołanie ponawiania powinno zawierać tę samą wartość. Po otrzymaniu odpowiedzi (powodzenie lub niepowodzenie biznesowe) wartość powinna zostać zresetowana na potrzeby następnego wywołania.                                            | GUID       |
+| MS-CorrelationId:            | Unikatowy identyfikator wywołania, przydatny w dziennikach i śladach sieci na potrzeby rozwiązywania problemów z błędami. Wartość powinna zostać zresetowana dla każdego wywołania. Wszystkie operacje powinny zawierać ten nagłówek. Aby uzyskać więcej informacji, zobacz informacje o identyfikatorze korelacji w [teście i debugowaniu](test-and-debug.md). | GUID       |
+| MS-Contract-Version:         | Wymagane. Określa wersję żądanego interfejsu API; ogólnie wersja interfejsu API: wersja 1, chyba że określono inaczej w [sekcji Scenariusze.](scenarios.md)                                                                                                                                  | ciąg     |
+| If-Match:                    | Służy do kontroli współbieżności. Niektóre wywołania interfejsu API wymagają przekazywania tagu ETag za pośrednictwem If-Match nagłówka. Tag ETag zwykle znajduje się w zasobie i dlatego wymaga get-ting najnowszej wersji. Aby uzyskać więcej informacji, zobacz informacje dotyczące tagów ETag w [teście i debugowaniu](test-and-debug.md).                | ciąg     |
+| MS-PartnerCenter-Application | Opcjonalny. Określa nazwę aplikacji korzystającej z interfejsu API PARTNER CENTER REST.                                                                                                                                                                                             | ciąg     |
+| X-Locale:                    | Opcjonalny. Określa język, w którym są zwracane stawki. Wartość domyślna to "en-US". Aby uzyskać listę obsługiwanych wartości, zobacz [Partner Center obsługiwanych języków i danych regionalnych.](partner-center-supported-languages-and-locales.md)                                                                                                                                                                                                  | ciąg     |
 
 ## <a name="rest-response-headers"></a>Nagłówki odpowiedzi REST
 
-Interfejs API REST Centrum partnerskiego może zwrócić następujące nagłówki odpowiedzi HTTP.
+Następujące nagłówki odpowiedzi HTTP mogą być zwracane przez interfejs API PARTNER CENTER REST.
 
 | Nagłówek            | Opis                                                                                                                                                                                                                                 | Typ wartości |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Odebrać           | Określa typ żądania i odpowiedzi "Application/JSON".                                                                                                                                                                                | ciąg     |
-| MS-identyfikator żądania:     | Unikatowy identyfikator wywołania, używany do zapewnienia działania dotyczącego identyfikatora. Jeśli wystąpiło przekroczenie limitu czasu, wywołanie ponawiania powinno zawierać tę samą wartość. Po odebraniu odpowiedzi (sukces lub błąd biznesowy) należy zresetować wartość dla następnego wywołania. | GUID       |
-| MS-identyfikator korelacji: | Unikatowy identyfikator wywołania. Ta wartość jest przydatna do rozwiązywania problemów z dziennikami i śladami sieci w celu znalezienia błędu. Wartość powinna być resetowana dla każdego wywołania. Wszystkie operacje powinny zawierać ten nagłówek.                                                       | GUID       |
+| Zaakceptować:           | Określa typ żądania i odpowiedzi "application/json".                                                                                                                                                                                | ciąg     |
+| MS-RequestId:     | Unikatowy identyfikator wywołania, używany w celu zapewnienia id-identyfikator. Jeśli istnieje limit czasu, wywołanie ponawiania powinno zawierać tę samą wartość. Po otrzymaniu odpowiedzi (powodzenie lub niepowodzenie biznesowe) wartość powinna zostać zresetowana na potrzeby następnego wywołania. | GUID       |
+| MS-CorrelationId: | Unikatowy identyfikator wywołania. Ta wartość jest przydatna do rozwiązywania problemów z dziennikami i śladami sieci w celu znalezienia błędu. Wartość powinna zostać zresetowana dla każdego wywołania. Wszystkie operacje powinny zawierać ten nagłówek.                                                       | GUID       |

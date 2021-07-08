@@ -1,38 +1,33 @@
 ---
 title: Analiza w Centrum partnerskim
-description: Dokumentacja publicznego interfejsu API analizy Centrum partnerskiego.
+description: Partner Center Analytics w dokumentacji publicznego interfejsu API.
 ms.date: 06/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4b14ee929f3020079f409be8817e077673d3219f
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 03d7d252a415524c6573c1bf62b8b9c1518a1b9f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767773"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548094"
 ---
 # <a name="partner-center-analytics---resources"></a>Analiza Centrum partnerskiego — zasoby
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Interfejs API analizy pozwala programistycznie uzyskiwać dostęp do danych, które są prezentowane w środowisku użytkownika.
+Interfejs API analizy umożliwia programowe uzyskiwanie dostępu do danych prezentowanych w interfejsie użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Te scenariusze obsługują uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Te scenariusze obsługują uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="csp-program-azure-usage-analytics"></a>Program CSP: Analiza użycia platformy Azure
 
-W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie informacje dotyczące analizy użycia platformy Azure.
+W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie Partner Center analizy użycia platformy Azure.
 
 - [Pobieranie wszystkich informacji analitycznych dotyczących użycia platformy Azure](get-all-azure-usage-analytics.md)
 
-Ten scenariusz zwraca informacje o analizie w kolekcji zasobów [użycia platformy Azure](#azure-usage-resource) .
+Ten scenariusz zwraca informacje analityczne w kolekcji zasobów [użycia platformy Azure.](#azure-usage-resource)
 
 ## <a name="azure-usage-resource"></a>Zasób użycia platformy Azure
 
@@ -41,58 +36,58 @@ Reprezentuje wszystkie dane analityczne dotyczące użycia platformy Azure.
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
 | CustomerTenantId | ciąg | Identyfikator dzierżawy klienta. |
-| customerName | ciąg | Nazwa klienta. |
+| Customername | ciąg | Nazwa klienta. |
 | subscriptionId | ciąg | Identyfikator subskrypcji. |
 | subscriptionName | ciąg | Nazwa subskrypcji. |
 | usageDate | ciąg | Data użycia. |
-| resourceLocation | ciąg | Na przykład lokalizacja centrum danych, Europa Zachodnia. |
-| meterCategory | ciąg | Kategoria licznika, zarządzanie danymi, na przykład. |
-| meterSubcategory | ciąg | Podkategoria miernika, na przykład Geograficznie nadmiarowy. |
-| meterUnit | ciąg | Jednostka miernika, taka jak gigabajty lub godziny. |
-| reservationOrderId | ciąg | Kolejność rezerwacji dla wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure. |
-| reservationId | ciąg | Wystąpienia zarezerwowane w określonej kolejności. |
-| Service | ciąg | Wskazuje typ maszyny wirtualnej. Na przykład Standard_E4s_v3. |
-| quantity | długi | Wskazuje numery używane w jednostce miernika. |
+| resourceLocation | ciąg | Lokalizacja centrum danych, na przykład Europa Zachodnia. |
+| meterCategory | ciąg | Kategoria miernika, na przykład zarządzanie danymi. |
+| meterSubcategory | ciąg | Podkategoria miernika, na przykład geograficznie nadmiarowa. |
+| meterUnit | ciąg | Jednostka miernika, na przykład gigabajty lub godziny. |
+| reservationOrderId | ciąg | Zamówienie rezerwacji dla wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure. |
+| reservationId | ciąg | Wystąpienia zarezerwowane w ramach określonej kolejności wystąpień zarezerwowanych. |
+| Servicetype | ciąg | Wskazuje typ maszyny wirtualnej. Na przykład Standard_E4s_v3. |
+| quantity | długi | Wskazuje liczby używane w jednostce miernika. |
 
-## <a name="csp-program-indirect-resellers-analytics"></a>Program CSP: Analiza pośrednich odsprzedawcy
+## <a name="csp-program-indirect-resellers-analytics"></a>Program CSP: analiza odsprzedawców pośrednich
 
-W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie pośredniego odsprzedawcy informacji analitycznych Centrum partnerskiego.
+W poniższym scenariuszu pokazano, jak używać interfejsu API analizy do pobierania wszystkich danych Partner Center analizy pośrednich odsprzedawców.
 
 - [Pobieranie wszystkich informacji analitycznych dotyczących odsprzedawców pośrednich](get-all-indirect-resellers-analytics.md)
 
-Ten scenariusz zwraca informacje o analizie w kolekcji [pośrednich zasobów odsprzedawcy](#indirect-resellers-resource) .
+Ten scenariusz zwraca informacje analityczne w kolekcji zasobów [odsprzedawców pośrednich.](#indirect-resellers-resource)
 
-## <a name="indirect-resellers-resource"></a>Zasób pośrednich odsprzedawcy
+## <a name="indirect-resellers-resource"></a>Zasób odsprzedawców pośrednich
 
-Reprezentuje wszystkie dane analityczne dla pośrednich odsprzedawcaów.
+Reprezentuje wszystkie dane analityczne dla pośrednich odsprzedawców.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| partnerTenantId | ciąg | Identyfikator dzierżawy partnera, dla którego chcesz pobrać pośrednie dane odsprzedawcy. |
-| identyfikator | ciąg | Pośredni identyfikator odsprzedawcy. |
-| name | ciąg | Nazwa partnera, dla którego mają zostać pobrane pośrednie dane odsprzedawcy. |
-| rynek | ciąg | Rynek partnera, dla którego chcesz pobrać pośrednie dane odsprzedawcy. |
-| firstSubscriptionCreationDate | ciąg w formacie daty i godziny czasu UTC | Data utworzenia pierwszej subskrypcji, na podstawie której chcesz pobrać pośrednie dane odsprzedawcy. |
-| latestSubscriptionCreationDate | ciąg w formacie daty i godziny czasu UTC | Data utworzenia najnowszej subskrypcji. |
-| firstSubscriptionEndDate | ciąg w formacie daty i godziny czasu UTC | Po raz pierwszy subskrypcja została zakończona. |
-| latestSubscriptionEndDate | ciąg w formacie daty i godziny czasu UTC | Najnowsza Data zakończenia subskrypcji. |
-| firstSubscriptionSuspendedDate | ciąg w formacie daty i godziny czasu UTC | Po raz pierwszy subskrypcja została zawieszona. |
-| latestSubscriptionSuspendedDate | ciąg w formacie daty i godziny czasu UTC | Najnowsza Data wstrzymania subskrypcji. |
-| firstSubscriptionDeprovisionedDate | ciąg w formacie daty i godziny czasu UTC | Po raz pierwszy subskrypcja została anulowana. |
-| latestSubscriptionDeprovisionedDate | ciąg w formacie daty i godziny czasu UTC | Najnowsza data anulowania aprowizacji subskrypcji. |
-| subscriptionCount | double | Liczba subskrypcji dla wszystkich dodanych odsprzedawcy |
-| licenseCount | double | Liczba licencji dla wszystkich dodanych odsprzedawcy |
-| indirectResellerCount | double | Liczba pośrednich odsprzedawcy |
+| partnerTenantId | ciąg | Identyfikator dzierżawy partnera, dla którego chcesz pobrać dane odsprzedawców pośrednich. |
+| identyfikator | ciąg | Identyfikator odsprzedawcy pośredniego. |
+| name | ciąg | Nazwa partnera, dla którego chcesz pobrać dane odsprzedawców pośrednich. |
+| rynek | ciąg | Rynek partnera, dla którego chcesz pobrać dane odsprzedawców pośrednich. |
+| firstSubscriptionCreationDate | ciąg w formacie daty i czasu UTC | Data utworzenia pierwszej subskrypcji, na podstawie której chcesz pobrać dane odsprzedawców pośrednich. |
+| latestSubscriptionCreationDate | ciąg w formacie daty i czasu UTC | Data utworzenia najnowszej subskrypcji. |
+| firstSubscriptionEndDate | ciąg w formacie daty i czasu UTC | Po raz pierwszy subskrypcja została zakończona. |
+| latestSubscriptionEndDate | ciąg w formacie daty i czasu UTC | Najpóźniejsza data zakończenia dowolnej subskrypcji. |
+| firstSubscriptionSuspendedDate | ciąg w formacie daty i czasu UTC | Po raz pierwszy wstrzymano każdą subskrypcję. |
+| latestSubscriptionSuspendedDate | ciąg w formacie daty i czasu UTC | Najpóźniejsza data, kiedy jakakolwiek subskrypcja została wstrzymana. |
+| firstSubscriptionDeprovisionedDate | ciąg w formacie daty i czasu UTC | Po raz pierwszy anulowano aprowizę dowolnej subskrypcji. |
+| latestSubscriptionDeprovisionedDate | ciąg w formacie daty i czasu UTC | Najpóźniejsza data coprowizowana dowolnej subskrypcji. |
+| subscriptionCount | double | Liczba subskrypcji dla wszystkich odsprzedawców z dodaną wartością |
+| licenseCount | double | Liczba licencji dla wszystkich odsprzedawców z dodaną wartością |
+| indirectResellerCount | double | Liczba odsprzedawców pośrednich |
 
-## <a name="csp-program-subscription-analytics"></a>Program CSP: Analiza subskrypcji
+## <a name="csp-program-subscription-analytics"></a>Program CSP: analiza subskrypcji
 
-W poniższych scenariuszach pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie informacje o analizie subskrypcji Centrum partnerskiego, filtrować je za pomocą zapytania wyszukiwania lub grupować według dat lub warunków.
+Poniższe scenariusze pokazują, jak używać interfejsu API analizy do pobierania wszystkich informacji analizy subskrypcji usługi Partner Center, filtrowania ich za pomocą zapytania wyszukiwania lub grupowania ich według dat lub terminów.
 
 - [Pobieranie wszystkich informacji analitycznych dotyczących subskrypcji](get-all-subscription-analytics.md)
 - [Pobieranie informacji analitycznych dotyczących subskrypcji filtrowanych wg zapytania wyszukiwania](get-subscription-analytics-by-search-query.md)
 - [Pobieranie informacji analitycznych dotyczących subskrypcji pogrupowanych według dat lub warunków](get-subscription-analytics-grouped-by-dates-or-terms.md)
 
-Wszystkie te scenariusze zwracają informacje o analizie w kolekcji zasobów [subskrypcji](#subscription-resource) .
+Wszystkie te scenariusze zwracają informacje analityczne w kolekcji [zasobów](#subscription-resource) subskrypcji.
 
 ## <a name="subscription-resource"></a>Zasób subskrypcji
 
@@ -100,96 +95,96 @@ Reprezentuje wszystkie dane analityczne dla subskrypcji.
 
 |         Właściwość          |              Typ              |                                                                      Opis                                                                       |
 |---------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     customerTenantId      |             ciąg             |                                              Ciąg sformatowany przy użyciu identyfikatora GUID, który identyfikuje dzierżawcę klienta.                                              |
-|       customerName        |             ciąg             |                                                               Nazwa klienta.                                                                |
-|      customerMarket       |             ciąg             |                                                 Kraj/region, w którym klient wykonuje działalność.                                                 |
+|     customerTenantId      |             ciąg             |                                              Ciąg w formacie identyfikatora GUID, który identyfikuje dzierżawę klienta.                                              |
+|       Customername        |             ciąg             |                                                               Nazwa klienta.                                                                |
+|      customerMarket       |             ciąg             |                                                 Kraj/region, w którym klient działa.                                                 |
 |            identyfikator             |             ciąg             |                                                              Identyfikator subskrypcji.                                                              |
-|          status           |             ciąg             |                                          Stan subskrypcji: "aktywny", "zawieszony" lub "cofnięto INICJOWANIE obsługi".                                           |
-|        productName        |             ciąg             |                                                                Nazwa produktu.                                                                |
-|     SubscriptionType      |             ciąg             |       Typ subskrypcji. **Uwaga**: w tym polu jest uwzględniana wielkość liter. Obsługiwane są następujące wartości: "Office", "Azure", "Microsoft365", "Dynamics", "EMS".       |
+|          status           |             ciąg             |                                          Stan subskrypcji: "ACTIVE", "SUSPENDED" lub "DEPROVISIONED".                                           |
+|        Productname        |             ciąg             |                                                                Nazwa produktu.                                                                |
+|     Subscriptiontype      |             ciąg             |       Typ subskrypcji. **Uwaga:** w tym polu jest zróżnicowa wielkość liter. Obsługiwane wartości to: "Office", "Azure", "Microsoft365", "Dynamics", "EMS".       |
 |     autoRenewEnabled      |            boolean             |                                         Wartość wskazująca, czy subskrypcja jest odnawiana automatycznie.                                          |
-|         partnerId         |             ciąg             | IDENTYFIKATOR MPN. Dla bezpośredniego odsprzedawcy ten parametr będzie IDENTYFIKATORem MPN partnera. W odniesieniu do pośredniego odsprzedawcy ten parametr będzie IDENTYFIKATORem MPN pośredniego odsprzedawcy. |
-|       friendlyName        |             ciąg             |                                                             Nazwa subskrypcji.                                                              |
-|        partnerName        |             ciąg             |                                              Nazwa partnera, dla którego została zakupiona subskrypcja                                               |
-|       providerName        |             ciąg             |            Gdy transakcja subskrypcyjna dotyczy pośredniego odsprzedawcy, nazwa dostawcy jest dostawcą pośrednim, który kupił subskrypcję.             |
-|    effectiveStartDate     | ciąg w formacie daty i godziny czasu UTC |                                                           Data rozpoczęcia subskrypcji.                                                            |
-|     commitmentEndDate     | ciąg w formacie daty i godziny czasu UTC |                                                            Data zakończenia subskrypcji.                                                             |
-|    currentStateEndDate    | ciąg w formacie daty i godziny czasu UTC |                                           Data zmiany bieżącego stanu subskrypcji.                                            |
-| trialToPaidConversionDate | ciąg w formacie daty i godziny czasu UTC |                                 Data konwersji subskrypcji z wersji próbnej na płatne. Wartość domyślna to null.                                 |
-|      trialStartDate       | ciąg w formacie daty i godziny czasu UTC |                                Data rozpoczęcia okresu próbnego dla subskrypcji. Wartość domyślna to null.                                 |
-|       trialEndDate        | ciąg w formacie daty i godziny czasu UTC |                                  Data zakończenia okresu próbnego dla subskrypcji. Wartość domyślna to null.                                  |
-|       lastUsageDate       | ciąg w formacie daty i godziny czasu UTC |                                        Data ostatniego użycia subskrypcji. Wartość domyślna to null.                                        |
-|     deprovisionedDate     | ciąg w formacie daty i godziny czasu UTC |                                      Data anulowania aprowizacji subskrypcji. Wartość domyślna to null.                                      |
-|      lastRenewalDate      | ciąg w formacie daty i godziny czasu UTC |                                       Data ostatniego odnowienia subskrypcji wartość domyślna to null.                                       |
+|         partnerId         |             ciąg             | Identyfikator Microsoft Partner Network (MPN). W przypadku odsprzedawcy bezpośredniego ten parametr będzie identyfikatorem MPN partnera. W przypadku odsprzedawcy pośredniego ten parametr będzie identyfikatorem MPN odsprzedawcy pośredniego. |
+|       Friendlyname        |             ciąg             |                                                             Nazwa subskrypcji.                                                              |
+|        nazwa_partnera        |             ciąg             |                                              Nazwa partnera, dla którego zakupiono subskrypcję                                               |
+|       Providername        |             ciąg             |            Gdy transakcja subskrypcji jest dla odsprzedawcy pośredniego, nazwa dostawcy jest dostawcą pośrednim, który kupił subskrypcję.             |
+|    effectiveStartDate     | ciąg w formacie daty i czasu UTC |                                                           Data rozpoczęcia subskrypcji.                                                            |
+|     commitmentEndDate     | ciąg w formacie daty i czasu UTC |                                                            Data zakończenia subskrypcji.                                                             |
+|    currentStateEndDate    | ciąg w formacie daty i czasu UTC |                                           Data zmiany bieżącego stanu subskrypcji.                                            |
+| trialToPaidConversionDate | ciąg w formacie daty i czasu UTC |                                 Data konwersji subskrypcji z wersji próbnej na płatną. Wartość domyślna to null.                                 |
+|      trialStartDate       | ciąg w formacie daty i czasu UTC |                                Data rozpoczęcia okresu próbnego subskrypcji. Wartość domyślna to null.                                 |
+|       trialEndDate        | ciąg w formacie daty i czasu UTC |                                  Data zakończenia okresu próbnego subskrypcji. Wartość domyślna to null.                                  |
+|       lastUsageDate       | ciąg w formacie daty i czasu UTC |                                        Data ostatniego użytej subskrypcji. Wartość domyślna to null.                                        |
+|     deprovisionedDate     | ciąg w formacie daty i czasu UTC |                                      Data coprowizowana subskrypcji. Wartość domyślna to null.                                      |
+|      lastRenewalDate      | ciąg w formacie daty i czasu UTC |                                       Data ostatniej odnowienia subskrypcji. Wartość domyślna to null.                                       |
 |       licenseCount        |             liczba             |                                                             Łączna liczba licencji.                                                              |
-|     subscriptionCount     |             liczba             |                        Liczba subskrypcji. Uwaga: Ta wartość zostanie wyświetlona tylko w odpowiedzi zapytania agregacji.                         |
+|     subscriptionCount     |             liczba             |                        Liczba subskrypcji. Uwaga: ta wartość będzie wyświetlana tylko w odpowiedzi zapytania agregacji.                         |
 
 ## <a name="search-analytics"></a>Analiza wyszukiwania
 
 > [!NOTE]
-> Członkostwo programu CSP nie jest wymagane do pobrania usługi Search Analytics.
+> Członkostwo w programie CSP nie jest wymagane do uzyskania analizy wyszukiwania.
 
-W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie informacje o analizie wyszukiwania Centrum partnerskiego.
+W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie Partner Center analizy wyszukiwania.
 
 - [Pobieranie wszystkich informacji analitycznych dotyczących wyszukiwania](get-all-search-analytics.md)
 
-Ten scenariusz zwraca informacje o analizie w kolekcji zasobów [wyszukiwania](#search-resource) .
+Ten scenariusz zwraca informacje analityczne w kolekcji [zasobów](#search-resource) wyszukiwania.
 
-## <a name="search-resource"></a>Wyszukaj zasób
+## <a name="search-resource"></a>Wyszukiwanie zasobu
 
 Reprezentuje wszystkie dane analityczne dla wyszukiwania.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| companyName | ciąg | Nazwa firmy rozliczenia. |
-| contactButtonClicked | Wartość logiczna | Wskazuje, czy przycisk kontakt został kliknięty. |
+| Companyname | ciąg | Nazwa firmy rozliczeniowej. |
+| contactButtonClicked | Wartość logiczna | Wskazuje, czy przycisk kontaktu został klikony. |
 | keywordCountry | ciąg | Kraj określony w wyszukiwaniu. |
-| w widoku | Wartość logiczna | Wskazuje, czy Wyświetlono szczegóły wyszukiwania. |
-| keywordIndustryFocus | ciąg | Branża do przeszukiwania, na przykład opieki zdrowotnej. |
-| mpnId | ciąg | Identyfikator Microsoft Partner Network (MPN). Dla bezpośredniego odsprzedawcy ten parametr będzie IDENTYFIKATORem MPN partnera. W odniesieniu do pośredniego odsprzedawcy ten parametr będzie IDENTYFIKATORem MPN pośredniego odsprzedawcy. |
-| partnerMarket | ciąg | Ustawienia regionalne, w których Partner prowadzi działalność. |
+| detailsViewed | Wartość logiczna | Wskazuje, czy szczegóły wyszukiwania były przeglądane. |
+| keywordIndustryFocus | ciąg | Branża, w ramach których ma być wyszukiwana na przykład opieka zdrowotna. |
+| mpnId | ciąg | Identyfikator Microsoft Partner Network (MPN). W przypadku odsprzedawcy bezpośredniego ten parametr będzie identyfikatorem MPN partnera. W przypadku odsprzedawcy pośredniego ten parametr będzie identyfikatorem MPN odsprzedawcy pośredniego. |
+| partnerMarket | ciąg | Locale where the partner conducts business. |
 | keywordProduct | ciąg | Produkt określony w wyszukiwaniu. |
-| referralSubmitted | Wartość logiczna | Wskazuje, czy odwołanie zostało przesłane. |
-| searchDate | ciąg w formacie daty i godziny czasu UTC | Data, kiedy wystąpiło zapytanie wyszukiwania. |
+| referralSubmitted | Wartość logiczna | Wskazuje, czy przesłano odwołanie. |
+| searchDate | ciąg w formacie daty i godzin UTC | Data, kiedy wystąpiło zapytanie wyszukiwania. |
 | keywordSearchText | ciąg | Tekst określony w wyszukiwaniu. |
-| searchResultPageViews | długi | Liczba przypadków, w których Partner pozostały w wyniku wyszukiwania. Część odpowiedzi tylko w ramach agregacji.
-| contactClicks | długi | Liczba klikniętych przycisków kontaktowych. Część odpowiedzi tylko w ramach agregacji.
-| referralCount | długi | Liczba odwołań wygenerowanych na podstawie wyszukiwania. Część odpowiedzi tylko w ramach agregacji.
-| profileViews | długi | Liczba przypadków wyświetlania profilu partnera. Część odpowiedzi tylko w ramach agregacji.
+| searchResultPageViews | długi | Liczba razy, gdy partner pojawił się w wynikach wyszukiwania. Część odpowiedzi tylko podczas agregacji.
+| contactClicks | długi | Liczba kliknięcia przycisku kontaktu. Część odpowiedzi tylko podczas agregacji.
+| referralCount | długi | Liczba poleceń wygenerowanych na podstawie wyszukiwania. Część odpowiedzi tylko podczas agregacji.
+| profileViews | długi | Liczba wyświetlć profil partnera. Część odpowiedzi tylko podczas agregacji.
 
-## <a name="referrals-analytics"></a>Analiza odwołań
+## <a name="referrals-analytics"></a>Analiza poleceń
 
 > [!NOTE]
-> Członkostwo programu CSP nie jest wymagane w celu pobrania analizy odwołań.
+> Członkostwo w programie CSP nie jest wymagane do uzyskania analizy poleceń.
 
-W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie informacje analityczne dotyczące usługi Partner Center.
+W poniższym scenariuszu pokazano, jak za pomocą interfejsu API analizy pobrać wszystkie Partner Center analizy poleceń.
 
 - [Pobieranie wszystkich informacji analitycznych dotyczących poleceń](get-all-referrals-analytics.md)
 
-Ten scenariusz zwraca informacje o analizie w kolekcji zasobów [referencyjnych](#referrals-resource) .
+Ten scenariusz zwraca informacje analityczne w kolekcji [zasobów Poleceń.](#referrals-resource)
 
 > [!NOTE]
-> Analiza odwołań nie jest dostępna dla Centrum partnerskiego obsługiwanego przez firmę 21Vianet.
+> Analiza skierowań nie jest dostępna dla Partner Center przez firmę 21Vianet.
 
-## <a name="referrals-resource"></a>Zasób odwołań
+## <a name="referrals-resource"></a>Zasób poleceń
 
-Reprezentuje wszystkie dane analityczne dla odwołania.
+Reprezentuje wszystkie dane analityczne dla polecenia.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
 | identyfikator | ciąg | Identyfikator dzierżawy klienta.  |
-| status | ciąg | Wskazuje, czy odwołanie prowadzi do klienta.  |
-| customerMarket | ciąg | Kraj/region, w którym klient wykonuje działalność. |
-| customerName | ciąg | Nazwa klienta. |
+| status | ciąg | Wskazuje, czy polecenie skierowało do klienta.  |
+| customerMarket | ciąg | Kraj/region, w którym klient działa. |
+| Customername | ciąg | Nazwa klienta. |
 | customerOrgSize | ciąg | Zakres wskazujący liczbę pracowników w organizacji klienta. Na przykład "10to50employees". |
-| acceptedDate | ciąg w formacie daty i godziny czasu UTC | Data zaakceptowania odwołania. |
-| acknowledgedDate | ciąg w formacie daty i godziny czasu UTC | Data potwierdzenia odwołania. |
-| archivedDate | ciąg w formacie daty i godziny czasu UTC | Data zarchiwizowania odwołania. |
-| declinedDate | ciąg w formacie daty i godziny czasu UTC | Data odrzucenia odwołania. |
-| expiredDate | ciąg w formacie daty i godziny czasu UTC | Data wygaśnięcia odwołania. |
-| lostDate | ciąg w formacie daty i godziny czasu UTC | Data utraty odwołania. |
-| missedDate | ciąg w formacie daty i godziny czasu UTC | Data nieodebrania odwołania. |
-| createdDate | ciąg w formacie daty i godziny czasu UTC | Data utworzenia odwołania. |
-| skippedDate | ciąg w formacie daty i godziny czasu UTC | Data pominięcia odwołania. |
-| wonDate | ciąg w formacie daty i godziny czasu UTC | Data wygrania odwołania. |
-| partnerMarket | ciąg |  Kraj/region, w którym partner wykonuje działalność. |
+| acceptedDate | ciąg w formacie daty i godzin UTC | Data zaakceptowania polecenia. |
+| acknowledgedDate | ciąg w formacie daty i godzin UTC | Data potwierdzenia odwołania. |
+| archivedDate | ciąg w formacie daty i godzin UTC | Data archiwizacji polecenia. |
+| declinedDate | ciąg w formacie daty i czasu UTC | Data odrzucenia odwołania. |
+| expiredDate | ciąg w formacie daty i czasu UTC | Data wygaśnięcia odwołania. |
+| lostDate | ciąg w formacie daty i czasu UTC | Data utraconych poleceń. |
+| missedDate | ciąg w formacie daty i czasu UTC | Data pominięcia odwołania. |
+| createdDate | ciąg w formacie daty i czasu UTC | Data utworzenia odwołania. |
+| skippedDate | ciąg w formacie daty i czasu UTC | Data pominięcia odwołania. |
+| wonDate | ciąg w formacie daty i czasu UTC | Data wygrania odwołania. |
+| partnerMarket | ciąg |  Kraj/region, w którym działa partner. |

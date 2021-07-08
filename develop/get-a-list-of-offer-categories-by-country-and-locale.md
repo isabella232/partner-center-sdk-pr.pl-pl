@@ -1,40 +1,35 @@
 ---
 title: Pobieranie listy kategorii oferty według rynku
-description: Dowiedz się, jak uzyskać kolekcję zawierającą wszystkie kategorie oferty w danym kraju/regionie i ustawieniach regionalnych dla wszystkich chmur firmy Microsoft.
+description: Dowiedz się, jak uzyskać kolekcję zawierającą wszystkie kategorie ofert w danym kraju/regionie oraz informacje o lokalnych lokalizacjach dla wszystkich chmur firmy Microsoft.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 05aad095c6cb8eaee4cbf7ce976ca1b4b7a408c4
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e699355f07dda3941eafed32f5f635d94000abd1
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500060"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874282"
 ---
 # <a name="get-a-list-of-offer-categories-by-market"></a>Pobieranie listy kategorii oferty według rynku
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tym artykule opisano, jak uzyskać kolekcję zawierającą wszystkie kategorie oferty w danym kraju/regionie i ustawieniach regionalnych.
+W tym artykule opisano sposób pobierania kolekcji zawierającej wszystkie kategorie ofert w danym kraju/regionie i w określonych regionach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę kategorii oferty w danym kraju/regionie i ustawieniach regionalnych:
+Aby uzyskać listę kategorii ofert w danym kraju/regionie i w określonych regionach:
 
-1. Użyj kolekcji [**IAggregatePartner. Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) , aby wywołać metodę [**with ()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) w danym kontekście.
+1. Użyj [**kolekcji IAggregatePartner.Operations,**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) aby wywołać metodę [**With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) w danym kontekście.
 
-2. Sprawdź Właściwość [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) obiektu będącego wynikiem.
+2. Sprawdź właściwość [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) wynikowego obiektu.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,11 +37,11 @@ Aby uzyskać listę kategorii oferty w danym kraju/regionie i ustawieniach regio
 ResourceCollection<OfferCategory> offerCategoryResults = partnerOperations.With(RequestContextFactory.Instance.Create()).OfferCategories.ByCountry("US").Get();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
-- Klasa: **PartnerSDK. FeatureSample**
+- Project: **PartnerSDK.FeatureSample**
+- Klasa: **PartnerSDK.FeatureSample**
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -54,21 +49,21 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/offercategories? Country = {Country-ID} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania w celu uzyskania kategorii oferty.
+Ta tabela zawiera listę parametrów zapytania wymaganych do uzyskania kategorii ofert.
 
 | Nazwa           | Typ       | Wymagane | Opis            |
 |----------------|------------|----------|------------------------|
-| **Identyfikator kraju** | **ciąg** | Y        | Identyfikator kraju/regionu. |
+| **country-id** | **ciąg** | Y        | Identyfikator kraju/regionu. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Wymagany jest **identyfikator ustawień regionalnych** , który jest sformatowany jako ciąg.
+Wymagany **jest identyfikator locale-id** sformatowany jako ciąg.
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -88,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów **OfferCategory** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów **OfferCategory** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

@@ -1,29 +1,27 @@
 ---
-title: Pobierz stan przyjęcia usługi MFA
-description: Uzyskaj listę stanów wdrażania usługi MFA dla każdego partnera przy użyciu interfejsu API REST partnera.
+title: Uzyskiwanie stanu wdrożenia usługi MFA
+description: Pobierz listę stanu wdrożenia uwierzytelniania wieloskładnikowego dla każdego partnera przy użyciu interfejsu API REST partnera.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: f82d163b704323c81e2948b78eb9b9d1a14ddc52
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9b8848c2a4531dd6609f86aae6876cec436eeea9
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767889"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760525"
 ---
-# <a name="get-mfa-adoption-status"></a>Pobieranie stanu wdrażania usługi MFA
+# <a name="get-mfa-adoption-status"></a>Uzyskiwanie stanu wdrożenia usługi MFA
 
-Dotyczy:
+**Dotyczy:** interfejs API Partner Center API
 
-- Interfejs API Centrum partnerskiego
-
-W tym artykule wyjaśniono, jak uzyskać informacje o stanie wdrożenia wieloskładnikowe (MFA) dla każdego partnera w ramach dzierżawy.
+W tym artykule wyjaśniono, jak uzyskać stan wdrożenia uwierzytelniania wieloskładnikowego (MFA) dla każdego partnera w dzierżawie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -31,11 +29,11 @@ W tym artykule wyjaśniono, jak uzyskać informacje o stanie wdrożenia wielosk�
 
 | Metoda  | Identyfikator URI żądania                                                               |
 |---------|---------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/applicationmfaadoptionstatus> |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/applicationmfaadoptionstatus> |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md) .
+- Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -52,11 +50,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję [żądań interfejsu API podsumowywanych przez zasoby aplikacji](mfa-resources.md#api-request-summarized-by-application) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję żądania [interfejsu API podsumowaną przez zasoby](mfa-resources.md#api-request-summarized-by-application) aplikacji w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

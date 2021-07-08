@@ -1,31 +1,27 @@
 ---
 title: Pobieranie listy uprawnień platformy Azure dla subskrypcji
-description: Możesz użyć zasobu AzureEntitlement, aby uzyskać kolekcję zasobów uprawnień platformy Azure należących do subskrypcji.
+description: Zasób AzureEntitlement umożliwia pobieranie kolekcji zasobów uprawnień platformy Azure należących do subskrypcji.
 ms.date: 07/06/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: d7d0a10c571dc073bd49e82084f3b7ece7234daf
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 280da155122ed9efd99838d7819fb34f8f7ec52c
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767953"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874367"
 ---
 # <a name="get-a-list-of-azure-entitlements-for-a-subscription"></a>Pobieranie listy uprawnień platformy Azure dla subskrypcji
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Możesz użyć [zasobu uprawnienia platformy Azure](subscription-resources.md#azureentitlement) (**AzureEntitlement**), aby uzyskać kolekcję zasobów należących do subskrypcji.
+Zasób uprawnień [platformy Azure](subscription-resources.md#azureentitlement) **(AzureEntitlement)** umożliwia pobieranie kolekcji zasobów należących do subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
@@ -35,20 +31,20 @@ Możesz użyć [zasobu uprawnienia platformy Azure](subscription-resources.md#az
 
 | Metoda  | Identyfikator URI żądania                                                                                                                   |
 |---------|---------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/subscriptions/{Subscription-ID}/azureentitlements http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/azureentitlements HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
-Poniższa tabela zawiera listę wymaganych parametrów zapytania, aby uzyskać wszystkie uprawnienia platformy Azure do subskrypcji.
+W poniższej tabeli wymieniono wymagane parametry zapytania w celu uzyskania wszystkich uprawnień platformy Azure dla subskrypcji.
 
 | Nazwa                   | Typ     | Wymagane | Opis                           |
 |------------------------|----------|----------|---------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi. |
-| **Identyfikator subskrypcji**       | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji.    |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi. |
+| **subscription-id**       | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji.    |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -67,11 +63,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [**AzureEntitlement**](subscription-resources.md#azureentitlement) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [**AzureEntitlement**](subscription-resources.md#azureentitlement) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

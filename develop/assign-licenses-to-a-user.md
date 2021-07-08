@@ -1,56 +1,52 @@
 ---
 title: Przypisywanie licencji do użytkownika
-description: Dowiedz się, jak przypisywać licencje do użytkownika klienta za pośrednictwem interfejsów API Centrum partnerskiego, takich jak korzystanie z \# interfejsów API języka C lub Rest.
+description: Dowiedz się, jak przypisywać licencje do użytkownika klienta za pośrednictwem Partner Center API, takich jak korzystanie z interfejsów \# API C lub REST.
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6eb0b953b9157e48074415bb3207e2946cfb2ab4
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 88ce0f185b0b043c4a7862b7f9808fb8805d40b9
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97768546"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974373"
 ---
-# <a name="assign-licenses-to-a-user-via-partner-center-apis"></a>Przypisywanie licencji do użytkownika za pośrednictwem interfejsów API Centrum partnerskiego
+# <a name="assign-licenses-to-a-user-via-partner-center-apis"></a>Przypisywanie licencji do użytkownika za pośrednictwem Partner Center API
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-Przypisywanie licencji do użytkownika klienta.
+Jak przypisać licencje do użytkownika klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator użytkownika klienta. Ten identyfikator identyfikuje użytkownika, do którego ma zostać przypisana licencja.
 
-- Identyfikator jednostki SKU produktu identyfikujący produkt na potrzeby licencji.
+- Identyfikator jednostki SKU produktu, który identyfikuje produkt licencji.
 
-## <a name="assigning-licenses-through-code"></a>Przypisywanie licencji za poorednictwem kodu
+## <a name="assigning-licenses-through-code"></a>Przypisywanie licencji za pomocą kodu
 
-W przypadku przypisywania licencji do użytkownika należy wybrać z kolekcji subskrybowanych jednostek SKU klienta. Następnie po zidentyfikowaniu produktów, które chcesz przypisać, należy uzyskać identyfikator jednostki SKU produktu dla każdego produktu w celu przypisania. Każde wystąpienie [**SubscribedSku**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku) zawiera właściwość [**ProductSku**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku.productsku) , z której można odwołać się do obiektu [**ProductSku**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku) i uzyskać [**Identyfikator**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku.id).
+Po przypisaniu licencji do użytkownika musisz wybrać jedną z kolekcji subskrybowanych jednostki SKU klienta. Następnie po zidentyfikowaniu produktów, które chcesz przypisać, musisz uzyskać identyfikator SKU produktu dla każdego produktu w celu wykonania przypisań. Każde [**wystąpienie klasy SubscribedSku**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku) zawiera właściwość [**ProductSku,**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku.productsku) z której można odwołać się do [**obiektu ProductSku**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku) i uzyskać [**identyfikator**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku.id).
 
-Żądanie przypisania licencji musi zawierać licencje z pojedynczej grupy licencji. Na przykład nie można przypisać licencji z [**grupa1**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid) i **group2** w tym samym żądaniu. Próba przypisania licencji z więcej niż jednej grupy w pojedynczym żądaniu zakończy się niepowodzeniem z powodu odpowiedniego błędu. Aby dowiedzieć się, jakie licencje są dostępne dla grupy licencji, zobacz sekcję [Pobieranie listy dostępnych licencji według grupy licencji](get-a-list-of-available-licenses-by-license-group.md).
+Żądanie przypisania licencji musi zawierać licencje z jednej grupy licencji. Na przykład nie można przypisać licencji z grup [**Grupa1**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid) i **Grupa2** w tym samym żądaniu. Próba przypisania licencji z więcej niż jednej grupy w jednym żądaniu nie powiedzie się z odpowiednim błędem. Aby dowiedzieć się, jakie licencje są dostępne dla grupy licencji, zobacz [Get a list of available licenses by license group (Uzyskiwanie](get-a-list-of-available-licenses-by-license-group.md)listy dostępnych licencji według grupy licencji).
 
-Poniżej przedstawiono procedurę przypisywania licencji za pomocą kodu:
+Oto kroki przypisywania licencji za pomocą kodu:
 
-1. Utwórz wystąpienie obiektu [**LicenseAssignment**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment) . Ten obiekt służy do określania jednostki SKU produktu i planów usług do przypisania.
+1. Utworzyć wystąpienia [**obiektu LicenseAssignment.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment) Ten obiekt umożliwia określenie przypisanej przez program sku produktu i planów usług.
 
     ``` csharp
     LicenseAssignment license = new LicenseAssignment();
     ```
 
-2. Wypełnij właściwości obiektu, jak pokazano poniżej. Ten kod zakłada, że masz już identyfikator SKU produktu i że wszystkie dostępne plany usług zostaną przypisane (oznacza to, że żaden z nich nie zostanie wykluczony).
+2. Wypełnij właściwości obiektu, jak pokazano poniżej. W tym kodzie przyjęto założenie, że masz już identyfikator SKU produktu i że wszystkie dostępne plany usług zostaną przypisane (to oznacza, że żaden nie zostanie wykluczony).
 
     ```csharp
     license.SkuId = selectedProductSkuId;
     license.ExcludedPlans = null;
     ```
 
-3. Jeśli nie masz identyfikatora SKU produktu, musisz pobrać kolekcję subskrybowanych jednostek SKU i uzyskać identyfikator SKU produktu z jednego z nich. Oto przykład, jeśli znasz nazwę jednostki SKU produktu.
+3. Jeśli nie masz identyfikatora jednostki SKU produktu, musisz pobrać kolekcję subskrybowanych jednostki SKU i pobrać identyfikator jednostki SKU produktu z jednej z nich. Oto przykład, jeśli znasz nazwę sku produktu.
 
     ```csharp
     var customerSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get();
@@ -59,21 +55,21 @@ Poniżej przedstawiono procedurę przypisywania licencji za pomocą kodu:
     license.ExcludedPlans = null;
     ```
 
-4. Następnie Utwórz wystąpienie nowej listy typu [**LicenseAssignment**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment)i Dodaj obiekt License. Do listy można przypisać więcej niż jedną licencję. Licencje zawarte na tej liście muszą należeć do tej samej grupy licencji.
+4. Następnie należy utworzyć nową listę typu [**LicenseAssignment**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment)i dodać obiekt licencji. Możesz przypisać więcej niż jedną licencję, dodając każdą z nich indywidualnie do listy. Licencje uwzględnione na tej liście muszą pochodzić z tej samej grupy licencji.
 
     ```csharp
     List<LicenseAssignment> licenseList = new List<LicenseAssignment>();
     licenseList.Add(license);
     ```
 
-5. Utwórz wystąpienie [**LicenseUpdate**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate) i przypisz listę przypisań licencji do właściwości [**LicensesToAssign**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate.licensestoassign) .
+5. Utwórz wystąpienie [**LicenseUpdate**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate) i przypisz listę przypisań licencji do właściwości [**LicensesToAssign.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate.licensestoassign)
 
     ```csharp
     LicenseUpdate updateLicense = new LicenseUpdate();
     updateLicense.LicensesToAssign = licenseList;
     ```
 
-6. Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.createasync) i przekaż obiekt aktualizacji licencji, jak pokazano poniżej, aby przypisać licencje.
+6. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.createasync) i przekaż obiekt aktualizacji licencji, jak pokazano poniżej, aby przypisać licencje.
 
     ```csharp
     var assignLicense = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).LicenseUpdates.Create(updateLicense);
@@ -81,11 +77,11 @@ Poniżej przedstawiono procedurę przypisywania licencji za pomocą kodu:
 
 ## <a name="c"></a>C\#
 
-Aby przypisać licencję do użytkownika klienta, należy najpierw utworzyć wystąpienie obiektu [**LicenseAssignment**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment) i wypełnić właściwości [**identyfikatora skuId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.skuid) i [**ExcludedPlans**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.excludedplans) . Ten obiekt służy do określania jednostki SKU produktu do przypisania i planów usług, które mają zostać wykluczone. Następnie Utwórz wystąpienie nowej listy typu **LicenseAssignment** i Dodaj obiekt License do listy. Następnie Utwórz wystąpienie [**LicenseUpdate**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate) i przypisz listę przypisań licencji do właściwości [**LicensesToAssign**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate.licensestoassign) .
+Aby przypisać licencję do użytkownika klienta, najpierw należy utworzyć wystąpienia obiektu [**LicenseAssignment**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment) i wypełnić właściwości [**Skuid**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.skuid) i [**ExcludedPlans.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.excludedplans) Ten obiekt umożliwia określenie produktu SKU do przypisania i plany usługi do wykluczenia. Następnie należy utworzyć nową listę typu **LicenseAssignment** i dodać obiekt licencji do listy. Następnie utwórz wystąpienie [**LicenseUpdate**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate) i przypisz listę przypisań licencji do właściwości [**LicensesToAssign.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate.licensestoassign)
 
-Następnie użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta i metodę [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem użytkownika identyfikującym użytkownika. Następnie uzyskaj interfejs do operacji aktualizacji licencji użytkownika klienta z właściwości [**LicenseUpdates**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenseupdates) .
+Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta, oraz metody [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem użytkownika w celu zidentyfikowania użytkownika. Następnie pobierz interfejs do operacji aktualizacji licencji użytkownika klienta z [**właściwości LicenseUpdates.**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenseupdates)
 
-Na koniec Wywołaj metodę [**Create**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.create) lub [**onasync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.createasync) i przekaż obiekt aktualizacji licencji, aby przypisać licencję.
+Na koniec wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.createasync) i przekaż obiekt aktualizacji licencji, aby przypisać licencję.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -110,7 +106,7 @@ updateLicense.LicensesToAssign = licenseList;
 var assignLicense = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).LicenseUpdates.Create(updateLicense);
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: CustomerUserAssignLicenses.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: CustomerUserAssignLicenses.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -118,24 +114,24 @@ var assignLicense = partnerOperations.Customers.ById(selectedCustomerId).Users.B
 
 | Metoda   | Identyfikator URI żądania                                                                                                    |
 |----------|----------------------------------------------------------------------------------------------------------------|
-| **POUBOJOWEGO** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/users/{User-ID}/licenseupdates http/1.1 |
+| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/users/{user-id}/licenseupdates HTTP/1.1 |
 
-#### <a name="uri-parameters"></a>Parametry identyfikatora URI
+#### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i użytkownika.
 
 | Nazwa        | Typ   | Wymagane | Opis                                       |
 |-------------|--------|----------|---------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Identyfikator GUID, który identyfikuje klienta. |
-| user-id     | ciąg | Tak      | Identyfikator GUID, który identyfikuje użytkownika.     |
+| identyfikator klienta | ciąg | Tak      | Identyfikator w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
+| user-id     | ciąg | Tak      | Identyfikator SFORMATOWANY IDENTYFIKATOR GUID, który identyfikuje użytkownika.     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania należy uwzględnić zasób [LicenseUpdate](license-resources.md#licenseupdate) , który określa licencje do przypisania.
+Uwzględnij [zasób LicenseUpdate](license-resources.md#licenseupdate) w treści żądania, który określa licencje do przypisania.
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -168,11 +164,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, zwracany jest kod stanu odpowiedzi HTTP 201, a treść odpowiedzi zawiera zasób [LicenseUpdate](license-resources.md#licenseupdate) z informacjami o licencji.
+W przypadku powodzenia zwracany jest kod stanu odpowiedzi HTTP 201, a treść odpowiedzi zawiera zasób [LicenseUpdate](license-resources.md#licenseupdate) z informacjami o licencji.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example-success"></a>Przykład odpowiedzi (powodzenie)
 
@@ -198,7 +194,7 @@ Date: Thu, 20 Apr 2017 21:50:39 GMT
 }
 ```
 
-### <a name="response-example-license-isnt-available"></a>Przykład odpowiedzi (licencja jest niedostępna)
+### <a name="response-example-license-isnt-available"></a>Przykład odpowiedzi (licencja nie jest dostępna)
 
 ```http
 HTTP/1.1 400 Bad Request

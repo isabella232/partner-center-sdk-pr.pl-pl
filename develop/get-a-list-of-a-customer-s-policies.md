@@ -1,41 +1,38 @@
 ---
 title: Pobieranie listy zasad klienta
-description: Jak pobrać kolekcję zasad konfiguracji określonych klientów.
+description: Pobieranie kolekcji zasad konfiguracji określonego klienta.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 16886b1adca393ed2967f2a4fe74a379bef1c1c7
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: bf6ace0d2425e28d80c4f2310878c2d2a9e2a876
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768101"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874588"
 ---
 # <a name="get-a-list-of-a-customers-policies"></a>Pobieranie listy zasad klienta
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-
-W tym artykule opisano sposób pobierania kolekcji zasad konfiguracji określonych klientów.
+W tym artykule opisano sposób pobierania kolekcji zasad konfiguracji określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać listę wszystkich zasad klienta:
 
-1. Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
+1. Wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
 
-2. Pobierz Właściwość [**ConfigurationPolicies**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) , aby uzyskać interfejs do operacji zbierania zasad konfiguracji.
-3. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) , aby pobrać kolekcję zasad.
+2. Pobierz właściwość [**ConfigurationPolicies,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) aby uzyskać interfejs operacji zbierania zasad konfiguracji.
+3. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) aby pobrać kolekcję zasad.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -44,10 +41,10 @@ string selectedCustomerId;
 var configPolicies = partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.Get();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
 - Klasa: **GetAllConfigurationPolicies.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -56,19 +53,19 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                              |
 |---------|------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/policies http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/policies HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Podczas tworzenia żądania Użyj następującego parametru ścieżki:
+Podczas tworzenia żądania użyj następującego parametru ścieżki:
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg sformatowany przez identyfikator GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -89,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) .
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [ConfigurationPolicy.](device-deployment-resources.md#configurationpolicy)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

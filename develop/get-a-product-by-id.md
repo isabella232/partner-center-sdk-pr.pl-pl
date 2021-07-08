@@ -6,30 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 8aca626597e9ec903ebecca7d55577ba636c518e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 769a4307dc3cebdc7ebbdcf51d9f2b67a9f4b7c2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767897"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874027"
 ---
 # <a name="get-a-product-by-id"></a>Pobieranie produktu według identyfikatora
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Pobiera określony zasób produktu przy użyciu identyfikatora produktu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
 ## <a name="c"></a>C\#
 
-Aby znaleźć konkretny produkt według identyfikatora, Użyj kolekcji **IAggregatePartner. Products** , wybierz kraj przy użyciu metody **ByCountry ()** , a następnie Wywołaj metodę **ById ()** . Na koniec Wywołaj metodę **Get ()** lub **GetAsync ()** w celu zwrócenia produktu.
+Aby znaleźć konkretny produkt według identyfikatora, użyj kolekcji **IAggregatePartner.Products,** wybierz kraj przy użyciu metody **ByCountry(),** a następnie wywołaj metodę **ById().** Na koniec wywołaj **metodę Get()** **lub GetAsync(),** aby zwrócić produkt.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -41,7 +37,7 @@ Product productDetail = partnerOperations.Products.ByCountry("US").ById("DZH318Z
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Aby znaleźć konkretny produkt według identyfikatora, użyj funkcji **IAggregatePartner. getProducts** , wybierz kraj przy użyciu funkcji **byCountry ()** , a następnie wywołaj funkcję **byId ()** . Na koniec wywołaj funkcję **Get ()** w celu zwrócenia produktu.
+Aby znaleźć konkretny produkt według identyfikatora, użyj funkcji **IAggregatePartner.getProducts,** wybierz kraj przy użyciu funkcji **byCountry(),** a następnie wywołaj funkcję **byId().** Na koniec wywołaj **funkcję get(),** aby zwrócić produkt.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -53,7 +49,7 @@ Product productDetail = partnerOperations.getProducts().byCountry("US").byId("DZ
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Aby znaleźć konkretny produkt według identyfikatora, należy wykonać polecenie [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) i określić parametr **ProductID** . Parametr **CountryCode** jest opcjami, jeśli nie zostanie określony, zostanie użyty kraj skojarzony z odsprzedawcą.
+Aby znaleźć określony produkt według identyfikatora, wykonaj polecenie [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) i określ **parametr ProductId.** Parametr **CountryCode** jest opcjami, jeśli nie zostanie określony, zostanie użyty kraj skojarzony z odsprzedawcą.
 
 ```powershell
 Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
@@ -65,20 +61,20 @@ Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Products/{Product-ID}? Country = {Country} http/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}?country={country} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Aby uzyskać określony produkt, użyj następujących parametrów ścieżki.
+Użyj następujących parametrów ścieżki, aby uzyskać określony produkt.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| Identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| product-id             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
 | country                | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -96,17 +92,17 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera zasób [produktu](product-resources.md#product) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób](product-resources.md#product) Product.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt nie został znaleziony.                                                     |
+| 404                  | 400013       | Nie znaleziono produktu.                                                     |
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

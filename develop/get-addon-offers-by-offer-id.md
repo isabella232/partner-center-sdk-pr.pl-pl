@@ -1,38 +1,33 @@
 ---
 title: Pobieranie dodatków dla identyfikatora oferty
-description: Jak uzyskać Dodatki dla identyfikatora oferty.
+description: Jak uzyskać dodatki dla identyfikatora oferty.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 9ee22712b323c7439a192ed2e5af8d5e7eaf92a3
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: e3b0ab8007d3affa6912479b960f6dae3bc0bd28
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768050"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760338"
 ---
 # <a name="get-add-ons-for-an-offer-id"></a>Pobieranie dodatków dla identyfikatora oferty
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Jak uzyskać Dodatki dla identyfikatora oferty.
+Jak uzyskać dodatki dla identyfikatora oferty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator oferty. Jeśli nie masz identyfikatora oferty, zobacz artykuł [Uzyskaj listę ofert dla rynku](get-a-list-of-offers-for-a-market.md).
+- Identyfikator oferty. Jeśli nie masz identyfikatora oferty, zobacz Get a list of offers for a market (Uzyskiwanie listy [ofert dla rynku).](get-a-list-of-offers-for-a-market.md)
 
 ## <a name="c"></a>C\#
 
-Aby pobrać Dodatki dla oferty według identyfikatora, najpierw Wywołaj metodę [**IAggregatePartner. offer. ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs umożliwiający wykonywanie operacji na podstawie danego kraju. Następnie Wywołaj metodę [**ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której Dodatki chcesz pobrać. Następnie użyj właściwości [**Dodatki**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) , aby uzyskać interfejs do operacji dodatku dla bieżącej oferty. Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) , aby uzyskać kolekcję wszystkich dodatków dla określonej oferty.
+Aby uzyskać dodatki dla oferty według identyfikatora, najpierw wywołaj metodę [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs do zaoferowania operacji na podstawie danego kraju. Następnie wywołaj [**metodę ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której dodatki chcesz pobrać. Następnie użyj właściwości [**AddOns,**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) aby uzyskać interfejs do operacji dodatku dla bieżącej oferty. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) aby pobrać kolekcję wszystkich dodatków dla określonej oferty.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,7 +37,7 @@ Aby pobrać Dodatki dla oferty według identyfikatora, najpierw Wywołaj metodę
 var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).AddOns.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetOffer.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetOffer.cs **(Klasa przykładów** zestaw SDK Centrum partnerskiego: GetOffer.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -50,20 +45,20 @@ var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).
 
 | Metoda  | Identyfikator URI żądania                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/offers/{Offer-ID}/addons? Country = {Country-Code} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{identyfikator oferty}/addons?country={country-code} HTTP/1.1 |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
 Użyj następujących parametrów, aby podać identyfikator oferty i kod kraju.
 
 | Nazwa         | Typ       | Wymagane | Opis                       |
 |--------------|------------|----------|-----------------------------------|
-| **Oferta — identyfikator** | **guid**   | Y        | Identyfikator GUID, który identyfikuje ofertę. |
-| **trzeciego**  | **parametry** | Y        | Kod kraju (na przykład `US` ).       |
+| **identyfikator oferty** | **guid**   | Y        | Identyfikator GUID, który identyfikuje ofertę. |
+| **Kraju**  | **ciąg** | Y        | Kod kraju (na przykład `US` ).       |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -83,11 +78,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję obiektów [oferty](offer-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję [obiektów Offer](offer-resources.md) w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

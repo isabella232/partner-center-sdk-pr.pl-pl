@@ -6,32 +6,28 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 5092bc73107231d602c1465c8d157cdf5499c913
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768245"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874520"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Pobieranie listy dostępnych licencji według grupy licencji
-
-**Dotyczy**
-
-- Centrum partnerskie
 
 Jak uzyskać listę licencji dla określonych grup licencji dostępnych dla użytkowników określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Lista co najmniej jednego z identyfikatorów grup licencji.
+- Lista identyfikatorów grup licencji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę dostępnych licencji dla określonych grup licencji, Zacznij od utworzenia wystąpienia [listy](/dotnet/api/system.collections.generic.list-1) typu [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid), a następnie Dodaj do listy grupy licencji. Następnie użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie Pobierz wartość właściwości [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) , aby pobrać interfejs do operacji zbierania SUBSKRYBOWANYCH jednostek SKU klienta. Na koniec Przekaż listę grup licencji do metody [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) , aby pobrać listę subskrybowanych jednostek SKU ze szczegółowymi informacjami o dostępnych jednostkach licencji.
+Aby uzyskać listę dostępnych licencji dla określonych grup licencji, rozpocznij od wystąpienia listy typu [**LicenseGroupId,**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid) [a](/dotnet/api/system.collections.generic.list-1) następnie dodaj grupy licencji do listy. Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz wartość właściwości [**SubscribedSkus,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) aby pobrać interfejs dla operacji zbierania subskrybowanych przez klienta elementów SKU. Na koniec przekaż listę grup licencji do metody [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) aby pobrać listę subskrybowanych jednostek SKU ze szczegółami dostępnych jednostek licencji.
 
 ``` csharp
 // string selectedCustomerId;
@@ -56,9 +52,9 @@ var customerUserBothAadAndSfbSubscribedSkus = partnerOperations.Customers.ById(s
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                  |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = grupa1 http/1.1                        |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = group2 http/1.1                        |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = grupa1&LicenseGroupIds = group2 http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus?licenseGroupIds=Group1 HTTP/1.1                        |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscribedskus?licenseGroupIds=Group2 HTTP/1.1                        |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscribedskus?licenseGroupIds=Group1&licenseGroupIds=Group2 HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -66,12 +62,12 @@ Użyj następującej ścieżki i parametrów zapytania, aby zidentyfikować klie
 
 | Nazwa            | Typ   | Wymagane | Opis                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Identyfikator klienta     | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
-| licenseGroupIds | ciąg | Nie       | Wartość wyliczenia wskazująca grupę licencji przypisanych licencji. Prawidłowe wartości: grupa1, group2 grupa1 — ta grupa zawiera wszystkie produkty, których licencja może być zarządzana w Azure Active Directory (AAD). Group2 — ta grupa ma tylko Minecraft licencje na produkty. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
+| licenseGroupIds | ciąg | Nie       | Wartość wyliczania, która wskazuje grupę licencji przypisanych licencji. Prawidłowe wartości: Grupa1, Grupa2 Grupa1 — ta grupa ma wszystkie produkty, których licencją można zarządzać w Azure Active Directory (AAD). Grupa2 — ta grupa ma tylko Minecraft licencji produktów. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -91,11 +87,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [SubscribedSku](license-resources.md#subscribedsku) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów SubscribedSku.](license-resources.md#subscribedsku)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 
@@ -231,9 +227,9 @@ Date: Sat, 10 Jun 2017 00:19:44 GMT
 }
 ```
 
-### <a name="response-example-no-matching-skus-found"></a>Przykład odpowiedzi (nie znaleziono pasujących jednostek SKU)
+### <a name="response-example-no-matching-skus-found"></a>Przykład odpowiedzi (nie znaleziono zgodnych jednostki SKU)
 
-Jeśli nie można odnaleźć zgodnych subskrybowanych jednostek SKU dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość wynosi 0.
+Jeśli nie można znaleźć pasujących subskrybowanych jednostki SKU dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość wynosi 0.
 
 ```http
 HTTP/1.1 200 OK

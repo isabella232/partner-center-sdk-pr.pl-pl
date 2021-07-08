@@ -1,41 +1,37 @@
 ---
 title: Pobieranie listy wszystkich kont użytkowników dla klienta
-description: Jak uzyskać listę wszystkich kont użytkowników należących do jednego z klientów.
+description: Jak uzyskać listę wszystkich kont użytkowników należących do jednego z twoich klientów.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6f2b1bcf9926e02232b6e2cc68b71e992b015324
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: f3d5fcc610eae8c1bff056c1e4a9e7a74093c87d
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768097"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874571"
 ---
 # <a name="get-a-list-of-all-user-accounts-for-a-customer"></a>Pobieranie listy wszystkich kont użytkowników dla klienta
 
-**Dotyczy:**
+W tym artykule opisano sposób uzyskania listy wszystkich kont użytkowników należących do jednego z klientów.
 
-- Centrum partnerskie
-
-W tym artykule opisano, jak uzyskać listę wszystkich kont użytkowników należących do jednego z klientów.
-
-Aby wyszukać jedno konto użytkownika według identyfikatora, zobacz [pobieranie konta użytkownika według identyfikatora](get-a-user-account-by-id.md).
+Aby sprawdzić pojedyncze konto użytkownika według identyfikatora, zobacz [Get a user account by ID (Uzyskiwanie konta użytkownika według identyfikatora).](get-a-user-account-by-id.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Aby pobrać kolekcję wszystkich kont użytkowników dla określonego klienta:
 
-1. Wywołaj metodę [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z określonym identyfikatorem klienta, aby zidentyfikować klienta.
+1. Wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z określonym identyfikatorem klienta, aby zidentyfikować klienta.
 
-2. Wywołaj metodę [**users. Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) w celu pobrania kolekcji.
+2. Wywołaj [**metodę Users.Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) aby pobrać kolekcję.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,10 +41,10 @@ Aby pobrać kolekcję wszystkich kont użytkowników dla określonego klienta:
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Get();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
 - Klasa: **GetCustomerUserCollection.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -57,19 +53,19 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-tenant-ID}/users http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru identyfikatora URI, aby zidentyfikować odpowiedniego klienta.
+Użyj następującego parametru URI, aby zidentyfikować prawidłowego klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID z sformatowaną **dzierżawą klienta** , która umożliwia odsprzedawcy filtrowanie wyników dla danego klienta należącego do odsprzedawcy. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -89,11 +85,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję kont użytkowników dla klienta.
+W przypadku powodzenia ta metoda zwraca kolekcję kont użytkowników dla klienta.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

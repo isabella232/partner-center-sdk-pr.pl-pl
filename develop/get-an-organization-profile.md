@@ -6,31 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 132a1e0efa3efea69d4bf649e55b412e300b0685
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1c7272761612e573388d4facea1a78808a5bad52
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768453"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760559"
 ---
 # <a name="get-an-organization-profile"></a>Pobieranie profilu organizacji
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Pobiera obiekt reprezentujący profil organizacji partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać profil organizacji, Użyj kolekcji **IAggregatePartner. profile** i Wywołaj Właściwość **OrganizationProfile** . Na koniec wywołaj metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.getasync) .
+Aby uzyskać profil organizacji, użyj **kolekcji IAggregatePartner.Profiles** i wywołaj **właściwość OrganizationProfile.** Na koniec wywołaj [**metody Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.get) [**lub GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.getasync)
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -38,13 +33,13 @@ Aby uzyskać profil organizacji, Użyj kolekcji **IAggregatePartner. profile** i
 OrganizationProfile organizationProfile = partnerOperations.Profiles.OrganizationProfile.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerCenterSDK. FeaturesSamples **Klasa**: GetOrganizationProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa**: GetOrganizationProfile.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać profil organizacji, użyj funkcji **IAggregatePartner. Getprofiles** i wywołaj funkcję **getOrganizationProfile** . Na koniec wywołaj funkcję **Get ()** .
+Aby uzyskać profil organizacji, użyj funkcji **IAggregatePartner.getProfiles** i wywołaj funkcję **getOrganizationProfile.** Na koniec wywołaj **funkcję get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -56,7 +51,7 @@ OrganizationProfile organizationProfile = partnerOperations.getProfiles().getOrg
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Aby uzyskać profil organizacji, uruchom polecenie [**Get-PartnerOrganizationProfile**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOrganizationProfile.md) .
+Aby uzyskać profil organizacji, wykonaj polecenie [**Get-PartnerOrganizationProfile.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOrganizationProfile.md)
 
 ```powershell
 Get-PartnerOrganizationProfile
@@ -68,11 +63,11 @@ Get-PartnerOrganizationProfile
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/Organization http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/organization HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -90,11 +85,11 @@ MS-CorrelationId: 1bb03149-88d2-4bc2-9cc1-d6e83890fa9e
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **OrganizationProfile** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca obiekt **OrganizationProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

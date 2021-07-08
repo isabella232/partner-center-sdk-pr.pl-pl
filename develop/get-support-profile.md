@@ -1,33 +1,29 @@
 ---
 title: Pobieranie profilu pomocy technicznej
-description: Pobiera obiekt reprezentujący profil obsługi użytkownika.
+description: Pobiera obiekt reprezentujący profil pomocy technicznej użytkownika.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b8b0fa533aaba74418985ea02cbb13bd722cede2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: b112ccbbff731795c21f95845a08be9e9dfb6775
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768413"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548638"
 ---
 # <a name="get-support-profile"></a>Pobieranie profilu pomocy technicznej
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Pobiera obiekt reprezentujący profil obsługi użytkownika.
+Pobiera obiekt reprezentujący profil pomocy technicznej użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać profil pomocy technicznej, Użyj kolekcji **IAggregatePartner. profile** . Wywołaj Właściwość [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) , a następnie metodę [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.get) lub [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.getasync) .
+Aby uzyskać profil pomocy technicznej, użyj **kolekcji IAggregatePartner.Profiles.** Wywołaj [**właściwość SupportProfile,**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) a następnie metody [**Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.get) lub [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -35,7 +31,7 @@ Aby uzyskać profil pomocy technicznej, Użyj kolekcji **IAggregatePartner. prof
 SupportProfile supportProfile = partnerOperations.Profiles.SupportProfile.Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerCenterSDK. FeaturesSamples **Klasa**: GetSupportProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesKlasa Samples: GetSupportProfile.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -43,11 +39,11 @@ SupportProfile supportProfile = partnerOperations.Profiles.SupportProfile.Get();
 
 | Metoda  | Identyfikator URI żądania                                                              |
 |---------|--------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Profiles/support http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/support HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -65,11 +61,11 @@ MS-CorrelationId: 20604323-50bf-4738-9968-c5486ab32be0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, metoda zwraca obiekt **SupportProfile** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca obiekt **SupportProfile** w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

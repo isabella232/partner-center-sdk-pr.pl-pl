@@ -1,40 +1,35 @@
 ---
 title: Pobieranie linku aktywacji według elementu wiersza zamówienia
-description: Pobiera link aktywacji subskrypcji według elementu Order line.
+description: Pobiera link aktywacji subskrypcji według pozycji zamówienia.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c0e84888870571cf6bd21306f527863f2aa7ee85
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: aa02a5a5b4a281b96e32ee6d239cc440cf8af4ec
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768053"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760780"
 ---
 # <a name="get-activation-link-by-order-line-item"></a>Pobieranie linku aktywacji według elementu wiersza zamówienia
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Pobiera link aktywacji subskrypcji platformy handlowej według numeru wiersza zamówienia.
 
-Pobiera komercyjne łącze aktywacji subskrypcji portalu Marketplace według numeru elementu wiersza zamówienia.
-
-Na pulpicie nawigacyjnym Centrum partnerskiego możesz wykonać tę operację, wybierając wybraną **subskrypcję** w obszarze **subskrypcja** na stronie głównej lub klikając link **do witryny przejdź do wydawcy** obok subskrypcji w celu aktywowania na stronie **subskrypcje** .
+Na pulpicie nawigacyjnym usługi Partner Center możesz wykonać tę  operację, wybierając pozycję Konkskrypcyjna subskrypcja w obszarze Subskrypcja na stronie głównej lub wybierając link Przejdź do witryny usługi **Publisher** obok subskrypcji, która ma zostać aktywowana na **stronie** Subskrypcje. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Zakończono zamówienie z produktem, który wymaga aktywacji.
+- Ukończono zamówienie z produktem, który wymaga aktywacji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać łącze aktywacji elementu wiersza, Użyj kolekcji [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i Wywołaj metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu wybranego identyfikatora klienta. Następnie Wywołaj Właściwość [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę [**ById ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) z określonym identyfikatorem  [**IDZamówienia**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Następnie Wywołaj metodę [**LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) z **ById ()** z identyfikatorem numeru elementu wiersza.  Na koniec Wywołaj metodę **ActivationLinks ()** .
+Aby uzyskać link aktywacji elementu wiersza, użyj kolekcji [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z wybranym identyfikatorem klienta. Następnie wywołaj [**właściwość Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) z określonymi  [**wartościami OrderId**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Następnie wywołaj metodę [**LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) z **metodą ById()** z identyfikatorem numeru elementu wiersza.  Na koniec wywołaj **metodę ActivationLinks().**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -52,11 +47,11 @@ var partnerOperations.Customers.ById(customerId).Orders.ById(orderId).OrderLineI
 
 | Metoda  | Identyfikator URI żądania                                                                                                                               |
 |---------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{customerId}/Orders/{OrderID}/LineItems/{lineItemNumber}/activationlinks http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/orders/{orderId}/lineitems/{lineItemNumber}/activationlinks HTTP/1.1 |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -74,11 +69,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [klienta](customer-resources.md#customer) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję [zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

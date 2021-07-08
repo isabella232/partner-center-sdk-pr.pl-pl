@@ -6,31 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 3a004f6f8f8de8cd398d82c300793e4f196efaaa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 6f4fd821879545db4e781fe3202c8ee11f167615
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767946"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874248"
 ---
 # <a name="get-a-list-of-offers-for-a-market"></a>Pobieranie listy ofert dla rynku
 
-**Dotyczy**
-
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Pobiera kolekcję zawierającą wszystkie oferty dla określonego rynku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę ofert na danym rynku, Użyj kolekcji **IAggregatePartner. offers** , wybierz rynek według kraju i Wywołaj metodę **Get ()** lub **Get Async ()** .
+Aby uzyskać listę ofert na danym rynku, użyj kolekcji **IAggregatePartner.Offers,** wybierz rynek według kraju i wywołaj metodę **Get()** lub **Get Async().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,7 +33,7 @@ Aby uzyskać listę ofert na danym rynku, Użyj kolekcji **IAggregatePartner. of
 ResourceCollection<Offer> offers = partnerOperations.Offers.ByCountry("US").Get();
 ```
 
-**Przykład**: [aplikacja testowa konsoli](console-test-app.md). **Project**: PartnerSDK. FeatureSample **Klasa**: offers.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: Offers.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -46,20 +41,20 @@ ResourceCollection<Offer> offers = partnerOperations.Offers.ByCountry("US").Get(
 
 | Metoda  | Identyfikator URI żądania                                                                          |
 |---------|--------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/offers? Country = {Country-ID} http/1.1   |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers?country={country-id} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę wymaganych parametrów zapytania, aby uzyskać oferty.
+W tej tabeli wymieniono parametry zapytania wymagane do uzyskania ofert.
 
 | Nazwa           | Typ       | Wymagane | Opis            |
 |----------------|------------|----------|------------------------|
-| **Identyfikator kraju** | **parametry** | Y        | Identyfikator kraju/regionu. |
+| **country-id** | **ciąg** | Y        | Identyfikator kraju/regionu. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Wymagany jest **identyfikator ustawień regionalnych** , który jest sformatowany jako ciąg.
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+- Wymagany **jest identyfikator locale-id** sformatowany jako ciąg.
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -78,11 +73,11 @@ X-Locale: <locale-id>
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów **oferty** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję **Zasobów** oferty w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

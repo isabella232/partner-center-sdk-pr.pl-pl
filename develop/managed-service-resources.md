@@ -1,28 +1,23 @@
 ---
-title: Zarządzane zasoby usług
-description: Usługi zarządzane to usługi, do których partner ma delegowane uprawnienia administratora. Partnerzy mogą zapewnić obsługę żądań i usług plików w imieniu ich usług zarządzanych.
+title: Zasoby usługi zarządzanej
+description: Usługi zarządzane to usługi, do których partner ma delegowane uprawnienia administratora. Partnerzy mogą zapewniać obsługę żądań obsługi i plików w imieniu swoich zarządzanych usług.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ef644ac4d8ae9660cffc9558af33cc27832556c7
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 582efe75fd18a9174dd5dc173c290bee25443ee9
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767782"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548128"
 ---
-# <a name="managed-service-resources"></a>Zarządzane zasoby usług
+# <a name="managed-service-resources"></a>Zasoby usługi zarządzanej
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Usługi zarządzane to usługi, do których partner ma delegowane uprawnienia administratora. Partnerzy mogą zapewniać obsługę żądań obsługi i plików w imieniu swoich zarządzanych usług.
 
-Usługi zarządzane to usługi, do których partner ma delegowane uprawnienia administratora. Partnerzy mogą zapewnić obsługę żądań i usług plików w imieniu ich usług zarządzanych.
-
-## <a name="managedservice"></a>ManagedService
+## <a name="managedservice"></a>ManagedService (Usługa zarządzana)
 
 Opisuje usługę zarządzaną.
 
@@ -30,20 +25,20 @@ Opisuje usługę zarządzaną.
 |------------|---------------------|----------------------------------------------------------|
 | Id         | ciąg              | Identyfikator usługi zarządzanej.                                  |
 | Nazwa       | ciąg              | Nazwa usługi zarządzanej.                         |
-| GroupName  | ciąg              | Nazwa grupy, do której należy usługa.      |
-| Linki      | ManagedServiceLinks | Linki do zasobów odpowiadające usłudze zarządzanej. |
+| Groupname  | ciąg              | Nazwa grupy, do której należy usługa.      |
+| Linki      | ManagedServiceLinks | Linki zasobów odpowiadające usłudze zarządzanej. |
 | Atrybuty | ResourceAttributes  | Atrybuty metadanych odpowiadające umowie.  |
 
 ## <a name="managedservicelinks"></a>ManagedServiceLinks
 
-Zawiera linki zezwalające partnerowi z delegowanymi uprawnieniami administratora w celu zapewnienia pomocy technicznej dla usługi.
+Zawiera linki, które umożliwiają partnerowi z delegowanymi uprawnieniami administratora zapewnienie obsługi usługi.
 
 | Właściwość      | Typ | Opis                 |
 |---------------|------|-----------------------------|
-| AdminService  | Łącze | Identyfikator URI usługi administracyjnej.      |
-| Servicehealth | Łącze | Identyfikator URI kondycji usługi.     |
-| Servicebilet | Łącze | Identyfikator URI biletu usługi.     |
-| Self          | Łącze | Własny identyfikator URI.               |
-| Następne          | Łącze | Następna strona elementów.     |
-| Poprzednie      | Łącze | Poprzednia strona elementów. |
+| Usługa administracyjna  | Link | URI usługi administracyjnej.      |
+| ServiceHealth | Link | URI kondycji usługi.     |
+| ServiceTicket | Link | URI biletu usługi.     |
+| Self          | Link | Samodzielnego URI.               |
+| Następne          | Link | Następna strona elementów.     |
+| Poprzednie      | Link | Poprzednia strona elementów. |
 

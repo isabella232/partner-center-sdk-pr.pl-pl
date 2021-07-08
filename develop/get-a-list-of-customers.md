@@ -1,43 +1,38 @@
 ---
 title: Pobieranie listy klientów
-description: Jak uzyskać zbiór zasobów reprezentujących wszystkich klientów partnerskich.
+description: Jak uzyskać kolekcję zasobów reprezentujących wszystkich klientów partnera.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 2dd8469458809ab38b6d6081adc91d6d1184d2d0
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 840c9d1a61451763d37a19639f99b12f1deb7521
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768294"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874350"
 ---
 # <a name="get-a-list-of-customers"></a>Pobieranie listy klientów
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-W tym artykule opisano, jak uzyskać kolekcję zasobów reprezentujących wszystkich klientów partnerskich.
+W tym artykule opisano sposób pobierania kolekcji zasobów, które reprezentują wszystkich klientów partnera.
 
 > [!TIP]
-> Tę operację można także wykonać na pulpicie nawigacyjnym Centrum partnerskiego. Na stronie głównej w obszarze **Zarządzanie klientami** wybierz pozycję **Wyświetl klientów**. Na pasku bocznym wybierz pozycję **klienci**.
+> Tę operację można również wykonać na pulpicie nawigacyjnym Partner Center nawigacyjnym. Na stronie głównej w obszarze **Zarządzanie klientami** wybierz pozycję **Wyświetl klientów.** Lub na pasku bocznym wybierz pozycję **Klienci**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
 Aby uzyskać listę wszystkich klientów:
 
-1. Użyj kolekcji [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby utworzyć obiekt **IPartner** .
+1. Użyj [**kolekcji IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby utworzyć **obiekt IPartner.**
 
-2. Pobierz listę klientów przy użyciu metod [**Query ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) . (Aby uzyskać instrukcje dotyczące tworzenia zapytania, zobacz Klasa [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) ).
+2. Pobierz listę klientów przy użyciu [**metod Query()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) (Aby uzyskać instrukcje dotyczące tworzenia zapytania, zobacz [**klasę QueryFactory).**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,10 +45,10 @@ var customersBatch = scopedPartnerOperations.Customers.Query(QueryFactory.Instan
 var customersEnumerator = scopedPartnerOperations.Enumerators.Customers.Create(customersBatch);
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Project: **PartnerSDK.FeatureSamples**
 - Klasa: **CustomerPaging.cs**
 
 ## <a name="java"></a>Java
@@ -62,9 +57,9 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 Aby uzyskać listę wszystkich klientów:
 
-1. Użyj funkcji [**IAggregatePartner. GetCustomers**], aby uzyskać odwołanie do operacji klienta.
+1. Użyj funkcji [**IAggregatePartner.getCustomers**], aby uzyskać odwołanie do operacji klienta.
 
-2. Pobierz listę klientów przy użyciu funkcji **Query ()** .
+2. Pobierz listę klientów przy użyciu **funkcji query().**
 
 ```java
 // Query the customers, get the first page if a page size was set, otherwise get all customers
@@ -104,7 +99,7 @@ Get-PartnerCustomer
 
 | Metoda  | Identyfikator URI żądania                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers? size = {size} http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -112,11 +107,11 @@ Użyj następującego parametru zapytania, aby uzyskać listę klientów.
 
 | Nazwa     | Typ    | Wymagane | Opis                                        |
 |----------|---------|----------|----------------------------------------------------|
-| **zmienia** | **int** | Y        | Liczba wyników do wyświetlenia w tym samym czasie. |
+| **Rozmiar** | **int** | Y        | Liczba wyników, które mają być wyświetlane jednocześnie. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -134,11 +129,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, ta metoda zwraca kolekcję zasobów [klienta](customer-resources.md#customer) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję [zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

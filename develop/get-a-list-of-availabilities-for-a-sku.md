@@ -1,29 +1,25 @@
 ---
 title: Pobieranie listy dostępności dla jednostki SKU (według kraju)
-description: Jak uzyskać zbiór podaży dla określonego produktu i jednostki SKU według kraju klienta.
+description: Jak uzyskać kolekcję dostępności dla określonego produktu i dla określonej skuku według kraju klienta.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b97a4ce85b5edd9de1301a577988f8c54096ebeb
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b29c005e74ad8a4da547a888b78e4599e74ebd02
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767957"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874537"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Pobieranie listy dostępności dla jednostki SKU (według kraju)
 
-**Dotyczy:**
-
-- Centrum partnerskie
-
-W tym artykule opisano, jak uzyskać zbiór podaży w określonym kraju dla określonego produktu i jednostki SKU.
+W tym artykule opisano sposób pobierania kolekcji dostępności w określonym kraju dla określonego produktu i sku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -33,15 +29,15 @@ W tym artykule opisano, jak uzyskać zbiór podaży w określonym kraju dla okre
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę [podaży](product-resources.md#availability) dla [jednostki SKU](product-resources.md#sku):
+Aby uzyskać listę dostępności [dla](product-resources.md#availability) [SKU:](product-resources.md#sku)
 
-1. Postępuj zgodnie z instrukcjami w temacie [pobieranie jednostki SKU według identyfikatora](get-a-sku-by-id.md) , aby uzyskać interfejs dla operacji określonej jednostki SKU.
+1. Wykonaj kroki opisane w [te tematu Get a SKU by ID (Uzyskiwanie SKU według identyfikatora),](get-a-sku-by-id.md) aby uzyskać interfejs dla operacji określonej sku.
 
-2. W interfejsie SKU wybierz właściwość **dostępność** , aby uzyskać interfejs z operacjami dla opcji dostępność.
+2. W interfejsie SKU wybierz właściwość **Availabilities,** aby uzyskać interfejs z operacjami dostępności.
 
-3. Obowiązkowe Użyj metody **ByTargetSegment ()** , aby odfiltrować dostępność przez segment docelowy.
+3. (Opcjonalnie) Użyj metody **ByTargetSegment(),** aby filtrować dostępność według segmentu docelowego.
 
-4. Wywoływanie **Get ()** lub **GetAsync ()** w celu pobrania kolekcji podaży dla tej jednostki SKU.
+4. Wywołaj **get()** lub **GetAsync(),** aby pobrać kolekcję dostępności dla tej sku.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -72,23 +68,23 @@ var availabilities = partnerOperations.Products.ByCountry(countryCode).ById(prod
 
 | Metoda  | Identyfikator URI żądania                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Products/{Product-ID}/SKUs/{SKU-ID}/availabilities? Country = {Country-code} &targetSegment = {Target-segment} http/1.1     |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities?country={country-code}&targetSegment={target-segment} HTTP/1.1     |
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>Parametry URI
 
-Użyj następującej ścieżki i parametrów zapytania, aby uzyskać listę dostępność dla jednostki SKU.
+Użyj następującej ścieżki i parametrów zapytania, aby uzyskać listę dostępności dla SKU.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| Identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
-| jednostka SKU — identyfikator                 | ciąg   | Tak      | Ciąg, który identyfikuje jednostkę SKU.                               |
-| Kraj — kod           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
+| product-id             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| identyfikator sku                 | ciąg   | Tak      | Ciąg identyfikujący sku.                               |
+| kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 | segment docelowy         | ciąg   | Nie       | Ciąg, który identyfikuje segment docelowy używany do filtrowania. |
-| reservationScope | ciąg   | Nie | Podczas wykonywania zapytania o listę dostępności dla jednostki SKU rezerwacji platformy Azure należy określić, `reservationScope=AzurePlan` Aby uzyskać listę dostępności, która ma zastosowanie do AzurePlan. Wyklucz ten parametr, aby uzyskać listę dostępności, która ma zastosowanie do subskrypcji Microsoft Azure (MS-AZR-0145P).  |
+| reservationScope | ciąg   | Nie | Podczas wykonywania zapytania o listę dostępności dla wersji SKU rezerwacji platformy Azure określ, aby uzyskać listę dostępności, które mają zastosowanie `reservationScope=AzurePlan` do usługi AzurePlan. Wyklucz ten parametr, aby uzyskać listę dostępności, które mają zastosowanie do subskrypcji Microsoft Azure (MS-AZR-0145P).  |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -96,9 +92,9 @@ Brak.
 
 ### <a name="request-examples"></a>Przykłady żądań
 
-#### <a name="availabilities-for-sku-by-country"></a>Dostępność dla jednostki SKU według kraju
+#### <a name="availabilities-for-sku-by-country"></a>Dostępność dla SKU według kraju
 
-Postępuj zgodnie z tym przykładem, aby uzyskać listę podaży dla danej jednostki SKU według kraju:
+Postępuj zgodnie z tym przykładem, aby uzyskać listę dostępności dla danej sku według kraju:
 
 ```http
 GET http:// api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US HTTP/1.1
@@ -108,9 +104,9 @@ MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02
 MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58
 ```
 
-#### <a name="availabilities-for-vm-reservations-azure-plan"></a>Dostępność na potrzeby rezerwacji maszyn wirtualnych (plan platformy Azure)
+#### <a name="availabilities-for-vm-reservations-azure-plan"></a>Dostępność rezerwacji maszyn wirtualnych (plan platformy Azure)
 
-Postępuj zgodnie z tym przykładem, aby uzyskać listę podaży według kraju dla jednostek SKU rezerwacji maszyn wirtualnych platformy Azure. Ten przykład dotyczy jednostek SKU, które są stosowane do planów platformy Azure:
+Postępuj zgodnie z tym przykładem, aby uzyskać listę dostępności według kraju dla wystąpień zarezerwowanych maszyn wirtualnych platformy Azure. Ten przykład dotyczy jednostki SKU, które mają zastosowanie do planów platformy Azure:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -120,9 +116,9 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
-#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Dostępność dla rezerwacji maszyn wirtualnych dla subskrypcji Microsoft Azure (MS-AZR-0145P)
+#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Dostępność rezerwacji maszyn wirtualnych dla Microsoft Azure subskrypcji (MS-AZR-0145P)
 
-Postępuj zgodnie z tym przykładem, aby uzyskać listę dostępności według kraju dla rezerwacji maszyn wirtualnych platformy Azure, które mają zastosowanie do subskrypcji Microsoft Azure (MS-AZR-0145P).
+Postępuj zgodnie z tym przykładem, aby uzyskać listę dostępności według kraju dla rezerwacji maszyn wirtualnych platformy Azure, które mają zastosowanie do subskrypcji usługi Microsoft Azure (MS-AZR-0145P).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/productsDZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureAzureReservationsVM HTTP/1.1
@@ -134,17 +130,17 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [**dostępności**](product-resources.md#availability) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [**zasobów**](product-resources.md#availability) dostępności.
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów Centrum partnerskiego](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
 Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 403                  | 400030       | Nie można uzyskać dostępu do żądanego **targetSegment** .                                                     |
+| 403                  | 400030       | Dostęp do żądanego **obiektu targetSegment** nie jest dozwolony.                                                     |
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

@@ -1,43 +1,39 @@
 ---
 title: Pobieranie listy dostępnych licencji
-description: Jak uzyskać listę dostępnych licencji dla użytkowników określonego klienta.
+description: Jak uzyskać listę licencji dostępnych dla użytkowników określonego klienta.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: f675e5b96b2f2040d662c0dc7f1e06625f267689
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 02a6fccc2cf7f3f4dc929b96ec0f17e0f4a31b06
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768238"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874503"
 ---
 # <a name="get-a-list-of-available-licenses"></a>Pobieranie listy dostępnych licencji
 
-**Dotyczy:**
+W tym artykule opisano sposób uzyskania listy licencji dostępnych dla użytkowników określonego klienta.
 
-- Centrum partnerskie
-
-W tym artykule opisano, jak uzyskać listę licencji dostępnych dla użytkowników określonego klienta.
-
-Poniższe przykłady zwracają licencje dostępne z **grupa1**, domyślną grupę licencji, która reprezentuje licencje zarządzane przez Azure Active Directory (Azure AD). Aby uzyskać dostęp do dostępnych licencji dla określonej grupy licencji, zobacz [Pobieranie listy dostępnych licencji według grupy licencji](get-a-list-of-available-licenses-by-license-group.md).
+W poniższych przykładach zwracane są licencje dostępne w grupie **1**, czyli domyślnej grupie licencji reprezentującej licencje zarządzane przez usługę Azure Active Directory (Azure AD). Aby uzyskać dostępne licencje dla określonej grupy licencji, zobacz [Get a list of available licenses by license group (Uzyskiwanie](get-a-list-of-available-licenses-by-license-group.md)listy dostępnych licencji według grupy licencji).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md). Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego. Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**. Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**. Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** . Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Aby pobrać listę licencji dostępnych z domyślnej grupy licencji dla użytkowników klienta:
 
-1. Użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
+1. Użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
 
-2. Pobierz wartość właściwości [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) , aby pobrać interfejs do operacji zbierania SUBSKRYBOWANYCH jednostek SKU klienta.
+2. Pobierz wartość właściwości [**SubscribedSkus,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) aby pobrać interfejs dla operacji zbierania subskrybowanych przez klienta elementów SKU.
 
-3. Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) , aby pobrać listę licencji.
+3. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) aby pobrać listę licencji.
 
 ``` csharp
 // string selectedCustomerId;
@@ -46,10 +42,10 @@ Aby pobrać listę licencji dostępnych z domyślnej grupy licencji dla użytkow
 var customerUserSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get();
 ```
 
-Aby zapoznać się z przykładem, zobacz następujące tematy:
+Przykład można znaleźć w następujących tematach:
 
 - Przykład: [aplikacja testowa konsoli](console-test-app.md)
-- Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**
+- Project: **zestaw SDK Centrum partnerskiego przykłady**
 - Klasa: **GetCustomerSubscribedSkus.cs**
 
 ## <a name="rest-request"></a>Żądanie REST
@@ -58,7 +54,7 @@ Aby zapoznać się z przykładem, zobacz następujące tematy:
 
 | Metoda  | Identyfikator URI żądania                                                                                    |
 |---------|------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscribedskus http/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscribedskus HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -66,11 +62,11 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| Identyfikator klienta | ciąg | Tak      | Ciąg w formacie GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).
+Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -90,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [SubscribedSku](license-resources.md#subscribedsku) .
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów SubscribedSku.](license-resources.md#subscribedsku)
 
-### <a name="response-success-and-error-codes"></a>Kody sukcesu i błędów odpowiedzi
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania. Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

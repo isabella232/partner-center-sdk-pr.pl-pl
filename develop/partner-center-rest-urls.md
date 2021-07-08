@@ -1,35 +1,30 @@
 ---
 title: Adresy URL REST Centrum partnerskiego
-description: Centrum partnerskie jest dostępne w różnych krajach i regionach. Dowiedz się, które punkty końcowe Centrum partnerskiego i bazowe adresy URL REST mają być używane przez aplikacje do poprawnego działania.
+description: Partner Center jest dostępna w różnych krajach i regionach. Dowiedz się, Partner Center punkty końcowe i podstawowe adresy URL REST, których aplikacje powinny używać do prawidłowego działania.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 7ea62c64e57f32bd33c1319ddc7ca07b20113017
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 715ec7dda252cf096b2ec2bd1745d8afee7c8310
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97768505"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547856"
 ---
-# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Różne punkty końcowe adresu URL REST Centrum partnerskiego do użycia w określonych krajach lub regionach
+# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Różne Partner Center url REST do użycia w niektórych krajach lub regionach
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Partner Center jest dostępna w różnych krajach i regionach na całym świecie. Niektóre wersje Partner Center mogą wymagać różnych punktów końcowych, aby aplikacje działały prawidłowo.
 
-Centrum partnerskie jest dostępne w różnych krajach i regionach na całym świecie. Niektóre wersje Centrum partnerskiego mogą wymagać innych punktów końcowych, aby aplikacje działały prawidłowo.
+W poniższej tabeli opisano podstawowe adresy URL do użycia z różnymi wersjami Partner Center:
 
-W poniższej tabeli opisano podstawowe adresy URL, które mają być używane z różnymi wersjami Centrum partnerskiego:
-
-| Wersja Centrum partnerskiego  | Podstawowy adres URL  |
+| Partner Center wersji  | Podstawowy adres URL  |
 |---------|---------|
 |Centrum partnerskie</br>Centrum partnerskie dla Microsoft Cloud Niemcy</br>Centrum partnerskie Microsoft Cloud for US Government     | `https://api.partnercenter.microsoft.com`        |
 |Centrum partnerskie obsługiwane przez firmę 21Vianet  |  `https://partner.partnercenterapi.microsoftonline.cn`       |
 
 >[!NOTE]
->Urząd tokenów dla Centrum partnerskiego dla Microsoft Cloud (Niemcy) Biblioteka usługi Azure AD to: https://login.microsoftonline.de .
+>Token authority for Partner Center for Microsoft Cloud Germany Azure AD Library to: https://login.microsoftonline.de .

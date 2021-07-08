@@ -1,26 +1,21 @@
 ---
-title: Zasoby oferty
-description: Opisuje produkt wymieniony w wykazie odsprzedawców, który może zaoferować swoim klientom.
+title: Zaoferuj zasoby
+description: Opisuje produkt wymieniony w katalogu odsprzedawców, który może zaoferować swoim klientom.
 ms.date: 03/15/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 45af02705d2a03c7586ba6bf3a5537c3e4eec3c7
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 704e5580f2cdf84fc82b627e3b2ca165b81a3af5
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97767774"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548111"
 ---
-# <a name="offer-resources"></a>Zasoby oferty
+# <a name="offer-resources"></a>Zaoferuj zasoby
 
-**Dotyczy**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
-
-Opisuje produkt wymieniony w wykazie odsprzedawców, który może zaoferować swoim klientom.
+Opisuje produkt wymieniony w katalogu odsprzedawców, który może zaoferować swoim klientom.
 
 ## <a name="offer"></a>Oferta
 
@@ -31,59 +26,59 @@ Opisuje produkt wymieniony w wykazie odsprzedawców, który może zaoferować sw
 | description (opis)                 | ciąg                    | Opis oferty.                                                                                     |
 | minimumQuantity             | int                       | Minimalna dostępna ilość.                                                                                 |
 | maximumQuantity             | int                       | Maksymalna dostępna ilość.                                                                                 |
-| rank                        | int                       | Ranga lub priorytet oferty w porównaniu z innymi kategoriami w tym samym wierszu produktu. Ta właściwość powinna być ustawiona tylko wtedy, gdy istnieje więcej niż jedna oferta dla danego wiersza produktu.  |
-| adresu                         | ciąg                    | Identyfikator URI oferty.                                                                                                  |
-| locale                      | ciąg                    | Ustawienia regionalne, których dotyczy oferta.                                                                          |
-| country                     | ciąg                    | Kraj/region, w którym stosowana jest oferta.                                                                    |
+| rank                        | int                       | Ranga lub priorytet oferty w porównaniu z innymi kategoriami w tej samej linii produktu. Tę właściwość należy ustawić tylko wtedy, gdy istnieje więcej niż jedna oferta dla danej linii produktu.  |
+| Identyfikator uri                         | ciąg                    | URI oferty.                                                                                                  |
+| locale                      | ciąg                    | Locale, w których ma zastosowanie oferta.                                                                          |
+| country                     | ciąg                    | Kraj/region, w którym ma zastosowanie oferta.                                                                    |
 | category                    | [OfferCategory](#offercategory)           | Kategoria oferty.                                                                   |
-| limitUnitOfMeasure          | ciąg                    | Wartość, która wskazuje typ ograniczenia zakupu. Możliwe wartości to:<br/> "Brak" — nie ma żadnych ograniczeń dotyczących liczby subskrypcji na podstawie zakupionej oferty.<br/> "Współbieżne" — liczba subskrypcji, które mogą istnieć w dzierżawie klienta w danym momencie obejmuje subskrypcje, które są aktywne lub anulowane. Ta wartość dotyczy głównie ofert małych firm, w których liczba licencji jest mniejsza niż 300. Provisionioned subskrypcje nie są liczone.<br/> "Okres istnienia" — liczba subskrypcji, które mogą istnieć w okresie istnienia dzierżawy klienta. Ta wartość jest najbardziej stosowana do wersji próbnych. Provisionioned subskrypcje nie są liczone.      |
-| limit                       | int                       | Ilość subskrypcji, które mogą zostać zakupione w ramach tej oferty w oparciu o limitUnitOfMeasure.                |
+| limitUnitOfMeasure          | ciąg                    | Wartość wskazująca typ ograniczenia zakupu. Możliwe wartości to:<br/> "Brak" — nie ma żadnych ograniczeń dotyczących liczby subskrypcji na podstawie zakupionej oferty.<br/> "Współbieżne" — liczba subskrypcji, które mogą istnieć w dzierżawie klienta w danym momencie. Obejmuje to subskrypcje, które są aktywne lub anulowane. Ta wartość dotyczy głównie ofert dla małych firm, gdzie liczba licencji jest mniejsza niż 300. Subskrypcje, dla których anulowano aprowizację, nie są liczone.<br/> "LifeTime" — liczba subskrypcji, które mogą istnieć w okresie istnienia dzierżawy klienta. Ta wartość ma największe zastosowanie w przypadku wersji próbnych. Subskrypcje, dla których anulowano aprowizację, nie są liczone.      |
+| limit                       | int                       | Liczba subskrypcji, które można kupić w ramach tej oferty, na podstawie wartości limitUnitOfMeasure.                |
 | prerequisiteOffers          | ciąg                    | Oferty wymagań wstępnych.                                                                                        |
-| isdodatek                     | boolean                   | Wartość wskazująca, czy to wystąpienie jest dodatkiem.                                                           |
-| hasAddOns                   | boolean                   | Wartość wskazująca, czy ta oferta ma jakiekolwiek dodatki.                                                           |
+| isAddOn                     | boolean                   | Wartość wskazująca, czy to wystąpienie jest dodatkówem.                                                           |
+| hasAddOns                   | boolean                   | Wartość wskazująca, czy ta oferta ma jakieś dodatki.                                                           |
 | isAvailableForPurchase      | boolean                   | Wartość wskazująca, czy to wystąpienie jest dostępne do zakupu.                                             |
-| billing                     | ciąg                    | Określa typ rozliczeń dla zakupu elementu wiersza: "none", "Usage" lub "License".                           |
-| supportedBillingCycles      | tablica ciągów          | Wskazuje cykle rozliczeń obsługiwane dla tej oferty. Obsługiwane wartości to nazwy elementów członkowskich Znalezione w [BillingCycleType](product-resources.md#billingcycletype)   |
-| isAutoRenewable             | boolean                   | Wartość wskazująca, czy oferta jest automatycznie odnawiana.                                                      |
+| billing                     | ciąg                    | Określa typ rozliczeń zakupu elementu wiersza: "brak", "użycie" lub "licencja".                           |
+| supportedBillingCycles      | tablica ciągów          | Wskazuje cykle rozliczeniowe obsługiwane dla tej oferty. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype)   |
+| isAutoRenewable             | boolean                   | Wartość wskazująca, czy oferta jest odnawiana automatycznie.                                                      |
 | upgradeTargetOffers         | tablica ciągów          | Lista ofert, do których można uaktualnić tę ofertę.                                                          |
-| conversionTargetOffers      | tablica ciągów          | Lista ofert, do których można dokonać konwersji tej oferty.                                                         |
-| reselleeQualifications      | tablica ciągów          | Kwalifikacje wymagane przez klienta w celu zakupienia oferty przez partnera.     |
-| resellerQualifications      | tablica ciągów          | Kwalifikacje wymagane przez partnera w celu zakupienia oferty dla klienta.                       |
-| salesGroupId                | ciąg                    | Ciąg służący do grupowania ofert w osobnych zamówieniach.                                                             |
-| istrial                     | boolean                   | Wartość wskazująca, czy jest to oferta w wersji próbnej.                                                               |
+| conversionTargetOffers      | tablica ciągów          | Lista ofert, na które można przekonwertować tę ofertę.                                                         |
+| reseleeQualifications      | tablica ciągów          | Kwalifikacje wymagane przez klienta, aby partner zakupił ofertę dla tego klienta.     |
+| resellerQualifications      | tablica ciągów          | Kwalifikacje wymagane przez partnera do zakupu oferty dla klienta.                       |
+| salesGroupId                | ciąg                    | Ciąg używany do grupowania ofert w oddzielne zamówienia.                                                             |
+| isTrial                     | boolean                   | Wartość wskazująca, czy jest to oferta wersji próbnej.                                                               |
 | product                     | [OfferProduct](#offerproduct)           | Pobiera produkt oferty.                                                                           |
-| unitType                    | ciąg                    | Typ jednostki.                                                                                      |
-| linki                       | [OfferLinks](#offerlinks)               | Link "Dowiedz się więcej".                                                                    |
+| Unittype                    | ciąg                    | Typ jednostki.                                                                                      |
+| Linki                       | [OfferLinks](#offerlinks)               | Link "Dowiedz się więcej" oferty.                                                                    |
 | atrybuty                  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające ofercie.                         |
 
 ## <a name="offercategory"></a>OfferCategory
 
-Opisuje kategoryzację oferty. Obejmuje to rangę lub priorytet tej kategorii oferty w porównaniu z innymi w tym samym wierszu produktu.
+Opisuje kategoryzację oferty. Obejmuje to rangę lub priorytet tej kategorii oferty w porównaniu z innymi w tej samej linii produktów.
 
 | Właściwość   | Typ                                                           | Opis                                                                                                                                                                |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | identyfikator         | ciąg                                                         | Identyfikator kategorii.                                                                                                                                                   |
 | name       | ciąg                                                         | Nazwa kategorii.                                                                                                                                                         |
 | rank       | int                                                            | Ranga kategorii lub priorytet w porównaniu z innymi kategoriami w tej samej ofercie. Tę właściwość należy ustawić tylko wtedy, gdy istnieje więcej niż jedna kategoria oferty dla danej oferty. |
-| locale     | ciąg                                                         | Ustawienia regionalne, których dotyczy oferta.                                                                                                                        |
-| country    | ciąg                                                         | Kraj/region, w którym stosowana jest oferta.                                                                                                                   |
-| linki      | [ResourceLinks](utility-resources.md#resourcelinks)           | Linki do zasobów odpowiadające OfferCategory.                                                                                                                     |
-| atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające OfferCategory.                                                                                                                |
+| locale     | ciąg                                                         | Locale, w których ma zastosowanie oferta.                                                                                                                        |
+| country    | ciąg                                                         | Kraj/region, w którym ma zastosowanie oferta.                                                                                                                   |
+| Linki      | [ResourceLinks](utility-resources.md#resourcelinks)           | Linki zasobów odpowiadające kategorii OfferCategory.                                                                                                                     |
+| atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające kategorii OfferCategory.                                                                                                                |
 
 ## <a name="offerlinks"></a>OfferLinks
 
-Zawiera linki do uczenia się więcej informacji o ofercie.
+Zawiera linki do dodatkowych informacji o ofercie.
 
 | Właściwość  | Typ | Opis                 |
 |-----------|------|-----------------------------|
-| learnMore | Łącze | Link "Dowiedz się więcej".      |
-| automatycznej      | Łącze | Własny identyfikator URI                |
-| dalej      | Łącze | Następna strona elementów.     |
-| ubiegł  | Łącze | Poprzednia strona elementów. |
+| learnWięcej | Link | Link "Dowiedz się więcej".      |
+| Własny      | Link | Samodzielnego URI                |
+| dalej      | Link | Następna strona elementów.     |
+| Poprzednich  | Link | Poprzednia strona elementów. |
 
 ## <a name="offerproduct"></a>OfferProduct
 
-Produkt lub usługa, która może mieć więcej niż jedną skojarzoną z nią ofertę, z różnymi zestawami funkcji i przeznaczonymi dla różnych potrzeb klientów.
+Produkt lub usługa, które mogą mieć skojarzoną więcej niż jedną ofertę, z których każda ma różne zestawy funkcji i jest ukierunkowana na różne potrzeby klientów.
 
 | Właściwość | Typ   | Opis              |
 |----------|--------|--------------------------|

@@ -1,42 +1,37 @@
 ---
 title: Uwierzytelnianie w Centrum partnerskim
-description: Centrum partnerskie używa usługi Azure AD do uwierzytelniania i korzystania z interfejsów API Centrum partnerskiego należy prawidłowo skonfigurować ustawienia uwierzytelniania.
+description: Partner Center używa usługi Azure AD do uwierzytelniania, a aby korzystać z interfejsów API Partner Center, należy poprawnie skonfigurować ustawienia uwierzytelniania.
 ms.date: 11/13/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-csp
-ms.openlocfilehash: 46ef9c6bc151c368281e943b7d24ebc07e34b66d
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: e54feba7ea727bb7f7eff8de76dcdf28c8a453ee
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97770291"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548077"
 ---
 # <a name="partner-center-authentication"></a>Uwierzytelnianie w Centrum partnerskim
 
-**Dotyczy:**
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-- Centrum partnerskie
-- Centrum partnerskie obsługiwane przez firmę 21Vianet
-- Centrum partnerskie dla Microsoft Cloud Niemcy
-- Centrum partnerskie Microsoft Cloud for US Government
+Centrum partnerskie w celu uwierzytelniania używa usługi Azure Active Directory. Korzystając z interfejsu API Centrum partnerskiego, zestawu SDK lub modułu programu PowerShell, należy prawidłowo skonfigurować aplikację usługi Azure AD, a następnie zażądać tokenu dostępu. Tokeny dostępu uzyskane tylko przy użyciu aplikacji lub uwierzytelniania aplikacji i użytkownika mogą być używane z Partner Center. Istnieją jednak dwa ważne elementy, które należy rozważyć
 
-Centrum partnerskie w celu uwierzytelniania używa usługi Azure Active Directory. Korzystając z interfejsu API Centrum partnerskiego, zestawu SDK lub modułu programu PowerShell, należy prawidłowo skonfigurować aplikację usługi Azure AD, a następnie zażądać tokenu dostępu. Tokeny dostępu uzyskane przy użyciu tylko aplikacji lub uwierzytelnianie użytkownika i aplikacji mogą być używane z centrum partnerskim. Istnieją jednak dwa ważne elementy, które należy wziąć pod uwagę
+- Użyj uwierzytelniania wieloskładnikowego podczas uzyskiwania dostępu do interfejsu API Partner Center przy użyciu uwierzytelniania aplikacji i użytkownika. Aby uzyskać więcej informacji na temat tej zmiany, zobacz [Włączanie bezpiecznego modelu aplikacji](enable-secure-app-model.md).
 
-- Użyj uwierzytelniania wieloskładnikowego podczas uzyskiwania dostępu do interfejsu API Centrum partnerskiego przy użyciu aplikacji + uwierzytelnianie użytkowników. Aby uzyskać więcej informacji dotyczących tej zmiany, zobacz [Włączanie bezpiecznego modelu aplikacji](enable-secure-app-model.md).
+- Nie wszystkie operacje interfejsu API Partner Center obsługują tylko uwierzytelnianie aplikacji. Istnieją pewne scenariusze, w których konieczne będzie użycie uwierzytelniania aplikacji i użytkowników. W *nagłówku Wymagania* [](scenarios.md)wstępne każdego artykułu znajduje się dokumentacja z pytaniem, czy obsługiwane jest tylko uwierzytelnianie aplikacji, aplikacja i uwierzytelnianie użytkowników.
 
-- Nie wszystkie operacje obsługują tylko aplikacje w interfejsie API Centrum partnerskiego. Istnieją pewne scenariusze, w których będzie wymagane użycie aplikacji i uwierzytelniania użytkowników. W sekcji *wymagania wstępne* dotyczące każdego [artykułu](scenarios.md)znajdziesz dokumentację zawierającą informacje o tym, czy obsługiwane są tylko aplikacje uwierzytelnianie, aplikacja + uwierzytelnianie użytkownika, czy też oba te elementy.
+## <a name="initial-setup"></a>Konfiguracja początkowa
 
-## <a name="initial-setup"></a>Początkowa konfiguracja
+1. Aby rozpocząć, upewnij się, że masz zarówno konto podstawowe, Partner Center, jak i piaskownicę integracji Partner Center konto. Aby uzyskać więcej informacji, zobacz [Konfigurowanie kont Partner Center dostępu do interfejsu API.](set-up-api-access-in-partner-center.md) Zanotuj identyfikator rejestracji aplikacji usługi Azure AAD i wpis tajny (klucz tajny klienta jest wymagany do identyfikacji tylko aplikacji) zarówno dla konta podstawowego, jak i konta piaskownicy integracji.
 
-1. Aby rozpocząć, musisz upewnić się, że masz zarówno konto głównego centrum partnerskiego, jak i konto Centrum partnerskiego usługi piaskownicy integracji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie kont Centrum partnerskiego na potrzeby dostępu do interfejsu API](set-up-api-access-in-partner-center.md). Zanotuj identyfikator rejestracji i wpis tajny aplikacji usługi Azure AAD (klucz tajny klienta jest wymagany tylko do identyfikacji aplikacji) zarówno dla konta podstawowego, jak i konta piaskownicy integracji.
+2. Zaloguj się do usługi Azure AD z Azure Portal. W **uprawnieniach** do innych  aplikacji ustaw uprawnienia dla Windows Azure Active Directory na  uprawnienia delegowane **i** wybierz pozycję Uzyskaj dostęp do katalogu jako zalogowany użytkownik, a następnie pozycję Zaloguj się i odczytaj **profil użytkownika.**
 
-2. Zaloguj się do usługi Azure AD z poziomu Azure Portal. W obszarze **uprawnienia do innych aplikacji** Ustaw uprawnienia dla **systemu Windows Azure Active Directory** na **delegowane uprawnienia**, a następnie wybierz pozycję **dostęp do katalogu jako zalogowany użytkownik** i **Zaloguj się i odczytaj profil użytkownika**.
-
-3. W Azure Portal **Dodaj aplikację**. Wyszukaj frazę "Microsoft Partner Center", która jest aplikacją Microsoft Partner Center. Ustaw **uprawnienia delegowane** na **dostęp do interfejsu API Centrum partnerskiego**. Jeśli używasz Centrum partnerskiego do Microsoft Cloud Niemiec lub Centrum partnerskiego dla Microsoft Cloud dla instytucji rządowych USA, ten krok jest obowiązkowy. Jeśli używasz wystąpienia globalnego Centrum partnerskiego, ten krok jest opcjonalny. Partnerzy programu CSP mogą użyć funkcji zarządzania aplikacjami w portalu Centrum partnerskiego, aby pominąć ten krok dla wystąpienia globalnego Centrum partnerskiego.
+3. W Azure Portal dodaj **aplikację**. Wyszukaj "Microsoft Partner Center", czyli aplikację microsoft Partner Center. Ustaw uprawnienia **delegowane na** dostęp **do Partner Center API.** Jeśli korzystasz z usługi Partner Center Microsoft Cloud w Niemczech lub Partner Center for Microsoft Cloud for US Government, ten krok jest obowiązkowy. Jeśli używasz Partner Center globalnego, ten krok jest opcjonalny. Partnerzy CSP mogą użyć funkcji zarządzania aplikacją w portalu Partner Center, aby pominąć ten krok dla Partner Center wystąpienia globalnego.
 
 ## <a name="app-only-authentication"></a>Uwierzytelnianie tylko aplikacji
 
-Jeśli chcesz użyć uwierzytelniania tylko do aplikacji w celu uzyskania dostępu do interfejsu API REST Centrum partnerskiego, interfejsu API platformy .NET, interfejsu API języka Java lub modułu programu PowerShell, możesz to zrobić, wykonując poniższe instrukcje.
+Jeśli chcesz użyć uwierzytelniania tylko aplikacji w celu uzyskania dostępu do interfejsu API REST platformy Partner Center, interfejsu API .NET, interfejsu API języka Java lub modułu programu PowerShell, możesz to zrobić, korzystając z poniższych instrukcji.
 
 ## <a name="net-app-only-authentication"></a>.NET (uwierzytelnianie tylko aplikacji)
 
@@ -54,7 +49,7 @@ public static IAggregatePartner GetPartnerCenterTokenUsingAppCredentials()
 }
 ```
 
-## <a name="java-app-only-authentication"></a>Java (uwierzytelnianie tylko w aplikacji)
+## <a name="java-app-only-authentication"></a>Java (uwierzytelnianie tylko dla aplikacji)
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
@@ -71,7 +66,7 @@ public IAggregatePartner getAppPartnerOperations()
 }
 ```
 
-## <a name="rest-app-only-authentication"></a>REST (uwierzytelnianie tylko w aplikacji)
+## <a name="rest-app-only-authentication"></a>REST (uwierzytelnianie tylko aplikacji)
 
 ### <a name="rest-request"></a>Żądanie REST
 
@@ -100,26 +95,26 @@ Content-Length: 1406
 {"token_type":"Bearer","expires_in":"3600","ext_expires_in":"3600","expires_on":"1546469802","not_before":"1546465902","resource":"https://graph.windows.net","access_token":"value-has-been-removed"}
 ```
 
-## <a name="app--user-authentication"></a>Aplikacja + uwierzytelnianie użytkownika
+## <a name="app--user-authentication"></a>Uwierzytelnianie aplikacji i użytkownika
 
-Historycznie [Przydziel poświadczenia hasła właściciela zasobu](https://tools.ietf.org/html/rfc6749#section-4.3) , aby zażądać tokenu dostępu do użycia w module interfejsu API REST Centrum partnerskiego, interfejsu API platformy .NET, interfejsu API języka Java lub modułu PowerShell. Ta metoda została użyta do żądania tokenu dostępu z Azure Active Directory przy użyciu identyfikatora klienta i poświadczeń użytkownika. Jednak takie podejście przestanie działać, ponieważ centrum partnerskie wymaga uwierzytelniania wieloskładnikowego w przypadku korzystania z aplikacji i uwierzytelniania użytkowników. Aby zapewnić zgodność z tym wymaganiem, firma Microsoft wprowadziła bezpieczną, skalowalną platformę do uwierzytelniania partnerów dostawcy rozwiązań w chmurze (CSP) i dostawców panelu sterowania (CPV) przy użyciu uwierzytelniania wieloskładnikowego. Ta struktura jest znana jako bezpieczny model aplikacji i składa się z procesu wyrażania zgody oraz żądania tokenu dostępu przy użyciu tokenu odświeżania.
+W przeszłości [](https://tools.ietf.org/html/rfc6749#section-4.3) do żądania tokenu dostępu do użycia z interfejsem API REST usługi Partner Center, interfejsem API .NET, interfejsem API języka Java lub modułem programu PowerShell były używane poświadczenia hasła właściciela zasobu. Ta metoda została użyta do żądania tokenu dostępu od Azure Active Directory przy użyciu identyfikatora klienta i poświadczeń użytkownika. Jednak to podejście nie będzie już działać, ponieważ Partner Center uwierzytelniania wieloskładnikowego w przypadku korzystania z uwierzytelniania aplikacji i użytkowników. Aby spełnić to wymaganie, firma Microsoft wprowadziła bezpieczną, skalowalną platformę do uwierzytelniania partnerów programu Dostawca rozwiązań w chmurze (CSP) i dostawców panelu sterowania (CPV) przy użyciu uwierzytelniania wieloskładnikowego. Ta framework jest znana jako model aplikacji zabezpieczonych i składa się z procesu wyrażania zgody oraz żądania tokenu dostępu przy użyciu tokenu odświeżania.
 
 ### <a name="partner-consent"></a>Zgoda partnera
 
-Proces zgody partnera to interaktywny proces, w którym partner uwierzytelnia się przy użyciu uwierzytelniania wieloskładnikowego, jest wysyłany do aplikacji, a token odświeżania jest przechowywany w bezpiecznym repozytorium, takim jak Azure Key Vault. Zalecamy, aby dla tego procesu używać dedykowanego konta do celów związanych z integracją.
+Proces wyrażania zgody przez partnera to interaktywny proces, w którym partner uwierzytelnia się przy użyciu uwierzytelniania wieloskładnikowego, wyraża zgodę na aplikację, a token odświeżania jest przechowywany w bezpiecznym repozytorium, takim jak Azure Key Vault. W tym procesie zaleca się użycie dedykowanego konta na potrzeby integracji.
 
 > [!IMPORTANT]
-> Należy włączyć odpowiednie rozwiązanie do uwierzytelniania wieloskładnikowego dla konta usługi używanego w procesie zgody partnera. Jeśli nie, wynikowy token odświeżania nie będzie zgodny z wymaganiami dotyczącymi zabezpieczeń.
+> Dla konta usługi używanego w procesie wyrażania zgody partnera należy włączyć odpowiednie rozwiązanie uwierzytelniania wieloskładnikowego. Jeśli tak nie jest, wynikowy token odświeżania nie będzie zgodny z wymaganiami bezpieczeństwa.
 
-### <a name="samples-for-app--user-authentication"></a>Przykłady dla aplikacji i uwierzytelniania użytkowników
+### <a name="samples-for-app--user-authentication"></a>Przykłady uwierzytelniania aplikacji i użytkowników
 
-Proces zgody partnera można wykonać na wiele sposobów. Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, opracowano następujące przykłady. W przypadku zaimplementowania odpowiedniego rozwiązania w środowisku należy opracować rozwiązanie, które jest zgodne ze standardami kodowania i zasadami zabezpieczeń.
+Proces wyrażania zgody przez partnera może być wykonywany na wiele sposobów. Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, opracowaliśmy następujące przykłady. Podczas wdrażania odpowiedniego rozwiązania w środowisku ważne jest, aby opracować rozwiązanie, które jest skargą ze standardami kodowania i zasadami zabezpieczeń.
 
-## <a name="net-appuser-authentication"></a>.NET (aplikacja + uwierzytelnianie użytkownika)
+## <a name="net-appuser-authentication"></a>.NET (uwierzytelnianie aplikacji i użytkowników)
 
-Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model/keyvault) pokazuje, jak używać witryny sieci Web opracowanej przy użyciu ASP.NET do przechwytywania zgody, żądania tokenu odświeżania i bezpiecznego przechowywania w Azure Key Vault. Wykonaj następujące kroki, aby utworzyć wymagane wymagania wstępne dla tego przykładu.
+Przykładowy [projekt zgody](https://github.com/Microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model/keyvault) partnera pokazuje, jak korzystać z witryny internetowej opracowanej przy użyciu usługi ASP.NET do przechwytywania zgody, żądania tokenu odświeżania i bezpiecznego przechowywania ich w Azure Key Vault. Wykonaj poniższe kroki, aby utworzyć wymagane wymagania wstępne dla tego przykładu.
 
-1. Utwórz wystąpienie Azure Key Vault przy użyciu Azure Portal lub następujących poleceń programu PowerShell. Przed wykonaniem polecenia należy koniecznie zmodyfikować wartości parametrów. Nazwa magazynu musi być unikatowa.
+1. Utwórz wystąpienie klasy Azure Key Vault za pomocą Azure Portal lub następujących poleceń programu PowerShell. Przed wykonaniem polecenia należy odpowiednio zmodyfikować wartości parametrów. Nazwa magazynu musi być unikatowa.
 
     ```azurepowershell-interactive
     Login-AzureRmAccount
@@ -130,9 +125,9 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Aby uzyskać więcej informacji na temat tworzenia Azure Key Vault, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](/azure/key-vault/quick-create-portal) lub [szybkiego startu: Ustaw i Pobierz klucz tajny z Azure Key Vault przy użyciu programu PowerShell](/azure/key-vault/quick-create-powershell). Następnie ustaw i Pobierz wpis tajny.
+    Aby uzyskać więcej informacji na temat tworzenia konta usługi Azure Key Vault, zobacz Szybki [start:](/azure/key-vault/quick-create-portal) ustawianie i pobieranie informacji tajnych z usługi Azure Key Vault przy użyciu programu Azure Portal lub Quickstart: Set and retrieve a secret from Azure Key Vault using PowerShell (Szybki start: ustawianie i pobieranie informacji tajnych z usługi Azure Key Vault przy użyciu programu [PowerShell).](/azure/key-vault/quick-create-powershell) Następnie ustaw i pobierz klucz tajny.
 
-2. Utwórz aplikację usługi Azure AD i klucz przy użyciu Azure Portal lub następujących poleceń.
+2. Utwórz aplikację usługi Azure AD i klucz przy użyciu Azure Portal lub poniższych poleceń.
 
     ```azurepowershell-interactive
     Connect-AzureAD
@@ -146,9 +141,9 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Pamiętaj, aby zanotować identyfikator aplikacji i wartości klucza tajnego, ponieważ zostaną one użyte w poniższych krokach.
+    Pamiętaj, aby zanotować identyfikator aplikacji i wartości tajnych, ponieważ będą one używane w poniższych krokach.
 
-3. Przyznaj nowo utworzone aplikacje usługi Azure AD za pomocą Azure Portal lub następujących poleceń.
+3. Przyznaj nowo utworzonej aplikacji usługi Azure AD uprawnienia do odczytu wpisów tajnych przy użyciu Azure Portal lub poniższych poleceń.
 
     ```azurepowershell-interactive
     $app = Get-AzureADApplication -Filter {AppId -eq 'ENTER-APP-ID-HERE'}
@@ -156,22 +151,22 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $app.ObjectId -PermissionsToSecrets get
     ```
 
-4. Utwórz aplikację usługi Azure AD, która jest skonfigurowana dla Centrum partnerskiego. Wykonaj poniższe czynności, aby wykonać ten krok.
+4. Utwórz aplikację usługi Azure AD skonfigurowaną dla Partner Center. Aby wykonać ten krok, wykonaj następujące czynności.
 
-    - Przejdź do funkcji [zarządzania aplikacjami](https://partner.microsoft.com/pcv/apiintegration/appmanagement) na pulpicie nawigacyjnym Centrum partnerskiego
-    - Kliknij pozycję *Dodaj nową aplikację sieci Web* , aby utworzyć nową aplikację usługi Azure AD.
+    - Przejdź do funkcji [zarządzania aplikacją](https://partner.microsoft.com/pcv/apiintegration/appmanagement) pulpitu nawigacyjnego Partner Center Aplikacji
+    - Wybierz *pozycję Dodaj nową aplikację internetową,* aby utworzyć nową aplikację usługi Azure AD.
 
-    Upewnij się, że zostały udokumentowane *identyfikatory aplikacji*, * identyfikator konta * * i wartości *klucza* , ponieważ zostaną one użyte w poniższych krokach.
+    Pamiętaj, aby udokumentować wartości *Identyfikator*  aplikacji, *Identyfikator konta** i Klucz, ponieważ będą one używane w poniższych krokach.
 
-5. Sklonuj repozytorium [partnerskie — przykłady](https://github.com/Microsoft/Partner-Center-DotNet-Samples) dla tego programu przy użyciu programu Visual Studio lub poniższego polecenia.
+5. [Sklonuj repozytorium Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) przy użyciu Visual Studio lub następującego polecenia.
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-6. Otwórz projekt *PartnerConsent* znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu.
+6. Otwórz projekt *PartnerConsent* znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu .
 
-7. Wypełnij ustawienia aplikacji Znalezione w [web.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/PartnerConsent/Web.config)
+7. Wypełnij ustawienia aplikacji znalezione [](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/PartnerConsent/Web.config) wweb.config
 
     ```xml
     <!-- AppID that represents CSP application -->
@@ -200,15 +195,15 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     ```
 
     > [!IMPORTANT]
-    > Informacje poufne, takie jak wpisy tajne aplikacji, nie powinny być przechowywane w plikach konfiguracji. Zostało to zrobione w tym miejscu, ponieważ jest to przykładowa aplikacja. W przypadku aplikacji produkcyjnej zdecydowanie zalecamy użycie uwierzytelniania opartego na certyfikatach. Aby uzyskać więcej informacji, zobacz [poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji]( /azure/active-directory/develop/active-directory-certificate-credentials).
+    > Poufne informacje, takie jak wpisy tajne aplikacji, nie powinny być przechowywane w plikach konfiguracji. Zostało to zrobione w tym miejscu, ponieważ jest to przykładowa aplikacja. W przypadku aplikacji produkcyjnej zdecydowanie zalecamy użycie uwierzytelniania opartego na certyfikatach. Aby uzyskać więcej informacji, zobacz [Poświadczenia certyfikatu do uwierzytelniania aplikacji.]( /azure/active-directory/develop/active-directory-certificate-credentials)
 
-8. Po uruchomieniu tego przykładowego projektu zostanie wyświetlony monit o uwierzytelnienie. Po pomyślnym uwierzytelnieniu token dostępu jest zaproszony z usługi Azure AD. Informacje zwracane z usługi Azure AD obejmują token odświeżania, który jest przechowywany w skonfigurowanym wystąpieniu Azure Key Vault.
+8. Po uruchomieniu tego przykładowego projektu zostanie wyświetlony monit o uwierzytelnienie. Po pomyślnym uwierzytelnieniu z usługi Azure AD jest żądany token dostępu. Informacje zwrócone z usługi Azure AD obejmują token odświeżania, który jest przechowywany w skonfigurowanym wystąpieniu Azure Key Vault.
 
 ## <a name="java-appuser-authentication"></a>Java (uwierzytelnianie aplikacji i użytkowników)
 
-Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) pokazuje, jak używać witryny sieci Web opracowanej przy użyciu JSP do przechwytywania zgody, żądania tokenu odświeżania i bezpiecznego magazynu w Azure Key Vault. Wykonaj poniższe czynności, aby utworzyć wymagane wymagania wstępne dla tego przykładu.
+Przykładowy [projekt zgody](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) partnera pokazuje, jak korzystać z witryny internetowej opracowanej przy użyciu programu JSP w celu przechwycenia zgody, zażądania tokenu odświeżania i bezpiecznego magazynu w Azure Key Vault. Wykonaj następujące czynności, aby utworzyć wymagane wymagania wstępne dla tego przykładu.
 
-1. Utwórz wystąpienie Azure Key Vault przy użyciu Azure Portal lub następujących poleceń programu PowerShell. Przed wykonaniem polecenia należy koniecznie zmodyfikować wartości parametrów. Nazwa magazynu musi być unikatowa.
+1. Utwórz wystąpienie klasy Azure Key Vault za pomocą Azure Portal lub następujących poleceń programu PowerShell. Przed wykonaniem polecenia należy odpowiednio zmodyfikować wartości parametrów. Nazwa magazynu musi być unikatowa.
 
     ```azurepowershell-interactive
     Login-AzureRmAccount
@@ -219,9 +214,9 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Aby uzyskać więcej informacji na temat tworzenia Azure Key Vault, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](/azure/key-vault/quick-create-portal) lub [szybkiego startu: Ustaw i Pobierz klucz tajny z Azure Key Vault przy użyciu programu PowerShell](/azure/key-vault/quick-create-powershell).
+    Aby uzyskać więcej informacji na temat tworzenia konta usługi Azure Key Vault, zobacz Szybki [start:](/azure/key-vault/quick-create-portal) ustawianie i pobieranie informacji tajnych z usługi Azure Key Vault przy użyciu programu Azure Portal lub Quickstart: Set and retrieve a secret from Azure Key Vault using PowerShell (Szybki start: ustawianie i pobieranie informacji tajnych z usługi Azure Key Vault przy użyciu programu [PowerShell).](/azure/key-vault/quick-create-powershell)
 
-2. Utwórz aplikację usługi Azure AD i klucz przy użyciu Azure Portal lub następujących poleceń.
+2. Utwórz aplikację usługi Azure AD i klucz przy użyciu Azure Portal lub poniższych poleceń.
 
     ```azurepowershell-interactive
     Connect-AzureAD
@@ -235,9 +230,9 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Upewnij się, że zostały udokumentowane identyfikatory aplikacji i wartości tajne, ponieważ zostaną one użyte w poniższych krokach.
+    Pamiętaj, aby udokumentować identyfikator aplikacji i wartości klucza tajnego, ponieważ będą one używane w poniższych krokach.
 
-3. Przyznaj nowo utworzoną aplikację usługi Azure AD uprawnienia Odczyt wpisów tajnych przy użyciu Azure Portal lub następujących poleceń.
+3. Przyznaj nowo utworzonej aplikacji usługi Azure AD uprawnienia do odczytu wpisów tajnych przy użyciu Azure Portal lub poniższych poleceń.
 
     ```azurepowershell-interactive
     $app = Get-AzureADApplication -Filter {AppId -eq 'ENTER-APP-ID-HERE'}
@@ -245,22 +240,22 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $app.ObjectId -PermissionsToSecrets get
     ```
 
-4. Utwórz aplikację usługi Azure AD, która jest skonfigurowana dla Centrum partnerskiego. Aby ukończyć ten krok, wykonaj następujące czynności.
+4. Utwórz aplikację usługi Azure AD skonfigurowaną dla Partner Center. Wykonaj następujące czynności, aby ukończyć ten krok.
 
-    - Przejdź do funkcji [zarządzania aplikacjami](https://partner.microsoft.com/pcv/apiintegration/appmanagement) na pulpicie nawigacyjnym Centrum partnerskiego
-    - Kliknij pozycję *Dodaj nową aplikację sieci Web* , aby utworzyć nową aplikację usługi Azure AD.
+    - Przejdź do funkcji [zarządzania aplikacją](https://partner.microsoft.com/pcv/apiintegration/appmanagement) pulpitu nawigacyjnego Partner Center Aplikacji
+    - Wybierz *pozycję Dodaj nową aplikację internetową,* aby utworzyć nową aplikację usługi Azure AD.
 
-    Upewnij się, że zostały udokumentowane *identyfikatory aplikacji*, * identyfikator konta * * i wartości *klucza* , ponieważ zostaną one użyte w poniższych krokach.
+    Pamiętaj, aby udokumentować wartości *Identyfikator*  aplikacji, *Identyfikator konta** i Klucz, ponieważ będą one używane w poniższych krokach.
 
-5. Sklonuj repozytorium [partnerskie-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) przy użyciu następującego polecenia
+5. [Sklonuj repozytorium Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) za pomocą następującego polecenia
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-6. Otwórz projekt *PartnerConsent* znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu.
+6. Otwórz projekt *PartnerConsent* znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu .
 
-7. Wypełnij ustawienia aplikacji Znalezione w pliku [web.xml](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/partnerconsent/src/main/webapp/WEB-INF/web.xml)
+7. Wypełnij ustawienia aplikacji znalezione w pliku [web.xml](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/partnerconsent/src/main/webapp/WEB-INF/web.xml) aplikacji
 
     ```xml
     <filter>
@@ -294,31 +289,31 @@ Przykładowy projekt [zgody partnera](https://github.com/Microsoft/Partner-Cente
     ```
 
     > [!IMPORTANT]
-    > Informacje poufne, takie jak wpisy tajne aplikacji, nie powinny być przechowywane w plikach konfiguracji. Zostało to zrobione w tym miejscu, ponieważ jest to przykładowa aplikacja. Zdecydowanie zalecamy używanie uwierzytelniania opartego na certyfikatach w aplikacji produkcyjnej. Aby uzyskać więcej informacji, zobacz [Key Vault uwierzytelnianie certyfikatu](https://github.com/Azure-Samples/key-vault-java-certificate-authentication).
+    > Poufne informacje, takie jak wpisy tajne aplikacji, nie powinny być przechowywane w plikach konfiguracji. Zostało to zrobione w tym miejscu, ponieważ jest to przykładowa aplikacja. W przypadku aplikacji produkcyjnej zdecydowanie zalecamy użycie uwierzytelniania opartego na certyfikatach. Aby uzyskać więcej informacji, zobacz [Key Vault Uwierzytelnianie certyfikatu.](https://github.com/Azure-Samples/key-vault-java-certificate-authentication)
 
-8. Po uruchomieniu tego przykładowego projektu zostanie wyświetlony monit o uwierzytelnienie. Po pomyślnym uwierzytelnieniu token dostępu jest zaproszony z usługi Azure AD. Informacje zwracane z usługi Azure AD obejmują token odświeżania, który jest przechowywany w skonfigurowanym wystąpieniu Azure Key Vault.
+8. Po uruchomieniu tego przykładowego projektu zostanie wyświetlony monit o uwierzytelnienie. Po pomyślnym uwierzytelnieniu z usługi Azure AD jest żądany token dostępu. Informacje zwrócone z usługi Azure AD obejmują token odświeżania, który jest przechowywany w skonfigurowanym wystąpieniu Azure Key Vault.
 
-## <a name="cloud-solution-provider-authentication"></a>Uwierzytelnianie dostawcy rozwiązań w chmurze
+## <a name="cloud-solution-provider-authentication"></a>Dostawca rozwiązań w chmurze uwierzytelniania
 
-Partnerzy dostawcy rozwiązań w chmurze mogą używać tokenu odświeżania uzyskanego w ramach procesu [zgody partnera](#partner-consent) .
+Dostawca rozwiązań w chmurze mogą używać tokenu odświeżania uzyskanego w procesie [wyrażania zgody](#partner-consent) przez partnera.
 
-### <a name="samples-for-cloud-solution-provider-authentication"></a>Przykłady uwierzytelniania dostawcy rozwiązań w chmurze
+### <a name="samples-for-cloud-solution-provider-authentication"></a>Przykłady uwierzytelniania Dostawca rozwiązań w chmurze danych
 
-Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, opracowano następujące przykłady. W przypadku zaimplementowania odpowiedniego rozwiązania w środowisku należy opracować rozwiązanie, które jest zgodne ze standardami kodowania i zasadami zabezpieczeń.
+Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, opracowaliśmy następujące przykłady. Podczas wdrażania odpowiedniego rozwiązania w środowisku ważne jest, aby opracować rozwiązanie, które jest zgodnie ze standardami kodowania i zasadami zabezpieczeń.
 
 ## <a name="net-csp-authentication"></a>.NET (uwierzytelnianie CSP)
 
-1. Jeśli jeszcze tego nie zrobiono, wykonaj [proces zgody partnera](#partner-consent).
+1. Jeśli jeszcze tego nie zrobiono, wykonaj proces [zgody partnera.](#partner-consent)
 
-2. Klonowanie repozytorium z [przykładem partnera](https://github.com/Microsoft/Partner-Center-DotNet-Samples) z użyciem programu Visual Studio lub następującego polecenia
+2. [Sklonuj repozytorium Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) przy użyciu Visual Studio lub następującego polecenia
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Otwórz `CSPApplication` projekt znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu.
+3. Otwórz `CSPApplication` projekt znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu .
 
-4. Aktualizacja ustawień aplikacji znalezionych w pliku [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) .
+4. Zaktualizuj ustawienia aplikacji znalezione w [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) aplikacji.
 
     ```xml
     <!-- AppID that represents CSP application -->
@@ -342,7 +337,7 @@ Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, oprac
     <add key="ida:KeyVaultClientSecret" value="" />
     ```
 
-5. Ustaw odpowiednie wartości zmiennych **PartnerId** i **CustomerID** znalezionych w pliku [program.cs](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/Program.cs) .
+5. Ustaw odpowiednie wartości zmiennych **PartnerId** i **CustomerId** znalezionych w [pliku Program.cs.](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/Program.cs)
 
     ```csharp
     // The following properties indicate which partner and customer context the calls are going to be made.
@@ -350,21 +345,21 @@ Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, oprac
     string CustomerId = "<Customer tenant id>";
     ```
 
-6. Po uruchomieniu tego przykładowego projektu uzyskuje token odświeżania uzyskany podczas procesu wyrażania zgody partnera. Następnie żąda tokenu dostępu do współdziałania z zestawem SDK Centrum partnerskiego w imieniu partnera. Na koniec żąda tokenu dostępu do współpracy z Microsoft Graph w imieniu określonego klienta.
+6. Po uruchomieniu tego przykładowego projektu uzyskuje on token odświeżania uzyskany podczas procesu wyrażania zgody przez partnera. Następnie żąda tokenu dostępu do interakcji z zestaw SDK Centrum partnerskiego w imieniu partnera. Na koniec żąda tokenu dostępu do interakcji z Graph Microsoft w imieniu określonego klienta.
 
 ## <a name="java-csp-authentication"></a>Java (uwierzytelnianie CSP)
 
-1. Jeśli jeszcze tego nie zrobiono, wykonaj [proces zgody partnera](#partner-consent).
+1. Jeśli jeszcze tego nie zrobiono, wykonaj proces [wyrażania zgody przez partnera.](#partner-consent)
 
-2. Sklonuj repozytorium [partner-Sample-Java-przykłady](https://github.com/Microsoft/Partner-Center-Java-Samples) przy użyciu programu Visual Studio lub następującego polecenia
+2. [Sklonuj repozytorium Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) przy użyciu Visual Studio lub następującego polecenia
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Otwórz `cspsample` projekt znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu.
+3. Otwórz `cspsample` projekt znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu .
 
-4. Zaktualizuj ustawienia aplikacji Znalezione w pliku [Application. Properties](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cspsample/src/main/resources/application.properties) .
+4. Zaktualizuj ustawienia aplikacji znalezione w pliku [application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cspsample/src/main/resources/application.properties)
 
      ```java
     azuread.authority=https://login.microsoftonline.com
@@ -376,34 +371,34 @@ Aby pomóc partnerom zrozumieć, jak wykonać każdą wymaganą operację, oprac
     partnercenter.clientSecret=
     ```
 
-5. Po uruchomieniu tego przykładowego projektu uzyskuje token odświeżania uzyskany podczas procesu wyrażania zgody partnera. Następnie żąda tokenu dostępu do współdziałania z zestawem SDK Centrum partnerskiego w imieniu partnera.
+5. Po uruchomieniu tego przykładowego projektu uzyskuje on token odświeżania uzyskany podczas procesu wyrażania zgody przez partnera. Następnie żąda tokenu dostępu do interakcji z zestaw SDK Centrum partnerskiego w imieniu partnera.
 
-6. Opcjonalne — Usuń komentarz z wywołań funkcji *RunAzureTask* i *RunGraphTask* , jeśli chcesz zobaczyć, jak korzystać z Azure Resource Manager i Microsoft Graph w imieniu klienta.
+6. Opcjonalnie — cokłoń wywołania funkcji *RunAzureTask* i *RunGraphTask,* jeśli chcesz zobaczyć, jak wchodzić w interakcje z usługami Azure Resource Manager i Microsoft Graph w imieniu klienta.
 
-## <a name="control-panel-provider-authentication"></a>Uwierzytelnianie dostawcy panelu sterowania
+## <a name="control-panel-provider-authentication"></a>Panel sterowania uwierzytelniania dostawcy
 
-Dostawcy panelu sterowania muszą mieć wszystkich partnerów, którzy obsługują proces [wyrażania zgody partnera](#partner-consent) . Po ukończeniu token odświeżania uzyskany za pomocą tego procesu jest używany w celu uzyskania dostępu do interfejsu API REST Centrum partnerskiego i interfejsu API platformy .NET.
+Dostawcy panelu sterowania muszą mieć każdego partnera, który obsługują, w procesie [wyrażania przez nich](#partner-consent) zgody. Po zakończeniu token odświeżania uzyskany w ramach tego procesu jest używany do uzyskiwania dostępu do interfejsu API REST Partner Center api .NET.
 
-### <a name="samples-for-cloud-panel-provider-authentication"></a>Przykłady uwierzytelniania dostawcy w panelu Cloud
+### <a name="samples-for-cloud-panel-provider-authentication"></a>Przykłady uwierzytelniania dostawcy paneli w chmurze
 
-Aby ułatwić dostawcom panelu sterowania zrozumienie, jak wykonać każdą wymaganą operację, opracowano następujące przykłady. W przypadku zaimplementowania odpowiedniego rozwiązania w środowisku należy opracować rozwiązanie, które jest zgodne ze standardami kodowania i zasadami zabezpieczeń.
+Aby ułatwić dostawcom panelu sterowania zrozumienie sposobu wykonywania poszczególnych wymaganych operacji, opracowaliśmy następujące przykłady. Podczas wdrażania odpowiedniego rozwiązania w środowisku ważne jest, aby opracować rozwiązanie, które jest zgodnie ze standardami kodowania i zasadami zabezpieczeń.
 
 ## <a name="net-cpv-authentication"></a>.NET (uwierzytelnianie CPV)
 
-1. Utwórz i Wdróż proces dla partnerów dostawcy rozwiązań w chmurze, aby zapewnić odpowiednią zgodę. Aby uzyskać więcej informacji, zobacz temat [zgody partnera](#partner-consent).
+1. Opracowywanie i wdrażanie procesu dla partnerów Dostawca rozwiązań w chmurze w celu wyrażenia odpowiedniej zgody. Aby uzyskać więcej informacji na przykład, zobacz [Zgoda partnera](#partner-consent).
 
     > [!IMPORTANT]
-    > Nie należy przechowywać poświadczeń użytkownika od partnera dostawcy rozwiązań w chmurze. Token odświeżania uzyskany przez proces wyrażania zgody partnera powinien być przechowywany i używany do żądania tokenów dostępu w celu współpracy z dowolnym interfejsem API firmy Microsoft.
+    > Poświadczenia użytkownika od partnera Dostawca rozwiązań w chmurze nie powinny być przechowywane. Token odświeżania uzyskany w procesie zgody partnera powinien być przechowywany i używany do żądania tokenów dostępu w celu interakcji z dowolnym interfejsem API firmy Microsoft.
 
-2. Klonowanie repozytorium z [przykładem partnera](https://github.com/Microsoft/Partner-Center-DotNet-Samples) z użyciem programu Visual Studio lub następującego polecenia
+2. [Sklonuj repozytorium Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) przy użyciu Visual Studio lub następującego polecenia
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Otwórz `CPVApplication` projekt znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu.
+3. Otwórz `CPVApplication` projekt znaleziony w `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogu .
 
-4. Aktualizacja ustawień aplikacji znalezionych w pliku [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) .
+4. Zaktualizuj ustawienia aplikacji znalezione w [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) aplikacji.
 
     ```xml
     <!-- AppID that represents Control panel vendor application -->
@@ -428,7 +423,7 @@ Aby ułatwić dostawcom panelu sterowania zrozumienie, jak wykonać każdą wyma
     <add key="ida:KeyVaultClientSecret" value="" />
     ```
 
-5. Ustaw odpowiednie wartości zmiennych **PartnerId** i **CustomerID** znalezionych w pliku [program.cs](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/Program.cs) .
+5. Ustaw odpowiednie wartości zmiennych **PartnerId** i **CustomerId** znalezionych w [pliku Program.cs.](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/Program.cs)
 
     ```csharp
     // The following properties indicate which partner and customer context the calls are going to be made.
@@ -436,7 +431,7 @@ Aby ułatwić dostawcom panelu sterowania zrozumienie, jak wykonać każdą wyma
     string CustomerId = "<Customer tenant id>";
     ```
 
-6. Po uruchomieniu tego przykładowego projektu zostanie uzyskany token odświeżania dla określonego partnera. Następnie żąda tokenu dostępu, aby uzyskać dostęp do Centrum partnerskiego i grafu usługi Azure AD w imieniu partnera. Następne zadanie, które wykonuje, to usunięcie i utworzenie dotacji do dzierżawy klienta. Ponieważ nie istnieje żadna relacja między dostawcą panelu sterowania a klientem, te uprawnienia należy dodać przy użyciu interfejsu API Centrum partnerskiego. Poniższy przykład pokazuje, jak to zrobić.
+6. Po uruchomieniu tego przykładowego projektu uzyskuje token odświeżania dla określonego partnera. Następnie żąda tokenu dostępu w celu uzyskania Partner Center i usługi Azure AD Graph w imieniu partnera. Następnym zadaniem, które wykonuje, jest usunięcie i utworzenie uprawnień udzielanych do dzierżawy klienta. Ponieważ nie ma relacji między dostawcą panelu sterowania a klientem, te uprawnienia należy dodać przy użyciu Partner Center API. W poniższym przykładzie pokazano, jak to zrobić.
 
     ```csharp
     JObject contents = new JObject
@@ -470,24 +465,24 @@ Aby ułatwić dostawcom panelu sterowania zrozumienie, jak wykonać każdą wyma
         contents.ToString());
     ```
 
-Po nawiązaniu tych uprawnień przykład wykonuje operacje przy użyciu programu Azure AD Graph w imieniu klienta.
+Po niu tych uprawnień przykład wykonuje operacje przy użyciu usługi Azure AD Graph w imieniu klienta.
 
 ## <a name="java-cpv-authentication"></a>Java (uwierzytelnianie CPV)
 
-1. Utwórz i Wdróż proces dla partnerów dostawcy rozwiązań w chmurze, aby zapewnić odpowiednią zgodę. Aby uzyskać więcej informacji i zapoznać się z przykładem, zapoznaj się z tematem [zgody partnera](#partner-consent).
+1. Opracowywanie i wdrażanie procesu dla partnerów Dostawca rozwiązań w chmurze w celu wyrażenia odpowiedniej zgody. Aby uzyskać więcej informacji i przykład, zobacz [zgoda partnera](#partner-consent).
 
     > [!IMPORTANT]
-    > Nie należy przechowywać poświadczeń użytkownika od partnera dostawcy rozwiązań w chmurze. Token odświeżania uzyskany przez proces wyrażania zgody partnera powinien być przechowywany i używany do żądania tokenów dostępu w celu współpracy z dowolnym interfejsem API firmy Microsoft.
+    > Poświadczenia użytkownika od partnera Dostawca rozwiązań w chmurze nie powinny być przechowywane. Token odświeżania uzyskany w procesie zgody partnera powinien być przechowywany i używany do żądania tokenów dostępu w celu interakcji z dowolnym interfejsem API firmy Microsoft.
 
-2. Sklonuj repozytorium [partnerskie-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) przy użyciu następującego polecenia
+2. [Sklonuj repozytorium Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) przy użyciu następującego polecenia
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Otwórz `cpvsample` projekt znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu.
+3. Otwórz `cpvsample` projekt znaleziony w `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogu .
 
-4. Zaktualizuj ustawienia aplikacji Znalezione w pliku [Application. Properties](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/resources/application.properties) .
+4. Zaktualizuj ustawienia aplikacji znalezione w pliku [application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/resources/application.properties)
 
     ```java
     azuread.authority=https://login.microsoftonline.com
@@ -500,16 +495,16 @@ Po nawiązaniu tych uprawnień przykład wykonuje operacje przy użyciu programu
     partnercenter.displayName=
     ```
 
-    Wartość `partnercenter.displayName` powinna być nazwą wyświetlaną aplikacji Marketplace.
+    Wartością powinna `partnercenter.displayName` być nazwa wyświetlana aplikacji na platformie handlowej.
 
-5. Ustaw odpowiednie wartości zmiennych **partnerId** i **customerId** znalezionych w pliku [program. Java](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/java/com/microsoft/store/samples/secureappmodel/cpvsample/Program.java) .
+5. Ustaw odpowiednie wartości zmiennych **partnerId** i **customerId** znalezionych w [pliku Program.java.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/java/com/microsoft/store/samples/secureappmodel/cpvsample/Program.java)
 
     ```java
     partnerId = "SPECIFY-THE-PARTNER-TENANT-ID-HERE";
     customerId = "SPECIFY-THE-CUSTOMER-TENANT-ID-HERE";
     ```
 
-6. Po uruchomieniu tego przykładowego projektu zostanie uzyskany token odświeżania dla określonego partnera. Następnie żąda tokenu dostępu, aby uzyskać dostęp do Centrum partnerskiego w imieniu partnera. Następne zadanie, które wykonuje, to usunięcie i utworzenie dotacji do dzierżawy klienta. Ponieważ nie istnieje żadna relacja między dostawcą panelu sterowania a klientem, te uprawnienia należy dodać przy użyciu interfejsu API Centrum partnerskiego. Poniższy przykład pokazuje, jak przyznać uprawnienia.
+6. Po uruchomieniu tego przykładowego projektu uzyskuje token odświeżania dla określonego partnera. Następnie żąda tokenu dostępu w celu uzyskania Partner Center w imieniu partnera. Następnym zadaniem, które wykonuje, jest usunięcie i utworzenie uprawnień udzielanych do dzierżawy klienta. Ponieważ nie ma relacji między dostawcą panelu sterowania a klientem, te uprawnienia należy dodać przy użyciu Partner Center API. W poniższym przykładzie pokazano, jak udzielić uprawnień.
 
     ```java
     ApplicationGrant azureAppGrant = new ApplicationGrant();
@@ -547,4 +542,4 @@ Po nawiązaniu tych uprawnień przykład wykonuje operacje przy użyciu programu
         consent);
     ```
 
-Usuń komentarz z wywołań funkcji *RunAzureTask* i *RunGraphTask* , jeśli chcesz zobaczyć, jak korzystać z Azure Resource Manager i Microsoft Graph w imieniu klienta.
+Cokmentuj wywołania funkcji *RunAzureTask* i *RunGraphTask,* jeśli chcesz zobaczyć, jak wchodzić w interakcje z usługami Azure Resource Manager i Microsoft Graph w imieniu klienta.

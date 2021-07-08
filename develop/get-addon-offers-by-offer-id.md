@@ -1,38 +1,33 @@
 ---
 title: Pobieranie dodatków dla identyfikatora oferty
-description: Jak uzyskać Dodatki dla identyfikatora oferty.
+description: Jak uzyskać dodatki dla identyfikatora oferty.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 9ee22712b323c7439a192ed2e5af8d5e7eaf92a3
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: e3b0ab8007d3affa6912479b960f6dae3bc0bd28
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97768050"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760338"
 ---
-# <a name="get-add-ons-for-an-offer-id"></a><span data-ttu-id="29cf4-103">Pobieranie dodatków dla identyfikatora oferty</span><span class="sxs-lookup"><span data-stu-id="29cf4-103">Get add-ons for an offer ID</span></span>
+# <a name="get-add-ons-for-an-offer-id"></a><span data-ttu-id="615df-103">Pobieranie dodatków dla identyfikatora oferty</span><span class="sxs-lookup"><span data-stu-id="615df-103">Get add-ons for an offer ID</span></span>
 
-<span data-ttu-id="29cf4-104">**Dotyczy**</span><span class="sxs-lookup"><span data-stu-id="29cf4-104">**Applies To**</span></span>
+<span data-ttu-id="615df-104">**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="615df-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="29cf4-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="29cf4-105">Partner Center</span></span>
-- <span data-ttu-id="29cf4-106">Centrum partnerskie obsługiwane przez firmę 21Vianet</span><span class="sxs-lookup"><span data-stu-id="29cf4-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="29cf4-107">Centrum partnerskie dla Microsoft Cloud Niemcy</span><span class="sxs-lookup"><span data-stu-id="29cf4-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="29cf4-108">Centrum partnerskie Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="29cf4-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="615df-105">Jak uzyskać dodatki dla identyfikatora oferty.</span><span class="sxs-lookup"><span data-stu-id="615df-105">How to get the add-ons for an offer ID.</span></span>
 
-<span data-ttu-id="29cf4-109">Jak uzyskać Dodatki dla identyfikatora oferty.</span><span class="sxs-lookup"><span data-stu-id="29cf4-109">How to get the add-ons for an offer ID.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="615df-106">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="615df-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="29cf4-110">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="29cf4-110">Prerequisites</span></span>
+- <span data-ttu-id="615df-107">Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="615df-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="615df-108">Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="615df-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="29cf4-111">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="29cf4-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="29cf4-112">Ten scenariusz obsługuje uwierzytelnianie zarówno w przypadku aplikacji autonomicznych, jak i aplikacji oraz poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="29cf4-112">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="615df-109">Identyfikator oferty.</span><span class="sxs-lookup"><span data-stu-id="615df-109">An offer ID.</span></span> <span data-ttu-id="615df-110">Jeśli nie masz identyfikatora oferty, zobacz Get a list of offers for a market (Uzyskiwanie listy [ofert dla rynku).](get-a-list-of-offers-for-a-market.md)</span><span class="sxs-lookup"><span data-stu-id="615df-110">If you don't have the offer ID, see [Get a list of offers for a market](get-a-list-of-offers-for-a-market.md).</span></span>
 
-- <span data-ttu-id="29cf4-113">Identyfikator oferty.</span><span class="sxs-lookup"><span data-stu-id="29cf4-113">An offer ID.</span></span> <span data-ttu-id="29cf4-114">Jeśli nie masz identyfikatora oferty, zobacz artykuł [Uzyskaj listę ofert dla rynku](get-a-list-of-offers-for-a-market.md).</span><span class="sxs-lookup"><span data-stu-id="29cf4-114">If you don't have the offer ID, see [Get a list of offers for a market](get-a-list-of-offers-for-a-market.md).</span></span>
+## <a name="c"></a><span data-ttu-id="615df-111">C\#</span><span class="sxs-lookup"><span data-stu-id="615df-111">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="29cf4-115">C\#</span><span class="sxs-lookup"><span data-stu-id="29cf4-115">C\#</span></span>
-
-<span data-ttu-id="29cf4-116">Aby pobrać Dodatki dla oferty według identyfikatora, najpierw Wywołaj metodę [**IAggregatePartner. offer. ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs umożliwiający wykonywanie operacji na podstawie danego kraju.</span><span class="sxs-lookup"><span data-stu-id="29cf4-116">To get the add-ons for an offer by ID, first call the [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) method with the country code to get an interface to offer operations based on the given country.</span></span> <span data-ttu-id="29cf4-117">Następnie Wywołaj metodę [**ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której Dodatki chcesz pobrać.</span><span class="sxs-lookup"><span data-stu-id="29cf4-117">Then call the [**ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) method with the offer ID to identify the offer whose add-ons you want to retrieve.</span></span> <span data-ttu-id="29cf4-118">Następnie użyj właściwości [**Dodatki**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) , aby uzyskać interfejs do operacji dodatku dla bieżącej oferty.</span><span class="sxs-lookup"><span data-stu-id="29cf4-118">Next, use the [**AddOns**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) property to get an interface to add-on operations for the current offer.</span></span> <span data-ttu-id="29cf4-119">Na koniec Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) , aby uzyskać kolekcję wszystkich dodatków dla określonej oferty.</span><span class="sxs-lookup"><span data-stu-id="29cf4-119">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) method to get a collection of all the add-ons for the specified offer.</span></span>
+<span data-ttu-id="615df-112">Aby uzyskać dodatki dla oferty według identyfikatora, najpierw wywołaj metodę [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs do zaoferowania operacji na podstawie danego kraju.</span><span class="sxs-lookup"><span data-stu-id="615df-112">To get the add-ons for an offer by ID, first call the [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) method with the country code to get an interface to offer operations based on the given country.</span></span> <span data-ttu-id="615df-113">Następnie wywołaj [**metodę ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której dodatki chcesz pobrać.</span><span class="sxs-lookup"><span data-stu-id="615df-113">Then call the [**ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) method with the offer ID to identify the offer whose add-ons you want to retrieve.</span></span> <span data-ttu-id="615df-114">Następnie użyj właściwości [**AddOns,**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) aby uzyskać interfejs do operacji dodatku dla bieżącej oferty.</span><span class="sxs-lookup"><span data-stu-id="615df-114">Next, use the [**AddOns**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) property to get an interface to add-on operations for the current offer.</span></span> <span data-ttu-id="615df-115">Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) aby pobrać kolekcję wszystkich dodatków dla określonej oferty.</span><span class="sxs-lookup"><span data-stu-id="615df-115">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) method to get a collection of all the add-ons for the specified offer.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,34 +37,34 @@ ms.locfileid: "97768050"
 var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).AddOns.Get();
 ```
 
-<span data-ttu-id="29cf4-120">**Przykład**: [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="29cf4-120">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="29cf4-121">**Projekt**: **Klasa** przykładów zestawu SDK centrum partnerskiego: GetOffer.cs</span><span class="sxs-lookup"><span data-stu-id="29cf4-121">**Project**: Partner Center SDK Samples **Class**: GetOffer.cs</span></span>
+<span data-ttu-id="615df-116">**Przykład:** [aplikacja testowa konsoli](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="615df-116">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="615df-117">**Project:** zestaw SDK Centrum partnerskiego Samples Class : GetOffer.cs **(Klasa przykładów** zestaw SDK Centrum partnerskiego: GetOffer.cs)</span><span class="sxs-lookup"><span data-stu-id="615df-117">**Project**: Partner Center SDK Samples **Class**: GetOffer.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="29cf4-122">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="29cf4-122">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="615df-118">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="615df-118">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="29cf4-123">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="29cf4-123">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="615df-119">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="615df-119">Request syntax</span></span>
 
-| <span data-ttu-id="29cf4-124">Metoda</span><span class="sxs-lookup"><span data-stu-id="29cf4-124">Method</span></span>  | <span data-ttu-id="29cf4-125">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="29cf4-125">Request URI</span></span>                                                                                             |
+| <span data-ttu-id="615df-120">Metoda</span><span class="sxs-lookup"><span data-stu-id="615df-120">Method</span></span>  | <span data-ttu-id="615df-121">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="615df-121">Request URI</span></span>                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="29cf4-126">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="29cf4-126">**GET**</span></span> | <span data-ttu-id="29cf4-127">[*{baseURL}*](partner-center-rest-urls.md)/V1/offers/{Offer-ID}/addons? Country = {Country-Code} http/1.1</span><span class="sxs-lookup"><span data-stu-id="29cf4-127">[*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{offer-id}/addons?country={country-code} HTTP/1.1</span></span> |
+| <span data-ttu-id="615df-122">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="615df-122">**GET**</span></span> | <span data-ttu-id="615df-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{identyfikator oferty}/addons?country={country-code} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="615df-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{offer-id}/addons?country={country-code} HTTP/1.1</span></span> |
 
-### <a name="uri-parameters"></a><span data-ttu-id="29cf4-128">Parametry identyfikatora URI</span><span class="sxs-lookup"><span data-stu-id="29cf4-128">URI parameters</span></span>
+### <a name="uri-parameters"></a><span data-ttu-id="615df-124">Parametry URI</span><span class="sxs-lookup"><span data-stu-id="615df-124">URI parameters</span></span>
 
-<span data-ttu-id="29cf4-129">Użyj następujących parametrów, aby podać identyfikator oferty i kod kraju.</span><span class="sxs-lookup"><span data-stu-id="29cf4-129">Use the following parameters to provide the offer ID and country code.</span></span>
+<span data-ttu-id="615df-125">Użyj następujących parametrów, aby podać identyfikator oferty i kod kraju.</span><span class="sxs-lookup"><span data-stu-id="615df-125">Use the following parameters to provide the offer ID and country code.</span></span>
 
-| <span data-ttu-id="29cf4-130">Nazwa</span><span class="sxs-lookup"><span data-stu-id="29cf4-130">Name</span></span>         | <span data-ttu-id="29cf4-131">Typ</span><span class="sxs-lookup"><span data-stu-id="29cf4-131">Type</span></span>       | <span data-ttu-id="29cf4-132">Wymagane</span><span class="sxs-lookup"><span data-stu-id="29cf4-132">Required</span></span> | <span data-ttu-id="29cf4-133">Opis</span><span class="sxs-lookup"><span data-stu-id="29cf4-133">Description</span></span>                       |
+| <span data-ttu-id="615df-126">Nazwa</span><span class="sxs-lookup"><span data-stu-id="615df-126">Name</span></span>         | <span data-ttu-id="615df-127">Typ</span><span class="sxs-lookup"><span data-stu-id="615df-127">Type</span></span>       | <span data-ttu-id="615df-128">Wymagane</span><span class="sxs-lookup"><span data-stu-id="615df-128">Required</span></span> | <span data-ttu-id="615df-129">Opis</span><span class="sxs-lookup"><span data-stu-id="615df-129">Description</span></span>                       |
 |--------------|------------|----------|-----------------------------------|
-| <span data-ttu-id="29cf4-134">**Oferta — identyfikator**</span><span class="sxs-lookup"><span data-stu-id="29cf4-134">**offer-id**</span></span> | <span data-ttu-id="29cf4-135">**guid**</span><span class="sxs-lookup"><span data-stu-id="29cf4-135">**guid**</span></span>   | <span data-ttu-id="29cf4-136">Y</span><span class="sxs-lookup"><span data-stu-id="29cf4-136">Y</span></span>        | <span data-ttu-id="29cf4-137">Identyfikator GUID, który identyfikuje ofertę.</span><span class="sxs-lookup"><span data-stu-id="29cf4-137">A GUID that identifies the offer.</span></span> |
-| <span data-ttu-id="29cf4-138">**trzeciego**</span><span class="sxs-lookup"><span data-stu-id="29cf4-138">**country**</span></span>  | <span data-ttu-id="29cf4-139">**parametry**</span><span class="sxs-lookup"><span data-stu-id="29cf4-139">**string**</span></span> | <span data-ttu-id="29cf4-140">Y</span><span class="sxs-lookup"><span data-stu-id="29cf4-140">Y</span></span>        | <span data-ttu-id="29cf4-141">Kod kraju (na przykład `US` ).</span><span class="sxs-lookup"><span data-stu-id="29cf4-141">The country code (for example `US`).</span></span>       |
+| <span data-ttu-id="615df-130">**identyfikator oferty**</span><span class="sxs-lookup"><span data-stu-id="615df-130">**offer-id**</span></span> | <span data-ttu-id="615df-131">**guid**</span><span class="sxs-lookup"><span data-stu-id="615df-131">**guid**</span></span>   | <span data-ttu-id="615df-132">Y</span><span class="sxs-lookup"><span data-stu-id="615df-132">Y</span></span>        | <span data-ttu-id="615df-133">Identyfikator GUID, który identyfikuje ofertę.</span><span class="sxs-lookup"><span data-stu-id="615df-133">A GUID that identifies the offer.</span></span> |
+| <span data-ttu-id="615df-134">**Kraju**</span><span class="sxs-lookup"><span data-stu-id="615df-134">**country**</span></span>  | <span data-ttu-id="615df-135">**ciąg**</span><span class="sxs-lookup"><span data-stu-id="615df-135">**string**</span></span> | <span data-ttu-id="615df-136">Y</span><span class="sxs-lookup"><span data-stu-id="615df-136">Y</span></span>        | <span data-ttu-id="615df-137">Kod kraju (na przykład `US` ).</span><span class="sxs-lookup"><span data-stu-id="615df-137">The country code (for example `US`).</span></span>       |
 
-### <a name="request-headers"></a><span data-ttu-id="29cf4-142">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="29cf4-142">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="615df-138">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="615df-138">Request headers</span></span>
 
-<span data-ttu-id="29cf4-143">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="29cf4-143">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="615df-139">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="615df-139">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="29cf4-144">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="29cf4-144">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="615df-140">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="615df-140">Request body</span></span>
 
-<span data-ttu-id="29cf4-145">Brak.</span><span class="sxs-lookup"><span data-stu-id="29cf4-145">None.</span></span>
+<span data-ttu-id="615df-141">Brak.</span><span class="sxs-lookup"><span data-stu-id="615df-141">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="29cf4-146">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="29cf4-146">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="615df-142">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="615df-142">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/offers/195416C1-3447-423A-B37B-EE59A99A19C4/addons?country=us HTTP/1.1
@@ -81,15 +76,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="29cf4-147">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="29cf4-147">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="615df-143">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="615df-143">REST response</span></span>
 
-<span data-ttu-id="29cf4-148">Jeśli to się powiedzie, ta metoda zwraca kolekcję obiektów [oferty](offer-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="29cf4-148">If successful, this method returns a collection of [Offer](offer-resources.md) objects in the response body.</span></span>
+<span data-ttu-id="615df-144">W przypadku powodzenia ta metoda zwraca kolekcję [obiektów Offer](offer-resources.md) w treści odpowiedzi.</span><span class="sxs-lookup"><span data-stu-id="615df-144">If successful, this method returns a collection of [Offer](offer-resources.md) objects in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="29cf4-149">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="29cf4-149">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="615df-145">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="615df-145">Response success and error codes</span></span>
 
-<span data-ttu-id="29cf4-150">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="29cf4-150">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="29cf4-151">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="29cf4-151">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="29cf4-152">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="29cf4-152">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="615df-146">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="615df-146">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="615df-147">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="615df-147">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="615df-148">Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="615df-148">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="29cf4-153">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="29cf4-153">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="615df-149">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="615df-149">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

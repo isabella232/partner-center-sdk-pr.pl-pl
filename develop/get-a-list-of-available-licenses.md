@@ -1,43 +1,39 @@
 ---
 title: Pobieranie listy dostępnych licencji
-description: Jak uzyskać listę dostępnych licencji dla użytkowników określonego klienta.
+description: Jak uzyskać listę licencji dostępnych dla użytkowników określonego klienta.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: f675e5b96b2f2040d662c0dc7f1e06625f267689
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 02a6fccc2cf7f3f4dc929b96ec0f17e0f4a31b06
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97768238"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874503"
 ---
-# <a name="get-a-list-of-available-licenses"></a><span data-ttu-id="efc53-103">Pobieranie listy dostępnych licencji</span><span class="sxs-lookup"><span data-stu-id="efc53-103">Get a list of available licenses</span></span>
+# <a name="get-a-list-of-available-licenses"></a><span data-ttu-id="e30d4-103">Pobieranie listy dostępnych licencji</span><span class="sxs-lookup"><span data-stu-id="e30d4-103">Get a list of available licenses</span></span>
 
-<span data-ttu-id="efc53-104">**Dotyczy:**</span><span class="sxs-lookup"><span data-stu-id="efc53-104">**Applies to:**</span></span>
+<span data-ttu-id="e30d4-104">W tym artykule opisano sposób uzyskania listy licencji dostępnych dla użytkowników określonego klienta.</span><span class="sxs-lookup"><span data-stu-id="e30d4-104">This article describes how to get a list of licenses available to users of the specified customer.</span></span>
 
-- <span data-ttu-id="efc53-105">Centrum partnerskie</span><span class="sxs-lookup"><span data-stu-id="efc53-105">Partner Center</span></span>
+<span data-ttu-id="e30d4-105">W poniższych przykładach zwracane są licencje dostępne w grupie **1**, czyli domyślnej grupie licencji reprezentującej licencje zarządzane przez usługę Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="e30d4-105">The following examples return licenses available from **group1**, the default license group that represents licenses managed by Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="e30d4-106">Aby uzyskać dostępne licencje dla określonej grupy licencji, zobacz [Get a list of available licenses by license group (Uzyskiwanie](get-a-list-of-available-licenses-by-license-group.md)listy dostępnych licencji według grupy licencji).</span><span class="sxs-lookup"><span data-stu-id="e30d4-106">To get available licenses for a specified license group, see [Get a list of available licenses by license group](get-a-list-of-available-licenses-by-license-group.md).</span></span>
 
-<span data-ttu-id="efc53-106">W tym artykule opisano, jak uzyskać listę licencji dostępnych dla użytkowników określonego klienta.</span><span class="sxs-lookup"><span data-stu-id="efc53-106">This article describes how to get a list of licenses available to users of the specified customer.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e30d4-107">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="e30d4-107">Prerequisites</span></span>
 
-<span data-ttu-id="efc53-107">Poniższe przykłady zwracają licencje dostępne z **grupa1**, domyślną grupę licencji, która reprezentuje licencje zarządzane przez Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="efc53-107">The following examples return licenses available from **group1**, the default license group that represents licenses managed by Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="efc53-108">Aby uzyskać dostęp do dostępnych licencji dla określonej grupy licencji, zobacz [Pobieranie listy dostępnych licencji według grupy licencji](get-a-list-of-available-licenses-by-license-group.md).</span><span class="sxs-lookup"><span data-stu-id="efc53-108">To get available licenses for a specified license group, see [Get a list of available licenses by license group](get-a-list-of-available-licenses-by-license-group.md).</span></span>
+- <span data-ttu-id="e30d4-108">Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="e30d4-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="e30d4-109">Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.</span><span class="sxs-lookup"><span data-stu-id="e30d4-109">This scenario supports authentication with App+User credentials only.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="efc53-109">Wymagania wstępne</span><span class="sxs-lookup"><span data-stu-id="efc53-109">Prerequisites</span></span>
+- <span data-ttu-id="e30d4-110">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e30d4-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="e30d4-111">Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard).</span><span class="sxs-lookup"><span data-stu-id="e30d4-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="e30d4-112">Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.**</span><span class="sxs-lookup"><span data-stu-id="e30d4-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="e30d4-113">Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**.</span><span class="sxs-lookup"><span data-stu-id="e30d4-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="e30d4-114">Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta.</span><span class="sxs-lookup"><span data-stu-id="e30d4-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="e30d4-115">Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e30d4-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="efc53-110">Poświadczenia zgodnie z opisem w temacie [uwierzytelnianie w centrum partnerskim](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="efc53-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="efc53-111">Ten scenariusz obsługuje tylko uwierzytelnianie przy użyciu aplikacji i poświadczeń użytkownika.</span><span class="sxs-lookup"><span data-stu-id="efc53-111">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="e30d4-116">C\#</span><span class="sxs-lookup"><span data-stu-id="e30d4-116">C\#</span></span>
 
-- <span data-ttu-id="efc53-112">Identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="efc53-112">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="efc53-113">Jeśli nie znasz identyfikatora klienta, możesz go wyszukać na [pulpicie nawigacyjnym](https://partner.microsoft.com/dashboard)Centrum partnerskiego.</span><span class="sxs-lookup"><span data-stu-id="efc53-113">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="efc53-114">Wybierz pozycję **dostawca CSP** z menu Centrum partnerskiego, po którym znajdują się **klienci**.</span><span class="sxs-lookup"><span data-stu-id="efc53-114">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="efc53-115">Wybierz klienta z listy klient, a następnie wybierz pozycję **konto**.</span><span class="sxs-lookup"><span data-stu-id="efc53-115">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="efc53-116">Na stronie konto klienta Znajdź **Identyfikator Microsoft** w sekcji **Informacje o koncie klienta** .</span><span class="sxs-lookup"><span data-stu-id="efc53-116">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="efc53-117">Identyfikator Microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="efc53-117">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+<span data-ttu-id="e30d4-117">Aby pobrać listę licencji dostępnych z domyślnej grupy licencji dla użytkowników klienta:</span><span class="sxs-lookup"><span data-stu-id="e30d4-117">To retrieve the list of licenses available from the default license group to users of a customer:</span></span>
 
-## <a name="c"></a><span data-ttu-id="efc53-118">C\#</span><span class="sxs-lookup"><span data-stu-id="efc53-118">C\#</span></span>
+1. <span data-ttu-id="e30d4-118">Użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.</span><span class="sxs-lookup"><span data-stu-id="e30d4-118">Use the [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method with the customer ID to identify the customer.</span></span>
 
-<span data-ttu-id="efc53-119">Aby pobrać listę licencji dostępnych z domyślnej grupy licencji dla użytkowników klienta:</span><span class="sxs-lookup"><span data-stu-id="efc53-119">To retrieve the list of licenses available from the default license group to users of a customer:</span></span>
+2. <span data-ttu-id="e30d4-119">Pobierz wartość właściwości [**SubscribedSkus,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) aby pobrać interfejs dla operacji zbierania subskrybowanych przez klienta elementów SKU.</span><span class="sxs-lookup"><span data-stu-id="e30d4-119">Get the value of the [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) property to retrieve an interface to customer subscribed SKU collection operations.</span></span>
 
-1. <span data-ttu-id="efc53-120">Użyj metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.</span><span class="sxs-lookup"><span data-stu-id="efc53-120">Use the [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method with the customer ID to identify the customer.</span></span>
-
-2. <span data-ttu-id="efc53-121">Pobierz wartość właściwości [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) , aby pobrać interfejs do operacji zbierania SUBSKRYBOWANYCH jednostek SKU klienta.</span><span class="sxs-lookup"><span data-stu-id="efc53-121">Get the value of the [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) property to retrieve an interface to customer subscribed SKU collection operations.</span></span>
-
-3. <span data-ttu-id="efc53-122">Wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) , aby pobrać listę licencji.</span><span class="sxs-lookup"><span data-stu-id="efc53-122">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) method to retrieve the list of licenses.</span></span>
+3. <span data-ttu-id="e30d4-120">Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) aby pobrać listę licencji.</span><span class="sxs-lookup"><span data-stu-id="e30d4-120">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) method to retrieve the list of licenses.</span></span>
 
 ``` csharp
 // string selectedCustomerId;
@@ -46,37 +42,37 @@ ms.locfileid: "97768238"
 var customerUserSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get();
 ```
 
-<span data-ttu-id="efc53-123">Aby zapoznać się z przykładem, zobacz następujące tematy:</span><span class="sxs-lookup"><span data-stu-id="efc53-123">For an example, see the following:</span></span>
+<span data-ttu-id="e30d4-121">Przykład można znaleźć w następujących tematach:</span><span class="sxs-lookup"><span data-stu-id="e30d4-121">For an example, see the following:</span></span>
 
-- <span data-ttu-id="efc53-124">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="efc53-124">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="efc53-125">Projekt: **przykłady dla zestawu SDK Centrum partnerskiego**</span><span class="sxs-lookup"><span data-stu-id="efc53-125">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="efc53-126">Klasa: **GetCustomerSubscribedSkus.cs**</span><span class="sxs-lookup"><span data-stu-id="efc53-126">Class: **GetCustomerSubscribedSkus.cs**</span></span>
+- <span data-ttu-id="e30d4-122">Przykład: [aplikacja testowa konsoli](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="e30d4-122">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="e30d4-123">Project: **zestaw SDK Centrum partnerskiego przykłady**</span><span class="sxs-lookup"><span data-stu-id="e30d4-123">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="e30d4-124">Klasa: **GetCustomerSubscribedSkus.cs**</span><span class="sxs-lookup"><span data-stu-id="e30d4-124">Class: **GetCustomerSubscribedSkus.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="efc53-127">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="efc53-127">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="e30d4-125">Żądanie REST</span><span class="sxs-lookup"><span data-stu-id="e30d4-125">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="efc53-128">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="efc53-128">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="e30d4-126">Składnia żądania</span><span class="sxs-lookup"><span data-stu-id="e30d4-126">Request syntax</span></span>
 
-| <span data-ttu-id="efc53-129">Metoda</span><span class="sxs-lookup"><span data-stu-id="efc53-129">Method</span></span>  | <span data-ttu-id="efc53-130">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="efc53-130">Request URI</span></span>                                                                                    |
+| <span data-ttu-id="e30d4-127">Metoda</span><span class="sxs-lookup"><span data-stu-id="e30d4-127">Method</span></span>  | <span data-ttu-id="e30d4-128">Identyfikator URI żądania</span><span class="sxs-lookup"><span data-stu-id="e30d4-128">Request URI</span></span>                                                                                    |
 |---------|------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="efc53-131">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="efc53-131">**GET**</span></span> | <span data-ttu-id="efc53-132">[*{baseURL}*](partner-center-rest-urls.md)/V1/Customers/{Customer-ID}/subscribedskus http/1.1</span><span class="sxs-lookup"><span data-stu-id="efc53-132">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus HTTP/1.1</span></span> |
+| <span data-ttu-id="e30d4-129">**Pobierz**</span><span class="sxs-lookup"><span data-stu-id="e30d4-129">**GET**</span></span> | <span data-ttu-id="e30d4-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscribedskus HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="e30d4-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus HTTP/1.1</span></span> |
 
-#### <a name="uri-parameter"></a><span data-ttu-id="efc53-133">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="efc53-133">URI parameter</span></span>
+#### <a name="uri-parameter"></a><span data-ttu-id="e30d4-131">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="e30d4-131">URI parameter</span></span>
 
-<span data-ttu-id="efc53-134">Użyj następującego parametru ścieżki, aby zidentyfikować klienta.</span><span class="sxs-lookup"><span data-stu-id="efc53-134">Use the following path parameter to identify the customer.</span></span>
+<span data-ttu-id="e30d4-132">Użyj następującego parametru ścieżki, aby zidentyfikować klienta.</span><span class="sxs-lookup"><span data-stu-id="e30d4-132">Use the following path parameter to identify the customer.</span></span>
 
-| <span data-ttu-id="efc53-135">Nazwa</span><span class="sxs-lookup"><span data-stu-id="efc53-135">Name</span></span>        | <span data-ttu-id="efc53-136">Typ</span><span class="sxs-lookup"><span data-stu-id="efc53-136">Type</span></span>   | <span data-ttu-id="efc53-137">Wymagane</span><span class="sxs-lookup"><span data-stu-id="efc53-137">Required</span></span> | <span data-ttu-id="efc53-138">Opis</span><span class="sxs-lookup"><span data-stu-id="efc53-138">Description</span></span>                                           |
+| <span data-ttu-id="e30d4-133">Nazwa</span><span class="sxs-lookup"><span data-stu-id="e30d4-133">Name</span></span>        | <span data-ttu-id="e30d4-134">Typ</span><span class="sxs-lookup"><span data-stu-id="e30d4-134">Type</span></span>   | <span data-ttu-id="e30d4-135">Wymagane</span><span class="sxs-lookup"><span data-stu-id="e30d4-135">Required</span></span> | <span data-ttu-id="e30d4-136">Opis</span><span class="sxs-lookup"><span data-stu-id="e30d4-136">Description</span></span>                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| <span data-ttu-id="efc53-139">Identyfikator klienta</span><span class="sxs-lookup"><span data-stu-id="efc53-139">customer-id</span></span> | <span data-ttu-id="efc53-140">ciąg</span><span class="sxs-lookup"><span data-stu-id="efc53-140">string</span></span> | <span data-ttu-id="efc53-141">Tak</span><span class="sxs-lookup"><span data-stu-id="efc53-141">Yes</span></span>      | <span data-ttu-id="efc53-142">Ciąg w formacie GUID, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="efc53-142">A GUID formatted string that identifies the customer.</span></span> |
+| <span data-ttu-id="e30d4-137">identyfikator klienta</span><span class="sxs-lookup"><span data-stu-id="e30d4-137">customer-id</span></span> | <span data-ttu-id="e30d4-138">ciąg</span><span class="sxs-lookup"><span data-stu-id="e30d4-138">string</span></span> | <span data-ttu-id="e30d4-139">Tak</span><span class="sxs-lookup"><span data-stu-id="e30d4-139">Yes</span></span>      | <span data-ttu-id="e30d4-140">Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.</span><span class="sxs-lookup"><span data-stu-id="e30d4-140">A GUID formatted string that identifies the customer.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="efc53-143">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="efc53-143">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="e30d4-141">Nagłówki żądań</span><span class="sxs-lookup"><span data-stu-id="e30d4-141">Request headers</span></span>
 
-<span data-ttu-id="efc53-144">Aby uzyskać więcej informacji, zobacz [nagłówki REST Centrum partnerskiego](headers.md).</span><span class="sxs-lookup"><span data-stu-id="efc53-144">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="e30d4-142">Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)</span><span class="sxs-lookup"><span data-stu-id="e30d4-142">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="efc53-145">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="efc53-145">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="e30d4-143">Treść żądania</span><span class="sxs-lookup"><span data-stu-id="e30d4-143">Request body</span></span>
 
-<span data-ttu-id="efc53-146">Brak.</span><span class="sxs-lookup"><span data-stu-id="efc53-146">None.</span></span>
+<span data-ttu-id="e30d4-144">Brak.</span><span class="sxs-lookup"><span data-stu-id="e30d4-144">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="efc53-147">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="efc53-147">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="e30d4-145">Przykład żądania</span><span class="sxs-lookup"><span data-stu-id="e30d4-145">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/0c39d6d5-c70d-4c55-bc02-f620844f3fd1/subscribedskus HTTP/1.1
@@ -88,15 +84,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="efc53-148">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="efc53-148">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="e30d4-146">Odpowiedź REST</span><span class="sxs-lookup"><span data-stu-id="e30d4-146">REST response</span></span>
 
-<span data-ttu-id="efc53-149">Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [SubscribedSku](license-resources.md#subscribedsku) .</span><span class="sxs-lookup"><span data-stu-id="efc53-149">If successful, the response body contains a collection of [SubscribedSku](license-resources.md#subscribedsku) resources.</span></span>
+<span data-ttu-id="e30d4-147">Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów SubscribedSku.](license-resources.md#subscribedsku)</span><span class="sxs-lookup"><span data-stu-id="e30d4-147">If successful, the response body contains a collection of [SubscribedSku](license-resources.md#subscribedsku) resources.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="efc53-150">Kody sukcesu i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="efc53-150">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="e30d4-148">Kody powodzenia i błędów odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="e30d4-148">Response success and error codes</span></span>
 
-<span data-ttu-id="efc53-151">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie i dodatkowe informacje debugowania.</span><span class="sxs-lookup"><span data-stu-id="efc53-151">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="efc53-152">Użyj narzędzia do śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="efc53-152">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="efc53-153">Aby uzyskać pełną listę, zobacz [kody błędów REST centrum partnera](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="efc53-153">For a full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="e30d4-149">Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.</span><span class="sxs-lookup"><span data-stu-id="e30d4-149">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="e30d4-150">Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry.</span><span class="sxs-lookup"><span data-stu-id="e30d4-150">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="e30d4-151">Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="e30d4-151">For a full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="efc53-154">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="efc53-154">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="e30d4-152">Przykład odpowiedzi</span><span class="sxs-lookup"><span data-stu-id="e30d4-152">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

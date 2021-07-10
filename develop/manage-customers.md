@@ -1,21 +1,21 @@
 ---
 title: Zarządzanie klientami
-description: W tej sekcji opisano sposoby, Dostawca rozwiązań w chmurze partnerów mogą używać Partner Center do programowego zarządzania kontami klientów.
+description: W tej sekcji opisano, jak Dostawca rozwiązań w chmurze mogą używać Partner Center do programowego zarządzania kontami klientów.
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 00c0e51dfd6970bd28db2ce88e6b9be15175a76c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9f9b8629406a8d66c8ea820205abf73a2fb0cc02
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548213"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113571982"
 ---
 # <a name="manage-customers"></a>Zarządzanie klientami
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-W tej sekcji opisano sposoby, Dostawca rozwiązań w chmurze mogą używać Partner Center do programowego zarządzania kontami klientów.
+W tej sekcji opisano, jak Dostawca rozwiązań w chmurze mogą używać Partner Center do programowego zarządzania kontami klientów.
 
 ## <a name="create-a-customer"></a>Tworzenie klienta
 
@@ -48,8 +48,8 @@ W tej sekcji opisano sposoby, Dostawca rozwiązań w chmurze mogą używać Part
 - [Pobieranie stanu bezpośredniego podpisu (bezpośredniej akceptacji) umowy klienta firmy Microsoft](get-direct-sign-status-of-customer-agreement.md)
 - [Potwierdzenie akceptacji przez klienta umowy klienta firmy Microsoft](confirm-customer-consent-customer-agreement.md)
 - [Pobieranie kodów weryfikacyjnych partnera](get-a-partner-s-validation-codes.md)
-- [Pobieranie kwalifikacji klienta](./get-customer-qualification-synchronous.md)
-- [Aktualizowanie kwalifikacji klienta](./update-customer-qualification-synchronous.md)
+- [Uzyskiwanie kwalifikacji klienta](./get-customer-qualification-asynchronous.md)
+- [Aktualizowanie kwalifikacji klienta](./update-customer-qualification-asynchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Zarządzanie kontami użytkowników i przypisywanie licencji
 

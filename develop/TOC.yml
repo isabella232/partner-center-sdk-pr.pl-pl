@@ -247,8 +247,6 @@
           items:
             - name: Korzystanie z asynchronicznych interfejsów API
               href: get-customer-qualification-asynchronous.md
-            - name: Korzystanie z synchronicznych interfejsów API
-              href: get-customer-qualification-synchronous.md
         - name: Pobieranie wszystkich zamówień klienta
           href: get-all-of-a-customer-s-orders.md
         - name: Pobieranie subskrypcji klienta
@@ -295,8 +293,6 @@
           items:
             - name: Korzystanie z asynchronicznych interfejsów API
               href: update-customer-qualification-asynchronous.md
-            - name: Korzystanie z synchronicznych interfejsów API
-              href: update-customer-qualification-synchronous.md
         - name: Aktualizowanie nicku dla subskrypcji
           href: update-the-nickname-for-a-subscription.md
         - name: Wycofywanie transferu klienta

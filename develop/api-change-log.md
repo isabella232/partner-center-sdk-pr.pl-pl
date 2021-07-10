@@ -1,43 +1,43 @@
 ---
 title: Dziennik zmian interfejsu API REST Centrum partnerskiego
-description: Ta strona zawiera zmiany w interfejsie API REST Centrum partnerskiego
+description: Ta strona zawiera listę zmian w Partner Center API REST
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: b2c2cac36a8bd1bec7aa5bf6e5d1aa73b4779535
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: d4f7f034a36a26b6219086ca952b189f7a313ef7
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711852"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113571999"
 ---
-# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Grudzień 2020 zmiany w interfejsie API REST Centrum partnerskiego
+# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Zmiany w interfejsach API REST Partner Center grudniu 2020 r.
 
-Tutaj znajdziesz zmiany w interfejsie API REST Centrum partnerskiego.
+Sprawdź tutaj, czy nie Partner Center interfejsów API REST.
 
-## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Ulepszenia dotyczące interfejsów API kwalifikowania się do cen edukacyjnych
+## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Ulepszenia interfejsów API uprawnień do cennika edukacji
 
 
 
 ### <a name="what-has-changed"></a>Co się zmieniło?
 
-Obecnie interfejs API Centrum partnerskiego ma uprawnienia do uzyskiwania kwalifikacji w celu zweryfikowania kwalifikacji klientów edukacyjnych. Nie zostaną wprowadzone żadne zmiany w interfejsie API pobierania kwalifikacji. Jednak dodaliśmy przypadek powrotu do interfejsu API UMIESZCZAnia kwalifikacji.
+Obecnie interfejs API Partner Center ma kwalifikacje GET i PUT w celu zweryfikowania uprawnień klientów z edukacji. Interfejs API kwalifikacji GET nie zostanie wprowadzony. Dodaliśmy jednak przypadek zwrotny do interfejsu API kwalifikacji PUT.
 
-- GET-nie zmienia. [Bieżący artykuł interfejsu API](./get-customer-qualification-synchronous.md)
-- Przypadek do zwrócenia zostanie dodany. [Bieżący artykuł interfejsu API](./update-customer-qualification-synchronous.md)
+- GET — nie zmienia się.
+- PUT — zostanie dodany przypadek zwrotny.
 
-Te interfejsy API zostaną wycofane na koniec lutego 2021, aby zostały zastąpione przez nowe interfejsy API, zgodnie z poniższym opisem.
+Te interfejsy API zostaną wycofane z końcem lutego 2021 r. i zostaną zastąpione przez nowe interfejsy API, zgodnie z poniższym opisem.
 
-### <a name="scenarios-impacted"></a>Wpływ na scenariusze:
+### <a name="scenarios-impacted"></a>Scenariusze, których to miało wpływ:
 
-Kwalifikowanie klientów do cen edukacyjnych na wybranych jednostkach SKU
+Kwalifikowalność klientów do cen usług edukacyjnych dla wybranych jednostki SKU
 
-### <a name="detail-descriptions"></a>Opisy szczegółów
+### <a name="detail-descriptions"></a>Szczegółowe opisy
 
-Zostaną wprowadzone dwa nowe interfejsy API pobierania i ZAMIESZCZAnia kwalifikacji. Nowe interfejsy API będą korzystać z **kwalifikacji**, a nie **kwalifikacji**. Interfejsy API będą dostępne do testowania w FY21 Q2.
+Zostaną wprowadzone dwa nowe interfejsy API kwalifikacji GET i POST. Nowe interfejsy API będą używać **kwalifikacji,** a nie **kwalifikacji.** Interfejsy API będą dostępne do testowania w 2. kwartale roku 2. kwartału.
 
-#### <a name="get-qualifications"></a>Pobierz kwalifikacje
+#### <a name="get-qualifications"></a>Kwalifikacje GET
 
 ```http
 GET {customer_id}/qualifications
@@ -56,18 +56,18 @@ GET {customer_id}/qualifications
 
 #### <a name="response-fields"></a>Pola odpowiedzi: 
 
-- VettingStatus wartości: zatwierdzone, odrzucone, Nieprzejrzane itp.
+- Wartości VettingStatus: Approved, Denied, InReview itp.
 
-- VettingReason wartości:
-   - Nie jest to klient edukacyjny
-   - Nie jest już klientem edukacyjnym
-   - Nie jest to klient edukacyjny — po przeprowadzeniu przeglądu
+- Wartości VettingReason:
+   - Nie jest klientem edukacyjnym
+   - Nie ma już klienta edukacyjnego
+   - Nie jest klientem edukacyjnym — po przeglądzie
    - Ograniczony jako klient edukacyjny
-   - Nie jest to domena edukacyjna
-   - To nie jest kwalifikująca się biblioteka
-   - Nie kwalifikuje się muzeów
+   - Nie jest domeną akademickią
+   - Biblioteka nie jest kwalifikowana
+   - Nie kwalifikuje się do pomocy
  
-#### <a name="post-qualifications"></a>Ogłoś kwalifikacje
+#### <a name="post-qualifications"></a>Kwalifikacje POST
 
 ```http
 POST {customer_id}/qualifications

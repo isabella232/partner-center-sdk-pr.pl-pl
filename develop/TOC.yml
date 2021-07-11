@@ -406,6 +406,8 @@
           href: update-a-cart.md
         - name: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Zarządzanie wypłatami
+      href: manage-payouts.md
     - name: Zapewnienie pomocy technicznej
       href: provide-support.md
       items:

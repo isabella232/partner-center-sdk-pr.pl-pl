@@ -1,30 +1,28 @@
 ---
-title: Uzyskiwanie nienaliowanych pozycji użycia komercyjnego na fakturze
-description: Możesz uzyskać kolekcję nienalicznych szczegółów pozycji użycia komercyjnego dla określonej faktury przy użyciu Partner Center API.
+title: Pobierz pozycje dotyczące nienadmierowego użycia komercyjnego na fakturze
+description: Możesz uzyskać kolekcję nienalicznych szczegółów elementu wiersza użycia komercyjnego dla określonej faktury przy użyciu interfejsów API Partner Center.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1b7dba3333aaec8df73f0e8147b0bbbc78b9b184
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
+ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446150"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114224772"
 ---
-# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Uzyskiwanie nienaliowanych pozycji użycia komercyjnego na fakturze
+# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Pobierz pozycje dotyczące nienadmierowego użycia komercyjnego na fakturze
 
-How to get a collection of unbilled commercial consumption line item details (Jak uzyskać kolekcję nienadmiernych szczegółów elementu wiersza użycia komercyjnego).
+Jak uzyskać kolekcję nienaliowanych szczegółów elementu wiersza użycia komercyjnego.
 
-Za pomocą poniższych metod można programowo pobrać kolekcję szczegółowych informacji o nienadmiernych pozycjach użycia komercyjnego (nazywanych również otwartymi elementami wiersza użycia).
+Za pomocą poniższych metod można programowo pobrać kolekcję szczegółów nienadmiernie rozlicznych pozycji zużycia komercyjnego (nazywanych również otwartymi elementami wiersza użycia).
 
 >[!NOTE]
 >Dzienne użycie oceniane zwykle trwa 24 godziny, aby pojawiać się w Partner Center lub uzyskać do niego dostęp za pośrednictwem interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
-
-- Identyfikator faktury. Identyfikuje fakturę, dla której mają zostać pobrane pozycje.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie zarówno przy użyciu autonomicznej aplikacji, jak i poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
@@ -34,16 +32,16 @@ Aby uzyskać pozycje dla określonej faktury:
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury.
 
-Obiekt **faktury zawiera** wszystkie informacje dotyczące określonej faktury. Dostawca **identyfikuje** źródło nienaliczonych informacji szczegółowych (na przykład **OneTime).** **InvoiceLineItemType** określa typ (na przykład **UsageLineItem**).
+Obiekt **faktury zawiera** wszystkie informacje dotyczące określonej faktury. Dostawca **identyfikuje** źródło nienaliczonych szczegółowych informacji (na przykład **OneTime).** Typ **invoiceLineItemType** określa typ (na przykład **UsageLineItem).**
 
-Poniższy przykładowy kod używa **pętli foreach** do przetwarzania kolekcji **InvoiceLineItems.** Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wierszy.
+Poniższy przykładowy kod używa pętli **foreach** do przetwarzania **kolekcji InvoiceLineItems.** Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wiersza.
 
 Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż wartości **BillingProvider** i **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
+1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać skojarzone elementy wiersza.
-3. Utwórz moduł wyliczający w celu przechodzenia przez kolekcję, jak pokazano w poniższym przykładzie.
+3. Utwórz moduł wyliczający, aby przejść przez kolekcję, jak pokazano w poniższym przykładzie.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -111,12 +109,12 @@ Aby uzyskać podobny przykład, zobacz:
 
 ### <a name="request-syntax"></a>Składnia żądania
 
-W zależności od przypadku użycia możesz użyć następujących składni dla żądania REST. Aby uzyskać więcej informacji, zobacz opisy poszczególnych składni.
+W zależności od przypadku użycia możesz użyć następujących składni dla żądania REST. Aby uzyskać więcej informacji, zobacz opisy każdej składni.
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                                                              | Opis przypadku użycia składni                                                                                                     |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period} HTTP/1.1                       | Użyj tej składni, aby zwrócić pełną listę wszystkich elementów wiersza dla danej faktury.                                                    |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1           | Użyj tej składni w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciem opartym na wartości 0, aby zwrócić stronicowane listy elementów wiersza. |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period} HTTP/1.1                       | Użyj tej składni, aby zwrócić pełną listę wszystkich pozycji dla danej faktury.                                                    |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1           | Użyj tej składni w przypadku dużych faktur. Użyj tej składni z określonym rozmiarem i przesunięciem 0, aby zwrócić stronicowane listy elementów wiersza. |
 | **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size}&seekOperation=Next | Użyj tej składni, aby uzyskać następną stronę elementów wiersza uzgodnień przy użyciu polecenia `seekOperation = "Next"` .                                  |
 
 #### <a name="uri-parameters"></a>Parametry URI
@@ -126,11 +124,11 @@ Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 | Nazwa                   | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
 |------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Dostawca               | ciąg | Tak      | Dostawca: "**OneTime**".                                                                                                                                                                                                               |
-| typ elementu wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| typ-elementu-wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
 | currencyCode           | ciąg | Tak      | Kod waluty dla nienaliowanych elementów wiersza.                                                                                                                                                                                             |
-| period                 | ciąg | Tak      | Okres dla nienadmiernego rekonesencji (na przykład: **bieżący**, **poprzedni**). Załóżmy, że musisz odpytać dane o nienaliczonym użyciu dla cyklu rozliczeniowego (01.01.2020 – 01.31.2020) w styczniu, wybrać okres **jako "Bieżący",** a jeszcze **"Poprzedni".** |
+| period                 | ciąg | Tak      | Okres dla rozeznania nienadmiernego (na przykład: **bieżący**, **poprzedni**). Załóżmy, że musisz odpytać dane o nienaliczonym użyciu dla cyklu rozliczeniowego (01.01.2020 – 31.01.2020) w styczniu, wybierz okres **"Bieżący",** a w innym przypadku **"Poprzedni".** |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny rozmiar to 2000.                                                                                                                                                                           |
-| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` , aby pobrać następną stronę elementów wiersza uzgodnień.                                                                                                                                                                |
+| seekOperation          | ciąg | Nie       | Ustaw `seekOperation=Next` wartość , aby uzyskać następną stronę elementów wiersza uzgodnień.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -142,13 +140,13 @@ Brak.
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.
+Jeśli to się powiedzie, odpowiedź będzie zawierała kolekcję szczegółów elementu wiersza.
 
-*W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na nowy, a wartość **Zwrot** jest mapowana na **anuluj**.*
+*W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na wartość **Nowy,** a wartość **Zwrot** jest mapowana na **wartość Anuluj.***
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ## <a name="request-response-examples"></a>Przykłady żądań i odpowiedzi
 

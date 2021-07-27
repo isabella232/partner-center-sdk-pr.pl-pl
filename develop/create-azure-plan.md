@@ -1,21 +1,21 @@
 ---
 title: Tworzenie planu platformy Azure
 description: Deweloperzy mogą programowo kupować i tworzyć plany platformy Azure oraz zarządzać nimi przy użyciu Partner Center API.
-ms.date: 01/02/2020
+ms.date: 07/21/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: f329b6a3f9a61522a9fad1f0ead021563c393118
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: b77b067c7eb150ab1ad9904915e87c3fc55c104a
+ms.sourcegitcommit: 1fce45e6cafbc4c228042523ae28aac651a73757
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973412"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114483062"
 ---
 # <a name="create-an-azure-plan"></a>Tworzenie planu platformy Azure
 
-Plan platformy Azure można kupić, utworzyć i zarządzać nimi przy użyciu Partner Center API. Proces jest podobny do tworzenia subskrypcji Microsoft Azure (MS-AZR-0145P). Musisz uzyskać [element katalogu dla planu platformy Azure,](#get-the-catalog-item-for-azure-plan)a następnie utworzyć i [przesłać zamówienie.](#create-and-submit-an-order)
+Plan platformy Azure można kupić, utworzyć i zarządzać nimi przy użyciu Partner Center API. Proces jest podobny do tworzenia subskrypcji Microsoft Azure[(MS-AZR-0145P).](https://go.microsoft.com/fwlink/p/?linkid=2164140) Musisz uzyskać [element katalogu dla planu platformy Azure,](#get-the-catalog-item-for-azure-plan)a następnie utworzyć i [przesłać zamówienie.](#create-and-submit-an-order)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -61,7 +61,7 @@ Po pomyślnym przetworzeniu zamówienia zostanie utworzony Partner Center **subs
 * [Pobieranie subskrypcji klienta](get-all-of-a-customer-s-subscriptions.md)
 * [Pobieranie listy subskrypcji według zamówienia](get-a-list-of-subscriptions-by-order.md)
 
-Gdy plan platformy Azure jest tworzony w Partner Center, na platformie Azure tworzona jest również odpowiednia subskrypcja użycia platformy Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, korzystając z procedury opisanej w tesłudze Get [a list of Azure entitlements for Partner Center subscription](get-a-list-of-azure-entitlements-for-subscription.md) (Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji Partner Center Azure)
+Gdy plan platformy Azure jest tworzony w Partner Center, na platformie Azure jest również tworzona odpowiednia subskrypcja użycia platformy Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, korzystając z procedury opisanej w tesłudze Get [a list of Azure entitlements for Partner Center subscription](get-a-list-of-azure-entitlements-for-subscription.md) (Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji Partner Center Azure)
 
 ## <a name="lifecycle-management"></a>Zarządzanie cyklem życia
 
@@ -98,7 +98,7 @@ Wydatki na [platformę Azure można śledzić,](azure-spending.md) odpytując o 
 * [Pobieranie zasobów rekordu użycia miernika](meter-usage-resources.md)
 * [Pobieranie zasobów rekordu użycia zasobu](resource-usage-resources.md)
 
-Budżet użycia klientów można również ustawić i zarządzać nimi przy użyciu następujących metod:
+Można również ustawić budżet użycia klientów i zarządzać nimi przy użyciu następujących metod:
 
 * [Pobieranie budżetu użycia klienta](get-a-customer-s-usage-spending-budget.md)
 * [Aktualizowanie budżetu użycia klienta](update-a-customer-s-usage-spending-budget.md)

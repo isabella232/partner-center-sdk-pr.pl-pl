@@ -4,12 +4,12 @@ description: Zasoby reprezentujące towary lub usługi, które można kupować. 
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1d536cb78c070bd06f4ab9434e066e51fb4c008c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2e68df1f6955fb7feb9770377621c2d649b74e4a
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445888"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009124"
 ---
 # <a name="products-resources"></a>Zasoby produktów
 
@@ -67,6 +67,7 @@ Reprezentuje zakupną jednostkę magazynową (SKU) w ramach produktu. Reprezentu
 | provisioningVariables  | tablica ciągów | Lista zmiennych, które muszą zostać podane w kontekście aprowowania elementu wiersza [koszyka](cart-resources.md#cartlineitem) podczas zakupu tego elementu. Obsługiwane wartości to:<br/> Zakres — zakres zakupu rezerwacji platformy Azure: "Pojedynczy", "Udostępniony".<br/> "SubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.<br/> "Czas trwania" — czas trwania rezerwacji platformy Azure: "1Year", "3Year".  |
 | dynamicAttributes      | pary klucz/wartość  | Słownik właściwości dynamicznych, które mają zastosowanie do tego elementu. Właściwości w tym słowniku są dynamiczne i mogą ulec zmianie bez powiadomienia. Nie należy tworzyć silnych zależności od określonych kluczy istniejących w wartości tej właściwości.    |
 | Linki                  | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w ramach tej sku.                   |
+| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Właściwości zaświadczenia dla SKU.                   |
 
 ## <a name="availability"></a>Dostępność
 
@@ -84,7 +85,7 @@ Reprezentuje konfigurację, w której można kupić sku (na przykład kraj, walu
 | isPurchasable   | bool                                                | Wskazuje, czy tę dostępność można kupować. |
 | isRenewable     | bool                                                | Wskazuje, czy ta dostępność jest odnawializowa. |
 | product      | [Product](#product)               | Produkt, który odpowiada tej dostępności. |
-| sku          | [Numer jednostki magazynowej](#sku)            | Ta dostępność odpowiada tej dostępności. |
+| sku          | [SKU](#sku)            | Ta dostępność odpowiada tej dostępności. |
 | Warunki           | tablica [zasobów term](#term)  | Kolekcja warunków mających zastosowanie do tej dostępności. |
 | Linki           | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w dostępności. |
 
@@ -139,3 +140,12 @@ Element [Enum/dotnet/api/system.enum) z wartościami wskazującymi typ cyklu roz
 | Roczna             | 2            | Wskazuje, że partnerowi będą naliczane opłaty rocznie.                                       |
 | Brak               | 3            | Wskazuje, że partner nie zostanie obciążony. Ta wartość może być używana dla elementów wersji próbnej.    |
 | OneTime            | 4            | Wskazuje, że partner zostanie obciążony raz.                                       |
+
+## <a name="attestationproperties"></a>AttestationProperties
+
+Reprezentuje typ zaświadczenia i jeśli jest on wymagany do zakupu.
+
+| Właściwość              | Typ                                        | Opis                                                                         |
+|-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| attestationType              | ciąg                                      | Wskazuje typ zaświadczenia. W Windows 365 wartość to Windows365. Windows zaświadczenia na numer 365 to "Rozumiem, że każda osoba korzystająca z usługi Windows 365 Business z korzyścią użycia hybrydowego usługi Windows również musi mieć prawidłową kopię wersji Windows 10/11 Pro zainstalowanej na podstawowym urządzeniu służbowym". |
+| enforceAttestation           | boolean                                      | Wskazuje, czy do zakupu jest wymagane zaświadczenia.           |

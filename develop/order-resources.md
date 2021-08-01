@@ -4,12 +4,12 @@ description: Partner złozy zamówienie, gdy klient chce kupić subskrypcję z l
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c993317f288568dd687c3b52bf47e4520fcd18c6
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 128c9e041cacc1c15f6187c4d99690d5c5fa4183
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548060"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009173"
 ---
 # <a name="order-resources"></a>Zamawianie zasobów
 
@@ -57,6 +57,7 @@ Zamówienie zawiera listę ofert, a każdy element jest reprezentowany jako Orde
 | provisioningContext  | Słownik<ciąg, ciąg>            | Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                                                                                                                                               |
 | Linki                | [OrderLineItemLinks](#orderlineitemlinks) | Tylko do odczytu. Zasób łączy się z elementem wiersza zamówienia.                                                                                                                                                                                |
 | renewsTo             | [RenewsTo](#renewsto)                         |Szczegóły okresu odnowienia.                                                                           |
+| AttestationAccepted             | bool                 | Wskazuje umowę na ofertę lub warunki sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 

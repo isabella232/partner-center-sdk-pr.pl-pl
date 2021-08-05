@@ -3,15 +3,15 @@ title: Włączanie modelu aplikacji zabezpieczonych
 description: Zabezpieczanie aplikacji Partner Center panelu sterowania.
 ms.date: 01/20/2020
 ms.service: partner-dashboard
-ms.subservice: partnercenter-csp
+ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 19a1c39576a4f897df2d1205e3501839f6580831
-ms.sourcegitcommit: e0077b2724d128ab20cb05696e5e5b1cde8e5214
+ms.openlocfilehash: 36a81c7b235c68e49bb425b5bd0d4615882f88ef
+ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113481671"
+ms.lasthandoff: 08/04/2021
+ms.locfileid: "115104214"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Włączanie środowiska modelu aplikacji zabezpieczonej
 
@@ -27,7 +27,7 @@ Ten artykuł dotyczy następujących aktorów:
   - Dostawca oprogramowania panelu sterowania (CPV) to niezależny dostawca oprogramowania, który opracowuje aplikacje, których partnerzy CSP mogą używać do integracji z interfejsami API Centrum partnerskiego.
   - Dostawca CPV nie jest partnerem CSP z bezpośrednim dostępem do pulpitu nawigacyjnego lub interfejsów API Centrum partnerskiego.
 
-- Dostawcy pośredni dostawcy usług w chmurze i bezpośredni partnerzy dostawcy usług w chmurze, którzy używający identyfikatora aplikacji i uwierzytelniania użytkowników oraz bezpośrednio integrują się z Partner Center API.
+- Dostawcy pośredni dostawcy usług w chmurze i bezpośredni partnerzy programu CSP, którzy korzystają z identyfikatora aplikacji i uwierzytelniania użytkowników oraz bezpośrednio integrują się z Partner Center API.
 
 ## <a name="security-requirements"></a>Wymagania dotyczące zabezpieczeń
 
@@ -50,12 +50,12 @@ W następujących dokumentach z omówieniem i przykładowym kodzie opisano, jak 
 
     [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-- [Instrukcje i przykłady DOTYCZĄCE REST](#rest)
-- [Instrukcje i przykłady dotyczące programu PowerShell](#powershell)
+- [Instrukcje i przykłady dotyczące rest](#rest)
+- [Instrukcje i przykłady programu PowerShell](#powershell)
 
 ## <a name="rest"></a>REST
 
-Aby wykonać wywołania REST za pomocą struktury model aplikacji zabezpieczonych z przykładowym kodem, wykonaj następujące kroki:
+Aby wykonać wywołania REST za pomocą model aplikacji zabezpieczonych framework z przykładowym kodem, wykonaj następujące kroki:
 
 1. [Tworzenie aplikacji internetowej](#create-a-web-app)
 
@@ -78,7 +78,7 @@ Przed wykonaniem wywołań REST musisz utworzyć i zarejestrować aplikację int
 
 2. Tworzenie aplikacji Azure Active Directory (Azure AD).
 
-3. Nadaj delegowanym aplikacjom uprawnienia do następujących zasobów, *w zależności od wymagań aplikacji.* W razie potrzeby można dodać więcej delegowanych uprawnień dla zasobów aplikacji.
+3. Nadaj delegowanym aplikacjom uprawnienia do następujących zasobów, w zależności od *wymagań aplikacji.* W razie potrzeby można dodać więcej delegowanych uprawnień dla zasobów aplikacji.
 
    1. **Microsoft Partner Center** (niektóre dzierżawy pokazują to jako **SampleBECApp**)
 
@@ -94,7 +94,7 @@ Przed wykonaniem wywołań REST musisz utworzyć i zarejestrować aplikację int
    - Klucz tajny aplikacji
 
 > [!NOTE]
-> Zaleca się używanie [certyfikatu jako tajnego certyfikatu aplikacji.](/azure/active-directory/develop/active-directory-certificate-credentials) Można jednak również utworzyć klucz aplikacji w Azure Portal. Przykładowy kod w [poniższej sekcji](#get-authorization-code) używa klucza aplikacji.
+> Zaleca się używanie [certyfikatu jako tajnego certyfikatu aplikacji.](/azure/active-directory/develop/active-directory-certificate-credentials) Można jednak również utworzyć klucz aplikacji w Azure Portal. Przykładowy kod w [poniższej sekcji używa](#get-authorization-code) klucza aplikacji.
 
 ### <a name="get-authorization-code"></a>Uzyskiwanie kodu autoryzacji
 
@@ -104,7 +104,7 @@ Musisz uzyskać kod autoryzacji aplikacji internetowej do zaakceptowania z wywo�
 
 2. Zastąp **identyfikator Application-Id** identyfikatorem aplikacji usługi Azure AD (IDENTYFIKATOR GUID).
 
-3. Po wyświetleniu monitu zaloguj się przy użyciu konta użytkownika ze skonfigurowanym uwierzytelniania wieloskładnikowego.
+3. Po wyświetleniu monitu zaloguj się przy użyciu konta użytkownika ze skonfigurowaną usługą MFA.
 
 4. Po wyświetleniu monitu wprowadź dodatkowe informacje dotyczące usługi MFA (numer telefonu lub adres e-mail), aby zweryfikować logowanie.
 
@@ -134,7 +134,7 @@ Następnie należy użyć kodu autoryzacji, aby uzyskać token odświeżania:
 
 2. Zanotuj zwrócony token odświeżania.
 
-3. Token odświeżania należy przechowywać w Azure Key Vault. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault API.](/rest/api/keyvault/)
+3. Przechowuj token odświeżania w Azure Key Vault. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault API.](/rest/api/keyvault/)
 
 > [!IMPORTANT]
 > Token odświeżania musi być [przechowywany jako wpis tajny](/rest/api/keyvault/setsecret/setsecret) w usłudze Key Vault.

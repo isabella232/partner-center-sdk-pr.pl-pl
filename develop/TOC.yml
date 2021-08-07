@@ -429,7 +429,7 @@
       href: sandbox-scenario.md
     - name: Piaskownica do testowania i debugowania
       href: test-and-debug.md
-    - name: Możliwości dostawcy pośredniego CSP w piaskownicy
+    - name: Możliwości pośredniego dostawcy CSP w piaskownicy
       href: indirect-provider-sandbox-capabilities.md
     - name: Anulowanie zamówienia z piaskownicy integracji
       href: cancel-an-order-from-the-integration-sandbox.md

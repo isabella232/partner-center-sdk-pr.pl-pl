@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać konta Partner Center integracji aplikacj
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7a9d7755cd9f493f44f9a7bbf613e0f80cf7b4ac
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 1a446f1d9a9d7370be2715305ccbaa71b09cfd45957cf8663afb42a23706a7be
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530110"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989274"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Przetestuj i debuguj przy użyciu Partner Center integracji, aby uniknąć płacenia nieoczekiwanych opłat
 
@@ -44,7 +44,7 @@ W przypadku partnerów, których konta piaskownicy zostały zatwierdzone do apro
 
 - Partner rozliczany bezpośrednio może utworzyć maksymalnie jeden plan platformy Azure na dzierżawę klienta.
 
-- Dostawca pośredni może utworzyć maksymalnie trzy plany platformy Azure dla dzierżawy klienta (dla różnych pośrednich odsprzedawców określonych jako partner-rekord).
+- Dostawca pośredni może utworzyć maksymalnie trzy plany platformy Azure dla dzierżawy klienta (dla różnych odsprzedawców pośrednich określonych jako partner-rekord).
 
 - Każdy plan platformy Azure może mieć maksymalnie trzy subskrypcje platformy Azure.
 
@@ -52,11 +52,11 @@ W przypadku partnerów, których konta piaskownicy zostały zatwierdzone do apro
 
 - Każde konto partnera piaskownicy ma limit wydatków w wysokości 2000 USD na cykl rozliczeniowy we wszystkich planach platformy Azure. Gdy partner osiągnie limit wydatków, wszystkie plany platformy Azure zostaną tymczasowo wyłączone do następnego cyklu rozliczeniowego.
 
-### <a name="cloud-solution-provider-csp-azure-subscription-offers"></a>Dostawca rozwiązań w chmurze (CSP) oferty subskrypcji platformy Azure
+### <a name="cloud-solution-provider-csp-azure-subscription-offers"></a>Dostawca rozwiązań w chmurze subskrypcji platformy Azure (CSP)
 
 Oferty subskrypcji platformy Azure dla programu CSP nie są już domyślnie dostępne dla kont piaskownicy. Należą do nich ms-AZR-0146P, MS-AZR-DE-0146P i MS-AZR-USGOV-0146P dla subskrypcji platformy Azure dostawcy usług w chmurze publicznej firmy Microsoft, w chmurze niemieckiej i chmurze dla instytucji rządowych. Partnerzy, którzy potrzebują dostępu do tych ofert za pomocą konta piaskownicy, muszą złożyć wniosek o dostęp. Aby zgłosić wniosek o dostęp, skontaktuj się z konto Microsoft lub kontaktem biznesowym.
 
-W przypadku partnerów, których konta piaskownicy zostały zatwierdzone dla ofert subskrypcji platformy Azure dla programu CSP, obowiązują następujące limity:
+W przypadku partnerów, których konta piaskownicy zostały zatwierdzone dla ofert subskrypcji CSP platformy Azure, obowiązują następujące limity:
 
 - Możesz mieć maksymalnie 375 aktywnych subskrypcji (75 klientów x 5 subskrypcji na klienta). Jednak tylko 10 z nich może być subskrypcjami CSP platformy Azure.
 
@@ -65,7 +65,7 @@ W przypadku partnerów, których konta piaskownicy zostały zatwierdzone dla ofe
 - Każda subskrypcja platformy Azure dla programu CSP w ramach konta piaskownicy jest ograniczona do czterech rdzeni maszyn wirtualnych na centrum danych. W związku z tym nie można aprowizć jednostki SKU maszyn wirtualnych, które wymagają więcej niż czterech rdzeni maszyn wirtualnych. Niektóre wyspecjalizowane jednostki SKU maszyn wirtualnych, takie jak rdzenie procesora GPU, również są wykluczone.
 
 > [!Important]
-> Wszystkie istniejące subskrypcje CSP platformy Azure aprowowane przy użyciu kont piaskownicy przed 1 sierpnia 2018 r. nie są już obsługiwane i firma Microsoft nie będzie już aprowizowana od 16 października do 31 października 2018 r. Po anulowaniu aprowizowanych subskrypcji nie można ich ponownie włączyć, a skojarzone dane nie będą już dostępne. Partnerzy, którzy mają cenne dane przechowywane w ramach tych subskrypcji, muszą wykonać kopię zapasową danych przed 16 października 2018 r.
+> Wszystkie istniejące subskrypcje CSP platformy Azure aprowowane przy użyciu kont piaskownicy przed 1 sierpnia 2018 r. nie są już obsługiwane i firma Microsoft nie będzie już aprowizowana od 16 października do 31 października 2018 r. Po anulowaniu aprowizowanych subskrypcji nie można ich ponownie włączyć i skojarzone dane nie będą już dostępne. Partnerzy, którzy mają cenne dane przechowywane w ramach tych subskrypcji, muszą wykonać kopię zapasową danych przed 16 października 2018 r.
 
 ### <a name="azure-reserved-vm-instance"></a>Wystąpienie zarezerwowane maszyny wirtualnej platformy Azure
 
@@ -81,7 +81,7 @@ Jeśli kupujesz [wystąpienie zarezerwowane maszyny wirtualnej](purchase-azure-r
 
 ### <a name="subscriptions-for-commercial-marketplace-products"></a>Subskrypcje produktów komercyjnej platformy handlowej
 
-W środowisku produkcyjnym po utworzeniu subskrypcji produktów [SaaS](create-subscription-azure-marketplace-products.md)na platformie handlowej należy pobrać spersonalizowany link aktywacji z usługi Partner Center i odwiedzić witrynę wydawcy, aby ukończyć proces konfiguracji. Rozliczanie subskrypcji rozpocznie się dopiero po zakończeniu konfiguracji.
+W środowisku produkcyjnym po utworzeniu subskrypcji produktów [SaaS](create-subscription-azure-marketplace-products.md)na platformie handlowej musisz pobrać spersonalizowany link aktywacji z usługi Partner Center i odwiedzić witrynę wydawcy, aby ukończyć proces konfiguracji. Rozliczanie subskrypcji rozpocznie się dopiero po zakończeniu konfiguracji.
 
 W środowisku piaskownicy CSP nie ma integracji z isvs. Jeśli spróbujesz pobrać link aktywacji z Partner Center, zostanie zwrócony fikcyjny link. Nie można użyć tego fikcyjnego linku do ukończenia procesu instalacji w witrynie wydawcy. Aby przetestować rozliczenia subskrypcji produktów SaaS na platformie handlowej przy użyciu konta piaskownicy integracji, zobacz Aktywowanie subskrypcji piaskownicy dla produktów [platformy handlowej.](activate-sandbox-subscription-azure-marketplace-products.md) Rozliczanie subskrypcji rozpocznie się po pomyślnej aktywacji.
 

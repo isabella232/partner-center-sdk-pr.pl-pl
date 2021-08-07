@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 1605c3e8cb050717209cb482d2299e2a42b9b186
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 17a41e498a650eb8a59397a5f4e2614999228c75e39f5f49a0b73c9dae728389
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530042"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990124"
 ---
 # <a name="update-a-customers-billing-profile"></a>Aktualizowanie profilu rozliczeniowego klienta
 
@@ -21,13 +21,13 @@ Aktualizuje profil rozliczeniowy klienta, w tym adres skojarzony z profilem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil rozliczeniowy klienta, pobierz profil rozliczeniowy i zaktualizuj właściwości zgodnie z potrzebami. Następnie pobierz kolekcję [**IPartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a następnie wywołaj [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Następnie wywołaj [**właściwość Profiles,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) a następnie właściwość [**Rozliczenia.**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) Następnie zakończ, wywołując metody [**Update()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofile-1.update) lub [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofile-1.updateasync)
+Aby zaktualizować profil rozliczeniowy klienta, pobierz profil rozliczeniowy i zaktualizuj właściwości zgodnie z potrzebami. Następnie pobierz kolekcję [**IPartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a następnie wywołaj [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Następnie wywołaj [**właściwość Profiles,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) a następnie właściwość [**Rozliczenia.**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) Następnie zakończ, wywołując metody [**Update()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofile-1.update) [**lub UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofile-1.updateasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -115,7 +115,7 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca [zaktualizowane](profile-resources.md) właściwości zasobu profilu w treści odpowiedzi. To wywołanie wymaga tagu ETag do wykrywania współbieżności.
+W przypadku powodzenia ta metoda zwraca zaktualizowane [właściwości](profile-resources.md) zasobu profilu w treści odpowiedzi. To wywołanie wymaga tagu ETag do wykrywania współbieżności.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

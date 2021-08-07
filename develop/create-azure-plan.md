@@ -1,17 +1,17 @@
 ---
 title: Tworzenie planu platformy Azure
-description: Deweloperzy mogą programowo kupować i tworzyć plany platformy Azure oraz zarządzać nimi przy użyciu Partner Center API.
+description: Deweloperzy mogą kupować i tworzyć plany platformy Azure oraz zarządzać nimi programowo przy użyciu Partner Center API.
 ms.date: 07/21/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: b77b067c7eb150ab1ad9904915e87c3fc55c104a
-ms.sourcegitcommit: 1fce45e6cafbc4c228042523ae28aac651a73757
+ms.openlocfilehash: 5083f7aa8ea274b5210d88085d26376dadbc0c4d1a0dd6e1babe59c94d7a6f9c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114483062"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991484"
 ---
 # <a name="create-an-azure-plan"></a>Tworzenie planu platformy Azure
 
@@ -33,17 +33,17 @@ Aby można było utworzyć plan platformy Azure dla klienta, należy pobrać odp
 
 Aby uzyskać element katalogu dla planu platformy Azure, wykonaj następujące kroki:
 
-1. Zidentyfikuj *i* pobierz identyfikator produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of products](get-a-list-of-products.md) (Uzyskiwanie listy produktów) i określ element **targetView** jako **MicrosoftAzure.** (Jeśli znasz już *identyfikator* produktu dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get [a product using the product ID](get-a-product-by-id.md) (Uzyskiwanie produktu przy użyciu identyfikatora produktu).
+1. Zidentyfikuj *i* pobierz identyfikator produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of products (Uzyskiwanie](get-a-list-of-products.md) listy produktów) i określ **element targetView** jako **MicrosoftAzure.** (Jeśli znasz już *identyfikator* produktu dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get [a product using the product ID](get-a-product-by-id.md) (Uzyskiwanie produktu przy użyciu identyfikatora produktu).
 
-2. Pobierz **sku z** produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of SKUs for a product (Uzyskiwanie listy jednostki SKU dla produktu).](get-a-list-of-skus-for-a-product.md) Jeśli znasz już identyfikator jednostki SKU dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get a SKU using the SKU ID (Uzyskiwanie jednostki SKU przy [użyciu identyfikatora jednostki SKU).](get-a-sku-by-id.md)
+2. Pobierz **sku z** produktu dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of SKUs for a product (Uzyskiwanie listy jednostki SKU dla produktu).](get-a-list-of-skus-for-a-product.md) Jeśli znasz już identyfikator jednostki SKU dla planu platformy Azure, możesz zamiast tego wykonać kroki opisane w te tematu Get a SKU using the SKU ID (Uzyskiwanie jednostki SKU przy użyciu identyfikatora [jednostki SKU).](get-a-sku-by-id.md)
 
-3. Pobierz dostępność **z** wersji SKU dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of availabilities for a SKU](get-a-list-of-availabilities-for-a-sku.md)(Uzyskiwanie listy dostępności dla SKU). Jeśli znasz już identyfikator potrzebnej dostępności, możesz zamiast tego wykonać kroki opisane w części Uzyskiwanie dostępności [przy użyciu identyfikatora](get-an-availability-by-id.md) dostępności. *Pamiętaj, aby zanotować wartość właściwości **CatalogItemId** dostępności planu platformy Azure. Ta wartość będzie potrzebna do utworzenia zamówienia.*
+3. Pobierz dostępność **z** wersji SKU dla planu platformy Azure. Wykonaj kroki opisane w [te tematu Get a list of availabilities for a SKU](get-a-list-of-availabilities-for-a-sku.md)(Uzyskiwanie listy dostępności dla sku ). Jeśli znasz już identyfikator potrzebnej dostępności, możesz zamiast tego wykonać kroki opisane w części Uzyskiwanie dostępności [przy użyciu identyfikatora](get-an-availability-by-id.md) dostępności. *Pamiętaj, aby zanotować wartość właściwości **CatalogItemId** dostępności planu platformy Azure. Ta wartość będzie potrzebna do utworzenia zamówienia.*
 
 ## <a name="create-and-submit-an-order"></a>Tworzenie i przesyłanie zamówienia
 
 Aby przesłać zamówienie dotyczące planu platformy Azure, wykonaj następujące kroki:
 
-1. [Utwórz koszyk do](create-a-cart.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Po utworzeniu [koszyka](cart-resources.md#cart)elementy [wiersza](cart-resources.md#cartlineitem) koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu.](order-resources.md#order) (Możesz również [zaktualizować koszyk).](update-a-cart.md)
+1. [Utwórz koszyk do](create-a-cart.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Podczas tworzenia [](cart-resources.md#cart)koszyka elementy [wiersza](cart-resources.md#cartlineitem) koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu.](order-resources.md#order) (Możesz również [zaktualizować koszyk).](update-a-cart.md)
 
 2. [Zapoznaj się z koszykiem](checkout-a-cart.md), co powoduje utworzenie [zamówienia](order-resources.md#order).
 
@@ -61,7 +61,7 @@ Po pomyślnym przetworzeniu zamówienia zostanie utworzony Partner Center **subs
 * [Pobieranie subskrypcji klienta](get-all-of-a-customer-s-subscriptions.md)
 * [Pobieranie listy subskrypcji według zamówienia](get-a-list-of-subscriptions-by-order.md)
 
-Gdy plan platformy Azure jest tworzony w Partner Center, na platformie Azure jest również tworzona odpowiednia subskrypcja użycia platformy Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, korzystając z procedury opisanej w tesłudze Get [a list of Azure entitlements for Partner Center subscription](get-a-list-of-azure-entitlements-for-subscription.md) (Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji Partner Center Azure)
+Gdy plan platformy Azure jest tworzony w Partner Center, na platformie Azure tworzona jest również odpowiednia subskrypcja użycia platformy Azure. Możesz również utworzyć dodatkowe subskrypcje użycia platformy Azure w ramach tego samego planu platformy Azure przy użyciu Azure Portal i interfejsów API platformy Azure. Identyfikatory wszystkich subskrypcji użycia platformy Azure skojarzonych z planem platformy Azure można uzyskać, korzystając z procedury opisanej w tesłudze Get [a list of Azure entitlements for Partner Center subscription](get-a-list-of-azure-entitlements-for-subscription.md) (Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji Partner Center Azure)
 
 ## <a name="lifecycle-management"></a>Zarządzanie cyklem życia
 
@@ -86,7 +86,7 @@ Nie możesz utworzyć planu platformy Azure dla istniejącego klienta z subskryp
 
 ## <a name="azure-spending"></a>Wydatki na platformie Azure
 
-Wydatki na [platformę Azure można śledzić,](azure-spending.md) odpytując o podsumowanie użycia i szczegółowe rekordy użycia przy użyciu następujących metod:
+Możesz śledzić wydatki [na platformę Azure,](azure-spending.md) korzystając z następujących metod wykonywania zapytań o podsumowanie użycia i szczegółowe rekordy użycia:
 
 * [Pobieranie podsumowania użycia przez partnera](get-a-partner-usage-summary.md)
 * [Pobieranie wszystkich rekordów dotyczących użycia przez klientów dla partnera](get-a-customer-s-usage-records.md)
@@ -98,7 +98,7 @@ Wydatki na [platformę Azure można śledzić,](azure-spending.md) odpytując o 
 * [Pobieranie zasobów rekordu użycia miernika](meter-usage-resources.md)
 * [Pobieranie zasobów rekordu użycia zasobu](resource-usage-resources.md)
 
-Można również ustawić budżet użycia klientów i zarządzać nimi przy użyciu następujących metod:
+Budżet użycia klientów można również ustawić i zarządzać nimi przy użyciu następujących metod:
 
 * [Pobieranie budżetu użycia klienta](get-a-customer-s-usage-spending-budget.md)
 * [Aktualizowanie budżetu użycia klienta](update-a-customer-s-usage-spending-budget.md)

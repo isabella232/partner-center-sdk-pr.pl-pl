@@ -4,12 +4,12 @@ description: Opisuje użytkownika Partner Center, informacje o jego osobistych i
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 26bb202db3eefd9be8fe57ed2cc4dc220c8807d4
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 8c91e3509d86c8817da30c8ad0d96a2b1b6eec7697e43b47d3dfb96055cac632
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529685"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989223"
 ---
 # <a name="user-resources"></a>Zasoby użytkownika
 
@@ -68,7 +68,7 @@ Opisuje poświadczenia logowania użytkownika.
 | userName | ciąg                                             | Nazwa użytkownika.                |
 | hasło | [Securestring](utility-resources.md#securestring) | Bezpiecznie przechowywane hasło użytkownika. |
 
-## <a name="usermember"></a>UserMember (Użytkownik jest użytkownikiem)
+## <a name="usermember"></a>UserMember
 
 Opisuje informacje o członkach użytkownika.
 

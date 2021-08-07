@@ -1,32 +1,32 @@
 ---
 title: Pobieranie potwierdzenia otrzymania faktury
-description: Pobiera zestawienie paragonu faktury przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
+description: Pobiera fakturę z potwierdzeniem przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
 ms.date: 02/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: dcac4c8f0b881409dcad3560eefb82d4bb5e877a
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: ed47eadb377a94363b46cbc5508e5377cee005007698df9077d085705c7b9d08
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446133"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990736"
 ---
 # <a name="get-invoice-receipt-statement"></a>Pobieranie potwierdzenia otrzymania faktury
 
-Pobiera zestawienie paragonu faktury przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
+Pobiera fakturę z potwierdzeniem przy użyciu identyfikatora faktury i identyfikatora potwierdzenia.
 
 > [!IMPORTANT]
-> Ta funkcja ma zastosowanie tylko do tajwańskich paragonów podatkowych.
+> Ta funkcja ma zastosowanie tylko do paragonów podatkowych w Chinach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Prawidłowy identyfikator faktury i odpowiedni identyfikator potwierdzenia.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać zestawienie faktur według identyfikatora, począwszy od zestaw SDK Centrum partnerskiego v1.12.0, użyj kolekcji **IPartner.Invoices** i wywołaj metodę **ById()** przy użyciu identyfikatora faktury, a następnie wywołaj kolekcję **Receipts** i wywołaj metodę **ById(),** a następnie wywołaj metody **Documents()** i **Statement(),** aby uzyskać dostęp do zestawienia paragonu na fakturze. Na koniec wywołaj **metody Get()** **lub GetAsync().**
+Aby uzyskać zestawienie paragonu za pomocą identyfikatora, zaczynając od zestaw SDK Centrum partnerskiego w wersji 1.12.0, użyj kolekcji **IPartner.Invoices** i wywołaj metodę **ById()** przy użyciu identyfikatora faktury, a następnie wywołaj kolekcję **Receipts** i wywołaj metodę **ById(),** a następnie wywołaj metody **Documents()** i **Statement(),** aby uzyskać dostęp do zestawienia paragonu na fakturze. Na koniec wywołaj **metody Get()** **lub GetAsync().**
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -47,12 +47,12 @@ var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby uzyskać zestawienie faktur.
+Użyj następującego parametru zapytania, aby pobrać zestawienie paragonu faktury.
 
 | Nazwa       | Typ   | Wymagane | Opis                                                                                    |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|
-| identyfikator faktury | ciąg | Tak      | Wartość to identyfikator faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
-| identyfikator potwierdzenia | ciąg | Tak      | Wartość to identyfikator paragonu, który umożliwia odsprzedawcy filtrowanie paragonów dla danej faktury. |
+| invoice-id | ciąg | Tak      | Wartość to identyfikator faktury, który umożliwia odsprzedawcy filtrowanie wyników dla danej faktury. |
+| identyfikator potwierdzenia | ciąg | Tak      | Wartość to identyfikator potwierdzenia, który umożliwia odsprzedawcy filtrowanie paragonów dla danej faktury. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

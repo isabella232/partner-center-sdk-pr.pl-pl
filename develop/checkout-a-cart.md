@@ -4,14 +4,14 @@ description: Dowiedz się, jak sprawdzić zamówienie klienta w koszyku przy uż
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 3b36a6930b6a643c23d60150a1f772534b17ce758425a1d3129ca2f9d829b4ba
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974050"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991977"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Wyewidencjonowanie zamówienia klienta w koszyku
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Finalizacji zakupu klienta w koszyku
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
@@ -19,15 +19,15 @@ Jak wyewidencjonować zamówienie klienta w koszyku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator koszyka dla istniejącego koszyka.
 
 ## <a name="c"></a>C\#
 
-Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcje Create** lub **CreateAsync,** aby ukończyć kolejność.
+Aby wyewidencjonować zamówienie dla klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcje Create** lub **CreateAsync,** aby ukończyć zamówienie.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -41,7 +41,7 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Aby wyewidencjonować zamówienie klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcję create,** aby ukończyć kolejność.
+Aby wyewidencjonować zamówienie dla klienta, uzyskaj odwołanie do koszyka przy użyciu koszyka i identyfikatora klienta. Na koniec wywołaj **funkcję create,** aby ukończyć zamówienie.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -55,7 +55,7 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Aby wyewidencjonować zamówienie klienta, wykonaj polecenie [**Submit-PartnerCustomerCart,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) aby ukończyć zamówienie.
+Aby wyewidencjonować zamówienie dla klienta, wykonaj polecenie [**Submit-PartnerCustomerCart,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) aby ukończyć zamówienie.
 
 ```powershell
 # $customerId
@@ -78,8 +78,8 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i okre�
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
-| **identyfikator koszyka**     | ciąg   | Tak      | Identyfikator GUID sformatowany jako cart-id, który identyfikuje koszyk.                     |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta.             |
+| **cart-id**     | ciąg   | Tak      | Identyfikator GUID w formacie cart-id, który identyfikuje koszyk.                     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: brentserbus
 ms.author: brserbus
-ms.openlocfilehash: f759cbdeefb4f550c41b41de40e9979e72e4ddeb
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: a57f3715a7c2738e74fc406ed834981b208fb0ab14a228db8756f5c4b1e32281
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760644"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990855"
 ---
 # <a name="get-an-offer-by-id"></a>Pobieranie oferty według identyfikatora
 
@@ -21,13 +21,13 @@ Pobiera **zasób Oferty,** który odpowiada identyfikatorowi oferty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator oferty.
 
 ## <a name="c"></a>C\#
 
-Aby znaleźć określoną ofertę według identyfikatora, użyj kolekcji **IAggregatePartner.Offers,** ustanów kraj za pomocą wywołania metody **ByCountry(),** a następnie wywołaj metodę [**ByID().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) Następnie wywołaj metodę [**Get()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) [**lub Get Async().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync)
+Aby znaleźć określoną ofertę według identyfikatora, użyj kolekcji **IAggregatePartner.Offers,** ustanów kraj za pomocą wywołania metody **ByCountry(),** a następnie wywołaj metodę [**ByID().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) Następnie wywołaj [**metodę Get()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) [**lub Get Async().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync)
 
 ```csharp
 // IAggretagePartner partnerOperations;
@@ -80,7 +80,7 @@ Get-PartnerOffer -Country $countryCode -OfferId $offerId
 
 | Nazwa           | Typ       | Wymagane | Opis                           |
 |----------------|------------|----------|---------------------------------------|
-| **identyfikator oferty**   | **guid**   | Y        | Identyfikator GUID odpowiadający ofercie. |
+| **offer-id**   | **guid**   | Y        | Identyfikator GUID odpowiadający ofercie. |
 | **country-id** | **ciąg** | Y        | Identyfikator kraju/regionu.                |
 
 ### <a name="request-headers"></a>Nagłówki żądań

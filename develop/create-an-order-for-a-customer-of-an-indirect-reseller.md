@@ -4,12 +4,12 @@ description: Dowiedz się, jak Partner Center api do tworzenia zamówienia dla k
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6253ba2289ea1f58e7d8eaa960d7d0daaa887f0d
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ba46b151e423df27f1378ac8441a23702e47746911b4e05e370bbf0aa7b53233
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973551"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991552"
 ---
 # <a name="create-an-order-for-a-customer-of-an-indirect-reseller"></a>Utwórz zamówienie dla klienta odsprzedawcy pośredniego
 
@@ -19,7 +19,7 @@ Jak utworzyć zamówienie dla klienta odsprzedawcy pośredniego.
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator oferty przedmiotu do zakupu.
 
@@ -109,7 +109,7 @@ W tej tabeli **opisano właściwości** Order w treści żądania.
 | ---- | ---- | -------- | ----------- |
 | identyfikator | ciąg | Nie | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia. |
 | referenceCustomerId | ciąg | Tak | Identyfikator klienta. |
-| billingCycle | ciąg | Nie | Częstotliwość, za jaką partner jest rozliczany za to zamówienie. Wartość domyślna &quot; to Co miesiąc i jest stosowana po &quot; pomyślnym utworzeniu zamówienia. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Uwaga: funkcja rozliczeń rocznych nie jest jeszcze ogólnie dostępna. Obsługa rozliczeń rocznych zostanie w wkrótce wywłasz ędna. |
+| billingCycle | ciąg | Nie | Częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Wartość domyślna &quot; to Co miesiąc i jest stosowana po &quot; pomyślnym utworzeniu zamówienia. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Uwaga: funkcja rozliczeń rocznych nie jest jeszcze ogólnie dostępna. Obsługa rozliczeń rocznych będzie wkrótce wycześniejsza. |
 | lineItems | tablica obiektów | Tak | Tablica zasobów [**OrderLineItem.**](#orderlineitem) |
 | Creationdate | ciąg | Nie | Data utworzenia zamówienia w formacie data/godzina. Stosowane po pomyślnym utworzeniu zamówienia. |
 | atrybuty | object | Nie | Zawiera "ObjectType": "Order". |
@@ -123,10 +123,10 @@ W tej tabeli **opisano właściwości OrderLineItem** w treści żądania.
 | lineItemNumber | int | Tak | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1. |
 | offerId | ciąg | Tak | Identyfikator oferty. |
 | subscriptionId | ciąg | Nie | Identyfikator subskrypcji. |
-| parentSubscriptionId | ciąg | Nie | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko patch. |
-| Friendlyname | ciąg | Nie | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania. |
+| parentSubscriptionId | ciąg | Nie | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko PATCH. |
+| Friendlyname | ciąg | Nie | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu ujednoznacznienia. |
 | quantity | int | Tak | Liczba licencji dla subskrypcji opartej na licencjach. |
-| partnerIdOnRecord | ciąg | Nie | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. **Nie podaniem identyfikatora MPN odsprzedawcy nie powoduje niepowodzenia zamówienia. Odsprzedawca nie jest jednak zarejestrowany i w związku z tym obliczenia zachęt mogą nie obejmować sprzedaży.** |
+| partnerIdOnRecord | ciąg | Nie | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN tylko odsprzedawcy pośredniego **(nigdy** identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. **Nie podaniem identyfikatora MPN odsprzedawcy nie powoduje niepowodzenia zamówienia. Jednak odsprzedawca nie jest rejestrowany i w związku z tym obliczenia zachęt mogą nie obejmować sprzedaży.** |
 | atrybuty | object | Nie | Zawiera "ObjectType":"OrderLineItem". |
 
 ### <a name="request-example"></a>Przykład żądania

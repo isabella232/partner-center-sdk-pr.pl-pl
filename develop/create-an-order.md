@@ -1,17 +1,17 @@
 ---
 title: Tworzenie zamówienia klienta
-description: Dowiedz się, jak Partner Center api w celu utworzenia zamówienia dla klienta. Artykuł zawiera wymagania wstępne, kroki i przykłady.
+description: Dowiedz się, jak Partner Center interfejsów API do tworzenia zamówienia dla klienta. Artykuł zawiera wymagania wstępne, kroki i przykłady.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a2a980634e3887780c9d6dbd4fa3271956978884
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: 9330639de3ff88fd2e659e92729de0c1625b6157e2608204577287d30d330d00
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009153"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991501"
 ---
-# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Tworzenie zamówienia dla klienta przy użyciu interfejsów API Partner Center API
+# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Tworzenie zamówienia dla klienta przy użyciu interfejsów PARTNER CENTER API
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud for US Government
 
@@ -19,13 +19,13 @@ Tworzenie zamówienia **dla produktów wystąpienia zarezerwowanego maszyny wirt
 
 - Centrum partnerskie
 
-Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz Oferty partnerów [w Dostawca rozwiązań w chmurze programie](/partner-center/csp-offers).
+Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz [Oferty partnerów w Dostawca rozwiązań w chmurze programie](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator oferty.
 
@@ -33,11 +33,11 @@ Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz O
 
 Aby utworzyć zamówienie dla klienta:
 
-1. Należy utworzyć wystąpienia obiektu [**Order**](order-resources.md) i ustawić **właściwość ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
+1. Za pomocą wystąpienia obiektu [**Order**](order-resources.md) ustaw właściwość **ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
 
-2. Utwórz listę obiektów [**OrderLineItem**](order-resources.md#orderlineitem) i przypisz listę do właściwości **LineItems** zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Musisz mieć co najmniej jeden element wiersza zamówienia.
+2. Utwórz listę obiektów [**OrderLineItem**](order-resources.md#orderlineitem) i przypisz listę do właściwości **LineItems** zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Musisz mieć co najmniej jeden wiersz zamówienia.
 
-3. Uzyskiwanie interfejsu do zamawiania operacji. Najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs z właściwości [**Orders.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders)
+3. Uzyskaj interfejs do uporządkowania operacji. Najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs z właściwości [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) (Zamówienia).
 
 4. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) i przekaż obiekt [**Order.**](order-resources.md)
 
@@ -69,7 +69,7 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: CreateOrder.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : CreateOrder.cs **(Klasa** przykładów kodu : CreateOrder.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -85,7 +85,7 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ   | Wymagane | Opis                                                |
 |-------------|--------|----------|------------------------------------------------------------|
-| identyfikator klienta | ciąg | Yes      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -95,19 +95,19 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 #### <a name="order"></a>Zamówienie
 
-W tej tabeli [opisano właściwości Order](order-resources.md) w treści żądania.
+W tej tabeli [opisano właściwości](order-resources.md) Order w treści żądania.
 
 | Właściwość             | Typ                        | Wymagane                        | Opis                                                                   |
 |----------------------|-----------------------------|---------------------------------|-------------------------------------------------------------------------------|
 | identyfikator                   | ciąg                      | Nie                              | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia.   |
 | referenceCustomerId  | ciąg                      | Nie                              | Identyfikator klienta. |
-| billingCycle         | ciąg                      | Nie                              | Wskazuje częstotliwość, z jaką partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). Wartość domyślna to "Monthly" lub "OneTime" podczas tworzenia zamówienia. To pole jest stosowane po pomyślnym utworzeniu zamówienia. |
-| lineItems            | tablica [zasobów OrderLineItem](order-resources.md#orderlineitem) | Yes      | Lista ofert, które klient kupuje, wraz z ilością.        |
+| billingCycle         | ciąg                      | Nie                              | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). Wartość domyślna to "Monthly" lub "OneTime" podczas tworzenia zamówienia. To pole jest stosowane po pomyślnym utworzeniu zamówienia. |
+| lineItems            | tablica [zasobów OrderLineItem](order-resources.md#orderlineitem) | Tak      | Lista pozycji ofert, które klient kupuje, łącznie z ilością.        |
 | currencyCode         | ciąg                      | Nie                              | Tylko do odczytu. Waluta używana podczas składania zamówienia. Stosowane po pomyślnym utworzeniu zamówienia.           |
 | Creationdate         | datetime                    | Nie                              | Tylko do odczytu. Data utworzenia zamówienia w formacie data/godzina. Stosowane po pomyślnym utworzeniu zamówienia.                                   |
 | status               | ciąg                      | Nie                              | Tylko do odczytu. Stan zamówienia.  Obsługiwane wartości to nazwy członków w [orderstatus](order-resources.md#orderstatus).        |
-| Linki                | [OrderLinks](utility-resources.md#resourcelinks)              | Nie                              | Zasób łączy się z zamówieniem. |
-| atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie                              | Atrybuty metadanych odpowiadające kolejności. |
+| Linki                | [OrderLinks](utility-resources.md#resourcelinks)              | Nie                              | Link zasobu odpowiadający zamówieniu. |
+| atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie                              | Atrybuty metadanych odpowiadające zamówieniu. |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
@@ -118,12 +118,12 @@ W tej tabeli [opisano właściwości OrderLineItem](order-resources.md#orderline
 
 | Nazwa                 | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int    | Yes      | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1.                                                                                                                                                 |
-| offerId              | ciąg | Yes      | Identyfikator oferty.                                                                                                                                                                                                                      |
+| lineItemNumber       | int    | Tak      | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1.                                                                                                                                                 |
+| offerId              | ciąg | Tak      | Identyfikator oferty.                                                                                                                                                                                                                      |
 | subscriptionId       | ciąg | Nie       | Identyfikator subskrypcji.                                                                                                                                                                                                               |
 | parentSubscriptionId | ciąg | Nie       | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko patch.                                                                                                                                                     |
 | Friendlyname         | ciąg | Nie       | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania.                                                                                                                                              |
-| quantity             | int    | Yes      | Liczba licencji dla subskrypcji opartej na licencjach.                                                                                                                                                                                   |
+| quantity             | int    | Tak      | Liczba licencji dla subskrypcji opartej na licencjach.                                                                                                                                                                                   |
 | partnerIdOnRecord    | ciąg | Nie       | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. |
 | provisioningContext  | Słownik<ciąg, ciąg>                | Nie       |  Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                  |
 | Linki                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Nie       |  Tylko do odczytu. Zasób łączy się z elementem wiersza Zamówienie.  |

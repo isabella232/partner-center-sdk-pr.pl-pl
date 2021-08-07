@@ -4,12 +4,12 @@ description: Jak uzyskać kartę stawki platformy Azure z cenami w czasie rzeczy
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4f66ab19ef3723fbaa27acff941cf48683a7c25c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8b69e9e3d8e6e4c4e447b308c890c4c054e6a1e5221bb523a5caca041d1ea115
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548791"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989111"
 ---
 # <a name="get-prices-for-microsoft-azure"></a>Pobieranie cen platformy Microsoft Azure
 
@@ -17,7 +17,7 @@ ms.locfileid: "111548791"
 
 Jak uzyskać kartę [stawki platformy Azure](azure-rate-card-resources.md) z cenami w czasie rzeczywistym dla oferty platformy Azure. Cennik platformy Azure jest dość dynamiczny i często się zmienia.
 
-Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku oraz rachunku dla poszczególnych klientów, możesz połączyć to zapytanie dotyczące karty stawki platformy Azure w celu uzyskania cen platformy Microsoft Azure z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)
+Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku i rachunku dla poszczególnych klientów, możesz połączyć to zapytanie dotyczące karty stawki platformy Azure, aby uzyskać ceny dla usługi Microsoft Azure z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)
 
 Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać. Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura. Aby uzyskać więcej informacji, zobacz [Parametry URI](#uri-parameters).
 
@@ -31,7 +31,7 @@ Aby uzyskać kartę stawki platformy Azure, wywołaj metodę [**IAzureRateCard.G
 var azureRateCard = partner.RateCards.Azure.Get();
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetAzureRateCard.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: GetAzureRateCard.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: GetAzureRateCard.cs
 
 ## <a name="java"></a>Java
 
@@ -67,14 +67,14 @@ Get-PartnerAzureRateCard
 
 | Nazwa     | Typ   | Wymagane | Opis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to `USD`. |
+| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO dla waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to `USD`. |
 | region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu ISO, który wskazuje rynek, na którym zakupiono ofertę (na przykład `FR` ). Wartość domyślna to `US`.        |
 
 W żądaniu możesz uwzględnić [](headers.md#rest-request-headers) opcjonalny nagłówek X-Locale. Jeśli nie dołączysz nagłówka X-Locale, zostanie użyta wartość domyślna ("en-US").
 
 - W przypadku podania parametrów waluty i regionu w żądaniu wartość X-Locale jest używana do określenia języka odpowiedzi.
 
-- Jeśli w żądaniu nie podaniem parametrów regionu i waluty, wartość X-Locale (Ustawienia lokalne X) jest używana do określenia regionu, waluty i języka odpowiedzi.
+- Jeśli nie po określisz parametrów regionu i waluty w żądaniu, wartość X-Locale będzie używana do określenia regionu, waluty i języka odpowiedzi.
 
 ### <a name="request-header"></a>Nagłówek żądania
 
@@ -99,11 +99,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli żądanie powiedzie się, zwraca zasób [karty stawki platformy Azure.](azure-rate-card-resources.md)
+Jeśli żądanie powiedzie się, zwraca [zasób karty stawki platformy Azure.](azure-rate-card-resources.md)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

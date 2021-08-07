@@ -6,25 +6,25 @@ ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 9a367f912669114969f8792a5afcc7020af1112e
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 395b21dde2790739d35e6047fbeaa7477cad50f4d1af9b12ad0b632742d71583
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760508"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990821"
 ---
-# <a name="get-app-and-user-api-requests"></a>Uzyskiwanie żądań interfejsu API aplikacji i użytkowników
+# <a name="get-app-and-user-api-requests"></a>Uzyskiwanie żądań interfejsu API aplikacji i użytkownika
 
 **Dotyczy:** interfejs API Partner Center API
 
-W tym artykule wyjaśniono, jak uzyskać listę wszystkich żądań użytkowników partnerów w dzierżawie przy użyciu interfejsów API REST.
+W tym artykule wyjaśniono, jak uzyskać listę wszystkich żądań użytkowników partnerów w ramach dzierżawy przy użyciu interfejsów API REST.
 
  > [!NOTE]
  > Ten interfejs API zwraca tylko najnowsze żądania interfejsu API wykonane przez poświadczenia aplikacji i użytkownika z maksymalnym limitem 10 000.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -53,7 +53,7 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję zasobów szczegółów [żądania interfejsu API](mfa-resources.md#api-request-details) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów szczegółów żądania [interfejsu API](mfa-resources.md#api-request-details) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

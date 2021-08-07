@@ -4,12 +4,12 @@ description: Dowiedz się więcej o Partner Center API z zasobami informacji o k
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: caf56282d21df35ae9e179a98a37317f864117a3
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 35b570b27466699d8d85819f7603794888f8dd943038ee28a0a734b7ef9aa0d1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973829"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991824"
 ---
 # <a name="country-information-resources-available-from-partner-center-apis"></a>Zasoby informacji o kraju dostępne z Partner Center API
 

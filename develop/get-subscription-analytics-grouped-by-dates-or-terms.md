@@ -4,12 +4,12 @@ description: Jak uzyskać informacje dotyczące analizy subskrypcji pogrupowane 
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8192a9863d53ec8697a7341cd38c69200614bd4a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 66336d3e5573598eb4810853ad2704bc8d2c76680292a4f5b4a3da9bb50936b8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548723"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989682"
 ---
 # <a name="get-subscription-analytics-grouped-by-dates-or-terms"></a>Uzyskiwanie analizy subskrypcji pogrupowanych według dat lub terminów
 
@@ -39,7 +39,7 @@ Użyj następujących wymaganych parametrów ścieżki, aby zidentyfikować orga
 
 ### <a name="groupby-syntax"></a>Składnia grupowania
 
-Parametr grupowania musi składać się z serii wartości pól rozdzielonych przecinkami.
+Parametr grupowania musi być składany jako seria wartości pól rozdzielonych przecinkami.
 
 Niezakodowany przykład wygląda następująco:
 
@@ -71,7 +71,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych pól dla grupowania wed�
 | trialStartDate | ciąg w formacie daty i czasu UTC | Data rozpoczęcia okresu próbnego subskrypcji. Wartość domyślna to null. |
 | lastUsageDate | ciąg w formacie daty i czasu UTC | Data ostatniego użytej subskrypcji. Wartość domyślna to null. |
 | deprovisionedDate | ciąg w formacie daty i czasu UTC | Data coprowizowana subskrypcji. Wartość domyślna to null. |
-| lastRenewalDate | ciąg w formacie daty i godzin UTC | Data ostatniego odnowienia subskrypcji. Wartość domyślna to null. |
+| lastRenewalDate | ciąg w formacie daty i czasu UTC | Data ostatniego odnowienia subskrypcji. Wartość domyślna to null. |
 
 ### <a name="filter-fields"></a>Filtrowanie pól
 
@@ -81,8 +81,8 @@ W poniższej tabeli wymieniono opcjonalne pola filtru i ich opisy:
 |-------|------|--------------|
 | top (pierwsze) | int | Liczba wierszy danych do zwrócenia w żądaniu. Jeśli wartość nie zostanie określona, wartość maksymalna i wartość domyślna to 10000. Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. |
 | Pomiń | int | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład wartości top=10000 i skip=0 pobierają pierwsze 10000 wierszy danych, top=10000, a skip=10000 pobiera następne 10000 wierszy danych. |
-| filter | ciąg | Co najmniej jedna instrukcja, która filtruje wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość skojarzoną z operatorem **`eq`** , lub dla niektórych **`ne`** **`contains`** pól. Instrukcje można łączyć przy użyciu **`and`** instrukcji lub **`or`** . Wartości ciągu muszą być otoczone pojedynczymi cudzysłowami w parametrze filtru. W poniższej sekcji znajduje się lista pól, które można filtrować, oraz operatorów obsługiwanych przez te pola. |
-| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: **dzień,** **tydzień** lub **miesiąc**. Jeśli wartość nie zostanie określona, wartość domyślna to **dateRange**. **Uwaga:** ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przekazywane jako część parametru groupBy. |
+| filter | ciąg | Co najmniej jedna instrukcja, która filtruje wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość skojarzoną z operatorem **`eq`** , lub dla niektórych **`ne`** **`contains`** pól. Instrukcje można łączyć przy użyciu **`and`** instrukcji lub **`or`** . Wartości ciągu muszą być otoczone pojedynczymi cudzysłowami w parametrze filtru. Zobacz następującą sekcję, aby uzyskać listę pól, które można filtrować, oraz operatory obsługiwane przez te pola. |
+| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: **dzień,** **tydzień** lub **miesiąc**. Jeśli wartość nie zostanie określona, wartością domyślną jest **dateRange**. **Uwaga:** ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przekazywane jako część parametru groupBy. |
 | Groupby | ciąg | Instrukcja, która stosuje agregację danych tylko do określonych pól. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -107,7 +107,7 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [subskrypcji](partner-center-analytics-resources.md#subscription-resource) pogrupowanych według określonych warunków i dat.
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [subskrypcji](partner-center-analytics-resources.md#subscription-resource) pogrupowanych według określonych terminów i dat.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

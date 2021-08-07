@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: 5c20b317edf16b159050884070683880cf7e45bb
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: 384fa227a103ed10dc2fd055afa7688d3b2a418504360eb4a5025615cf2a4f67
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025724"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989359"
 ---
 # <a name="get-agreement-metadata-for-the-microsoft-customer-agreement"></a>Pobieranie metadanych umowy dla umowy klienta firmy Microsoft
 
@@ -28,17 +28,17 @@ Musisz pobrać metadane umowy dla Umowa z Klientem Microsoft, aby można było:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli używasz zestawu SDK platformy Partner Center .NET, wymagana jest wersja 1.14 lub nowsza.
+- Jeśli używasz zestawu SDK platformy .NET Partner Center, wymagana jest wersja 1.14 lub nowsza.
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](./partner-center-authentication.md) Ten scenariusz obsługuje tylko uwierzytelnianie app+user.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](./partner-center-authentication.md) Ten scenariusz obsługuje tylko uwierzytelnianie aplikacji i użytkowników.
 
 ## <a name="net-version-114-or-newer"></a>.NET (wersja 1.14 lub nowsza)
 
 Aby pobrać metadane umowy dla Umowa z Klientem Microsoft:
 
-1. Najpierw pobierz **kolekcję IAggregatePartner.AgreementDetails.**
+1. Najpierw pobierz kolekcję **IAggregatePartner.AgreementDetails.**
 
-2. Wywołaj **metodę ByAgreementType,** aby filtrować kolekcję w Umowa z Klientem Microsoft.
+2. Wywołaj **metodę ByAgreementType,** aby filtrować kolekcję Umowa z Klientem Microsoft.
 
 3. Na koniec wywołaj **metodę Get** lub **GetAsync.**
 
@@ -50,13 +50,13 @@ string agreementType = "MicrosoftCustomerAgreement";
 var microsoftCustomerAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
 ```
 
-Kompletny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) w projekcie [aplikacji testowej konsoli.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
+Pełny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) w projekcie [aplikacji testowej konsoli.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="rest-request"></a>Żądanie REST
 
 Aby pobrać metadane umowy dla Umowa z Klientem Microsoft:
 
-1. Utwórz żądanie REST, aby pobrać [kolekcję AgreementMetaData.](./agreement-metadata-resources.md)
+1. Utwórz żądanie REST w celu pobrania [kolekcji AgreementMetaData.](./agreement-metadata-resources.md)
 
 2. Użyj **parametru zapytania agreementType,** aby zawęzać wynik tylko do Umowa z Klientem Microsoft.
 
@@ -70,7 +70,7 @@ Aby pobrać metadane umowy dla Umowa z Klientem Microsoft:
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
-| typ umowy | ciąg | Nie | Użyj tego parametru, aby określać zakres odpowiedzi na zapytanie dla określonego typu umowy. Obsługiwane wartości to: <br/><br/>**MicrosoftCloudAgreement,** który zawiera tylko metadane umowy typu *MicrosoftCloudAgreement*<br/><br/>**MicrosoftCustomerAgreement,** który zawiera tylko metadane umowy typu *MicrosoftCustomerAgreement*.<br/><br/>**\**_ zwraca wszystkie metadane umowy. (Nie używaj _* \* _, chyba że kod ma logikę środowiska uruchomieniowego niezbędną do obsługi nieznanych typów umów, ponieważ firma Microsoft może w dowolnym momencie wprowadzić metadane umowy z *nowymi typami umów). <br/> <br/> _* Uwaga:** Jeśli parametr URI nie zostanie określony, zapytanie domyślnie będzie mieć wartość **MicrosoftCloudAgreement** w celu zapewnienia zgodności z poprzednimi wersjami.  |
+| agreement-type | ciąg | Nie | Użyj tego parametru, aby określać zakres odpowiedzi na zapytanie dla określonego typu umowy. Obsługiwane wartości to: <br/><br/>**MicrosoftCloudAgreement,** która zawiera tylko metadane umowy typu *MicrosoftCloudAgreement*<br/><br/>**MicrosoftCustomerAgreement,** która zawiera metadane umowy tylko typu *MicrosoftCustomerAgreement*.<br/><br/>**\**_ zwraca wszystkie metadane umowy. (Nie używaj argumentu _* \* _ chyba że kod ma logikę środowiska uruchomieniowego niezbędną do obsługi nieznanych typów umów, ponieważ firma Microsoft może w dowolnym momencie wprowadzić metadane umowy z *nowymi typami umów). <br/> <br/> _* Uwaga:** Jeśli parametr URI nie zostanie określony, zapytanie domyślnie będzie mieć wartość **MicrosoftCloudAgreement w** celu zapewnienia zgodności z poprzednimi wersjami.  |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -92,13 +92,13 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję [ **zasobów AgreementMetaData**](./agreement-metadata-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów [ **AgreementMetaData** w](./agreement-metadata-resources.md) treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
 Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.
 
-Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

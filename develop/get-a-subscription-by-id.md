@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 75f21a3f76e5502ba40b89995aa26bd0e668b3fa
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 0dc65c629984c299bfde0b801b0415ffb1ba661462e2473ad051f169d6357d3a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873823"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991059"
 ---
 # <a name="get-a-subscription-by-id"></a>Pobieranie subskrypcji według identyfikatora
 
@@ -39,7 +39,7 @@ Aby uzyskać subskrypcję według identyfikatora, zacznij od uzyskania interfejs
 var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionID).Get();
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa:** GetSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetSubscription.cs **(Klasa** przykładów kodu: GetSubscription.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,7 +51,7 @@ var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).S
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Ta tabela zawiera listę parametrów zapytania wymaganych do uzyskania subskrypcji.
+W tej tabeli wymieniono parametry zapytania wymagane do uzyskania subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|

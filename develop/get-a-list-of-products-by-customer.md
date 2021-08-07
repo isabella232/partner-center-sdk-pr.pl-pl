@@ -7,12 +7,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: a7cb2430aa93beb89e4d1f9b8c89a016d66624ca
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2f896c16f8f13df795cee14742b00e7d10dbb1812308b20a4d4bc4a8c614471c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874197"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991144"
 ---
 # <a name="get-a-list-of-products-by-customer"></a>Pobieranie listy produktów (według klientów)
 
@@ -22,9 +22,9 @@ Aby uzyskać kolekcję produktów dla istniejącego klienta, można użyć nast�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -38,8 +38,8 @@ Aby uzyskać kolekcję produktów dla istniejącego klienta, można użyć nast�
 
 | Nazwa               | Typ | Wymagane | Opis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| **identyfikator dzierżawy klienta** | GUID | Tak | Wartość jest identyfikatorem **customer-tenant-id** w formacie IDENTYFIKATORA GUID, który jest identyfikatorem umożliwiającym określenie klienta. |
-| **targetView** | ciąg | Tak | Identyfikuje widok docelowy wykazu. Obsługiwane wartości to: <br/><br/>**Azure**, która zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która zawiera wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** która zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i plany platformy Azure<br/><br/>**OnlineServices**, która obejmuje wszystkie elementy usługi online, w tym produkty platformy handlowej<br/><br/>**Oprogramowanie**, które obejmuje wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie elementy oprogramowania bezterminowego<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania  |
+| **identyfikator dzierżawy klienta** | GUID | Tak | Wartość jest identyfikatorem **customer-tenant-id** w formacie identyfikatora GUID, który jest identyfikatorem umożliwiającym określenie klienta. |
+| **targetView** | ciąg | Tak | Określa widok docelowy katalogu. Obsługiwane wartości to: <br/><br/>**Azure**, który zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która zawiera wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** który zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planów platformy Azure<br/><br/>**OnlineServices**, który obejmuje wszystkie elementy usług online, w tym produkty platformy handlowej<br/><br/>**Oprogramowanie**, które zawiera wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie bezterminowe elementy oprogramowania<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania  |
 
 ### <a name="request-header"></a>Nagłówek żądania
 
@@ -51,7 +51,7 @@ Brak.
 
 ### <a name="request-example"></a>Przykład żądania
 
-Żądanie listy produktów opartych na użyciu platformy Azure dostępnych dla danego klienta. Produkty dla obu Microsoft Azure (MS-AZR-0145P) i planów platformy Azure będą zwracane dla klientów w chmurze publicznej:
+Zażądaj listy produktów opartych na użyciu platformy Azure dostępnych dla danego klienta. Produkty dla obu Microsoft Azure (MS-AZR-0145P) i planów platformy Azure będą zwracane dla klientów w chmurze publicznej:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/65543400-f8b0-4783-8530-6d35ab8c6801/products?targetView=MicrosoftAzure HTTP/1.1

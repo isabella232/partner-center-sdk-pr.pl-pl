@@ -4,12 +4,12 @@ description: Zasób ProductUpgradeRequest umożliwia utworzenie jednostki uaktua
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4e346b7f5294a8847047c85115d8c80f34eaca84
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7515bbce2914142e052349a1bbb4de20416d0931ac886fe9264cc4d3b8c1f734
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973420"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991467"
 ---
 # <a name="create-a-product-upgrade-entity-for-a-customer"></a>Tworzenie jednostki uaktualnienia produktu dla klienta
 
@@ -17,9 +17,9 @@ Możesz utworzyć jednostkę uaktualnienia produktu, aby uaktualnić klienta do 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji podczas](enable-secure-app-model.md) korzystania z uwierzytelniania app+user z Partner Center API.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji w](enable-secure-app-model.md) przypadku korzystania z uwierzytelniania app+user z Partner Center API.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Rodzina produktów, do której chcesz uaktualnić klienta.
 
@@ -33,7 +33,7 @@ Aby uaktualnić klienta do planu platformy Azure:
 
 3. Wywołaj **metodę Create** i przekaż obiekt **ProductUpgradesRequest,** który zwróci ciąg **nagłówka** lokalizacji.
 
-4. Wyodrębnij **identyfikator upgrade-id** z ciągu nagłówka lokalizacji, który może służyć do wykonywania [zapytań o stan uaktualnienia](get-product-upgrade-status.md).
+4. Wyodrębnij **identyfikator upgrade-id** z ciągu nagłówka lokalizacji, który może służyć do wykonywania [zapytań o stan uaktualnienia.](get-product-upgrade-status.md)
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -93,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera nagłówek **Location** z kodem URI, który może służyć do pobierania stanu uaktualnienia produktu. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
+W przypadku powodzenia odpowiedź zawiera nagłówek **Location** z URI, który może służyć do pobierania stanu uaktualnienia produktu. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

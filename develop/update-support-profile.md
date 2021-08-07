@@ -4,12 +4,12 @@ description: Aktualizuje profil pomocy technicznej użytkownika.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 143328c5501f525d52911eead805d420f79b78ff
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: f312f7da76d47282c5caa27b3158249b3d3e8a35e739d60fd74525705c0e7cf3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530348"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990396"
 ---
 # <a name="update-support-profile"></a>Aktualizowanie profilu pomocy technicznej
 
@@ -19,11 +19,11 @@ Aktualizuje profil pomocy technicznej użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil pomocy technicznej, najpierw [pobierz swój profil pomocy technicznej](get-support-profile.md) i wdaj wszelkie zmiany. Następnie użyj [**kolekcji IPartnerOperations.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Wywołaj [**właściwość SupportProfile,**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) a następnie metodę [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) lub [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync)
+Aby zaktualizować profil pomocy technicznej, najpierw pobierz [swój profil pomocy technicznej](get-support-profile.md) i wdaj wszelkie zmiany. Następnie użyj [**kolekcji IPartnerOperations.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Wywołaj [**właściwość SupportProfile,**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) a następnie metodę [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) lub [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,7 +39,7 @@ SupportProfile newSupportProfile = new SupportProfile
 SupportProfile updatedSupportProfile = partnerOperations.Profiles.SupportProfile.Update(newSupportProfile);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa**: UpdateSupportProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesKlasa : UpdateSupportProfile.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 

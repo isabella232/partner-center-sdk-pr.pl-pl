@@ -6,25 +6,25 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 840c9d1a61451763d37a19639f99b12f1deb7521
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 7a834521405110ea50e9eed6590ed514fb90927b9c5a27251c7cf992e0c2a9d4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874350"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990345"
 ---
 # <a name="get-a-list-of-customers"></a>Pobieranie listy klientów
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-W tym artykule opisano sposób pobierania kolekcji zasobów, które reprezentują wszystkich klientów partnera.
+W tym artykule opisano sposób pobierania kolekcji zasobów, która reprezentuje wszystkich klientów partnera.
 
 > [!TIP]
-> Tę operację można również wykonać na pulpicie nawigacyjnym Partner Center nawigacyjnym. Na stronie głównej w obszarze **Zarządzanie klientami** wybierz pozycję **Wyświetl klientów.** Lub na pasku bocznym wybierz pozycję **Klienci**.
+> Tę operację można również wykonać na pulpicie Partner Center nawigacyjnym. Na stronie głównej w obszarze **Zarządzanie klientami** wybierz pozycję **Wyświetl klientów.** Lub na pasku bocznym wybierz pozycję **Klienci.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
@@ -32,7 +32,7 @@ Aby uzyskać listę wszystkich klientów:
 
 1. Użyj [**kolekcji IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby utworzyć **obiekt IPartner.**
 
-2. Pobierz listę klientów przy użyciu [**metod Query()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) (Aby uzyskać instrukcje dotyczące tworzenia zapytania, zobacz [**klasę QueryFactory).**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
+2. Pobierz listę klientów przy użyciu [**metod Query()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) [**lub QueryAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) (Aby uzyskać instrukcje dotyczące tworzenia zapytania, zobacz [**klasę QueryFactory).**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -129,7 +129,7 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję [zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [kolekcję](customer-resources.md#customer) zasobów klienta w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

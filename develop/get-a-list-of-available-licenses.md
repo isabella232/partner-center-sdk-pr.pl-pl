@@ -6,24 +6,24 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 02a6fccc2cf7f3f4dc929b96ec0f17e0f4a31b06
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: bce47adb87111edb998b8dff029f39547f21d8e0a0464a96de7f0c9aa5d4a69d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874503"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991161"
 ---
 # <a name="get-a-list-of-available-licenses"></a>Pobieranie listy dostępnych licencji
 
 W tym artykule opisano sposób uzyskania listy licencji dostępnych dla użytkowników określonego klienta.
 
-W poniższych przykładach zwracane są licencje dostępne w grupie **1**, czyli domyślnej grupie licencji reprezentującej licencje zarządzane przez usługę Azure Active Directory (Azure AD). Aby uzyskać dostępne licencje dla określonej grupy licencji, zobacz [Get a list of available licenses by license group (Uzyskiwanie](get-a-list-of-available-licenses-by-license-group.md)listy dostępnych licencji według grupy licencji).
+W poniższych przykładach zwracane są licencje dostępne w grupie **group1**, czyli domyślnej grupie licencji, która reprezentuje licencje zarządzane przez usługę Azure Active Directory (Azure AD). Aby uzyskać dostępne licencje dla określonej grupy licencji, zobacz [Get a list of available licenses by license group](get-a-list-of-available-licenses-by-license-group.md)(Uzyskiwanie listy dostępnych licencji według grupy licencji).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -62,7 +62,7 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta.
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg sformatowany przy pomocy identyfikatora GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

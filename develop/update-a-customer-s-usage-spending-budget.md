@@ -1,31 +1,31 @@
 ---
 title: Aktualizowanie budżetu wydatków na użycie przez klienta
-description: Zaktualizuj budżet wydatków przydzielony na potrzeby użycia przez klienta.
+description: Zaktualizuj budżet wydatków przydzielony na użycie klienta.
 ms.date: 02/05/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 043bd442266d081105e5e8767b6d597e89fc9e8b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 8826834c6c53e587a33b63ea4f8c7f9dd5bcf4cb3d95ee7c964ea7ca00d4f89e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529719"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990073"
 ---
 # <a name="update-a-customers-usage-spending-budget"></a>Aktualizowanie budżetu wydatków na użycie przez klienta
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zaktualizuj budżet [wydatków](customer-usage-resources.md#customerusagesummary) przydzielony na potrzeby użycia przez klienta.
+Zaktualizuj budżet [wydatków](customer-usage-resources.md#customerusagesummary) przydzielony na użycie klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować budżet wydatków na użycie klienta, najpierw utwórz nowy obiekt [**SpendingBudget ze**](/dotnet/api/microsoft.store.partnercenter.models.usage.spendingbudget) zaktualizowaną kwotą. Następnie użyj [**kolekcji IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z określonym identyfikatorem klienta. Następnie uzyskaj dostęp [**do właściwości UsageBudget**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.usagebudget) i przekaż zaktualizowany budżet użycia do metody [**Patch()**](/dotnet/api/microsoft.store.partnercenter.usage.icustomerusagespendingbudget.patch) lub [**PatchAsync().**](/dotnet/api/microsoft.store.partnercenter.usage.icustomerusagespendingbudget.patchasync)
+Aby zaktualizować budżet wydatków na użycie klienta, najpierw utwórz nowy obiekt [**SpendingBudget**](/dotnet/api/microsoft.store.partnercenter.models.usage.spendingbudget) ze zaktualizowaną kwotą. Następnie użyj [**kolekcji IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z określonym identyfikatorem klienta. Następnie uzyskaj dostęp do [**właściwości UsageBudget**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.usagebudget) i przekaż zaktualizowany budżet użycia do metody [**Patch()**](/dotnet/api/microsoft.store.partnercenter.usage.icustomerusagespendingbudget.patch) lub [**PatchAsync().**](/dotnet/api/microsoft.store.partnercenter.usage.icustomerusagespendingbudget.patchasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;

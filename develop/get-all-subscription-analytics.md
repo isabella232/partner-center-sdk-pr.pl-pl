@@ -6,22 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: e1f16c92569a02bc51c96a85ecb642fbeb76a9a7
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 5c93f36491851be11c700388201443f2e951122e4129786abc3e064091605b8d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760253"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992606"
 ---
 # <a name="get-all-subscription-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących subskrypcji
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-W tym artykule opisano sposób uzyskania wszystkich informacji analizy subskrypcji dla klientów.
+W tym artykule opisano sposób uzyskania wszystkich informacji analitycznych dotyczących subskrypcji dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -37,10 +37,10 @@ W poniższej tabeli wymieniono parametry opcjonalne i ich opisy:
 
 | Parametr | Typ |  Opis |
 |-----------|------|--------------|
-| top (pierwsze) | int | Liczba wierszy danych do zwrócenia w żądaniu. Jeśli wartość nie zostanie określona, wartością maksymalną i wartością domyślną będzie `10000` . Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. |
-| Pomiń | int | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład `top=10000` i pobiera pierwsze `skip=0` 10000 wierszy danych i pobiera `top=10000` następne `skip=10000` 10000 wierszy danych. |
-| filter | ciąg | Co najmniej jedna instrukcja, która filtruje wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość skojarzoną z operatorem **`eq`** , lub dla niektórych **`ne`** **`contains`** pól. Instrukcje można łączyć przy użyciu **`and`** instrukcji lub **`or`** . Wartości ciągów muszą być otoczone pojedynczymi cudzysłowami w **parametrze filtru.** Zobacz następującą sekcję, aby uzyskać listę pól, które można filtrować, oraz operatory obsługiwane przez te pola. |
-| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: **dzień,** **tydzień** lub **miesiąc**. Jeśli wartość nie zostanie określona, wartością domyślną jest **dateRange**. Ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przekazywane jako część **parametru groupBy.** |
+| top (pierwsze) | int | Liczba wierszy danych do zwrócenia w żądaniu. Jeśli wartość nie zostanie określona, wartość maksymalna i wartość domyślna to `10000` . Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. |
+| Pomiń | int | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład `top=10000` program i pobiera pierwsze `skip=0` 10000 wierszy danych i pobiera `top=10000` kolejne `skip=10000` 10000 wierszy danych. |
+| filter | ciąg | Co najmniej jedna instrukcja, która filtruje wiersze w odpowiedzi. Każda instrukcja filtru zawiera nazwę pola z treści odpowiedzi i wartość skojarzoną z operatorem **`eq`** , lub dla niektórych **`ne`** **`contains`** pól. Instrukcje można łączyć przy użyciu **`and`** instrukcji lub **`or`** . Wartości ciągu muszą być otoczone pojedynczymi cudzysłowami w **parametrze filtru.** W poniższej sekcji znajduje się lista pól, które można filtrować, oraz operatorów obsługiwanych przez te pola. |
+| aggregationLevel | ciąg | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: **dzień,** **tydzień** lub **miesiąc**. Jeśli wartość nie zostanie określona, wartość domyślna to **dateRange**. Ten parametr ma zastosowanie tylko wtedy, gdy pole daty jest przekazywane jako część **parametru groupBy.** |
 | Groupby | ciąg | Instrukcja, która stosuje agregację danych tylko do określonych pól. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -63,7 +63,7 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [**subskrypcji.**](partner-center-analytics-resources.md#subscription-resource)
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [**zasobów**](partner-center-analytics-resources.md#subscription-resource) subskrypcji.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

@@ -4,12 +4,12 @@ description: Usługa zestaw SDK Centrum partnerskiego zarządzany interfejs API 
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b5d05f26d63574ef876519091dc1c33c05f36e25
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 340b46978d71bdf5fa6f6795d69fe0721d808c4eb2650744e82510c208dd5b8f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548757"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989699"
 ---
 # <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -36,7 +36,7 @@ Aby uzyskać więcej informacji na temat fragmentów kodu w języku C#, przykła
 
 Podczas początkowego pisania i testowania kodu należy użyć konta piaskownicy integracji (i odpowiednich tokenów), aby uniknąć przypadkowego naliczenie nowych opłat, za które firma jest odpowiedzialna. Aby uzyskać więcej informacji na temat tego środowiska testowego, zobacz [Konfigurowanie dostępu do interfejsu API w Partner Center](set-up-api-access-in-partner-center.md).
 
-Gdy rozwiązanie zostanie przetestowane i będzie gotowe do użycia na rzeczywistych kontach klientów, musisz zaktualizować tokeny, aby używać aplikacji klienckiej usługi Azure AD i klucza tajnego, które odpowiadają głównemu kontu Partner Center podstawowego.
+Gdy rozwiązanie zostanie przetestowane i będzie gotowe do użycia na rzeczywistych kontach klientów, musisz zaktualizować tokeny, aby używać aplikacji klienckiej usługi Azure AD i klucza tajnego, które odpowiadają głównemu kontu usługi Partner Center.
 
 Aby uzyskać porady i sugestie dotyczące testowania i debugowania, w tym więcej informacji na temat testowania w środowisku produkcyjnym (TiP) i piaskownicy integracji, zobacz [Testowanie i debugowanie](test-and-debug.md).
 
@@ -52,7 +52,7 @@ Partner Center używa usługi Azure AD do uwierzytelniania, a aby korzystać z i
 
 ## <a name="get-help"></a>Uzyskaj pomoc
 
-Partnerzy mogą uzyskać pomoc techniczną w [zestaw SDK Centrum partnerskiego Yammer grupy](https://go.microsoft.com/fwlink/p/?LinkID=717360). Aby uzyskać bardziej spersonalizowaną pomoc, deweloperzy mogą korzystać z korzyści pomocy technicznej MPN lub pomocy technicznej Premier.
+Partnerzy mogą uzyskać pomoc techniczną w [zestaw SDK Centrum partnerskiego Yammer grupy .](https://go.microsoft.com/fwlink/p/?LinkID=717360) Aby uzyskać bardziej spersonalizowaną pomoc, deweloperzy mogą korzystać z korzyści pomocy technicznej MPN lub pomocy technicznej Premier.
 
 ## <a name="join-the-partner-center-api-and-sdk-early-adopter-program"></a>Dołącz do programu wczesnych użytkowników w interfejsu API i zestawu SDK Centrum partnerskiego
 

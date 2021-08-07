@@ -4,20 +4,20 @@ description: Pobieranie rekordu operacji wykonywanego przez użytkownika partner
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: aec933d4b681d99080619505792bde56bdd25580
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 5d965fc226d326998212ef0f027160d50f69d5e84360c8a9d09c27a76c63310d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873975"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991076"
 ---
 # <a name="get-a-record-of-partner-center-activity"></a>Pobieranie rejestru aktywności w Centrum partnerskim
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-W tym artykule opisano sposób pobierania rekordu operacji, które były wykonywane przez użytkownika partnera lub aplikację w czasie.
+W tym artykule opisano sposób pobierania rekordu operacji wykonanych przez użytkownika partnera lub aplikację w czasie.
 
-Ten interfejs API umożliwia pobieranie rekordów inspekcji z ostatnich 30 dni od bieżącej daty lub dla zakresu dat określonego przez uwzględnienia daty rozpoczęcia i/lub daty zakończenia. Należy jednak pamiętać, że ze względu na wydajność dostępność danych dziennika aktywności jest ograniczona do poprzednich 90 dni. Żądania z datą rozpoczęcia większą niż 90 dni przed bieżącą datą otrzymają wyjątek złego żądania (kod błędu: 400) i odpowiedni komunikat.
+Ten interfejs API umożliwia pobieranie rekordów inspekcji z ostatnich 30 dni od bieżącej daty lub dla zakresu dat określonego przez uwzględnienia daty rozpoczęcia i/lub daty zakończenia. Należy jednak pamiętać, że ze względu na wydajność dostępność danych dziennika aktywności jest ograniczona do 90 poprzednich dni. Żądania z datą rozpoczęcia większą niż 90 dni przed bieżącą datą otrzymają wyjątek złego żądania (kod błędu: 400) i odpowiedni komunikat.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,7 +27,7 @@ Ten interfejs API umożliwia pobieranie rekordów inspekcji z ostatnich 30 dni o
 
 Aby pobrać rekord operacji Partner Center, najpierw ustal zakres dat dla rekordów, które chcesz pobrać. W poniższym przykładzie kodu użyto tylko daty rozpoczęcia, ale można również uwzględnić datę zakończenia. Aby uzyskać więcej informacji, zobacz [**metodę**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) Query. Następnie utwórz zmienne potrzebne dla typu filtru, który chcesz zastosować, i przypisz odpowiednie wartości. Aby na przykład filtrować według podciągu nazwy firmy, utwórz zmienną do przechowywania podciągu. Aby filtrować według identyfikatora klienta, utwórz zmienną do przechowywania identyfikatora.
 
-W poniższym przykładzie podano przykładowy kod do filtrowania według podciągu nazwy firmy, identyfikatora klienta lub typu zasobu. Wybierz jedną z nich i zakłoń pozostałe. W każdym przypadku należy najpierw utworzyć obiekt [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) przy użyciu jego domyślnego [**konstruktora**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) w celu utworzenia filtru. Musisz przekazać ciąg zawierający pole do wyszukania oraz odpowiedni operator do zastosowania, jak pokazano poniżej. Należy również podać ciąg do filtrowania.
+W poniższym przykładzie podano przykładowy kod do filtrowania według podciągu nazwy firmy, identyfikatora klienta lub typu zasobu. Wybierz jedną z nich i zakłoń pozostałe. W każdym przypadku należy najpierw utworzyć utworzenie wystąpienia obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) przy użyciu jego domyślnego konstruktora w [**celu**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) utworzenia filtru. Musisz przekazać ciąg zawierający pole do wyszukania oraz odpowiedni operator do zastosowania, jak pokazano poniżej. Należy również podać ciąg do filtrowania.
 
 Następnie użyj właściwości [**AuditRecords,**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) aby uzyskać interfejs do inspekcji operacji na rekordach, i wywołaj metodę [**Query**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) lub [**QueryAsync,**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) aby wykonać filtr i pobrać kolekcję rekordów [**AuditRecord**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) reprezentujących pierwszą stronę wyniku. Przekaż metodę data rozpoczęcia, opcjonalną datę końcową, która nie została użyta w tym przykładzie, oraz obiekt [**IQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) który reprezentuje zapytanie w jednostce. Obiekt IQuery jest tworzony przez przekazanie utworzonego powyżej filtru do metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) w [**obiekcie QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
@@ -111,7 +111,7 @@ W poniższej tabeli opisano wymagane pary klucz-wartość:
 | Klucz                 | Wartość                             |
 |:--------------------|:----------------------------------|
 | Pole               | Pole do filtrowania. Obsługiwane wartości można znaleźć w tece [Request syntax (Składnia żądania).](get-a-record-of-partner-center-activity-by-user.md#rest-request)                                         |
-| Wartość               | Wartość do filtrowania. Przypadek wartości jest ignorowany. Obsługiwane są następujące parametry wartości, jak pokazano w [tece Request syntax (Składnia żądania):](get-a-record-of-partner-center-activity-by-user.md#rest-request)<br/><br/>                                                                *searchSubstring* — zastąp nazwą firmy. Możesz wprowadzić podciąg, aby dopasować część nazwy firmy (na przykład `bri` będzie odpowiadać `Fabrikam, Inc` ).<br/>**Przykład:**`"Value":"bri"`<br/><br/>                                                                *customerId* — zastąp ciąg ciągiem sformatowanym przy użyciu identyfikatora GUID, który reprezentuje identyfikator klienta.<br/>**Przykład:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* — zastąp typem zasobu, dla którego mają być pobierane rekordy inspekcji (na przykład Subskrypcja). Dostępne typy zasobów są zdefiniowane w [typie ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Przykład:**`"Value":"Subscription"`                                 |
+| Wartość               | Wartość do filtrowania. Przypadek wartości jest ignorowany. Obsługiwane są następujące parametry wartości, jak pokazano w [tece Request syntax (Składnia żądania):](get-a-record-of-partner-center-activity-by-user.md#rest-request)<br/><br/>                                                                *searchSubstring* — zastąp nazwą firmy. Możesz wprowadzić podciąg, aby dopasować część nazwy firmy (na przykład `bri` będzie ona odpowiadać `Fabrikam, Inc` ).<br/>**Przykład:** `"Value":"bri"`<br/><br/>                                                                *customerId* — zastąp ciąg ciągiem sformatowanym przy użyciu identyfikatora GUID, który reprezentuje identyfikator klienta.<br/>**Przykład:** `"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* — zastąp typem zasobu, dla którego mają być pobierane rekordy inspekcji (na przykład Subskrypcja). Dostępne typy zasobów są zdefiniowane w [typie ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Przykład:** `"Value":"Subscription"`                                 |
 | Operator          | Operator do zastosowania. Obsługiwane operatory można znaleźć w tece [Request syntax (Składnia żądania).](get-a-record-of-partner-center-activity-by-user.md#rest-request)   |
 
 ### <a name="request-headers"></a>Nagłówki żądań

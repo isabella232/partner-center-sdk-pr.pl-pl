@@ -1,25 +1,25 @@
 ---
-title: Rejestrowanie zasobów użycia platformy Azure
+title: Zasoby rekordów wykorzystania platformy Azure
 description: Rekord wykorzystania platformy Azure zawiera szczegółowe informacje o wykorzystaniu zasobu subskrypcji platformy Azure.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 868381fcb29eb1391efcdf79154f7b998e3032e5
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: eb905dd41d5ab177a29bc1bd949c5eb865e4614e204250709d91f1a31304b267
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974305"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992283"
 ---
-# <a name="azure-utilization-record-resources"></a>Rejestrowanie zasobów użycia platformy Azure
+# <a name="azure-utilization-record-resources"></a>Zasoby rekordów wykorzystania platformy Azure
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Rekord wykorzystania platformy Azure zawiera szczegółowe informacje o wykorzystaniu zasobu subskrypcji platformy Azure. Jeśli jesteś partnerem dostawcy usług w chmurze, który jest właścicielem relacji rozliczeń dla subskrypcji platformy Azure klientów, możesz użyć tego interfejsu API REST, aby zapewnić skalowalny sposób śledzenia użycia w ramach subskrypcji w celu wysyłania faktur do klientów na koniec każdego cyklu rozliczeniowego.
 
-Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku i rachunku dla poszczególnych klientów, możesz połączyć zapytanie Karta stawki w celu uzyskania cen dla usługi [Microsoft Azure](get-prices-for-microsoft-azure.md) z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)
+Aby śledzić użycie i ułatwić przewidywanie miesięcznego rachunku oraz rachunku dla poszczególnych klientów, możesz połączyć zapytanie Rate Card w celu uzyskania cen dla usługi [Microsoft Azure](get-prices-for-microsoft-azure.md) z żądaniem uzyskania rekordów wykorzystania klienta dla platformy [Azure.](get-a-customer-s-utilization-record-for-azure.md)
 
 Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać. Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura.
 
@@ -48,7 +48,7 @@ Opisuje właściwości zasobu platformy Azure.
 
 | Właściwość    | Typ   | Wymagane | Opis                                                                         |
 |-------------|--------|----------|-------------------------------------------------------------------------------------|
-| identyfikator          | ciąg | Tak      | Unikatowy identyfikator zasobu platformy Azure. Znany również jako identyfikator resourceID lub identyfikator GUID zasobu. |
+| identyfikator          | ciąg | Tak      | Unikatowy identyfikator zasobu platformy Azure. Znany także jako identyfikator resourceID lub identyfikator GUID zasobu. |
 | name        | ciąg | Nie       | Przyjazna nazwa używanego zasobu. Ta właściwość jest opcjonalna.            |
 | category    | ciąg | Nie       | Kategoria zużytego zasobu. Ta właściwość jest opcjonalna.                   |
 | Podkategorii | ciąg | Nie       | Podkategoria zużytego zasobu. Ta właściwość jest opcjonalna.               |

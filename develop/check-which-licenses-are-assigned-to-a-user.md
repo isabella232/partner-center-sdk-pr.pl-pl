@@ -1,15 +1,15 @@
 ---
 title: Pobieranie licencji przypisanych do użytkownika
-description: Dowiedz się, jak za Partner Center API uzyskać listę licencji przypisanych do użytkownika w ramach konta klienta.
+description: Dowiedz się, jak Partner Center api w celu uzyskania listy licencji przypisanych do użytkownika w ramach konta klienta.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a51fc4493e2476107206b03be66004d030e2aa47
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 0743c8eb4059a05e4a98ddb95d95659c22ad00976e5a2f867b93d5e0296371bb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974067"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992062"
 ---
 # <a name="get-licenses-assigned-to-a-user-within-a-customer-account"></a>Uzyskiwanie licencji przypisanych do użytkownika w ramach konta klienta
 
@@ -17,9 +17,9 @@ Jak uzyskać listę licencji przypisanych do użytkownika w ramach konta klienta
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator użytkownika.
 
@@ -51,8 +51,8 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i użyt
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
-| user-id     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje użytkownika.     |
+| identyfikator klienta | ciąg | Tak      | Ciąg sformatowany przy pomocy identyfikatora GUID, który identyfikuje klienta. |
+| user-id     | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje użytkownika.     |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -76,7 +76,7 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [licencji.](license-resources.md#license)
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję [zasobów licencji.](license-resources.md#license)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

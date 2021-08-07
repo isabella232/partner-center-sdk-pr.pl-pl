@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 5fa196e711d9ff899b61ba20e75edd92749165e5
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: dc67d93a40cdced977412ff8151a661f6655c0fa1d079c8f1bc468f0f8b1eea2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025625"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992483"
 ---
 # <a name="agreement-resources-representing-a-microsoft-cloud-customer-agreement"></a>Zasoby umowy reprezentujące umowę klienta chmury firmy Microsoft
 
@@ -19,7 +19,7 @@ ms.locfileid: "112025625"
 
 **Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób **Umowy** jest obecnie obsługiwany przez Partner Center tylko w chmurze publicznej firmy Microsoft.
+Zasób **Umowy** jest obecnie obsługiwany Partner Center tylko w chmurze publicznej firmy Microsoft.
 
 Zasób **Umowa** reprezentuje umowę klienta chmury firmy Microsoft.
 
@@ -29,7 +29,7 @@ Zasób **Umowa** reprezentuje umowę klienta chmury firmy Microsoft.
 
 | Właściwość       | Typ   | Opis                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| userId         | ciąg                         | Identyfikator obiektu zalogowanego użytkownika w dzierżawie partnera, który zapewnia potwierdzenie w imieniu organizacji partnerskiej. W przypadku tworzenia zasobu umowy przy użyciu uwierzytelniania App+User Partner Center automatycznie pobiera wartość atrybutu **userId** z tokenu App+User.                                                                             |
+| userId         | ciąg                         | Identyfikator obiektu zalogowanego użytkownika w dzierżawie partnera, który zapewnia potwierdzenie w imieniu organizacji partnerskiej. W przypadku tworzenia zasobu umowy przy użyciu uwierzytelniania App+User Partner Center automatycznie pobiera wartość atrybutu **userId** z tokenu Aplikacja i użytkownik.                                                                             |
 | primaryContact | [Kontakt](./utility-resources.md#contact) | Informacje o użytkowniku z organizacji klienta, który zaakceptował umowę, w tym:  **firstName,** **lastName,** **email** i **phoneNumber** (opcjonalnie). |
 | dateAgreed     | ciąg w formacie daty i czasu UTC | Data zaakceptowania umowy przez klienta.                                 |
 | templateId     |ciąg                          | Unikatowy identyfikator umowy zaakceptowanej przez klienta. |

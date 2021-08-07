@@ -4,12 +4,12 @@ description: Aktualizuje profil rozliczeniowy organizacji.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0ef736a722cde16f95ed6dfdbdab278c98fcf738
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 5dc2de04b3b58842162351f1525ef0e6889cf1c0cbd4fd05e84bac86edb07e1e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530059"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989988"
 ---
 # <a name="update-an-organization-profile"></a>Aktualizowanie profilu organizacji
 
@@ -19,11 +19,11 @@ Aktualizuje profil rozliczeniowy partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować profil organizacji, pobierz profil i dokonaj wszelkich niezbędnych zmian. Następnie użyj **kolekcji IAggregatePartner.Profiles** i wywołaj właściwość **OrganizationProfile.** Na koniec wywołaj **metodę Update().**
+Aby zaktualizować profil organizacji, pobierz profil i dokonaj wszelkich niezbędnych zmian. Następnie użyj **kolekcji IAggregatePartner.Profiles** i wywołaj **właściwość OrganizationProfile.** Na koniec wywołaj **metodę Update().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,7 +36,7 @@ organizationProfile.DefaultAddress.PhoneNumber = ((long)(new Random().NextDouble
 OrganizationProfile updatedOrganizationProfile = partnerOperations.Profiles.OrganizationProfile.Update(organizationProfile);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa:** UpdateOrganizationProfile.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa**: UpdateOrganizationProfile.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 

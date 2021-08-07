@@ -4,12 +4,12 @@ description: Dowiedz się więcej o Partner Center konwersji interfejsu API, aby
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1863c365627807d8de2534a2d3116807a5de70e1
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 9e7f8985fa15f4959f3cb5a729e492bbb9f3f624a5812f5b87fc119f841dc87e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973897"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991875"
 ---
 # <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a>Konwersja zasobów w celu konwersji subskrypcji wersji próbnej na płatną
 

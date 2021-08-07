@@ -4,12 +4,12 @@ description: Jak uzyskać informacje o użyciu licencji na poziomie obciążenia
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ea3658089ce7eb5c1ad7cc65c3db34f9b6353cdd
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a93c59c8c2a4c82ad7f3e81e814386e1ac0c046c3b0bada80eaaac40d9179d93
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445984"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990430"
 ---
 # <a name="get-licenses-usage-information"></a>Pobieranie informacji dotyczących użycia licencji
 
@@ -37,7 +37,7 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 |-------------------|----------|-------------|----------|
 | top (pierwsze)               | ciąg   | Liczba wierszy danych do zwrócenia w żądaniu. Wartość maksymalna i wartość domyślna, jeśli nie zostanie określona, to 10000. Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych. | Nie |
 | Pomiń              | int      | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład wartości top=10000 i skip=0 pobierają pierwsze 10000 wierszy danych, top=10000, a skip=10000 pobiera następne 10000 wierszy danych i tak dalej. | Nie |
-| filter            | ciąg   | Parametr *filter* żądania zawiera co najmniej jedną instrukcje filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje mogą być łączone przy **`eq`** **`ne`** użyciu lub **`and`** **`or`** . Oto kilka przykładowych *parametrów filtru:*<br/><br/>*filter=workloadCode eq 'SFB'*<br/><br/>*filter=workloadCode eq 'SFB'* or (*channel eq 'Reseller'*)<br/><br/>Można określić następujące pola:<br/><br/>**workloadCode**<br/>**nazwa_obciążenia**<br/>**kod usługi**<br/>**Servicename**<br/>**Kanał**<br/>**customerTenantId**<br/>**Customername**<br/>**Productid**<br/>**Productname** | Nie |
+| filter            | ciąg   | Parametr *filtru* żądania zawiera co najmniej jedną instrukcje filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje mogą być łączone przy **`eq`** **`ne`** użyciu instrukcji lub **`and`** **`or`** . Oto kilka przykładowych *parametrów filtru:*<br/><br/>*filter=workloadCode eq 'SFB'*<br/><br/>*filter=workloadCode eq 'SFB'* or (*channel eq 'Reseller'*)<br/><br/>Można określić następujące pola:<br/><br/>**workloadCode**<br/>**nazwa_obciążenia**<br/>**kod usługi**<br/>**Servicename**<br/>**Kanał**<br/>**customerTenantId**<br/>**Customername**<br/>**Productid**<br/>**Productname** | Nie |
 | Groupby           | ciąg   | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>**workloadCode**<br/>**nazwa_obciążenia**<br/>**kod usługi**<br/>**Servicename**<br/>**channelcustomerTenantId**<br/>**Customername**<br/>**Productid**<br/>**Productname**<br/><br/>Zwrócone wiersze danych będą zawierać pola określone w parametrze *grupowania* i następujące elementy:<br/><br/>**licensesActive**<br/>**licensesQualified** | Nie |
 | processedDateTime | DateTime | Można określić datę przetwarzania danych użycia. Wartość domyślna to najpóźniejsza data przetwarzania danych | Nie |
 
@@ -55,7 +55,7 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia treść odpowiedzi zawiera następujące pola zawierające dane dotyczące użycia licencji.
+Jeśli to się powiedzie, treść odpowiedzi zawiera następujące pola zawierające dane dotyczące użycia licencji.
 
 | Pole             | Typ     | Opis                                   |
 |-------------------|----------|-----------------------------------------------|

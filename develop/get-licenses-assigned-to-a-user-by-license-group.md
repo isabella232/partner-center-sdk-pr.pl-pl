@@ -4,12 +4,12 @@ description: Jak uzyskać listę licencji przypisanych przez użytkownika dla ok
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 54acf6f315e3062d03903a98d0c6c1946065f95e
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b1ed884fd1d7f02773d612aaca0e00651a6dde55ec897ee2d05585af874ddd05
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446007"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990464"
 ---
 # <a name="get-licenses-assigned-to-a-user-by-license-group"></a>Pobieranie licencji przypisanych do użytkownika według grupy licencji
 

@@ -4,16 +4,16 @@ description: Deweloperzy mogą tworzyć subskrypcje produktów z platformy handl
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ae2e4b0a1ffa2e63e68864887093673e32079d9f
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7e7a4b96f509ae99cd4933963c04b0f660d7d76410ee86c31256c62b290f122f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973370"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991382"
 ---
 # <a name="create-a-subscription-for-commercial-marketplace-products"></a>Tworzenie subskrypcji dla produktów komercyjnej platformy handlowej
 
-Subskrypcję produktów z platformy handlowej można utworzyć przy użyciu Partner Center API. Musisz uzyskać [listę ofert dla](#get-a-list-of-offers-for-a-market)rynku, utworzyć i [przesłać](#create-and-submit-an-order) zamówienie dla subskrypcji platformy handlowej, a następnie pobrać [link aktywacji](#get-activation-link).
+Subskrypcję produktów z platformy handlowej można utworzyć przy użyciu Partner Center API. Musisz uzyskać listę ofert dla [rynku,](#create-and-submit-an-order) utworzyć i przesłać zamówienie dla subskrypcji platformy handlowej, [a](#get-a-list-of-offers-for-a-market)następnie [pobrać link aktywacji](#get-activation-link).
 
 Możesz również [zarządzać cyklem życia i](#lifecycle-management) [zarządzać fakturami](#invoice-and-reconciliation) dla tych subskrypcji.
 
@@ -24,7 +24,7 @@ Możesz również [zarządzać cyklem życia i](#lifecycle-management) [zarządz
 
 ## <a name="get-a-list-of-offers-for-a-market"></a>Pobieranie listy ofert dla rynku
 
-Dostępne oferty dla rynku można sprawdzić przy użyciu następujących modeli interfejsu API Partner Center API:
+Możesz sprawdzić dostępne oferty dla rynku, korzystając z następujących modeli Partner Center API:
 
 * **[Produkt:](product-resources.md#product)** Konstrukcja grupowania dla towarów lub usług, które można kupować. Sam produkt nie jest elementem do zakupu.
 * **[Jednostka SKU:](product-resources.md#sku)** jednostka magazynowa (SKU) do zakupu w ramach produktu. Reprezentują one różne kształty produktu.
@@ -56,7 +56,7 @@ Przed zakupem rezerwacji platformy Azure wykonaj następujące czynności:
 
 Aby przesłać zamówienie rezerwacji platformy Azure, wykonaj następujące kroki:
 
-1. [Utwórz koszyk do](create-a-cart.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Po utworzeniu [koszyka](cart-resources.md#cart)elementy [wiersza](cart-resources.md#cartlineitem) koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu.](order-resources.md#order) (Możesz również [zaktualizować koszyk).](update-a-cart.md)
+1. [Utwórz koszyk do](create-a-cart.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Podczas tworzenia [](cart-resources.md#cart)koszyka elementy [wiersza](cart-resources.md#cartlineitem) koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu.](order-resources.md#order) (Możesz również [zaktualizować koszyk).](update-a-cart.md)
 2. [Zapoznaj się z koszykiem](checkout-a-cart.md), co powoduje utworzenie [zamówienia](order-resources.md#order).
 
 ### <a name="get-order-details"></a>Uzyskiwanie szczegółów zamówienia
@@ -85,7 +85,7 @@ Ilość subskrypcji platformy handlowej musi być w granicach limitów zdefiniow
 
 ## <a name="invoice-and-reconciliation"></a>Faktury i uzgadnianie
 
-Fakturami klientów (w tym [opłatami](invoice-resources.md) za subskrypcje produktów z platformy handlowej) można zarządzać przy użyciu następujących metod:
+Fakturami klientów [(w](invoice-resources.md) tym opłatami za subskrypcje produktów z platformy handlowej) można zarządzać przy użyciu następujących metod:
 
 * [Pobierz pozycje użycia komercyjnej platformy handlowej zafakturowane na podstawie faktury](get-invoice-billed-consumption-lineitems.md)
 * [Pobieranie linków do szacunkowych faktur](get-invoice-estimate-links.md)

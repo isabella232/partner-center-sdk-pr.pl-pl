@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: Kim-Davis
 ms.author: kimnich
-ms.openlocfilehash: 7deda4098ceb9eb4e1ee75056c53c754618bf3e2
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 8fded9cc9d540fa1f7f3fcb38620c26b85c1c6032ef0176e9bd043943a425f65
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760610"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992725"
 ---
 # <a name="get-all-referrals-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących poleceń
 
@@ -21,7 +21,7 @@ Jak uzyskać wszystkie informacje analityczne dotyczące poleceń dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -36,8 +36,8 @@ Jak uzyskać wszystkie informacje analityczne dotyczące poleceń dla klientów.
 | Parametr | Typ | Opis |
 |-----------|------|-------------|
 | filter | ciąg | Zwraca dane zgodne z warunkiem filtru.</br> **Przykład:**</br>  `.../referrals?filter=field eq 'value'` |
-| Groupby | ciąg | Obsługuje zarówno terminy, jak i daty. Logika obwodu krótkiego ograniczająca liczbę zasobników.</br> **Przykład:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
-| aggregationLevel | ciąg | Parametr *aggregationLevel* wymaga *pogrupowania wartości*. Parametr *aggregationLevel* ma zastosowanie do wszystkich pól daty obecnych w tabeli *grupowania*.</br> **Przykład:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
+| Groupby | ciąg | Obsługuje zarówno terminy, jak i daty. Logika obwodu krótkiego, aby ograniczyć liczbę zasobników.</br> **Przykład:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
+| aggregationLevel | ciąg | Parametr *aggregationLevel* wymaga *grupowania przez*. Parametr *aggregationLevel* ma zastosowanie do wszystkich pól daty obecnych w *grupie .*</br> **Przykład:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
 | top (pierwsze) | ciąg | Limit stron wynosi 10000. Przyjmuje dowolną wartość mniejszą niż 10000.</br> **Przykład:**</br> `.../referrals?top=100`</br> |
 | Pomiń | ciąg | Liczba wierszy do pominięcia.</br> **Przykład:**</br>  `.../referrals?top=100&skip=100` |
 
@@ -61,7 +61,7 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów Polecenia.](partner-center-analytics-resources.md#referrals-resource)
+Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [zasobów Poleceń.](partner-center-analytics-resources.md#referrals-resource)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać Partner Center API do tworzenia nowych z
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 530ff72862204bda093385252450f4eb81b63160
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: b3637b6d482934d894a5807734b541cc73dea3f265b5460ba807c7fad6834a82
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973676"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991620"
 ---
 # <a name="create-a-new-configuration-policy-for-the-specified-customer"></a>Tworzenie nowych zasad konfiguracji dla określonego klienta
 
@@ -27,7 +27,7 @@ Jak utworzyć nowe zasady konfiguracji dla określonego klienta.
 
 Aby utworzyć nowe zasady konfiguracji dla określonego klienta:
 
-1. Zaimpluj nowy obiekt [**ConfigurationPolicy,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) jak pokazano w poniższym fragmencie kodu. Następnie wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
+1. Zaimpluj nowy obiekt [**ConfigurationPolicy,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) jak pokazano w poniższym fragmencie kodu. Następnie wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie.
 
 2. Pobierz właściwość [**ConfigurationPolicies,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) aby uzyskać interfejs operacji zbierania zasad konfiguracji.
 

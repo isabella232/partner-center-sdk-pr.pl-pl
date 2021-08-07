@@ -4,12 +4,12 @@ description: Aktualizuje przyjazną nazwę lub pseudonim subskrypcji klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 195a85fcf29b3e4c9fe0e578d4d8cb80ca068c40
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: e3456ff7463fcb1a96315dc1acd9d119102515fb88eaaf8f58f5fecae4f24bac
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530008"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992504"
 ---
 # <a name="update-the-nickname-for-a-subscription"></a>Aktualizowanie nicku dla subskrypcji
 

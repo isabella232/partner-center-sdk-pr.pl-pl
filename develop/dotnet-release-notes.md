@@ -4,12 +4,12 @@ description: Informacje o wersji najnowszej wersji zestawu SDK platformy Partner
 ms.date: 07/07/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c1532d48c00550f5eb437ed0164d6a1f7bb340dd
-ms.sourcegitcommit: 53c94db33b09c30e762b842c4275b2b531dba932
+ms.openlocfilehash: 6fc6182638cb2cc5457bdfada37b928c88e1ca786e401f7eb8d5309a0abd9310
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113522638"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991228"
 ---
 # <a name="net-sdk-release-notes"></a>Informacje o wersji zestawu .NET SDK
 
@@ -27,10 +27,10 @@ Poniższe informacje o wersji są dostępne dla nowych wersji zestawu [Microsoft
 
   Należy wprowadzić następujące zmiany, aby upewnić się, że msal działa prawidłowo w aplikacji lub przykładzie .NET:
 
-  * Dodaj `https://login.microsoftonline.com/common/oauth2/nativeclient` jako RedirectUrl dla aplikacji mobilnych i klasycznych
+  * Dodawanie `https://login.microsoftonline.com/common/oauth2/nativeclient` jako redirectUrl dla aplikacji mobilnych i klasycznych
   * Dodaj **domenę** do sekcji UserAuthentication w pliku konfiguracji aplikacji. 
 
-    Domena to Azure Active Directory lub identyfikator dzierżawy, w której utworzono aplikację usługi Azure AD
+    Domena jest domeną Azure Active Directory lub identyfikatorem dzierżawy, w której utworzono aplikację usługi Azure AD
 
 * [Kody błędów](error-codes.md) — dodano nowy kod błędu 
   * 408: Limit czasu żądania
@@ -98,7 +98,7 @@ Poniższe informacje o wersji są dostępne dla nowych wersji zestawu [Microsoft
 
 * **Następujące zmiany wprowadzone w ramach nowego handlu, które są obecnie dostępne na podstawie zaproszenia tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview.** Partnerzy, którzy nie są częścią nowej prywatnej wersji zapoznawczej handlu, nie powinni zauważyć wpływu i powinni być zgodni z poprzednimi wersjami.
   * Zmiany katalogu:
-    * GET /products/{product-id}/skus/{sku-id}
+    * GET /products/{identyfikator-produktu}/skus/{identyfikator-jednostki SKU}
   * Zakup i zarządzanie:
     * GET /customers/{customerId}/subscriptions
     * GET /customers/{customerId}/subscriptions/{subscriptionId}
@@ -144,17 +144,17 @@ Poniższe informacje o wersji są dostępne dla nowych wersji zestawu [Microsoft
 
 ## <a name="version-1161"></a>Wersja 1.16.1
 
-[Zestaw Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) w wersji 1.16.1 jest teraz ogólnie dostępny. Zaktualizowane [GitHub przykłady](https://github.com/Microsoft/Partner-Center-DotNet-Samples) są również dostępne. W tej wersji uwzględniono następujące zmiany:
+[Zestaw MICROSOFT Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) w wersji 1.16.1 jest teraz ogólnie dostępny. Zaktualizowane [GitHub przykłady](https://github.com/Microsoft/Partner-Center-DotNet-Samples) są również dostępne. W tej wersji uwzględniono następujące zmiany:
 
-Zmigrowaliśmy istniejącą platformę Microsoft zestaw SDK Centrum partnerskiego .NET Framework do .NET Standard 2.0. Dzięki temu zestaw SDK będzie zgodny z istniejącymi aplikacjami przy użyciu .NET Framework 4.6.1 i jego nowych. Zestaw SDK będzie obsługiwać program .NET Core 2.0 i jego więcej. Sprawdź [obsługę implementacji .NET](/dotnet/standard/net-standard) przed jej przenoszeniem do istniejących aplikacji.   
+Zmigrowaliśmy istniejącą platformę Microsoft zestaw SDK Centrum partnerskiego .NET Framework do .NET Standard 2.0. Dzięki temu zestaw SDK będzie zgodny z istniejącymi aplikacjami przy użyciu .NET Framework 4.6.1 lub 1. Zestaw SDK będzie obsługiwać program .NET Core 2.0 i jego więcej. Sprawdź [obsługę implementacji .NET](/dotnet/standard/net-standard) przed jej przenoszeniem do istniejących aplikacji.   
 
 
 ## <a name="version-1153"></a>Wersja 1.15.3
-[Zestaw MICROSOFT Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) w wersji 1.15.3 jest teraz ogólnie dostępny. Dostępne są również zaktualizowane interfejsy API REST [GitHub przykłady](https://github.com/Microsoft/Partner-Center-DotNet-Samples) interfejsów API REST. W tej wersji uwzględniono następujące zmiany:
+[Zestaw MICROSOFT Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) w wersji 1.15.3 jest teraz ogólnie dostępny. Dostępne są również zaktualizowane [interfejsy API](https://github.com/Microsoft/Partner-Center-DotNet-Samples) REST GitHub przykłady. W tej wersji uwzględniono następujące zmiany:
 
 * Umowa partnerska
   * Dodano możliwość weryfikowania przez dostawców [pośrednich Microsoft Partner Agreement stanu odsprzedawców pośrednich.](verify-indirect-reseller-mpa-status.md)
 * Produkty
-  * Następujące dwa interfejsy zostały nieprawidłowo umieszczone w przestrzeni nazw Microsoft.Store.PartnerCenter.Products. Teraz znajdują się one w przestrzeni nazw Microsoft.Store.PartnerCenter.Customers.Products.
+  * Następujące dwa interfejsy zostały niepoprawnie umieszczone w przestrzeni nazw Microsoft.Store.PartnerCenter.Products. Teraz znajdują się one w przestrzeni nazw Microsoft.Store.PartnerCenter.Customers.Products.
     * ICustomerProductByReservationScope
     * ICustomerSkuByReservationScope

@@ -7,12 +7,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b76526d97ba9027897fc88954ba45186d58aefb8
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: a7ee543281fd65785561641ca448f78e374aad7683aa1b95c65845dabfc44f07
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874163"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989869"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Uzyskiwanie listy jednostki SKU dla produktu (według klienta)
 

@@ -1,27 +1,27 @@
 ---
-title: Uzyskiwanie podsumowania użycia dla subskrypcji klienta
+title: Uzyskiwanie podsumowania użycia subskrypcji klienta
 description: Możesz użyć zasobu SubscriptionUsageSummary, aby uzyskać podsumowanie użycia subskrypcji określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 362e72e1b54a62a114564d4dc48a082bcdeea012
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: df7757807256fee8326969011f4d038c981c07362ee354ef929e592a7931a728
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874673"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992776"
 ---
-# <a name="get-usage-summary-for-customers-subscription"></a>Uzyskiwanie podsumowania użycia dla subskrypcji klienta
+# <a name="get-usage-summary-for-customers-subscription"></a>Uzyskiwanie podsumowania użycia subskrypcji klienta
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Możesz użyć zasobu **SubscriptionUsageSummary,** aby uzyskać podsumowanie użycia subskrypcji dla klienta. Ten zasób reprezentuje podsumowanie użycia subskrypcji określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.
+Możesz użyć zasobu **SubscriptionUsageSummary,** aby uzyskać podsumowanie użycia subskrypcji dla klienta. Ten zasób reprezentuje podsumowanie użycia subskrypcji dla określonej usługi lub zasobu platformy Azure w bieżącym okresie rozliczeniowym.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji
 
@@ -53,16 +53,16 @@ Przykład można znaleźć w następujących tematach:
 
 | Metoda  | Identyfikator URI żądania                                                                                                                        |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{subscription-id}/usagesummary HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/usagesummary HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
-W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania informacji o użyciu ocenionym przez klienta.
+W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania informacji o użyciu ocenianych przez klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **subscription-id**    | **guid** | Y        | Identyfikator GUID odpowiadający identyfikatorowi subskrypcji. W przypadku planu platformy Azure jest to identyfikator odpowiedniego zasobu Partner Center [subskrypcji](subscription-resources.md#subscription), który reprezentuje plan platformy Azure. *W przypadku zasobów subskrypcji planu platformy Azure podaj **identyfikator planu** jako **subscription-id** w tej trasie.* |
+| **subscription-id**    | **guid** | Y        | Identyfikator GUID odpowiadający identyfikatorowi subskrypcji. W przypadku planu platformy Azure jest to identyfikator odpowiedniego zasobu Partner Center [subskrypcji](subscription-resources.md#subscription), który reprezentuje plan platformy Azure. *W przypadku zasobów subskrypcji planu platformy Azure podaj **identyfikator planu** jako identyfikator **subskrypcji w** tej trasie.* |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -92,9 +92,9 @@ Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowo
 
 ### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Przykład odpowiedzi dla Microsoft Azure subskrypcji (MS-AZR-0145P)
 
-W tym przykładzie klient kupił ofertę **Azure PayG 145P.**
+W tym przykładzie klient kupił ofertę **145P usługi Azure PayG.**
 
-*W przypadku klientów Microsoft Azure subskrypcji interfejsu API (MS-AZR-0145P) nie ma żadnych zmian w odpowiedzi interfejsu API.*
+*W przypadku klientów Microsoft Azure subskrypcji (MS-AZR-0145P) odpowiedź interfejsu API nie zmieni się.*
 
 ```http
 HTTP/1.1 200 OK
@@ -133,7 +133,7 @@ W tym przykładzie klient kupił plan platformy Azure.
 
 *W przypadku klientów z planami platformy Azure istnieją następujące zmiany odpowiedzi interfejsu API:*
 
-- **CurrencyLocale został** zastąpiony wartością **currencyCode**
+- **CurrencyLocale jest** zastępowany wartością **currencyCode**
 - **USDTotalCost** to nowe pole
 
 ```http

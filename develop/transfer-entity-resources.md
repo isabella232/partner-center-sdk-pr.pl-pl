@@ -4,12 +4,12 @@ description: Partner tworzy przeniesienie, gdy klient chce, aby jego subskrypcja
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 544b9682bb0e1428fad088c818a62492198897b2
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 3103c0e9f8e6850336d663a5a38274ce7391e30edd433d08f44071de31b5fc5e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530144"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990209"
 ---
 # <a name="transferentity-resources"></a>Zasoby TransferEntity
 
@@ -22,18 +22,18 @@ Opisuje transferEntity.
 | Właściwość              | Typ             | Opis                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Identyfikator transferEntity, który jest dostarczany po pomyślnym utworzeniu obiektu transferEntity.                               |
-| createdTime (czas utworzenia)           | DateTime         | Data utworzenia przeniesieniaJedność w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity.      |
-| lastModifiedTime      | DateTime         | Data ostatniej aktualizacji transakcji transferEntity w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity. |
-| lastModifiedUser      | ciąg           | Użytkownik, który ostatnio zaktualizował transferEntity. Stosowane po pomyślnym utworzeniu transferEntity.                          |
+| createdTime           | DateTime         | Data utworzenia przeniesieniaJednoczność w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity.      |
+| lastModifiedTime      | DateTime         | Data ostatniej aktualizacji transferEntity w formacie daty i godziny. Stosowane po pomyślnym utworzeniu transferEntity. |
+| lastModifiedUser      | ciąg           | Użytkownik, który ostatnio zaktualizował transferEntity. Stosowane po pomyślnym utworzeniu wartości transferEntity.                          |
 | Customername          | ciąg           | Opcjonalny. Nazwa klienta, którego subskrypcje są przenoszone.                                              |
-| customerTenantId      | ciąg           | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta. Stosowane po pomyślnym utworzeniu transferEntity.         |
-| partnertenantid       | ciąg           | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera.                                                                   |
-| sourcePartnerName (Nazwa partycji źródłowej)     | ciąg           | Opcjonalny. Nazwa organizacji partnera, który inicjuje przeniesienie.                                           |
-| sourcePartnerTenantId | ciąg           | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera inicjujące przeniesienie.                                           |
-| targetPartnerName (nazwa_serwera_docelowego)     | ciąg           | Opcjonalny. Nazwa organizacji partnera, której celem jest przeniesienie.                                         |
-| targetPartnerTenantId | ciąg           | Identyfikator GUID sformatowany jako partner-id, który identyfikuje partnera, do którego jest skierowany transfer.                                  |
-| lineItems             | Tablica obiektów | Tablica zasobów [TransferLineItem.](#transferlineitem)                                                   |
-| status                | ciąg           | Stan transferEntity. Możliwe wartości to "Aktywne" (można je usunąć/przesłać) i "Ukończono" (zostało już zakończone). Stosowane po pomyślnym utworzeniu transferEntity.|
+| customerTenantId      | ciąg           | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta. Stosowane po pomyślnym utworzeniu transferEntity.         |
+| partnertenantid       | ciąg           | Identyfikator GUID sformatowany jako partner-id, który identyfikuje partnera.                                                                   |
+| sourcePartnerName     | ciąg           | Opcjonalny. Nazwa organizacji partnera, który inicjuje przeniesienie.                                           |
+| sourcePartnerTenantId | ciąg           | Identyfikator GUID sformatowany jako partner-id, który identyfikuje partnera inicjatora transferu.                                           |
+| targetPartnerName     | ciąg           | Opcjonalny. Nazwa organizacji partnera, do której jest skierowane przeniesienie.                                         |
+| targetPartnerTenantId | ciąg           | Identyfikator PARTNERA sformatowany identyfikator GUID, który identyfikuje partnera, do którego jest celem transferu.                                  |
+| lineItems             | Tablica obiektów | Tablica [zasobów TransferLineItem.](#transferlineitem)                                                   |
+| status                | ciąg           | Stan transferEntity. Możliwe wartości to "Aktywne" (można je usunąć/przesłać) i "Ukończono" (zostały już ukończone). Stosowane po pomyślnym utworzeniu transferEntity.|
 
 ## <a name="transferlineitem"></a>TransferLineItem
 
@@ -49,16 +49,16 @@ Reprezentuje jeden element zawarty w transferEntity.
 | partnerIdOnRecord    | ciąg                           | PartnerId on Record (MPNID) przy zakupie, który ma miejsce po zaakceptowaniu przeniesienia.                 |
 | offerId              | ciąg                           | Identyfikator oferty.    |
 | addonItems           | Lista obiektów **TransferLineItem** | Kolekcja elementów wiersza transferEntity dla dodatków, które zostaną przeniesione wraz z subskrypcją podstawową, która jest przesyłana. Stosowane po pomyślnym utworzeniu transferEntity.|
-| transferError        | ciąg                           | Stosowane po transferEntity jest akceptowana w przypadku błędu.                |
+| transferError        | ciąg                           | Zastosowane po zaakceptowaniu wartości transferEntity w przypadku błędu.                |
 | status               | ciąg           | Stan lineitem w transferEntity.|
 
 ## <a name="transfersubmitresult"></a>TransferSubmitResult
 
-Reprezentuje wynik przeniesienia zaakceptować.
+Reprezentuje wynik akceptacji przeniesienia.
 
 | Właściwość          | Typ                                                  | Opis                        |
 |-------------------|-------------------------------------------------------|------------------------------------|
-| orders            | Lista [obiektów Order.](order-resources.md#order)    | Kolekcja zamówień.          |
+| orders            | Lista obiektów [Order.](order-resources.md#order)    | Kolekcja zamówień.          |
 | transferErrors    | Lista [obiektów TransferError.](#transfererror)      | Kolekcja błędów transferu. |
 
 ## <a name="transfererror"></a>TransferError

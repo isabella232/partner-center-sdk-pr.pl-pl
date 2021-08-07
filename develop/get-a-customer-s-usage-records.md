@@ -4,18 +4,18 @@ description: Kolekcji zasobów CustomerMonthlyUsageRecord można użyć do pobie
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6b3fb0e1989336810f2afcc2a5bfc3a1d2849b7f
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2ac71bdcbbeb36462f543a024727980922baf7dff5e37a3e7997ced881a51f94
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874894"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992912"
 ---
 # <a name="get-usage-records-for-all-customers"></a>Uzyskiwanie rekordów użycia dla wszystkich klientów
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Partnerzy mogą używać **kolekcji zasobów CustomerMonthlyUsageRecord,** aby uzyskać rekordy użycia dla wszystkich swoich klientów. Ten zasób reprezentuje rekordy użycia dla wszystkich klientów. Dotyczy to również klientów z subskrypcją Microsoft Azure (MS-AZR-0145P) lub planem platformy Azure.
+Partnerzy mogą używać **kolekcji zasobów CustomerMonthlyUsageRecord,** aby uzyskać rekordy użycia dla wszystkich swoich klientów. Ten zasób reprezentuje rekordy użycia dla wszystkich klientów. Obejmuje to klientów z subskrypcją Microsoft Azure (MS-AZR-0145P) lub planem platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Aby uzyskać wszystkie rekordy użycia dla wszystkich klientów, którzy kupili 
 
 1. Użyj **kolekcji IAggregatePartner.Customers,** aby wywołać **metodę ById().**
 
-2. Wywołaj **właściwość UsageRecords,** a następnie wywołaj metodę **Get()** **lub GetAsync().**
+2. Wywołaj **właściwość UsageRecords,** a następnie wywołaj metodę **Get()** lub **GetAsync().**
 
     ``` csharp
     // IAggregatePartner partnerOperations;

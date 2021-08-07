@@ -4,12 +4,12 @@ description: Dowiedz się, jak przypisywać licencje do użytkownika klienta za 
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 88ce0f185b0b043c4a7862b7f9808fb8805d40b9
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8263f7f274e453603305324cc7ac6e8b25820561ade3136b873c65ffa21e94fc
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974373"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989070"
 ---
 # <a name="assign-licenses-to-a-user-via-partner-center-apis"></a>Przypisywanie licencji do użytkownika za pośrednictwem Partner Center API
 

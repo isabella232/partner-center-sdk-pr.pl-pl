@@ -1,13 +1,13 @@
 ---
-title: Obsługa zestawu SDK języka Java
+title: 'Obsługa zestawu Java SDK:'
 ms.date: 04/23/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7765e5783cc123e328bf2320d8b3c6ba8000493d
-ms.sourcegitcommit: 45094b6fb1437bca51f97e193ac2957747dbea27
+ms.openlocfilehash: c997e7d1d7c5110f2065bd2760ae53a1b431a6c1f82daed1b43e3dfc93aab1d8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "97767674"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989110"
 ---
-[Zestaw SDK platformy Java Centrum partnerskiego](https://github.com/microsoft/partner-center-java) jest często używany przez partnerów do zarządzania zasobami Centrum partnerskiego. Jest to projekt Open-Source obsługiwany przez społeczność partnerów. Ponieważ ten moduł jest obsługiwany przez społeczność partnerów, nie jest oficjalnie obsługiwany przez firmę Microsoft. Jeśli wystąpi problem, możesz [uzyskać pomoc od społeczności](https://stackoverflow.com/questions/tagged/partner+center) lub [otworzyć problem w usłudze GitHub](https://github.com/microsoft/partner-center-java/issues) .
+Zestaw [SDK Partner Center Java](https://github.com/microsoft/partner-center-java) jest często używany przez partnerów do zarządzania Partner Center zasobów. Jest to projekt typu open source utrzymywany przez społeczność partnerów. Ponieważ ten moduł jest obsługiwany przez społeczność partnerów, nie jest oficjalnie obsługiwany przez firmę Microsoft. Możesz uzyskać [pomoc od społeczności lub](https://stackoverflow.com/questions/tagged/partner+center) otworzyć [problem](https://github.com/microsoft/partner-center-java/issues) w GitHub, jeśli wystąpi problem.

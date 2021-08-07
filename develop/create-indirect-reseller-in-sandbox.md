@@ -5,12 +5,12 @@ ms.date: 5/24/2021
 ms.author: vijvala
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 93e26792b66e447a0047bd550f4302c7fca4e87b
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 970b7ba49f6bb4b842f0f7d96e689856b0362c03949e14c9cf5a0e205573277b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973438"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991450"
 ---
 # <a name="create-indirect-reseller-in-sandbox"></a>Tworzenie odsprzedawcy pośredniego w piaskownicy
 
@@ -20,30 +20,30 @@ W tym dokumencie przedstawiono sposób tworzenia dostawców pośrednich piaskown
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center Authentication (Uwierzytelnianie).](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="csp-indirect-provider"></a>CSP Indirect Provider
 
 | Możliwości produkcyjne             | Możliwości piaskownicy                            |
 |-------------------------------------|-------------------------------------------------|
 | Sprzedaż odsprzedawcy pośredniego klientowi końcowego | Obsługiwane |
-| Właścicielem całej sprzedaży, rozliczeń, aprowiwizowania i zarządzania/pomocy technicznej | Obsługiwane |
+| Właścicielem całej sprzedaży, rozliczeń, aprowowania i zarządzania/pomocy technicznej | Obsługiwane |
 | Żądanie partnerstwa z odsprzedawcami | Obsługiwane |
 | Wyświetlanie klientów według odsprzedawcy | Obsługiwane |
 | Dodawanie nowych klientów według odsprzedawców | Obsługiwane |
 | Zapraszanie klientów | Żądanie relacji z klientem nie jest obsługiwane w piaskownicy |
 | Dostawca pośredni piaskownicy może wybrać środowisko IR piaskownicy (identyfikator MPN) jako dostawcę tożsamości podczas umieszczania transakcji | Obsługiwane |
 | Nie jest obsługiwane w środowisku produkcyjnym | Dostawca pośredni piaskownicy może utworzyć odsprzedawcę pośredniego piaskownicy |
-| Należy wprowadzić identyfikator MPN piaskownicy. Identyfikator MPN produktu nie będzie działać | Nie jest obsługiwane w środowisku produkcyjnym |
+| Należy wprowadzić identyfikator MPN piaskownicy, identyfikator MPN produktu nie będzie działać | Nie jest obsługiwane w środowisku produkcyjnym |
 | Nie jest obsługiwane w środowisku produkcyjnym | Dostawca pośredni piaskownicy może usunąć odsprzedawcę pośredniego piaskownicy |
 
 ## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller"></a>Dostawca pośredni piaskownicy — tworzenie odsprzedawcy pośredniego piaskownicy
 
 Ta funkcja jest dostępna tylko w piaskownicy i umożliwia dostawcom pośrednim piaskownicy tworzenie odsprzedawców pośrednich piaskownicy.
 
-1. Limit pięciu pośrednich odsprzedawców piaskownicy dozwolonych na dostawcę pośredniego piaskownicy
-2. Dostawcy pośredni piaskownicy mogą tworzyć klientów u `associatedPartnerId` odsprzedawcy pośredniego piaskownicy
-3. Wprowadź identyfikator [MPN](/partner-center/mpn-create-a-partner-center-account) określonego regionu podczas tworzenia odsprzedawcy pośredniego piaskownicy. Wielu pośrednich odsprzedawców piaskownicy można utworzyć przy użyciu tego samego identyfikatora MPN piaskownicy.
+1. Limit pięciu odsprzedawców pośrednich piaskownicy dozwolonych na dostawcę pośredniego piaskownicy
+2. Dostawcy pośredni piaskownicy mogą tworzyć klientów przy `associatedPartnerId` użyciu odsprzedawcy pośredniego piaskownicy
+3. Wprowadź identyfikator [MPN](/partner-center/mpn-create-a-partner-center-account) określonego regionu podczas tworzenia odsprzedawcy pośredniego piaskownicy. Wielu odsprzedawców pośrednich piaskownicy można utworzyć przy użyciu tego samego identyfikatora MPN piaskownicy.
 4. Tylko 75 klientów jest dozwolonych na dostawcę pośredniego piaskownicy
 
 ## <a name="sandbox-indirect-resellers--view-customers"></a>Odsprzedawcy pośredni piaskownicy — wyświetlanie klientów
@@ -51,7 +51,7 @@ Ta funkcja jest dostępna tylko w piaskownicy i umożliwia dostawcom pośrednim 
 1. Odsprzedawcy pośredni piaskownicy mogą wyświetlać listę klientów piaskownicy według dostawców pośrednich piaskownicy.
 2. Odsprzedawcy pośredni piaskownicy mogą zarządzać kontem klienta przy użyciu delegowanych uprawnień administratora.
 
-## <a name="create-sandbox-indirect-reseller-through-api"></a>Tworzenie odsprzedawcy pośredniego piaskownicy za pomocą interfejsu API
+## <a name="create-sandbox-indirect-reseller-through-api"></a>Tworzenie odsprzedawcy pośredniego piaskownicy za pośrednictwem interfejsu API
 
 ### <a name="rest-request"></a>Żądanie REST
 
@@ -63,7 +63,7 @@ Ta funkcja jest dostępna tylko w piaskownicy i umożliwia dostawcom pośrednim 
 
 #### <a name="request-headers"></a>Nagłówki żądań
 
-- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wielokrotnie).
+- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wiele razy).
 - Wymagany jest identyfikator żądania i identyfikator korelacji.
 - Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST).](headers.md)
 
@@ -86,9 +86,9 @@ W tej tabeli opisano wymagane właściwości **atrybutu dzierżawy.**
 | name               | ciąg         | Przyjazna nazwa dzierżawy         |
 | displayName        | ciąg         | Nazwa wyświetlana konta        |
 | adminUserName      | ciąg         | Nazwa użytkownika konta do logowania |
-| adminfirstname (nazwa administratora)     | ciąg         | Imię administratora       |
-| adminlastname (nazwa administratora)      | ciąg         | Nazwisko administratora        |
-| adminAlernateEmail | ciąg         | wiadomość e-mail dla administratora            |
+| adminfirstname     | ciąg         | Imię użytkownika administratora       |
+| adminlastname      | ciąg         | Nazwisko administratora        |
+| adminAlernateEmail | ciąg         | adres e-mail użytkownika administratora            |
 | country            | ciąg         | Kraj konta              |
 | kultura            | ciąg         | Preferencja języka dla konta     |
 
@@ -96,7 +96,7 @@ W tej tabeli opisano wymagane właściwości **atrybutu legalBusinessProfile.**
 
 | Właściwość       | Typ                             | Opis                          |
 |----------------|----------------------------------|--------------------------------------|
-| Companyname    | ciąg                           | Nazwa firmy dla jednostki prawnej        |
+| Companyname    | ciąg                           | Nazwa firmy dla podmiotu prawnego        |
 | adres        | Ciąg &lt; słownika, ciąg&gt; | Adres lokalizacji jednostki prawnej |
 | primaryContact | Ciąg &lt; słownika, ciąg&gt; | Dane kontaktowe firmy       |
 | kultura        | ciąg                           | Język preferowany przez firmę    |

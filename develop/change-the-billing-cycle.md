@@ -1,38 +1,38 @@
 ---
 title: Zmiana cyklu rozliczeniowego
-description: Dowiedz się, jak zaktualizować subskrypcję klienta do rozliczeń miesięcznych lub rocznych przy użyciu Partner Center API. Możesz to również zrobić z Partner Center nawigacyjnego.
+description: Dowiedz się, jak zaktualizować subskrypcję klienta do miesięcznych lub rocznych rozliczeń przy użyciu Partner Center API. Możesz to również zrobić z pulpitu nawigacyjnego Partner Center nawigacyjnym.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 435309229e2cb038c936028943f4c2cf27b032a7
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: c45d599ace7895c03bc163cddde7cbb057ff60a06c58af39a2baacb3d557e72e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974118"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992164"
 ---
 # <a name="change-a-customer-subscription-billing-cycle"></a>Zmienianie cyklu rozliczeniowego subskrypcji klienta
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Aktualizuje zamówienie [z](order-resources.md) rozliczenia miesięcznego na roczne lub rocznego na miesięczne.
+Aktualizuje zamówienie [z](order-resources.md) rozliczenia miesięcznego na roczne lub z rocznego na miesięczny.
 
-Na Partner Center nawigacyjnym można wykonać tę operację, przechodząc do strony szczegółów subskrypcji klienta. W tym miejscu zobaczysz opcję definiowania bieżącego cyklu rozliczeniowego dla subskrypcji z możliwością jej zmiany i przesyłania.
+Na Partner Center nawigacyjnym tę operację można wykonać, przechodząc do strony szczegółów subskrypcji klienta. W tym miejscu zobaczysz opcję definiowania bieżącego cyklu rozliczeniowego dla subskrypcji z możliwością jej zmiany i przesyłania.
 
 **Poza zakresem** tego artykułu:
 
 - Zmiana cyklu rozliczeniowego dla wersji próbnych
-- Zmiana cykli rozliczeniowych dla wszystkich ofert poza rocznym okresem (miesięcznych, sześciorocznych) & subskrypcji platformy Azure
-- Zmienianie cykli rozliczeniowych dla nieaktywnych subskrypcji
+- Zmiana cyklów rozliczeniowych dla wszystkich ofert nierocznych okresów (miesięcznych, sześciorocznych) & subskrypcji platformy Azure
+- Zmienianie cyklów rozliczeniowych dla nieaktywnych subskrypcji
 - Zmienianie cykli rozliczeniowych dla subskrypcji Usługi online Microsoft opartych na licencjach
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zamówienia.
 
@@ -96,7 +96,7 @@ W poniższych tabelach opisano właściwości w treści żądania.
 |--------------------|------------------|----------|----------------------------------------------------------------------------|
 | Id                 | ciąg           |    N     | Identyfikator zamówienia podany po pomyślnym utworzeniu zamówienia |
 |ReferenceCustomerId | ciąg           |    Y     | Identyfikator klienta                                                    |
-| BillingCycle       | ciąg           |    Y     | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). |
+| BillingCycle       | ciąg           |    Y     | Wskazuje częstotliwość, z jaką partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](product-resources.md#billingcycletype). |
 | LineItems          | tablica obiektów |    Y     | Tablica zasobów [OrderLineItem](#orderlineitem)                      |
 | Creationdate       | datetime         |    N     | Data utworzenia zamówienia w formacie data/godzina                        |
 | Atrybuty         | Obiekt           |    N     | Zawiera "ObjectType": "OrderLineItem"                                     |
@@ -105,7 +105,7 @@ W poniższych tabelach opisano właściwości w treści żądania.
 
 | Właściwość             | Typ   | Wymagane | Opis                                                                        |
 |----------------------|--------|----------|------------------------------------------------------------------------------------|
-| LineItemNumber       | liczba |    Y     | Numer elementu wiersza rozpoczynający się od 0                                              |
+| LineItemNumber       | liczba |    Y     | Numer elementu wiersza, począwszy od 0                                              |
 | OfferId              | ciąg |    Y     | Identyfikator oferty                                                                |
 | SubscriptionId       | ciąg |    Y     | Identyfikator subskrypcji                                                         |
 | FriendlyName         | ciąg |    N     | Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania |

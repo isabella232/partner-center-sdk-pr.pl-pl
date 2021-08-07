@@ -1,33 +1,33 @@
 ---
 title: Aktualizowanie żądania obsługi
-description: Jak zaktualizować istniejące żądanie obsługi klienta, które Dostawca rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
+description: Jak zaktualizować istniejące żądanie obsługi klienta, Dostawca rozwiązań w chmurze zgłosiło się do firmy Microsoft w imieniu klienta.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2fdfda256e873d772f300dfa29b17779c192f158c82d3e42467021b8f9f3fcdb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530093"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990039"
 ---
 # <a name="update-a-service-request"></a>Aktualizowanie żądania obsługi
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Jak zaktualizować istniejące żądanie obsługi klienta, które Dostawca rozwiązań w chmurze do firmy Microsoft w imieniu klienta.
+Jak zaktualizować istniejące żądanie obsługi klienta, Dostawca rozwiązań w chmurze zgłosiło się do firmy Microsoft w imieniu klienta.
 
 Na Partner Center nawigacyjnym tę operację można wykonać, wybierając [najpierw klienta](get-a-customer-by-name.md). Następnie wybierz pozycję **Zarządzanie usługami** na lewym pasku bocznym. W **nagłówku Żądania** pomocy technicznej wybierz odpowiednie żądanie obsługi. Aby zakończyć, należy wprowadzić żądane zmiany w żądaniu obsługi, a następnie wybrać pozycję **Prześlij.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Identyfikator żądania obsługi.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować żądanie obsługi klienta, wywołaj metodę [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) z identyfikatorem żądania obsługi, aby zidentyfikować i zwrócić interfejs żądania obsługi. Następnie wywołaj [**metodę IServiceRequest.Patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) lub [**PatchAsync,**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) aby zaktualizować żądanie obsługi. Aby podać zaktualizowane wartości, utwórz nowy, pusty obiekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) i ustaw tylko wartości właściwości, które chcesz zmienić. Następnie przekaż ten obiekt w wywołaniu metody Patch lub PatchAsync.
+Aby zaktualizować żądanie obsługi klienta, wywołaj metodę [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) z identyfikatorem żądania obsługi w celu zidentyfikowania i zwrócenia interfejsu żądania obsługi. Następnie wywołaj [**metodę IServiceRequest.Patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) lub [**PatchAsync,**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) aby zaktualizować żądanie obsługi. Aby podać zaktualizowane wartości, utwórz nowy, pusty obiekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) i ustaw tylko wartości właściwości, które chcesz zmienić. Następnie przekaż ten obiekt w wywołaniu metody Patch lub PatchAsync.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,7 +39,7 @@ ServiceRequest updatedServiceRequest = partnerOperations.ServiceRequests.ById(ex
 });
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : UpdatePartnerServiceRequest.cs **(Klasa przykładów zestaw SDK Centrum partnerskiego:** UpdatePartnerServiceRequest.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project**: zestaw SDK Centrum partnerskiego Samples Class : UpdatePartnerServiceRequest.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: UpdatePartnerServiceRequest.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -55,7 +55,7 @@ Użyj następującego parametru URI, aby zaktualizować żądanie obsługi.
 
 | Nazwa                  | Typ     | Wymagane | Opis                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **servicerequest-id** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
+| **identyfikator servicerequest-id** | **guid** | Y        | Identyfikator GUID, który identyfikuje żądanie obsługi. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -115,7 +115,7 @@ W przypadku powodzenia ta metoda zwraca zasób **żądania obsługi** ze zaktual
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz Partner Center REST Error Codes (Kody [błędów REST).](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

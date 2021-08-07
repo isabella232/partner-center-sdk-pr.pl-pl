@@ -4,12 +4,12 @@ description: Jak zaktualizować określone zasady konfiguracji dla określonego 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5e008f41a44f2b7cf3ddfd705505175c69bbad38
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 957f2835d08e049e8b77271de5383f5ffc45d4ade6d903b2f42757dd4e707a05
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530241"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990141"
 ---
 # <a name="update-a-configuration-policy-for-the-specified-customer"></a>Aktualizowanie zasad konfiguracji dla określonego klienta
 
@@ -19,9 +19,9 @@ Jak zaktualizować określone zasady konfiguracji dla określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zasad.
 
@@ -47,7 +47,7 @@ ConfigurationPolicy updatedConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedConfigurationPolicyId).Patch(configPolicyToBeUpdated);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Przykłady klasy**: UpdateConfigurationPolicy.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : UpdateConfigurationPolicy.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: UpdateConfigurationPolicy.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -63,8 +63,8 @@ Podczas tworzenia żądania użyj następujących parametrów ścieżki.
 
 | Nazwa        | Typ   | Wymagane | Opis                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| identyfikator klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.         |
-| identyfikator zasad   | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje zasady do zaktualizowania. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.         |
+| policy-id   | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje zasady do zaktualizowania. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -72,16 +72,16 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 ### <a name="request-body"></a>Treść żądania
 
-Treść żądania musi zawierać obiekt , który dostarcza informacje o zasadach.
+Treść żądania musi zawierać obiekt, który dostarcza informacje o zasadach.
 
 | Nazwa            | Typ             | Wymagane | Aktualizowalna | Opis                                                                                                                                              |
 |-----------------|------------------|----------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator              | ciąg           | Tak      | Nie        | Ciąg w formacie identyfikatora GUID, który identyfikuje zasady.                                                                                                    |
+| identyfikator              | ciąg           | Tak      | Nie        | Ciąg w formacie GUID, który identyfikuje zasady.                                                                                                    |
 | name            | ciąg           | Tak      | Tak       | Przyjazna nazwa zasad.                                                                                                                         |
 | category        | ciąg           | Tak      | Nie        | Kategoria zasad.                                                                                                                                     |
 | description (opis)     | ciąg           | Nie       | Tak       | Opis zasad.                                                                                                                                  |
-| urządzeniaZapisane | liczba           | Nie       | Nie        | Liczba urządzeń.                                                                                                                                   |
-| ustawienia zasad  | tablica ciągów | Tak      | Tak       | Ustawienia zasad: "none", "remove \_ oem \_ preinstalls", "oobe \_ user not local \_ \_ \_ admin","skip \_ express \_ settings","skip \_ oem \_ registration,"skip \_ eula". |
+| devicesAssigned | liczba           | Nie       | Nie        | Liczba urządzeń.                                                                                                                                   |
+| policySettings  | tablica ciągów | Tak      | Tak       | Ustawienia zasad: "none", "remove \_ oem \_ preinstalls", "oobe \_ user not local \_ \_ \_ admin","skip \_ express \_ settings","skip \_ oem \_ registration,"skip \_ eula". |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -112,7 +112,7 @@ Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób ConfigurationPolicy
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

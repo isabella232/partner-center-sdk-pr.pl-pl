@@ -1,17 +1,17 @@
 ---
 title: Uzyskiwanie stanu wdrożenia usługi MFA
-description: Pobierz listę stanu wdrożenia uwierzytelniania wieloskładnikowego dla każdego partnera przy użyciu interfejsu API REST partnera.
+description: Pobierz listę stanów wdrożenia uwierzytelniania wieloskładnikowego dla każdego partnera przy użyciu interfejsu API REST partnera.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9b8848c2a4531dd6609f86aae6876cec436eeea9
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: e4b55122a6f723d8a877c2688c425fda52cb1c56110c47ee81ddce24e4923e99
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760525"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992538"
 ---
 # <a name="get-mfa-adoption-status"></a>Uzyskiwanie stanu wdrożenia usługi MFA
 
@@ -21,7 +21,7 @@ W tym artykule wyjaśniono, jak uzyskać stan wdrożenia uwierzytelniania wielos
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję żądania [interfejsu API podsumowaną przez zasoby](mfa-resources.md#api-request-summarized-by-application) aplikacji w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję żądań [interfejsu API podsumowanych przez zasoby](mfa-resources.md#api-request-summarized-by-application) aplikacji w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

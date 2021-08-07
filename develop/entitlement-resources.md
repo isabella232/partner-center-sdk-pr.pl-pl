@@ -4,12 +4,12 @@ description: Opisuje zasoby związane z uprawnieniem.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 929004fff804675218e267bb928b432f7b1209bf
-ms.sourcegitcommit: 84a6f701190f46d2adcf6edcaeaafa32d58fbaba
+ms.openlocfilehash: 9582bb0d886078062ae14d0461accb8e0179bed2e33e9a264cc1da8b06383706
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113510112"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989155"
 ---
 # <a name="entitlement-resources"></a>Zasoby uprawnień
 
@@ -24,12 +24,12 @@ Ten zasób reprezentuje produkty, do których klient ma prawo korzystać z powod
 | referenceOrder | [ReferenceOrder](#referenceorder) | Odwołanie do zamówienia, które wywłaszło uprawnienie. |
 | productId | ciąg | Identyfikator produktu. |
 | skuID | ciąg | Identyfikator sku. |
-| quantity | int | Liczba uprawnień (z wyłączeniem niewypełnionych/przenoszonych uprawnień). |
+| quantity | int | Liczba uprawnień (z wyłączeniem niewypełnionych/transferowanych uprawnień). |
 | quantityDetails | IEnumerable<[QuantityDetail](#quantitydetail)> | Lista szczegółów ilości uprawnień (liczba elementów i stan każdej ilości). |
 | entitlementType | ciąg | Typ uprawnienia. (Zaktualizowano do ciągu z [entitlementType](#entitlementtype) w zestawie SDK 1.8). |
 | entitledArtifacts | Artefakt<[IEnumerable](#artifact)> | Lista artefaktów skojarzonych z uprawnieniem. |
-| IncludedEntitlements | Uprawnienie IEnumerable<[](#artifact)> | Lista uprawnień, które są niejawnie uwzględniane w wyniku zakupu productid/SkuId z katalogu. |
-| Data wygaśnięcia | ciąg w formacie daty i godzin UTC  | Data wygaśnięcia uprawnienia (jeśli ma zastosowanie). |
+| IncludedEntitlements | Uprawnienie IEnumerable<[IEnumerable](#artifact)> | Lista uprawnień, które są niejawnie uwzględniane w wyniku zakupu productid/SkuId z katalogu. |
+| Data wygaśnięcia | ciąg w formacie daty i godzin UTC  | Data wygaśnięcia uprawnień (jeśli ma zastosowanie). |
 
 ## <a name="referenceorder"></a>ReferenceOrder
 
@@ -37,9 +37,9 @@ Odwołanie do zamówienia uprawnienia.
 
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
-| identyfikator | ciąg | Identyfikator kolejności, do których się odwołujesz. |
-| lineItemId | ciąg | Identyfikator elementu wiersza zamówienia, do których się odwołujesz. |
-| alternateId | ciąg | Alternatywny identyfikator elementu wiersza zamówienia, do których się odwołujesz. |
+| identyfikator | ciąg | Identyfikator kolejności, do których się odwoływuje. |
+| lineItemId | ciąg | Identyfikator przywoływego elementu wiersza zamówienia. |
+| alternateId | ciąg | Alternatywny identyfikator przywoływanych elementów wiersza zamówienia. |
 
 ## <a name="quantitydetail"></a>QuantityDetail
 
@@ -69,7 +69,7 @@ Artefakt skojarzony z uprawnieniem.
 | Właściwość | Typ | Opis |
 |----------|------|-------------|
 | artifactType | ciąg | Typ artefaktu. (Zaktualizowano do ciągu [z artifactType](#artifacttype) w zestawie SDK w wersji 1.8) |
-| dynamicAttributes | Ciąg &lt; słownika, obiekt&gt; | Atrybuty dynamiczne zawierające wartości specyficzne dla artifacttype. Na przykład gdy artifactType = "reservedinstance" ta właściwość będzie zawierać wartość "reservationType" = "virtualmachines" lub "reservationType" = "sqldatabases" oznaczające wystąpienie zarezerwowane maszyny wirtualnej lub wystąpienie zarezerwowane SQL Azure. (Dostępne od wersji 1.9 zestawu SDK) |
+| dynamicAttributes | Ciąg &lt; słownika, obiekt&gt; | Atrybuty dynamiczne zawierające artifacttype określone wartości. Na przykład gdy artifactType = "reservedinstance" ta właściwość będzie zawierać wartość "reservationType" = "virtualmachines" lub "reservationType" = "sqldatabases" oznaczające wystąpienie zarezerwowane maszyny wirtualnej lub wystąpienie zarezerwowane SQL Azure. (Dostępne od wersji 1.9 zestawu SDK) |
 
 ## <a name="artifacttype"></a>ArtifactType
 
@@ -107,12 +107,12 @@ Reprezentuje pojedynczą rezerwację.
 | Właściwość          | Typ                           | Opis                                                        |
 |-------------------|--------------------------------|--------------------------------------------------------------------|
 | reservationId     | ciąg                         | Identyfikator rezerwacji.                                         |
-| scopeType (typ zakresu)         | ciąg                         | Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej. |
+| scopeType         | ciąg                         | Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej. |
 | displayName       | ciąg                         | Nazwa wyświetlana rezerwacji.                               |
 | appliedScopes     | Ienumerable                    | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy typ scopeType nie jest udostępniony). |
 | quantity          | int                            | Liczba maszyn wirtualnych w rezerwacji.                 |
-| expiryDateTime    | ciąg w formacie daty i czasu UTC | Data wygaśnięcia rezerwacji.                                |
-| effectiveDateTime | ciąg w formacie daty i czasu UTC | Data wejścia w życie rezerwacji.                             |
+| expiryDateTime    | ciąg w formacie daty i godzin UTC | Data wygaśnięcia rezerwacji.                                |
+| effectiveDateTime | ciąg w formacie daty i godzin UTC | Data wejścia w życie rezerwacji.                             |
 | provisioningState | ciąg                         | Stan aprowizowania rezerwacji.                         |
 
 ## <a name="virtualmachinereservedinstanceartifact"></a>VirtualMachineReservedInstanceArtifact
@@ -149,10 +149,10 @@ Reprezentuje rezerwację poszczególnych maszyn wirtualnych.
 |     Właściwość      |              Typ              |                                                Opis                                                 |
 |-------------------|--------------------------------|------------------------------------------------------------------------------------------------------------|
 |   reservationId   |             ciąg             |                                         Identyfikator rezerwacji.                                         |
-|     scopeType (typ zakresu)     |             ciąg             |                     Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej.                     |
+|     scopeType     |             ciąg             |                     Typ zakresu skojarzonego z rezerwacją maszyny wirtualnej.                     |
 |    displayName    |             ciąg             |                                    Nazwa wyświetlana rezerwacji.                                    |
 |   appliedScopes   |      `IEnumerable<string>`       | Lista zastosowanych zakresów skojarzonych z rezerwacją. (Dostępne tylko wtedy, gdy typ scopeType nie jest udostępniony). |
 |     quantity      |              int               |                             Liczba maszyn wirtualnych w rezerwacji.                             |
-|  expiryDateTime   | ciąg w formacie daty i czasu UTC |                                    Data wygaśnięcia rezerwacji.                                     |
-| effectiveDateTime | ciąg w formacie daty i czasu UTC |                                   Data wejścia w życie rezerwacji.                                   |
+|  expiryDateTime   | ciąg w formacie daty i godzin UTC |                                    Data wygaśnięcia rezerwacji.                                     |
+| effectiveDateTime | ciąg w formacie daty i godzin UTC |                                   Data wejścia w życie rezerwacji.                                   |
 | provisioningState |             ciąg             |                                 Stan aprowizowania rezerwacji.                                 |

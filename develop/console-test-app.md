@@ -4,33 +4,33 @@ description: Ta aplikacja testowa konsoli zawiera przykładowy kod dla wszystkic
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b35167104deeede50107d59fca6112c10dc7b4bf
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 53a014608303e432be251de0845857547170a5464a1952bb4fde9ff7beb8ae95
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974033"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991960"
 ---
 # <a name="console-test-app"></a>Aplikacja testowa konsoli
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Aplikacja testowa konsoli jest dostarczana w językach C# i Java. Udostępnia przykładowe kody dla wszystkich scenariuszy obsługiwanych przez interfejsy API Partner Center Api. Można go również używać do testowania.
+Aplikacja testowa konsoli jest udostępniana w językach C# i Java. Udostępnia przykładowe kody dla wszystkich scenariuszy obsługiwanych przez interfejsy API Partner Center API. Można go również używać do testowania.
 
 ## <a name="get-the-code"></a>Uzyskiwanie kodu
 
-Pobierz przykładowy kod aplikacji testowej konsoli.
+Pobierz przykładowy kod dla aplikacji testowej konsoli.
 
 ## <a name="net"></a>.NET
 
 [Pobierz przykładowy kod i](https://go.microsoft.com/fwlink/p/?LinkId=746682) zmodyfikuj go w razie potrzeby.
 
 > [!IMPORTANT]
-> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *App.config,* aby odzwierciedlić informacje uwierzytelniania usługi Azure AD utworzone w ramach [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
+> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *App.config,* aby odzwierciedlały informacje o uwierzytelnianiu usługi Azure AD utworzone podczas [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
 
-W **obszarze ScenarioSettings** w *App.config* można ustawić parametry, które będą automatycznie przekazywane do uruchamianych scenariuszy.
+W **obszarze ScenarioSettings** w *App.config* pliku można ustawić parametry, które będą automatycznie przekazywane do uruchamianych scenariuszy.
 
-Aby zmodyfikować listę uruchamianych scenariuszy, przekrzywij wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w indywidualnej metodzie **Get Scenarios** znalezionej w *pliku Program.cs.*
+Aby zmodyfikować listę uruchamianych scenariuszy, wyeksmentuj wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w indywidualnej metodzie **Get Scenarios** znalezionej w *pliku Program.cs.*
 
 ## <a name="java"></a>Java
 
@@ -39,11 +39,11 @@ Aby zmodyfikować listę uruchamianych scenariuszy, przekrzywij wiersze w scenar
 [Pobierz przykładowy kod i](https://go.microsoft.com/fwlink/p/?LinkId=2026887) zmodyfikuj go w razie potrzeby.
 
 > [!IMPORTANT]
-> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *SamplesConfigurations.jsw* celu odzwierciedlenia informacji uwierzytelniania usługi Azure AD utworzonych podczas [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
+> Przed skompilowanie aplikacji zaktualizuj wartości w pliku *SamplesConfigurations.jsw* celu odzwierciedlenia informacji o uwierzytelnianiu usługi Azure AD utworzonych podczas [Partner Center uwierzytelniania.](partner-center-authentication.md) W szczególności należy używać ustawień konta piaskownicy integracji na wczesnym etapie opracowywania lub do testowania w środowisku produkcyjnym.
 
 W **obszarze ScenarioSettings** SamplesConfiguration.js *pliku* można ustawić parametry, które będą automatycznie przekazywane do uruchamianych scenariuszy.
 
-Aby zmodyfikować listę uruchamianych scenariuszy, przekrzywij wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w indywidualnej metodzie **Get Scenarios** znalezionej w *pliku Program.java.*
+Aby zmodyfikować listę uruchamianych scenariuszy, należy oznaczać jako komentarz wiersze w scenariuszu **IPartnerScenario \[ \] mainScenarios** lub w poszczególnych metodach Get **Scenarios** znalezionych w *pliku Program.java.*
 
 ## <a name="what-to-change"></a>Co należy zmienić
 
@@ -51,18 +51,18 @@ Użyj poniższych list, aby określić, co należy zmienić w przykładowym kodz
 
 ### <a name="partnerservicesettings"></a>PartnerServiceSettings
 
-W **przypadku usługi PartnerServiceSettings** nie zmieniaj:
+W **przypadku ustawienia PartnerServiceSettings** nie zmieniaj:
 
 - **PartnerServiceApiEndpoint**
 - **AuthenticationAuthorityEndpoint**
 - **GraphEndpoint**
 - **CommonDomain**
 
-Wszystkie te ustawienia są niezbędne do poprawnego działania przykładowych wywołań interfejsu API.
+Wszystkie te ustawienia są niezbędne do prawidłowego działania przykładowych wywołań interfejsu API.
 
 ### <a name="userauthentication"></a>UserAuthentication
 
-W **przypadku uwierzytelniania UserAuthentication** należy zmienić:
+W **przypadku uwierzytelniania użytkownika** wymagana jest zmiana:
 
 - **ApplicationId** (identyfikator Azure Active Directory używany do logowania)
 - **UserName** (nazwa użytkownika usługi Active Directory)
@@ -75,7 +75,7 @@ Nie zmieniaj:
 
 ### <a name="appauthentication"></a>AppAuthentication
 
-W **przypadku uwierzytelniania AppAuthentication** należy zmienić:
+W **przypadku uwierzytelniania appauthentication** należy zmienić:
 
 - **ApplicationId** (identyfikator aplikacji usługi Active Directory używany do logowania do aplikacji)
 - **ApplicationSecret** (klucz tajny aplikacji usługi Active Directory używany do logowania do aplikacji)

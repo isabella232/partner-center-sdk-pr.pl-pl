@@ -1,30 +1,30 @@
 ---
 title: Pobieranie informacji dotyczących wdrażania licencji partnera
-description: Jak uzyskać zagregowane informacje o wdrażaniu licencji partnerów, aby uwzględnić wszystkich klientów.
+description: Jak uzyskać zagregowane informacje o wdrożeniu licencji partnerów, aby uwzględnić wszystkich klientów.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2464242fc6dc4e7464511eac5d4197630e22fac0
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b62128a3565854add78fc8e680fdfab9af45c2c41583155c759ae179fbe7bced
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445987"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989716"
 ---
 # <a name="get-partner-licenses-deployment-information"></a>Pobieranie informacji dotyczących wdrażania licencji partnera
 
-Jak uzyskać zagregowane informacje o wdrażaniu licencji partnerów, aby uwzględnić wszystkich klientów.
+Jak uzyskać zagregowane informacje o wdrożeniu licencji partnerów, aby uwzględnić wszystkich klientów.
 
 > [!NOTE]
-> Ten scenariusz jest przesłoowany przez uzyskiwanie [informacji o wdrożeniu licencji.](get-licenses-deployment-information.md)
+> Ten scenariusz został wywłaszszony przez informacje [o wdrażaniu get licencji](get-licenses-deployment-information.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać zagregowane dane dotyczące wdrożenia licencji, najpierw uzyskaj interfejs do operacji zbierania danych analitycznych na poziomie partnera z właściwości [**IAggregatePartner.Analytics.**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) Następnie pobierz interfejs do kolekcji analizy licencji na poziomie partnera z [**właściwości Licencje.**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) Na koniec wywołaj [**metodę Deployment.Get,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) aby uzyskać zagregowane dane dotyczące wdrożenia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**PartnerLicensesDeploymentInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesdeploymentinsights)
+Aby pobrać zagregowane dane dotyczące wdrożenia licencji, najpierw pobierz interfejs do operacji zbierania danych analitycznych na poziomie partnera z właściwości [**IAggregatePartner.Analytics.**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) Następnie pobierz interfejs do kolekcji analitycznej licencji na poziomie partnera z [**właściwości Licencje.**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) Na koniec wywołaj [**metodę Deployment.Get,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) aby uzyskać zagregowane dane dotyczące wdrożenia licencji. Jeśli metoda powiedzie się, otrzymasz kolekcję obiektów [**PartnerLicensesDeploymentInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesdeploymentinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -66,7 +66,7 @@ W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [PartnerLic
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

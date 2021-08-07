@@ -4,12 +4,12 @@ description: Jak przekazać listę informacji o urządzeniach w celu utworzenia 
 ms.date: 08/08/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 285af12034562262c99b2aa3b139e948b0fdd462
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 104c240ef9a1afefd36fbb558e79ac30a3a66920b802fdc9c6b65023a038af8c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529736"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990379"
 ---
 # <a name="upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer"></a>Przekazywanie listy urządzeń w celu utworzenia nowej partii dla określonego klienta
 

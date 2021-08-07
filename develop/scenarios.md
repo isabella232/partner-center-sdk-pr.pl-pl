@@ -1,15 +1,15 @@
 ---
 title: Partner Center scenariuszy interfejsu API
-description: Dowiedz się, Dostawca rozwiązań w chmurze programu mogą używać interfejsu API Partner Center, aby programowo zarządzać kontami klientów, zamówieniami, pomocą techniczną i rozliczeniami.
+description: Dowiedz się, Dostawca rozwiązań w chmurze mogą używać interfejsu API Partner Center, aby programowo zarządzać kontami klientów, zamówieniami, pomocą techniczną i rozliczeniami.
 ms.date: 10/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d74400a975323d5f0f276dbdece3621d8b47a609
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: a5aac400e115ef0e58452e41edd9846d683d0b6912a9f651ea49d75d5f15bbf7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547482"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989495"
 ---
 # <a name="partner-center-api-scenarios-that-let-you-programmatically-manage-customer-accounts"></a>Partner Center api, które umożliwiają programowe zarządzanie kontami klientów
 
@@ -29,7 +29,7 @@ Dostępne są różne wersje Partner Center, które zawierają różne możliwo�
 
 Wszystkie poniższe scenariusze można ukończyć na trzy różne sposoby:
 
-- Ręcznie na pulpicie [nawigacyjnym Partner Center](https://partner.microsoft.com/dashboard) nawigacyjnym.
+- Ręcznie na pulpicie [Partner Center](https://partner.microsoft.com/dashboard) nawigacyjnym.
 
 - Programowo przy użyciu Partner Center API.
 
@@ -39,7 +39,7 @@ Wszystkie poniższe scenariusze można ukończyć na trzy różne sposoby:
 |----------------------------------|--------------------------|
 | **Analiza:** Dowiedz się, jak pobierać dane analityczne dotyczące użycia platformy Azure, subskrypcji, licencji lub poleceń.         | [Analiza](usage-analytics.md)  |
 | **Operacje inspekcji:** Dowiedz się, jak pobierać historyczne rekordy inspekcji Partner Center działań i operacji. | [Operacje inspekcji](audit.md)                     |
-| **Wdrożenia urządzeń:** Dowiedz się więcej na temat zasad konfiguracji urządzeń, pracy z partiami urządzeń i metadanych urządzeń. Scenariusze te obejmują dodawanie, usuwanie, aktualizowanie i pobieranie zasad konfiguracji urządzeń.    | [Wdrażanie urządzeń](device-deployment.md)  |
+| **Wdrożenia urządzeń:** Dowiedz się więcej o zasadach konfiguracji urządzeń, pracy z partiami urządzeń i metadanych urządzenia. Scenariusze te obejmują dodawanie, usuwanie, aktualizowanie i pobieranie zasad konfiguracji urządzeń.    | [Wdrażanie urządzeń](device-deployment.md)  |
 | **Konta i profile:** Dowiedz się, jak uzyskać lub zaktualizować profile rozliczeniowe partnerów, profile prawne, profil MPN, profile biznesowe lub profile pomocy technicznej. Możesz również uzyskać listę klientów lub odsprzedawców pośrednich. | [Zarządzanie kontami i profilami](manage-profiles-and-information.md)                                                                        |
 | **Rozliczenia:** Dowiedz się więcej o obszarach, takich jak zmiana cyklu rozliczeniowego, pobieranie stawek platformy Azure i rekordów wykorzystania platformy Azure, pobieranie faktur, pobieranie bieżącego salda konta partnera lub pobieranie kosztów obsługi klienta.  | [Zarządzanie rozliczeniami](manage-billing.md)   |
 | **Wydatki na platformę Azure:** Uzyskaj informacje o wydatkach na platformie Azure i użyciu partnerów, użyciu subskrypcji klientów, mierzonym użyciu i budżetach użycia klientów. Scenariusze obejmują również sposób aktualizowania budżetu użycia przez klienta. | [Wydatki na platformie Azure](azure-spending.md)  |

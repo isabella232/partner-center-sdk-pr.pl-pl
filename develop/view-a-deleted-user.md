@@ -1,33 +1,33 @@
 ---
 title: Wyświetlanie użytkowników usuniętych dla klienta
-description: Pobiera listę usuniętych zasobów CustomerUser dla klienta według identyfikatora klienta. Opcjonalnie możesz ustawić rozmiar strony. Musisz podać filtr.
+description: Pobiera listę usuniętych zasobów CustomerUser klienta według identyfikatora klienta. Opcjonalnie możesz ustawić rozmiar strony. Musisz podać filtr.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f4fec958a9a6bb580d35de1cf3007e1db3b2b650
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2f7e94d5e360075378e1895e586690597baaf66237f0b93bb526baee0c5d84ae
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445310"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989818"
 ---
 # <a name="view-deleted-users-for-a-customer"></a>Wyświetlanie użytkowników usuniętych dla klienta
 
-Pobiera listę usuniętych zasobów CustomerUser dla klienta według identyfikatora klienta. Opcjonalnie możesz ustawić rozmiar strony. Musisz podać filtr.
+Pobiera listę usuniętych zasobów CustomerUser klienta według identyfikatora klienta. Opcjonalnie możesz ustawić rozmiar strony. Musisz podać filtr.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="what-happens-when-you-delete-a-user-account"></a>Co się stanie po usunięciu konta użytkownika?
 
-Stan użytkownika jest ustawiany na "nieaktywny" podczas usuwania konta użytkownika. Pozostanie w ten sposób przez 30 dni, po czym konto użytkownika i skojarzone z nim dane są przeczyszczania i nie można ich uzyskać. Jeśli chcesz przywrócić usunięte konto użytkownika w oknie 30-dniowym, zobacz Przywracanie usuniętego użytkownika [dla klienta.](restore-a-user-for-a-customer.md) Gdy konto użytkownika zostanie usunięte i oznaczone jako "nieaktywne", nie będzie już zwracane jako członek kolekcji użytkowników (na przykład przy użyciu funkcji Pobierz listę wszystkich kont użytkowników [dla klienta).](get-a-list-of-all-user-accounts-for-a-customer.md) Aby uzyskać listę usuniętych użytkowników, których jeszcze nie przeczyszczono, należy wykonać zapytanie dotyczące kont użytkowników, dla których ustawiono nieaktywność.
+Stan użytkownika jest ustawiany na "nieaktywny" podczas usuwania konta użytkownika. Pozostanie w ten sposób przez 30 dni, po upływie których konto użytkownika i skojarzone z nim dane zostaną przeczyszwiązane i nie będzie można ich uzyskać. Jeśli chcesz przywrócić usunięte konto użytkownika w 30-dniowym oknie, zobacz Restore a deleted user for a customer (Przywracanie usuniętego [użytkownika dla klienta).](restore-a-user-for-a-customer.md) Gdy konto użytkownika zostanie usunięte i oznaczone jako "nieaktywne", nie będzie już zwracane jako członek kolekcji użytkowników (na przykład przy użyciu funkcji Pobierz listę wszystkich kont użytkowników [dla klienta).](get-a-list-of-all-user-accounts-for-a-customer.md) Aby uzyskać listę usuniętych użytkowników, którzy nie zostały jeszcze usunięte, należy wykonać zapytanie dotyczące kont użytkowników, dla których ustawiono nieaktywność.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać listę usuniętych użytkowników, skonstruuj zapytanie, które filtruje użytkowników klientów, których stan jest ustawiony na nieaktywny. Najpierw utwórz filtr, tworząc wystąpienia obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) z parametrami, jak pokazano w poniższym fragmencie kodu. Następnie utwórz zapytanie przy użyciu [**metody BuildIndexedQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) Jeśli nie chcesz stronicować wyników, możesz zamiast tego użyć [**metody BuildSimpleQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Na koniec wywołaj [**metodę Query,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) aby wysłać żądanie.
+Aby pobrać listę usuniętych użytkowników, skonstruuj zapytanie, które filtruje użytkowników klientów, których stan jest ustawiony na nieaktywny. Najpierw utwórz filtr, tworząc wystąpienia obiektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) z parametrami, jak pokazano w poniższym fragmencie kodu. Następnie utwórz zapytanie przy użyciu [**metody BuildIndexedQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) Jeśli nie chcesz uzyskać stronicowania wyników, możesz zamiast tego użyć metody [**BuildSimpleQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) Następnie użyj metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Na koniec wywołaj [**metodę Query,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) aby wysłać żądanie.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +43,7 @@ var simpleQueryWithFilter = QueryFactory.Instance.BuildIndexedQuery(customerUser
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Query(simpleQueryWithFilter);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetCustomerInactiveUsers.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetCustomerInactiveUsers.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: GetCustomerInactiveUsers.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -51,7 +51,7 @@ var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Q
 
 | Metoda  | Identyfikator URI żądania                                                                                                       |
 |---------|-------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users?size={size}&filter={filter} HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/users?size={size}&filter={filter} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -59,8 +59,8 @@ Podczas tworzenia żądania użyj następującej ścieżki i parametrów zapytan
 
 | Nazwa        | Typ   | Wymagane | Opis                                                                                                                                                                        |
 |-------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator klienta | guid   | Tak      | Wartość jest identyfikatorem klienta w formacie GUID, który identyfikuje klienta.                                                                                                            |
-| size        | int    | Nie       | Liczba wyników, które mają być wyświetlane jednocześnie. Ten parametr jest opcjonalny.                                                                                                     |
+| identyfikator klienta | guid   | Tak      | Wartość to identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.                                                                                                            |
+| size        | int    | Nie       | Liczba wyników do wyświetlania jednocześnie. Ten parametr jest opcjonalny.                                                                                                     |
 | filter      | filter | Tak      | Zapytanie filtruje wyszukiwanie użytkownika. Aby pobrać usuniętych użytkowników, musisz dołączyć i zakodować następujący ciąg: {"Field":"UserState","Value":"Inactive","Operator":"equals"}. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -89,7 +89,7 @@ W przypadku powodzenia ta metoda zwraca kolekcję [zasobów CustomerUser](user-r
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

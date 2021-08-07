@@ -4,12 +4,12 @@ description: Partner umieszcza zamówienie w koszyku, gdy klient chce kupić sub
 ms.date: 08/26/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ebe6e628d5bb3b66186d5c4f428f69e46415892b
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: c9372bb982528127f8870094e26465d004b1f05c75140f0ac729375f5d5f3302
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009154"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992181"
 ---
 # <a name="cart-resources"></a>Zasoby koszyka
 
@@ -50,11 +50,11 @@ Reprezentuje jeden element zawarty w koszyku.
 | addonItems           | Lista obiektów **CartLineItem** | Kolekcja elementów wiersza koszyka dla dodatków. Te elementy zostaną zakupione w ramach subskrypcji podstawowej, która jest skutkiem zakupu pozycji koszyka głównego. |
 | error                | Obiekt                           | Zastosowane po utworzeniu koszyka w przypadku wystąpienia błędu.                                                                                                    |
 | renewsTo             | Tablica obiektów                 | Tablica zasobów [RenewsTo.](#renewsto)                                                                            |
-| AttestationAccepted             | bool                 | Wskazuje umowę na ofertę lub warunki dotyczące sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties wymuszaJednacja ma wartość True.                                                                            |
+| AttestationAccepted             | bool                 | Wskazuje umowę na ofertę lub warunki dotyczące sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 
-Reprezentuje jeden element zawarty w wierszu koszyka.
+Reprezentuje jeden element zawarty w pozycji koszyka.
 
 | Właściwość              | Typ             | Wymagane        | Opis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|

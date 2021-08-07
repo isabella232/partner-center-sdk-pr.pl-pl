@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: fb2beecef8ad4821ad251ee6d532b6b280bd49e110f7e6dde3f39dfe2693d8f5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874520"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991178"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Pobieranie listy dostępnych licencji według grupy licencji
 
@@ -19,11 +19,11 @@ Jak uzyskać listę licencji dla określonych grup licencji dostępnych dla uży
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Lista identyfikatorów grup licencji.
+- Lista co najmniej jednego identyfikatora grupy licencji.
 
 ## <a name="c"></a>C\#
 
@@ -62,8 +62,8 @@ Użyj następującej ścieżki i parametrów zapytania, aby zidentyfikować klie
 
 | Nazwa            | Typ   | Wymagane | Opis                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
-| licenseGroupIds | ciąg | Nie       | Wartość wyliczania, która wskazuje grupę licencji przypisanych licencji. Prawidłowe wartości: Grupa1, Grupa2 Grupa1 — ta grupa ma wszystkie produkty, których licencją można zarządzać w Azure Active Directory (AAD). Grupa2 — ta grupa ma tylko Minecraft licencji produktów. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.                                                                                                                                                                                                                 |
+| licenseGroupIds | ciąg | Nie       | Wartość wyliczania wskazująca grupę licencji przypisanych licencji. Prawidłowe wartości: Grupa1, Grupa2 Grupa1 — ta grupa ma wszystkie produkty, których licencją można zarządzać w Azure Active Directory (AAD). Grupa2 — ta grupa ma tylko Minecraft licencji produktów. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -229,7 +229,7 @@ Date: Sat, 10 Jun 2017 00:19:44 GMT
 
 ### <a name="response-example-no-matching-skus-found"></a>Przykład odpowiedzi (nie znaleziono zgodnych jednostki SKU)
 
-Jeśli nie można znaleźć pasujących subskrybowanych jednostki SKU dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość wynosi 0.
+Jeśli nie można znaleźć pasujących subskrybowanych jednostki SKU dla określonych grup licencji, odpowiedź zawiera pustą kolekcję z elementem totalCount, którego wartość to 0.
 
 ```http
 HTTP/1.1 200 OK

@@ -4,12 +4,12 @@ description: Uzyskaj stan subskrypcji, która została zarejestrowana do użycia
 ms.date: 03/19/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9e39f94c0eac402a0be3afde84279aa637868f96
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 0e0a65abba94f1f05a98282fa67ff1d185ba4e082488d2d7887b4e9346c38967
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445956"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989665"
 ---
 # <a name="get-subscription-registration-status"></a>Pobieranie stanu rejestracji subskrypcji
 
@@ -27,7 +27,7 @@ Aby kupić wystąpienie zarezerwowane maszyny wirtualnej platformy Azure przy u�
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać stan rejestracji subskrypcji, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) z identyfikatorem subskrypcji w celu zidentyfikowania subskrypcji. Następnie użyj właściwości RegistrationStatus, aby uzyskać interfejs dla operacji stanu rejestracji bieżącej subskrypcji, i wywołaj metodę **Get** lub **GetAsync,** aby pobrać obiekt **SubscriptionRegistrationStatus.**
+Aby uzyskać stan rejestracji subskrypcji, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) z identyfikatorem subskrypcji w celu zidentyfikowania subskrypcji. Następnie użyj właściwości RegistrationStatus, aby uzyskać interfejs do operacji stanu rejestracji bieżącej subskrypcji, i wywołaj metodę **Get** lub **GetAsync,** aby pobrać obiekt **SubscriptionRegistrationStatus.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -52,7 +52,7 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subsk
 
 | Nazwa                    | Typ       | Wymagane | Opis                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| identyfikator klienta             | ciąg     | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.         |
+| identyfikator klienta             | ciąg     | Tak      | Ciąg sformatowany przy pomocy identyfikatora GUID, który identyfikuje klienta.         |
 | subscription-id         | ciąg     | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje subskrypcję.     |
 
 ### <a name="request-headers"></a>Nagłówki żądań

@@ -4,12 +4,12 @@ description: Jak zaktualizować listę urządzeń przy użyciu zasad konfiguracj
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 35b35873eb253b0929bfc01662b0beb9b31d0c6b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: b028c84ae513131d1c754dc59020e40aaf09ce31113cd3964b9144bf155300f8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530076"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990056"
 ---
 # <a name="update-a-list-of-devices-with-a-policy"></a>Aktualizowanie listy urządzeń za pomocą zasad
 
@@ -19,9 +19,9 @@ Jak zaktualizować listę urządzeń przy użyciu zasad konfiguracji dla określ
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator zasad.
 
@@ -29,11 +29,11 @@ Jak zaktualizować listę urządzeń przy użyciu zasad konfiguracji dla określ
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować listę urządzeń przy użyciu określonych zasad konfiguracji, najpierw należy utworzyć wystąpienia [List/dotnet/api/system.collections.generic.list-1) typu [KeyValuePair/dotnet/api/system.collections.generic.keyvaluepair-2)[**(PolicyCategory,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.policycategory)string) i dodać zasady do zastosowania, jak pokazano w poniższym przykładzie kodu. Będziesz potrzebować identyfikatora zasad.
+Aby zaktualizować listę urządzeń przy użyciu określonych zasad konfiguracji, najpierw należy utworzyć wystąpienia typu [List/dotnet/api/system.collections.generic.list-1) typu [KeyValuePair/dotnet/api/system.collections.generic.keyvaluepair-2)[**(PolicyCategory,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.policycategory)string) i dodać zasady do zastosowania, jak pokazano w poniższym przykładzie kodu. Będziesz potrzebować identyfikatora zasad.
 
-Następnie utwórz listę obiektów [**urządzeń**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) do zaktualizowania przy użyciu zasad, określając identyfikator urządzenia i listę zawierającą zasady do zastosowania dla każdego urządzenia. Następnie należy utworzyć wystąpienia obiektu [**DevicePolicyUpdateRequest**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicepolicyupdaterequest) i ustawić właściwość [**Devices**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicebatchcreationrequest.devices) na listę obiektów urządzeń.
+Następnie utwórz listę obiektów [**urządzenia**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) do zaktualizowania przy użyciu zasad, określając identyfikator urządzenia i listę zawierającą zasady do zastosowania dla każdego urządzenia. Następnie należy utworzyć wystąpienia obiektu [**DevicePolicyUpdateRequest**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicepolicyupdaterequest) i ustawić właściwość [**Devices**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicebatchcreationrequest.devices) na listę obiektów urządzeń.
 
-Aby przetworzyć żądanie aktualizacji zasad urządzenia, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie pobierz właściwość [**DevicePolicy,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicepolicy) aby uzyskać interfejs operacji zbierania urządzeń przez klienta. Na koniec wywołaj [**metodę Update**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.icustomerdevicecollection.update) za pomocą obiektu DevicePolicyUpdateRequest, aby zaktualizować urządzenia przy użyciu zasad.
+Aby przetworzyć żądanie aktualizacji zasad urządzenia, wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby pobrać interfejs do operacji na określonym kliencie. Następnie pobierz właściwość [**DevicePolicy,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicepolicy) aby uzyskać interfejs dla operacji zbierania urządzeń przez klienta. Na koniec wywołaj [**metodę Update**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.icustomerdevicecollection.update) za pomocą obiektu DevicePolicyUpdateRequest, aby zaktualizować urządzenia przy użyciu zasad.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -71,7 +71,7 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DevicePolicy.Update(devicePolicyUpdateRequest);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : UpdateDevicesPolicy.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: UpdateDevicesPolicy.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Przykłady klasy**: UpdateDevicesPolicy.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -87,7 +87,7 @@ Podczas tworzenia żądania użyj następujących parametrów ścieżki.
 
 | Nazwa        | Typ   | Wymagane | Opis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| identyfikator klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
+| identyfikator klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -140,11 +140,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera nagłówek **Location** z numerem URI, który może służyć do pobierania stanu tego procesu wsadowego. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
+W przypadku powodzenia odpowiedź zawiera nagłówek **Location** z numerem URI, który może służyć do pobierania stanu tego procesu wsadowego. Zapisz ten URI do użycia z innymi powiązanymi interfejsami API REST.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

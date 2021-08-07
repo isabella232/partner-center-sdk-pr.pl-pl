@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 1258727ecbe7c5cc332624577fa8a355e28e3717
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874214"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989444"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Pobieranie listy produktów (według kraju)
 
@@ -109,7 +109,7 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać listę prod
 | Nazwa                   | Typ     | Wymagane | Opis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
 | country                | ciąg   | Tak      | Identyfikator kraju/regionu.                                                  |
-| targetView             | ciąg   | Tak      | Określa widok docelowy katalogu. Obsługiwane wartości to: <br/><br/>**Azure**, który zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która zawiera wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** który zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planów platformy Azure<br/><br/>**OnlineServices**, który obejmuje wszystkie elementy usług online (w tym produkty platformy handlowej)<br/><br/>**Oprogramowanie**, które zawiera wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie bezterminowe elementy oprogramowania<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania    |
+| targetView             | ciąg   | Tak      | Identyfikuje widok docelowy wykazu. Obsługiwane wartości to: <br/><br/>**Azure**, który zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która obejmuje wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** która zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planów platformy Azure<br/><br/>**OnlineServices**, która obejmuje wszystkie elementy usług online (w tym produkty platformy handlowej)<br/><br/>**Oprogramowanie**, które zawiera wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie bezterminowe elementy oprogramowania<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania    |
 | targetSegment          | ciąg   | Nie       | Identyfikuje segment docelowy. Widok dla różnych odbiorców docelowych. Obsługiwane wartości to: <br/><br/>**Handlowych**<br/>**Edukacji**<br/>**Rząd**<br/>**Non-profit**  |
 | reservationScope (zakres rezerwacji) | ciąg   | Nie | Podczas wykonywania zapytania o listę produktów dla rezerwacji platformy Azure określ, aby uzyskać listę produktów, które `reservationScope=AzurePlan` mają zastosowanie do planów platformy Azure. Wyklucz ten parametr, aby uzyskać listę produktów dla rezerwacji platformy Azure, które mają zastosowanie do subskrypcji Microsoft Azure **(MS-AZR-0145P).**  |
 
@@ -172,7 +172,7 @@ Ta metoda zwraca następujące kody błędów:
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Dostęp do żądanego obiektu targetSegment jest niedozwolone.                                                     |
-| 403                  | 400036       | Dostęp do żądanego obiektu targetView nie jest dozwolony.                                                        |
+| 403                  | 400036       | Dostęp do żądanego obiektu targetView jest niedozwolone.                                                        |
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

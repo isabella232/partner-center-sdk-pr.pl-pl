@@ -1,15 +1,15 @@
 ---
 title: Akceptowanie przeniesienia subskrypcji
-description: Dowiedz się, jak przy użyciu Partner Center API REST akceptować przenoszenie subskrypcji dla klienta. Obejmuje składnię żądań REST, nagłówki i odpowiedzi REST.
+description: Dowiedz się, jak używać interfejsu API REST Partner Center, aby akceptować przenoszenie subskrypcji dla klienta. Obejmuje składnię żądań REST, nagłówki i odpowiedzi REST.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 762f2106d6173e352bec11936c96bc3a9c9f89cb
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: c56979e407e472b6ea1a50b3acec675f0cd8831eb1d398e02e81518286b5a250
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025755"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990566"
 ---
 # <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Akceptowanie przeniesienia subskrypcji dla klienta przy użyciu Partner Center API REST
 
@@ -17,11 +17,11 @@ W tym artykule opisano sposób używania interfejsu API REST w Partner Center do
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator przeniesienia istniejącego transferu.
+- Identyfikator transferu dla istniejącego transferu.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -37,7 +37,7 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określ
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta.             |
 | **transfer-id** | ciąg   | Tak      | Identyfikator GUID sformatowany transfer-id, który identyfikuje transfer.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -61,7 +61,7 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca wypełniony [zasób TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca wypełniony [zasób TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

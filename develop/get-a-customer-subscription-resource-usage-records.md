@@ -4,26 +4,26 @@ description: Zasób ResourceUsageRecord umożliwia uzyskiwanie rekordów użycia
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 50edb9de1d09363b242c080a76c683732f05a5de
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 81c8fcb868f7d4d50e23d69579138a6c03e9ea4ae93058d141a029c103489dcb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874843"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992844"
 ---
 # <a name="get-usage-data-for-subscription-by-resource"></a>Pobieranie danych dotyczących użycia dla subskrypcji według zasobu
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-W tym artykule opisano sposób uzyskania **zasobu ResourceUsageRecord.** Ten zasób reprezentuje zagregowaną sumę dla miesiąca dla poszczególnych zasobów aprowowanych w planie platformy Azure. Ten zasób umożliwia uzyskiwanie rekordów użycia zasobów klienta dla określonych usług lub zasobów platformy Azure w bieżącym okresie rozliczeniowym. Ten interfejs API zwraca dane, które nie były wcześniej dostępne za pośrednictwem interfejsów API wydatków platformy Azure.
+W tym artykule opisano sposób uzyskania **zasobu ResourceUsageRecord.** Ten zasób reprezentuje zagregowaną sumę dla miesiąca dla poszczególnych zasobów aprowowanych w planie platformy Azure. Ten zasób umożliwia uzyskiwanie rekordów użycia zasobów klienta dla określonych usług lub zasobów platformy Azure w bieżącym okresie rozliczeniowym. Ten interfejs API zwraca dane, które nie były wcześniej dostępne za pośrednictwem interfejsów API wydatków na platformę Azure.
 
 *Ta trasa nie obsługuje Microsoft Azure subskrypcji (MS-AZR-0145P).*
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji
 
@@ -55,16 +55,16 @@ Przykład można znaleźć w następujących tematach:
 
 | Metoda  | Identyfikator URI żądania                                                                                                           |
 |---------|-----------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{subscription-id}/resourceusagerecords HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/resourceusagerecords HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
-W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania informacji o użyciu ocenionym przez klienta.
+W tej tabeli wymieniono wymagane parametry zapytania w celu uzyskania informacji o użyciu ocenianych przez klienta.
 
 | Nazwa                   | Typ     | Wymagane | Opis                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **identyfikator dzierżawy klienta** | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **subscription-id**    | **guid** | Y        | Identyfikator GUID odpowiadający identyfikatorowi zasobu subskrypcji usługi [Partner Center,](subscription-resources.md#subscription)który reprezentuje subskrypcję Microsoft Azure (MS-AZR-0145P) lub plan platformy Azure. *W przypadku zasobów subskrypcji planu platformy Azure podaj **identyfikator planu** jako **subscription-id** w tej trasie.* |
+| **subscription-id**    | **guid** | Y        | Identyfikator GUID odpowiadający identyfikatorowi zasobu Partner Center [subskrypcji](subscription-resources.md#subscription), który reprezentuje subskrypcję Microsoft Azure (MS-AZR-0145P) lub plan platformy Azure. *W przypadku zasobów subskrypcji planu platformy Azure podaj **identyfikator planu** jako identyfikator **subskrypcji w** tej trasie.* |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

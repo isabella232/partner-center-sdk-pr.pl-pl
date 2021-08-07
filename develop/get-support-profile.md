@@ -4,12 +4,12 @@ description: Pobiera obiekt reprezentujący profil pomocy technicznej użytkowni
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b112ccbbff731795c21f95845a08be9e9dfb6775
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 6f6771dfed989536369a83cffc341c7ed6a099307d42ed0a03aea9d237e3bba6
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548638"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989019"
 ---
 # <a name="get-support-profile"></a>Pobieranie profilu pomocy technicznej
 

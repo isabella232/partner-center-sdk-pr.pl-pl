@@ -1,19 +1,19 @@
 ---
 title: Tworzenie klienta
-description: Dowiedz się, Dostawca rozwiązań w chmurze (CSP) może używać interfejsów API Partner Center do tworzenia nowego klienta. W artykule opisano wymagania wstępne i co jeszcze się dzieje.
+description: Dowiedz się, Dostawca rozwiązań w chmurze (CSP) może używać Partner Center API do tworzenia nowego klienta. W artykule opisano wymagania wstępne i co jeszcze się dzieje.
 ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 6232ca77d057f2f5168b73d81ec551669d540246
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 49df47441276c7e79074e1bf7f8d50cd72054b42acd93938de088046b68b6d98
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973727"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991773"
 ---
-# <a name="create-a-customer-using-partner-center-apis"></a>Tworzenie klienta przy użyciu interfejsów PARTNER CENTER API
+# <a name="create-a-customer-using-partner-center-apis"></a>Tworzenie klienta przy użyciu interfejsów API Partner Center API
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud for US Government
 
@@ -22,32 +22,32 @@ W tym artykule wyjaśniono, jak utworzyć nowego klienta.
 > [!IMPORTANT]
 > Jeśli jesteś dostawcą pośrednim i chcesz utworzyć klienta dla odsprzedawcy pośredniego, zobacz Tworzenie klienta [dla odsprzedawcy pośredniego.](create-a-customer-for-an-indirect-reseller.md)
 
-Jako partner dostawcy rozwiązań w chmurze (CSP, cloud solution provider) podczas tworzenia klienta możesz składać zamówienia w jego imieniu. Podczas tworzenia klienta tworzysz również:
+Jako partner dostawcy rozwiązań w chmurze (CSP) podczas tworzenia klienta możesz składać zamówienia w jego imieniu. Podczas tworzenia klienta tworzysz również:
 
-- Obiekt Azure Active Directory (AD) dla klienta.
+- Obiekt Azure Active Directory dzierżawy (AD) dla klienta.
 
 - Relacja między odsprzedawcą a klientem używana na potrzeby delegowanych uprawnień administratora.
 
 - Nazwa użytkownika i hasło do logowania się jako administrator klienta.
 
-Po utworzeniu klienta zapisz identyfikator klienta i szczegóły usługi Azure AD do użycia w przyszłości z usługą zestaw SDK Centrum partnerskiego (na przykład zarządzanie kontami).
+Po utworzeniu klienta pamiętaj, aby zapisać identyfikator klienta i szczegóły usługi Azure AD do użycia w przyszłości z zestaw SDK Centrum partnerskiego (na przykład zarządzanie kontami).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 > [!IMPORTANT]
-> Aby utworzyć dzierżawę klienta, musisz podać prawidłowy adres fizyczny podczas procesu tworzenia. Adres można zweryfikować, korzystając z kroków opisanych w [scenariuszu Weryfikowanie](validate-an-address.md) adresu. Jeśli utworzysz klienta przy użyciu nieprawidłowego adresu w środowisku piaskownicy, nie będzie można usunąć tej dzierżawy klienta.
+> Aby utworzyć dzierżawę klienta, należy podać prawidłowy adres fizyczny podczas procesu tworzenia. Adres można zweryfikować, korzystając z kroków opisanych w [scenariuszu Weryfikowanie](validate-an-address.md) adresu. Jeśli utworzysz klienta przy użyciu nieprawidłowego adresu w środowisku piaskownicy, nie będzie można usunąć tej dzierżawy klienta.
 
 ## <a name="c"></a>C\#
 
 Aby dodać klienta:
 
-1. Utworzyć wystąpienia nowego [**obiektu Klienta.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) Pamiętaj, aby wypełnić pola [**BillingProfile i**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile).
+1. Utworzyć wystąpienia nowego [**obiektu Customer.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) Pamiętaj, aby wypełnić pola [**BillingProfile i**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) [**CompanyProfile.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile)
 
 2. Dodaj nowego klienta do [**kolekcji IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) wywołując pozycję [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync).
 
-### <a name="c-example"></a>Przykład w \# języku C
+### <a name="c-example"></a>Przykład języka C \#
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -88,7 +88,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : CreateCustomer.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: CreateCustomer.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: CreateCustomer.cs
 
 ## <a name="java"></a>Java
 
@@ -156,7 +156,7 @@ New-PartnerCustomer -BillingAddressLine1 '1 Microsoft Way' -BillingAddressCity '
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wielokrotnie).
+- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wiele razy).
 
 - Wymagany jest identyfikator żądania i identyfikator korelacji.
 
@@ -173,15 +173,15 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 #### <a name="billing-profile"></a>Profil rozliczeniowy
 
-W tej tabeli opisano minimalne wymagane pola z zasobu [CustomerBillingProfile](customer-resources.md#customerbillingprofile) potrzebne do utworzenia nowego klienta.
+W tej tabeli opisano minimalne wymagane pola z zasobu [CustomerBillingProfile](customer-resources.md#customerbillingprofile) wymagane do utworzenia nowego klienta.
 
 | Nazwa             | Typ                                     | Opis                                                                                                                                                                                                     |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | poczta e-mail            | ciąg                                   | Adres e-mail klienta.                                                                                                                                                                                   |
 | kultura          | ciąg                                   | Preferowana kultura komunikacji i waluty, na przykład "en-US". Zobacz [Partner Center obsługiwanych języków i lokalizacji regionalnych](partner-center-supported-languages-and-locales.md) dla obsługiwanych kultur. |
-| language         | ciąg                                   | Język domyślny. Obsługiwane są dwa kody języków znaków (na `en` przykład lub `fr` ).                                                                                                                                |
+| language         | ciąg                                   | Język domyślny. Obsługiwane są dwa kody języków znaków `en` (na przykład lub `fr` ).                                                                                                                                |
 | nazwa \_ firmy    | ciąg                                   | Nazwa zarejestrowanej firmy/organizacji.                                                                                                                                                                       |
-| adres \_ domyślny | [Adres](utility-resources.md#address) | Zarejestrowany adres firmy/organizacji klienta. Zapoznaj się z [zasobem](utility-resources.md#address) Adres, aby uzyskać informacje o wszelkich ograniczeniach długości.                                             |
+| adres \_ domyślny | [Adres](utility-resources.md#address) | Zarejestrowany adres firmy/organizacji klienta. Zobacz [zasób Adres,](utility-resources.md#address) aby uzyskać informacje o wszelkich ograniczeniach długości.                                             |
 
 #### <a name="company-profile"></a>Profil firmy
 
@@ -190,7 +190,7 @@ W tej tabeli opisano minimalne wymagane pola z zasobu [CustomerCompanyProfile](c
 | Nazwa   | Typ   | Opis                                                  |
 |--------|--------|--------------------------------------------------------------|
 | domena | ciąg | Nazwa domeny klienta, na przykład contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Ciąg|Numer rejestracji organizacji klienta (w niektórych krajach określany również jako numer NUMER TELEFONU). Wymagany tylko w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Do:: Armeni (AM), Azji (AZ), Kolumbii (HU), Kolumbii (KZ), Kyrgyzstan(KG), Przemysł (MD), Kolumbii (RU), Tajikistan(TJ), Dol (UZ), Azji (UA), Brazylii(BR), Indiach, Południowej Afryki, Zjednoczonej Afryki, Kolumbii, Kolumbii, Wietnamu, Anwii, Anwii, Stanów Zjednoczonych, Stanów Zjednoczonych i Stanów Zjednoczonych. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
+|organizationRegistrationNumber|Ciąg|Numer rejestracji organizacji klienta (w niektórych krajach określany również jako numer NUMER KLIENTA). Wymagane tylko w przypadku firmy/organizacji klienta znajdującej się w następujących krajach:Gram (AM), Nawiąż (AZ), Przemów (BY), Przemów (HU), KZ), Kyrgyzstan (KG), Przećwicz (MD), Argentyna (RU), Tadżykistan (TJ), Przemów (UZ), Brazylia (BR), Indie, Republika Południowej Afryki,Portal, Stany Zjednoczone Stanów Zjednoczonych, Arabia Saudyjska, Kolumbia, Hania,Onim,Onim, Południowe Hanii i Wz. W przypadku firmy/organizacji klienta znajdującej się w innych krajach jest to pole opcjonalne.|
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -231,11 +231,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ten interfejs API zwraca [zasób Klient](customer-resources.md#customer) dla nowego klienta. Zapisz identyfikator klienta i szczegóły usługi Azure AD do użycia w przyszłości z zestaw SDK Centrum partnerskiego. Będą one potrzebne na przykład do zarządzania kontami.
+Jeśli to się powiedzie, ten interfejs API zwraca [zasób Klient](customer-resources.md#customer) dla nowego klienta. Zapisz identyfikator klienta i szczegóły usługi Azure AD do użycia w przyszłości z zestaw SDK Centrum partnerskiego. Będą one potrzebne na przykład do zarządzania kontami.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Odpowiedzi zawierają kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Odpowiedzi zawierają kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

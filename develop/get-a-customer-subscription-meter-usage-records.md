@@ -4,12 +4,12 @@ description: Kolekcja zasobów MeterUsageRecord umożliwia pobieranie rekordów 
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0bd6143c80059bd140a4c4332ab4ec19c54d99f1
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2d2f13c9f944a0a5297c61c70606517c4426957f86066fe4469a7543b14d3bf9
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874860"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992827"
 ---
 # <a name="get-usage-data-for-subscription-by-meter"></a>Pobieranie danych dotyczących użycia dla subskrypcji według miernika
 

@@ -4,12 +4,12 @@ description: Interfejs API AgreementStatus umożliwia sprawdzenie, czy odsprzeda
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f83acc61624a72354c390905b1250bc021dd39aa
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 517c99356a4b623b5b46bc3d33f2355cd569f97326e7d9596cff551329d10da7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529838"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989852"
 ---
 # <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Weryfikowanie stanu podpisywania Microsoft Partner Agreement odsprzedawcy pośredniego
 
@@ -53,7 +53,7 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 
 #### <a name="uri-parameters"></a>Parametry URI
 
-Aby zidentyfikować partnera, należy podać jeden z następujących dwóch parametrów zapytania. Jeśli nie po podaj jednego z tych dwóch parametrów zapytania, zostanie wyświetlony błąd **400 (Złe żądanie).**
+Aby zidentyfikować partnera, należy podać jeden z następujących dwóch parametrów zapytania. Jeśli nie poimkniesz jednego z tych dwóch parametrów zapytania, zostanie wyświetlony błąd **400 (Złe żądanie).**
 
 | Nazwa | Typ | Wymagane | Opis |
 | ---- | ---- | -------- | ----------- |
@@ -82,7 +82,7 @@ Host: api.partnercenter.microsoft.com
 
 #### <a name="request-using-csp-tenant-id"></a>Żądanie przy użyciu identyfikatora dzierżawy CSP
 
-Następujące przykładowe żądanie pobiera stan podpisywania Microsoft Partner Agreement odsprzedawcy pośredniego przy użyciu identyfikatora dzierżawy CSP odsprzedawcy pośredniego (Microsoft ID).
+Następujące przykładowe żądanie pobiera stan Microsoft Partner Agreement podpisywania odsprzedawcy pośredniego przy użyciu identyfikatora dzierżawy CSP odsprzedawcy pośredniego (Microsoft ID).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?tenantId=a2898e3a-06ca-454e-a0d0-c73b0ee36bba HTTP/1.1
@@ -98,7 +98,7 @@ Host: api.partnercenter.microsoft.com
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center REST .](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz Partner Center REST error (Błąd [REST).](error-codes.md)
 
 ### <a name="response-example-success"></a>Przykład odpowiedzi (powodzenie)
 
@@ -169,7 +169,7 @@ Connection: close
 
 #### <a name="no-mpn-id-or-csp-tenant-id"></a>Brak identyfikatora MPN lub identyfikatora dzierżawy CSP
 
-Następująca przykładowa odpowiedź jest zwracana, gdy do interfejsu API nie przekazano identyfikatora MPN (PGA/PLA) lub identyfikatora dzierżawy dostawcy CSP. Do interfejsu API należy przekazać jeden z dwóch typów identyfikatorów.
+Następująca przykładowa odpowiedź jest zwracana, gdy do interfejsu API nie przekazano identyfikatora MPN (PGA/PLA) lub identyfikatora dzierżawy CSP. Do interfejsu API należy przekazać jeden z dwóch typów identyfikatorów.
 
 ```http
 HTTP/1.1 400 Bad Request

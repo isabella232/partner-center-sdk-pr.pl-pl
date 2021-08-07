@@ -4,12 +4,12 @@ description: Jak utworzyć przeniesienie subskrypcji dla klienta.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8414bbcfa0940742339eeba24b3b6a16ddfb6e3424670a4c064cbd995ba50851
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973710"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991586"
 ---
 # <a name="create-a-transfer"></a>Tworzenie transferu
 
@@ -54,7 +54,7 @@ W tej tabeli opisano [właściwości TransferEntity](transfer-entity-resources.m
 | partnertenantid       | ciąg        | Nie    | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera.                                                                   |
 | sourcePartnerName (Nazwa partycji źródłowej)     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, który inicjuje przeniesienie.                                           |
 | sourcePartnerTenantId | ciąg        | Tak   | Identyfikator GUID sformatowany jako identyfikator partnera, który identyfikuje partnera inicjujące przeniesienie.                                           |
-| targetPartnerName (nazwa_serwera_docelowego)     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, której celem jest przeniesienie.                                         |
+| targetPartnerName     | ciąg        | Nie    | Opcjonalny. Nazwa organizacji partnera, której celem jest przeniesienie.                                         |
 | targetPartnerTenantId | ciąg        | Tak   | Identyfikator GUID sformatowany jako partner-id, który identyfikuje partnera, do którego jest skierowany transfer.                                  |
 | lineItems             | Tablica obiektów | Tak| Tablica zasobów [TransferLineItem.](transfer-entity-resources.md#transferlineitem)                                   |
 | status                | ciąg        | Nie    | Stan transferEntity. Możliwe wartości to "Aktywne" (można je usunąć/przesłać) i "Ukończono" (zostało już zakończone). Stosowane po pomyślnym utworzeniu transferEntity.|

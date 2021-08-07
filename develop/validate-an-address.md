@@ -1,31 +1,31 @@
 ---
 title: Weryfikowanie adresu
-description: Jak zweryfikować adres przy użyciu interfejsu API weryfikacji adresu.
+description: Jak zweryfikować adres przy użyciu interfejsu API walidacji adresu.
 ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 30f5cd526ab038dce400e79822d89b8086ba3799
-ms.sourcegitcommit: 41bf9dca55f4c96d382b327a75b2d2418edfc9bc
+ms.openlocfilehash: 0d3c27a763887e89e1116dbaf605db349369036c38378011dcca3fa07732a738
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113655610"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989241"
 ---
 # <a name="validate-an-address"></a>Weryfikowanie adresu
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Jak zweryfikować adres przy użyciu interfejsu API weryfikacji adresu.
+Jak zweryfikować adres przy użyciu interfejsu API walidacji adresu.
 
-Interfejs API weryfikacji adresu powinien być używany tylko do wstępnej weryfikacji aktualizacji profilu klienta. Użyj go ze zrozumieniem, że jeśli kraj jest regionem Stany Zjednoczone, Kanadzie, Chinach lub Meksyku, pole stanu jest weryfikowane względem listy prawidłowych stanów dla odpowiedniego kraju. We wszystkich innych krajach ten test nie jest przeprowadzane, a interfejs API sprawdza tylko, czy stan jest prawidłowym ciągiem.
+Interfejs API weryfikacji adresu powinien być używany tylko do wstępnej weryfikacji aktualizacji profilu klienta. Użyj go ze zrozumieniem, że jeśli kraj jest Stany Zjednoczone, Kanada, Chiny lub Meksyk, pole stanu jest weryfikowane względem listy prawidłowych stanów dla odpowiedniego kraju. We wszystkich innych krajach ten test nie występuje, a interfejs API sprawdza tylko, czy stan jest prawidłowym ciągiem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby zweryfikować adres, najpierw należy utworzyć nowe wystąpienia obiektu **Address** i wypełnić go adresem do zweryfikowania. Następnie pobierz interfejs operacji **Validations** z właściwości **IAggregatePartner.Validations** i wywołaj metodę **IsAddressValid** przy użyciu obiektu adresu.
+Aby zweryfikować adres, najpierw należy utworzyć nowe wystąpienia obiektu **Address** i wypełnić go adresem do zweryfikowania. Następnie pobierz interfejs operacji **Validations** z właściwości **IAggregatePartner.Validations** i wywołaj metodę **IsAddressValid** z obiektem adresu.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -105,16 +105,16 @@ W tej tabeli opisano wymagane właściwości w treści żądania.
 
 Odpowiedź zwróci jeden z następujących komunikatów o stanie:
 
-| Stan     | Opis |    Liczba zwróconych sugerowanych adresów |
+| Stan     | Opis |    Liczba zwracanych sugerowanych adresów |
 |-------|---------------|-------------------|
 |Zweryfikowana wysyłka | Adres jest weryfikowany i można go wysłać. | Pojedynczy |
 |Sprawdzonych | Adres jest weryfikowany. | Pojedynczy |
 |Wymagana interakcja | Sugerowany adres został znacząco zmieniony i wymaga potwierdzenia przez użytkownika. | Pojedynczy |
-|Część częściowa ulicy | Podana ulica w adresie jest częściowa i wymaga więcej informacji. | Wiele — maksymalnie trzy |
-|Część lokalna | Dane lokalne (numer budynku, numer pakietu i inne) są częściowe i wymagają więcej informacji. | Wiele — maksymalnie trzy |
-|Wiele | Adres zawiera wiele pól, które są częściowe (potencjalnie również częściowe ulice i część lokalna). | Wiele — maksymalnie trzy |
+|Część częściowa ulicy | Podana ulica w adresie jest częściowa i wymaga więcej informacji. | Wielokrotność — maksymalnie trzy |
+|Część lokalna | Dane lokalne (numer budynku, numer pakietu i inne) są częściowe i wymagają więcej informacji. | Wielokrotność — maksymalnie trzy |
+|Wiele | Istnieje wiele pól, które są częściowo w adresie (potencjalnie również częściowe ulice i część lokalna). | Wielokrotność — maksymalnie trzy |
 |Brak | Adres jest nieprawidłowy. | Brak |
-|Nie sprawdzono | Nie można wysłać adresu w procesie weryfikacji. | Brak |
+|Nie sprawdzono | Nie można wysłać adresu w procesie walidacji. | Brak |
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -166,7 +166,7 @@ W przypadku powodzenia metoda zwraca obiekt **AddressValidationResponse** w tre�
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

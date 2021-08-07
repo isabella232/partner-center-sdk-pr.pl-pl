@@ -1,31 +1,31 @@
 ---
 title: Sprawdzanie spisu
-description: Dowiedz się, jak używać Partner Center API do sprawdzania spisu określonego zestawu elementów katalogu. Możesz to zrobić, aby zidentyfikować produkty lub jednostki SKU klienta.
+description: Dowiedz się, jak Partner Center interfejsów API do sprawdzania spisu określonego zestawu elementów katalogu. Można to zrobić, aby zidentyfikować produkty lub jednostki SKU klienta.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b982dbd7e5e10d454ef87a1e750546ea50eb8438
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: de931c7dd89f94b6be8fdaf0ad79c8faee268267c35a2c0f8e38d36b97842f3f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974084"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992113"
 ---
-# <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Sprawdzanie spisu elementów wykazu przy użyciu interfejsów API Partner Center API
+# <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Sprawdzanie spisu elementów wykazu przy użyciu Partner Center API
 
-Jak sprawdzić spis określonego zestawu elementów katalogu.
+Jak sprawdzić spis dla określonego zestawu elementów katalogu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Co najmniej jeden identyfikator produktu. Opcjonalnie można również określić identyfikatory SKU.
 
-- Wszelkie dodatkowe konteksty potrzebne do zweryfikowania spisu ku SKU przywołynych przez podane identyfikatory produktów/SKU. Te wymagania mogą się różnić w zależności od [](product-resources.md#sku) typu produktu/SKU i można je określić na podstawie właściwości **InventoryVariables tej sku.**
+- Wszelkie dodatkowe konteksty potrzebne do zweryfikowania spisu sku, do których odwołują się podane identyfikatory produktów/SKU. Te wymagania mogą się różnić w zależności od [](product-resources.md#sku) typu produktu/sku i można je określić na podstawie właściwości **InventoryVariables tej sku.**
 
 ## <a name="c"></a>C\#
 
-Aby sprawdzić spis, skonstruuj obiekt [InventoryCheckRequest](product-resources.md#inventorycheckrequest) przy użyciu obiektu [InventoryItem](product-resources.md#inventoryitem) dla każdego elementu do sprawdzenia. Następnie użyj metody dostępu **IAggregatePartner.Extensions,** określ jej zakres w dół do opcji **Produkt,** a następnie wybierz kraj przy użyciu **metody ByCountry().** Na koniec wywołaj **metodę CheckInventory()** przy użyciu obiektu **InventoryCheckRequest.**
+Aby sprawdzić spis, skonstruuj obiekt [InventoryCheckRequest](product-resources.md#inventorycheckrequest) przy użyciu obiektu [InventoryItem](product-resources.md#inventoryitem) dla każdego elementu do sprawdzenia. Następnie użyj metody dostępu **IAggregatePartner.Extensions,** określ jej zakres w dół do opcji **Product,** a następnie wybierz kraj przy użyciu **metody ByCountry().** Na koniec wywołaj **metodę CheckInventory() przy** użyciu **obiektu InventoryCheckRequest.**
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -94,7 +94,7 @@ Content-Type: application/json
 Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję obiektów [InventoryItem](product-resources.md#inventoryitem) wypełnionych szczegółami ograniczeń, jeśli mają zastosowanie.
 
 >[!NOTE]
->Jeśli wejściowy element InventoryItem reprezentuje element, który nie można odnaleźć w wykazie, nie zostanie uwzględniony w kolekcji wyjściowej.
+>Jeśli element wejściowy InventoryItem reprezentuje element, który nie można odnaleźć w wykazie, nie zostanie uwzględniony w kolekcji wyjściowej.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

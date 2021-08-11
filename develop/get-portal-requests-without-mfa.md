@@ -4,20 +4,20 @@ description: Pobierz listę żądań użytkowników bez uwierzytelniania wielosk
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: 41627751d3402d7712d96c15c4281a25ed9a44a7
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: d7d901bc78f889593612f64d28e465737f764ba711e49419444de6971c56d404
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445582"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995785"
 ---
 # <a name="get-portal-requests-without-mfa"></a>Pobieranie żądań portalu bez uwierzytelniania wieloskładnikowego
 
-W tym artykule wyjaśniono, jak uzyskać listę najnowszych żądań od użytkowników, którzy mają dostęp do portalu Partner Center bez ukończenia uwierzytelniania wieloskładnikowego (MFA).
+W tym artykule wyjaśniono, jak uzyskać listę najnowszych żądań od użytkowników, którzy uzyskają dostęp do portalu Partner Center bez ukończenia uwierzytelniania wieloskładnikowego (MFA).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 

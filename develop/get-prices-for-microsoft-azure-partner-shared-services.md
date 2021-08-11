@@ -1,21 +1,21 @@
 ---
 title: Pobieranie cen usług Microsoft Azure Partner Shared Services
-description: Jak uzyskać kartę stawki platformy Azure z cenami dla usług udostępnionych Microsoft Azure Partner.
+description: How to get an Azure Rate Card with prices for Microsoft Azure Partner Shared Services (Jak uzyskać kartę stawki platformy Azure z cenami usług udostępnionych Microsoft Azure Partner).
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0008d7474f7e57bbbd765afdf2487ee279848ac3
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 33ee82bb966dee459cdeef6691c5e86eb7369fc7f76117f9360ac51d6cb3da22
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548808"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995819"
 ---
 # <a name="get-prices-for-microsoft-azure-partner-shared-services"></a>Pobieranie cen usług Microsoft Azure Partner Shared Services
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Jak uzyskać kartę [stawki platformy Azure z](azure-rate-card-resources.md) cenami dla usług udostępnionych Microsoft Azure Partner.
+How to get an Azure Rate Card with prices for Microsoft Azure Partner Shared Services (Jak uzyskać [kartę stawki platformy Azure](azure-rate-card-resources.md) z cenami usług udostępnionych Microsoft Azure Partner).
 
 Ceny różnią się w zależności od rynku i waluty, a ten interfejs API uwzględnia lokalizację. Domyślnie interfejs API używa ustawień profilu partnera w języku Partner Center i języku przeglądarki, a te ustawienia można dostosowywać. Świadomość lokalizacji jest szczególnie przydatna, jeśli zarządzasz sprzedażą na wielu rynkach z jednego, scentralizowanego biura.
 
@@ -35,7 +35,7 @@ var azureRateCard = partner.RateCards.Azure.GetShared();
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard.getShared,** aby zwrócić szczegóły karty stawki zawierającej ceny platformy Azure.
+Aby uzyskać kartę stawki platformy Azure, wywołaj funkcję **IAzureRateCard.getShared,** aby zwrócić szczegóły karty stawki zawierające ceny platformy Azure.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -65,10 +65,10 @@ Get-PartnerAzureRateCard -SharedServices
 
 | Nazwa     | Typ   | Wymagane | Opis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartością domyślną jest waluta skojarzona z rynek w profilu partnera. |
+| currency | ciąg | Nie       | Opcjonalny trzyliterowy kod ISO dla waluty, w której zostaną podane stawki zasobów (na przykład `EUR` ). Wartość domyślna to waluta skojarzona z rynek w profilu partnera. |
 | region   | ciąg | Nie       | Opcjonalny dwuliterowy kod kraju/regionu ISO, który wskazuje rynek, na którym zakupiono ofertę (na przykład `FR` ). Wartość domyślna to kod kraju/regionu ustawiony w profilu partnera.        |
 
-Jeśli opcjonalny nagłówek X-Locale jest uwzględniony w żądaniu, jego wartość określa język używany dla szczegółów w odpowiedzi.
+Jeśli opcjonalny nagłówek X-Locale jest uwzględniony w żądaniu, jego wartość określa język używany do określania szczegółów w odpowiedzi.
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -93,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli żądanie powiedzie się, zwraca zasób [karty stawki platformy Azure.](azure-rate-card-resources.md)
+Jeśli żądanie powiedzie się, zwraca [zasób karty stawki platformy Azure.](azure-rate-card-resources.md)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

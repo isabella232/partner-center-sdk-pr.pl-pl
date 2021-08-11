@@ -4,12 +4,12 @@ description: Jak uzyskać szczegółowe informacje o przeniesieniu subskrypcji d
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1347f95debec458b8c70c5e803cef6203ad34818
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 8c5f77594e016968d358f1c3cc6e7c9c2a813f739f8661e563b7eec9fb97cb7a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445939"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996227"
 ---
 # <a name="get-transfer-details-by-id"></a>Uzyskiwanie szczegółów przeniesienia według identyfikatora
 

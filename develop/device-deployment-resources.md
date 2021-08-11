@@ -4,12 +4,12 @@ description: Zasoby związane z Partner Center wdrożenia urządzenia.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c85f0bd6a633ac18aa8e56e5a89bfc5c8f0398cc
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: e8e2429fea88a89873955d9af9253492934e40e5be1a1b7600446485d13f5bd7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906511"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994850"
 ---
 # <a name="device-deployment-resources"></a>Zasoby wdrażania urządzeń
 

@@ -1,17 +1,17 @@
 ---
 title: Pobieranie listy uprawnień platformy Azure dla subskrypcji
-description: Zasób AzureEntitlement umożliwia pobieranie kolekcji zasobów uprawnień platformy Azure należących do subskrypcji.
+description: Możesz użyć zasobu AzureEntitlement, aby uzyskać kolekcję zasobów uprawnień platformy Azure należących do subskrypcji.
 ms.date: 07/06/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 280da155122ed9efd99838d7819fb34f8f7ec52c
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: d56a66669c32748d8695042582324e4711c9234549b1e6ab3f6b0b7b78294509
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874367"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995547"
 ---
 # <a name="get-a-list-of-azure-entitlements-for-a-subscription"></a>Pobieranie listy uprawnień platformy Azure dla subskrypcji
 
@@ -19,9 +19,9 @@ Zasób uprawnień [platformy Azure](subscription-resources.md#azureentitlement) 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
@@ -31,7 +31,7 @@ Zasób uprawnień [platformy Azure](subscription-resources.md#azureentitlement) 
 
 | Metoda  | Identyfikator URI żądania                                                                                                                   |
 |---------|---------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/azureentitlements HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{subscription-id}/azureentitlements HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
@@ -63,7 +63,7 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję zasobów [**AzureEntitlement**](subscription-resources.md#azureentitlement) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję [**zasobów AzureEntitlement**](subscription-resources.md#azureentitlement) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

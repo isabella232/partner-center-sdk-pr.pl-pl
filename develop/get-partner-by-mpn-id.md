@@ -4,30 +4,30 @@ description: Dowiedz się, jak zweryfikować identyfikator Microsoft Partner Net
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6bd51850c7bc5a099a34f9c028a58e247c2600a3
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 223f0da94f5a1c12b4f6de32184296b88ab5f443a69feac89152acc1aa9ccbd6
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548825"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995921"
 ---
 # <a name="verify-a-partner-mpn-id-via-c-or-the-partner-center-rest-api"></a>Weryfikowanie identyfikatora MPN partnera za pośrednictwem języka C \# lub interfejsu API REST Partner Center API
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Jak zweryfikować identyfikator Microsoft Partner Network partnera (IDENTYFIKATOR MPN).
+Jak zweryfikować identyfikator Microsoft Partner Network partnera (identyfikator MPN).
 
-Technika pokazana w tym miejscu weryfikuje identyfikator Microsoft Partner Network partnera, żądając profilu MPN partnera z Centrum partnerskiego. Identyfikator jest uznawany za prawidłowy, jeśli żądanie zakończy się pomyślnie.
+Technika pokazana w tym miejscu weryfikuje identyfikator Microsoft Partner Network partnera, żądając profilu MPN partnera z Partner Center. Identyfikator jest uznawany za prawidłowy, jeśli żądanie zakończy się pomyślnie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 - Identyfikator MPN partnera do zweryfikowania. Jeśli pominiesz tę wartość, żądanie pobierze profil MPN partnera, który się zalogował.
 
 ## <a name="c"></a>C\#
 
-Aby zweryfikować identyfikator MPN partnera, najpierw pobierz interfejs do operacji zbierania profilów partnerów z właściwości [**IAggregatePartner.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Następnie pobierz interfejs do operacji profilu MPN z właściwości [**MpnProfile.**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) Na koniec wywołaj [**metody Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) z identyfikatorem MPN, aby pobrać profil MPN. Jeśli pominiesz identyfikator MPN z wywołania Get lub GetAsync, żądanie podejmie próbę pobrania profilu MPN partnera, który się zalogował.
+Aby zweryfikować identyfikator MPN partnera, najpierw pobierz interfejs do operacji zbierania profilu partnera z właściwości [**IAggregatePartner.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Następnie pobierz interfejs do operacji profilu MPN z [**właściwości MpnProfile.**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) Na koniec wywołaj metody [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) lub [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) z identyfikatorem MPN, aby pobrać profil MPN. Jeśli pominiesz identyfikator MPN z wywołania Get lub GetAsync, żądanie spróbuje pobrać profil MPN zalogowago partnera.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,7 +36,7 @@ Aby zweryfikować identyfikator MPN partnera, najpierw pobierz interfejs do oper
 var partnerProfile = partnerOperations.Profiles.MpnProfile.Get(partnerMpnId);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : VerifyPartnerMpnId.cs **(Klasa przykładów** zestaw SDK Centrum partnerskiego: VerifyPartnerMpnId.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : VerifyPartnerMpnId.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: VerifyPartnerMpnId.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -48,11 +48,11 @@ var partnerProfile = partnerOperations.Profiles.MpnProfile.Get(partnerMpnId);
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Podaj następujący parametr zapytania w celu zidentyfikowania partnera. Jeśli ten parametr zapytania zostanie pominięty, żądanie zwróci profil MPN partnera, który się zalogował.
+Podaj następujący parametr zapytania w celu zidentyfikowania partnera. W przypadku pominięcia tego parametru zapytania żądanie zwraca profil MPN partnera, do których się zalogowano.
 
 | Nazwa   | Typ | Wymagane | Opis                                                 |
 |--------|------|----------|-------------------------------------------------------------|
-| identyfikator mpn | int  | Nie       | Identyfikator Microsoft Partner Network, który identyfikuje partnera. |
+| identyfikator mpn-id | int  | Nie       | Identyfikator Microsoft Partner Network, który identyfikuje partnera. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -78,11 +78,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera [zasób MpnProfile](profile-resources.md#mpnprofile) dla partnera.
+W przypadku powodzenia treść odpowiedzi zawiera [zasób MpnProfile](profile-resources.md#mpnprofile) dla partnera.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example-success"></a>Przykład odpowiedzi (powodzenie)
 

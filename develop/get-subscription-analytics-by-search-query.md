@@ -4,12 +4,12 @@ description: Sposób filtrowania informacji analizy subskrypcji według zapytani
 ms.date: 05/10/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8df777b9a88206f8b22579f0f445c54d80f7cd64
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: dc6ef8d2136c5ffac3278a372980e9a601ef49bb485ef54187865fc9431b3404
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548740"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995683"
 ---
 # <a name="get-subscription-analytics-information-filtered-by-a-search-query"></a>Pobieranie informacji analitycznych dotyczących subskrypcji filtrowanych wg zapytania wyszukiwania
 

@@ -7,18 +7,18 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b237bbd17a6108bbcb4e23529cf476a6b8306f68
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 682f4ece9098817f25e7709f3a8b9010d661fd1042589785778f5c434c37ed8e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874554"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995462"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-customer"></a>Pobieranie listy dostępności dla jednostki SKU (według klientów)
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Aby uzyskać kolekcję dostępności dla określonego produktu i określonej wersji SKU dostępnej dla określonego klienta, można użyć następujących metod.
+Za pomocą poniższych metod można uzyskać kolekcję dostępności dla określonego produktu i określonej wersji SKU dostępną dla określonego klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

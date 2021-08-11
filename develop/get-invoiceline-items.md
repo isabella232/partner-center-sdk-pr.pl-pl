@@ -4,12 +4,12 @@ description: Kolekcję szczegółów pozycji faktury (zamkniętego elementu wier
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 944dddef64ec980d92c292a7f5b9f5eb4e7cecb6
-ms.sourcegitcommit: 15c6cfe72284cf5d4ea3535120e83e473c33f5ec
+ms.openlocfilehash: 10e43127e5f44f76ed9be8b9aa638e982259602ad57709ecee55cb62d8d7d59e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112443176"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996039"
 ---
 # <a name="get-invoice-line-items"></a>Pobieranie elementów wiersza faktury
 
@@ -19,7 +19,7 @@ Następujące metody umożliwia pobieranie szczegółów kolekcji pozycji faktur
 
 *Z wyjątkiem poprawek błędów ten interfejs API nie jest już aktualizowany.* Należy zaktualizować aplikacje w celu wywołania interfejsu API **onetime** zamiast witryny **Marketplace.** **Jednogodzinny interfejs** API zapewnia dodatkowe funkcje i będzie nadal aktualizowany.
 
-Należy używać funkcji **onetime do** wykonywania zapytań o wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
+Należy użyć funkcji **onetime,** aby odpytować wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
 
 Ten interfejs API  obsługuje również typy dostawców subskrypcji platformy **Azure** i pakietu **Office** dla platformy Microsoft Azure (MS-AZR-0145P) i ofert Office, dzięki czemu funkcja interfejsu API jest zgodna z poprzednimi wersjami.
 
@@ -36,7 +36,7 @@ Aby uzyskać pozycje dla określonej faktury:
 1. Wywołaj [**metodę ById,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) aby uzyskać interfejs do operacji na fakturze dla określonej faktury.
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury. Obiekt faktury zawiera wszystkie informacje dotyczące określonej faktury.
-3. Użyj właściwości [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) obiektu invoice, aby uzyskać dostęp do kolekcji obiektów [**InvoiceDetail,**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) z których każdy zawiera obiekt [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) i [**typ InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype). **BillingProvider** identyfikuje źródło szczegółowych informacji o fakturze (takich jak **Office,** **Azure,** **OneTime**), a **typ InvoiceLineItemType** określa typ (na przykład **BillingLineItem).**
+3. Użyj właściwości [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) obiektu invoice, aby uzyskać dostęp do kolekcji obiektów [**InvoiceDetail,**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) z których każdy zawiera obiekt [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) i [**typ InvoiceLineItemType.**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype) **BillingProvider** identyfikuje źródło szczegółowych informacji o fakturze (takich jak **Office,** **Azure,** **OneTime**), a **Typ InvoiceLineItemType** określa typ (na przykład **BillingLineItem).**
 
 Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji **InvoiceDetails.** Dla każdego wystąpienia **InvoiceDetail** pobierana jest oddzielna kolekcja elementów wiersza.
 
@@ -120,7 +120,7 @@ Poniższe składnie mają zastosowanie, gdy dostawca rozliczeń ma subskrypcję 
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1  |
 | **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1  |
 
 ##### <a name="onetime"></a>OneTime
@@ -138,13 +138,13 @@ Jeśli używasz następujących składni, upewnij się, że używasz odpowiednie
 
 *Z wyjątkiem poprawek błędów ten interfejs API nie jest już aktualizowany.* Należy zaktualizować aplikacje w celu wywołania interfejsu API **onetime** zamiast witryny **Marketplace.** **Jednogodzinny interfejs** API zapewnia dodatkowe funkcje i będzie nadal aktualizowany.
 
-Należy używać funkcji **onetime do** wykonywania zapytań o wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
+Należy użyć funkcji **onetime,** aby odpytować wszystkie pozycje użycia komercyjnego zamiast elementów **platformy handlowej.** Możesz też użyć linków w wywołaniu linków do oszacowania.
 
 | Metoda | Identyfikator URI żądania | Opis przypadku użycia składni |
 | ------ | ----------- | -------------------------------- |
 | GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems/{dostawca-rozliczeń}/{typ-elementu-wiersza-faktury} HTTP/1.1                              | Ta składnia umożliwia zwrócenie pełnej listy wszystkich pozycji dla danej faktury. |
 | GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{identyfikator faktury}/lineitems/{dostawca-rozliczeń}/{typ-elementu-wiersza-faktury}?size={rozmiar}&offset={offset} HTTP/1.1  | W przypadku dużych faktur można użyć tej składni z określonym rozmiarem i przesunięciem 0 w celu zwrócenia stronicowej listy elementów wiersza. |
-| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next                               | Tej składni można użyć dla faktury z wartością dostawcy rozliczeń **OneTime** i ustawić **wartość seekOperation** na **Dalej,** aby uzyskać następną stronę pozycji faktury. |
+| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next                               | Możesz użyć tej składni dla faktury z wartością dostawcy rozliczeń **OneTime** i ustawić **wartość seekOperation** na **Dalej,** aby uzyskać następną stronę pozycji faktury. |
 
 ##### <a name="uri-parameters"></a>Parametry URI
 
@@ -152,13 +152,13 @@ Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 
 | Nazwa                   | Typ   | Wymagane | Opis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| invoice-id             | ciąg | Tak      | Ciąg, który identyfikuje fakturę.                             |
+| invoice-id             | ciąg | Tak      | Ciąg identyfikujący fakturę.                             |
 | dostawca rozliczeń       | ciąg | Tak      | Dostawca rozliczeń: "Office", "Azure", "OneTime". W starszej wersji mamy oddzielne modele danych dla Office & platformy Azure. Jednak nowoczesna ma jeden model danych dla wszystkich transakcji przefiltrowanych za pomocą wartości "OneTime".            |
 | typ-elementu-wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "BillingLineItems", "UsageLineItems". |
 | size                   | liczba | Nie       | Maksymalna liczba elementów do zwrócenia. Domyślny maksymalny rozmiar = 2000    |
-| przesunięcie                 | liczba | Nie       | Indeks pierwszego wiersza, który ma być zwracany od zera.            |
-| seekOperation          | ciąg | Nie       | Jeśli **dostawca rozliczeń ma** wartość **OneTime,** ustaw **wartość seekOperation** równą **Dalej,** aby pobrać następną stronę pozycji faktury. |
-| hasPartnerEarnedCredit | bool | Nie | Wartość wskazująca, czy zwrócić pozycje z zastosowanymi środków uzyskane przez partnera. Uwaga: ten parametr będzie stosowany tylko wtedy, gdy typ dostawcy rozliczeń to OneTime, a InvoiceLineItemType to UsageLineItems. |
+| przesunięcie                 | liczba | Nie       | Indeks pierwszego wiersza, który ma być zwracany, od zera.            |
+| seekOperation          | ciąg | Nie       | Jeśli **dostawca rozliczeń ma** wartość **OneTime,** ustaw **element seekOperation** na wartość **Dalej,** aby uzyskać następną stronę pozycji faktury. |
+| hasPartnerEarnedCredit | bool | Nie | Wartość wskazująca, czy zwrócić pozycje z zastosowanymi środków uzyskane przez partnera. Uwaga: ten parametr zostanie zastosowany tylko wtedy, gdy typ dostawcy rozliczeniowego to OneTime, a InvoiceLineItemType to UsageLineItems. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -170,13 +170,13 @@ Brak.
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, odpowiedź zawiera kolekcję szczegółów elementu wiersza.
+Jeśli to się powiedzie, odpowiedź będzie zawierała kolekcję szczegółów elementu wiersza.
 
-*W przypadku elementu wiersza **ChargeType** wartość **Zakup** jest mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.*
+*W przypadku elementu wiersza **ChargeType** wartość **Zakup jest** mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.*
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="rest-request-response-examples"></a>Przykłady żądań i odpowiedzi REST
 

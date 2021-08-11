@@ -4,12 +4,12 @@ description: Możesz uzyskać kolekcję nienalicznych szczegółów elementu wie
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
-ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
+ms.openlocfilehash: 32944f7e1d30cec2e898d68619b882f3fe5c17124ae90e69b01761dbac459189
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114224772"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994748"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Pobierz pozycje dotyczące nienadmierowego użycia komercyjnego na fakturze
 
@@ -32,13 +32,13 @@ Aby uzyskać pozycje dla określonej faktury:
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać obiekt faktury.
 
-Obiekt **faktury zawiera** wszystkie informacje dotyczące określonej faktury. Dostawca **identyfikuje** źródło nienaliczonych szczegółowych informacji (na przykład **OneTime).** Typ **invoiceLineItemType** określa typ (na przykład **UsageLineItem).**
+Obiekt **faktury zawiera** wszystkie informacje dotyczące określonej faktury. Dostawca **identyfikuje** źródło nienaliczonych informacji szczegółowych (na przykład **OneTime).** Typ **invoiceLineItemType** określa typ (na przykład **UsageLineItem).**
 
 Poniższy przykładowy kod używa pętli **foreach** do przetwarzania **kolekcji InvoiceLineItems.** Dla każdego typu **InvoiceLineItemType** pobierana jest oddzielna kolekcja elementów wiersza.
 
 Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
+1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do [**metody By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać skojarzone elementy wiersza.
 3. Utwórz moduł wyliczający, aby przejść przez kolekcję, jak pokazano w poniższym przykładzie.

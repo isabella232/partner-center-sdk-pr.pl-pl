@@ -1,17 +1,17 @@
 ---
-title: Zasoby faktur
-description: Wiele zasobów związanych z fakturami jest dostępnych za pośrednictwem Partner Center API. Te zasoby są powiązane ze szczegółami faktur i pozycji.
+title: Zasoby faktury
+description: Wiele zasobów związanych z fakturami jest dostępnych za pośrednictwem Partner Center API. Te zasoby są powiązane ze szczegółami faktur i elementów wiersza.
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b07b7ad14c136eac988eeb12391c24a6cf996b39
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: d2e801dc3b082411e140b88cd495807b1381ef915e8f5f06803d64ca2cca1c6b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548433"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996550"
 ---
-# <a name="invoice-resources"></a>Zasoby faktur
+# <a name="invoice-resources"></a>Zasoby faktury
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
@@ -22,9 +22,9 @@ Następujące zasoby związane z fakturami są dostępne za pośrednictwem Partn
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | identyfikator | ciąg | Identyfikator faktury. |
-| invoiceDate | ciąg w formacie daty i czasu UTC | Data wygenerowania faktury. |
-| billingPeriodStartDate | ciąg w formacie daty i czasu UTC | Data rozpoczęcia okresu rozliczeniowego w czasie UTC. |
-| billingPeriodEndDate | ciąg w formacie daty i czasu UTC   | Data zakończenia okresu rozliczeniowego w czasie UTC. |
+| invoiceDate | ciąg w formacie daty i godzin UTC | Data wygenerowania faktury. |
+| billingPeriodStartDate | ciąg w formacie daty i godzin UTC | Data rozpoczęcia okresu rozliczeniowego w czasie UTC. |
+| billingPeriodEndDate | ciąg w formacie daty i godzin UTC   | Data zakończenia okresu rozliczeniowego w czasie UTC. |
 | totalCharges | liczba | Łączne opłaty. Obejmuje opłaty za transakcje i wszelkie korekty.     |
 | paidAmount | liczba  | Kwota zapłacona przez partnera. Ujemna, jeśli otrzymano płatność.  |
 | currencyCode | ciąg  | Kod, który wskazuje walutę używaną dla wszystkich kwot i sum elementów faktury. |
@@ -32,15 +32,15 @@ Następujące zasoby związane z fakturami są dostępne za pośrednictwem Partn
 | pdfDownloadLink | ciąg  | Link do pobierania faktury w formacie PDF. Ten link nie jest zwracany jako część wyników wyszukiwania i jest wypełniany tylko wtedy, gdy dostęp do faktury jest uzyskiwany za pomocą identyfikatora. Ten link automatycznie wygasa po 30 minutach. |
 | invoiceDetails  | tablica [obiektów InvoiceDetail](#invoicedetail)  | Szczegóły faktury.  |
 | Zmiany      | tablica [obiektów](#invoice) faktur   | Zmiany w tej fakturze.  |
-| Documenttype    | ciąg | Typ dokumentu faktury: "Uwaga kredytowa", "Faktura". |
-| nie zmieniaOf        | ciąg | Numer referencyjny dokumentu, którego dokument jest poprawką.  |
+| Documenttype    | ciąg | Typ dokumentu faktury: "Faktura kredytowa", "Faktura". |
+| nie zmieniaOf        | ciąg | Numer referencyjny dokumentu, którego ten dokument jest poprawką.  |
 | invoiceType     | ciąg  | Typ faktury: "cykliczne", \_ "jednorazowo".   |
 | Linki           | [ResourceLinks](utility-resources.md#resourcelinks)  | Link do zasobu.  |
 | atrybuty      | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.  |
 
 ## <a name="invoicedetail"></a>InvoiceDetail
 
-Faktura zawiera kolekcję rozlicznych elementów, a każdy element jest reprezentowany przez zasób InvoiceDetail.
+Faktura zawiera kolekcję elementów rozlicznych, a każdy element jest reprezentowany przez zasób InvoiceDetail.
 
 | Właściwość            | Typ                                                           | Opis                                                                       |
 |---------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
@@ -51,7 +51,7 @@ Faktura zawiera kolekcję rozlicznych elementów, a każdy element jest reprezen
 
 ## <a name="invoicelineitem"></a>InvoiceLineItem
 
-Każda indywidualna opłata na fakturze jest reprezentowana jako InvoiceLineItem.
+Każda indywidualna opłata w ramach faktury jest reprezentowana jako InvoiceLineItem.
 
 | Właściwość            | Typ                                                           | Opis                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
@@ -65,7 +65,7 @@ Opisuje podsumowanie salda i łącznych opłat na fakturze.
 
 | Właściwość                 | Typ                                                           | Opis                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| BalanceAmount            | liczba                                                         | Saldo faktury. Jest to łączna kwota niezapłaconych faktur. |
+| balanceAmount            | liczba                                                         | Saldo faktury. Jest to łączna kwota niezapłaconych faktur. |
 | currencyCode             | ciąg                                                         | Kod, który wskazuje walutę używaną dla kwoty salda.       |
 | currencySymbol           | ciąg                                                         | Użyty symbol waluty.                                             |
 | accountingDate           | ciąg w formacie daty i godzin UTC                                 | Data ostatniej aktualizacji kwoty salda.                         |
@@ -128,7 +128,7 @@ Reprezentuje element wiersza rozliczeń faktury dla subskrypcji opartych na lice
 | syndykacjaPartnerSubscriptionNumber | ciąg                                             | Pobiera lub ustawia numer subskrypcji partnera syndykacji.             |
 | Podatku                      | liczba                                                         | Pobiera lub ustawia naliczane podatki.                                       |
 | tier2MpnId               | liczba                                                         | Pobiera lub ustawia identyfikator MPN partnera warstwy 2 skojarzonego z tym elementem wiersza. |
-| totalForCustomer         | liczba                                                         | Pobiera lub ustawia łączną kwotę po rabatach i podatku.                 |
+| totalForCustomer         | liczba                                                         | Pobiera lub ustawia łączną kwotę po rabatie i podatku.                 |
 | totalOtherDiscount       | liczba                                                         | Pobiera lub ustawia rabat skojarzony z tym zakupem.              |
 | unitPrice                | liczba                                                         | Pobiera lub ustawia cenę jednostkową.                                          |
 
@@ -150,7 +150,7 @@ Reprezentuje element wiersza rozliczeń faktury dla subskrypcji opartych na uży
 | currency                 | ciąg                                                         | Pobiera lub ustawia walutę skojarzoną z cenami.                 |
 | Customername             | ciąg                                                         | Pobiera lub ustawia nazwę klienta.                                       |
 | customerId               | ciąg                                                         | Pobiera lub ustawia unikatowy identyfikator klienta.                          |
-| detailLineItemId         | liczba                                                         | Pobiera lub ustawia identyfikator elementu wiersza szczegółów. Jednoznacznie identyfikuje elementy wiersza w przypadkach, w których obliczenie różni się dla zużytych jednostek. Przykład: Opłata za łączną liczbę zużytych zasobów = 1338, 1024 jest naliczana za jedną stawkę, a opłata 314 z inną stawką.        |
+| detailLineItemId         | liczba                                                         | Pobiera lub ustawia identyfikator elementu wiersza szczegółów. Jednoznacznie identyfikuje elementy wiersza w przypadkach, w których obliczenia są różne dla zużytych jednostek. Przykład: Opłata za łączną liczbę zużytych zasobów = 1338, 1024 jest naliczana przy użyciu jednej stawki, a opłata 314 jest naliczana z inną stawką.        |
 | Nazwa_domeny               | ciąg                                                         | Pobiera lub ustawia nazwę domeny.                                             |
 | includedQuantity         | liczba                                                         | Pobiera lub ustawia jednostki uwzględnione w kolejności.                         |
 | invoiceLineItemType      | ciąg                                                         | Pobiera typ elementu wiersza faktury.                                   |
@@ -231,10 +231,10 @@ Reprezentuje element wiersza faktury dla subskrypcji opartych na licencjach.
 | PCToBCExchangeRate | decimal | Pobiera lub ustawia walutę cennika na kurs wymiany waluty rozliczeniowej. |
 | PCToBCExchangeRateDate | DateTime | Pobiera lub ustawia datę kursu wymiany, w którym waluta cenowa została określona na kurs wymiany waluty rozliczeniowej. |
 | Ilość rozliczana | decimal | Pobiera lub ustawia zakupione jednostki. Dla każdej kolumny projektu o nazwie **BillableQuantity**. |
-| MeterDescription | ciąg | Pobiera lub ustawia opis miernika dla elementu wiersza zużycie. |
-| ReservationOrderId | ciąg | Pobiera lub ustawia identyfikator zamówienia rezerwacji dla zakupu wystąpi błądowych platformy Azure. |
+| MeterDescription (Opis miernika) | ciąg | Pobiera lub ustawia opis miernika dla elementu wiersza zużycie. |
+| ReservationOrderId | ciąg | Pobiera lub ustawia identyfikator zamówienia rezerwacji dla zakupu wystąpiącego WZ platformy Azure. |
 | BillingFrequency | ciąg | Pobiera lub ustawia częstotliwość rozliczeń. |
-| InvoiceLineItemType | InvoiceLineItemType | Zwraca typ elementu wiersza faktury. |
+| InvoiceLineItemType | InvoiceLineItemType | Zwraca typ pozycji faktury. |
 | BillingProvider | BillingProvider | Zwraca dostawcę rozliczeń. |
 
 ## <a name="dailyratedusagelineitem"></a>DailyRatedUsageLineItem
@@ -247,7 +247,7 @@ Reprezentuje nienalizane, rozliczane pozycje uzgodnień dla dziennego użycia oc
 | PartnerName | ciąg | Pobiera lub ustawia nazwę partnera. |
 | CustomerId | ciąg | Pobiera lub ustawia identyfikator dzierżawy klienta, do którego należy użycie. |
 | CustomerName | ciąg | Pobiera lub ustawia nazwę firmy klienta, do której należy użycie. |
-| CustomerDomainName | ciąg | Pobiera lub ustawia nazwę domeny klienta, do której należy użycie. |
+| CustomerDomainName (NazwaDomeny Klienta) | ciąg | Pobiera lub ustawia nazwę domeny klienta, do której należy użycie. |
 | InvoiceNumber | ciąg | Pobiera lub ustawia identyfikator faktury, do której należy użycie. |
 | ProductId | ciąg | Pobiera lub ustawia unikatowy identyfikator produktu. |
 | SkuId | ciąg | Pobiera lub ustawia unikatowy identyfikator jednostki SKU. |
@@ -261,7 +261,7 @@ Reprezentuje nienalizane, rozliczane pozycje uzgodnień dla dziennego użycia oc
 | ChargeStartDate | DateTime | Pobiera lub ustawia datę rozpoczęcia opłaty. |
 | ChargeEndDate | DateTime | Pobiera lub ustawia datę zakończenia opłaty. |
 | UsageDate | DateTime | Pobiera lub ustawia datę użycia. |
-| MeterType (Typ miernika) | ciąg | Pobiera lub ustawia typ miernika. |
+| Typ miernika | ciąg | Pobiera lub ustawia typ miernika. |
 | MeterCategory | ciąg | Pobiera lub ustawia kategorię miernika. |
 | MeterId | ciąg | Pobiera lub ustawia identyfikator miernika (GUID). |
 | MeterSubCategory | ciąg | Pobiera lub ustawia podkategorię miernika. |
@@ -282,19 +282,19 @@ Reprezentuje nienalizane, rozliczane pozycje uzgodnień dla dziennego użycia oc
 | ChargeType | ciąg | Pobiera lub ustawia typ opłaty. |
 | UnitPrice | decimal | Pobiera lub ustawia cenę jednostki. |
 | Liczba | decimal | Pobiera lub ustawia ilość użycia. |
-| Unittype | ciąg | Pobiera lub ustawia typ jednostki (na przykład 1 godzina). |
-| BillingPreTaxTotal | decimal | Pobiera lub ustawia rozszerzony koszt lub całkowity koszt przed opodatkowaniem w lokalnej walucie klienta lub waluty rozliczeniowej. |
+| Unittype | ciąg | Pobiera lub ustawia typ jednostki (na przykład 1 godzinę). |
+| BillingPreTaxTotal | decimal | Pobiera lub ustawia rozszerzony koszt lub całkowity koszt przed opodatkowaniem w walucie lokalnej klienta lub waluty rozliczeniowej. |
 | BillingCurrency | ciąg | Pobiera lub ustawia walutę ISO, w której miernik jest naliczany w lokalnej walucie klienta lub walucie rozliczeniowej. |
 | PricingPreTaxTotal | decimal | Pobiera lub ustawia rozszerzony koszt lub całkowity koszt przed opodatkowaniem w USD lub walucie katalogu używanej do oceny. |
 | PricingCurrency | ciąg | Pobiera lub ustawia walutę ISO, w której miernik jest obciążany opłatą w USD lub walucie katalogu używanej do oceny. |
-| EntitlementId | ciąg | Pobiera lub ustawia identyfikator uprawnienia (subskrypcji platformy Azure). |
+| EntitlementId | ciąg | Pobiera lub ustawia identyfikator uprawnienia (subskrypcja platformy Azure). |
 | EntitlementDescription | ciąg | Pobiera lub ustawia opis uprawnienia (subskrypcja platformy Azure). |
 | PCToBCExchangeRate | ciąg | Pobiera lub ustawia walutę cennika na kurs wymiany waluty rozliczeniowej. |
 | PCToBCExchangeRateDate | DateTime | Pobiera lub ustawia walutę cennika na datę kursu wymiany waluty rozliczeniowej. |
 | EffectiveUnitPrice | decimal | Pobiera lub ustawia efektywną cenę jednostkową. |
 | RateOfPartnerEarnedCredit | decimal | Pobiera lub ustawia stawkę środków uzyskane przez partnerów. |
-| HasPartnerEarnedCredit | bool | Pobiera lub ustawia są stosowane środków uzyskane przez partnera. |
+| HasPartnerEarnedCredit | bool | Pobiera lub ustawia są stosowane środków uzyskane przez partnerów. |
 | RateOfCredit | decimal | Pobiera lub ustawia stawkę środków dla danego typu środków. |
 | CreditType | ciąg | Pobiera lub ustawia typ środków. |
-| InvoiceLineItemType | InvoiceLineItemType | Zwraca typ pozycji faktury. |
+| InvoiceLineItemType | InvoiceLineItemType | Zwraca typ elementu wiersza faktury. |
 | BillingProvider | BillingProvider | Zwraca dostawcę rozliczeń. |

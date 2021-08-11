@@ -4,12 +4,12 @@ description: Opisuje zasoby związane z licencjami.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 27d44f89ac89f365e77e073c425ca45ab3638c68
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: e6d91110dcec8a873e77cb02bdb77f6335e27989201ea68eebf904c5159964c5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548400"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996584"
 ---
 # <a name="license-resources"></a>Zasoby licencji
 
@@ -97,6 +97,6 @@ Opisuje subskrybowany produkt należący do dzierżawy.
 | totalUnits       | liczba całkowita                                                        | Całkowita liczba jednostek. Ta wartość jest obliczana jako suma aktywnych i ostrzegawczych jednostek.         |
 | warningUnits     | liczba całkowita                                                        | Liczba jednostek ostrzegawczych.                                                                      |
 | productSku       | ProductSku                                                     | SKU produktu.                                                                                  |
-| servicePlans     | tablica zasobów usługi ServicePlan                                 | Kolekcja planów usług produktu.                                                     |
+| servicePlans     | tablica zasobów ServicePlan                                 | Kolekcja planów usług produktu.                                                     |
 | capabilityStatus | ciąg                                                         | Stan sku produktu.                                                                      |
 | atrybuty       | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające zasobowi.                                            |

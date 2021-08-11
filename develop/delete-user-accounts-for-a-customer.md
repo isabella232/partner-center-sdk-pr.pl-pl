@@ -4,12 +4,12 @@ description: Jak usunąć istniejące konto użytkownika dla klienta.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c45646da43b8926f911942374de5da07f318c526
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 64e9175a2a4545022175b326a2d765ecd6a1106242b8926fe19e32c7e2ab6ec2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973064"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994884"
 ---
 # <a name="delete-a-user-account-for-a-customer"></a>Usuwanie konta użytkownika dla klienta
 

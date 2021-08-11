@@ -1,23 +1,23 @@
 ---
 title: Włączanie modelu aplikacji zabezpieczonych
-description: Zabezpieczanie aplikacji Partner Center panelu sterowania.
+description: Zabezpieczanie aplikacji Partner Center i panelu sterowania.
 ms.date: 01/20/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 36a81c7b235c68e49bb425b5bd0d4615882f88ef
-ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
+ms.openlocfilehash: 9974237f7d4234b782a5b17a65fd52b9024315f848b721c73f4e1d59b69b2930
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/04/2021
-ms.locfileid: "115104214"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994799"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Włączanie środowiska modelu aplikacji zabezpieczonej
 
 Firma Microsoft wprowadza bezpieczną, skalowalną platformę do uwierzytelniania partnerów dostawców rozwiązań w chmurze (CSP) i dostawców panelu sterowania (CPV) za pośrednictwem architektury Microsoft Azure Active Directory Multi-Factor Authentication (MFA).
 
-Nowy model umożliwia podnieść poziom zabezpieczeń dla wywołań integracji Partner Center API. Pomoże to wszystkim stronom (w tym partnerom firmy Microsoft, partnerom programu CSP i cpv) chronić ich infrastrukturę i dane klientów przed zagrożeniami bezpieczeństwa.
+Nowy model umożliwia podnieść poziom zabezpieczeń dla wywołań integracji Partner Center API. Pomoże to wszystkim stronom (w tym partnerom programu CSP i partnerom CSP) chronić infrastrukturę i dane klientów przed zagrożeniami bezpieczeństwa.
 
 ## <a name="scope"></a>Zakres
 
@@ -27,7 +27,7 @@ Ten artykuł dotyczy następujących aktorów:
   - Dostawca oprogramowania panelu sterowania (CPV) to niezależny dostawca oprogramowania, który opracowuje aplikacje, których partnerzy CSP mogą używać do integracji z interfejsami API Centrum partnerskiego.
   - Dostawca CPV nie jest partnerem CSP z bezpośrednim dostępem do pulpitu nawigacyjnego lub interfejsów API Centrum partnerskiego.
 
-- Dostawcy pośredni dostawcy usług w chmurze i bezpośredni partnerzy programu CSP, którzy korzystają z identyfikatora aplikacji i uwierzytelniania użytkowników oraz bezpośrednio integrują się z Partner Center API.
+- Dostawcy pośredni dostawcy CSP i bezpośredni partnerzy programu CSP, którzy korzystają z identyfikatora aplikacji i uwierzytelniania użytkowników oraz bezpośrednio integrują się z Partner Center API.
 
 ## <a name="security-requirements"></a>Wymagania dotyczące zabezpieczeń
 
@@ -35,27 +35,27 @@ Aby uzyskać szczegółowe informacje na temat wymagań dotyczących zabezpiecze
 
 ## <a name="secure-application-model"></a>model aplikacji zabezpieczonych
 
-Aplikacje z witryny Marketplace muszą personifikować uprawnienia partnera CSP w celu wywołania interfejsów API firmy Microsoft. Ataki na zabezpieczenia tych poufnych aplikacji mogą prowadzić do naruszenia bezpieczeństwa danych klientów.
+Aplikacje z witryny Marketplace muszą personifikować uprawnienia partnera CSP w celu wywołania interfejsów API firmy Microsoft. Ataki na zabezpieczenia tych poufnych aplikacji mogą prowadzić do naruszenia danych klientów.
 
-Aby uzyskać omówienie i szczegóły nowej struktury uwierzytelniania, pobierz dokument [model aplikacji zabezpieczonych framework.](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) Ten dokument zawiera zasady i najlepsze rozwiązania, dzięki których aplikacje na platformie handlowej będą zrównoważone i odporne na naruszenia zabezpieczeń.
+Aby uzyskać omówienie i szczegóły nowej struktury uwierzytelniania, pobierz [dokument model aplikacji zabezpieczonych framework.](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) Ten dokument zawiera zasady i najlepsze rozwiązania, dzięki których aplikacje na platformie handlowej będą trwałe i odporne na naruszenia zabezpieczeń.
 
 ## <a name="samples"></a>Samples
 
-W następujących dokumentach z omówieniem i przykładowym kodzie opisano, jak partnerzy mogą wdrożyć model aplikacji zabezpieczonych platformę:
+W poniższych dokumentach z omówieniem i przykładowym kodzie opisano, jak partnerzy mogą zaimplementować model aplikacji zabezpieczonych platformę:
 
 - [Dokument z omówieniem protokołu CPV](https://assetsprod.microsoft.com/cpv-partner-application-overview.pdf)
 - [Dokument z omówieniem programu CSP](https://assetsprod.microsoft.com/csp-partner-application-overview.pdf)
-- [Przykłady dla oprogramowania .NET](https://github.com/microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model)
+- [Przykłady dla .NET](https://github.com/microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model)
 - [Przykłady dla języka Java](https://github.com/microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model)
 
     [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-- [Instrukcje i przykłady dotyczące rest](#rest)
+- [Instrukcje i przykłady DOTYCZĄCE REST](#rest)
 - [Instrukcje i przykłady programu PowerShell](#powershell)
 
 ## <a name="rest"></a>REST
 
-Aby wykonać wywołania REST za pomocą model aplikacji zabezpieczonych framework z przykładowym kodem, wykonaj następujące kroki:
+Aby wykonać wywołania REST za pomocą model aplikacji zabezpieczonych z przykładowym kodem, wykonaj następujące kroki:
 
 1. [Tworzenie aplikacji internetowej](#create-a-web-app)
 
@@ -68,17 +68,17 @@ Aby wykonać wywołania REST za pomocą model aplikacji zabezpieczonych framewor
 5. [Wykonywanie wywołania interfejsu API Centrum partnerskiego](#make-partner-center-api-calls)
 
 > [!TIP]
-> Możesz użyć modułu Partner Center PowerShell, aby uzyskać kod autoryzacji i token odświeżania. Tę opcję można wybrać w miejsce kroków 2 i 3. Aby uzyskać więcej informacji, zobacz [sekcję programu PowerShell i przykłady](#powershell).
+> Możesz użyć modułu Partner Center PowerShell, aby uzyskać kod autoryzacji i token odświeżania. Tę opcję można wybrać w miejsce kroków 2 i 3. Aby uzyskać więcej informacji, zobacz sekcję [programu PowerShell i przykłady](#powershell).
 
 ### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-Przed wykonaniem wywołań REST musisz utworzyć i zarejestrować aplikację internetową w Partner Center aplikacji internetowej.
+Przed wykonaniem wywołań REST należy utworzyć i zarejestrować aplikację internetową Partner Center aplikacji internetowej.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Tworzenie aplikacji Azure Active Directory (Azure AD).
+2. Utwórz aplikację Azure Active Directory (Azure AD).
 
-3. Nadaj delegowanym aplikacjom uprawnienia do następujących zasobów, w zależności od *wymagań aplikacji.* W razie potrzeby można dodać więcej delegowanych uprawnień dla zasobów aplikacji.
+3. Nadaj delegowane uprawnienia aplikacji do następujących zasobów, w zależności od *wymagań aplikacji.* W razie potrzeby możesz dodać więcej delegowanych uprawnień do zasobów aplikacji.
 
    1. **Microsoft Partner Center** (niektóre dzierżawy pokazują to jako **SampleBECApp**)
 
@@ -86,7 +86,7 @@ Przed wykonaniem wywołań REST musisz utworzyć i zarejestrować aplikację int
 
    3. **Windows Azure Active Directory**
 
-4. Upewnij się, że adres URL strony głównej aplikacji jest ustawiony na punkt końcowy, w którym działa żywa aplikacja internetowa. Ta aplikacja będzie musiała zaakceptować kod [autoryzacji z](#get-authorization-code) wywołania logowania usługi Azure AD. Na przykład w przykładowym kodzie w [poniższej sekcji](#get-authorization-code)aplikacja internetowa działa pod następującym kodem: `https://localhost:44395/` .
+4. Upewnij się, że adres URL strony głównej aplikacji jest ustawiony na punkt końcowy, w którym działa żywa aplikacja internetowa. Ta aplikacja musi zaakceptować kod [autoryzacji z](#get-authorization-code) wywołania logowania usługi Azure AD. Na przykład w przykładowym kodzie w [poniższej sekcji](#get-authorization-code)aplikacja internetowa działa pod następującym kodem: `https://localhost:44395/` .
 
 5. Zwróć uwagę na następujące informacje z ustawień aplikacji internetowej w usłudze Azure AD:
 
@@ -94,21 +94,21 @@ Przed wykonaniem wywołań REST musisz utworzyć i zarejestrować aplikację int
    - Klucz tajny aplikacji
 
 > [!NOTE]
-> Zaleca się używanie [certyfikatu jako tajnego certyfikatu aplikacji.](/azure/active-directory/develop/active-directory-certificate-credentials) Można jednak również utworzyć klucz aplikacji w Azure Portal. Przykładowy kod w [poniższej sekcji używa](#get-authorization-code) klucza aplikacji.
+> Zaleca się używanie [certyfikatu jako tajnego certyfikatu aplikacji.](/azure/active-directory/develop/active-directory-certificate-credentials) Można jednak również utworzyć klucz aplikacji w Azure Portal. Przykładowy kod w [poniższej sekcji](#get-authorization-code) używa klucza aplikacji.
 
 ### <a name="get-authorization-code"></a>Uzyskiwanie kodu autoryzacji
 
-Musisz uzyskać kod autoryzacji aplikacji internetowej do zaakceptowania z wywołania logowania usługi Azure AD:
+Musisz uzyskać kod autoryzacji dla aplikacji internetowej do zaakceptowania z wywołania logowania usługi Azure AD:
 
 1. Zaloguj się do usługi Azure AD pod następującym adresem URL: [https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1](https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1) . Pamiętaj, aby zalogować się przy użyciu konta użytkownika, z którego będą Partner Center interfejsu API (na przykład agenta administracyjnego lub konta agenta sprzedaży).
 
-2. Zastąp **identyfikator Application-Id** identyfikatorem aplikacji usługi Azure AD (IDENTYFIKATOR GUID).
+2. Zastąp **identyfikator application-id** identyfikatorem aplikacji usługi Azure AD (identyfikatorem GUID).
 
 3. Po wyświetleniu monitu zaloguj się przy użyciu konta użytkownika ze skonfigurowaną usługą MFA.
 
-4. Po wyświetleniu monitu wprowadź dodatkowe informacje dotyczące usługi MFA (numer telefonu lub adres e-mail), aby zweryfikować logowanie.
+4. Po wyświetleniu monitu wprowadź dodatkowe informacje uwierzytelniania wieloskładnikowego (numer telefonu lub adres e-mail), aby zweryfikować logowanie.
 
-5. Po zalogowaniu przeglądarka przekieruje wywołanie do punktu końcowego aplikacji internetowej przy użyciu kodu autoryzacji. Na przykład poniższy przykładowy kod przekierowuje `https://localhost:44395/` do .
+5. Po zalogowaniu przeglądarka przekieruje wywołanie do punktu końcowego aplikacji internetowej przy użyciu kodu autoryzacji. Na przykład poniższy przykładowy kod przekierowuje do `https://localhost:44395/` .
 
 #### <a name="authorization-code-call-trace"></a>Śledzenie wywołania kodu autoryzacji
 
@@ -130,9 +130,9 @@ code=AuthorizationCodeValue&id_token=IdTokenValue&<rest of properties for state>
 
 Następnie należy użyć kodu autoryzacji, aby uzyskać token odświeżania:
 
-1. Wywołanie POST do punktu końcowego logowania usługi Azure AD `https://login.microsoftonline.com/CSPTenantID/oauth2/token` przy użyciu kodu autoryzacji. Aby uzyskać przykład, zobacz następujące [przykładowe wywołanie .](#sample-refresh-call)
+1. Wywołaj wywołanie POST do punktu końcowego logowania usługi Azure AD `https://login.microsoftonline.com/CSPTenantID/oauth2/token` przy użyciu kodu autoryzacji. Aby uzyskać przykład, zobacz następujące [przykładowe wywołanie](#sample-refresh-call).
 
-2. Zanotuj zwrócony token odświeżania.
+2. Zwróć uwagę na zwracany token odświeżania.
 
 3. Przechowuj token odświeżania w Azure Key Vault. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault API.](/rest/api/keyvault/)
 
@@ -207,7 +207,7 @@ Treść odpowiedzi:
 
 ### <a name="make-partner-center-api-calls"></a>Wywołania Partner Center API
 
-Należy użyć tokenu dostępu, aby wywołać interfejsy PARTNER CENTER API. Zobacz następujące przykładowe wywołanie.
+Aby wywołać interfejsy API Partner Center dostępu, należy użyć tokenu dostępu. Zobacz następujące przykładowe wywołanie.
 
 #### <a name="example-partner-center-api-call"></a>Przykład wywołania Partner Center API
 
@@ -223,11 +223,11 @@ Host: api.partnercenter.microsoft.com
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Możesz użyć modułu [Partner Center PowerShell,](https://www.powershellgallery.com/packages/PartnerCenter) aby zmniejszyć wymaganą infrastrukturę do wymiany kodu autoryzacji na token dostępu. Ta metoda jest opcjonalna do tworzenia [Partner Center REST](#rest).
+Możesz użyć modułu Partner Center [PowerShell,](https://www.powershellgallery.com/packages/PartnerCenter) aby zmniejszyć wymaganą infrastrukturę do wymiany kodu autoryzacji na token dostępu. Ta metoda jest opcjonalna do tworzenia [Partner Center REST.](#rest)
 
-Aby uzyskać więcej informacji na temat tego procesu, [zobacz dokumentację dotyczącą bezpiecznego model aplikacji](/powershell/partnercenter/secure-app-model) PowerShell.
+Aby uzyskać więcej informacji na temat tego procesu, zobacz [dokumentację dotyczącą bezpiecznego model aplikacji](/powershell/partnercenter/secure-app-model) PowerShell.
 
-1. Zainstaluj usługę Azure AD i Partner Center modułów programu PowerShell.
+1. Zainstaluj usługę Azure AD i Partner Center programu PowerShell.
 
     ```powershell
     Install-Module AzureAD
@@ -246,7 +246,7 @@ Aby uzyskać więcej informacji na temat tego procesu, [zobacz dokumentację dot
     ```
 
     > [!NOTE]
-    > Parametr **ServicePrincipal** jest używany z poleceniem **New-PartnerAccessToken,** ponieważ jest używana aplikacja usługi Azure AD o typie **Internet/interfejs API.** Ten typ aplikacji wymaga, aby identyfikator klienta i wpis tajny były uwzględniane w żądaniu tokenu dostępu. Po **wywołaniu polecenia Get-Credential** zostanie wyświetlony monit o wprowadzenie nazwy użytkownika i hasła. Wprowadź identyfikator aplikacji jako nazwę użytkownika. Wprowadź klucz tajny aplikacji jako hasło. Po **wywołaniu polecenia New-PartnerAccessToken** zostanie ponownie wyświetlony monit o wprowadzenie poświadczeń. Wprowadź poświadczenia dla używanego konta usługi. To konto usługi powinno być kontem partnera z odpowiednimi uprawnieniami.
+    > Parametr **ServicePrincipal** jest używany z poleceniem **New-PartnerAccessToken,** ponieważ jest używana aplikacja usługi Azure AD o typie **Internet/interfejs API.** Ten typ aplikacji wymaga, aby identyfikator klienta i wpis tajny zostały uwzględnione w żądaniu tokenu dostępu. Po **wywołaniu polecenia Get-Credential** zostanie wyświetlony monit o wprowadzenie nazwy użytkownika i hasła. Wprowadź identyfikator aplikacji jako nazwę użytkownika. Wprowadź wpis tajny aplikacji jako hasło. Po **wywołaniu polecenia New-PartnerAccessToken** zostanie ponownie wyświetlony monit o wprowadzenie poświadczeń. Wprowadź poświadczenia dla używanego konta usługi. To konto usługi powinno być kontem partnera z odpowiednimi uprawnieniami.
 
 3. Skopiuj wartość tokenu odświeżania.
 

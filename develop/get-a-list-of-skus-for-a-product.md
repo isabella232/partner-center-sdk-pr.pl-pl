@@ -1,17 +1,17 @@
 ---
 title: Pobieranie listy jednostek SKU dla produktu (według kraju)
-description: Możesz pobrać i filtrować kolekcję jednostki SKU według kraju dla produktu przy użyciu Partner Center API.
+description: Kolekcję jednostki SKU według kraju można pobrać i przefiltrować dla produktu przy użyciu Partner Center API.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 27a2391a22a9439461fb53764b87c1cafa68b875
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1f15ecaa7d84f4c68c6221e459d9977a79cffd9fa19d32ccbd7e6bec6444a93c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873891"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995445"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-country"></a>Pobieranie listy jednostek SKU dla produktu (według kraju)
 
@@ -19,7 +19,7 @@ Możesz uzyskać kolekcję dostępnych w danym kraju jednostki SKU dla określon
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -31,9 +31,9 @@ Aby uzyskać listę jednostki SKU dla produktu:
 
 2. Z interfejsu wybierz właściwość **Jednostki SKU,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU.
 
-3. Wywołaj **metodę Get()** **lub GetAsync(),** aby pobrać kolekcję dostępnych jednostki SKU dla produktu.
+3. Wywołaj **metodę Get()** **lub GetAsync(),** aby pobrać kolekcję dostępnych dla produktu jednostki SKU.
 
-4. (Opcjonalnie) Wybierz zakres rezerwacji przy użyciu **metody ByReservationScope().**
+4. (Opcjonalnie) Wybierz zakres rezerwacji przy **użyciu metody ByReservationScope().**
 
 5. (Opcjonalnie) Użyj metody **ByTargetSegment(),** aby filtrować jednostki SKU według segmentu docelowego przed wywołaniem metody **Get()** lub **GetAsync().**
 
@@ -67,9 +67,9 @@ Aby uzyskać listę jednostki SKU dla produktu:
 
 1. Aby uzyskać interfejs dla operacji określonego produktu, należy wykonać kroki opisane w te tematu [Get a product by ID (Uzyskiwanie produktu według identyfikatora).](get-a-product-by-id.md)
 
-2. W interfejsie wybierz funkcję **getSkus,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU.
+2. Z interfejsu wybierz funkcję **getSkus,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU.
 
-3. Wywołaj **funkcję get(),** aby pobrać kolekcję dostępnych jednostki SKU dla produktu.
+3. Wywołaj **funkcję get(),** aby pobrać kolekcję dostępnych dla produktu jednostki SKU.
 
 4. (Opcjonalnie) Użyj funkcji **byTargetSegment(),** aby filtrować jednostki SKU według segmentu docelowego przed wywołaniem **funkcji get().**
 
@@ -114,7 +114,7 @@ Get-PartnerProductSku -ProductId $productId -Segment $targetSegment
 
 | Metoda  | Identyfikator URI żądania                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus?country={country-code}&targetSegment={target-segment} HTTP/1.1  |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}/skus?country={kod-kraju}&targetSegment={segment-docelowy} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
@@ -122,10 +122,10 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać listę jedn
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| product-id             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
 | kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 | segment docelowy         | ciąg   | Nie       | Ciąg, który identyfikuje segment docelowy używany do filtrowania. |
-| reservationScope | ciąg   | Nie | Podczas wykonywania zapytania o listę jednostki SKU dla produktu rezerwacji platformy Azure określ, aby uzyskać listę jednostki SKU, które `reservationScope=AzurePlan` mają zastosowanie do usługi AzurePlan. Wyklucz ten parametr, aby uzyskać listę jednostki SKU dla produktów rezerwacji platformy Azure, które mają zastosowanie do subskrypcji Microsoft Azure (MS-AZR-0145P).  |
+| reservationScope (zakres rezerwacji) | ciąg   | Nie | Podczas wykonywania zapytania o listę jednostki SKU dla produktu rezerwacji platformy Azure określ, aby uzyskać listę jednostki SKU, które mają zastosowanie `reservationScope=AzurePlan` do usługi AzurePlan. Wyklucz ten parametr, aby uzyskać listę jednostki SKU dla produktów rezerwacji platformy Azure, które mają zastosowanie do subskrypcji usługi Microsoft Azure (MS-AZR-0145P).  |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -147,7 +147,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Pobierz listę jednostki SKU dla produktu rezerwacji platformy Azure. Uwzględnij tylko jednostki SKU, które mają zastosowanie do planów platformy Azure, Microsoft Azure subskrypcji (MS-AZR-0145P):
+Pobierz listę jednostki SKU dla produktu rezerwacji platformy Azure. Uwzględnij tylko jednostki SKU, które mają zastosowanie do planów platformy Azure, Microsoft Azure subskrypcje (MS-AZR-0145P):
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US&reservationScope=AzurePlan HTTP/1.1
@@ -157,7 +157,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Pobierz listę jednostki SKU dla produktu rezerwacji platformy Azure. Uwzględnij tylko jednostki SKU, które mają zastosowanie Microsoft Azure subskrypcji (MS-AZR-0145P), a nie planów platformy Azure:
+Pobierz listę jednostki SKU dla produktu rezerwacji platformy Azure. Uwzględnij tylko jednostki SKU, które mają Microsoft Azure subskrypcji (MS-AZR-0145P), a nie planów platformy Azure:
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US HTTP/1.1
@@ -169,7 +169,7 @@ MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [SKU.](product-resources.md#sku)
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [SKU.](product-resources.md#sku)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
@@ -179,7 +179,7 @@ Ta metoda zwraca następujące kody błędów:
 
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 403                  | 400030       | Dostęp do żądanego obiektu targetSegment nie jest dozwolony.                                                     |
+| 403                  | 400030       | Dostęp do żądanego obiektu targetSegment jest niedozwolone.                                                     |
 | 404                  | 400013       | Nie znaleziono produktu nadrzędnego.                                                                         |
 
 ### <a name="response-example"></a>Przykład odpowiedzi

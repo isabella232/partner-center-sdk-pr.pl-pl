@@ -1,21 +1,21 @@
 ---
 title: Dokonanie jednorazowego zakupu
-description: Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypcje oprogramowania, oprogramowanie bezterminowe i wystąpienia zarezerwowanej maszyny wirtualnej platformy Azure, przy użyciu interfejsu API Partner Center API.
+description: Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypcje oprogramowania, oprogramowanie bezterminowe i wystąpienia zarezerwowane maszyny wirtualnej platformy Azure, przy użyciu interfejsu API Partner Center API.
 ms.date: 10/09/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1ca2d5b7ad6ba1196d74a8cdb748ab808192d569
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: baf0b5d4aaa8957874ab019359aca2662a76194387e0cd06999b0bb329076c80
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548383"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994442"
 ---
 # <a name="make-a-one-time-purchase"></a>Dokonanie jednorazowego zakupu
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud for US Government
 
-Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypcje oprogramowania, oprogramowanie bezterminowe i wystąpienia zarezerwowanej maszyny wirtualnej platformy Azure, przy użyciu interfejsu API Partner Center API.
+Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypcje oprogramowania, oprogramowanie bezterminowe i wystąpienia zarezerwowane maszyny wirtualnej platformy Azure, przy użyciu interfejsu API Partner Center API.
 
 > [!NOTE]
 > Subskrypcje oprogramowania nie są dostępne na następujących rynkach:
@@ -34,7 +34,7 @@ Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypc
 > | Bonaire                        | Wyspy Heard i McDonalda | Saint Vincent i Grenadyny         |
 > | Wyspa Bouveta                  | Wyspa Man                       | Samoa                                    |
 > | Brazylia                         | Jan Mayen                         | San Marino                               |
-> | Brytyjskie Terytorium Oceanu Indyjskiego | Jersey                            | São Tomé i Práncipe                    |
+> | Brytyjskie Terytorium Oceanu Indyjskiego | Jersey                            | São Tomé i Prüncipe                    |
 > | Brytyjskie Wyspy Dziewicze         | Kiribati                          | Seszele                               |
 > | Burkina Faso                   | Kosowo                            | Sierra Leone                             |
 > | Burundi                        | Laos                              | Sint Eustatius                           |
@@ -43,7 +43,7 @@ Jak dokonać zakupu oprogramowania i produktów rezerwacji, takich jak subskrypc
 > | Czad                           | Madagaskar                        | Somalia                                  |
 > | Chiny                          | Malawi                            | Georgia Południowa i Sandwich Południowy |
 > | Wyspa Bożego Narodzenia               | Malediwy                          | Sudan Południowy                              |
-> | Wyspy Kokosowe (Keelinga)        | Mali                              | StRowa, Ascension, Tristan da Cunha   |
+> | Wyspy Kokosowe (Keelinga)        | Mali                              | St Stana, Ascension, Tristan da Cunha   |
 > | Komory                        | Wyspy Marshalla                  | Surinam                                 |
 > | Kongo                          | Martynika                        | Svalbard                                 |
 > | Kongo (DRK)                    | Mauretania                        | Suazi                                |

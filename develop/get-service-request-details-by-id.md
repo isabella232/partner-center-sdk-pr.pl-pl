@@ -4,12 +4,12 @@ description: Jak pobrać szczegóły istniejącego żądania obsługi klienta we
 ms.date: 02/06/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 66488cf9592d630cb1f0237d379e8df5ead6a3a8
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 1ad22e5940781d514b00a6a25ca772fab338dc5584df09ac5a29fb2559e9538a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548774"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995700"
 ---
 # <a name="get-service-request-details-by-id"></a>Pobieranie szczegółów żądania obsługi według identyfikatora
 

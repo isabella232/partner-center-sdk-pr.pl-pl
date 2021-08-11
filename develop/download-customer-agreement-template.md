@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: fccb9e3d4a837f3e8043f8c7ae1e3911d819afd7
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 7757cd6a92c168e4209d2d3ac49746e4a0907021d260a7b49603a3706e8cfa5c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906525"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994816"
 ---
 # <a name="get-a-download-link-for-the-microsoft-customer-agreement-template"></a>Pobierz link pobierania dla Umowa z Klientem Microsoft szablonu
 
@@ -35,7 +35,7 @@ W tym artykule opisano, jak uzyskać link do Umowa z Klientem Microsoft szablonu
 
 > [!IMPORTANT]
 >
-> - Ta Umowa z Klientem Microsoft jest specyficzna dla kraju. Podczas żądania linku do pobrania Umowa z Klientem Microsoft należy określić właściwy kraj na podstawie lokalizacji klienta. lub listę obsługiwanych krajów, zapoznaj się [z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages)
+> - Ta Umowa z Klientem Microsoft jest specyficzna dla kraju. W przypadku żądania linku do pobrania Umowa z Klientem Microsoft szablonu należy określić właściwy kraj na podstawie lokalizacji klienta. lub listę obsługiwanych krajów, zapoznaj się [z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages)
 >
 > - W niektórych krajach Umowa z Klientem Microsoft w wielu językach. Aby uzyskać najlepszą obsługę klienta, wybierz język, który najlepiej odpowiada potrzebom klienta. Aby uzyskać listę obsługiwanych języków, zapoznaj się [z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages)
 > - Ta metoda jest obsługiwana tylko w przypadku Umowa z Klientem Microsoft.
@@ -44,7 +44,7 @@ W tym artykule opisano, jak uzyskać link do Umowa z Klientem Microsoft szablonu
 
 Aby pobrać link do pobrania Umowa z Klientem Microsoft szablonu:
 
-1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Należy uzyskać **templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md)(Uzyskiwanie metadanych umowy dla Umowa z Klientem Microsoft ).
+1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Musisz uzyskać **szablon templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md)(Uzyskiwanie metadanych umowy dla Umowa z Klientem Microsoft ).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -62,7 +62,7 @@ Aby pobrać link do pobrania Umowa z Klientem Microsoft szablonu:
 
 5. Wywołaj **metodę ByCountry** i określ kraj klienta, do którego ma zastosowanie szablon umowy. Jeśli metoda nie zostanie *określona,* zapytanie będzie domyślnie oznaczać wartość USA. Aby uzyskać listę obsługiwanych kodów krajów, zapoznaj się [z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages) W tej metodzie jest **zróżnicowa wielkość liter.**
 
-6. Wywołaj **metodę ByLanguage** i określ język, w jakim szablon umowy powinien być zlokalizowany. Zapytanie domyślnie określa wartość *en-US,* jeśli metoda nie została określona lub podany kod kraju nie jest obsługiwany dla określonego kraju. Aby uzyskać listę obsługiwanych kodów języków, zapoznaj [się z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages)
+6. Wywołaj **metodę ByLanguage** i określ język, w jakim szablon umowy powinien być zlokalizowany. Zapytanie domyślnie ma wartość *en-US,* jeśli metoda nie została określona lub określony kod kraju nie jest obsługiwany dla określonego kraju. Aby uzyskać listę obsługiwanych kodów języków, [zapoznaj się z listą obsługiwanych krajów i języków.](#list-of-supported-countries-and-languages)
 
 7. Wywołaj **metodę Get** lub **GetAsync.**
 
@@ -82,7 +82,7 @@ Kompletny przykład można znaleźć w klasie [GetAgreementDetails](https://gith
 
 Aby pobrać link do pobrania Umowa z Klientem Microsoft szablonu:
 
-1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Należy uzyskać **templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md)(Uzyskiwanie metadanych umowy dla Umowa z Klientem Microsoft ).
+1. Pobierz metadane umowy dla Umowa z Klientem Microsoft. Musisz uzyskać **szablon templateId** Umowa z Klientem Microsoft. Aby uzyskać więcej informacji, zobacz [Get agreement metadata for Umowa z Klientem Microsoft](get-customer-agreement-metadata.md)(Uzyskiwanie metadanych umowy dla Umowa z Klientem Microsoft ).
 
 2. Utwórz żądanie REST, aby pobrać [ **zasób AgreementDocument.**](./agreement-document-resources.md) Przykład można znaleźć w [przykładzie składni](#request-syntax) żądania. Należy określić następujące informacje:
 
@@ -130,7 +130,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 W przypadku powodzenia ta metoda zwraca [ **zasób AgreementDocument**](./agreement-document-resources.md) w treści odpowiedzi.
 
-Zasób ma właściwość **downloadUri,** która zawiera ciąg adresu URL, którego można użyć do pobrania szablonu umowy. Przy każdym zapytaniu jest zwracany inny link. Ten link wygasa po pięciu minutach.
+Zasób ma właściwość **downloadUri,** która zawiera ciąg adresu URL, którego można użyć do pobrania szablonu umowy. Za każdym razem, gdy zapytanie jest zwracane, jest zwracany inny link. Ten link wygasa po pięciu minutach.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
@@ -157,7 +157,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 ## <a name="list-of-supported-countries-and-languages"></a>Lista obsługiwanych krajów i języków
 
 > [!IMPORTANT]
-> Właściwość kodu kraju jest zróżnicowała wielkość liter. Upewnij się, że używasz poprawnej wielkości obudowy określonej w poniższej tabeli.
+> We właściwości kodu kraju jest zróżnicowaana wielkość liter. Upewnij się, że używasz poprawnej wielkości obudowy określonej w poniższej tabeli.
 
 | Kraj                   | Numer kierunkowy kraju   | Obsługiwane kodów języków |
 |------------------------|--------|----------|
@@ -291,7 +291,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Litwa | LT | en-US, lt-LT |
 | Luksemburg | LU | en-US, fr-FR |
 | SRA Makau | MO | en-US, zh-HK |
-| Fca, FYRO | MK | en-US |
+| Republika Północna i Północna | MK | en-US |
 | Madagaskar | MG | en-US |
 | Malawi | MW | en-US |
 | Malezja | MY | en-US, ms-MY |
@@ -301,7 +301,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Wyspy Marshalla | MH | en-US |
 | Martynika | MQ | en-US |
 | Mauretania | MR | en-US |
-| Mauritius | MU | en-US, ar-SA |
+| Mauritius | Mu (MU) | en-US, ar-SA |
 | Wyspa Majotta | YT | en-US |
 | Meksyk | MX | en-US, es-ES |
 | Mikronezja | FM | en-US |
@@ -403,7 +403,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Watykan | VA | en-US |
 | Wenezuela | VE | en-US, es-ES |
 | Wietnam | VN | en-US, vi-VN |
-| Wallis i Ichuna | WF | en-US |
+| Wallis i Futuna | WF | en-US |
 | Jemen | Ye | en-US, ar-SA |
 | Zambia | ZM | en-US |
 | Zimbabwe | ZW | en-US |

@@ -1,19 +1,19 @@
 ---
-title: Pobierz pozycje użycia komercyjnego rozliczane na podstawie faktury
-description: Możesz uzyskać kolekcję szczegółów pozycji pozycji faktury za użycie komercyjne (zamkniętego dziennego elementu wiersza użycia) dla określonej faktury przy użyciu interfejsów API Partner Center.
+title: Uzyskiwanie pozycji użycia komercyjnego rozliczanych na podstawie faktury
+description: Możesz uzyskać kolekcję szczegółów pozycji pozycji faktury za użycie komercyjne (zamkniętego dziennego elementu wiersza użycia ocenianego) dla określonej faktury przy użyciu interfejsów API Partner Center.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 915a6b40a835b0b8d8ded6d49244aede8bbf079334890ccc8b3ef50782dec2dd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446228"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994527"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Pobierz pozycje użycia komercyjnego rozliczane na podstawie faktury
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Uzyskiwanie pozycji użycia komercyjnego rozliczanych na podstawie faktury
 
 Aby uzyskać kolekcję szczegółów dla pozycji faktur za użycie komercyjne (nazywanych również zamkniętymi pozycjami dziennego użycia) dla określonej faktury, można użyć następujących metod.
 
@@ -38,7 +38,7 @@ Poniższy przykładowy kod używa pętli **foreach** do przetwarzania kolekcji e
 
 Aby uzyskać kolekcję elementów wiersza, które odpowiadają **wystąpieniu InvoiceDetail:**
 
-1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do metody [**By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
+1. Przekaż wartości **BillingProvider i** **InvoiceLineItemType** wystąpienia do [**metody By.**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by)
 
 2. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) aby pobrać skojarzone elementy wiersza.
 3. Utwórz moduł wyliczający, aby przejść przez kolekcję, jak pokazano w poniższym przykładzie.
@@ -124,7 +124,7 @@ Podczas tworzenia żądania użyj następującego parametru URI i zapytania.
 
 | Nazwa                   | Typ   | Wymagane | Opis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| invoice-id             | ciąg | Tak      | Ciąg, który identyfikuje fakturę.                             |
+| invoice-id             | ciąg | Tak      | Ciąg identyfikujący fakturę.                             |
 | Dostawca               | ciąg | Tak      | Dostawca: "OneTime".                                  |
 | typ-elementu-wiersza faktury | ciąg | Tak      | Typ szczegółów faktury: "UsageLineItems". |
 | currencyCode           | ciąg | Tak      | Kod waluty dla rozliowanych pozycji.                    |
@@ -144,7 +144,7 @@ Brak.
 
 Jeśli to się powiedzie, odpowiedź będzie zawierała kolekcję szczegółów elementu wiersza.
 
-Dla elementu wiersza **ChargeType** wartość **Zakup jest** mapowana na **nowy**. Wartość Zwrot **jest** mapowana na **anuluj**.
+W przypadku elementu wiersza **ChargeType** wartość **Zakup jest** mapowana na **nowy**. Wartość Zwrot **jest** mapowana na anuluj **.**
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

@@ -5,12 +5,12 @@ ms.date: 5/24/2021
 ms.author: vijvala
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ba1fd002ac62aba4e414d263b33ecc8153054602
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 708fedd4e34b2242aae6e6e0ac673ce77524d448dcee4a05877d37b5266e44c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973013"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994935"
 ---
 # <a name="delete-indirect-reseller-in-sandbox"></a>Usuwanie odsprzedawcy pośredniego w piaskownicy
 
@@ -23,7 +23,7 @@ W tym dokumencie przedstawiono sposób usuwania dostawców pośrednich piaskowni
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center Authentication (Uwierzytelnianie).](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="sandbox-indirect-provider--delete-sandbox-indirect-reseller"></a>Dostawca pośredni piaskownicy — usuwanie odsprzedawcy pośredniego piaskownicy 
 
@@ -31,7 +31,7 @@ Ta funkcja jest dostępna tylko w piaskownicy i umożliwia dostawcom pośrednim 
 
 1. Wymagania wstępne dotyczące usuwania odsprzedawcy pośredniego piaskownicy
     1. Wstrzymywanie subskrypcji dla każdego klienta odsprzedawcy pośredniego piaskownicy
-    2. Usuń wszystkich klientów odsprzedawcy pośredniego
+    2. Usuwanie wszystkich klientów odsprzedawcy pośredniego
 2. Dozwolony limit pięciu odsprzedawców pośrednich piaskownicy na dostawcę pośredniego piaskownicy. Po usunięciu odsprzedawcy pośredniego piaskownicy limit przydziału zostanie zresetowany.
 
 ## <a name="delete-sandbox-indirect-reseller-through-api"></a>Usuwanie odsprzedawcy pośredniego piaskownicy za pośrednictwem interfejsu API
@@ -46,7 +46,7 @@ Ta funkcja jest dostępna tylko w piaskownicy i umożliwia dostawcom pośrednim 
 
 #### <a name="request-headers"></a>Nagłówki żądań
 
-- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wielokrotnie)
+- Ten interfejs API jest idempotentny (nie da innego wyniku, jeśli wywołasz go wiele razy)
 - Wymagany jest identyfikator żądania i identyfikator korelacji
 - Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki REST)](headers.md)
 
@@ -75,7 +75,7 @@ Date: Wed, 16 Feb 2021 00:43:02 GMT
 
 Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz inne informacje debugowania. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów](error-codes.md).
 
-Ta metoda zwraca następujące kody powodzenia i błędów:
+Ta metoda zwraca następujące kody błędów i powodzenia stanu:
 
 | Kod stanu HTTP                     | Kod błędu     | Opis                                      |
 |--------------------------------------|----------------|--------------------------------------------------|

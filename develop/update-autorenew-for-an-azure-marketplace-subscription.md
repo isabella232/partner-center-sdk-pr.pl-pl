@@ -4,16 +4,16 @@ description: Zaktualizuj właściwość autorenew zasobu Subskrypcji, która odp
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cc0b4c4bff5e8762ffcc2552b2e9e36bcf93686c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446670"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996601"
 ---
 # <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
 
-Zaktualizuj właściwość autorenew dla zasobu subskrypcji platformy [handlowej,](subscription-resources.md) który jest dopasowany do klienta i identyfikatora subskrypcji.
+Zaktualizuj właściwość autorenew dla [](subscription-resources.md) zasobu subskrypcji platformy handlowej, który jest dopasowany do klienta i identyfikatora subskrypcji.
 
 Na Partner Center nawigacyjnym ta operacja jest wykonywana przez [wybranie klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, którą chcesz zaktualizować. Na koniec przełącz opcję **Automatyczne odnawianie,** a następnie wybierz pozycję **Prześlij.**
 
@@ -21,7 +21,7 @@ Na Partner Center nawigacyjnym ta operacja jest wykonywana przez [wybranie klien
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
@@ -39,7 +39,7 @@ selectedSubscription.AutoRenewEnabled = false;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: UpdateSubscription.cs 
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa:** UpdateSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -112,7 +112,7 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca zaktualizowane [właściwości](subscription-resources.md) zasobów subskrypcji w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca zaktualizowane [właściwości zasobów](subscription-resources.md) subskrypcji w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

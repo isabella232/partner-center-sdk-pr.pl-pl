@@ -1,26 +1,26 @@
 ---
 title: Pobieranie reguł formatowania adresów według rynku
-description: Uzyskaj oczekiwany format adresu na podstawie kodu ISO dla rynku.
+description: Pobierz oczekiwany format adresu na podstawie kodu ISO dla rynku.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d5233d059ea6e71c28df36b2242659c28c5dd857
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: c1e5c3b0b4a8f57a3731392bfa13d9da22c66699d5dedd4da48aa7f93b5700fd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549046"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995887"
 ---
 # <a name="get-address-formatting-rules-by-market"></a>Pobieranie reguł formatowania adresów według rynku
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 
-Uzyskaj oczekiwany format adresu na podstawie kodu ISO dla rynku.
+Pobierz oczekiwany format adresu na podstawie kodu ISO dla rynku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -34,7 +34,7 @@ Uzyskaj oczekiwany format adresu na podstawie kodu ISO dla rynku.
 
 | Nazwa           | Typ       | Wymagane | Opis                         |
 |----------------|------------|----------|-------------------------------------|
-| **identyfikator isocode** | **ciąg** | Y        | Dwue znakowy kod kraju ISO. |
+| **identyfikator isocode-id** | **ciąg** | Y        | Dwue znakowy kod kraju ISO. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -56,7 +56,7 @@ MS-CorrelationId: 5cfd634d-b936-47af-87f0-0f0217425dcc
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca **obiekt CountryInformation** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca obiekt **CountryInformation** w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

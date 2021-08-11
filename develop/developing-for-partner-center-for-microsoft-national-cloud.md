@@ -7,12 +7,12 @@ MS-HAID:
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d38a35fb88b4835716e429aeed731a0d55d9a669
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: f8b9b3c3b9a1a1173cf8f3e79f60e629e3d34ea13ecce2e7a2c74924bde2b7d1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906463"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994867"
 ---
 # <a name="developing-for-partner-center-for-microsoft-national-clouds"></a>Tworzenie aplikacji dla Partner Center dla chmur krajowych firmy Microsoft
 
@@ -43,9 +43,9 @@ Różnice między partnerami między *Partner Center* *a Partner Center obsługi
 ## <a name="partner-center-for-microsoft-cloud-germany"></a>Centrum partnerskie dla Microsoft Cloud Niemcy
 
 > [!IMPORTANT]
-> W oparciu o ewolucję potrzeb klientów nasza strategia chmury dla Niemiec koncentruje się na dostarczeniu nowych regionów chmury w Niemczech, które są spójne z naszą ofertą chmury globalnej. Dzięki temu nie będziemy już akceptować nowych klientów ani wdrażać żadnych nowych usług z obecnie dostępnej usługi Microsoft Cloud w Niemczech. Istniejący klienci mogą nadal korzystać z bieżących dostępnych obecnie usług w chmurze, które będziemy utrzymywać z niezbędnymi aktualizacjami zabezpieczeń.
+> W oparciu o ewolucję potrzeb klientów nasza strategia chmury dla Niemiec koncentruje się na dostarczeniu nowych regionów chmury w Niemczech, które są spójne z naszą ofertą chmury globalnej. W związku z przyjęciem tego kierunku nie będziemy już akceptować nowych klientów ani wdrażać żadnych nowych usług z obecnie dostępnej usługi Microsoft Cloud Germany. Obecni klienci mogą nadal korzystać z dostępnych usług chmurowych, do których będziemy udostępniali niezbędne aktualizacje zabezpieczeń.
 >
-> W przyszłości nowi klienci mogą korzystać z obecnie dostępnych regionów europejskich lub nowych regionów w Niemczech, gdy staną się dostępne. Aby uzyskać więcej informacji, zobacz [Microsoft to deliver cloud services from new datacenters in Germany (Firma Microsoft](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/)może dostarczać usługi w chmurze z nowych centrów danych w Niemczech).
+> W przyszłości nowi klienci mogą korzystać z obecnie dostępnych regionów europejskich lub nowych regionów w Niemczech, gdy staną się dostępne. Aby uzyskać więcej informacji, zobacz artykuł [Microsoft to deliver cloud services from new datacenters in Germany (Firma Microsoft dostarczy usługi chmurowe z nowych centrów danych w Niemczech)](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/).
 
 Różnice między partnerami w Partner Center *a* *Partner Center dla usługi Microsoft Cloud Germany* są:
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: jasongroce
 ms.author: sabaja
-ms.openlocfilehash: 014a1e6a14b538b7557d58710b9132dd9e37de21
-ms.sourcegitcommit: 7e2d2805c4cdd61785b1cdcca99cad10d5683153
+ms.openlocfilehash: b9bdc6da64a79f4f35466fb62662b086a8e1ab3cadc99c7ca685303752f9d166
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113592456"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996332"
 ---
 # <a name="manage-payouts-using-the-payout-service-api"></a>Zarządzanie wypłatami przy użyciu interfejsu API usługi Wypłaty
 
@@ -34,7 +34,7 @@ Usługa Platforma tożsamości Microsoft pomaga tworzyć aplikacje, do których 
 
    Jeśli Twoje konto zapewnia dostęp do więcej niż jednej dzierżawy, wybierz swoje konto w prawym górnym rogu i ustaw sesję portalu na poprawną dzierżawę usługi Azure AD.
 
-2. W lewym okienku nawigacji wybierz usługę Azure Active Directory, a następnie wybierz **Rejestracje aplikacji**, a następnie **pozycję Nowa rejestracja.** Zostanie **wyświetlona strona Rejestrowanie** aplikacji.
+2. W okienku nawigacji po lewej stronie wybierz usługę Azure Active Directory, a następnie wybierz **Rejestracje aplikacji**, a następnie pozycję **Nowa rejestracja.** Zostanie **wyświetlona strona Rejestrowanie** aplikacji.
 
    :::image type="content" source="./images/manage-payouts/new-app-registration.png" alt-text="Zrzut ekranu przedstawiający ekran Rejestrowanie aplikacji w Azure Portal.":::
 
@@ -58,7 +58,7 @@ Usługa Platforma tożsamości Microsoft pomaga tworzyć aplikacje, do których 
 
    :::image type="content" source="./images/manage-payouts/register-an-application.png" alt-text="<tekst alternatywny>":::
 
-5. Jeśli chcesz dodać możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, w tym znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i inne.
+5. Jeśli chcesz dodać możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, takie jak znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i inne.
 
 ## <a name="platform-specific-properties"></a>Właściwości specyficzne dla platformy
 

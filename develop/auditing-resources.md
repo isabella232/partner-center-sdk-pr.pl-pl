@@ -4,12 +4,12 @@ description: Dowiedz się Partner Center zasobów inspekcji interfejsu API, taki
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9d78a305c2d27dc692c609e30817b34b1f814157
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 50c90f7e7a5dfb274044fafab87818c7ac8428124ca9072770cc5fd9fa3806d5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974356"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994663"
 ---
 # <a name="auditing-resources-that-help-you-get-a-record-of-partner-center-activity"></a>Inspekcja zasobów, które ułatwiają uzyskiwanie rekordu Partner Center aktywności
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 7d76de33c9a0d28e9d3fb0b0821cbd37ad67e7af
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 10798ae0bfae8c1a4e38777096861427992b8aee3799ee2dd9154c6f0e0c0799
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973149"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995173"
 ---
 # <a name="customer-resources"></a>Zasoby klienta
 
@@ -19,7 +19,7 @@ ms.locfileid: "111973149"
 
 ## <a name="customer"></a>Customer
 
-Zasób **Customer** reprezentuje klienta lub odsprzedawcę. W większości przypadków zasób klienta może być dowolną osobą, pracownikiem lub organizacją, która chce prowadzenia działalności biznesowej z firmą Microsoft i odsprzedawcami firmy Microsoft. Klienci mają również profil firmy i profil rozliczeniowy.
+Zasób **Customer** reprezentuje klienta lub odsprzedawcę. W większości przypadków zasób klienta może być dowolną osobą, pracownikiem lub organizacją, która chce korzystać z usług firmy Microsoft i odsprzedawców firmy Microsoft. Klienci mają również profil firmy i profil rozliczeniowy.
 
 >[!NOTE]
 >**Zasób** Klient ma limit szybkości 500 żądań na minutę na identyfikator dzierżawy.
@@ -31,7 +31,7 @@ Zasób **Customer** reprezentuje klienta lub odsprzedawcę. W większości przyp
 | companyProfile        | [CustomerCompanyProfile](#customercompanyprofile)                | Dodatkowe informacje o firmie lub organizacji.                                                                                    |
 | billingProfile        | [CustomerBillingProfile](#customerbillingprofile)                | Dodatkowe informacje używane do rozliczeń.                                                                                                     |
 | relationshipToPartner | ciąg                                                           | Definiuje program licencjonowania używany przez partnera dla tego klienta: "brak", "odsprzedawca", "doradca", "syndykacja" lub "pomoc techniczna \_ firmy Microsoft". |
-| allowDelegatedAccess  | boolean                                                          | Wskazuje, czy partnerowi udzielono delegowanych uprawnień administratora przez tego klienta. Ta właściwość jest dostępna tylko w przypadku uzyskiwania klienta według identyfikatora, a nie według listy.                                                         |
+| allowDelegatedAccess  | boolean                                                          | Wskazuje, czy partnerowi udzielono delegowanych uprawnień administratora przez tego klienta. Ta właściwość jest dostępna tylko podczas uzyskiwania klienta według identyfikatora, a nie według listy.                                                         |
 | userCredentials       | [UserCredentials](user-resources.md#usercredentials) | Poświadczenia użytkownika.                                                                                                                        |
 | customDomains         | tablica ciągów                                                 | Lista domen niestandardowych klienta.                                                                                                        |
 | associatedPartnerId   | ciąg                                                           | Odsprzedawca pośredni skojarzony z tym kontem klienta. Tę wartość można ustawić tylko przez pośrednich partnerów CSP.                              |
@@ -40,7 +40,7 @@ Zasób **Customer** reprezentuje klienta lub odsprzedawcę. W większości przyp
 
 ## <a name="customercompanyprofile"></a>CustomerCompanyProfile
 
-Zasób **CustomerCompanyProfile** to dodatkowe informacje o firmie lub organizacji.
+Zasób **CustomerCompanyProfile** zawiera dodatkowe informacje o firmie lub organizacji.
 
 | Właściwość    | Typ                                                           | Opis                                                                       |
 |-------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
@@ -49,7 +49,7 @@ Zasób **CustomerCompanyProfile** to dodatkowe informacje o firmie lub organizac
 | Companyname | ciąg                                                         | Nazwa firmy lub organizacji.                                          |
 | Linki       | [ResourceLinks](utility-resources.md#resourcelinks)           | Linki zasobów zawarte w profilu.                                  |
 | atrybuty  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające profilowi.                             |
-|organizationRegistrationNumber|Ciąg|Numer rejestracji organizacji klienta (w niektórych krajach określany również jako numer NUMER KLIENTA). Wymagane tylko w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Kolumbia (AM), Kolumbia (AZ), Przećwicz (BY), Kolumbia (KZ), Kyrgyzstan (KG), Przemów (MD), Korea (RU), Tadżykistan(TJ), Przemowa (UZ), Przemowa(UA), Indie, Brazylia, Południowa Afryka, Dynamo, Stany Zjednoczone Stanów Zjednoczonych, Arabia Saudyjska, Nawiązano, Argentyna, Hania, Hania, Indie, Południowe Hana i Przełęcz. W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy tego określać.|
+|organizationRegistrationNumber|Ciąg|Numer rejestracji organizacji klienta (w niektórych krajach określany również jako numer NUMER IDENTYFIKACYJNY). Wymagana tylko w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Zamówienie (AM), Kolumbia (AZ), Kolumbia (HU), KZ), Kyrgyzstan(KG), Azja (MD), Korea (RU), Tajikistan(TJ), Przemysl(UZ), Indie, Brazylia, Republika Południowej Afryki,Portal, Zjednoczone Królestwo, Arabia, Przećwicz, Wietnam, Anwil, Przemysl, Południowe Niemówiące i Ankai. W przypadku firmy/organizacji klienta znajdującej się w innych krajach nie należy tego określać.|
 
 
 ## <a name="customerbillingprofile"></a>CustomerBillingProfile
@@ -62,7 +62,7 @@ Zasób **CustomerBillingProfile** to dodatkowe informacje używane do rozliczeni
 | firstName      | ciąg                                                         | Imię kontaktu rozliczeniowego w firmie klienta. Jest to osoba, do której będą kierowane faktury i inne informacje dotyczące rozliczeń. |
 | lastName       | ciąg                                                         | Nazwisko kontaktu rozliczeniowego.                                                                                                                  |
 | poczta e-mail          | ciąg                                                         | Adres e-mail kontaktu rozliczeniowego                                                                                                                    |
-| kultura        | ciąg                                                         | Preferowana kultura komunikacji i waluty, taka jak "en-us".                                                                               |
+| kultura        | ciąg                                                         | Preferowana kultura komunikacji i waluty, taka jak "pl-pl".                                                                               |
 | language       | ciąg                                                         | Preferowany język komunikacji.                                                                                                            |
 | Companyname    | ciąg                                                         | Nazwa firmy lub organizacji.                                                                                                               |
 | defaultAddress | [Adres](utility-resources.md#address)                       | Adres, na który są wysyłane rachunki, na który działa kontakt rozliczeniowy.                                                                                   |

@@ -4,12 +4,12 @@ description: Jak usunąć urządzenie należące do określonego klienta.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a1e05ceb8615d6f84c1df101c542342f9a6eb04b
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: f44c94ff35ecdb709b44ba6eebc17ae37e513313d464a28378ce22ceb0097ee3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973081"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995071"
 ---
 # <a name="delete-a-device-for-the-specified-customer"></a>Usuwanie urządzenia dla określonego klienta
 

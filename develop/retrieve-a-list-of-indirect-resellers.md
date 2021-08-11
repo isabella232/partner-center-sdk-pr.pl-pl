@@ -1,27 +1,27 @@
 ---
 title: Pobieranie listy odsprzedawców pośrednich
-description: Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.
+description: Jak pobrać listę pośrednich odsprzedawców partnera podpisanego.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 901bf045d1de29744114bb58ed445f9eb17f70a4744786fd4617da9697e7c683
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446568"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996924"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Pobieranie listy odsprzedawców pośrednich
 
-Jak pobrać listę pośrednich odsprzedawców partnerów zalogowanych.
+Jak pobrać listę pośrednich odsprzedawców partnera podpisanego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby pobrać listę odsprzedawców pośrednich, z którymi jest relacja między zalogowanym partnerem, najpierw uzyskaj interfejs do operacji zbierania relacji z właściwości [**partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Następnie wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**Get \_ Async,**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) przekazując członek wyliczenia [**PartnerRelationshipType,**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) aby zidentyfikować typ relacji. Aby pobrać odsprzedawców pośrednich, należy użyć funkcji IsIndirectCloudSolutionProviderOf.
+Aby pobrać listę odsprzedawców pośrednich, z którymi jest relacja między zalogowanym partnerem, najpierw uzyskaj interfejs do operacji zbierania relacji z właściwości [**partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Następnie wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) lub [**Get \_ Async,**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) przekazując członka wyliczenia [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) w celu zidentyfikowania typu relacji. Aby pobrać pośrednich odsprzedawców, należy użyć IsIndirectCloudSolutionProviderOf.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,7 +45,7 @@ Użyj następującego parametru zapytania, aby zidentyfikować typ relacji.
 
 | Nazwa               | Typ    | Wymagane  | Opis                         |
 |--------------------|---------|-----------|-------------------------------------|
-| relationship_type  | ciąg  | Tak       | Wartość jest ciągiem reprezentacji jednej z nazw członków znalezionych w [typie PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę odsprzedawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectCloudSolutionProviderOf.<br/><br/> Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, z którymi nawiążą relację, użyj funkcji IsIndirectResellerOf.    |
+| relationship_type  | ciąg  | Tak       | Wartość jest ciągiem reprezentacji jednej z nazw członków znalezionych w [typie PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Jeśli partner jest zalogowany jako dostawca i chcesz uzyskać listę odsprzedawców pośrednich, z którymi ustanowiono relację, użyj funkcji IsIndirectCloudSolutionProviderOf.<br/><br/> Jeśli partner jest zalogowany jako odsprzedawca i chcesz uzyskać listę dostawców pośrednich, z którymi ustanowiono relację, użyj funkcji IsIndirectResellerOf.    |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

@@ -1,27 +1,27 @@
 ---
 title: Pobieranie usług zarządzanych dla klienta według identyfikatora
-description: Pobiera usługi zarządzane dla klienta. Innymi słowy, uzyskaj linki do wszystkich subskrypcji klienta, do których masz delegowane uprawnienia administratora. Możesz użyć tych linków, aby zapewnić pomoc techniczną i żądania obsługi plików w firmie Microsoft.
+description: Pobiera usługi zarządzane dla klienta. Innymi słowy, uzyskaj linki do wszystkich subskrypcji klienta, dla których masz delegowane uprawnienia administratora. Możesz użyć tych linków, aby zapewnić pomoc techniczną i żądania obsługi plików w firmie Microsoft.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1cf7e7b62113bd96b00fdc2301e4e7ac4f5d4243
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f81036e34caec54963d28af2c41ea74ea38d43a38b9fb1f929bbc6ceddceeaaa
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548451"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996533"
 ---
 # <a name="get-the-managed-services-for-a-customer-by-id"></a>Pobieranie usług zarządzanych dla klienta według identyfikatora
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Pobiera usługi zarządzane dla klienta. Innymi słowy, uzyskaj linki do wszystkich subskrypcji klienta, do których masz delegowane uprawnienia administratora. Możesz użyć tych linków, aby zapewnić pomoc techniczną i żądania obsługi plików w firmie Microsoft.
+Pobiera usługi zarządzane dla klienta. Innymi słowy, uzyskaj linki do wszystkich subskrypcji klienta, dla których masz delegowane uprawnienia administratora. Możesz użyć tych linków, aby zapewnić pomoc techniczną i żądania obsługi plików w firmie Microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -34,7 +34,7 @@ Aby wyświetlić listę wszystkich usług zarządzanych dla klienta, użyj kolek
 ResourceCollection<ManagedService> managedServices = partnerOperations.Customers.ById(selectedCustomerId).ManagedServices.Get();
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples, **klasa:** CustomerManagedServices.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesKlasa Samples: CustomerManagedServices.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -42,7 +42,7 @@ ResourceCollection<ManagedService> managedServices = partnerOperations.Customers
 
 | Metoda  | Identyfikator URI żądania                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/managedservices HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/managedservices HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -72,7 +72,7 @@ MS-CorrelationId: 03d6064a-f048-4aee-8892-ed46dc5c8bee
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję obiektów **usługi zarządzanej** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję obiektów usługi **zarządzanej** w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

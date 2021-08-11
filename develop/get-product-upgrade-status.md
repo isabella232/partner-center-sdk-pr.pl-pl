@@ -1,15 +1,15 @@
 ---
 title: Uzyskiwanie stanu uaktualnienia produktu dla klienta
-description: Możesz użyć zasobu ProductUpgradeRequest, aby określić stan uaktualnienia produktu dla klienta do nowej rodziny produktów, na przykład z subskrypcji usługi Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
+description: Zasób ProductUpgradeRequest umożliwia określenie stanu uaktualnienia produktu klienta do nowej rodziny produktów, na przykład z subskrypcji usługi Microsoft Azure (MS-AZR-0145P) do planu platformy Azure.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 03d925dd0fae987226ad1f8e71fad380ba144b83
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e33ac61d77fc4e14ff6f7801e2c15a968cf9f1a667087df612c0f76b216f891a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445565"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995751"
 ---
 # <a name="get-the-product-upgrade-status-for-a-customer"></a>Uzyskiwanie stanu uaktualnienia produktu dla klienta
 
@@ -17,9 +17,9 @@ Możesz użyć zasobu [**ProductUpgradeRequest,**](product-upgrade-resources.md#
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji w](enable-secure-app-model.md) przypadku korzystania z uwierzytelniania app+user z Partner Center API.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika. Postępuj zgodnie z [modelem bezpiecznej aplikacji podczas](enable-secure-app-model.md) korzystania z uwierzytelniania app+user z Partner Center API.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Rodzina produktów.
 
@@ -33,7 +33,7 @@ Aby sprawdzić, czy klient kwalifikuje się do uaktualnienia do planu platformy 
 
 2. Użyj **kolekcji IAggregatePartner.ProductUpgrades.**
 
-3. Wywołaj **metodę ById** i przekaż **identyfikator upgrade-id**.
+3. Wywołaj **metodę ById** i przekaż identyfikator **upgrade-id**.
 
 4. Wywołaj **metodę CheckStatus** i przekaż obiekt **ProductUpgradesRequest,** który zwróci **obiekt ProductUpgradeStatus.**
 
@@ -73,7 +73,7 @@ Użyj następującego parametru zapytania, aby określić klienta, dla którego 
 
 | Nazwa               | Typ | Wymagane | Opis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| **identyfikator uaktualnienia** | GUID | Tak | Wartość jest identyfikator uaktualnienia sformatowany identyfikator GUID. Ten identyfikator umożliwia określenie uaktualnienia do śledzenia. |
+| **identyfikator uaktualnienia** | GUID | Tak | Wartość jest identyfikator uaktualnienia w formacie IDENTYFIKATORA GUID. Ten identyfikator umożliwia określenie uaktualnienia do śledzenia. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -115,7 +115,7 @@ W przypadku powodzenia ta metoda zwraca [**zasób ProductUpgradesEligibility**](
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

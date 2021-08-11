@@ -1,27 +1,27 @@
 ---
 title: Uzyskiwanie kodów weryfikacyjnych Government Community Cloud partnera
-description: Jak uzyskać kody weryfikacji Government Community Cloud partnera.
+description: Jak uzyskać kody weryfikacyjne Government Community Cloud partnera.
 ms.date: 11/08/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: 04bccf587628337004a5825b534048945f791839
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1514e9a684b003f5650e9256743ea7e669de04629fd0c3db1c7dfa677e96a752
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873874"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993609"
 ---
 # <a name="get-a-partners-validation-codes"></a>Pobieranie kodów weryfikacyjnych partnera
 
-W tym artykule opisano sposób pobierania kolekcji kodów weryfikacji Government Community Cloud partnera. Kod weryfikacyjny jest wymagany do utworzenia klienta w chmurze społeczności instytucji rządowych.
+W tym artykule opisano sposób pobierania kolekcji kodów weryfikacyjnych Government Community Cloud partnera. Kod weryfikacyjny jest wymagany do utworzenia klienta w chmurze dla społeczności instytucji rządowych.
 
-Jeśli interesuje Cię zatwierdzenie organizacji lub organizacji klienta w programie Office 365 dla instytucji rządowych GCC dla programu CSP, zobacz Office 365 dla instytucji rządowych GCC for [CSP Partner and Customer eligibility criteria](/partner-center/csp-gcc-validate)(Kryteria kwalifikowalności klientów i partnerów programu CSP).
+Jeśli chcesz, aby Twoja organizacja lub organizacja klienta została zatwierdzona do programu Office 365 dla instytucji rządowych GCC dla programu CSP, zobacz Office 365 dla instytucji rządowych GCC for CSP Partner and [Customereligibility criteria](/partner-center/csp-gcc-validate)(Kryteria kwalifikowalności klienta i partnerów programu CSP).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Potwierdzenie weryfikacji po wypełnieniu formularza [tutaj.](https://products.office.com/government/eligibility-validation?ReqType=CSPPartner)
 
@@ -70,7 +70,7 @@ W przypadku powodzenia ta metoda zwraca listę zasobów [**ValidationCode**](uti
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

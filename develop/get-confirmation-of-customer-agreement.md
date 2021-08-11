@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 3668a5e510effb533cade311f52513b9a81d40af
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: f5e71f2660c6db638193deec02e9ba4f25a35be6aabdc1c4219f63b1f3295908
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760542"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993507"
 ---
 # <a name="get-confirmation-of-customer-acceptance-of-microsoft-customer-agreement"></a>Pobieranie potwierdzenia akceptacji przez klienta umowy klienta firmy Microsoft
 
@@ -74,7 +74,7 @@ W żądaniu można użyć następujących parametrów URI:
 
 | Nazwa             | Typ | Wymagane | Opis                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| identyfikator dzierżawy klienta | GUID | Tak | Wartość to identyfikator GUID sformatowany **jako CustomerTenantId,** który umożliwia określenie klienta. |
+| identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem GUID w **formacie CustomerTenantId,** który umożliwia określenie klienta. |
 | typ umowy | ciąg | Nie | Ten parametr zwraca wszystkie metadane umowy. Użyj tego parametru, aby określać zakres odpowiedzi na zapytanie dla określonego typu umowy. Obsługiwane wartości to: <br/><br/> **MicrosoftCloudAgreement,** który zawiera tylko metadane umowy typu *MicrosoftCloudAgreement*.<br/><br/> **MicrosoftCustomerAgreement,** który zawiera tylko metadane umowy typu *MicrosoftCustomerAgreement*.<br/><br/> **\**_ zwraca wszystkie metadane umowy. (Nie używaj _* \* *_, chyba że kod ma logikę niezbędną do obsługi nieoczekiwanych typów umów). <br/> <br/> _* Uwaga:** Jeśli parametr URI nie zostanie określony, zapytanie domyślnie będzie mieć wartość **MicrosoftCloudAgreement** w celu zapewnienia zgodności z poprzednimi wersjami. Firma Microsoft może wprowadzać metadane umowy z nowymi typami umów w dowolnym momencie.  |
 
 ### <a name="request-headers"></a>Nagłówki żądań

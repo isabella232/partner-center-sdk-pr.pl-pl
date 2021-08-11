@@ -1,27 +1,27 @@
 ---
 title: Pobieranie wszystkich informacji analitycznych dotyczących odsprzedawców pośrednich
-description: Jak uzyskać informacje analityczne dla wszystkich odsprzedawców pośrednich.
+description: Jak uzyskać wszystkie informacje analityczne odsprzedawców pośrednich.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 4252f5fcbbcb038f382408074c8fd6ede3fd1f58
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 7a38fbf2c94bad5213a65159759ace54b9dd4595d5532ea97f2449f0ac5b41cd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760746"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994068"
 ---
 # <a name="get-all-indirect-resellers-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących odsprzedawców pośrednich
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Jak uzyskać informacje analityczne dla wszystkich odsprzedawców pośrednich dla klientów.
+Jak uzyskać wszystkie informacje analityczne odsprzedawców pośrednich dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -39,23 +39,23 @@ Jak uzyskać informacje analityczne dla wszystkich odsprzedawców pośrednich dl
 | identyfikator                                    | ciąg   | Identyfikator odsprzedawcy pośredniego                                                                 |
 | name                                  | ciąg   | Nazwa partnera, dla którego chcesz pobrać dane odsprzedawców pośrednich.      |
 | rynek                                | ciąg   | Rynek partnera, dla którego chcesz pobrać dane odsprzedawców pośrednich.    |
-| firstSubscriptionCreationDate         | ciąg w formacie daty i czasu UTC  | Data utworzenia pierwszej subskrypcji, na podstawie której chcesz pobrać dane odsprzedawców pośrednich.  |
-| latestSubscriptionCreationDate        | ciąg w formacie daty i czasu UTC  | Data utworzenia najnowszej subskrypcji.                 |
-| firstSubscriptionEndDate              | ciąg w formacie daty i czasu UTC  | Po raz pierwszy subskrypcja została zakończona.                        |
-| latestSubscriptionEndDate             | ciąg w formacie daty i czasu UTC  | Najpóźniejsza data zakończenia dowolnej subskrypcji.                  |
-| firstSubscriptionSuspendedDate        | string in UTC date time (ciąg w czasie UTC)         | Po raz pierwszy wstrzymano każdą subskrypcję.                    |
-| latestSubscriptionSuspendedDate       | ciąg w formacie daty i czasu UTC  | Najpóźniejsza data, kiedy jakakolwiek subskrypcja została wstrzymana.              |
-| firstSubscriptionDeprovisionedDate    | ciąg w formacie daty i czasu UTC  | Po raz pierwszy anulowano aprowizę dowolnej subskrypcji.                |
-| latestSubscriptionDeprovisionedDate   | ciąg w formacie daty i czasu UTC  | Najpóźniejsza data coprowizowana dowolnej subskrypcji.          |
+| firstSubscriptionCreationDate         | ciąg w formacie daty i godzin UTC  | Data utworzenia pierwszej subskrypcji, na podstawie której chcesz pobrać dane odsprzedawców pośrednich.  |
+| latestSubscriptionCreationDate        | ciąg w formacie daty i godzin UTC  | Data utworzenia najnowszej subskrypcji.                 |
+| firstSubscriptionEndDate              | ciąg w formacie daty i godzin UTC  | Po raz pierwszy subskrypcja została zakończona.                        |
+| latestSubscriptionEndDate             | ciąg w formacie daty i godzin UTC  | Najpóźniejsza data zakończenia subskrypcji.                  |
+| firstSubscriptionSuspendedDate        | string in UTC date time (ciąg w czasie UTC)         | Po raz pierwszy wstrzymano dowolną subskrypcję.                    |
+| latestSubscriptionSuspendedDate       | ciąg w formacie daty i godzin UTC  | Najpóźniejsza data, kiedy została wstrzymana dowolna subskrypcja.              |
+| firstSubscriptionDeprovisionedDate    | ciąg w formacie daty i godzin UTC  | Po raz pierwszy anulowano aprowizę dowolnej subskrypcji.                |
+| latestSubscriptionDeprovisionedDate   | ciąg w formacie daty i godzin UTC  | Najpóźniejsza data coprowizowana dowolnej subskrypcji.          |
 | subscriptionCount                     | double   | Liczba subskrypcji dla wszystkich odsprzedawców z dodaną wartością                                     |
 | licenseCount                          | double   | Liczba licencji dla wszystkich odsprzedawców z dodaną wartością.                                         |
 | indirectResellerCount                 | double   | Liczba odsprzedawców pośrednich                                                             |
 |  top (pierwsze)                                  | ciąg   | Liczba wierszy danych do zwrócenia w żądaniu. Wartość maksymalna i wartość domyślna, jeśli nie zostanie określona, to 10000. Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych.  |
-| Pomiń                                  | int      | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład **`top=10000 and skip=0`** program pobiera pierwsze 10 000 wierszy danych, pobiera następne **`top=10000 and skip=10000`** 10000 wierszy danych i tak dalej.              |
-| filter                                | ciąg   | Parametr *filter* żądania zawiera co najmniej jedną instrukcje filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje mogą być łączone przy **`eq`** **`ne`** użyciu lub **`and`** **`or`** . Można określić następujące pola:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Nazwa*<br/>                *rynek*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Przykład:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Przykład:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
-| aggregationLevel                     | ciąg    | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: &quot; &quot; dzień, &quot; &quot; tydzień lub &quot; miesiąc &quot; . Jeśli nie zostanie on nieokreślony, wartością domyślną jest &quot; dzień &quot; .<br/><br/>                                 `aggregationLevel` Nie jest obsługiwany bez `aggregationLevel` . `aggregationLevel` ma zastosowanie do **wszystkich zakresów dat** obecnych w `aggregationLevel`                         |
+| Pomiń                                  | int      | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład **`top=10000 and skip=0`** program pobiera pierwsze 10 000 wierszy danych, pobiera kolejne **`top=10000 and skip=10000`** 10000 wierszy danych i tak dalej.              |
+| filter                                | ciąg   | Parametr *filtru* żądania zawiera co najmniej jedną instrukcje, które filtruje wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje można łączyć przy **`eq`** **`ne`** użyciu instrukcji lub **`and`** **`or`** . Można określić następujące pola:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Nazwa*<br/>                *rynek*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Przykład:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Przykład:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
+| aggregationLevel                     | ciąg    | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: &quot; &quot; dzień, &quot; &quot; tydzień lub &quot; miesiąc &quot; . Jeśli nie zostanie on nieokreślony, wartością domyślną jest &quot; dzień &quot; .<br/><br/>                                 `aggregationLevel` nie jest obsługiwany bez `aggregationLevel` . `aggregationLevel` ma zastosowanie do **wszystkich zakresów dat** obecnych w `aggregationLevel`                         |
 | Orderby                              | ciąg    | Instrukcja, która nakazuje wartości danych wynikowych dla każdej instalacji. Składnia jest następująca: `...&orderby=field[order],field [order],...` Parametr pola może być jednym z następujących ciągów:<br/><br/>                &quot;partnerTenantId&quot;<br/>                &quot;id&quot;<br/>                &quot;Nazwa&quot;<br/>                &quot;rynek&quot;<br/>                &quot;firstSubscriptionCreationDate&quot;<br/>               &quot;latestSubscriptionCreationDate&quot;<br/>                &quot;firstSubscriptionEndDate&quot;<br/>               &quot;latestSubscriptionEndDate&quot;<br/>                &quot;firstSubscriptionSuspendedDate&quot;<br/>                &quot;latestSubscriptionSuspendedDate&quot;<br/>               &quot;firstSubscriptionDeprovisionedDate&quot;<br/>                &quot;latestSubscriptionDeprovisionedDate&quot;<br/>                &quot;subscriptionCount&quot;<br/>                &quot;licenseCount&quot;<br/><br/>   Parametr *order* jest opcjonalny i może mieć wartość lub , aby określić kolejność rosnącą lub `asc` `desc` malejącą dla każdego pola. Wartość domyślna to `asc`.<br/><br/>    **Przykład:**<br/>                `...&orderby=market,subscriptionCount`                                       |                   
-| Groupby                              | ciąg    | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Nazwa*<br/>                *rynek*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 Zwracane wiersze danych zawierają pola określone w `groupby` klauzuli i następujące pola:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            Parametru `groupby` można używać z `aggregationLevel` parametrem .<br/><br/>            **Przykład:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
+| Groupby                              | ciąg    | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Nazwa*<br/>                *rynek*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 Zwracane wiersze danych zawierają pola określone w klauzuli `groupby` i następujące pola:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            Parametru `groupby` można używać z `aggregationLevel` parametrem .<br/><br/>            **Przykład:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -77,7 +77,7 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [odsprzedawców pośrednich.](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics)
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję zasobów [odsprzedawców pośrednich.](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics)
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

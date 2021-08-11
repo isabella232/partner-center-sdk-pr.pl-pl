@@ -4,12 +4,12 @@ description: Możesz użyć wielu zasobów związanych z Partner Center uaktualn
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c995ac44dbe22000f7bc86991cb973ed31a5c018
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a251168dbe1e153365beec212feca6fafddaef1700ad8651ec9d459aebf24600
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445344"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997400"
 ---
 # <a name="product-upgrade-resources"></a>Zasoby uaktualniania produktu
 
@@ -17,7 +17,7 @@ Poniższe zasoby zawierają informacje o uaktualnieniach produktów Partner Cent
 
 ## <a name="productupgraderequest"></a>ProductUpgradeRequest
 
-Zasób **ProductUpgradesRequest zawiera** informacje o obiekcie żądania uaktualnień produktu.
+Zasób **ProductUpgradesRequest zawiera** informacje o obiekcie żądania uaktualnienia produktu.
 
 | Właściwość      | Typ                                                          | Opis                                                |
 |---------------|---------------------------------------------------------------|------------------------------------------------------------|
@@ -65,7 +65,7 @@ Zasób **UpgradesLineItem** opisuje stan szczegółów uaktualnienia produktu dl
 | errorDetails  | [Zasób ErrorDetails](#errordetails)                        | Szczegóły błędu dla żądanego uaktualnienia.          |
 | atrybuty    | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                          |
 
-## <a name="upgradeproduct"></a>UpgradeProduct
+## <a name="upgradeproduct"></a>UpgradeProduct (Uaktualnijprodukt)
 
 Zasób **UpgradeProduct** zawiera informacje o uaktualnianych produktach.
 
@@ -81,6 +81,6 @@ Zasób **ErrorDetails** zawiera szczegółowe informacje o błędach podczas pro
 
 | Właściwość   | Typ                                                          | Opis                                       |
 |------------|---------------------------------------------------------------|---------------------------------------------------|
-| kod       | ciąg                                                        | Kod błędu, gdy uaktualnienie produktu zakończy się niepowodzeniem.      |
+| kod       | ciąg                                                        | Kod błędu w przypadku niepowodzenia uaktualnienia produktu.      |
 | message    | ciąg                                                        | Komunikat o błędzie, gdy uaktualnienie produktu zakończy się niepowodzeniem. |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych.                          |

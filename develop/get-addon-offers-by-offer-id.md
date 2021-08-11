@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: e3b0ab8007d3affa6912479b960f6dae3bc0bd28
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 5567a04f9b9770022fe1b824d0a473af2ca8e073072cb33014b597cc594d0654
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760338"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994102"
 ---
 # <a name="get-add-ons-for-an-offer-id"></a>Pobieranie dodatków dla identyfikatora oferty
 
@@ -21,13 +21,13 @@ Jak uzyskać dodatki dla identyfikatora oferty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator oferty. Jeśli nie masz identyfikatora oferty, zobacz Get a list of offers for a market (Uzyskiwanie listy [ofert dla rynku).](get-a-list-of-offers-for-a-market.md)
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać dodatki dla oferty według identyfikatora, najpierw wywołaj metodę [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs do zaoferowania operacji na podstawie danego kraju. Następnie wywołaj [**metodę ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której dodatki chcesz pobrać. Następnie użyj właściwości [**AddOns,**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) aby uzyskać interfejs do operacji dodatku dla bieżącej oferty. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) aby pobrać kolekcję wszystkich dodatków dla określonej oferty.
+Aby uzyskać dodatki dla oferty według identyfikatora, najpierw wywołaj metodę [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) z kodem kraju, aby uzyskać interfejs do zaoferowania operacji na podstawie danego kraju. Następnie wywołaj [**metodę ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) z identyfikatorem oferty, aby zidentyfikować ofertę, której dodatki chcesz pobrać. Następnie użyj właściwości [**AddOns,**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) aby uzyskać interfejs do operacji dodatku dla bieżącej oferty. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) aby uzyskać kolekcję wszystkich dodatków dla określonej oferty.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +37,7 @@ Aby uzyskać dodatki dla oferty według identyfikatora, najpierw wywołaj metod�
 var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).AddOns.Get();
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetOffer.cs **(Klasa przykładów** zestaw SDK Centrum partnerskiego: GetOffer.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: GetOffer.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -45,7 +45,7 @@ var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).
 
 | Metoda  | Identyfikator URI żądania                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{identyfikator oferty}/addons?country={country-code} HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{identyfikator-oferty}/addons?country={country-code} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry URI
 
@@ -53,7 +53,7 @@ Użyj następujących parametrów, aby podać identyfikator oferty i kod kraju.
 
 | Nazwa         | Typ       | Wymagane | Opis                       |
 |--------------|------------|----------|-----------------------------------|
-| **identyfikator oferty** | **guid**   | Y        | Identyfikator GUID, który identyfikuje ofertę. |
+| **offer-id** | **guid**   | Y        | Identyfikator GUID, który identyfikuje ofertę. |
 | **Kraju**  | **ciąg** | Y        | Kod kraju (na przykład `US` ).       |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -78,11 +78,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję [obiektów Offer](offer-resources.md) w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję obiektów [Offer](offer-resources.md) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

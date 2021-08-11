@@ -4,12 +4,12 @@ description: Opisuje zasoby związane z relacjami.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7dba1e99a6c97c759e3c61cde1e7565faa2ef4d1
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: bbbc973679ae80c3ad6b9d67945c6fbcb087789484939b67f8d8a6b538ce7d37
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445735"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997094"
 ---
 # <a name="relationships-resources"></a>Zasoby relacji
 

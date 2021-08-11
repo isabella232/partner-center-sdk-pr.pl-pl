@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 7698d85df3341ae4cbff0377bd0a1bb47cd36740
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 7a423b5061ecfcf6faf191c75a7e665642620cc2add171b27864e11516bec16d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906445"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993167"
 ---
 # <a name="get-a-collection-of-invoices"></a>Pobieranie kolekcji faktur
 
@@ -21,7 +21,7 @@ Jak pobrać kolekcję faktur partnera.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="c"></a>C\#
 
@@ -29,7 +29,7 @@ Aby uzyskać kolekcję wszystkich dostępnych faktur, użyj właściwości [**In
 
 Aby uzyskać stronicowane kolekcje faktur, najpierw wywołaj metodę [**BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) i przekaż jej rozmiar strony, aby utworzyć [**obiekt IQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) Następnie użyj właściwości [**Invoices,**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) aby uzyskać interfejs do operacji na fakturze, a następnie przekaż obiekt IQuery do metody [**Query**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) lub [**QueryAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) aby wysłać żądanie i uzyskać pierwszą stronę.
 
-Następnie użyj właściwości [**Enumerators,**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) aby uzyskać interfejs do kolekcji obsługiwanych wyliczeń kolekcji zasobów, a następnie wywołaj właściwość [**Invoices.Create,**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) aby utworzyć moduł wyliczający do przechodzenia przez kolekcję faktur. Na koniec użyj modułu wyliczania, aby pobrać i pracować z każdą stroną faktur, jak pokazano w poniższym przykładzie kodu. Każde wywołanie metody [**Next**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) wysyła żądanie dotyczące następnej strony faktur na podstawie rozmiaru strony.
+Następnie użyj właściwości [**Enumerators,**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) aby uzyskać interfejs do kolekcji obsługiwanych wyliczeń kolekcji zasobów, a następnie wywołaj obiekt [**Invoices.Create,**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) aby utworzyć moduł wyliczający do przechodzenia przez kolekcję faktur. Na koniec użyj modułu wyliczania, aby pobrać każdą stronę faktur i pracować z nim, jak pokazano w poniższym przykładzie kodu. Każde wywołanie metody [**Next**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) wysyła żądanie dotyczące następnej strony faktur na podstawie rozmiaru strony.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -70,10 +70,10 @@ while (invoicesEnumerator.HasValue)
 }
 ```
 
-Nieco inny przykład można znaleźć w teście **Przykład:** [Aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetPagedInvoices.cs
+Nieco inny przykład można znaleźć w teście **Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: GetPagedInvoices.cs
 
 > [!NOTE] 
-> Ten sam interfejs API jest używany dla wszystkich nowoczesnych zakupów komercyjnych, a także licencji 145p i Office komercyjnych. Rozmiar i przesunięcie są rozważane tylko w przypadku starszych faktur. W przypadku wszystkich nowoczesnych zakupów komercyjnych przesunięcie & stronicowania zostanie zignorowane.
+> Ten sam interfejs API jest używany we wszystkich nowoczesnych zakupach komercyjnych, a także w wersji 145p i Office licencji. Rozmiar i przesunięcie są rozważane tylko w przypadku starszych faktur. W przypadku wszystkich nowoczesnych zakupów komercyjnych rozmiar & zostanie zignorowany.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -90,7 +90,7 @@ Podczas tworzenia żądania użyj następujących parametrów zapytania.
 | Nazwa   | Typ | Wymagane | Opis                                                                            |
 |--------|------|----------|----------------------------------------------------------------------------------------|
 | size   | int  | Nie       | Liczba zasobów faktury do zwrócenia w odpowiedzi. Ten parametr jest opcjonalny. |
-| przesunięcie | int  | Nie       | Od zera indeks pierwszej faktury do zwrócenia.                                   |
+| przesunięcie | int  | Nie       | Indeks od zera pierwszej faktury do zwrócenia.                                   |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -119,7 +119,7 @@ Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję zasobów [faktury
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

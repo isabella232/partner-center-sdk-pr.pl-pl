@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 2588327e72a13de75eb9e02675edbd535491adc4
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 55a09752844f74caaf878f1e2dcfe3d8a70a283c5e0e9daefba89c558405690a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760797"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994119"
 ---
 # <a name="get-agreement-metadata-for-microsoft-cloud-agreement"></a>Pobieranie metadanych umowy dla umowy dotyczącej platformy Microsoft Cloud
 
@@ -19,23 +19,23 @@ ms.locfileid: "111760797"
 
 **Nie dotyczy:** Partner Center obsługiwane przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Zasób **AgreementMetaData** jest obecnie obsługiwany Partner Center tylko w chmurze publicznej firmy Microsoft.
+Zasób **AgreementMetaData** jest obecnie obsługiwany przez Partner Center tylko w chmurze publicznej firmy Microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli używasz zestawu SDK platformy Partner Center .NET, wymagana jest wersja 1.9 lub nowsza.
+- Jeśli używasz zestawu SDK platformy .NET Partner Center, wymagana jest wersja 1.9 lub nowsza.
 
 - Jeśli używasz zestawu SDK Partner Center Java, wymagana jest wersja 1.8 lub nowsza.
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](./partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie aplikacji i użytkowników.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](./partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie aplikacji i użytkowników.
 
 ## <a name="net-version-114-or-newer"></a>.NET (wersja 1.14 lub nowsza)
 
 Aby pobrać metadane umowy dla Umowa dotycząca platformy Microsoft Cloud:
 
-1. Najpierw pobierz **kolekcję IAggregatePartner.AgreementDetails.**
+1. Najpierw pobierz kolekcję **IAggregatePartner.AgreementDetails.**
 
-2. Wywołaj **metodę ByAgreementType,** aby filtrować kolekcję w Umowa dotycząca platformy Microsoft Cloud.
+2. Wywołaj **metodę ByAgreementType,** aby filtrować kolekcję Umowa dotycząca platformy Microsoft Cloud.
 
 3. Na koniec wywołaj **metodę Get** lub **GetAsync.**
 
@@ -47,7 +47,7 @@ string agreementType = "MicrosoftCloudAgreement";
 var microsoftCloudAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
 ```
 
-Kompletny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) w projekcie [aplikacji testowej konsoli.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
+Pełny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) w projekcie [aplikacji testowej konsoli.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="net-version-19---113"></a>.NET (wersja 1.9–1.13)
 
@@ -87,7 +87,7 @@ for (AgreementMetaData metadata : agreements)
 }
 ```
 
-Kompletny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) w projekcie [aplikacji testowej konsoli.](https://github.com/Microsoft/Partner-Center-Java-Samples)
+Pełny przykład można znaleźć w klasie [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) w projekcie [aplikacji testowej konsoli.](https://github.com/Microsoft/Partner-Center-Java-Samples)
 
 ## <a name="powershell"></a>PowerShell
 
@@ -131,11 +131,11 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję **zasobów AgreementMetaData** w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów **AgreementMetaData** w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

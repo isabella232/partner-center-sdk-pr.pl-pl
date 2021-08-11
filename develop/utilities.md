@@ -4,12 +4,12 @@ description: W tej sekcji opisano sposoby, w jakie partnerzy mogą używać Part
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3dfe08a727663902da11a662d7fca2601d65712e
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 7044c0615802c418c95450fd05b5ad3a8589d24c377360077b957e1cd8423e36
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529854"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993337"
 ---
 # <a name="utilities"></a>Narzędzia
 

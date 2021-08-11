@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 663b8509d8704f9c443796d9fbcf72fb9c5b7fb2
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 4e77edd3e7d94711ad18796c0afb4db30c50abf0bc9636335b413a5d41dff9c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874962"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993099"
 ---
 # <a name="get-a-list-of-customers-filtered-by-a-search-field"></a>Pobieranie listy klientów filtrowanych według pola wyszukiwania
 
@@ -21,17 +21,17 @@ Pobiera kolekcję [zasobów klienta,](customer-resources.md#customer) które pas
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Filtr skonstruowany przez użytkownika.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję klientów, którzy pasują do filtru, najpierw utwórz obiekt [**SimpleFieldFilter,**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) aby utworzyć filtr. Musisz przekazać ciąg zawierający pole [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield)i wskazać typ operacji filtrowania jako [**FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Jest to jedyna operacja filtrowania pól obsługiwana przez punkt końcowy klientów. Należy również podać ciąg, według których ma być filtrowany ciąg.
+Aby uzyskać kolekcję klientów, którzy pasują do filtru, najpierw utwórz wystąpienia obiektu [**SimpleFieldFilter,**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) aby utworzyć filtr. Musisz przekazać ciąg zawierający pole [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield)i wskazać typ operacji filtrowania jako [**FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Jest to jedyna operacja filtrowania pól obsługiwana przez punkt końcowy klientów. Należy również podać ciąg, według których ma być filtrowany ciąg.
 
-Następnie zaimplestruj obiekt [**iQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) aby przekazać go do zapytania, wywołując metodę [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazując do niego filtr. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez [**klasę QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
+Następnie należy utworzyć wystąpienia obiektu [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) w celu przekazania do zapytania, wywołując metodę [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i przekazując do niego filtr. BuildSimplyQuery to tylko jeden z typów zapytań obsługiwanych przez [**klasę QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Na koniec, aby wykonać filtr i uzyskać wynik, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs dla operacji klienta partnera. Następnie wywołaj [**metodę Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
+Na koniec, aby wykonać filtr i uzyskać wynik, najpierw użyj funkcji [**IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) aby uzyskać interfejs do operacji klienta partnera. Następnie wywołaj [**metodę Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) lub [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -52,7 +52,7 @@ var myQuery = QueryFactory.Instance.BuildSimpleQuery(fieldFilter);
 var customers = partnerOperations.Customers.Query(myQuery);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : FilterCustomers.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: FilterCustomers.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: FilterCustomers.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -87,7 +87,7 @@ W poniższej tabeli opisano wymagane pary klucz-wartość:
 |----------|--------------------------------------------------------------------------------------------------------------------------|
 | Pole    | Pole do filtrowania. Prawidłowe wartości można znaleźć w [**customersearchfield**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
 | Wartość    | Wartość do filtrowania. Przypadek wartości jest ignorowany.                                                                |
-| Operator | Operator do zastosowania. Jedyną obsługiwaną wartością w tym scenariuszu klienta jest "zaczyna \_ się od".                            |
+| Operator | Operator do zastosowania. Jedyną obsługiwaną wartością dla tego scenariusza klienta jest "zaczyna się \_ od".                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -112,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję [pasujących zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję pasujących [zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

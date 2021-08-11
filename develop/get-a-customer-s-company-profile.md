@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: a1c0c8401207f4b0bb33755a8eabc66de0ad9ff9
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: fb8c21c8307480bb0573e189ac95cc05756f9080f6156ff860d8193f134c4aa6
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874979"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992980"
 ---
 # <a name="get-a-customers-company-profile"></a>Pobieranie profilu firmy klienta
 

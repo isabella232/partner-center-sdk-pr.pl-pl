@@ -4,12 +4,12 @@ description: Jak uzyskać kolekcję uprawnień.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7bb8d3aefb11fae0af4bce790b41598d935de57c
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 9248f2ef97afe7a2cefff5759028da12dc9c3936f2e14cee18063c0428699c81
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906415"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993677"
 ---
 # <a name="get-a-collection-of-entitlements"></a>Pobieranie kolekcji uprawnień
 
@@ -23,7 +23,7 @@ Jak uzyskać kolekcję uprawnień.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kolekcję uprawnień dla klienta, uzyskaj interfejs operacji [**uprawnień,**](entitlement-resources.md#entitlement) wywołując metodę  [**IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs z właściwości **Entitlements** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać kolekcję uprawnień.
+Aby uzyskać kolekcję uprawnień dla klienta, uzyskaj interfejs dla operacji [**uprawnień,**](entitlement-resources.md#entitlement) wywołując metodę  [**IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs z właściwości **Entitlements** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać kolekcję uprawnień.
 
 ``` csharp
 IAggregatePartner partnerOperations;

@@ -1,37 +1,37 @@
 ---
 title: Pobieranie elementów wiersza kosztów usług klienta
-description: Pobiera pozycje kosztów obsługi klienta dla określonego okresu rozliczeniowego.
+description: Pobiera pozycje kosztów usługi klienta dla określonego okresu rozliczeniowego.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1bc2914d7c8d41c6d806131444fdc241aa1feb90
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 66ede79958e7e218ba59492ea9019d209a5d00dfae331622eceba78963048491
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874945"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992963"
 ---
 # <a name="get-a-customers-service-costs-line-items"></a>Pobieranie elementów wiersza kosztów usług klienta
 
-Pobiera pozycje kosztów obsługi klienta dla określonego okresu rozliczeniowego.
+Pobiera pozycje kosztów usługi klienta dla określonego okresu rozliczeniowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Wskaźnik okresu rozliczeniowego ( **`mostrecent`** ).
 
 ## <a name="c"></a>C\#
 
-Aby pobrać podsumowanie kosztów usługi dla określonego klienta:
+Aby pobrać podsumowanie kosztów usług dla określonego klienta:
 
 1. Wywołaj [**metodę IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta.
 
 2. Użyj właściwości [**ServiceCosts,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicecosts) aby uzyskać interfejs do operacji zbierania kosztów obsługi klienta.
 
-3. Wywołaj [**metodę ByBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.icustomerservicecostscollection.bybillingperiod) z elementem członkowskim wyliczenia [**ServiceCostsBillingPeriod,**](/dotnet/api/microsoft.store.partnercenter.models.servicecosts.servicecostsbillingperiod) aby zwrócić element [**IServiceCostsCollection.**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostscollection)
+3. Wywołaj [**metodę ByBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.icustomerservicecostscollection.bybillingperiod) z elementem członkowskim wyliczenia [**ServiceCostsBillingPeriod,**](/dotnet/api/microsoft.store.partnercenter.models.servicecosts.servicecostsbillingperiod) aby zwrócić [**element IServiceCostsCollection**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostscollection).
 
 4. Użyj metody [**IServiceCostsCollection.LineItems.Get**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.getasync) aby pobrać pozycje kosztów usług klienta.
 
@@ -48,7 +48,7 @@ var serviceCostsSummary = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda  | Identyfikator URI żądania                                                                                                             |
 |---------|-------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/servicecosts/{billing-period}/lineitems HTTP/1.1 |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/servicecosts/{billing-period}/lineitems HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
@@ -56,7 +56,7 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i okres
 
 | Nazwa           | Typ   | Wymagane | Opis                                                                                                                      |
 |----------------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------|
-| identyfikator klienta    | guid   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.                                                                       |
+| identyfikator klienta    | guid   | Tak      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta.                                                                       |
 | okres rozliczeniowy | ciąg | Tak      | Wskaźnik reprezentujący okres rozliczeniowy. Jedyną obsługiwaną wartością jest MostRecent. Przypadek ciągu nie ma znaczenia. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -84,11 +84,11 @@ Host: api.partnercenter.microsoft.com
 W przypadku powodzenia treść odpowiedzi zawiera [zasób ServiceCostLineItem,](service-costs-resources.md) który zawiera informacje o kosztach usługi.
 
 > [!IMPORTANT]
-> Następujące właściwości  dotyczą tylko elementów wiersza kosztu usługi, w przypadku których produkt jest zakupem tylko *raz:* **productId,** **productName,** **skuId,** **skuName,** **availabilityId,** **publisherId,** **publisherName,** **termAndBillingCycle,** **discountDetails.** Te właściwości *nie dotyczą pozycji* usług, w przypadku których produkt jest *cyklicznym zakupem.* Na przykład te właściwości *nie mają zastosowania do* zasobów opartych na Office 365 azure.
+> Następujące właściwości  dotyczą tylko elementów wiersza kosztu usługi, w przypadku których produkt jest zakupem tylko *raz:* **productId,** **productName,** **skuId,** **skuName,** **availabilityId,** **publisherId,** **publisherName,** **termAndBillingCycle,** **discountDetails.** Te właściwości *nie dotyczą pozycji* usług, w przypadku których produkt jest *cyklicznym zakupem.* Na przykład te właściwości *nie dotyczą subskrypcji* opartych Office 365 platformie Azure.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

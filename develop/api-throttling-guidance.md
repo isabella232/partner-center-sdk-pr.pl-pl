@@ -1,39 +1,39 @@
 ---
 title: Wskazówki dotyczące ograniczania przepustowości interfejsu API
-description: W przypadku partnerów wywołujących Partner Center API dowiedz się, na które interfejsy API ma wpływ ograniczanie przepustowości interfejsów API firmy Microsoft, oraz poznaj najlepsze rozwiązania, aby uniknąć lub lepiej obsłużyć ograniczanie przepustowości.
+description: W przypadku partnerów wywołujących Partner Center API dowiedz się, na które interfejsy API ma wpływ ograniczanie przepustowości interfejsów API firmy Microsoft, oraz poznaj najlepsze rozwiązania, aby uniknąć ograniczania przepustowości lub lepiej je obsłużyć.
 ms.date: 04/14/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vijvala
 ms.author: vijvala
-ms.openlocfilehash: f18518e88b9bb08d4fd248922f4ce2fefdde004f
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: 4eead16c5bb2b01f0fba85e30ea35fbcdae9d5a6682872eecfeeb9e47f43d324
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025653"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993762"
 ---
 # <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Wskazówki dotyczące ograniczania interfejsu API dla partnerów wywołujących Partner Center API 
 
-Firma Microsoft implementuje ograniczanie interfejsów API, aby zapewnić bardziej spójną wydajność w okresie dla partnerów wywołujących interfejsy API Partner Center. Ograniczanie ogranicza liczbę żądań do usługi w czasie, aby zapobiec wywłaszceniu zasobów. Chociaż Partner Center jest przeznaczona do obsługi dużej liczby żądań, jeśli przytłaczającą liczbę żądań jest wielu partnerów, ograniczanie przepływności pomaga zachować optymalną wydajność i niezawodność dla wszystkich partnerów.  
+Firma Microsoft implementuje ograniczanie przepustowości interfejsu API, aby zapewnić bardziej spójną wydajność w czasie dla partnerów wywołujących interfejsy API Partner Center API. Ograniczanie ogranicza liczbę żądań do usługi w zakresie czasu, aby zapobiec nadużytości zasobów. Chociaż Partner Center jest przeznaczona do obsługi dużej liczby żądań, w przypadku przytłaczającej liczby żądań przez kilku partnerów ograniczanie przepływności pomaga zachować optymalną wydajność i niezawodność dla wszystkich partnerów.  
 
-Limity ograniczania różnią się w zależności od scenariusza. Jeśli na przykład wykonujesz dużą liczbę operacji zapisu, możliwość ograniczenia jest większa niż w przypadku wykonywania tylko operacji odczytu.
+Limity ograniczania różnią się w zależności od scenariusza. Jeśli na przykład wykonujesz dużą liczbę operacji zapisu, możliwość ograniczenia przepustowości jest większa niż w przypadku wykonywania tylko operacji odczytu.
 
-## <a name="what-happens-when-throttling-occurs"></a>Co się stanie, gdy wystąpi ograniczanie przepustowości? 
+## <a name="what-happens-when-throttling-occurs"></a>Co się dzieje w przypadku wystąpienia ograniczania? 
 
-Po przekroczeniu progu ograniczania Partner Center ogranicza wszelkie dalsze żądania od tego klienta na określony czas. Zachowanie ograniczania zależy od typu i liczby żądań.   
+Po przekroczeniu progu ograniczania Partner Center ogranicza wszelkie dalsze żądania od tego klienta przez określony czas. Zachowanie ograniczania zależy od typu i liczby żądań.   
 
 ### <a name="common-throttling-scenarios"></a>Typowe scenariusze ograniczania przepustowości 
 
 Najczęstsze przyczyny ograniczania przepustowości klientów to: 
 
-- **Duża liczba** żądań interfejsu API na identyfikator dzierżawy partnera: w przypadku niektórych interfejsów API programu Partner Center ograniczanie jest określane przez identyfikator dzierżawy partnera. Zbyt wiele wywołań tych interfejsów API w tym samym identyfikatorze dzierżawy partnera spowoduje przekroczenie progu ograniczenia.  
+- Duża liczba żądań dla interfejsu API na identyfikator dzierżawy partnera: w przypadku niektórych interfejsów API programu Partner Center ograniczanie jest określane przez identyfikator dzierżawy partnera. Zbyt wiele wywołań tych interfejsów **API** w tym samym identyfikatorze dzierżawy partnera spowoduje przekroczenie progu ograniczenia.  
 
-- **Duża liczba żądań interfejsu API** na identyfikator dzierżawy partnera na identyfikator dzierżawy klienta: w przypadku innych interfejsów API ograniczanie jest określane przez kombinację identyfikatora dzierżawy partnera/identyfikatora dzierżawy klienta. W takich przypadkach wykonanie zbyt wielu wywołań dla tego samego identyfikatora dzierżawy klienta spowoduje ograniczenie przepustowości , podczas gdy wywołania względem innych klientów mogą zakończyć się powodzeniem.
+- **Duża liczba żądań interfejsu API** na identyfikator dzierżawy partnera na identyfikator dzierżawy klienta: w przypadku innych interfejsów API ograniczanie jest określane przez kombinację identyfikatora dzierżawy partnera/identyfikatora dzierżawy klienta; W takich przypadkach wykonanie zbyt wielu wywołań względem tego samego identyfikatora dzierżawy klienta spowoduje ograniczenie przepustowości, podczas gdy wywołania względem innych klientów mogą zakończyć się powodzeniem.
 
 ## <a name="best-practices-to-avoid-throttling"></a>Najlepsze rozwiązania w celu uniknięcia ograniczania przepustowości 
  
-Praktyki programowania, takie jak ciągłe sondowanie zasobu w celu sprawdzenia, czy są dostępne aktualizacje, oraz regularne skanowanie kolekcji zasobów w celu sprawdzenia nowych lub usuniętych zasobów, mogą prowadzić do ograniczenia wydajności i obniżyć ogólną wydajność. Współbieżne wywołania interfejsu API mogą prowadzić do dużej liczby żądań na jednostkę czasu, co spowoduje również ograniczenie żądań. Zamiast tego należy używać śledzenia zmian i powiadomień o zmianach. Ponadto powinno być możliwe wykrywanie zmian za pomocą dzienników aktywności. Aby uzyskać więcej informacji, [zobacz Partner Center aktywności.](get-a-record-of-partner-center-activity-by-user.md)  Zdecydowanie zalecamy partnerom rozważenie użycia interfejsu API dziennika aktywności w celu zwiększenia wydajności i uniknięcia ograniczania. Zobacz również przykład użycia dzienników aktywności poniżej.
+Rozwiązania programistyczne, takie jak ciągłe sondowanie zasobu w celu sprawdzenia aktualizacji i regularne skanowanie kolekcji zasobów w celu sprawdzenia nowych lub usuniętych zasobów, mogą prowadzić do ograniczenia przepustowości i obniżyć ogólną wydajność. Współbieżne wywołania interfejsu API mogą prowadzić do dużej liczby żądań na jednostkę czasu, co spowoduje również ograniczenie żądań. Zamiast tego należy używać śledzenia zmian i powiadomień o zmianach. Ponadto powinno być możliwe wykrywanie zmian za pomocą dzienników aktywności. Aby uzyskać więcej informacji, [zobacz Partner Center dzienników aktywności.](get-a-record-of-partner-center-activity-by-user.md)  Zdecydowanie zalecamy partnerom rozważenie użycia interfejsu API dziennika aktywności w celu zwiększenia wydajności i uniknięcia ograniczania. Zobacz również przykład użycia dzienników aktywności poniżej.
 
 ## <a name="best-practices-to-handle-throttling"></a>Najlepsze rozwiązania dotyczące obsługi ograniczania przepustowości
 
@@ -43,38 +43,38 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące obsługi ograniczania p
 - Zmniejsz częstotliwość wywołań. 
 - Unikaj natychmiastowych ponownych prób, ponieważ wszystkie żądania są naliczane względem limitów użycia. 
 
-Podczas wdrażania obsługi błędów użyj kodu błędu HTTP 429, aby wykryć ograniczenia przepustowości. Odpowiedź, która zakończyła się niepowodzeniem, zawiera Retry-After odpowiedzi. Backing off requests using the Retry-after delay (Ponawianie żądań po opóźnieniu) to najszybszy sposób odzyskania danych po ograniczaniu przepustowości. 
+Podczas wdrażania obsługi błędów użyj kodu błędu HTTP 429, aby wykryć ograniczenia przepustowości. Odpowiedź, która zakończyła się niepowodzeniem, zawiera Retry-After odpowiedzi. Backing off requests using the Retry-after delay is the fastest way to recover from throttling (Cofanie żądań przy użyciu opóźnienia Ponów po jest najszybszym sposobem odzyskiwania po ograniczaniu przepustowości). 
 
 Aby użyć opóźnienia Ponów po, wykonaj następujące czynności: 
 
-1. Poczekaj liczbę sekund określoną w nagłówku Retry-After ciągu. 
+1. Poczekaj liczbę sekund określoną w nagłówku Retry-After. 
 
 2. Ponów próbę żądania.  
 
-3. Jeśli żądanie ponownie zakończy się niepowodzeniem z kodem błędu 429, nadal trwa ograniczanie. Ponów próbę przy użyciu wykładniczego odroczania, użyj zalecanego Retry-After i ponów próbę żądania, aż zakończy się pomyślnie.
+3. Jeśli żądanie ponownie zakończy się niepowodzeniem z kodem błędu 429, nadal trwa ograniczanie. Ponów próbę przy użyciu wykładniczego odroczania, użyj zalecanego Retry-After i ponów próbę żądania do momentu jego powodzenia.
 
 4. Jeśli używasz zestawu SDK, otrzymasz wyjątek z kodem stanu 429, gdy żądanie jest ograniczane. Użyj właściwości RetryAfter w wyjątku i ponów próbę żądania po upływie czasu.
 
 
 ## <a name="apis-currently-impacted-by-throttling"></a>Interfejsy API, na które ma obecnie wpływ ograniczanie przepustowości
 
-W końcu każdy pojedynczy interfejs API Partner Center, który wywołuje punkt końcowy "api.partnercenter.microsoft.com/", będzie ograniczany. Obecnie limity ograniczania są wymuszane tylko dla interfejsów API wymienionych poniżej. Partner Center będzie zbierać dane telemetryczne dla każdego z interfejsów API i dynamicznie dostosuje limity ograniczania przepustowości. W poniższej tabeli wymieniono interfejsy API, w których ograniczanie jest obecnie wymuszane.  
+W końcu każdy interfejs API Partner Center, który wywołuje punkt końcowy "api.partnercenter.microsoft.com/", będzie ograniczany. Obecnie limity ograniczania są wymuszane tylko dla interfejsów API wymienionych poniżej. Partner Center będzie zbierać dane telemetryczne dla każdego z interfejsów API i dynamicznie dostosuje limity ograniczania. W poniższej tabeli wymieniono interfejsy API, w których ograniczanie jest obecnie wymuszane.  
 
 
 |**Operacja**| **Dokumentacja Centrum partnerskiego**|
 |------------------------|----------------------------|
 |{baseURL}/v1/customers/{customer_id}/orders|[tworzenie zamówienia](create-an-order.md)|
-|{baseURL}/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription}/upgrades|[przejście subskrypcji](transition-a-subscription.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/upgrades|[przejście subskrypcji](transition-a-subscription.md)|
 |{baseURL}/v1/customers/{customer-tenant-id}/orders/{order-id}|[zakup dodatku do subskrypcji](purchase-an-add-on-to-a-subscription.md)|
 |{baseURL}/v1/customers/{customer-id}/carts/{cart-id}|[tworzenie koszyka](create-a-cart.md)|
-|{baseURL}/v1/customers/{customer-id}/carts/{cart-id}/checkout|[finalizacji zakupu koszyka](checkout-a-cart.md)|
+|{baseURL}/v1/customers/{identyfikator-klienta}/carts/{identyfikator-koszyka}/finalizacji zakupu|[finalizacji zakupu koszyka](checkout-a-cart.md)|
 |{baseURL}/v1/customers/{customer-id}/carts/{cart-id}|[aktualizowanie koszyka](update-a-cart.md)|
 |{baseURL}/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/registrations|[rejestrowanie subskrypcji](register-a-subscription.md)|
 |{baseURL}/v1/productupgrades|[tworzenie jednostki uaktualnienia produktu](create-product-upgrade-entity.md)|
 |{baseURL}/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/conversions |[konwertowanie subskrypcji wersji próbnej na płatną](convert-a-trial-subscription-to-paid.md)|
 |{baseURL}/v1/customers/{customer-tenant-id}|[uzyskiwanie klienta według identyfikatora](get-a-customer-by-id.md)|
 |{baseURL}/v1/productUpgrades/eligibility|[uzyskiwanie uprawnień do uaktualnienia produktu](get-eligibility-for-product-upgrade.md)|
-|{baseURL}/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription} |[zarządzanie subskrypcją](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} |[zarządzanie subskrypcją](manage-orders.md#manage-a-subscription)|
 |{baseURL}/v1/customers/{customer_id}/subscriptions |[get-all-of-a-customer-s-subscriptions](get-all-of-a-customer-s-subscriptions.md)|
 |{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}|[Pobieranie subskrypcji według identyfikatora](get-a-subscription-by-id.md)|
 |{baseURL}/v1/customers/{customer_id}/orders|[Pobierz wszystkie zamówienia klientów](get-all-of-a-customer-s-orders.md)|
@@ -84,7 +84,7 @@ W końcu każdy pojedynczy interfejs API Partner Center, który wywołuje punkt 
 |{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/addons|[Pobieranie listy dodatków dla subskrypcji](get-a-list-of-add-ons-for-a-subscription.md)|
 |{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/azureEntitlements|[Uzyskiwanie listy uprawnień platformy Azure dla subskrypcji](get-a-list-of-azure-entitlements-for-subscription.md)|
 |{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/registrationstatus|[Pobieranie stanu rejestracji subskrypcji](get-subscription-registration-status.md)|
-|{baseURL}/v1/customers/{identyfikator-dzierżawy-klienta}/transfers|[Pobierz wszystkie przelewy klienta](get-all-of-a-customer-s-transfers.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}/transfers|[Uzyskiwanie wszystkich transferów klientów](get-all-of-a-customer-s-transfers.md)|
 |{baseURL}/v1/productUpgrades/{upgrade-id}/status|[Pobieranie stanu uaktualniania produktu](get-product-upgrade-status.md)|
 |{baseURL}/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/conversions|[Pobieranie listy ofert konwersji wersji próbnej](get-a-list-of-trial-conversion-offers.md)|
 

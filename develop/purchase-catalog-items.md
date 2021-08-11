@@ -4,12 +4,12 @@ description: Jak kupować elementy katalogu przy użyciu interfejsu API Partner 
 ms.date: 07/12/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d3e0deedff194b1c836d9266c2201a2b3a52cc1b
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 34560ceff2721a805d50cd4bf0702f6e7cf6f473db3f38ee52ea439b7355b786
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445361"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997346"
 ---
 # <a name="purchase-catalog-items"></a>Zakup elementów z katalogu
 
@@ -17,15 +17,15 @@ W poniższym scenariuszu przedstawiono ogólny proces kupowania elementów z kat
 
 ## <a name="discovery"></a>Odnajdywanie
 
-Wybierz produkty i jednostki magazynowe (SKU) i sprawdź ich dostępność przy użyciu następujących Partner Center API:
+Wybierz produkty i jednostki magazynowe (SKU) i sprawdź ich dostępność przy użyciu następujących modeli Partner Center API:
 
-- [Produkt](product-resources.md#product) — konstrukcja grupowania dla towarów lub usług, które można kupować. Sam produkt nie jest elementem do kupienia.
+- [Produkt](product-resources.md#product) — konstrukcja grupowania dla produktów lub usług, które można kupować. Sam produkt nie jest elementem do kupienia.
 - [SKU](product-resources.md#sku) — zakupna sku w ramach produktu. Reprezentują one różne kształty produktu.
-- [Dostępność](product-resources.md#availability) — konfiguracja, w której można kupić sku SKU (na przykład kraj, waluta i segment branży).
+- [Dostępność](product-resources.md#availability) — konfiguracja, w której można kupić sku (na przykład kraj, waluta i segment branży).
 
 Aby kupić element z katalogu, wykonaj następujące czynności:
 
-1. Zidentyfikuj i pobierz produkty i sku, które chcesz zakupić.
+1. Zidentyfikuj i pobierz produkt i sku, które chcesz kupić.
 
    - [Uzyskiwanie listy produktów](get-a-list-of-products.md)
    - [Uzyskiwanie produktu przy użyciu identyfikatora produktu](get-a-product-by-id.md)
@@ -36,7 +36,7 @@ Aby kupić element z katalogu, wykonaj następujące czynności:
 
    - [Sprawdzenie spisu](check-inventory.md)
 
-3. Pobierz dostępność [dla](product-resources.md#availability) usługi [SKU](product-resources.md#sku). Podczas składania zamówienia będziesz potrzebować wartości **CatalogItemId** dostępności. Aby uzyskać tę wartość, użyj jednego z następujących interfejsów API:
+3. Pobierz dostępność [dla](product-resources.md#availability) [SKU](product-resources.md#sku). Podczas składania zamówienia będziesz potrzebować wartości **CatalogItemId** dostępności. Aby uzyskać tę wartość, użyj jednego z następujących interfejsów API:
 
    - [Uzyskiwanie listy dostępności dla sku](get-a-list-of-availabilities-for-a-sku.md)
    - [Uzyskiwanie dostępności przy użyciu identyfikatora dostępności](get-an-availability-by-id.md)
@@ -45,30 +45,30 @@ Aby kupić element z katalogu, wykonaj następujące czynności:
 
 Aby przesłać zamówienie elementu katalogu, wykonaj następujące czynności:
 
-1. Utwórz koszyk [do](cart-resources.md) przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Podczas tworzenia koszyka elementy [](cart-resources.md#cartlineitem) wiersza koszyka są automatycznie grupowane w oparciu o elementy, które można kupić razem w tym samym [zamówieniu](order-resources.md).
+1. Utwórz [koszyk](cart-resources.md) do przechowywania kolekcji elementów katalogu, które zamierzasz kupić. Podczas tworzenia koszyka elementy [](cart-resources.md#cartlineitem) wiersza koszyka są automatycznie grupowane na podstawie elementów, które można kupić razem w tym samym [zamówieniu.](order-resources.md)
 
    - [Tworzenie koszyka](create-a-cart.md)
    - [Aktualizowanie koszyka](update-a-cart.md)
 
-2. Wyewidencj go. Wyeencjonuj koszyk powoduje utworzenie [zamówienia](order-resources.md).
+2. Zapoznaj się z koszykiem. Wyeencjonuj koszyk powoduje utworzenie [zamówienia](order-resources.md).
 
    - [Finalizacji zakupu koszyka](checkout-a-cart.md)
 
 ## <a name="get-order-details"></a>Uzyskiwanie szczegółów zamówienia
 
-Szczegóły pojedynczego zamówienia można pobrać przy użyciu identyfikatora zamówienia lub listy zamówień dla klienta. Istnieje opóźnienie do 15 minut między czasem, w którym zamówienie zostanie przesłane, a tym samym pojawi się na liście zamówień klienta.
+Szczegóły indywidualnego zamówienia możesz pobrać przy użyciu identyfikatora zamówienia lub uzyskać listę zamówień dla klienta. Istnieje opóźnienie do 15 minut między tym, kiedy zamówienie zostanie przesłane, a kiedy pojawi się na liście zamówień klienta.
 
 - Zobacz [Get an order by ID (Uzyskiwanie](get-an-order-by-id.md) zamówienia według identyfikatora), aby uzyskać szczegółowe informacje o indywidualnym zamówieniu przy użyciu identyfikatorów zamówień.
 
-- Zobacz [Get all of a customer's orders](get-all-of-a-customer-s-orders.md) (Uzyskiwanie wszystkich zamówień klienta), aby uzyskać listę zamówień dla klienta przy użyciu identyfikatora klienta.
+- Zobacz [Get all of a customer's orders](get-all-of-a-customer-s-orders.md) to get a list of orders for a customer using the customer ID (Uzyskiwanie wszystkich zamówień klienta), aby uzyskać listę zamówień dla klienta przy użyciu identyfikatora klienta.
 
-- Zobacz Artykuł Get a list of orders [by customer and billing](get-a-list-of-orders-by-customer-and-billing-cycle-type.md) [](product-resources.md#billingcycletype) cycle type (Uzyskiwanie listy zamówień według typu klienta i cyklu rozliczeniowego), aby uzyskać listę zamówień klienta według typu cyklu rozliczeniowego, co pozwala na oddzielną listę zamówień pozycji katalogu (opłaty godzinowe) i roczne lub miesięczne zamówienia rozliczane oddzielnie.
+- Zobacz Artykuł Get a list of orders by customer and billing [](product-resources.md#billingcycletype) cycle [type](get-a-list-of-orders-by-customer-and-billing-cycle-type.md) (Uzyskiwanie listy zamówień według klienta i typu cyklu rozliczeniowego), aby uzyskać listę zamówień dla klienta według typu cyklu rozliczeniowego, co pozwala oddzielnie wyświetlić listę zamówień pozycji katalogu (opłaty razowe) i roczne lub miesięczne rozliczane zamówienia.
 
 ## <a name="lifecycle-management"></a>Zarządzanie cyklem życia
 
-W ramach zarządzania cyklem życia elementów katalogu w programie Partner Center można [](entitlement-resources.md)pobrać informacje o uprawnieniach elementu katalogu i uzyskać szczegóły rezerwacji przy użyciu identyfikatora zamówienia rezerwacji. Aby uzyskać przykłady, jak to zrobić, [zobacz Get entitlements (Uzyskiwanie uprawnień).](get-a-collection-of-entitlements.md)   
+W ramach zarządzania cyklem życia elementów katalogu w programie Partner Center można [](entitlement-resources.md)pobrać informacje o uprawnieniach elementu katalogu i uzyskać szczegóły rezerwacji przy użyciu identyfikatora zamówienia rezerwacji. Aby uzyskać przykłady, jak to zrobić, zobacz [Get entitlements (Uzyskiwanie uprawnień).](get-a-collection-of-entitlements.md)   
 
-## <a name="invoice-and-reconciliation"></a>Faktury i uzgadnianie
+## <a name="invoice-and-reconciliation"></a>Faktura i uzgadnianie
 
 Poniższe scenariusze pokazują, jak programowo wyświetlać [](invoice-resources.md)faktury klienta oraz pobierać salda i podsumowania konta, które obejmują opłaty za pozycje katalogu.
 
@@ -82,7 +82,7 @@ Aby uzyskać bieżące saldo konta i kolekcję podsumowań faktur zawierających
 
 ### <a name="invoices"></a>Faktury
 
-Aby uzyskać kolekcję faktur, które pokazują opłaty cykliczne i [jednorazowe, zobacz Pobieranie kolekcji faktur.](get-a-collection-of-invoices.md) 
+Aby uzyskać kolekcję faktur, które pokazują opłaty cykliczne i [jednorazowe,](get-a-collection-of-invoices.md)zobacz Pobieranie kolekcji faktur . 
 
 ### <a name="single-invoice"></a>Pojedyncza faktura
 
@@ -90,7 +90,7 @@ Aby pobrać określoną fakturę przy użyciu identyfikatora faktury, zobacz [Po
 
 ### <a name="reconciliation"></a>Pojednania
 
-Aby uzyskać kolekcję szczegółów pozycji faktury (pozycje uzgodnień) dla określonego identyfikatora faktury, zobacz [Pobieranie pozycji faktury.](get-invoiceline-items.md)  
+Aby uzyskać kolekcję szczegółów pozycji faktury (pozycje uzgodnień) dla określonego identyfikatora faktury, zobacz [Pobieranie pozycji faktury](get-invoiceline-items.md).  
 
 ### <a name="download-an-invoice-as-a-pdf"></a>Pobieranie faktury w formacie PDF
 

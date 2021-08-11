@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 7fe987c7dc50d55b26cd72d5aead52963eb1cfbe
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 1d671c07185f92a36055af12d9de2e39adeab129bfcb2497da66d35807db270e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760219"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994085"
 ---
 # <a name="get-all-azure-usage-analytics-information"></a>Pobieranie wszystkich informacji analitycznych dotyczących użycia platformy Azure
 
@@ -21,7 +21,7 @@ Jak uzyskać wszystkie informacje dotyczące analizy użycia platformy Azure dla
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń użytkownika.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -36,11 +36,11 @@ Jak uzyskać wszystkie informacje dotyczące analizy użycia platformy Azure dla
 |Parametr        |Typ                        |Opis               |
 |:----------------|:---------------------------|:-------------------------|
 |top (pierwsze)              | ciąg                     | Liczba wierszy danych do zwrócenia w żądaniu. Wartość maksymalna i wartość domyślna, jeśli nie zostanie określona, to 10000. Jeśli w zapytaniu znajduje się więcej wierszy, treść odpowiedzi zawiera następny link, za pomocą których można zażądać następnej strony danych.                        |
-|Pomiń             | int                        | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład `top=10000 and skip=0` program pobiera pierwsze 10 000 wierszy danych, pobiera kolejne `top=10000 and skip=10000` 10000 wierszy danych i tak dalej.                       |
-|filter           | ciąg                     | Parametr *filtru* żądania zawiera co najmniej jedną instrukcje, które filtruje wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje można łączyć przy `eq` `ne` użyciu instrukcji lub `and` `or` . Można określić następujące ciągi:<br/><br/>                                                       `customerTenantId`<br/> `customerName`<br/> `subscriptionId`<br/> `subscriptionName`<br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>**Przykład:**<br/> `.../usage/azure?filter=meterCategory eq 'Data Management'`<br/><br/> **Przykład:**<br/>`.../usage/azure?filter=meterCategory eq 'Data Management' or (usageDate le cast('2018-01-01', Edm.DateTimeOffset) and usageDate le cast('2018-04-01', Edm.DateTimeOffset))`                        |
-|aggregationLevel | ciąg                    | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: `day` `week` , lub `month` . Jeśli nie zostanie on nieokreślony, wartość domyślna to `day` .<br/><br/>                                              Parametr `aggregationLevel` nie jest obsługiwany bez parametru `groupby` . Parametr `aggregationLevel` ma zastosowanie do wszystkich pól dat obecnych w tabeli `groupby` .                                                      |
+|Pomiń             | int                        | Liczba wierszy do pominięcia w zapytaniu. Ten parametr umożliwia stronicować duże zestawy danych. Na przykład `top=10000 and skip=0` program pobiera pierwsze 10 000 wierszy danych, pobiera następne `top=10000 and skip=10000` 10000 wierszy danych i tak dalej.                       |
+|filter           | ciąg                     | Parametr *filtru* żądania zawiera co najmniej jedną instrukcje filtrują wiersze w odpowiedzi. Każda instrukcja zawiera pole i wartość, które są skojarzone z operatorami lub , a instrukcje mogą być łączone przy `eq` `ne` użyciu lub `and` `or` . Można określić następujące ciągi:<br/><br/>                                                       `customerTenantId`<br/> `customerName`<br/> `subscriptionId`<br/> `subscriptionName`<br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>**Przykład:**<br/> `.../usage/azure?filter=meterCategory eq 'Data Management'`<br/><br/> **Przykład:**<br/>`.../usage/azure?filter=meterCategory eq 'Data Management' or (usageDate le cast('2018-01-01', Edm.DateTimeOffset) and usageDate le cast('2018-04-01', Edm.DateTimeOffset))`                        |
+|aggregationLevel | ciąg                    | Określa zakres czasu, dla którego mają zostać pobrane zagregowane dane. Może być jednym z następujących ciągów: `day` `week` , lub `month` . Jeśli nie zostanie on nieokreślony, wartość domyślna to `day` .<br/><br/>                                              Parametr `aggregationLevel` nie jest obsługiwany bez parametru `groupby` . Parametr `aggregationLevel` ma zastosowanie do wszystkich pól daty obecnych w tabeli `groupby` .                                                      |
 |Orderby          |ciąg                     | Instrukcja, która nakazuje wartości danych wynikowych dla każdej instalacji. Składnia jest następująca: `...&orderby=field [order],field [order],...` Parametr `field` może być jednym z następujących ciągów:<br/><br/>                    `customerTenantId`<br/>`customerName`<br/>`subscriptionId`<br/>`subscriptionName`<br/>`usageDate`<br/>`resourceLocation`<br/>`meterCategory`<br/>`meterSubcategory`<br/>`meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/> Parametr *order* jest opcjonalny i może mieć wartość lub , aby określić kolejność rosnącą lub malejącą odpowiednio dla `asc` każdego `desc` pola. Wartość domyślna to `asc`.<br/><br/>**Przykład:**<br/> `...&orderby=meterCategory,meterUnit`                                                                                           |
-|Groupby          |ciąg                    | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>Zwracane wiersze danych będą zawierać pola określone w `groupby`  parametrze i *wartości Quantity*.<br/><br/>Parametru `groupby` można używać z `aggregationLevel` parametrem .<br/><br/>**Przykład:**<br/>`...&groupby=meterCategory,meterUnit` |
+|Groupby          |ciąg                    | Instrukcja, która stosuje agregację danych tylko do określonych pól. Można określić następujące pola:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>Zwracane wiersze danych będą zawierać pola określone w `groupby`  parametrze *i wartości Quantity*.<br/><br/>Parametru `groupby` można używać z `aggregationLevel` parametrem .<br/><br/>**Przykład:**<br/>`...&groupby=meterCategory,meterUnit` |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

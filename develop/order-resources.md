@@ -4,12 +4,12 @@ description: Partner złozy zamówienie, gdy klient chce kupić subskrypcję z l
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 128c9e041cacc1c15f6187c4d99690d5c5fa4183
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: c2b841b73921c9727180e5649ec6a6213081442a8047c6b088e5f9fc6428ef0b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009173"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997859"
 ---
 # <a name="order-resources"></a>Zamawianie zasobów
 
@@ -57,7 +57,7 @@ Zamówienie zawiera listę ofert, a każdy element jest reprezentowany jako Orde
 | provisioningContext  | Słownik<ciąg, ciąg>            | Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                                                                                                                                               |
 | Linki                | [OrderLineItemLinks](#orderlineitemlinks) | Tylko do odczytu. Zasób łączy się z elementem wiersza zamówienia.                                                                                                                                                                                |
 | renewsTo             | [RenewsTo](#renewsto)                         |Szczegóły okresu odnowienia.                                                                           |
-| AttestationAccepted             | bool                 | Wskazuje umowę na ofertę lub warunki sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.                                                                            |
+| AttestationAccepted             | bool                 | Wskazuje umowę na ofertę lub warunki dotyczące sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties wymuszaJednacja ma wartość True.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 
@@ -65,11 +65,11 @@ Reprezentuje szczegóły okresu odnowienia.
 
 | Właściwość              | Typ             | Wymagane        | Opis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | ciąg           | Nie              | Reprezentacja iso 8601 czasu trwania okresu odnowienia. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
+| termDuration          | ciąg           | Nie              | Reprezentacja czasu trwania okresu odnowienia w standardach ISO 8601. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
 
 ## <a name="orderlinks"></a>OrderLinks
 
-Reprezentuje linki zasobów odpowiadające kolejności.
+Reprezentuje linki zasobów odpowiadające zamówieniu.
 
 | Właściwość           | Typ                                         | Opis                                                                   |
 |--------------------|----------------------------------------------|-------------------------------------------------------------------------------|
@@ -94,23 +94,23 @@ Element [Enum/dotnet/api/system.enum) z wartościami wskazującymi stan zamówie
 | Wartość              | Położenie     | Opis                                     |
 |--------------------|--------------|-------------------------------------------------|
 | unknown            | 0            | Inicjator wyliczania.                               |
-| Zakończone          | 1            | Wskazuje, że zamówienie jest ukończone.          |
+| Zakończone          | 1            | Wskazuje, że zamówienie jest zakończone.          |
 | Oczekiwanie            | 2            | Wskazuje, że zamówienie jest nadal oczekujące.      |
 | Anulowane          | 3            | Wskazuje, że zamówienie zostało anulowane.    |
 
 ## <a name="orderlineitemprovisioningstatus"></a>OrderLineItemProvisioningStatus
 
-Reprezentuje stan aprowizowania [orderLineItem](#orderlineitem).
+Reprezentuje stan aprowizowania [orderLineItem.](#orderlineitem)
 
 | Właściwość                        | Typ                                | Opis                                                                                |
 |------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------|
-| lineItemNumber                  | int                                 | Unikatowy numer wiersza w wierszu zamówienia. Wartości od 0 do count-1.             |
-| status                          | ciąg                              | Stan aprowizowania pozycji zamówienia. Wartości są następujące:</br>**Zrealizowane:** realizacja zamówienia została zakończona pomyślnie, a użytkownik będzie mógł korzystać z rezerwacji</br>**Niedopełnione:** niespełnienia z powodu anulowania</br>**PrefulfillmentPending:** Twoje żądanie jest nadal przetwarzane, realizacja nie została jeszcze ukończona |
+| lineItemNumber                  | int                                 | Unikatowy numer wiersza pozycji zamówienia. Wartości z zakresu od 0 do count-1.             |
+| status                          | ciąg                              | Stan aprowizowania pozycji zamówienia. Wartości są następujące:</br>**Zrealizowano:** Realizacja zamówienia została pomyślnie ukończona, a użytkownik będzie mógł korzystać z rezerwacji</br>**Niedopełnione:** niespełnienia z powodu anulowania</br>**PrefulfillmentPending:** Twoje żądanie jest nadal przetwarzane, realizacja nie jest jeszcze ukończona |
 | quantityProvisioningInformation | Lista<[QuantityProvisioningStatus](#quantityprovisioningstatus)> | Lista informacji o stanie aprowizowania ilości dla pozycji zamówienia. |
 
 ## <a name="quantityprovisioningstatus"></a>QuantityProvisioningStatus
 
-Reprezentuje stan aprowizowania według ilości.
+Reprezentuje stan aprowowania według ilości.
 
 | Właściwość                           | Typ                                         | Opis                                          |
 |------------------------------------|----------------------------------------------|------------------------------------------------------|

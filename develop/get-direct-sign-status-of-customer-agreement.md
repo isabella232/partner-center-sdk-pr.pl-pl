@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: a17775614b4eb328514b2b32b4cac1e513019cff
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 544965ab05e3956aa5b7b6fa2ef9656ff33990ef9c8d91422797132a814b85f1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549182"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993354"
 ---
 # <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Uzyskiwanie stanu bezpośredniego podpisywania klienta (akceptacja bezpośrednia) Umowa z Klientem Microsoft
 
@@ -25,9 +25,9 @@ W tym artykule wyjaśniono, jak można pobrać stan bezpośredniej akceptacji kl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -39,11 +39,11 @@ Aby pobrać stan bezpośredniej akceptacji klienta dla klienta Umowa z Klientem 
 var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
 ```
 
-**Przykład:** [Przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples, **klasa**: GetDirectSignedCustomerAgreementStatus.cs
+**Przykład:** [przykładowa aplikacja konsoli](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples, **klasa**: GetDirectSignedCustomerAgreementStatus.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
-Aby pobrać stan bezpośredniej akceptacji klienta dla klienta Umowa z Klientem Microsoft, utwórz żądanie REST w celu pobrania dla klienta stanu [DirectSignedCustomerAgreementStatus.](./customer-agreement-direct-sign-status-resource.md)
+Aby pobrać stan bezpośredniej akceptacji klienta dla klienta Umowa z Klientem Microsoft, utwórz żądanie REST w celu pobrania stanu [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) dla klienta.
 
 ### <a name="request-syntax"></a>Składnia żądania
 
@@ -55,11 +55,11 @@ Użyj następującej składni żądania:
 
 ### <a name="uri-parameters"></a>Parametry URI
 
-W żądaniu można użyć następujących parametrów URI:
+W żądaniu możesz użyć następujących parametrów URI:
 
 | Nazwa             | Typ | Wymagane | Opis                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| identyfikator dzierżawy klienta | GUID | Tak | Wartość jest identyfikatorem **CustomerTenantId** w formacie identyfikatora GUID, który umożliwia określenie identyfikatora dzierżawy klienta. |
+| identyfikator dzierżawy klienta | GUID | Tak | Wartość to identyfikator **CustomerTenantId** w formacie GUID, który umożliwia określenie identyfikatora dzierżawy klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -83,17 +83,17 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 W przypadku powodzenia ta metoda zwraca [ **zasób DirectSignedCustomerAgreementStatus**](./customer-agreement-direct-sign-status-resource.md) w treści odpowiedzi.
 
-Zasób ma właściwość **isSigned,** która wskazuje stan bezpośredniego podpisywania (akceptacji bezpośredniej) klienta.
+Zasób ma właściwość **isSigned,** która wskazuje stan bezpośredniego podpisywania klienta (akceptacja bezpośrednia).
 
 - Wartość true **oznacza,** że umowa została podpisana (zaakceptowana) bezpośrednio przez klienta.
 
-- Wartość false **oznacza,** że umowa *nie* została podpisana (zaakceptowana) bezpośrednio przez klienta.
+- Wartość false **oznacza,** że umowa nie *została* podpisana (zaakceptowana) bezpośrednio przez klienta.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
 Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu.
 
-Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

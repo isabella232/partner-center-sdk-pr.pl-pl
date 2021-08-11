@@ -4,12 +4,12 @@ description: Zaktualizuj szczegóły istniejącego konta użytkownika dla klient
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6ebfdbb5df1d56416835af771fd6b70190776012
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e652e8dcbf9075fe22507230029c9703f88abef179337b8958d219c996c6e6cd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445276"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115998012"
 ---
 # <a name="update-user-accounts-for-a-customer"></a>Aktualizowanie kont użytkowników dla klienta
 
@@ -17,13 +17,13 @@ Zaktualizuj szczegóły istniejącego konta użytkownika dla klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować szczegóły dla określonego użytkownika klienta, najpierw pobierz określony identyfikator klienta i użytkownika do zaktualizowania. Następnie utwórz zaktualizowaną wersję użytkownika w nowym **obiekcie CustomerUser.** Następnie użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie **wywołaj właściwość Users,** metodę **ById(),** a następnie metodę **Patch().**
+Aby zaktualizować szczegóły określonego użytkownika klienta, najpierw pobierz określony identyfikator klienta i użytkownika do zaktualizowania. Następnie utwórz zaktualizowaną wersję użytkownika w nowym **obiekcie CustomerUser.** Następnie użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie **wywołaj właściwość Users,** metodę **ById(),** a następnie metodę **Patch().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -46,7 +46,7 @@ User updatedCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa**: CustomerUserUpdate.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSamples, **klasa:** CustomerUserUpdate.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -63,7 +63,7 @@ Użyj następującego parametru zapytania, aby zidentyfikować prawidłowego kli
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w formacie **customer-tenant-id,** który umożliwia odsprzedawcy filtrowanie wyników dla danego klienta, który należy do odsprzedawcy. |
-| **identyfikator użytkownika**            | **guid** | Y        | Wartość jest identyfikatorem użytkownika sformatowanym w **formacie** GUID, który należy do jednego konta użytkownika.                                                                       |
+| **identyfikator użytkownika**            | **guid** | Y        | Wartość to identyfikator GUID sformatowany **jako identyfikator użytkownika** należący do jednego konta użytkownika.                                                                       |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

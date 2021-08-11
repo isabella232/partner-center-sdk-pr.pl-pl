@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: aa02a5a5b4a281b96e32ee6d239cc440cf8af4ec
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 61cb6659961cfeb22d3b0fe7ad5dd8533d5f72dda76fe96e64b4c64f39ece397
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760780"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994153"
 ---
 # <a name="get-activation-link-by-order-line-item"></a>Pobieranie linku aktywacji według elementu wiersza zamówienia
 
@@ -19,17 +19,17 @@ ms.locfileid: "111760780"
 
 Pobiera link aktywacji subskrypcji platformy handlowej według numeru wiersza zamówienia.
 
-Na pulpicie nawigacyjnym usługi Partner Center możesz wykonać tę  operację, wybierając pozycję Konkskrypcyjna subskrypcja w obszarze Subskrypcja na stronie głównej lub wybierając link Przejdź do witryny usługi **Publisher** obok subskrypcji, która ma zostać aktywowana na **stronie** Subskrypcje. 
+Na pulpicie nawigacyjnym usługi Partner Center możesz wykonać tę  operację, wybierając pozycję Konkskrypcyjna subskrypcja w obszarze Subskrypcja na stronie głównej lub wybierając link przejdź do witryny usługi **Publisher** obok subskrypcji do aktywowania na **stronie** Subskrypcje. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Ukończono zamówienie z produktem, który wymaga aktywacji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać link aktywacji elementu wiersza, użyj kolekcji [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z wybranym identyfikatorem klienta. Następnie wywołaj [**właściwość Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) z określonymi  [**wartościami OrderId**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Następnie wywołaj metodę [**LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) z **metodą ById()** z identyfikatorem numeru elementu wiersza.  Na koniec wywołaj **metodę ActivationLinks().**
+Aby uzyskać link aktywacji elementu wiersza, użyj kolekcji [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) i wywołaj metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z wybranym identyfikatorem klienta. Następnie wywołaj [**właściwość Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) i metodę [**ById()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) z określonym przez siebie  [**wartością OrderId**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Następnie wywołaj metodę [**LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) z **metodą ById()** z identyfikatorem numeru elementu wiersza.  Na koniec wywołaj **metodę ActivationLinks().**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -69,7 +69,7 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję [zasobów](customer-resources.md#customer) klienta w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [kolekcję](customer-resources.md#customer) zasobów klienta w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

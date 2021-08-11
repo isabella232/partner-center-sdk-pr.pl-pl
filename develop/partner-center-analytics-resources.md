@@ -4,18 +4,18 @@ description: Partner Center Analytics w dokumentacji publicznego interfejsu API.
 ms.date: 06/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 03d7d252a415524c6573c1bf62b8b9c1518a1b9f
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9028d5e2bdeb2637e35133b2c6dda739e0024ccc2838368a5276b1482af78d7f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548094"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997842"
 ---
 # <a name="partner-center-analytics---resources"></a>Analiza Centrum partnerskiego — zasoby
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Interfejs API analizy umożliwia programowe uzyskiwanie dostępu do danych prezentowanych w interfejsie użytkownika.
+Interfejs API analizy umożliwia programowy dostęp do danych, które są prezentowane w interfejsie użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -115,7 +115,7 @@ Reprezentuje wszystkie dane analityczne dla subskrypcji.
 |       trialEndDate        | ciąg w formacie daty i czasu UTC |                                  Data zakończenia okresu próbnego subskrypcji. Wartość domyślna to null.                                  |
 |       lastUsageDate       | ciąg w formacie daty i czasu UTC |                                        Data ostatniego użytej subskrypcji. Wartość domyślna to null.                                        |
 |     deprovisionedDate     | ciąg w formacie daty i czasu UTC |                                      Data coprowizowana subskrypcji. Wartość domyślna to null.                                      |
-|      lastRenewalDate      | ciąg w formacie daty i czasu UTC |                                       Data ostatniej odnowienia subskrypcji. Wartość domyślna to null.                                       |
+|      lastRenewalDate      | ciąg w formacie daty i czasu UTC |                                       Data ostatniego odnowienia subskrypcji. Wartość domyślna to null.                                       |
 |       licenseCount        |             liczba             |                                                             Łączna liczba licencji.                                                              |
 |     subscriptionCount     |             liczba             |                        Liczba subskrypcji. Uwaga: ta wartość będzie wyświetlana tylko w odpowiedzi zapytania agregacji.                         |
 
@@ -186,5 +186,5 @@ Reprezentuje wszystkie dane analityczne dla polecenia.
 | missedDate | ciąg w formacie daty i czasu UTC | Data pominięcia odwołania. |
 | createdDate | ciąg w formacie daty i czasu UTC | Data utworzenia odwołania. |
 | skippedDate | ciąg w formacie daty i czasu UTC | Data pominięcia odwołania. |
-| wonDate | ciąg w formacie daty i czasu UTC | Data wygrania odwołania. |
+| wonDate | ciąg w formacie daty i czasu UTC | Data wygrania polecenia. |
 | partnerMarket | ciąg |  Kraj/region, w którym działa partner. |

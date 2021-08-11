@@ -4,12 +4,12 @@ description: Jak uzyskać kontakt z pomocą techniczną dla subskrypcji.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b6c98e5ed96f2ca4787e93504c9e094bd46ae783
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 448a60db236ddfbb090cd376bb0dc98e93d4c87342febbcc1958ccd6033fa900
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760763"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994170"
 ---
 # <a name="get-a-subscriptions-support-contact"></a>Pobieranie informacji kontaktowych pomocy technicznej subskrypcji
 
@@ -19,15 +19,15 @@ Jak uzyskać kontakt z pomocą techniczną dla subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać kontakt z pomocą techniczną dla subskrypcji, zacznij od metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**SupportContact,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) aby uzyskać interfejs do obsługi operacji kontaktowych, a następnie wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) aby pobrać obiekt [**SupportContact.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact)
+Aby uzyskać kontakt z pomocą techniczną dla subskrypcji, zacznij od użycia metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta. Następnie pobierz interfejs do operacji subskrypcji, wywołując metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) z identyfikatorem subskrypcji. Następnie użyj właściwości [**SupportContact,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) aby uzyskać interfejs do obsługi operacji kontaktowych, a następnie wywołaj metodę [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) aby pobrać [**obiekt SupportContact.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact)
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -38,7 +38,7 @@ Aby uzyskać kontakt z pomocą techniczną dla subskrypcji, zacznij od metody [*
 var supportContact = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId).SupportContact.Get();
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetSubscriptionSupportContact.cs **(Klasa** przykładów kodu: GetSubscriptionSupportContact.cs)
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples Class : GetSubscriptionSupportContact.cs **(Klasa** przykładów zestaw SDK Centrum partnerskiego: GetSubscriptionSupportContact.cs)
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -54,8 +54,8 @@ Użyj następujących parametrów ścieżki, aby zidentyfikować klienta i subsk
 
 | Nazwa            | Typ   | Wymagane | Opis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta.           |
-| subscription-id | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje subskrypcję wersji próbnej. |
+| identyfikator klienta     | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta.           |
+| subscription-id | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje subskrypcję wersji próbnej. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

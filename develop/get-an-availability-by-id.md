@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c31bc12d8d484cc8042f36aa865145600d9e6738
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: fccd566e83dab8994280fdee072c0d6f27b690d5292ed3973427088f46b30d6b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760202"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993558"
 ---
 # <a name="get-the-availability-by-id"></a>Uzyskiwanie dostępności według identyfikatora
 
@@ -19,7 +19,7 @@ Pobiera dostępność dla określonego produktu i sku przy użyciu identyfikator
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -29,7 +29,7 @@ Pobiera dostępność dla określonego produktu i sku przy użyciu identyfikator
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)zacznij od kroków z artykułu Get [a SKU by ID (Uzyskiwanie sku za](get-a-sku-by-id.md) pomocą identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz właściwość **Availabilities,** aby uzyskać interfejs z dostępnymi operacjami dla właściwości Availabilities. Następnie przekaż identyfikator dostępności do metody **ById(),** aby pobrać operacje dla tej określonej dostępności, a następnie wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dostępności.
+Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)rozpocznij od kroków z artykułu Get a SKU by ID to get the interface for a specific SKU's operations (Uzyskiwanie [skuku](get-a-sku-by-id.md) według identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz właściwość **Availabilities,** aby uzyskać interfejs z dostępnymi operacjami dla właściwości Dostępność. Następnie przekaż identyfikator dostępności do metody **ById(),** aby pobrać operacje dotyczące określonej dostępności, a następnie wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dostępności.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -46,7 +46,7 @@ var availability = partnerOperations.Products.ByCountry(countryCode).ById(produc
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)zacznij od kroków z artykułu Get [a SKU by ID (Uzyskiwanie sku za](get-a-sku-by-id.md) pomocą identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz funkcję **getAvailabilities,** aby uzyskać interfejs z dostępnymi operacjami dla opcji Dostępność. Następnie przekaż identyfikator dostępności do funkcji **byId(),** aby pobrać operacje dla tej określonej dostępności, a następnie wywołaj funkcję **get(),** aby pobrać szczegóły dostępności.
+Aby uzyskać szczegółowe informacje o określonej [dostępności,](product-resources.md#availability)rozpocznij od kroków z artykułu Get a SKU by ID to get the interface for a specific SKU's operations (Uzyskiwanie [skuku](get-a-sku-by-id.md) według identyfikatora) w celu uzyskania interfejsu dla operacji [określonej sku.](product-resources.md#sku) Z wynikowego interfejsu wybierz funkcję **getAvailabilities,** aby uzyskać interfejs z dostępnymi operacjami dostępności. Następnie przekaż identyfikator dostępności do funkcji **byId(),** aby pobrać operacje dotyczące określonej dostępności, a następnie wywołaj funkcję **get(),** aby pobrać szczegóły dostępności.
 
 ```java
 IAggregatePartner partnerOperations;
@@ -75,7 +75,7 @@ Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId
 
 | Metoda  | Identyfikator URI żądania |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}/skus/{sku-id}/availabilities/{identyfikator-dostępności}?country={kod-kraju} HTTP/1.1         |
+| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities/{availability-id}?country={country-code} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -83,9 +83,9 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać określoną
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| identyfikator produktu             | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje produkt.            |
-| identyfikator sku                 | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje sku.                |
-| identyfikator dostępności        | ciąg   | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje dostępność.       |
+| product-id             | ciąg   | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje produkt.            |
+| identyfikator sku                 | ciąg   | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje sku.                |
+| identyfikator dostępności        | ciąg   | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje dostępność.       |
 | kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań

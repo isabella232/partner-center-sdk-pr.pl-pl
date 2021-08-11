@@ -4,22 +4,22 @@ description: Jak odrzucić przeniesienie subskrypcji dla klienta.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d09905979a89c9b2092462512c485524cd681d5f
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: f7862b017a494fcb8a503498c957ebc2cb5f4de9d3ede0aae625db53668e5477
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445378"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997213"
 ---
 # <a name="reject-a-transfer"></a>Odrzucanie przeniesienia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator transferu dla istniejącego transferu.
+- Identyfikator przeniesienia istniejącego transferu.
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -35,7 +35,7 @@ Użyj następującego parametru ścieżki, aby zidentyfikować klienta i określ
 
 | Nazwa            | Typ     | Wymagane | Opis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **identyfikator klienta** | ciąg   | Tak      | Identyfikator klienta sformatowany w formacie GUID, który identyfikuje klienta.             |
+| **identyfikator klienta** | ciąg   | Tak      | Identyfikator GUID sformatowany jako identyfikator klienta, który identyfikuje klienta.             |
 | **transfer-id** | ciąg   | Tak      | Identyfikator GUID sformatowany transfer-id, który identyfikuje transfer.             |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -44,12 +44,12 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 ### <a name="request-body"></a>Treść żądania
 
-W tej tabeli [opisano właściwości TransferEntity](transfer-entity-resources.md) w treści żądania.
+W tej tabeli opisano [właściwości TransferEntity](transfer-entity-resources.md) w treści żądania.
 
 | Właściwość              | Typ          | Wymagane  | Opis                                                                                |
 |-----------------------|---------------|-----------|--------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg        | Nie    | Identyfikator transferEntity, który jest dostarczany po pomyślnym utworzeniu obiektu transferEntity.                               |
-| status                | ciąg        | Nie    | Stan transferEntity. Aby odrzucić przeniesienie, wartość należy ustawić jako "odrzuć"|
+| status                | ciąg        | Nie    | Stan transferEntity. Aby odrzucić przeniesienie, należy ustawić wartość jako "odrzuć"|
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -68,7 +68,7 @@ Content-Length: 63
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca wypełniony [zasób TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca wypełniony [zasób TransferEntity](transfer-entity-resources.md) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

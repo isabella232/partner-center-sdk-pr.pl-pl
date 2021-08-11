@@ -4,12 +4,12 @@ description: Zasoby subskrypcji mogą dostarczać dalsze informacje o subskrypcj
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 35d8c86ab061797109b3c152eff02f354b7ea23a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: e48927b9d8606f8d78ed8e4b5eb12da61f7a7d27f16316bca124f896a24a6638
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547461"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997978"
 ---
 # <a name="subscription-resources"></a>Zasoby subskrypcji
 
@@ -20,7 +20,7 @@ Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Ni
 ## <a name="subscription"></a>Subskrypcja
 
 >[!NOTE]
->Zasób **subskrypcja** ma limit szybkości 500 żądań na minutę na identyfikator dzierżawy.
+>Zasób **Subskrypcji** ma limit szybkości 500 żądań na minutę na identyfikator dzierżawy.
 
 **Zasób** Subskrypcja reprezentuje cykl życia subskrypcji i zawiera właściwości, które definiują stany w całym cyklu życia subskrypcji.
 
@@ -29,25 +29,25 @@ Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Ni
 | identyfikator                   | ciąg                                                        | Identyfikator subskrypcji.                                                                                                                                                  |
 | offerId              | ciąg                                                        | Identyfikator oferty.                                                                                                                                                         |
 | entitlementId        | ciąg                                                        | Identyfikator uprawnień (identyfikator subskrypcji platformy Azure).                                                                                                                        |
-| nazwa_oferty            | ciąg                                                        | Nazwa oferty.                                                                                                                                                               |
+| offerName (nazwa oferty)            | ciąg                                                        | Nazwa oferty.                                                                                                                                                               |
 | Friendlyname         | ciąg                                                        | Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania.                                                                                           |
 | quantity             | liczba                                                        | Ilość. Na przykład w przypadku rozliczeń opartych na licencjach ta właściwość jest ustawiana na liczbę licencji.                                                            |
 | Unittype             | ciąg                                                        | Jednostki definiujące ilość dla subskrypcji.                                                                                                                             |
 | parentSubscriptionId | ciąg                                                        | Pobiera lub ustawia identyfikator subskrypcji nadrzędnej.                                                                                                                              |
 | Creationdate         | ciąg                                                        | Pobiera lub ustawia datę utworzenia w formacie data/godzina.                                                                                                                          |
-| effectiveStartDate   | ciąg w formacie daty i godzin UTC                                | Pobiera lub ustawia datę rozpoczęcia wejścia w życie dla tej subskrypcji w formacie data/godzina. Służy do datowania zmigrowanych subskrypcji lub do wyrównywania jej z inną.                |
-| commitmentEndDate    | ciąg w formacie daty i godzin UTC                                | Data zakończenia zobowiązania dla tej subskrypcji w formacie data/godzina. W przypadku subskrypcji, które nie są automatycznieodnawialnych, oznacza to datę daleko w przyszłości.       |
+| effectiveStartDate   | ciąg w formacie daty i czasu UTC                                | Pobiera lub ustawia datę rozpoczęcia wejścia w życie dla tej subskrypcji w formacie data/godzina. Jest on używany do datowania zmigrowanych subskrypcji lub do wyrównania jej z inną.                |
+| commitmentEndDate    | ciąg w formacie daty i czasu UTC                                | Data zakończenia zobowiązania dla tej subskrypcji w formacie data/godzina. W przypadku subskrypcji, które nie są automatycznieodnawialnych, oznacza to datę odchodzcą daleko w przyszłości.       |
 | status               | ciąg                                                        | Stan subskrypcji: "none", "active", "pending", "suspended" lub "deleted".                                                                                                         |
 | autoRenewEnabled     | boolean                                                       | Pobiera wartość wskazującą, czy subskrypcja jest odnawiana automatycznie.                                                                                                    |
-| typ rozliczeń          | ciąg                                                        | Określa sposób, w jaki subskrypcja jest rozliczana: "brak", "użycie" lub "licencja".                                                                                                      |
-| billingCycle         | ciąg                                                        | Wskazuje częstotliwość, z jaką partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](product-resources.md#billingcycletype). |
+| typ rozliczeń          | ciąg                                                        | Określa sposób na rachunku za subskrypcję: "brak", "użycie" lub "licencja".                                                                                                      |
+| billingCycle         | ciąg                                                        | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](product-resources.md#billingcycletype). |
 | hasPurchasableAddons | boolean                                                       | Pobiera lub ustawia wartość wskazującą, czy subskrypcja ma dodatki do zakupu.                                                                                             |
 | isTrial              | boolean                                                       | Wartość wskazująca, czy jest to subskrypcja wersji próbnej.                                                                                                                      |
 | isMicrosoftProduct   | boolean                                                       | Wartość wskazująca, czy jest to produkt firmy Microsoft.                                                                                                                       |
 | publisherName        | ciąg                                                        | Nazwa wydawcy.                                                                                                                                                           |
 | akcje              | tablica ciągów                                              | Pobiera lub ustawia dozwolone akcje. Możliwe wartości: "edytuj", "anuluj"                                                                                                  |
 | partnerId            | ciąg                                                        | Identyfikator MPN odsprzedawcy rekordu używany w modelu partnera pośredniego.                                                                                                     |
-| suspensionReasons    | tablica ciągów                                              | Tylko do odczytu. Jeśli subskrypcja została wstrzymana, wskazuje przyczynę.                                                                                                                  |
+| suspensionReasons (elementy suspensionReason)    | tablica ciągów                                              | Tylko do odczytu. Jeśli subskrypcja została wstrzymana, wskazuje przyczynę.                                                                                                                  |
 | Contracttype         | ciąg                                                        | Tylko do odczytu. Typ kontraktu: "subscription", "productKey" lub "redemptionCode".                                                                                           |
 | refundOptions        | tablica [zasobów RefundOption](#refundoption)   | Tylko do odczytu. Zestaw opcji zwrotu kosztów dostępnych dla tej subskrypcji.                                                                                              |
 | Linki                | [SubscriptionLinks](#subscriptionlinks)                       | Pobiera lub ustawia linki subskrypcji.                                                                                                                                          |

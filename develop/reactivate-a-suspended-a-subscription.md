@@ -4,12 +4,12 @@ description: Aktywuje ponownie subskrypcję, która została wcześniej wstrzyma
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c2b6e3574119f9c645cc3f730047d2a23484ad8a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8ef79c28e4b6d0d3517b342ac92163865ed8e8edb21cc0b384fef52e93bc93ac
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547718"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997247"
 ---
 # <a name="reactivate-a-suspended-subscription"></a>Ponowne uaktywnianie zawieszonej subskrypcji
 

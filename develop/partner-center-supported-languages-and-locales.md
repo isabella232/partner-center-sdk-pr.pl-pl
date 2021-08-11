@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: b3a64cc6aa4b19199490dafcf15eedde12b1330a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 6f2e1d50fa0f2ace2e94f4dbb5681e2164241ee57a85249136a55fce20893fbb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547805"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997587"
 ---
 # <a name="partner-center-supported-languages-and-locales"></a>Języki obsługiwane przez Centrum partnerskie i ustawienia regionalne
 
@@ -19,11 +19,11 @@ ms.locfileid: "111547805"
 
 Niektóre Partner Center API wymagają wartości wskazującej lokalne, kraj lub region. Na przykład nagłówek [REST Partner Center](headers.md) X-Locale wymaga często wartości w formacie "language-country" ("en-US" oznacza "Angielski — Stany Zjednoczone").
 
-W zarządzanych interfejsach API usługi Partner Center klasa [CountryValidationRules/dotnet/api/microsoft.store.partnercenter.models.countryvalidationrules.countryvalidationrules) i klasa [OfferCategory.Locale/dotnet/api/microsoft.store.partnercenter.models.offers.offercategory.locale), [ServiceRequest.CountryCode/dotnet /api/microsoft.store.partnercenter.models.servicerequests.servicerequest.countrycode) lub [CustomerBillingProfile.Culture/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile.culture) wymagają wartości ciągu wskazujących język lub kraj/region (w formie kodu języka ISO2 lub kodu kraju/regionu ISO3), ustawieniach regionalnych, lub kultury (identyfikator języka w połączeniu z kodem kraju/regionu).
+W zarządzanych interfejsach API usługi Partner Center klasa [CountryValidationRules/dotnet/api/microsoft.store.partnercenter.models.countryvalidationrules.countryvalidationrules) i klasa [OfferCategory.Locale/dotnet/api/microsoft.store.partnercenter.models.offers.offercategory.locale), [ServiceRequest.CountryCode/dotnet /api/microsoft.store.partnercenter.models.servicerequests.servicerequest.countrycode) lub [CustomerBillingProfile.Culture/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile.culture) wymagają wartości ciągu wskazujących język lub kraj/region (w postaci kodu języka ISO2 lub kodu kraju/regionu ISO3), ustawieniach regionalnych, lub kulturą (identyfikator języka połączony z kodem kraju/regionu).
 
 W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organizacji standardowych (ISO), które są obsługiwane w Partner Center API.
 
-| Kraj/region                           | ISO Alpha 2 Country Code | ISO Alpha 3 Country Code | Obsługiwane kultury                  |
+| Kraj/region                           | Kod kraju ISO Alpha 2 | ISO Alpha 3 Country Code | Obsługiwane kultury                  |
 |------------------------------------------|--------------------------|--------------------------|---------------------------------------|
 | Afganistan                              | AF                       | Afg                      | ps-AF / en-US                         |
 | Wyspy alandzkie                            | Ax                       | Ala                      | sv-SE / en-US                         |
@@ -85,7 +85,7 @@ W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organiza
 | Curaçao                                  | Cw                       | CUW                      | nl-NL / en-US                         |
 | Cypr                                   | CY                       | Cyp                      | el-GR / en-US                         |
 | Czechy                                  | CZ                       | CZE                      | cs-CZ / en-US                         |
-| Dania                                  | DK                       | Dnk                      | da-DK / en-US                         |
+| Dania                                  | DK                       | Dnk                      | da-DK /en-US                         |
 | Dżibuti                                 | Dj                       | Dji                      | fr-FR / en-US                         |
 | Dominika                                 | DM                       | Narzędzie DMA                      | en-US                                 |
 | Dominikana                       | DO                       | DOM                      | es-DO / en-US                         |
@@ -112,7 +112,7 @@ W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organiza
 | Ghana                                    | GH                       | Gha                      | en-GB / en-US                         |
 | Gibraltar                                | Gi                       | Gib                      | en-US                                 |
 | Grecja                                   | GR                       | GRC                      | el-GR / en-US                         |
-| Grenlandia                                | Gl                       | Grl                      | da-DK /en-US                         |
+| Grenlandia                                | Gl                       | Grl                      | da-DK / en-US                         |
 | Grenada                                  | Gd                       | Grd                      | en-US                                 |
 | Gwadelupa                               | GP                       | Glp                      | fr-FR / en-US                         |
 | Guam                                     | GU                       | Dziąseł                      | en-US                                 |
@@ -151,12 +151,12 @@ W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organiza
 | Liban                                  | LB                       | LbN                      | ar-LB / en-US                         |
 | Lesotho                                  | LS                       | Lso                      | en-US                                 |
 | Liberia                                  | LR                       | Lbr                      | en-US                                 |
-| Libia                                    | LY                       | LbY                      | ar-LY / en-US                         |
+| Libia                                    | LY                       | LBY                      | ar-LY / en-US                         |
 | Liechtenstein                            | LI                       | Kłamstwo                      | de-LI / en-US                         |
 | Litwa                                | LT                       | Ltu                      | lt-LT / en-US                         |
 | Luksemburg                               | LU                       | Lux                      | de-LU / fr-LU / en-US                 |
 | SRA Makau                                | MO                       | Komputerze mac                      | zh-MO / en-US                         |
-| Republika Północna i Północna                          | MK                       | Mkd                      | mk-MK / en-US                         |
+| Fca, FYRO                          | MK                       | Mkd                      | mk-MK / en-US                         |
 | Madagaskar                               | MG                       | Mcr                      | fr-FR / en-US                         |
 | Malawi                                   | MW                       | Mwi                      | en-US                                 |
 | Malezja                                 | MY                       | Mys                      | en-MY / en-US                         |
@@ -166,7 +166,7 @@ W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organiza
 | Wyspy Marshalla                         | MH                       | Mhl                      | en-US                                 |
 | Martynika                               | MQ                       | MTQ                      | fr-FR / en-US                         |
 | Mauretania                               | MR                       | Mrt                      | ar-SA / en-US                         |
-| Mauritius                                | Mu (MU)                       | Mus                      | en-GB / en-US                         |
+| Mauritius                                | MU                       | Mus                      | en-GB / en-US                         |
 | Wyspa Majotta                                  | YT                       | Myt                      | fr-FR / en-US                         |
 | Meksyk                                   | MX                       | Mex                      | es-MX / en-US                         |
 | Mikronezja                               | FM                       | Fsm                      | en-US                                 |
@@ -266,7 +266,7 @@ W poniższej tabeli wymieniono kultury i kody krajów międzynarodowych organiza
 | Urugwaj                                  | UY                       | Ury                      | es-UY / en-US                         |
 | Uzbekistan                               | UZ                       | UZB                      | uz-Latn-UZ / en-US                    |
 | Vanuatu                                  | Vu                       | VUT                      | en-US                                 |
-| Watykan                             | VA                       | Podatku vat                      | it-IT /en-US                         |
+| Watykan                             | VA                       | Podatku vat                      | it-IT / en-US                         |
 | Wenezuela                                | VE                       | Ven                      | es-VE / en-US                         |
 | Wietnam                                  | VN                       | Vnm                      | vi-VN / en-US                         |
 | Wallis i Ichuna                        | WF                       | Wlf                      | fr-FR / en-US                         |

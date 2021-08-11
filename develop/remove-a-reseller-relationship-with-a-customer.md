@@ -1,17 +1,17 @@
 ---
 title: Usuwanie relacji odsprzedaży z klientem
-description: Jak usunąć relację odsprzedawcy z klientem, z który nie masz już transakcji.
+description: Jak usunąć relację odsprzedawcy z klientem, z jakim nie masz już transakcji.
 ms.date: 01/12/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 45eca3564c3b9078e04d1f8155d08849a589d52f
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: bcfba544bd1647ba0f3eb360d5ace14c7223b38837cb858198cf95c4e82dd594
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446602"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997077"
 ---
 # <a name="remove-a-reseller-relationship-with-a-customer"></a>Usuwanie relacji odsprzedaży z klientem
 
@@ -19,21 +19,21 @@ Usuń relację odsprzedawcy z klientem, z który nie masz już transakcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Wszystkie zamówienia wystąpień zarezerwowanych maszyn wirtualnych platformy Azure muszą zostać anulowane przed usunięciem relacji odsprzedawcy. Skontaktuj się z pomocą techniczną platformy Azure, aby anulować wszystkie otwarte zamówienia wystąpień zarezerwowanych maszyn wirtualnych platformy Azure.
 
 ## <a name="c"></a>C\#
 
-Aby usunąć relację odsprzedawcy dla klienta, najpierw upewnij się, że wszystkie aktywne Azure Reserved VM Instances dla tego klienta zostały anulowane. Następnie upewnij się, że wszystkie aktywne subskrypcje dla tego klienta są wstrzymane. W tym celu określ identyfikator klienta, dla którego chcesz usunąć relację odsprzedawcy. W poniższym przykładzie kodu użytkownik jest monitowany o podanie identyfikatora klienta.
+Aby usunąć relację odsprzedawcy z klientem, najpierw upewnij się, że wszystkie aktywne Azure Reserved VM Instances dla tego klienta zostały anulowane. Następnie upewnij się, że wszystkie aktywne subskrypcje dla tego klienta zostały wstrzymane. W tym celu określ identyfikator klienta, dla którego chcesz usunąć relację odsprzedawcy. W poniższym przykładzie kodu użytkownik jest monitowany o podanie identyfikatora klienta.
 
-Aby ustalić, czy należy anulować jakikolwiek element Azure Reserved VM Instances klienta, pobierz kolekcję uprawnień, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta w celu określenia klienta oraz właściwość [**Entitlements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) w celu pobrania interfejsu operacji zbierania uprawnień. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) aby pobrać kolekcję uprawnień. Przefiltruj kolekcję pod celu uzyskania uprawnień z wartością [**EntitlementType.VirtualMachineReservedInstance,**](entitlement-resources.md#entitlementtype) a jeśli istnieją, anuluj je, wywołując pomoc techniczną przed podjęciem pracy. [](entitlement-resources.md#entitlementtype)
+Aby ustalić, czy należy anulować jakikolwiek interfejs Azure Reserved VM Instances klienta, pobierz kolekcję uprawnień, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta w celu określenia klienta oraz właściwość [**Entitlements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) w celu pobrania interfejsu do operacji zbierania uprawnień. Wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) aby pobrać kolekcję uprawnień. Przefiltruj kolekcję pod celu uzyskania uprawnień z [**wartością**](entitlement-resources.md#entitlementtype) [**EntitlementType.VirtualMachineReservedInstance,**](entitlement-resources.md#entitlementtype) a jeśli istnieją, anuluj je, wywołując pomoc techniczną przed podjęciem pracy.
 
-Następnie pobierz kolekcję subskrypcji klienta, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta w celu określenia klienta, oraz właściwość [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) w celu pobrania interfejsu operacji zbierania subskrypcji. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) aby pobrać kolekcję subskrypcji klienta. Przejdź przez kolekcję subskrypcji i upewnij się, że żadna z subskrypcji nie ma wartości właściwości [**Subscriptions.Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) [**o wartości SubscriptionStatus.Active.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus) Jeśli subskrypcja jest nadal aktywna, zobacz [Wstrzymywanie subskrypcji,](suspend-a-subscription.md) aby uzyskać informacje na temat sposobu jej wstrzymania.
+Następnie pobierz kolekcję subskrypcji klienta, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta w celu określenia klienta oraz właściwość [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) w celu pobrania interfejsu do operacji zbierania subskrypcji. Na koniec wywołaj [**metodę Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) lub [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) aby pobrać kolekcję subskrypcji klienta. Przejdź przez kolekcję subskrypcji i upewnij się, że żadna z subskrypcji nie ma wartości właściwości [**Subscriptions.Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) [**o wartości SubscriptionStatus.Active.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus) Jeśli subskrypcja jest nadal aktywna, zobacz [Wstrzymywanie subskrypcji,](suspend-a-subscription.md) aby uzyskać informacje na temat sposobu jej wstrzymania.
 
-Po potwierdzeniu, że wszystkie aktywne Azure Reserved VM Instances dla tego klienta zostaną anulowane i wszystkie aktywne subskrypcje zostaną zawieszone, możesz usunąć relację odsprzedawcy dla klienta. Najpierw utwórz nowy obiekt [Customer/dotnet/api/microsoft.store.partnercenter.models.customers.customer) z właściwością [Customer.RelationshipToPartner/dotnet/api/microsoft.store.partnercenter.models.customers.customer.relationshiptopartner) ustawioną na [**CustomerPartnerRelationship.None**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerpartnerrelationship). Następnie wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta, aby określić klienta, i wywołaj metodę **Patch,** przekazując obiekt nowego klienta.
+Po potwierdzeniu, że wszystkie aktywne Azure Reserved VM Instances dla tego klienta zostały anulowane i wszystkie aktywne subskrypcje zostały zawieszone, możesz usunąć relację odsprzedawcy z klientem. Najpierw utwórz nowy obiekt [Customer/dotnet/api/microsoft.store.partnercenter.models.customers.customer) przy użyciu właściwości [Customer.RelationshipToPartner/dotnet/api/microsoft.store.partnercenter.models.customers.customer.relationshiptopartner) ustawionej na [**customerPartnerRelationship.None.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerpartnerrelationship) Następnie wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) przy użyciu identyfikatora klienta, aby określić klienta, i wywołaj metodę **Patch,** przekazując nowy obiekt klienta.
 
 Aby ponownie ustanowić relację, powtórz proces [żądanie relacji odsprzedawcy/centrum partnerskiego/develop/request-reseller-relationship).
 
@@ -77,7 +77,7 @@ if (customer.RelationshipToPartner == CustomerPartnerRelationship.None)
 }
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: DeletePartnerCustomerRelationship.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** Klasa PartnerSDK.FeatureSample: DeletePartnerCustomerRelationship.cs 
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -85,7 +85,7 @@ if (customer.RelationshipToPartner == CustomerPartnerRelationship.None)
 
 | Metoda     | Identyfikator URI żądania                                                                                                                           |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **Patch**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/ HTTP/1.1 |
+| **Patch**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/ HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -93,7 +93,7 @@ Ta tabela zawiera listę parametrów zapytania wymaganych do usunięcia relacji 
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość to identyfikator GUID sformatowany **jako customer-tenant-id,** który identyfikuje klienta. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w **formacie customer-tenant-id,** który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -128,7 +128,7 @@ W przypadku powodzenia ta metoda usuwa relację odsprzedawcy dla określonego kl
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

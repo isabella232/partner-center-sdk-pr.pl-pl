@@ -4,12 +4,12 @@ description: Zasoby reprezentujące towary lub usługi, które można kupować. 
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2e68df1f6955fb7feb9770377621c2d649b74e4a
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: b0269b55810a57dc3a4897027a9817baaebc8ed5f4e98dc66e2eadfa210f362f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009124"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997451"
 ---
 # <a name="products-resources"></a>Zasoby produktów
 
@@ -63,29 +63,29 @@ Reprezentuje zakupną jednostkę magazynową (SKU) w ramach produktu. Reprezentu
 | isTrial                | bool             | Wskazuje, czy ta wersja SKU jest elementem wersji próbnej.                                           |
 | supportedBillingCycles | tablica ciągów | Lista obsługiwanych cykli rozliczeniowych dla tej sku. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](#billingcycletype). |
 | purchasePrerequisites  | tablica ciągów | Lista czynności lub akcji wymaganych wstępnie przed zakupem tego elementu. Obsługiwane wartości to:<br/>  "InventoryCheck" — wskazuje, że spis elementu powinien zostać oceniony przed podjęciem próby zakupu tego elementu.<br/> "AzureSubscriptionRegistration" — wskazuje, że subskrypcja platformy Azure jest potrzebna i musi zostać zarejestrowana przed podjęciem próby zakupu tego elementu.  |
-| inventoryVariables     | tablica ciągów | Lista zmiennych potrzebnych do wykonania sprawdzania spisu dla tego elementu. Obsługiwane wartości to:<br/> "CustomerId" — identyfikator klienta, dla których zakup będzie mieć identyfikator.<br/> "AzureSubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.</br> "ArmRegionName" — region, dla którego ma być weryfikowany spis. Ta wartość musi być dopasowana do "ArmRegionName" z dynamicznegoattributes sku. |
-| provisioningVariables  | tablica ciągów | Lista zmiennych, które muszą zostać podane w kontekście aprowowania elementu wiersza [koszyka](cart-resources.md#cartlineitem) podczas zakupu tego elementu. Obsługiwane wartości to:<br/> Zakres — zakres zakupu rezerwacji platformy Azure: "Pojedynczy", "Udostępniony".<br/> "SubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.<br/> "Czas trwania" — czas trwania rezerwacji platformy Azure: "1Year", "3Year".  |
+| inventoryVariables     | tablica ciągów | Lista zmiennych potrzebnych do wykonania sprawdzania spisu dla tego elementu. Obsługiwane wartości to:<br/> "CustomerId" — identyfikator klienta, dla który zostałby zakup.<br/> "AzureSubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.</br> "ArmRegionName" — region, dla którego ma być weryfikowany spis. Ta wartość musi być dopasowana do wartości "ArmRegionName" z dynamicAttributes sku. |
+| provisioningVariables  | tablica ciągów | Lista zmiennych, które należy podać w kontekście aprowizowania pozycji koszyka [podczas](cart-resources.md#cartlineitem) zakupu tego elementu. Obsługiwane wartości to:<br/> Zakres — zakres zakupu rezerwacji platformy Azure: "Pojedynczy", "Udostępniony".<br/> "SubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.<br/> "Czas trwania" — czas trwania rezerwacji platformy Azure: "1Year", "3Year".  |
 | dynamicAttributes      | pary klucz/wartość  | Słownik właściwości dynamicznych, które mają zastosowanie do tego elementu. Właściwości w tym słowniku są dynamiczne i mogą ulec zmianie bez powiadomienia. Nie należy tworzyć silnych zależności od określonych kluczy istniejących w wartości tej właściwości.    |
 | Linki                  | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w ramach tej sku.                   |
-| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Właściwości zaświadczenia dla SKU.                   |
+| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Właściwości zaświadczenia dla sku.                   |
 
 ## <a name="availability"></a>Dostępność
 
-Reprezentuje konfigurację, w której można kupić sku (na przykład kraj, waluta i segment branży).
+Reprezentuje konfigurację, w której jest dostępna do zakupu sku SKU (na przykład kraj, waluta i segment branży).
 
 | Właściwość        | Typ                        | Opis                                                                         |
 |-----------------|-----------------------------------------------------|-------------------------------------------------------------------------------------|
-| identyfikator              | ciąg                        | Identyfikator tej dostępności. Ten identyfikator jest unikatowy tylko w kontekście jego produktu [nadrzędnego i](#product) [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Należy polegać na tej wartości tylko w krótkim czasie po jej pobierania.  |
+| identyfikator              | ciąg                        | Identyfikator tej dostępności. Ten identyfikator jest unikatowy tylko w kontekście produktu nadrzędnego [i](#product) [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Ta wartość powinna być dostępna tylko w krótkim czasie po jej pobierania.  |
 | productId       | ciąg                        | Identyfikator [produktu, który](#product) zawiera tę dostępność.           |
 | skuId           | ciąg                        | Identyfikator [sku, który](#sku) zawiera tę dostępność.                   |
-| catalogItemId   | ciąg                        | Unikatowy identyfikator tego elementu w katalogu. Jest to identyfikator, który należy wypełnić we [właściwościach OrderLineItem.OfferId](order-resources.md#orderlineitem) lub [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) podczas zakupu nadrzędnej [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Należy polegać na tej wartości tylko w krótkim czasie po jej pobierania. Dostęp do niego powinien być uzyskiwany i używany tylko w momencie zakupu.  |
+| catalogItemId   | ciąg                        | Unikatowy identyfikator dla tego elementu w katalogu. Jest to identyfikator, który musi zostać wypełniony we [właściwościach OrderLineItem.OfferId](order-resources.md#orderlineitem) lub [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) podczas zakupu nadrzędnej [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Należy polegać na tej wartości tylko w krótkim czasie po jej pobierania. Dostęp do niego powinien być uzyskiwany i używany tylko w momencie zakupu.  |
 | defaultCurrency | ciąg                        | Domyślna waluta obsługiwana dla tej dostępności.                               |
-| segment         | ciąg                        | Segment branży dla tej dostępności. Obsługiwane wartości to: Komercyjne, Edukacyjne, Rządowe, NonProfit. |
+| segment         | ciąg                        | Segment branży dla tej dostępności. Obsługiwane wartości to: Komercyjne, Edukacyjne, Dla instytucji rządowych, NonProfit. |
 | country         | ciąg                                              | Kraj lub region (w formacie kodu kraju ISO), w którym ma zastosowanie ta dostępność. |
 | isPurchasable   | bool                                                | Wskazuje, czy tę dostępność można kupować. |
-| isRenewable     | bool                                                | Wskazuje, czy ta dostępność jest odnawializowa. |
+| isRenewable     | bool                                                | Wskazuje, czy ta dostępność jest odnawiązywna. |
 | product      | [Product](#product)               | Produkt, który odpowiada tej dostępności. |
-| sku          | [SKU](#sku)            | Ta dostępność odpowiada tej dostępności. |
+| sku          | [SKU](#sku)            | Ta dostępność odpowiada sku SKU. |
 | Warunki           | tablica [zasobów term](#term)  | Kolekcja warunków mających zastosowanie do tej dostępności. |
 | Linki           | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w dostępności. |
 
@@ -95,17 +95,17 @@ Reprezentuje termin, dla którego można kupić dostępność.
 
 | Właściwość              | Typ                                        | Opis                                                                         |
 |-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| czas trwania              | ciąg                                      | Reprezentacja iso 8601 czasu trwania terminu. Obecnie obsługiwane wartości to P1M (1 miesiąc), P1Y (1 rok) i P3Y (3 lata). |
+| czas trwania              | ciąg                                      | Reprezentacja czasu trwania terminu w standardach ISO 8601. Obecnie obsługiwane wartości to P1M (1 miesiąc), P1Y (1 rok) i P3Y (3 lata). |
 | description (opis)           | ciąg                                      | Opis terminu.           |
 
 ## <a name="inventorycheckrequest"></a>InventoryCheckRequest
 
-Reprezentuje żądanie sprawdzenia spisu niektórych elementów katalogu.
+Reprezentuje żądanie sprawdzenia spisu względem niektórych elementów katalogu.
 
 | Właściwość         | Typ                                                | Opis                                                                                 |
 |------------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------|
 | targetItems      | tablica [elementów InventoryItem](#inventoryitem)            | Lista elementów katalogu, które zostaną ocenione podczas sprawdzania spisu.                           |
-| inventoryContext | pary klucz/wartość                                     | Słownik wartości kontekstu, które są potrzebne do przeprowadzenia sprawdzania spisu. Każda [sku](#sku) produktów określi, które wartości (jeśli istnieją) są potrzebne do wykonania tej operacji.  |
+| inventoryContext | pary klucz/wartość                                     | Słownik wartości kontekstu, które są potrzebne do przeprowadzenia sprawdzania spisu. Każda [sku](#sku) produktów będzie określać, które wartości (jeśli istnieją) są potrzebne do wykonania tej operacji.  |
 | Linki            | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w żądaniu sprawdzenia spisu.                            |
 
 ## <a name="inventoryitem"></a>InventoryItem

@@ -4,12 +4,12 @@ description: Jak kupić dodatek do istniejącej subskrypcji.
 ms.date: 11/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d8b700a2ad41a37ca0ad745f3e7767449974b18a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 5227b917faf663c129b1abed1d10318620667e9b47524eb8c91867fb6b453ee8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547686"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997366"
 ---
 # <a name="purchase-an-add-on-to-a-subscription"></a>Zakup dodatku do subskrypcji
 
@@ -19,27 +19,27 @@ Jak kupić dodatek do istniejącej subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-- Identyfikator subskrypcji. Jest to istniejąca subskrypcja, dla której należy zakupić ofertę dodatku.
+- Identyfikator subskrypcji. Jest to istniejąca subskrypcja, dla której ma być zakupiona oferta dodatku.
 
-- Identyfikator oferty identyfikujący ofertę dodatku do zakupu.
+- Identyfikator oferty, który identyfikuje ofertę dodatku do zakupu.
 
 ## <a name="purchasing-an-add-on-through-code"></a>Kupowanie dodatku za pomocą kodu
 
-Po zakupie dodatku do subskrypcji aktualizujesz oryginalne zamówienie subskrypcji przy użyciu zamówienia dodatku. W poniższych przykładach customerId jest identyfikatorem klienta, subscriptionId to identyfikator subskrypcji, a addOnOfferId to identyfikator oferty dla dodatku.
+Po zakupie dodatku do subskrypcji aktualizujesz oryginalne zamówienie subskrypcji przy użyciu zamówienia na dodatek. Poniżej identyfikator customerId jest identyfikatorem klienta, subscriptionId to identyfikator subskrypcji, a addOnOfferId to identyfikator oferty dla dodatku.
 
 Oto konkretne kroki:
 
-1.  Pobierz interfejs do operacji dla subskrypcji.
+1.  Uzyskaj interfejs do operacji dla subskrypcji.
 
     ``` csharp
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2.  Użyj tego interfejsu, aby utworzyć wystąpienia obiektu subskrypcji. W ten sposób uzyskujesz szczegółowe informacje o subskrypcji nadrzędnej, w tym identyfikator zamówienia.
+2.  Użyj tego interfejsu, aby utworzyć wystąpienia obiektu subskrypcji. W ten sposób uzyskujesz szczegóły subskrypcji nadrzędnej, w tym identyfikator zamówienia.
 
     ``` csharp
     var parentSubscription = subscriptionOperations.Get();
@@ -71,7 +71,7 @@ Oto konkretne kroki:
 
 ## <a name="c"></a>C\#
 
-Aby kupić dodatek, zacznij od uzyskania interfejsu dla operacji subskrypcji, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, oraz metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) w celu zidentyfikowania subskrypcji, która ma ofertę dodatku. Użyj tego [**interfejsu,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) aby pobrać szczegóły subskrypcji, wywołując [**get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Szczegóły subskrypcji zawierają identyfikator zamówienia subskrypcji, który jest kolejnością do zaktualizowania przy użyciu dodatku.
+Aby kupić dodatek, zacznij od uzyskania interfejsu do operacji subskrypcji, wywołując metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta w celu zidentyfikowania klienta, oraz metodę [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) w celu zidentyfikowania subskrypcji, która ma ofertę dodatku. Użyj tego [**interfejsu,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) aby pobrać szczegóły subskrypcji, wywołując wywołanie [**get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Szczegóły subskrypcji zawierają identyfikator zamówienia subskrypcji, czyli zamówienie, które ma zostać zaktualizowane przy użyciu dodatku.
 
 Następnie należy utworzyć wystąpienie nowego obiektu [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) i wypełnić go pojedynczym wystąpieniem [**LineItem,**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) które zawiera informacje identyfikujące dodatek, jak pokazano w poniższym fragmencie kodu. Użyjesz tego nowego obiektu, aby zaktualizować zamówienie subskrypcji przy użyciu dodatku. Na koniec wywołaj metodę [**Patch,**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) aby zaktualizować zamówienie subskrypcji, po pierwszym zidentyfikowaniu klienta za pomocą metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) i z zamówieniem [**orders.ById.**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid)
 
@@ -109,7 +109,7 @@ var orderToUpdate = new Order()
 Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego Samples **Class**: AddSubscriptionAddOn.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** zestaw SDK Centrum partnerskiego **Samples, klasa**: AddSubscriptionAddOn.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -125,7 +125,7 @@ Użyj następujących parametrów, aby zidentyfikować klienta i zamówienie.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość jest identyfikatorem GUID w **formacie customer-tenant-id,** który identyfikuje klienta. |
+| **identyfikator dzierżawy klienta** | **guid** | Y        | Wartość to identyfikator GUID sformatowany **jako customer-tenant-id,** który identyfikuje klienta. |
 | **order-id**           | **guid** | Y        | Identyfikator zamówienia.                                                              |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -150,7 +150,7 @@ W poniższych tabelach opisano właściwości w treści żądania.
 
 | Nazwa                 | Typ   | Wymagane | Opis                                                  |
 |----------------------|--------|----------|--------------------------------------------------------------|
-| LineItemNumber       | liczba | Y        | Numer elementu wiersza rozpoczynający się od 0.                       |
+| LineItemNumber       | liczba | Y        | Numer elementu wiersza, zaczynając od 0.                       |
 | OfferId              | ciąg | Y        | Identyfikator oferty dodatku.                                  |
 | SubscriptionId       | ciąg | N        | Identyfikator zakupionej subskrypcji dodatku.                 |
 | ParentSubscriptionId | ciąg | Y        | Identyfikator subskrypcji nadrzędnej, która ma ofertę dodatku. |

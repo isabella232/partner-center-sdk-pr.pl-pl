@@ -1,27 +1,27 @@
 ---
 title: Pobieranie uprawnień klienta do przeniesienia subskrypcji
-description: Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub są do nich do przekazania.
+description: Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub które nie są do przekazania.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: fe8af76d1e1456754dec79291ec0853fb253d108
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: bbb34a2fb9e808cd475f175688f2b1c1c0feb2de4060a9143df50f9ae5ad13e7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446296"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993456"
 ---
 # <a name="get-a-customers-subscriptions-transfer-eligibility"></a>Pobieranie uprawnień klienta do przeniesienia subskrypcji
 
-Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub nie są uprawnione do przeniesienia.
+Jak uzyskać kolekcję subskrypcji klienta, które kwalifikują się do przeniesienia lub nie kwalifikują się do przeniesienia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -37,7 +37,7 @@ W tej tabeli wymieniono parametr zapytania wymagany do uzyskania wszystkich subs
 
 | Nazwa               | Typ   | Wymagane | Opis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
+| identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
 | transfer-type      | ciąg | Tak      | Typ transferu, który jest zamierzony.                |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -61,11 +61,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca kolekcję zasobów [Uprawnień](transfer-eligibility-resources.md) do przeniesienia w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca kolekcję zasobów Uprawnienia do [przeniesienia](transfer-eligibility-resources.md) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kodów błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
 
 ### <a name="response-example"></a>Przykład odpowiedzi
 

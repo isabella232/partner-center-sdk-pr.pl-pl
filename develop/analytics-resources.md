@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: v-sumukh
 ms.author: v-sumukh
-ms.openlocfilehash: 69c6c195ba1a0d657a91320b2f9b08b5269a8499
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: fc665e8e4468648f71f242992780fbc66a02522a0b8b957a5ce68147ab33eaac
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025602"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993201"
 ---
 # <a name="analytics-api-resources-that-help-you-report-on-license-usage-deployment-and-consumption"></a>Zasoby interfejsu API analizy, które ułatwiają zgłaszanie użycia, wdrażania i użycia licencji
 

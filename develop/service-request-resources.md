@@ -1,21 +1,21 @@
 ---
 title: Zasoby żądania obsługi
-description: Partnerzy mogą zgłaszać żądania obsługi w imieniu swoich partnerów w celu zgłaszania przerw w działaniu usług oferowanych przez firmę Microsoft lub żądania innej pomocy technicznej, która nie jest w stanie jej zapewnić.
+description: Partnerzy mogą zgłaszać żądania obsługi w imieniu swoich partnerów w celu zgłaszania przerw w działaniu usług oferowanych przez firmę Microsoft lub żądania pomocy technicznej innej firmy, która nie jest w stanie jej zapewnić.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 02a02e6a873ad8785150368f3d4b89af2b588529
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f919b3c34ff179a7a6cd0541f34c53737ec4148e44791419d2252fae64b0658d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547363"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993235"
 ---
 # <a name="service-request-resources"></a>Zasoby żądania obsługi
 
 **Dotyczy:** Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Partnerzy mogą zgłaszać żądania obsługi w imieniu swoich partnerów w celu zgłaszania przerw w działaniu usług oferowanych przez firmę Microsoft lub żądania innej pomocy technicznej, która nie jest w stanie jej zapewnić.
+Partnerzy mogą zgłaszać żądania obsługi w imieniu swoich partnerów w celu zgłaszania przerw w działaniu usług oferowanych przez firmę Microsoft lub żądania pomocy technicznej innej firmy, która nie jest w stanie jej zapewnić.
 
 ## <a name="servicerequest"></a>ServiceRequest
 
@@ -27,13 +27,13 @@ Opisuje żądanie obsługi zgłoszone przez partnera, w tym sposób, w jaki żą
 | Opis      | ciąg                                                        | Opis.                                                                     |
 | Ważność         | ciąg                                                        | Ważność: "nieznany", "krytyczny", "umiarkowany" lub "minimalny".                       |
 | SupportTopicId   | ciąg                                                        | Identyfikator tematu pomocy technicznej.                                                         |
-| SupportTopicName (Nazwa Tematu pomocy technicznej) | ciąg                                                        | Nazwa tematu pomocy technicznej.                                                       |
+| SupportTopicName | ciąg                                                        | Nazwa tematu pomocy technicznej.                                                       |
 | Id               | ciąg                                                        | Identyfikator żądania obsługi.                                                       |
 | Stan           | ciąg                                                        | Stan żądania obsługi: "brak", "otwarte", "zamknięte" lub "potrzebna \_ uwaga". |
 | Organizacja     | [ServiceRequestOrganization](#servicerequestorganization)     | Organizacja, dla której utworzono żądanie obsługi.                               |
-| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primary Contact w żądaniu obsługi.                                              |
+| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Podstawowa osoba kontaktowa w żądaniu obsługi.                                              |
 | LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | Kontakt "Ostatnia aktualizacja przez" w przypadku zmian w żądaniu obsługi.                        |
-| ProductName      | ciąg                                                        | Nazwa produktu, który odpowiada żądaniu obsługi.                     |
+| ProductName      | ciąg                                                        | Nazwa produktu, która odpowiada żądaniu obsługi.                     |
 | ProductId        | ciąg                                                        | Identyfikator produktu.                                                               |
 | CreatedDate      | data                                                          | Data utworzenia żądania obsługi.                                          |
 | LastModifiedDate | data                                                          | Data ostatniej modyfikacji żądania obsługi.                                 |
@@ -77,7 +77,7 @@ Opisuje organizację, dla której utworzono żądanie obsługi.
 | Nazwa        | ciąg | Nazwa organizacji.         |
 | PhoneNumber | ciąg | Numer telefonu organizacji. |
 
-## <a name="supporttopic"></a>SupportTopic (Temat pomocy technicznej)
+## <a name="supporttopic"></a>SupportTopic
 
 Opisuje temat pomocy technicznej. Żądania obsługi określają temat pomocy technicznej, aby upewnić się, że są przetwarzane szybko i efektywnie.
 

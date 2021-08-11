@@ -1,40 +1,40 @@
 ---
 title: Zasoby narzędziowe
-description: Interfejs PARTNER CENTER API REST zawiera wiele zasobów opisujących modele danych ogólnego przeznaczenia używane w zestawie SDK.
+description: Interfejs API REST Partner Center zawiera wiele zasobów opisujących modele danych ogólnego przeznaczenia używane w zestawie SDK.
 ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 095cf36d47b147eb6df28d8747889e218c270659
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: de97feed13a4d0bae9743939a03f8cb8470f5f960bec0507cd9c5adfad287120
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529668"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115998046"
 ---
 # <a name="utility-resources"></a>Zasoby narzędziowe
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Interfejs PARTNER CENTER API REST zawiera wiele zasobów opisujących modele danych ogólnego przeznaczenia używane w zestawie SDK.
+Interfejs API REST Partner Center zawiera wiele zasobów opisujących modele danych ogólnego przeznaczenia używane w zestawie SDK.
 
 ## <a name="address"></a>Adres
 
-Adres do użycia dla profilów klientów lub partnerów. Aby uzyskać więcej informacji na temat obsługiwanych formatów i właściwości w różnych krajach/regionach, zobacz [Get address formatting rules by market](get-market-specific-validation-data.md).
+Adres do użycia dla profilów klientów lub partnerów. Aby uzyskać więcej informacji o obsługiwanych formatach i właściwościach w różnych krajach/regionach, zobacz [Get address formatting rules by market](get-market-specific-validation-data.md).
 
-| Właściwość     | Typ   | Długość (min. wartość maksymalna) | Opis                                                                                      |
+| Właściwość     | Typ   | Długość (minimalna, maksymalna) | Opis                                                                                      |
 |--------------|--------|-------------------|--------------------------------------------------------------------------------------------------|
 | AddressLine1 | ciąg | (1, 200)          | Pierwszy wiersz adresu.                                                                   |
 | Addressline2 | ciąg | (0, 200)          | Drugi wiersz adresu. Ta właściwość jest opcjonalna.                                       |
 | City (Miasto)         | ciąg | n/d               | Miasto.                                                                                        |
 | Stan        | ciąg | (0, 2)            | Stan.                                                                                       |
-| PostalCode   | ciąg | n/d               | Kod pocztowy lub kod pocztowy.                                                                     |
+| PostalCode   | ciąg | n/d               | Kod POCZTOWY lub kod pocztowy.                                                                     |
 | Kraj      | ciąg | (2, 2)            | Kraj/region w formacie kodu kraju ISO.                                                   |
 | Region (Region)       | ciąg | n/d               | Region.                                                                                      |
 | FirstName (Imię)    | ciąg | (1, 50)           | Imię kontaktu w firmie/organizacji klienta.                              |
 | Middlename   | ciąg | (1, 50)           | Drugie imię i nazwisko kontaktu w firmie/organizacji klienta. Ta właściwość jest opcjonalna.  |
 | LastName (Nazwisko)     | ciąg | (1, 50)           | Nazwisko kontaktu w firmie/organizacji klienta.                               |
 | PhoneNumber  | ciąg | n/d               | Numer telefonu kontaktu w firmie/organizacji klienta. Ta właściwość jest opcjonalna.|
-|PhoneNumber|ciąg|n/d|Numer telefonu kontaktu w firmie/organizacji klienta. W profilu klienta ta właściwość jest obowiązkowa w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Na terenie firmy/organizacji klienta, w następujących krajach: Armenii (AM), Kolumbii (AZ), Kolumbii (HU), Kolumbii (KZ), Kyrgyzstan (KG), Następnie (RU), Tajikistan(TJ), Platformie (UA), Indiach, Brazylii, Południowej Afryki, Domenu Stanów Zjednoczonych, Kolumbii, Kolumbii, Anonimii, Karolinie, Południowej Rpi i Azji. W przeciwnym razie jest to opcjonalne.|
+|PhoneNumber|ciąg|n/d|Numer telefonu kontaktu w firmie/organizacji klienta. W profilu klienta ta właściwość jest obowiązkowa w przypadku firmy/organizacji klienta znajdującej się w następujących krajach: Isa (AM), Gdynia (AZ), Przemysl (BY), Kolumbia (HU), KZ), Kyrgyzstan (KG), Kolumbia (MD), Tadżykistan (RU), Tadżykistan (TJ), Przemowa (UZ), Indie, Brazylia, Republika Południowej Afryki, Dynamo, Stany Zjednoczone Stanów Zjednoczonych, Arabia, Kolumbia, Argentyna, Hania, Hania, Hanii, Stanów Zjednoczonych, Stanów Zjednoczonych i Azji. W przeciwnym razie jest to opcjonalne.|
 
 
 ## <a name="contact"></a>Kontakt

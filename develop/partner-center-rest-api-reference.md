@@ -1,31 +1,31 @@
 ---
 title: Dokumentacja interfejsu API REST Centrum partnerskiego
-description: Dowiedz się, jak partnerzy programu CSP mogą używać Partner Center API REST w celu zintegrowania oprogramowania CRM i rozliczeń z systemami firmy Microsoft w celu lepszego zarządzania kontami klientów.
+description: Dowiedz się, jak partnerzy programu CSP mogą Partner Center interfejsów API REST w celu zintegrowania oprogramowania CRM i rozliczeń z systemami firmy Microsoft w celu lepszego zarządzania kontami klientów.
 ms.date: 11/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 18621fdb94f91f066b69a11f7d557410d653787e
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f55354c09b5741b4b2f8bc26bc4ce3a2f0b801214066c35d8af2ea330b89171c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548043"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997706"
 ---
-# <a name="partner-center-rest-api-reference-to-rest-urls-rest-headers-rest-resources-and-rest-events"></a>Partner Center API REST do adresów URL REST, nagłówków REST, zasobów REST i zdarzeń REST
+# <a name="partner-center-rest-api-reference-to-rest-urls-rest-headers-rest-resources-and-rest-events"></a>Partner Center interfejsu API REST do adresów URL REST, nagłówków REST, zasobów REST i zdarzeń REST
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 ## <a name="partner-center-rest-api"></a>Partner Center REST API
 
-Interfejs API REST usługi Partner Center pomaga partnerom firmy Dostawca rozwiązań w chmurze (CSP) zintegrować istniejące oprogramowanie CRM lub rozliczeniowe z systemami firmy Microsoft, które zarządzają kontami klientów, składają zamówienia, zarządzają subskrypcjami i obsługują żądania pomocy technicznej.
+Interfejs API REST usługi Partner Center pomaga partnerom programu Dostawca rozwiązań w chmurze (CSP) zintegrować istniejące oprogramowanie CRM lub rozliczeniowe z systemami firmy Microsoft, które zarządzają kontami klientów, składają zamówienia, zarządzają subskrypcjami i obsługują żądania pomocy technicznej.
 
-Aby uzyskać więcej informacji na temat tego, co interfejs API może zrobić, w tym przykładowy kod, zobacz temat [Scenariusze,](scenarios.md) w tym omówienie w tle.
+Aby uzyskać więcej informacji na temat tego, co interfejs API może zrobić, w tym przykładowy kod, zobacz [temat Scenariusze,](scenarios.md) w tym omówienie w tle.
 
-Przed rozpoczęciem kodowania przeczytaj temat [Wprowadzenie.](get-started.md) Ten artykuł zawiera informacje dotyczące konfigurowania kont testowych i produkcyjnych, uzyskiwania uwierzytelniania i znajdowania przykładowego kodu.
+Przed rozpoczęciem kodowania przeczytaj temat [Wprowadzenie.](get-started.md) Ten artykuł zawiera informacje dotyczące konfigurowania kont testowych i produkcyjnych, uwierzytelniania i znajdowania przykładowego kodu.
 
-Aby uzyskać przewodnik informacyjny objaśnijący poszczególne interfejsy API, zobacz [Partner Center API REST.](/rest/api/partner-center-rest/)
+Aby uzyskać przewodnik z objaśnieniami dla każdego interfejsu API, zobacz [Partner Center API REST](/rest/api/partner-center-rest/).
 
 ## <a name="topics"></a>Tematy
 

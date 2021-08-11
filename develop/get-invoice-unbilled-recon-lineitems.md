@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 5ab7dde0d78e8ff15bb1a960b16c8c925b0478ce
-ms.sourcegitcommit: c5acfb373aa012eb3b6c17182f7ca56883502c6b
+ms.openlocfilehash: 3e461367eb41c180dd1004ab2548ca24c4b891976ef53d852bb7933ff23fae65
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112391295"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993881"
 ---
 # <a name="get-invoices-unbilled-reconciliation-line-items"></a>Pobierz nienalizane elementy wiersza uzgodnień faktury
 

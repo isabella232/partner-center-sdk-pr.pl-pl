@@ -4,12 +4,12 @@ description: Dowiedz się, jak dodać zweryfikowaną domenę do listy zatwierdzo
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fc24335aff6fe83b58ad2cb178d03db00614dd8ae24ee83d20b607b56a4bc51d
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 570008c955ce3242b02c1df4c87df52aea3627abb6c86a069cc7c4c0d1d6f799
+ms.sourcegitcommit: ac8f5f8bedaddba5110dd4e562fbd9a2b24837df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115989138"
+ms.lasthandoff: 08/08/2021
+ms.locfileid: "116885581"
 ---
 # <a name="add-a-verified-domain-to-the-list-of-approved-domains-for-an-existing-customer"></a>Dodawanie zweryfikowanych domen do listy zatwierdzonych domen dla istniejącego klienta 
 
@@ -21,17 +21,17 @@ Jak dodać zweryfikowaną domenę do listy zatwierdzonych domen dla istniejąceg
 
 - Musisz być partnerem, który jest rejestratorem domen.
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
-## <a name="adding-a-verified-domain"></a>Dodawanie zweryfikowanego domeny
+## <a name="adding-a-verified-domain"></a>Dodawanie zweryfikowanych domen
 
-Jeśli jesteś partnerem, który jest rejestratorem domen, możesz użyć interfejsu API, aby opublikować nowy zasób domeny na liście domen `verifieddomain` dla istniejącego klienta. [](#domain) W tym celu zidentyfikuj klienta przy użyciu jego customerTenantId. Określ wartość właściwości VerifiedDomainName. Przekaż [zasób domeny](#domain) w żądaniu z wymaganymi właściwościami Name, Capability, AuthenticationType, Status i VerificationMethod. Aby określić, [](#domain) że nowa domena jest domeną federacyjną, ustaw właściwość AuthenticationType w zasobie Domena na wartość i uwzględnij zasób [](#domain) `Federated` [DomainFederationSettings](#domain-federation-settings) w żądaniu. Jeśli metoda powiedzie się, odpowiedź będzie zawierać zasób [Domena](#domain) dla nowej zweryfikowanych domen.
+Jeśli jesteś partnerem, który jest rejestratorem domen, możesz użyć interfejsu API do postowania nowego zasobu domeny na liście domen `verifieddomain` dla istniejącego klienta. [](#domain) W tym celu zidentyfikuj klienta przy użyciu jego customerTenantId. Określ wartość właściwości VerifiedDomainName. Przekaż [zasób domeny](#domain) w żądaniu z wymaganymi właściwościami Name, Capability, AuthenticationType, Status i VerificationMethod. Aby określić, [](#domain) że nowa domena jest domeną federacyjną, ustaw właściwość AuthenticationType w zasobie Domeny na wartość i uwzględnij zasób [](#domain) `Federated` [DomainFederationSettings](#domain-federation-settings) w żądaniu. Jeśli metoda powiedzie się, odpowiedź będzie zawierać zasób [domeny](#domain) dla nowej zweryfikowanych domen.
 
-### <a name="custom-verified-domains"></a>Domeny zweryfikowane niestandardowo
+### <a name="custom-verified-domains"></a>Niestandardowe zweryfikowane domeny
 
-Podczas dodawania domeny zweryfikowanej niestandardowo, domeny, która nie jest zarejestrowana w użytce **onmicrosoft.com,** należy ustawić właściwość [CustomerUser.immutableId](user-resources.md#customeruser) na wartość unikatowego identyfikatora dla klienta, dla którym dodajesz domenę. Ten unikatowy identyfikator jest wymagany podczas procesu weryfikacji domeny. Aby uzyskać więcej informacji na temat kont użytkowników klientów, zobacz [Tworzenie kont użytkowników dla klienta.](create-user-accounts-for-a-customer.md)
+Podczas dodawania domeny zweryfikowanej niestandardowo, domeny, która nie jest zarejestrowana w użytce **onmicrosoft.com**, należy ustawić właściwość [CustomerUser.immutableId](user-resources.md#customeruser) na wartość unikatowego identyfikatora dla klienta, dla którym dodajesz domenę. Ten unikatowy identyfikator jest wymagany podczas procesu weryfikacji domeny. Aby uzyskać więcej informacji na temat kont użytkowników klienta, zobacz [Tworzenie kont użytkowników dla klienta](create-user-accounts-for-a-customer.md).
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -43,11 +43,11 @@ Podczas dodawania domeny zweryfikowanej niestandardowo, domeny, która nie jest 
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Użyj następującego parametru zapytania, aby określić klienta, dla który dodajesz zweryfikowaną domenę.
+Użyj następującego parametru zapytania, aby określić klienta, dla których dodajesz zweryfikowaną domenę.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CustomerTenantId | guid | Y        | Wartość jest identyfikatorem GUID w **formacie CustomerTenantId,** który umożliwia określenie klienta. |
+| CustomerTenantId | guid | Y        | Wartość to identyfikator GUID w **formacie CustomerTenantId,** który umożliwia określenie klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -71,10 +71,10 @@ W tej tabeli opisano wymagane i opcjonalne **właściwości** domeny w treści �
 |--------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Authenticationtype                                    | ciąg           | Tak      | Określa, czy domena jest `Managed` domeną, czy `Federated` domeną. Obsługiwane wartości: `Managed` , `Federated` .|
 | Możliwość                                            | ciąg           | Tak      | Określa możliwość domeny. Na przykład `Email`.                  |
-| Isdefault                                             | wartość logiczna dopuszczalna null | Nie       | Wskazuje, czy domena jest domeną domyślną dzierżawy. Obsługiwane wartości: `True` , `False` , `Null` .        |
-| IsInitial                                             | wartość logiczna dopuszczalna null | Nie       | Wskazuje, czy domena jest domeną początkową. Obsługiwane wartości: `True` , `False` , `Null` .                       |
+| Isdefault                                             | wartość logiczna dopuszczana wartość null | Nie       | Wskazuje, czy domena jest domeną domyślną dzierżawy. Obsługiwane wartości: `True` , `False` , `Null` .        |
+| IsInitial                                             | wartość logiczna dopuszczana wartość null | Nie       | Wskazuje, czy domena jest domeną początkową. Obsługiwane wartości: `True` , `False` , `Null` .                       |
 | Nazwa                                                  | ciąg           | Tak      | Nazwa domeny.                                                          |
-| RootDomain (Domena główna)                                            | ciąg           | Nie       | Nazwa domeny głównej.                                              |
+| RootDomain                                            | ciąg           | Nie       | Nazwa domeny głównej.                                              |
 | Stan                                                | ciąg           | Tak      | Stan domeny. Na przykład `Verified`. Obsługiwane wartości:  `Unverified` , `Verified` , `PendingDeletion` .                               |
 | VerificationMethod                                    | ciąg           | Tak      | Typ metody weryfikacji domeny. Obsługiwane wartości: `None` , `DnsRecord` , `Email` .                                    |
 
@@ -84,7 +84,7 @@ W tej tabeli opisano wymagane i opcjonalne właściwości **DomainFederationSett
 
 | Nazwa   | Typ   | Wymagane | Opis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
-| ActiveLogOnUri                         | ciąg           | Nie      | URI logowania używany przez rozbudowanych klientów. Ta właściwość jest adresem URL uwierzytelniania usługi STS partnera. |
+| ActiveLogOnUri                         | ciąg           | Nie      | URI logowania używany przez rozbudowanych klientów. Ta właściwość to adres URL uwierzytelniania usługi STS partnera. |
 | DefaultInteractiveAuthenticationMethod | ciąg           | Nie      | Wskazuje domyślną metodę uwierzytelniania, która powinna być używana, gdy aplikacja wymaga od użytkownika logowania interakcyjnego. |
 | FederationBrandName                    | ciąg           | Nie      | Nazwa marki federacji.        |
 | IssuerUri                              | ciąg           | Tak     | Nazwa wystawcy certyfikatów.                        |

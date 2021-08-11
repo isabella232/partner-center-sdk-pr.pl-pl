@@ -6,14 +6,14 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 715ec7dda252cf096b2ec2bd1745d8afee7c8310
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 56da318398dbd7fadbfa9f4a13cc3a3be1c7ab8072cfe8920192b5d04c2b9583
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547856"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997621"
 ---
-# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Różne Partner Center url REST do użycia w niektórych krajach lub regionach
+# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Różne Partner Center URL REST do użycia w niektórych krajach lub regionach
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
@@ -27,4 +27,4 @@ W poniższej tabeli opisano podstawowe adresy URL do użycia z różnymi wersjam
 |Centrum partnerskie obsługiwane przez firmę 21Vianet  |  `https://partner.partnercenterapi.microsoftonline.cn`       |
 
 >[!NOTE]
->Token authority for Partner Center for Microsoft Cloud Germany Azure AD Library to: https://login.microsoftonline.de .
+>Token authority for Partner Center for Microsoft Cloud (Biblioteka usługi Azure AD w chmurze Microsoft Cloud w Niemczech): https://login.microsoftonline.de .

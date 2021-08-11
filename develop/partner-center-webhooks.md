@@ -1,23 +1,23 @@
 ---
 title: Elementy webhook Centrum partnerskiego
-description: Webhook umożliwia partnerom rejestrowanie zdarzeń zmiany zasobów.
+description: Webhook umożliwia partnerom rejestrowanie się w celu rejestrowania zdarzeń zmiany zasobów.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: cf063579b447601fa1050d6b03e0c46f6ef64abef9bb500598a047ac40ddaa1d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547754"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997553"
 ---
 # <a name="partner-center-webhooks"></a>Elementy webhook Centrum partnerskiego
 
 **Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
-Interfejsy API Partner Center Webhook umożliwiają partnerom rejestrowanie zdarzeń zmiany zasobów. Te zdarzenia są dostarczane w postaci punktów POP protokołu HTTP do zarejestrowanego adresu URL partnera. Aby odebrać zdarzenie od Partner Center, partnerzy będą hostować wywołanie zwrotne, w Partner Center można WYSŁAĆ ZDARZENIE ZMIANY ZASOBU. Zdarzenie zostanie podpisane cyfrowo, aby partner może sprawdzić, czy zostało ono wysłane z Partner Center.
+Interfejsy API Partner Center webhook umożliwiają partnerom rejestrowanie zdarzeń zmiany zasobów. Te zdarzenia są dostarczane do zarejestrowanego adresu URL partnera w postaci punktów popychanych przez protokół HTTP. Aby odebrać zdarzenie od Partner Center, partnerzy będą hostować wywołanie zwrotne, w którym Partner Center post zmiany zasobu. Zdarzenie zostanie podpisane cyfrowo, aby partner może sprawdzić, czy zostało wysłane z Partner Center.
 
 Partnerzy mogą wybierać zdarzenia z elementy webhook, takie jak poniższe przykłady, które są obsługiwane przez Partner Center.
 
@@ -25,9 +25,9 @@ Partnerzy mogą wybierać zdarzenia z elementy webhook, takie jak poniższe przy
 
     To zdarzenie umożliwia samodzielne dołączanie i testowanie rejestracji, żądając zdarzenia testowego, a następnie śledząc jego postęp. Podczas próby dostarczenia zdarzenia są wyświetlane komunikaty o błędach odbierane od firmy Microsoft. To ograniczenie dotyczy tylko zdarzeń utworzonych przez test. Dane starsze niż siedem dni zostaną przeczyszone.
 
-- **Zdarzenie zaktualizowane subskrypcji ("subskrypcja-zaktualizowana")**
+- **Zdarzenie aktualizacji subskrypcji ("subskrypcja-zaktualizowana")**
 
-    To zdarzenie jest wywoływane po zmianie subskrypcji. Te zdarzenia zostaną wygenerowane w przypadku zmiany wewnętrznej oprócz zmiany wprowadzonej za pośrednictwem interfejsu API Partner Center API.
+    To zdarzenie jest wywoływane po zmianie subskrypcji. Te zdarzenia zostaną wygenerowane w przypadku zmiany wewnętrznej, oprócz zmiany wprowadzonej za pośrednictwem interfejsu API Partner Center API.
 
     >[!NOTE]
     >Między zmianą subskrypcji a wyzwoleniem zdarzenia Aktualizacja subskrypcji istnieje opóźnienie do 48 godzin.
@@ -48,17 +48,17 @@ Partnerzy mogą wybierać zdarzenia z elementy webhook, takie jak poniższe przy
 
     To zdarzenie jest wywoływane, gdy nowa faktura jest gotowa.
 
-Przyszłe zdarzenia dotyczące webhook zostaną dodane dla zasobów, które zmieniają się w systemie, nad które partner nie ma kontroli, a następnie zostaną wprowadzone dalsze aktualizacje, aby te zdarzenia były możliwie jak najbardziej zbliżone do "czasu rzeczywistego". Opinie od partnerów dotyczące zdarzeń, które mają wartość dodaną do ich działalności, będą przydatne podczas określania, jakie nowe zdarzenia dodać.
+Dla zasobów, które zmieniają się w systemie, które nie są pod kontrolą partnera, zostaną dodane przyszłe zdarzenia webhook, a następnie zostaną wprowadzone dalsze aktualizacje, aby te zdarzenia były możliwie jak najbardziej zbliżone do "czasu rzeczywistego". Opinie od partnerów dotyczące zdarzeń, które mają wartość dodaną do ich działalności, będą przydatne podczas określania, jakie nowe zdarzenia należy dodać.
 
-Aby uzyskać pełną listę zdarzeń elementów webhook obsługiwanych przez Partner Center, zobacz [Partner Center zdarzenia elementów webhook](partner-center-webhook-events.md).
+Aby uzyskać pełną listę zdarzeń elementów webhook obsługiwanych przez Partner Center, zobacz Partner Center webhook events (Zdarzenia [elementów webhook).](partner-center-webhook-events.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 ## <a name="receiving-events-from-partner-center"></a>Odbieranie zdarzeń z Partner Center
 
-Aby odbierać zdarzenia z Partner Center, należy uwidocznić publicznie dostępny punkt końcowy. Ponieważ ten punkt końcowy jest ujawniony, należy sprawdzić, czy komunikacja pochodzi z Partner Center. Wszystkie odbierane zdarzenia webhook są podpisane cyfrowo przy użyciu certyfikatu, który jest łańcuchem z katalogiem głównym firmy Microsoft. Zostanie również podany link do certyfikatu użytego do podpisania zdarzenia. Pozwoli to odnowić certyfikat bez konieczności ponownego wdychowania lub ponownego konfigurowania usługi. Partner Center 10 prób dostarczenia zdarzenia. Jeśli zdarzenie nadal nie zostanie dostarczone po 10 próbach, zostanie przeniesione do kolejki w trybie offline i żadne dalsze próby nie będą dokonywane podczas dostarczania.
+Aby odbierać zdarzenia z Partner Center, należy uwidocznić publicznie dostępny punkt końcowy. Ponieważ ten punkt końcowy jest ujawniony, należy sprawdzić, czy komunikacja pochodzi z Partner Center. Wszystkie odbierane zdarzenia webhook są podpisane cyfrowo przy użyciu certyfikatu, który jest łańcuchem z katalogiem głównym firmy Microsoft. Zostanie również podany link do certyfikatu używanego do podpisania zdarzenia. Umożliwi to odnowienie certyfikatu bez konieczności ponownego wdychowania lub ponownego skonfigurowania usługi. Partner Center 10 prób dostarczenia zdarzenia. Jeśli zdarzenie nadal nie zostanie dostarczone po 10 próbach, zostanie przeniesione do kolejki w trybie offline i żadne dalsze próby nie będą dokonywane podczas dostarczania.
 
 W poniższym przykładzie pokazano zdarzenie opublikowane z Partner Center.
 
@@ -88,13 +88,13 @@ Content-Length: 195
 
 Aby uwierzytelnić zdarzenie wywołania zwrotnego odebrane z Partner Center, wykonaj następujące kroki:
 
-1. Sprawdź, czy wymagane nagłówki są obecne (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).
+1. Sprawdź, czy istnieją wymagane nagłówki (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).
 
 2. Pobierz certyfikat używany do podpisywania zawartości (x-ms-certificate-url).
 
 3. Sprawdź łańcuch certyfikatów.
 
-4. Sprawdź "Organizację" certyfikatu.
+4. Zweryfikuj "Organizację" certyfikatu.
 
 5. Odczytaj zawartość z kodowaniem UTF8 do buforu.
 
@@ -102,10 +102,10 @@ Aby uwierzytelnić zdarzenie wywołania zwrotnego odebrane z Partner Center, wyk
 
 7. Sprawdź, czy dane są takie, jakie zostały podpisane przy użyciu określonego algorytmu wyznaczania wartości skrótu (na przykład SHA256).
 
-8. Jeśli weryfikacja zakończy się pomyślnie, przetowalij komunikat.
+8. Jeśli weryfikacja zakończy się pomyślnie, należy przetworzyć komunikat.
 
 > [!NOTE]
-> Domyślnie token podpisu będzie wysyłany w nagłówku autoryzacji. Jeśli ustawisz w rejestracji wartość true **signatureTokenToMsSignatureHeader,** token podpisu zostanie zamiast tego wysłany w nagłówku x-ms-signature.
+> Domyślnie token podpisu będzie wysyłany w nagłówku autoryzacji. Jeśli podczas rejestracji ustawisz wartość true dla **signatureTokenToMsSignatureHeader,** token podpisu zostanie wysłany w nagłówku x-ms-signature.
 
 ## <a name="event-model"></a>Model zdarzeń
 
@@ -115,7 +115,7 @@ W poniższej tabeli opisano właściwości Partner Center zdarzeń.
 
 | Nazwa                      | Opis                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------|
-| **EventName**             | Nazwa zdarzenia. W postaci {resource}-{action}. Na przykład "test-created".  |
+| **EventName**             | Nazwa zdarzenia. W postaci {zasób}-{akcja}. Na przykład "test-created".  |
 | **ResourceUri**           | URI zasobu, który uległ zmianie.                                                 |
 | **Resourcename**          | Nazwa zasobu, który uległ zmianie.                                                |
 | **AuditUrl**              | Opcjonalny. URI rekordu inspekcji.                                                |
@@ -139,7 +139,7 @@ Poniższy przykład przedstawia strukturę zdarzenia Partner Center zdarzeń.
 
 ### <a name="authentication"></a>Authentication
 
-Wszystkie wywołania interfejsów API elementy webhook są uwierzytelniane przy użyciu tokenu bearer w nagłówku autoryzacji. Uzyskiwanie tokenu dostępu w celu uzyskania dostępu do usługi `https://api.partnercenter.microsoft.com` . Ten token jest tym samym tokenem, który jest używany do uzyskiwania dostępu do pozostałych Partner Center API.
+Wszystkie wywołania interfejsów API elementy webhook są uwierzytelniane przy użyciu tokenu bearer w nagłówku autoryzacji. Uzyskiwanie tokenu dostępu w celu uzyskania dostępu do usługi `https://api.partnercenter.microsoft.com` . Ten token jest tym samym tokenem, który jest używany do uzyskiwania dostępu do Partner Center API.
 
 ### <a name="get-a-list-of-events"></a>Uzyskiwanie listy zdarzeń
 
@@ -259,7 +259,7 @@ X-Locale: en-US
 
 ### <a name="update-an-event-registration"></a>Aktualizowanie rejestracji zdarzeń
 
-Aktualizuje istniejącą rejestrację zdarzenia.
+Aktualizuje istniejącą rejestrację zdarzeń.
 
 #### <a name="resource-url"></a>Adres URL zasobu
 
@@ -303,10 +303,10 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 
 ### <a name="send-a-test-event-to-validate-your-registration"></a>Wysyłanie zdarzenia testowego w celu zweryfikowania rejestracji
 
-Generuje zdarzenie testowe w celu zweryfikowania rejestracji webhook. Ten test ma na celu sprawdzenie, czy można odbierać zdarzenia z Partner Center. Dane dla tych zdarzeń zostaną usunięte siedem dni po utworzeniu początkowego zdarzenia. Przed wysłaniem zdarzenia weryfikacji musisz zarejestrować się na zdarzenie "test-created" przy użyciu interfejsu API rejestracji.
+Generuje zdarzenie testowe w celu zweryfikowania rejestracji webhook. Ten test ma na celu sprawdzenie, czy można odbierać zdarzenia z Partner Center. Dane dla tych zdarzeń zostaną usunięte siedem dni po utworzeniu początkowego zdarzenia. Przed wysłaniem zdarzenia weryfikacji musisz zarejestrować się w zdarzeniu "test-created" przy użyciu interfejsu API rejestracji.
 
 >[!NOTE]
->W przypadku publikowania zdarzenia weryfikacji 2 żądania na minutę są ograniczane.
+>Podczas publikowania zdarzenia weryfikacji 2 żądania są ograniczone do 2 żądań na minutę.
 
 #### <a name="resource-url"></a>Adres URL zasobu
 

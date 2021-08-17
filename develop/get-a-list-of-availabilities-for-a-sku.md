@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 89ffa4156490bd321055f12a1c8c385800b65d8d9e5a460df0cc41edda5c1a27
-ms.sourcegitcommit: f5e2d3e2ad5447b99d339662e00b2ac3a03d7d04
+ms.openlocfilehash: 8e5fe9bae436d8b7f237b9039c66b369f0e32109
+ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2021
-ms.locfileid: "116998503"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122208079"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Pobieranie listy dostępności dla jednostki SKU (według kraju)
 
@@ -19,7 +19,7 @@ W tym artykule opisano sposób pobierania kolekcji dostępności w określonym k
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te Partner Center [uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -29,9 +29,9 @@ W tym artykule opisano sposób pobierania kolekcji dostępności w określonym k
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać listę dostępności [dla](product-resources.md#availability) [sku](product-resources.md#sku):
+Aby uzyskać listę dostępności [dla](product-resources.md#availability) sku [:](product-resources.md#sku)
 
-1. Wykonaj kroki opisane w [te tematu Get a SKU by ID (Uzyskiwanie sku](get-a-sku-by-id.md) za pomocą identyfikatora), aby uzyskać interfejs dla operacji określonej sku.
+1. Postępuj zgodnie z instrukcjami w te tematu Get [a SKU by ID (Uzyskiwanie sku](get-a-sku-by-id.md) według identyfikatora), aby uzyskać interfejs dla operacji określonej sku.
 
 2. W interfejsie SKU wybierz właściwość **Dostępność,** aby uzyskać interfejs z operacjami dostępności.
 
@@ -130,7 +130,7 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-Jeśli to się powiedzie, treść odpowiedzi zawiera kolekcję [**zasobów**](product-resources.md#availability) dostępności.
+W przypadku powodzenia treść odpowiedzi zawiera kolekcję [**zasobów**](product-resources.md#availability) dostępności.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

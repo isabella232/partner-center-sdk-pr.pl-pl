@@ -1,19 +1,24 @@
 ---
-title: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
+title: Aktualizowanie autorenew dla platformy handlowej i nowych subskrypcji handlowych
 description: Zaktualizuj właściwość autorenew zasobu Subskrypcji, która odpowiada identyfikatorowi klienta i subskrypcji.
-ms.date: 08/16/2019
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 6d533a41c58b05ec449b76394466dd4608abc65a
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115996601"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455731"
 ---
-# <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
+# <a name="update-autorenew-for-a-commercial-marketplace-subscription-or-new-commerce-subscriptions"></a>Aktualizowanie autorenew subskrypcji platformy handlowej lub nowych subskrypcji handlowych
 
-Zaktualizuj właściwość autorenew dla [](subscription-resources.md) zasobu subskrypcji platformy handlowej, który jest dopasowany do klienta i identyfikatora subskrypcji.
+**Dotyczy:** Partner Center
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview.
+
+Zaktualizuj właściwość autorenew dla komercyjnej platformy handlowej lub nowego zasobu [subskrypcji](subscription-resources.md) handlowej, który odpowiada identyfikatorowi klienta i subskrypcji.
 
 Na Partner Center nawigacyjnym ta operacja jest wykonywana przez [wybranie klienta](get-a-customer-by-name.md). Następnie wybierz subskrypcję, którą chcesz zaktualizować. Na koniec przełącz opcję **Automatyczne odnawianie,** a następnie wybierz pozycję **Prześlij.**
 
@@ -21,13 +26,13 @@ Na Partner Center nawigacyjnym ta operacja jest wykonywana przez [wybranie klien
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
 ## <a name="c"></a>C\#
 
-Aby zaktualizować subskrypcję klienta, najpierw pobierz [subskrypcję,](get-a-subscription-by-id.md)a następnie ustaw właściwość [**autoRenewEnabled**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) subskrypcji. Po wejściu zmiany użyj **kolekcji IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Następnie zakończ, wywołując **metodę Patch().**
+Aby zaktualizować subskrypcję klienta, najpierw pobierz [subskrypcję,](get-a-subscription-by-id.md)a następnie ustaw właściwość [**autoRenewEnabled**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) subskrypcji. Po wgraniu zmiany użyj kolekcji **IAggregatePartner.Customers** i wywołaj **metodę ById().** Następnie wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Następnie zakończ, wywołując **metodę Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,7 +44,7 @@ selectedSubscription.AutoRenewEnabled = false;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa:** UpdateSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: UpdateSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -47,7 +52,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda    | Identyfikator URI żądania                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,8 +60,8 @@ W tej tabeli wymieniono parametr zapytania wymagany do wstrzymania subskrypcji.
 
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **identyfikator dzierżawy klienta**  | **Identyfikator guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **identyfikator subskrypcji** | **Identyfikator guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **identyfikator dzierżawy klienta**  | **IDENTYFIKATOR GUID** | Y        | Identyfikator GUID odpowiadający klientowi.     |
+| **id-for-subscription** | **IDENTYFIKATOR GUID** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -64,9 +69,9 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 ### <a name="request-body"></a>Treść żądania
 
-Pełny komercyjny **zasób subskrypcji** platformy handlowej jest wymagany w treści żądania. Upewnij **się, że właściwość AutoRenewEnabled** została zaktualizowana.
+Pełny komercyjny zasób **subskrypcji** platformy handlowej jest wymagany w treści żądania. Upewnij **się, że właściwość AutoRenewEnabled** została zaktualizowana.
 
-### <a name="request-example"></a>Przykład żądania
+### <a name="request-example-for-commercial-marketplace-subscription"></a>Żądanie przykładu subskrypcji platformy handlowej
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
@@ -110,9 +115,89 @@ Connection: Keep-Alive
 }
 ```
 
+### <a name="request-example-for-new-commerce-subscription"></a>Żądanie przykładu dla nowej subskrypcji handlowej
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview.
+
+```http
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+Authorization: Bearer <token>
+Accept: application/json
+MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
+MS-CorrelationId: ec8f62e5-1d92-47e9-8d5d-1924af105f2c
+If-Match: <etag>
+Content-Type: application/json
+Content-Length: 1029
+Expect: 100-continue
+Connection: Keep-Alive
+
+ {
+    "id": "a4c1340d-6911-4758-bba3-0c4c6007d161",
+    "offerId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "offerName": "Microsoft 365 Business Basic",
+    "friendlyName": "Microsoft 365 Business Basic",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "quantity": 1, 
+    "unitType": "Licenses",
+    "hasPurchasableAddons": false,
+    "creationDate": "2021-01-14T16:57:15.0966728Z",
+    "effectiveStartDate": "2021-01-14T16:57:14.498252Z",
+    "commitmentEndDate": "2022-01-13T00:00:00Z",
+    "status": "active",
+    "autoRenewEnabled": false, // original value = true
+    "isTrial": false,
+    "billingType": "license",
+    "billingCycle": "monthly",
+    "termDuration": "P1Y",
+    "renewalTermDuration": "",
+    "refundOptions": [
+        {
+            "type": "Full",
+            "expiresAt": "2021-01-15T00:00:00Z"
+        }
+    ],
+    "isMicrosoftProduct": true,
+    "partnerId": "",
+    "attentionNeeded": false,
+    "actionTaken": false,
+    "contractType": "subscription",
+    "links": {
+        "product": {
+            "uri": "/products/CFQ7TTC0LH18?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "sku": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "availability": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/customers/d8202a51-69f9-4228-b900-d0e081af17d7/subscriptions/a4c1340d-6911-4758-bba3-0c4c6007d161",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "publisherName": "Microsoft Corporation",
+    "orderId": "34b37d7340cc",
+    "attributes": {
+        "objectType": "Subscription"
+    }
+}
+```
+
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca zaktualizowane [właściwości zasobów](subscription-resources.md) subskrypcji w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca [zaktualizowane](subscription-resources.md) właściwości zasobu subskrypcji w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

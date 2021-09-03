@@ -1,17 +1,17 @@
 ---
 title: Pobieranie produktu według identyfikatora
 description: Pobiera określony zasób produktu przy użyciu identyfikatora produktu.
-ms.date: 09/17/2019
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 0e8abc8cf33d12140a084e83580f20bb0b9d295eda7ab8cc7279c89043c81992
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 95821b0f3678d38c75e2f684f7ad629b82f9b43b
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115994544"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456107"
 ---
 # <a name="get-a-product-by-id"></a>Pobieranie produktu według identyfikatora
 
@@ -19,7 +19,7 @@ Pobiera określony zasób produktu przy użyciu identyfikatora produktu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -49,7 +49,7 @@ Product productDetail = partnerOperations.getProducts().byCountry("US").byId("DZ
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Aby znaleźć określony produkt według identyfikatora, wykonaj polecenie [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) i określ **parametr ProductId.** Parametr **CountryCode** jest opcjami, jeśli nie zostanie określony, zostanie użyty kraj skojarzony z odsprzedawcą.
+Aby znaleźć konkretny produkt według identyfikatora, wykonaj polecenie [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) i określ **parametr ProductId.** Parametr **CountryCode** jest opcjami. Jeśli nie zostanie określony, zostanie użyty kraj skojarzony z odsprzedawcą.
 
 ```powershell
 Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
@@ -61,7 +61,7 @@ Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
 
 | Metoda  | Identyfikator URI żądania                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}?country={country} HTTP/1.1  |
+| **POBIERZ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}?country={country} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -69,7 +69,7 @@ Użyj następujących parametrów ścieżki, aby uzyskać określony produkt.
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| product-id             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
 | country                | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -104,7 +104,7 @@ Ta metoda zwraca następujące kody błędów:
 |----------------------|--------------|----------------------------------------------------------------------------|
 | 404                  | 400013       | Nie znaleziono produktu.                                                     |
 
-### <a name="response-example"></a>Przykład odpowiedzi
+### <a name="response-example-for-azure-vm-reservation-azure-plan"></a>Przykład odpowiedzi dla rezerwacji maszyny wirtualnej platformy Azure (plan platformy Azure)
 
 ```http
 HTTP/1.1 200 OK
@@ -136,6 +136,36 @@ Date: Tue, 23 Jan 2018 23:13:01 GMT
         },
         "self": {
             "uri": "/products/DZH318Z0BQ3Q?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}
+```
+### <a name="response-example-for-new-commerce-license-based-product"></a>Przykład odpowiedzi dla nowego produktu opartego na licencjach handlowych
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+
+```http
+{
+    "id": "CFQ7TTC0LH18",
+    "title": "Microsoft 365 Business Basic",
+    "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "isMicrosoftProduct": true,
+    "publisherName": "Microsoft Corporation",
+    "links": {
+        "skus": {
+            "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+        "uri": "/products/CFQ7TTC0LH18?country=US",
             "method": "GET",
             "headers": []
         }

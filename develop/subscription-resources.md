@@ -1,26 +1,26 @@
 ---
 title: Zasoby subskrypcji
 description: Zasoby subskrypcji mogą dostarczać dalsze informacje o subskrypcjach w całym cyklu życia, takie jak pomoc techniczna, zwroty kosztów, uprawnienia platformy Azure.
-ms.date: 11/01/2019
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e48927b9d8606f8d78ed8e4b5eb12da61f7a7d27f16316bca124f896a24a6638
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: c898f9673525cf0ba32619b7c7b16f91311a81c7
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115997978"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456812"
 ---
 # <a name="subscription-resources"></a>Zasoby subskrypcji
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center dla Microsoft Cloud for US Government
 
 Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Nie wszystkie pola będą stosowane do wszystkich subskrypcji. Wiele pól ma zastosowanie tylko w niektórych punktach cyklu życia, takich jak wstrzymanie lub anulowanie subskrypcji.
 
 ## <a name="subscription"></a>Subskrypcja
 
 >[!NOTE]
->Zasób **Subskrypcji** ma limit szybkości 500 żądań na minutę na identyfikator dzierżawy.
+>**Zasób** Subskrypcji ma limit szybkości 500 żądań na minutę na identyfikator dzierżawy.
 
 **Zasób** Subskrypcja reprezentuje cykl życia subskrypcji i zawiera właściwości, które definiują stany w całym cyklu życia subskrypcji.
 
@@ -30,14 +30,14 @@ Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Ni
 | offerId              | ciąg                                                        | Identyfikator oferty.                                                                                                                                                         |
 | entitlementId        | ciąg                                                        | Identyfikator uprawnień (identyfikator subskrypcji platformy Azure).                                                                                                                        |
 | offerName (nazwa oferty)            | ciąg                                                        | Nazwa oferty.                                                                                                                                                               |
-| Friendlyname         | ciąg                                                        | Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania.                                                                                           |
+| Friendlyname         | ciąg                                                        | Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu ujednoznacznienia.                                                                                           |
 | quantity             | liczba                                                        | Ilość. Na przykład w przypadku rozliczeń opartych na licencjach ta właściwość jest ustawiana na liczbę licencji.                                                            |
 | Unittype             | ciąg                                                        | Jednostki definiujące ilość dla subskrypcji.                                                                                                                             |
 | parentSubscriptionId | ciąg                                                        | Pobiera lub ustawia identyfikator subskrypcji nadrzędnej.                                                                                                                              |
-| Creationdate         | ciąg                                                        | Pobiera lub ustawia datę utworzenia w formacie data/godzina.                                                                                                                          |
-| effectiveStartDate   | ciąg w formacie daty i czasu UTC                                | Pobiera lub ustawia datę rozpoczęcia wejścia w życie dla tej subskrypcji w formacie data/godzina. Jest on używany do datowania zmigrowanych subskrypcji lub do wyrównania jej z inną.                |
-| commitmentEndDate    | ciąg w formacie daty i czasu UTC                                | Data zakończenia zobowiązania dla tej subskrypcji w formacie data/godzina. W przypadku subskrypcji, które nie są automatycznieodnawialnych, oznacza to datę odchodzcą daleko w przyszłości.       |
-| status               | ciąg                                                        | Stan subskrypcji: "none", "active", "pending", "suspended" lub "deleted".                                                                                                         |
+| Creationdate         | ciąg                                                        | Pobiera lub ustawia datę utworzenia w formacie daty i godzin.                                                                                                                          |
+| effectiveStartDate   | ciąg w formacie daty i czasu UTC                                | Pobiera lub ustawia datę rozpoczęcia wejścia w życie dla tej subskrypcji w formacie data/godzina. Służy do zawrócenia zmigrowanych subskrypcji lub do wyrównania jej z inną.                |
+| commitmentEndDate    | ciąg w formacie daty i czasu UTC                                | Data zakończenia zobowiązania dla tej subskrypcji w formacie data/godzina. W przypadku subskrypcji, które nie są automatycznieodnawialnych, reprezentuje datę daleko od przyszłości.       |
+| status               | ciąg                                                        | Stan subskrypcji: "none", "active", "pending", "suspended", "expired" lub "deleted".                                                                                                         |
 | autoRenewEnabled     | boolean                                                       | Pobiera wartość wskazującą, czy subskrypcja jest odnawiana automatycznie.                                                                                                    |
 | typ rozliczeń          | ciąg                                                        | Określa sposób na rachunku za subskrypcję: "brak", "użycie" lub "licencja".                                                                                                      |
 | billingCycle         | ciąg                                                        | Wskazuje częstotliwość, za pomocą której partner jest rozliczany za to zamówienie. Obsługiwane wartości to nazwy członków w [**typie BillingCycleType**](product-resources.md#billingcycletype). |
@@ -55,6 +55,7 @@ Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Ni
 | termDuration         | ciąg                                                        | Reprezentacja iso 8601 czasu trwania terminu. Obecnie obsługiwane wartości to **P1M (1** miesiąc), **P1Y** (1 rok) **i P3Y** (3 lata).                                                        |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające subskrypcji.                                                                                                                    |
 | renewalTermDuration  | ciąg                                                        | Reprezentacja iso 8601 czasu trwania terminu. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok).                                                        |
+| Producttype  | [Itemtype](product-resources.md#itemtype)                             | Tylko do odczytu. Typ produktu, dla jakiego jest subskrypcja.     |
 
 ## <a name="subscriptionlinks"></a>SubscriptionLinks
 
@@ -80,7 +81,7 @@ Zasób **SubscriptionProvisioningStatus** zawiera informacje o stanie aprowizowa
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------|
 | skuId      | ciąg                                                         | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje sku produktu.             |
 | status     | ciąg                                                         | Wskazuje stan aprowizowania: "powodzenie", "oczekiwanie" lub "niepowodzenie". |
-| quantity   | liczba                                                         | Podaje ilość subskrypcji po aprowizeniu.               |
+| quantity   | liczba                                                         | Dostarcza ilość subskrypcji po aprowizeniu.               |
 | Enddate    | ciąg w formacie daty i godzin UTC                                 | Data zakończenia subskrypcji.                                    |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atrybuty metadanych.                                             |
 
@@ -107,7 +108,7 @@ Zasób **SupportContact** reprezentuje kontakt z pomocą techniczną dla subskry
 
 ## <a name="registersubscription"></a>RegisterSubscription
 
-Zasób **RegisterSubscription** zwraca link, który może służyć do wykonywania zapytań o stan rejestracji subskrypcji. Stan rejestracji jest zwracany w treści odpowiedzi pomyślnie zaakceptowanego żądania zarejestrowania subskrypcji platformy Azure.
+Zasób **RegisterSubscription** zwraca link, który może służyć do wykonywania zapytań o stan rejestracji subskrypcji. Stan rejestracji jest zwracany w treści odpowiedzi pomyślnie zaakceptowanego żądania rejestracji subskrypcji platformy Azure.
 
 | Właściwość                | Typ                               | Opis                                                                           |
 |-------------------------|------------------------------------|---------------------------------------------------------------------------------------|
@@ -119,8 +120,8 @@ Zasób **RefundOption** reprezentuje możliwą opcję zwrotu dla subskrypcji.
 
 | Właściwość          | Typ | Opis                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
-| typ | ciąg | Typ zwrotu pieniędzy. Obsługiwane wartości to "Częściowe" i "Pełne" |
-| expiresAfter      | ciąg w formacie daty i godzin UTC | Znacznik czasu, gdy ta opcja wygaśnie. Jeśli wartość null, oznacza to, że nie wygasa. |
+| typ | ciąg | Typ zwrotu pieniędzy. Obsługiwane wartości to "Partial" (Częściowe) i "Full" (Pełne). |
+| expiresAfter      | ciąg w formacie daty i czasu UTC | Znacznik czasu, gdy ta opcja wygaśnie. Jeśli ma wartość null, oznacza to, że nie wygasa. |
 
 ## <a name="azureentitlement"></a>AzureEntitlement
 
@@ -130,5 +131,5 @@ Zasób **AzureEntitlement** reprezentuje uprawnienia platformy Azure dla subskry
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | identyfikator | ciąg | Identyfikator uprawnień |
 | Friendlyname      | ciąg | Przyjazna nazwa uprawnienia. |
-| status | ciąg | Stan uprawnień. |
+| status | ciąg | Stan uprawnienia. |
 | subscriptionId | ciąg | Identyfikator subskrypcji, do której należy uprawnienie. |

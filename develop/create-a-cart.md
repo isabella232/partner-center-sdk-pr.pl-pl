@@ -6,18 +6,18 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 1f5c0ae7693a8ac2a2919c385dc1b8837a9171ed8cc422bba79bb892f9fe837a
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: abe7a0842b0ecf52b217b277cf61603d5c86a368
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991841"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456092"
 ---
 # <a name="create-a-cart-with-a-customer-order"></a>Tworzenie koszyka z zamówieniem klienta
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center dla Microsoft Cloud for US Government
 
-Możesz dodać zamówienie dla klienta w koszyku. Aby uzyskać więcej informacji o tym, co jest obecnie dostępne do sprzedaży, zobacz [Oferty partnerów w Dostawca rozwiązań w chmurze sprzedaży.](/partner-center/csp-offers)
+Możesz dodać zamówienie dla klienta w koszyku. Aby uzyskać więcej informacji o tym, co jest obecnie dostępne do sprzedaży, zobacz [Oferty partnerów w Dostawca rozwiązań w chmurze programu](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -203,7 +203,7 @@ New-PartnerCustomerCart -CustomerId $customerId -LineItems $lineItem
 
 | Metoda   | Identyfikator URI żądania                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts HTTP/1.1                        |
+| **POST** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts HTTP/1.1                        |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -225,7 +225,7 @@ W tej tabeli [opisano](cart-resources.md) właściwości koszyka w treści żąd
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Nie              | Identyfikator koszyka, który jest dostarczany po pomyślnym utworzeniu koszyka.                                  |
 | creationTimeStamp     | DateTime         | Nie              | Data utworzenia koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.         |
-| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie daty i godziny. Stosowane po pomyślnym utworzeniu koszyka.    |
+| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.    |
 | expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie data/godzina.  Stosowane po pomyślnym utworzeniu koszyka.            |
 | lastModifiedUser      | ciąg           | Nie              | Użytkownik, który ostatnio zaktualizował koszyk. Stosowane po pomyślnym utworzeniu koszyka.                             |
 | lineItems             | Tablica obiektów | Tak             | Tablica [zasobów CartLineItem.](cart-resources.md#cartlineitem)                                     |
@@ -436,4 +436,78 @@ Date: Thu, 15 Mar 2018 17:15:01 GMT
     "objectType": "Cart"
   }
 }
+```
+
+
+## <a name="example-for-new-commerce-license-based-services"></a>Przykład dla nowych usług opartych na licencjach handlowych
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+
+### <a name="request-example"></a>Przykład żądania
+
+```http
+POST /v1/customers/932c4101-dc08-461b-b4c1-75d80e905775/carts HTTP/1.1
+Host: api.partnercenter.microsoft.com
+Content-Type: application/json
+Content-Length: 165
+
+{
+    "LineItems": [
+        {
+            "CatalogItemId":"CFQ7TTC0LFLZ:0002:CFQ7TTC0K4TS",
+            "Quantity": 1,
+            "TermDuration": "P1M",
+                    "BillingCycle": "Monthly"
+        }
+    ]
+}
+
+```
+
+### <a name="rest-response"></a>Odpowiedź REST
+
+W przypadku powodzenia ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
+
+### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
+
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Kody błędów](error-codes.md).
+
+### <a name="response-example"></a>Przykład odpowiedzi
+
+```http
+
+{
+    "id": "6b6ba6ea-d1ea-4c2c-9e1c-bec4f61e2049",
+    "creationTimestamp": "2021-02-24T19:26:06.947164Z",
+    "lastModifiedTimestamp": "2021-02-24T19:26:06.9471649Z",
+    "expirationTimestamp": "2021-03-03T19:26:09.0035129Z",
+    "lastModifiedUser": "004ec05e-8999-4d02-9315-2b1b667c0deb",
+    "status": "Active",
+    "lineItems": [
+        {
+            "id": 0,
+            "catalogItemId": "CFQ7TTC0LFLZ:0002:CFQ7TTC0K4TS",
+            "quantity": 1,
+            "currencyCode": "USD",
+            "billingCycle": "monthly",
+            "termDuration": "P1M",
+            "provisioningContext": {},
+            "orderGroup": "0"
+        }
+    ],
+    "links": {
+        "self": {
+            "uri": "/customers/932c4101-dc08-461b-b4c1-75d80e905775/carts/6b6ba6ea-d1ea-4c2c-9e1c-bec4f61e2049",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "attributes": {
+        "objectType": "Cart"
+    }
+}
+
+
+
 ```

@@ -1,21 +1,21 @@
 ---
 title: Pobieranie listy produktów (według kraju)
 description: Możesz użyć zasobu Product, aby uzyskać kolekcję produktów według kraju klienta.
-ms.date: 11/01/2019
+ms.date: 02/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 601fc2c8012d92d6964f0aaa29a3a46d732df300
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115989444"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456056"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Pobieranie listy produktów (według kraju)
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center dla Microsoft Cloud for US Government
 
 Aby uzyskać kolekcję produktów dostępnych w danym kraju, można użyć następujących metod.
 
@@ -100,7 +100,7 @@ Get-PartnerProduct -Catalog 'Azure' -Segment 'commercial'
 
 | Metoda  | Identyfikator URI żądania                                                                                                                                    |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products?country={country}&targetView={targetView}&targetSegment={targetSegment} HTTP/1.1 |
+| **POBIERZ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products?country={country}&targetView={targetView}&targetSegment={targetSegment} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry URI
 
@@ -109,7 +109,7 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać listę prod
 | Nazwa                   | Typ     | Wymagane | Opis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
 | country                | ciąg   | Tak      | Identyfikator kraju/regionu.                                                  |
-| targetView             | ciąg   | Tak      | Identyfikuje widok docelowy wykazu. Obsługiwane wartości to: <br/><br/>**Azure**, który zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która obejmuje wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** która zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planów platformy Azure<br/><br/>**OnlineServices**, która obejmuje wszystkie elementy usług online (w tym produkty platformy handlowej)<br/><br/>**Oprogramowanie**, które zawiera wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie bezterminowe elementy oprogramowania<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania    |
+| targetView             | ciąg   | Tak      | Określa widok docelowy katalogu. Obsługiwane wartości to: <br/><br/>**Azure**, który zawiera wszystkie elementy platformy Azure<br/><br/>**AzureReservations**, która obejmuje wszystkie elementy rezerwacji platformy Azure<br/><br/>**AzureReservationsVM,** która zawiera wszystkie elementy rezerwacji maszyny wirtualnej<br/><br/>**AzureReservationsSQL**, który zawiera wszystkie SQL elementów rezerwacji<br/><br/>**AzureReservationsCosmosDb,** która zawiera wszystkie Cosmos rezerwacji bazy danych<br/><br/>**MicrosoftAzure**, który zawiera elementy dla Microsoft Azure subskrypcji **(MS-AZR-0145P)** i planów platformy Azure<br/><br/>**OnlineServices**, która obejmuje wszystkie elementy usług online. Ten element targetView obejmuje platformę handlową, tradycyjne usługi oparte na licencjach i nowe usługi oparte na licencjach handlowych<br/><br/>**Oprogramowanie**, które zawiera wszystkie elementy oprogramowania<br/><br/>**SoftwareSUSELinux**, który zawiera wszystkie elementy oprogramowania SUSE Linux<br/><br/>**SoftwarePerpetual**, który obejmuje wszystkie bezterminowe elementy oprogramowania<br/><br/>**SoftwareSubscriptions**, która obejmuje wszystkie elementy subskrypcji oprogramowania    |
 | targetSegment          | ciąg   | Nie       | Identyfikuje segment docelowy. Widok dla różnych odbiorców docelowych. Obsługiwane wartości to: <br/><br/>**Handlowych**<br/>**Edukacji**<br/>**Rząd**<br/>**Non-profit**  |
 | reservationScope (zakres rezerwacji) | ciąg   | Nie | Podczas wykonywania zapytania o listę produktów dla rezerwacji platformy Azure określ, aby uzyskać listę produktów, które `reservationScope=AzurePlan` mają zastosowanie do planów platformy Azure. Wyklucz ten parametr, aby uzyskać listę produktów dla rezerwacji platformy Azure, które mają zastosowanie do subskrypcji Microsoft Azure **(MS-AZR-0145P).**  |
 
@@ -125,7 +125,7 @@ Brak.
 
 #### <a name="products-by-country"></a>Produkty według kraju
 
-Postępuj zgodnie z tym przykładem, aby uzyskać listę produktów według kraju dla subskrypcji Microsoft Azure (MS-AZR-0145P) i planów platformy Azure.
+Postępuj zgodnie z tym przykładem, aby uzyskać listę produktów według kraju dla subskrypcji usługi Microsoft Azure (MS-AZR-0145P) i planów platformy Azure.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=MicrosoftAzure HTTP/1.1
@@ -137,7 +137,7 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 #### <a name="azure-vm-reservations-azure-plan"></a>Rezerwacje maszyn wirtualnych platformy Azure (plan platformy Azure)
 
-Postępuj zgodnie z tym przykładem, aby uzyskać listę produktów według krajów dla rezerwacji maszyn wirtualnych platformy Azure, które mają zastosowanie do planów platformy Azure.
+Postępuj zgodnie z tym przykładem, aby uzyskać listę produktów według kraju dla rezerwacji maszyn wirtualnych platformy Azure, które mają zastosowanie do planów platformy Azure.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=AzureAzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -159,6 +159,21 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
+#### <a name="new-commerce-license-based-services"></a>Nowe usługi oparte na licencjach handlowych
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+
+Postępuj zgodnie z tym przykładem, aby uzyskać listę produktów według krajów dla nowych usług opartych na licencjach handlowych w ramach nowego doświadczenia handlowego w wersji Technical Preview. Nowe usługi oparte na licencjach handlowych zostaną zidentyfikowane za pomocą wartości Id i displayNames usługi **OnlineServicesNCE.** Zobacz przykład odpowiedzi poniżej.
+
+```http
+GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=OnlineServices HTTP/1.1
+Authorization: Bearer
+Accept: application/json
+MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
+MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
+```
+
 ## <a name="rest-response"></a>Odpowiedź REST
 
 W przypadku powodzenia treść odpowiedzi zawiera kolekcję [**zasobów**](product-resources.md#product) produktu.
@@ -172,9 +187,9 @@ Ta metoda zwraca następujące kody błędów:
 | Kod stanu HTTP     | Kod błędu   | Opis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Dostęp do żądanego obiektu targetSegment jest niedozwolone.                                                     |
-| 403                  | 400036       | Dostęp do żądanego obiektu targetView jest niedozwolone.                                                        |
+| 403                  | 400036       | Dostęp do żądanego obiektu targetView nie jest dozwolony.                                                        |
 
-### <a name="response-example"></a>Przykład odpowiedzi
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Przykład odpowiedzi dla rezerwacji maszyn wirtualnych platformy Azure (plan platformy Azure)
 
 ```http
 {
@@ -221,3 +236,50 @@ Ta metoda zwraca następujące kody błędów:
     }
 }
 ```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Przykład odpowiedzi dla nowych usług opartych na licencjach handlowych
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+
+```http
+{
+  "totalCount": 19,
+  "items": [{
+      "id": "CFQ7TTC0LH18",
+      "title": "Microsoft 365 Business Basic",
+      "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+      "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+      },
+      "isMicrosoftProduct": true,
+      "publisherName": "Microsoft Corporation",
+      "links": {
+        "skus": {
+          "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+          "method": "GET",
+          "headers": []
+        },
+        "self": {
+          "uri": "/products/CFQ7TTC0LH18?country=US",
+          "method": "GET",
+          "headers": []
+        }
+      }
+    },
+    ...
+  ],
+  "links": {
+    "self": {
+      "uri": "/products?country=US&targetView=OnlineServices",
+      "method": "GET",
+      "headers": []
+    }
+  },
+  "attributes": {
+    "objectType": "Collection"
+  }
+}
+```
+

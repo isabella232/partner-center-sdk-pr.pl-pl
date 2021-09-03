@@ -1,25 +1,25 @@
 ---
 title: Pobieranie jednostki SKU według identyfikatora
-description: Pobiera SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
-ms.date: 01/08/2019
+description: Pobierz wartość SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 3be496b694d9e0e34619807e85ed8fe63879f3561a404ebc7361dcedc4479612
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: bc7036467142d666aed6e9f41b86b1c2d2f0c8ec
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115994187"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456124"
 ---
 # <a name="get-a-sku-by-id"></a>Pobieranie jednostki SKU według identyfikatora
 
-Pobiera SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
+Pobiera wartość SKU dla określonego produktu przy użyciu określonego identyfikatora SKU.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
 - Identyfikator produktu.
 
@@ -27,7 +27,7 @@ Pobiera SKU dla określonego produktu przy użyciu określonego identyfikatora S
 
 ## <a name="c"></a>C\#
 
-Aby uzyskać szczegółowe informacje o określonej sku, zacznij od kroków z artykułu Get [a product by ID (Uzyskiwanie](get-a-product-by-id.md) produktu według identyfikatora) w celu uzyskania interfejsu dla operacji określonego produktu. Z wynikowego interfejsu wybierz właściwość **Jednostki SKU,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU. Przekaż identyfikator SKU do metody **ById()** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dotyczące tej sku.
+Aby uzyskać szczegółowe informacje o określonej określonej sku, zacznij od kroków z artykułu Get [a product by ID (Uzyskiwanie](get-a-product-by-id.md) produktu według identyfikatora) w celu uzyskania interfejsu dla operacji określonego produktu. Z wynikowego interfejsu wybierz właściwość **Jednostki SKU,** aby uzyskać interfejs z dostępnymi operacjami dla jednostki SKU. Przekaż identyfikator SKU do metody **ById()** i wywołaj metodę **Get()** lub **GetAsync(),** aby pobrać szczegóły dotyczące tej drugiej.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -45,7 +45,7 @@ var sku = partnerOperations.Products.ByCountry(countryCode).ById(productId).Skus
 
 | Metoda  | Identyfikator URI żądania                                                                                                         |
 |---------|---------------------------------------------------------------------------------------------------------------------|
-| **Pobierz** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}?country={country-code} HTTP/1.1   |
+| **POBIERZ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{identyfikator-produktu}/skus/{sku-id}?country={country-code} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -53,7 +53,7 @@ Użyj następującej ścieżki i parametrów zapytania, aby uzyskać wartość S
 
 | Nazwa                   | Typ     | Wymagane | Opis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| product-id             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
+| identyfikator produktu             | ciąg   | Tak      | Ciąg identyfikujący produkt.                           |
 | identyfikator sku                 | ciąg   | Tak      | Ciąg identyfikujący sku.                               |
 | kod kraju           | ciąg   | Tak      | Identyfikator kraju/regionu.                                            |
 
@@ -94,7 +94,7 @@ Ta metoda zwraca następujące kody błędów:
 | 404                  | 400013       | Nie znaleziono produktu.                                                                                    |
 | 404                  | 400018       | Nie znaleziono sku.                                                                                        |
 
-### <a name="response-example"></a>Przykład odpowiedzi
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Przykład odpowiedzi dla rezerwacji maszyn wirtualnych platformy Azure (plan platformy Azure)
 
 ```http
 HTTP/1.1 200 OK
@@ -150,6 +150,72 @@ Content-Length: 1108
         },
         "self": {
             "uri": "/products/DZH318Z0BQ3V/skus/00G1?country=us",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}
+```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Przykład odpowiedzi dla nowych usług opartych na licencjach handlowych
+
+> [!Note] 
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51,e75c1060-852e-4b49-92b0-cd15167a0d51
+MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d,18b41adf-29b5-48eb-b14f-c9683a4e5b7d
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTVTXHNrdXM=?=
+X-Powered-By: ASP.NET
+Date: Thu, 15 Mar 2018 21:06:03 GMT
+Content-Length: 50917
+
+{
+    "id": "0001",
+    "productId": "CFQ7TTC0LH18",
+    "title": "Microsoft 365 Business Basic",
+    "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+    "minimumQuantity": 1,
+    "maximumQuantity": 300,
+    "isTrial": false,
+    "supportedBillingCycles": [
+        "annual",
+        "monthly"
+    ],
+    "purchasePrerequisites": [
+        "MicrosoftCloudAgreement"
+    ],
+    "inventoryVariables": [],
+    "provisioningVariables": [],
+    "actions": [
+        "Refund"
+    ],
+    "dynamicAttributes": {
+        "isMicrosoftProduct": true,
+        "hasConstraints": true,
+        "isAddon": false,
+        "prerequisiteSkus": [],
+        "isSoftwareAssuranceApplicable": false,
+        "upgradeTargetOffers": [
+            "CFQ7TTC0LDPB:0001",
+            "CFQ7TTC0LF8Q:0001"
+…
+        ],
+        "provisioningId": "3b555118-da6a-4418-894f-7df1e2096870",
+        "internal": false
+    },
+    "links": {
+        "availabilities": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
             "method": "GET",
             "headers": []
         }

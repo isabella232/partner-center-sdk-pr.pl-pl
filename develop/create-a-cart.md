@@ -1,17 +1,17 @@
 ---
 title: Tworzenie koszyka
 description: Dowiedz się, jak Partner Center api do dodawania zamówienia dla klienta w koszyku. Temat zawiera informacje na temat tworzenia koszyka i wymagań wstępnych.
-ms.date: 09/17/2019
+ms.date: 09/06/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: abe7a0842b0ecf52b217b277cf61603d5c86a368
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 2827a2de7dc1c136fe4ea8735e12dc4b88e5e9bf
+ms.sourcegitcommit: 5f27733d7c984c29f71c8b9c8ba5f89753eeabc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456092"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123557273"
 ---
 # <a name="create-a-cart-with-a-customer-order"></a>Tworzenie koszyka z zamówieniem klienta
 
@@ -36,6 +36,114 @@ Aby utworzyć zamówienie dla klienta:
 3. Uzyskaj interfejs do obsługi operacji koszyka, wywołując metodę **IAggregatePartner.Customers.ById** z identyfikatorem klienta w celu zidentyfikowania klienta, a następnie pobierania interfejsu z właściwości **Cart.**
 
 4. Wywołaj **metodę Create** lub **CreateAsync,** aby utworzyć koszyk.
+
+5. Aby ukończyć zaświadczenia i uwzględnić dodatkowych odsprzedawców, zobacz następujące przykładowe przykłady żądań i odpowiedzi:
+
+### <a name="request-sample"></a>Przykład żądania
+
+```csharp
+
+{
+    "PartnerOnRecordAttestationAccepted":true,     "lineItems": [
+        {
+            "id": 0,
+            "catalogItemId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "billingCycle": "monthly",
+            "termDuration": "P1M",
+            "renewsTo": null,
+            "provisioningContext": {},
+            "coterminousSubscriptionId": null
+        },
+        {
+            "id": 1,
+            "catalogItemId": "CFQ7TTC0LFLS:0002:CFQ7TTC0KDLJ",
+            "quantity": 2,
+            "billingCycle": "monthly",
+            "termDuration": "P1Y",
+            "participants": [
+                {
+                    "key": "transaction_reseller",
+                    "value": "5357564"
+                },
+                 {
+                    "key": "additional_transaction_reseller",                     
+                    "value": "517285"
+                },
+                 {
+                    "key": "additional_transaction_reseller", 
+                    "value": "5357563"
+                }
+            ]
+        }
+    ]
+}
+
+
+```
+
+### <a name="response-sample"></a>Przykład odpowiedzi
+
+```csharp
+
+{
+    "id": "3e22b548-647d-4223-9675-1fcb6cb57665",
+    "creationTimestamp": "2021-08-18T17:29:52.3517492Z",
+    "lastModifiedTimestamp": "2021-08-18T17:29:52.3517553Z",
+    "expirationTimestamp": "2021-08-25T17:30:11.2406416Z",
+    "lastModifiedUser": "da62a0dc-35e9-4601-b48e-a047bd3ec7c1",
+    "status": "Active",
+    "lineItems": [
+        {
+            "id": 0,
+            "catalogItemId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "currencyCode": "USD",
+            "billingCycle": "monthly",
+            "termDuration": "P1M",
+            "provisioningContext": {},
+            "orderGroup": "0"
+        },
+        {
+            "id": 1,
+            "catalogItemId": "CFQ7TTC0LFLS:0002:CFQ7TTC0KDLJ",
+            "quantity": 2,
+            "currencyCode": "USD",
+            "billingCycle": "monthly",
+            "termDuration": "P1Y",
+            "participants": [
+                {
+                    "key": "transaction_reseller",
+                    "value": "5357564"
+                },
+                {
+                    "key": "additional_transaction_reseller", 
+                    "value": "517285"
+                },
+                {
+                    "key": "additional_transaction_reseller", 
+                    "value": "5357563"
+                }
+            ],
+            "provisioningContext": {},
+            "orderGroup": "0"
+        }
+    ],
+    "links": {
+        "self": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/carts/3e22b548-647d-4223-9675-1fcb6cb57665",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "attributes": {
+        "objectType": "Cart"
+    }
+}
+
+
+```
+
 
 ### <a name="c-example"></a>Przykład w \# języku C
 
@@ -225,10 +333,11 @@ W tej tabeli [opisano](cart-resources.md) właściwości koszyka w treści żąd
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | identyfikator                    | ciąg           | Nie              | Identyfikator koszyka, który jest dostarczany po pomyślnym utworzeniu koszyka.                                  |
 | creationTimeStamp     | DateTime         | Nie              | Data utworzenia koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.         |
-| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie data/godzina. Stosowane po pomyślnym utworzeniu koszyka.    |
+| lastModifiedTimeStamp | DateTime         | Nie              | Data ostatniej aktualizacji koszyka w formacie daty i godziny. Stosowane po pomyślnym utworzeniu koszyka.    |
 | expirationTimeStamp   | DateTime         | Nie              | Data wygaśnięcia koszyka w formacie data/godzina.  Stosowane po pomyślnym utworzeniu koszyka.            |
 | lastModifiedUser      | ciąg           | Nie              | Użytkownik, który ostatnio zaktualizował koszyk. Stosowane po pomyślnym utworzeniu koszyka.                             |
 | lineItems             | Tablica obiektów | Tak             | Tablica [zasobów CartLineItem.](cart-resources.md#cartlineitem)                                     |
+| PartnerOnRecordAttestationAccepted | Wartość logiczna | Tak | Potwierdza ukończenie zatwierdzeń |
 
 W tej tabeli [opisano właściwości CartLineItem](cart-resources.md#cartlineitem) w treści żądania.
 
@@ -245,7 +354,9 @@ W tej tabeli [opisano właściwości CartLineItem](cart-resources.md#cartlineite
 |     orderGroup      |           ciąg            |    Nie    |                                                                   Grupa wskazująca, które elementy można ze sobą umieścić.                                                                   |
 |        error        |           Obiekt            |    Nie    |                                                                     Zastosowane po utworzeniu koszyka, jeśli wystąpi błąd.                                                                      |
 |     renewsTo        | Tablica obiektów            |    Nie    |                                                    Tablica zasobów [RenewsTo.](cart-resources.md#renewsto)                                                                            |
-|     AttestationAccepted        | Wartość logiczna            |    Nie    |                                                   Wskazuje umowę na ofertę lub warunki sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.                                                                             |
+|     AttestationAccepted        | Wartość logiczna            |    Nie    |                                                   Wskazuje umowę na ofertę lub warunki SKU. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.                                                                             |
+|  transaction_reseller | Ciąg | Nie | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. |
+| additional_transaction_reseller | Ciąg | Nie | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN tylko dodatkowego odsprzedawcy pośredniego **(nigdy** identyfikatora dostawcy pośredniego). Zachęty nie mają zastosowania do tych dodatkowych odsprzedawców. Można wprowadzić maksymalnie 5 odsprzedawców pośrednich. Dotyczy to tylko partnerów, którzy mogą się do tego dokarmiać w obrębie krajów UNII/EFTA. |
 
 W tej tabeli opisano [właściwości RenewsTo](cart-resources.md#renewsto) w treści żądania.
 
@@ -334,7 +445,7 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
@@ -442,7 +553,7 @@ Date: Thu, 15 Mar 2018 17:15:01 GMT
 ## <a name="example-for-new-commerce-license-based-services"></a>Przykład dla nowych usług opartych na licencjach handlowych
 
 > [!Note] 
-> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
+> Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego rozwiązania handlowego M365/D365 w wersji Technical Preview
 
 ### <a name="request-example"></a>Przykład żądania
 
@@ -467,7 +578,7 @@ Content-Length: 165
 
 ### <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
+Jeśli to się powiedzie, ta metoda zwraca wypełniony zasób [koszyka](cart-resources.md) w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

@@ -1,19 +1,19 @@
 ---
 title: Tworzenie zamówienia klienta
 description: Dowiedz się, jak Partner Center api w celu utworzenia zamówienia dla klienta. Artykuł zawiera wymagania wstępne, kroki i przykłady.
-ms.date: 07/12/2019
+ms.date: 09/06/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f8a18ef4a6fbdfcd659e6ec1c11bc6bd61c80472
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 232888ee798b4579246bbfd787e049f9f6e2e8a3
+ms.sourcegitcommit: 5f27733d7c984c29f71c8b9c8ba5f89753eeabc4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456039"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123557256"
 ---
 # <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Tworzenie zamówienia dla klienta przy użyciu interfejsów API Partner Center API
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center dla Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud for US Government
 
 Tworzenie zamówienia **dla produktów wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure** ma zastosowanie tylko *do:*
 
@@ -25,7 +25,7 @@ Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz O
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator oferty.
 
@@ -33,13 +33,104 @@ Aby uzyskać informacje o tym, co jest obecnie dostępne do sprzedaży, zobacz O
 
 Aby utworzyć zamówienie dla klienta:
 
-1. Należy utworzyć wystąpienia obiektu [**Order**](order-resources.md) i ustawić **właściwość ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
+1. Za pomocą wystąpienia obiektu [**Order**](order-resources.md) ustaw właściwość **ReferenceCustomerID** na identyfikator klienta, aby zarejestrować klienta.
 
 2. Utwórz listę obiektów [**OrderLineItem**](order-resources.md#orderlineitem) i przypisz listę do właściwości **LineItems** zamówienia. Każdy element wiersza zamówienia zawiera informacje o zakupie dla jednej oferty. Musisz mieć co najmniej jeden element wiersza zamówienia.
 
 3. Uzyskiwanie interfejsu do zamawiania operacji. Najpierw wywołaj metodę [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) z identyfikatorem klienta, aby zidentyfikować klienta. Następnie pobierz interfejs z właściwości [**Orders.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders)
 
 4. Wywołaj [**metodę Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) lub [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) i przekaż obiekt [**Order.**](order-resources.md)
+
+5. Aby ukończyć zaświadczenia i uwzględnić dodatkowych odsprzedawców, zobacz następujące przykładowe przykłady żądań i odpowiedzi:
+
+### <a name="request-example"></a>Przykład żądania
+
+``` csharp
+{
+    "PartnerOnRecordAttestationAccepted":true, 
+    "lineItems": [
+        {
+            "offerId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "lineItemNumber": 0,
+            "PartnerIdOnRecord": "873452",
+            "AdditionalPartnerIdsOnRecord":["4847383","873452"]
+        }
+    ],
+    "billingCycle": "monthly"
+}
+```
+
+### <a name="response-example"></a>Przykład odpowiedzi
+
+``` csharp
+{
+    "id": "5cf72f146967",
+    "alternateId": "5cf72f146967",
+    "referenceCustomerId": "f81d98dd-c2f4-499e-a194-5619e260344e",
+    "billingCycle": "monthly",
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "lineItems": [
+        {
+            "lineItemNumber": 0,
+            "offerId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "subscriptionId": "fcddfa52-1da8-4529-d347-50ea51e1e7be",
+            "termDuration": "P1M",
+            "transactionType": "New",
+            "friendlyName": "AI Builder Capacity add-on",
+            "quantity": 1,
+            "partnerIdOnRecord": "873452",
+            "additionalPartnerIdsOnRecord": [
+                "4847383",
+                "873452"
+            ],
+            "links": {
+                "product": {
+                    "uri": "/products/CFQ7TTC0LH0Z?country=US",
+                    "method": "GET",
+                    "headers": []
+                },
+                "sku": {
+                    "uri": "/products/CFQ7TTC0LH0Z/skus/0001?country=US",
+                    "method": "GET",
+                    "headers": []
+                },
+                "availability": {
+                    "uri": "/products/CFQ7TTC0LH0Z/skus/0001/availabilities/CFQ7TTC0K18P?country=US",
+                    "method": "GET",
+                    "headers": []
+                }
+            }
+        }
+    ],
+    "creationDate": "2021-08-17T18:13:11.3122226Z",
+    "status": "pending",
+    "transactionType": "UserPurchase",
+    "links": {
+        "self": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967",
+            "method": "GET",
+            "headers": []
+        },
+        "provisioningStatus": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967/provisioningstatus",
+            "method": "GET",
+            "headers": []
+        },
+        "patchOperation": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967",
+            "method": "PATCH",
+            "headers": []
+        }
+    },
+    "client": {},
+    "attributes": {
+        "objectType": "Order"
+    }
+}
+
+```
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -108,36 +199,39 @@ W tej tabeli [opisano właściwości Order](order-resources.md) w treści żąda
 | status               | ciąg                      | Nie                              | Tylko do odczytu. Stan zamówienia.  Obsługiwane wartości to nazwy członków w [orderstatus](order-resources.md#orderstatus).        |
 | Linki                | [OrderLinks](utility-resources.md#resourcelinks)              | Nie                              | Zasób łączy się z zamówieniem. |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie                              | Atrybuty metadanych odpowiadające kolejności. |
+| PartnerOnRecordAttestationAccepted | Wartość logiczna | Tak | Potwierdza ukończenie zatwierdzeń |
+
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
 W tej tabeli [opisano właściwości OrderLineItem](order-resources.md#orderlineitem) w treści żądania.
 
 >[!NOTE]
->Rekord partnerIdOnRecord powinien być dostarczany tylko wtedy, gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego. Jest on używany do przechowywania Microsoft Partner Network odsprzedawcy pośredniego (nigdy identyfikatora dostawcy pośredniego).
+>Rekord partnerIdOnRecord powinien być podany tylko wtedy, gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego. Jest on używany do przechowywania Microsoft Partner Network tylko odsprzedawcy pośredniego (nigdy identyfikatora dostawcy pośredniego).
 
 | Nazwa                 | Typ   | Wymagane | Opis                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | lineItemNumber       | int    | Tak      | Każdy element wiersza w kolekcji otrzymuje unikatowy numer wiersza, licząc od 0 do count-1.                                                                                                                                                 |
 | offerId              | ciąg | Tak      | Identyfikator oferty.                                                                                                                                                                                                                      |
 | subscriptionId       | ciąg | Nie       | Identyfikator subskrypcji.                                                                                                                                                                                                               |
-| parentSubscriptionId | ciąg | Nie       | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko patch.                                                                                                                                                     |
-| Friendlyname         | ciąg | Nie       | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu uujednoznania.                                                                                                                                              |
+| parentSubscriptionId | ciąg | Nie       | Opcjonalny. Identyfikator subskrypcji nadrzędnej w ofercie dodatku. Dotyczy tylko PATCH.                                                                                                                                                     |
+| Friendlyname         | ciąg | Nie       | Opcjonalny. Przyjazna nazwa subskrypcji zdefiniowanej przez partnera w celu ujednoznacznienia.                                                                                                                                              |
 | quantity             | int    | Tak      | Liczba licencji dla subskrypcji opartej na licencjach.                                                                                                                                                                                   |
-| partnerIdOnRecord    | ciąg | Nie       | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. |
-| provisioningContext  | Słownik<ciąg, ciąg>                | Nie       |  Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                  |
-| Linki                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Nie       |  Tylko do odczytu. Zasób łączy się z elementem wiersza Zamówienie.  |
+| partnerIdOnRecord    | ciąg | Nie       | Gdy dostawca pośredni złozy zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN tylko odsprzedawcy pośredniego **(nigdy** identyfikatorem dostawcy pośredniego). Zapewnia to odpowiednią ewidencjonowanie zachęt. |
+| provisioningContext  | Ciąg<, ciąg>                | Nie       |  Informacje wymagane do aprowizowania niektórych elementów w wykazie. Właściwość provisioningVariables w sku wskazuje, które właściwości są wymagane dla określonych elementów w wykazie.                  |
+| Linki                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Nie       |  Tylko do odczytu. Zasób łączy się z elementem wiersza Zamówienia.  |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Nie       | Atrybuty metadanych odpowiadające OrderLineItem. |
 | renewsTo             | Tablica obiektów                          | Nie    |Tablica zasobów [RenewsTo.](order-resources.md#renewsto)                                                                            |
-| AttestationAccepted             | bool                 | Nie   |  Wskazuje umowę na ofertę lub warunki sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties enforceAttestation ma wartość True.          |
+| AttestationAccepted             | bool                 | Nie   |  Wskazuje umowę na ofertę lub warunki dotyczące sku. Wymagane tylko w przypadku ofert lub jednostki SKU, gdzie SkuAttestationProperties lub OfferAttestationProperties wymuszaJednacja ma wartość True.          |
+| AdditionalPartnerIdsOnRecord | Ciąg | Nie | Gdy dostawca pośredni umieszcza zamówienie w imieniu odsprzedawcy pośredniego, wypełnij to pole identyfikatorem MPN tylko dodatkowego odsprzedawcy pośredniego **(nigdy** nie identyfikatorem dostawcy pośredniego). Zachęty nie mają zastosowania do tych dodatkowych odsprzedawców. Można wprowadzić maksymalnie 5 odsprzedawców pośrednich. Dotyczy to tylko partnerów, którzy mają transakcje w obrębie krajów UNII/UNII EUROPEJSKIEJ. |
 
 ##### <a name="renewsto"></a>RenewsTo
 
-W tej tabeli opisano [właściwości RenewsTo](order-resources.md#renewsto) w treści żądania.
+W tej tabeli [opisano właściwości RenewsTo](order-resources.md#renewsto) w treści żądania.
 
 | Właściwość              | Typ             | Wymagane        | Opis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | ciąg           | Nie              | Reprezentacja iso 8601 czasu trwania okresu odnowienia. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
+| termDuration          | ciąg           | Nie              | Reprezentacja czasu trwania okresu odnowienia w standardach ISO 8601. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok). |
 
 ### <a name="request-example"></a>Przykład żądania
 

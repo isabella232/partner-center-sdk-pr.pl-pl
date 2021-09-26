@@ -362,6 +362,8 @@
           href: get-a-list-of-products.md
         - name: Pobieranie listy produktów (według klientów)
           href: get-a-list-of-products-by-customer.md
+        - name: Uzyskiwanie listy promocji
+          href: get-promotions.md
         - name: Pobieranie listy jednostek SKU dla produktu (według kraju)
           href: get-a-list-of-skus-for-a-product.md
         - name: Pobieranie listy jednostek SKU dla produktu (według klientów)
@@ -372,6 +374,8 @@
           href: get-a-list-of-trial-conversion-offers.md
         - name: Pobieranie produktu według identyfikatora
           href: get-a-product-by-id.md
+        - name: Uzyskiwanie promocji według identyfikatora
+          href: get-promotion-by-id.md
         - name: Pobieranie jednostki SKU według identyfikatora
           href: get-a-sku-by-id.md
         - name: Pobieranie subskrypcji według identyfikatora
@@ -412,6 +416,8 @@
           href: update-a-cart.md
         - name: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+        - name: Weryfikowanie uprawnień do promocji
+          href: verify-promotion-eligibility.md
     - name: Zarządzanie wypłatami
       href: manage-payouts.md
     - name: Zapewnienie pomocy technicznej
@@ -533,6 +539,8 @@
           href: profile-resources.md
         - name: Produkty
           href: product-resources.md
+        - name: Promocje
+          href: promotion-resources.md
         - name: Relacje
           href: relationships-resources.md
         - name: Zasady samoobsługi

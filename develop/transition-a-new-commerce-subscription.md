@@ -1,17 +1,17 @@
 ---
 title: Przejście nowej subskrypcji handlowej
-description: Uaktualnia nową subskrypcję usługi klienta do określonej subskrypcji docelowej.
+description: Uaktualnia nową subskrypcję handlową klienta do określonej subskrypcji docelowej.
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: BrentSerbus
 ms.author: brserbus
-ms.openlocfilehash: 2bbf2f63cec416e4d4b4a671d2e2b2914b5f5713
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 97ecb104de68b6da0a0588d3b60671de756af5a2
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123457307"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417223"
 ---
 # <a name="transition-a-new-commerce-subscription"></a>Przejście nowej subskrypcji handlowej
 
@@ -25,7 +25,7 @@ ms.locfileid: "123457307"
 > [!Note] 
 > Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview.
 
-Służy do uaktualniania nowej subskrypcji usługi klienta do subskrypcji docelowej. Najpierw uzyskaj kwalifikujące się przejścia, aby uzyskać jednostki SKU dostępne do uaktualnienia. Następnie po przejściu w celu wykonania przejścia. Te metody obsługują zarówno tradycyjne, jak i nowe subskrypcje źródłowe handlu.  
+Służy do uaktualniania nowej subskrypcji handlowej klienta do subskrypcji docelowej. Aby można było przejść do subskrypcji, należy składać dwa żądania interfejsu API. Najpierw **uzyskaj kwalifikujące się przejścia GET,** aby uzyskać jednostki SKU dostępne do uaktualnienia. Następnie **przejście POST w** celu wykonania przejścia. Te metody obsługują zarówno tradycyjne, jak i nowe subskrypcje źródeł handlowych.  
 
 ## <a name="get-transition-eligibilities"></a>Uzyskiwanie uprawnień do przejścia
 
@@ -35,7 +35,7 @@ Zwraca listę kwalifikujących się przejść dla danego klienta, subskrypcji i 
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Jeden identyfikator subskrypcji dla subskrypcji początkowej.
 
@@ -45,7 +45,7 @@ Zwraca listę kwalifikujących się przejść dla danego klienta, subskrypcji i 
 
 | Metoda   | Identyfikator URI żądania                                                                                                                         |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| **POBIERZ**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-Id}/transitionEligibilityType?eligibilityType={immediate, scheduled} HTTP/1.1 |
+| **POBIERZ**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/transitionEligibilityType?eligibilityType={immediate, scheduled} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -54,8 +54,8 @@ Użyj następujących parametrów zapytania, aby zwrócić kwalifikujące się p
 | Nazwa                    | Typ     | Wymagane | Opis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający dzierżawie klienta.             |
-| **identyfikator subscriptoin-Id** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
-| **eligibilityType**       | **ciąg** | Y        | Opisuje, kiedy transcja ma zostać wykonana, może być natychmiastowa lub zaplanowana.  |
+| **subscription-id** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
+| **eligibilityType**       | **ciąg** | N        | Opisuje, kiedy ma zostać wykonane przejście. może być natychmiastowe lub zaplanowane. Wartość domyślna to `Immediate`.  |
 
 #### <a name="request-headers"></a>Nagłówki żądań
 
@@ -68,7 +68,7 @@ Brak
 #### <a name="request-example"></a>Przykład żądania
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-Id}/transitionEligibilities?eligibilityType=immediate HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/transitionEligibilities?eligibilityType=immediate HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 18752a69-1aa1-4ef7-8f9d-eb3681b2d70a
@@ -78,7 +78,7 @@ X-Locale: en-US
 
 ### <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca listę kwalifikujących się przejść w treści odpowiedzi.
+W przypadku powodzenia ta metoda zwraca listę kwalifikujących się przejść dla danej subskrypcji w treści odpowiedzi.
 
 #### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
@@ -86,14 +86,14 @@ Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowo
 
 #### <a name="eligibility-errors"></a>Błędy uprawnień
 
-Opisy błędów i ich znaczenie.
+Opisy błędów i znaczenie.
 
 | Opis błędu | Znaczenie  |
 |-------------------------|----------|
 |Nie można przejść subskrypcji — subskrypcja źródłowa nie jest aktywna. | Oryginalny stan podrzędny nie jest aktywny |
 |Nie można przejść subskrypcji — subskrypcja źródłowa nie została jeszcze aprowizowana. | Oryginalny sub FulfillmentState nie jest powodzenie |
 |Typ przejścia nie jest zgodny — wymagane jest mapowanie subskrypcji usługi AzureAD. | Błąd LegacyCannotConvertSubscriptionId podczas wywoływania funkcji GetSubscriptionUpgradeConflicts |
-|Typ przejścia nie jest zgodny — istnieją subskrypcje powodujące konflikt w przypadku przenoszenia licencji. | Jeśli dowolna usługa AAD ma identyfikatory subskrypcji z innej subskrypcji, dodaj ją do listy konfliktów (obejmuje zakupy dokonane za pomocą starszego lub nowoczesnego przepływu zakupów) |
+|Typ przejścia nie jest zgodny — istnieją subskrypcje powodujące konflikt podczas przenoszenia licencji. | Jeśli dowolna usługa AAD ma identyfikatory subskrypcji z innej subskrypcji, dodaj ją do listy konfliktów (obejmuje zakupy dokonane za pomocą starszego lub nowoczesnego przepływu zakupu) |
 
 #### <a name="response-example"></a>Przykład odpowiedzi
 
@@ -165,13 +165,13 @@ Date: Fri, 26 Feb 2021 20:42:26 GMT
 
 ## <a name="post-transition"></a>Po przejściu
 
-Publikuje żądanie przejścia dla danego klienta i subskrypcji. Zwraca przejście ze stanem intial.
+Publikuje żądanie przejścia dla danego klienta i subskrypcji. Zwraca przejście ze stanem początkowym.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Jeden identyfikator subskrypcji dla subskrypcji początkowej.
 
@@ -181,7 +181,7 @@ Publikuje żądanie przejścia dla danego klienta i subskrypcji. Zwraca przejśc
 
 | Metoda   | Identyfikator URI żądania                                                                                                                         |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| **POST**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscriptoin-Id}/transitions HTTP/1.1 |
+| **POST**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{subscription-id}/transitions HTTP/1.1 |
 
 
 #### <a name="uri-parameter"></a>Parametr URI
@@ -191,7 +191,7 @@ Użyj następujących parametrów zapytania, aby wykonać przejście.
 | Nazwa                    | Typ     | Wymagane | Opis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający dzierżawie klienta.             |
-| **identyfikator subscriptoin-Id** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
+| **subscription-id** | **guid** | Y        | Identyfikator GUID odpowiadający początkowej subskrypcji. |
 
 #### <a name="request-headers"></a>Nagłówki żądań
 
@@ -199,7 +199,7 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 #### <a name="request-body"></a>Treść żądania
 
-Pełny **zasób Transition** jest wymagany w treści żądania.
+W treści **żądania** jest wymagany pełny zasób Transition.
 
 #### <a name="request-example"></a>Przykład żądania
 
@@ -221,7 +221,7 @@ X-Locale: en-US
 
 ### <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca zasób Transition z początkowymi zdarzeniami.
+W przypadku powodzenia ta metoda zwraca zasób Transition ze stanem początkowym.
 
 #### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

@@ -4,12 +4,12 @@ description: Dowiedz się, jak za pomocą Partner Center API anulować komercyjn
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cbfe17ba4880c303c3f3ba01db5955a557eb04e2
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: ed01a26e22fd814b269b6c8d1769da97e8160619
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456141"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417257"
 ---
 # <a name="cancel-a-commercial-marketplace-or-new-commerce-subscription-using-partner-center-apis"></a>Anulowanie komercyjnej platformy handlowej lub nowej subskrypcji handlowej przy użyciu Partner Center API
 
@@ -24,7 +24,7 @@ W tym artykule opisano sposób użycia interfejsu API Partner Center [](subscrip
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji.
 
@@ -32,7 +32,7 @@ W tym artykule opisano sposób użycia interfejsu API Partner Center [](subscrip
 
 Aby anulować subskrypcję platformy handlowej na Partner Center nawigacyjnym:
 
-1. [Wybierz klienta](get-a-customer-by-name.md).
+1. [Wybierz klienta.](get-a-customer-by-name.md)
 
 2. Wybierz subskrypcję, którą chcesz anulować.
 
@@ -42,13 +42,13 @@ Aby anulować subskrypcję platformy handlowej na Partner Center nawigacyjnym:
 
 Aby anulować subskrypcję klienta:
 
-1. [Pobierz subskrypcję według identyfikatora](get-a-subscription-by-id.md).
+1. [Uzyskaj subskrypcję według identyfikatora](get-a-subscription-by-id.md).
 
-2. Zmień właściwość [**Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) subskrypcji. Aby uzyskać informacje na **temat kodów** stanu, zobacz [SubscriptionStatus enumeration (Wyliczenie SubscriptionStatus).](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
+2. Zmień właściwość [**Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) subskrypcji. Aby uzyskać informacje na **temat kodów** stanu, [zobacz SubscriptionStatus enumeration (Wyliczenie SubscriptionStatus).](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
 
-3. Po weniu zmiany użyj kolekcji **`IAggregatePartner.Customers`** i wywołaj **metodę ById().**
+3. Po w związku z tym użyj **`IAggregatePartner.Customers`** kolekcji i wywołaj **metodę ById().**
 
-4. Wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie metodę [**ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
+4. Wywołaj [**właściwość Subscriptions,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a następnie [**metodę ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
 
 5. Wywołaj **metodę Patch().**
 
@@ -63,7 +63,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 ### <a name="sample-console-test-app"></a>Przykładowa aplikacja testowa konsoli
 
-**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa**: UpdateSubscription.cs
+**Przykład:** [aplikacja testowa konsoli](console-test-app.md). **Project:** PartnerSDK.FeatureSample, **klasa:** UpdateSubscription.cs
 
 ## <a name="rest-request"></a>Żądanie REST
 
@@ -71,7 +71,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda    | Identyfikator URI żądania                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/subscriptions/{subscription-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -80,7 +80,7 @@ W tej tabeli wymieniono parametr zapytania wymagany do wstrzymania subskrypcji.
 | Nazwa                    | Typ     | Wymagane | Opis                               |
 |-------------------------|----------|----------|-------------------------------------------|
 | **identyfikator dzierżawy klienta**  | **guid** | Y        | Identyfikator GUID odpowiadający klientowi.     |
-| **id-for-subscription** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
+| **subscription-id** | **guid** | Y        | Identyfikator GUID odpowiadający subskrypcji. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -88,12 +88,12 @@ Aby uzyskać więcej informacji, [zobacz Partner Center REST headers (Nagłówki
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści **żądania** jest wymagany pełny zasób subskrypcji. Upewnij się, **że właściwość Status** została zaktualizowana.
+W treści **żądania** wymagany jest pełny zasób Subskrypcji. Upewnij **się, że właściwość Status** została zaktualizowana.
 
-### <a name="request-example-for-a-commercial-marketplace-subscription"></a>Żądanie przykładu subskrypcji platformy handlowej
+### <a name="request-example-for-a-commercial-marketplace-subscription"></a>Przykład żądania dla subskrypcji platformy handlowej
 
 ```http
-PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscription-id> HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
@@ -136,11 +136,14 @@ Connection: Keep-Alive
 
 ### <a name="request-example-for-a-new-commerce-subscription"></a>Żądanie przykładu dla nowej subskrypcji handlowej
 
+Nowe subskrypcje handlowe można anulować w ciągu 72 godzin od zakupu lub odnowienia. Po 72 godzinach nie można już anulować subskrypcji, a interfejs API z zgłasza błąd.
+
+
 > [!Note] 
 > Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview.
 
 ```http
-PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscription-id> HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
@@ -216,7 +219,7 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpowiedź REST
 
-W przypadku powodzenia ta metoda zwraca usunięte właściwości [zasobu](subscription-resources.md) subskrypcji w treści odpowiedzi.
+Jeśli żądanie powiedzie się, ta metoda zwraca usunięte właściwości [zasobów](subscription-resources.md) subskrypcji w treści odpowiedzi.
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 

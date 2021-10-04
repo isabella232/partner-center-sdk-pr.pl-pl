@@ -390,6 +390,8 @@
           href: get-an-offer-by-id.md
         - name: Pobieranie zamówienia według identyfikatora
           href: get-an-order-by-id.md
+        - name: Uzyskiwanie opłat za subskrypcję
+          href: get-subscription-overage.md
         - name: Pobieranie stanu aprowizacji subskrypcji
           href: get-subscription-provisioning-status.md
         - name: Pobieranie stanu rejestracji subskrypcji
@@ -416,6 +418,8 @@
           href: update-a-cart.md
         - name: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+        - name: Aktualizowanie opłat za subskrypcję
+          href: update-subscription-overage.md
         - name: Weryfikowanie uprawnień do promocji
           href: verify-promotion-eligibility.md
     - name: Zarządzanie wypłatami

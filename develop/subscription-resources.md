@@ -1,19 +1,21 @@
 ---
 title: Zasoby subskrypcji
 description: Zasoby subskrypcji mogą dostarczać dalsze informacje o subskrypcjach w całym cyklu życia, takie jak pomoc techniczna, zwroty kosztów, uprawnienia platformy Azure.
-ms.date: 02/23/2021
+ms.date: 10/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c898f9673525cf0ba32619b7c7b16f91311a81c7
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+author: BrentSerbus
+ms.author: brserbus
+ms.openlocfilehash: e1b95165eeb335c5426df876cbade3190dd447ac
+ms.sourcegitcommit: 856c14b6b351697e3b3d33f1fe376adbb80517c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456812"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129378748"
 ---
 # <a name="subscription-resources"></a>Zasoby subskrypcji
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center dla Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Nie wszystkie pola będą stosowane do wszystkich subskrypcji. Wiele pól ma zastosowanie tylko w niektórych punktach cyklu życia, takich jak wstrzymanie lub anulowanie subskrypcji.
 
@@ -52,10 +54,11 @@ Subskrypcja umożliwia klientowi korzystanie z usługi przez określony czas. Ni
 | refundOptions        | tablica [zasobów RefundOption](#refundoption)   | Tylko do odczytu. Zestaw opcji zwrotu kosztów dostępnych dla tej subskrypcji.                                                                                              |
 | Linki                | [SubscriptionLinks](#subscriptionlinks)                       | Pobiera lub ustawia linki subskrypcji.                                                                                                                                          |
 | Idzamówienia              | ciąg                                                        | Identyfikator zamówienia, które zostało złożone w celu rozpoczęcia subskrypcji.                                                                                                                |
-| termDuration         | ciąg                                                        | Reprezentacja iso 8601 czasu trwania terminu. Obecnie obsługiwane wartości to **P1M (1** miesiąc), **P1Y** (1 rok) **i P3Y** (3 lata).                                                        |
+| termDuration         | ciąg                                                        | Reprezentacja czasu trwania terminu w standardach ISO 8601. Obecnie obsługiwane wartości to **P1M (1** miesiąc), **P1Y** (1 rok) **i P3Y** (3 lata).                                                        |
 | atrybuty           | [ResourceAttributes](utility-resources.md#resourceattributes) | Atrybuty metadanych odpowiadające subskrypcji.                                                                                                                    |
-| renewalTermDuration  | ciąg                                                        | Reprezentacja iso 8601 czasu trwania terminu. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok).                                                        |
-| Producttype  | [Itemtype](product-resources.md#itemtype)                             | Tylko do odczytu. Typ produktu, dla jakiego jest subskrypcja.     |
+| renewalTermDuration  | ciąg                                                        | Reprezentacja czasu trwania terminu w standardach ISO 8601. Obecnie obsługiwane wartości to **P1M** (1 miesiąc) i **P1Y** (1 rok).                                                        |
+| Producttype  | [Itemtype](product-resources.md#itemtype)                             | Tylko do odczytu. Typ produktu, dla jakiego jest subskrybna.     |
+| consumptionType  | tablica [zasobów nadanych](subscription-resources.md#overage)   | Pobiera lub ustawia nadgorę dla danego klienta.     |
 
 ## <a name="subscriptionlinks"></a>SubscriptionLinks
 
@@ -69,7 +72,7 @@ Zasób **SubscriptionLinks** opisuje kolekcję linków dołączonych do zasobu s
 | sku                | [Link](utility-resources.md#link) | Pobiera skojarzoną z subskrypcją sku produktu. |
 | availability       | [Link](utility-resources.md#link) | Pobiera dostępność sku produktu skojarzoną z subskrypcją. |
 | activationLinks    | [Link](utility-resources.md#link) | Pobiera listę linków aktywacji skojarzonych z subskrypcją. |
-| Własny               | [Link](utility-resources.md#link) | Własny URI.                         |
+| Własny               | [Link](utility-resources.md#link) | Samodzielnego URI.                         |
 | dalej               | [Link](utility-resources.md#link) | Następna strona elementów.               |
 | Poprzednich           | [Link](utility-resources.md#link) | Poprzednia strona elementów.           |
 
@@ -79,20 +82,20 @@ Zasób **SubscriptionProvisioningStatus** zawiera informacje o stanie aprowizowa
 
 | Właściwość   | Typ                                                           | Opis                                                          |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------|
-| skuId      | ciąg                                                         | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje sku produktu.             |
+| skuId      | ciąg                                                         | Ciąg w formacie identyfikatora GUID, który identyfikuje sku produktu.             |
 | status     | ciąg                                                         | Wskazuje stan aprowizowania: "powodzenie", "oczekiwanie" lub "niepowodzenie". |
-| quantity   | liczba                                                         | Dostarcza ilość subskrypcji po aprowizeniu.               |
-| Enddate    | ciąg w formacie daty i godzin UTC                                 | Data zakończenia subskrypcji.                                    |
+| quantity   | liczba                                                         | Podaje ilość subskrypcji po aprowieniu.               |
+| Enddate    | ciąg w formacie daty i czasu UTC                                 | Data zakończenia subskrypcji.                                    |
 | atrybuty | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atrybuty metadanych.                                             |
 
 ## <a name="subscriptionregistrationstatus"></a>SubscriptionRegistrationStatus
 
-Zasób **SubscriptionRegistrationStatus** opisuje kolekcję linków dołączonych do zasobu subskrypcji.
+Zasób **SubscriptionRegistrationStatus opisuje** kolekcję linków dołączonych do zasobu subskrypcji.
 
 | Właściwość           | Typ                               | Opis                                                                           |
 |--------------------|------------------------------------|---------------------------------------------------------------------------------------|
 | subscriptionId     | ciąg                             | Identyfikator subskrypcji.                                                          |
-| status             | ciąg                             | Wskazuje stan rejestracji: "registered", "registering" lub "notregistered".    |
+| status             | ciąg                             | Wskazuje stan rejestracji: "zarejestrowane", "zarejestrowane" lub "nierejestrowane".    |
 
 ## <a name="supportcontact"></a>SupportContact
 
@@ -101,10 +104,25 @@ Zasób **SupportContact** reprezentuje kontakt z pomocą techniczną dla subskry
 | Właściwość        | Typ                                                           | Opis                                                                     |
 |-----------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
 | supportTenantId | ciąg                                                         | Ciąg sformatowany za pomocą identyfikatora GUID, który wskazuje identyfikator dzierżawy kontaktu pomocy technicznej. |
-| supportMpnId    | ciąg                                                         | Identyfikator Microsoft Partner Network (MPN).                       |
+| supportMpnId    | ciąg                                                         | Identyfikator Microsoft Partner Network (MPN) kontaktu.                       |
 | name            | ciąg                                                         | Nazwa kontaktu pomocy technicznej.                                                |
 | Linki           | [ResourceLinks](utility-resources.md#resourcelinks)            | Linki dotyczące kontaktu z pomocą techniczną.                                              |
 | atrybuty      | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atrybuty metadanych. Zawiera "objectType": " SupportContact".              |
+
+## <a name="overage"></a>Nadwyżka
+
+Zasób **opłat za** nadsieć reprezentuje, do których można przypisać zasób subskrypcji zużycia, niezależnie od tego, czy została przypisana i czy odsprzedawca jest przypisany.
+
+| Właściwość        | Typ               | Opis                                                                     |
+|-----------------|--------------------|---------------------------------------------------------------------------------|
+| azureEntitlementId | ciąg       | Ciąg w formacie identyfikatora GUID, który wskazuje identyfikator subskrypcji zużycia. |
+| partnerId    | ciąg            | Identyfikator Microsoft Partner Network (MPN) odsprzedawcy skojarzonego z subskrypcją.        |
+| typ    | ciąg       | Typem nadanych usług może być "PhoneServices"       |
+| Nadmiar            | boolean      | Wartość wskazująca, czy jest to subskrypcja wersji próbnej.       |
+| Linki           | [ResourceLinks](utility-resources.md#resourcelinks)            | Linki dotyczące kontaktu z pomocą techniczną.                          |
+| atrybuty      | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atrybuty metadanych. Zawiera "objectType": "Overage".  |
+
+
 
 ## <a name="registersubscription"></a>RegisterSubscription
 

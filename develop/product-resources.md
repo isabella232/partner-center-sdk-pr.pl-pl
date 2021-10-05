@@ -4,12 +4,12 @@ description: Zasoby reprezentujące towary lub usługi, które można kupować. 
 ms.date: 02/16/2016
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3790d8f5ef154c637dfd3f3d014322d314757f26
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 20e2d7bcaf1041f186f0723d7ff453bebbe46dd2
+ms.sourcegitcommit: f112efee7344d739bdbf385adba0c554ea2a63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456073"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129439365"
 ---
 # <a name="products-resources"></a>Zasoby produktów
 
@@ -17,14 +17,14 @@ Zasoby reprezentujące towary lub usługi, które można kupować. Zawiera zasob
 
 ## <a name="product"></a>Produkt
 
-Reprezentuje zakupny dobrą lub usługę. Sam produkt nie jest elementem do kupienia.
+Reprezentuje wartość dobrą lub usługę do zakupu. Sam produkt nie jest elementem do kupienia.
 
 | Właściwość           | Typ                          | Opis                                                              |
 |--------------------|-------------------------------|--------------------------------------------------------------------------|
 | identyfikator                 | ciąg                        | Identyfikator tego produktu.                                                 |
 | tytuł              | ciąg                        | Tytuł produktu.                                                       |
 | description (opis)        | ciąg                        | Opis produktu.                                                 |
-| productType        | [Itemtype](#itemtype)         | Obiekt opisujący kategoryzację typów tego produktu.     |
+| productType        | [Itemtype](#itemtype)         | Obiekt opisujący kategoryzacje typów tego produktu.     |
 | isMicrosoftProduct | bool                          | Wskazuje, czy jest to produkt firmy Microsoft.                          |
 | publisherName      | ciąg                        | Nazwa wydawcy produktu, jeśli jest dostępna.                          |
 | Linki              | [ProductLinks (Linki produktów)](#productlinks) | Linki zasobów zawarte w produkcie.                         |
@@ -50,7 +50,7 @@ Zawiera listę linków dla [produktu](#product).
 
 ## <a name="sku"></a>SKU
 
-Reprezentuje jednostkę magazynową (SKU) do zakupu w ramach produktu. Reprezentują one różne kształty produktu.
+Reprezentuje zakupną jednostkę magazynową (SKU) w ramach produktu. Reprezentują one różne kształty produktu.
 
 | Właściwość               | Typ             | Opis                                                                           |
 |------------------------|------------------|---------------------------------------------------------------------------------------|
@@ -59,15 +59,16 @@ Reprezentuje jednostkę magazynową (SKU) do zakupu w ramach produktu. Reprezent
 | description (opis)            | ciąg           | Opis sku.                                                           |
 | productId              | ciąg           | Identyfikator produktu [nadrzędnego, który](#product) zawiera tę jednostkę SKU.                      |
 | minimumQuantity        | int              | Minimalna ilość dozwolona do zakupu.                                            |
-| maximumQuantity (maksymalna ilość)        | int              | Maksymalna ilość dozwolona do zakupu.                                            |
-| isTrial                | bool             | Wskazuje, czy ta wersja SKU jest elementem w wersji próbnej.                                           |
+| maximumQuantity        | int              | Maksymalna ilość dozwolona do zakupu.                                            |
+| isTrial                | bool             | Wskazuje, czy ta wersja SKU jest elementem wersji próbnej.                                           |
 | supportedBillingCycles | tablica ciągów | Lista obsługiwanych cykli rozliczeniowych dla tej sku. Obsługiwane wartości to nazwy członków w [typie BillingCycleType](#billingcycletype). |
-| purchasePrerequisites  | tablica ciągów | Lista czynności lub akcji wymagań wstępnych, które są wymagane przed zakupem tego elementu. Obsługiwane wartości to:<br/>  "InventoryCheck" — wskazuje, że spis elementu powinien zostać oceniony przed podjęciem próby zakupu tego elementu.<br/> "AzureSubscriptionRegistration" — wskazuje, że subskrypcja platformy Azure jest potrzebna i musi zostać zarejestrowana przed próbą zakupu tego elementu.  |
-| inventoryVariables     | tablica ciągów | Lista zmiennych potrzebnych do wykonania sprawdzania spisu dla tego elementu. Obsługiwane wartości to:<br/> "CustomerId" — identyfikator klienta, dla który zostałby zakup.<br/> "AzureSubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.</br> "ArmRegionName" — region, dla którego ma być weryfikowany spis. Ta wartość musi być dopasowana do wartości "ArmRegionName" z dynamicAttributes sku. |
-| provisioningVariables  | tablica ciągów | Lista zmiennych, które należy podać w kontekście aprowizowania pozycji koszyka [podczas](cart-resources.md#cartlineitem) zakupu tego elementu. Obsługiwane wartości to:<br/> Zakres — zakres zakupu rezerwacji platformy Azure: "Pojedynczy", "Udostępniony".<br/> "SubscriptionId" — identyfikator subskrypcji platformy Azure, który będzie używany do zakupu rezerwacji platformy Azure.<br/> "Czas trwania" — czas trwania rezerwacji platformy Azure: "1Year", "3Year".  |
+| purchasePrerequisites  | tablica ciągów | Lista czynności lub akcji wymaganych wstępnie przed zakupem tego elementu. Obsługiwane wartości to:<br/>  "InventoryCheck" — wskazuje, że spis elementu powinien zostać oceniony przed podjęciem próby zakupu tego elementu.<br/> "AzureSubscriptionRegistration" — wskazuje, że subskrypcja platformy Azure jest potrzebna i musi zostać zarejestrowana przed podjęciem próby zakupu tego elementu.  |
+| inventoryVariables     | tablica ciągów | Lista zmiennych potrzebnych do wykonania sprawdzania spisu dla tego elementu. Obsługiwane wartości to:<br/> "CustomerId" — identyfikator klienta, dla których zakup będzie mieć identyfikator.<br/> "AzureSubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.</br> "ArmRegionName" — region, dla którego ma być weryfikowany spis. Ta wartość musi być dopasowana do "ArmRegionName" z dynamicznegoattributes sku. |
+| provisioningVariables  | tablica ciągów | Lista zmiennych, które muszą zostać podane w kontekście aprowowania elementu wiersza [koszyka](cart-resources.md#cartlineitem) podczas zakupu tego elementu. Obsługiwane wartości to:<br/> Zakres — zakres zakupu rezerwacji platformy Azure: "Pojedynczy", "Współdzielony".<br/> "SubscriptionId" — identyfikator subskrypcji platformy Azure, która będzie używana do zakupu rezerwacji platformy Azure.<br/> "Czas trwania" — czas trwania rezerwacji platformy Azure: "1Year", "3Year".  |
 | dynamicAttributes      | pary klucz/wartość  | Słownik właściwości dynamicznych, które mają zastosowanie do tego elementu. Właściwości w tym słowniku są dynamiczne i mogą ulec zmianie bez powiadomienia. Nie należy tworzyć silnych zależności od określonych kluczy istniejących w wartości tej właściwości.    |
 | Linki                  | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w ramach tej sku.                   |
-| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Właściwości zaświadczenia dla sku.                   |
+| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Właściwości zaświadczenia dla SKU.                   |
+| consumptionType                  | ciąg | Jest dostępna tylko wtedy, gdy sku obsługuje zużycie, takie jak *zużycie.*               |
 
 ## <a name="dynamic-sku-attributes"></a>Dynamiczne atrybuty SKU
 
@@ -86,26 +87,26 @@ Istotne właściwości związane z nowymi produktami i usługami opartymi na lic
 
 ## <a name="availability"></a>Dostępność
 
-Reprezentuje konfigurację, w której można kupić sku SKU (na przykład kraj, waluta i segment branży).
+Reprezentuje konfigurację, w której można kupić sku (na przykład kraj, waluta i segment branży).
 
 | Właściwość        | Typ                        | Opis                                                                         |
 |-----------------|-----------------------------------------------------|-------------------------------------------------------------------------------------|
-| identyfikator              | ciąg                        | Identyfikator tej dostępności. Ten identyfikator jest unikatowy tylko w kontekście produktu nadrzędnego [i](#product) [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Ta wartość powinna być dostępna tylko w krótkim czasie po jej pobierania.  |
+| identyfikator              | ciąg                        | Identyfikator tej dostępności. Ten identyfikator jest unikatowy tylko w kontekście jego produktu [nadrzędnego i](#product) [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Należy polegać na tej wartości tylko w krótkim czasie po jej pobierania.  |
 | productId       | ciąg                        | Identyfikator [produktu, który](#product) zawiera tę dostępność.           |
 | skuId           | ciąg                        | Identyfikator [sku, który](#sku) zawiera tę dostępność.                   |
-| catalogItemId   | ciąg                        | Unikatowy identyfikator dla tego elementu w wykazie. Jest to identyfikator, który należy wypełnić we [właściwościach OrderLineItem.OfferId](order-resources.md#orderlineitem) lub [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) podczas zakupu nadrzędnej [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Ta wartość powinna być dostępna tylko w krótkim czasie od jej pobierania. Dostęp do niego powinien być uzyskiwany i używany tylko w momencie zakupu.  |
+| catalogItemId   | ciąg                        | Unikatowy identyfikator tego elementu w katalogu. Jest to identyfikator, który należy wypełnić we [właściwościach OrderLineItem.OfferId](order-resources.md#orderlineitem) lub [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) podczas zakupu nadrzędnej [jednostki SKU](#sku). **Uwaga** Ten identyfikator może zmieniać się w czasie. Należy polegać na tej wartości tylko w krótkim czasie po jej pobierania. Dostęp do niego powinien być uzyskiwany i używany tylko w momencie zakupu.  |
 | defaultCurrency | ciąg                        | Domyślna waluta obsługiwana dla tej dostępności.                               |
 | segment         | ciąg                        | Segment branży dla tej dostępności. Obsługiwane wartości to: Komercyjne, Edukacyjne, Rządowe, NonProfit. |
 | country         | ciąg                                              | Kraj lub region (w formacie kodu kraju ISO), w którym ma zastosowanie ta dostępność. |
 | isPurchasable   | bool                                                | Wskazuje, czy tę dostępność można kupować. |
-| isRenewable     | bool                                                | Wskazuje, czy ta dostępność jest odnawiązywna. |
+| isRenewable     | bool                                                | Wskazuje, czy ta dostępność jest odnawializowa. |
 | RenewalInstructions     | RenewalInstruction                                              | Reprezentuje instrukcje dotyczące odnawiania dla danej dostępności. |
 | product      | [Product](#product)               | Produkt, który odpowiada tej dostępności. |
-| sku          | [SKU](#sku)            | Ta dostępność odpowiada tej dostępności. |
+| sku          | [Numer jednostki magazynowej](#sku)            | Ta dostępność odpowiada tej dostępności. |
 | Warunki           | tablica [zasobów term](#term)  | Kolekcja warunków mających zastosowanie do tej dostępności. |
 | Linki           | [ResourceLinks](utility-resources.md#resourcelinks) | Linki zasobów zawarte w dostępności. |
 
-## <a name="renewal-instruction"></a>Instrukcje dotyczące odnawiania
+## <a name="renewal-instruction"></a>Instrukcja odnawiania
 
 > [!Note] 
 > Nowe zmiany w handlu są obecnie dostępne tylko dla partnerów, którzy są częścią nowego doświadczenia handlowego M365/D365 w wersji Technical Preview
@@ -179,7 +180,7 @@ Element [Enum/dotnet/api/system.enum) z wartościami wskazującymi typ cyklu roz
 |--------------------|--------------|--------------------------------------------------------------------------------------------|
 | Nieznane            | 0            | Inicjator wyliczania.                                                                          |
 | Co miesiąc            | 1            | Wskazuje, że partner będzie obciążany comiesięczne opłaty.                                        |
-| Roczna             | 2            | Wskazuje, że partnerowi będą naliczane opłaty rocznie.                                       |
+| Roczna             | 2            | Wskazuje, że partner będzie obciążany opłatą rocznie.                                       |
 | Brak               | 3            | Wskazuje, że partner nie zostanie obciążony. Ta wartość może być używana w przypadku elementów w wersji próbnej.    |
 | OneTime            | 4            | Wskazuje, że partner zostanie obciążony jeden raz.                                       |
 

@@ -1,25 +1,28 @@
 ---
 title: Konwertowanie wersji próbnej subskrypcji na płatną
-description: Dowiedz się, jak za pomocą Partner Center API przekonwertować subskrypcję wersji próbnej na płatną.
+description: Dowiedz się, jak za Partner Center API przekonwertować subskrypcję wersji próbnej na płatną.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a805264315e35c7576248630396da1e34a66cc55ac87dd07452f1615edbc0af4
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 7cee9b9afddb12137bb66b57250a9487bd4902f5
+ms.sourcegitcommit: f112efee7344d739bdbf385adba0c554ea2a63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991858"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129439331"
 ---
 # <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Konwertowanie subskrypcji próbnej na płatną przy użyciu Partner Center API
+
+> [!NOTE]
+> Te kroki nie mają zastosowania do nowych produktów handlowych. Zapoznaj się **z dokumentacją przejścia nowej subskrypcji handlowej,** aby przekonwertować nowe wersje próbne handlu na płatne subskrypcje
 
 Subskrypcję wersji próbnej można przekonwertować na płatną.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Poświadczenia zgodnie z opisem w [te Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
+- Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie tylko przy użyciu poświadczeń aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta poszukaj identyfikatora **Microsoft w** sekcji Informacje o **koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Identyfikator subskrypcji dla aktywnej subskrypcji wersji próbnej.
 
@@ -115,7 +118,7 @@ else
 
 | Metoda   | Identyfikator URI żądania                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **Post** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
+| **POST** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-klienta}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 

@@ -445,6 +445,15 @@
           href: update-a-service-request.md
         - name: Aktualizowanie informacji kontaktowych pomocy technicznej subskrypcji
           href: update-a-subscription-s-support-contact.md
+    - name: Wyświetlanie marginesów
+      href: view-margins.md
+      items:
+        - name: Uzyskiwanie marginesów
+          href: get-margins.md
+        - name: Marginesy pobierania
+          href: download-margins.md
+        - name: Zasoby na marginesie
+          href: margin-resources.md
 - name: Piaskownica integracji
   items:
     - name: Możliwości piaskownicy dla relacji odsprzedawcy

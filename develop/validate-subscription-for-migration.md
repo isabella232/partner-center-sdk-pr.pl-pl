@@ -4,16 +4,16 @@ description: Jak sprawdzić, czy subskrypcja kwalifikuje się do migracji.
 ms.date: 10/04/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c8d2ae596901a45a794230c79cfb54815963e300
-ms.sourcegitcommit: 856b0baa4824960e13ee9672817a2d2e713fdf43
+ms.openlocfilehash: d085093b8adc3750d1b8d95963fc9d74c4209e00
+ms.sourcegitcommit: 53980dc43fb2277878bf61a15a86013b8b1c2574
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129528712"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129610000"
 ---
 # <a name="validate-a-subscription-for-migration"></a>Weryfikowanie subskrypcji do migracji
 
-**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center dla Microsoft Cloud for US Government
+**Dotyczy:** Partner Center | Partner Center obsługiwana przez firmę 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government
 
 Jak zweryfikować subskrypcję w celu migracji do nowego doświadczenia handlowego
 
@@ -21,7 +21,7 @@ Jak zweryfikować subskrypcję w celu migracji do nowego doświadczenia handlowe
 
 - Poświadczenia zgodnie z opisem w te [Partner Center uwierzytelniania.](partner-center-authentication.md) Ten scenariusz obsługuje uwierzytelnianie przy użyciu zarówno poświadczeń aplikacji autonomicznej, jak i aplikacji i użytkownika.
 
-- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z menu Partner Center, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz **pozycję Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** sekcji **Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
+- Identyfikator klienta ( `customer-tenant-id` ). Jeśli nie znasz identyfikatora klienta, możesz go znaleźć na pulpicie nawigacyjnym Partner Center [nawigacyjnym](https://partner.microsoft.com/dashboard). Wybierz **pozycję CSP** z Partner Center menu, a następnie pozycję **Klienci.** Wybierz klienta z listy klientów, a następnie wybierz pozycję **Konto**. Na stronie Konto klienta odszukaj identyfikator **Microsoft w** **sekcji Informacje o koncie** klienta. Identyfikator microsoft jest taki sam jak identyfikator klienta ( `customer-tenant-id` ).
 
 - Bieżący identyfikator subskrypcji
 
@@ -31,7 +31,7 @@ Jak zweryfikować subskrypcję w celu migracji do nowego doświadczenia handlowe
 
 | Metoda  | Identyfikator URI żądania                                                                                                            |
 |---------|------------------------------------------------------------------------------------------------------------------------|
-|**POST** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/migrations/newcommerce/validate HTTP/1.1  |
+|**POST** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{identyfikator-dzierżawy-klienta}/migrations/newcommerce/validate HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -39,7 +39,7 @@ W tej tabeli wymieniono parametry zapytania wymagane do zweryfikowania subskrypc
 
 | Nazwa               | Typ   | Wymagane | Opis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg w formacie IDENTYFIKATORA GUID, który identyfikuje klienta. |
+| identyfikator dzierżawy klienta | ciąg | Tak      | Ciąg w formacie identyfikatora GUID, który identyfikuje klienta. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -65,7 +65,7 @@ W przypadku powodzenia ta metoda zwraca wartość logiczną "isEligible" w treś
 
 ### <a name="response-success-and-error-codes"></a>Kody powodzenia i błędów odpowiedzi
 
-Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center kody błędów REST.](error-codes.md)
+Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowodzenie, oraz dodatkowe informacje o debugowaniu. Użyj narzędzia śledzenia sieci, aby odczytać ten kod, typ błędu i dodatkowe parametry. Aby uzyskać pełną listę, zobacz [Partner Center REST error codes (Kody błędów REST).](error-codes.md)
 
 ### <a name="response-examples"></a>Przykłady odpowiedzi
 
@@ -81,11 +81,13 @@ Każda odpowiedź zawiera kod stanu HTTP, który wskazuje powodzenie lub niepowo
             }
         ]
     }
+```
 
+```http
 2. 
     {
         "currentSubscriptionId": "9beb6319-6889-4d28-a155-68ca9c783842",
         "isEligible": true,
-    "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV",
+        "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV"
     }
 ```

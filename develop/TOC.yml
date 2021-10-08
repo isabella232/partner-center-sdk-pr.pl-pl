@@ -416,7 +416,7 @@
           href: transition-a-new-commerce-subscription.md
         - name: Weryfikowanie subskrypcji do migracji
           href: validate-subscription-for-migration.md
-        - name: Tworzenie nowej migracji handlowej
+        - name: Tworzenie nowej migracji handlu
           href: create-migration.md
         - name: Uzyskiwanie nowej migracji handlowej
           href: get-new-commerce-migration.md
@@ -424,6 +424,8 @@
           href: update-a-cart.md
         - name: Aktualizowanie automatycznego odnawiania dla subskrypcji platformy handlowej
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+        - name: Aktualizowanie częstotliwości rozliczeń dla subskrypcji oprogramowania
+          href: manage-billing-frequency-software-subs.md
         - name: Aktualizowanie opłat za subskrypcję
           href: update-subscription-overage.md
         - name: Weryfikowanie uprawnień do promocji
@@ -452,7 +454,7 @@
           href: get-margins.md
         - name: Marginesy pobierania
           href: download-margins.md
-        - name: Zasoby na marginesie
+        - name: Zasoby dotyczące marginesu
           href: margin-resources.md
 - name: Piaskownica integracji
   items:
